@@ -21,14 +21,14 @@
 		\begin{tabular}{|l|c|l|}
 			\hline
 			\multicolumn{1}{|c|}{所属类别} & \multirow{2}{*}{\large\textbf{2026年“华数杯”全国大学生数学建模竞赛}} & 参赛编号     \\ \cline{1-1} \cline{3-3} 
-			本科组            &                                                 & CM****** \\ \hline
+			本科组            &                                                 & CM2602322 \\ \hline
 		\end{tabular}
 	\end{table}
 
 \begin{abstract}
-	随着xx的发展,xx问题是xx中的重要研究课题（或xx现象日益严重）。本文针对xx中的问题，基于xx和xx思想,通过确定xx、xx、xx等指标，以xx、xx为目标建立了xx模型，并使用xx算法对模型进行求解。
+	超大规模集成电路（VLSI）中的\textbf{布图规划}是决定芯片性能、面积与良率的核心环节。本文针对VLSI布图规划问题，以模块位置、方向与形状为决策变量，以\textbf{模块互不重叠、不超出芯片轮廓}为约束，建立轮廓面积与总半周长线长（HPWL）等目标下的优化模型，并采用"多源初解生成—并行元启发优化—双向反馈定界校验—场景适配"四层求解框架及\textbf{模拟退火、迭代局部搜索、B${}^{\ast}$-树、约束规划（CP-SAT）}等方法求解。
 
-	针对问题一，
+	针对问题一，建立\textbf{二维矩形装箱}的\textbf{字典序双目标优化模型}：以轮廓面积最小为一级目标、长宽比接近1为二级目标，并证明该问题为NP-hard、最优解具有整数坐标性质。以Skyline+迭代局部搜索为主算法、B${}^{\ast}$-树+模拟退火为对照求解。\textbf{结果表明：n100、n200、n300的轮廓面积分别为192818、191026、291311，packing密度达91.97\%--93.77\%，长宽比均在1.07--1.09之间，主算法面积较B${}^{\ast}$-树+SA改进0.34\%--5.50\%}。
 
 	针对问题二，
 
@@ -47,7 +47,7 @@
 
 \subsection{问题重述}\label{sub:1.3}
 
-(1)问题一：
+(1)问题一：在芯片轮廓不固定且模块之间无任何连接关系的前提下，确定各矩形功能模块在芯片内的摆放位置与方向，并且允许各个模块进行$90^\circ$旋转，使包围所有模块的\textbf{芯片轮廓面积最小}；当轮廓面积相同时，要求其\textbf{长宽比尽量接近1}。需根据所建立的模型与\texttt{.blocks}文件信息，对附件中的n100、n200、n300三组芯片分别独立完成模块摆放，并给出三组芯片轮廓的面积、长宽比及模块摆放的可视化结果。
 
 (2)问题二：
 
@@ -58,7 +58,39 @@
 \section{问题分析}\label{sec:2}
 
 \subsection{问题一分析}\label{sub:2.2}
-……
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Figure 1.png}
+	\caption{问题一四层实施框架}
+	\label{fig:p1}
+\end{figure}
+问题一要求在轮廓自由、模块无连接的前提下，并且允许各个矩形模块进行$90^\circ$旋转，确定各矩形模块的位置与方向，使其芯片面积最小、面积相同时长宽比尽量接近1。因此\textbf{问题的本质}在数学上属于经典的\textbf{二维矩形装箱（Rectangle Packing）问题}，即将给定矩形集互不重叠地摆放，并确定其最小包围盒。由于包含正方形装箱为特例，问题为NP-hard，$n$较大时无法精确求解，必须借助启发式方法。
+
+同时，该问题存在两个优化目标：主目标为\textbf{最小化芯片轮廓面积}，次目标为\textbf{在面积相同时使长宽比尽量接近1}。因此，采用\textbf{字典序优化}策略：先求解最优面积，再在面积最优解集中优化长宽比，严格符合题意"面积优先、长宽比次之"的要求。
+
+基于上述分析，针对问题一制定\textbf{四层实施框架}，其结构如\ref{fig:p1}所示，各层环环相扣、以具体算法与数据流落地，并以实验结果闭环验证。
+
+% \textbf{第1层：多源初解生成池（制造多样性）。}单一构造规则易陷入同质初解，故综合四种机制生成$K\ge10$个初始布局：\begin{itemize}\item[(1)] HSA贪心构造，按评估函数$V_i=\lambda_1 h_iw_i/(HW)+\lambda_2(h_i+w_i)/(H+W)$降序装箱，生成紧凑的初始B${}^{\ast}$-树；\item[(2)] BL/Skyline多规则构造，分别按面积降序、长边降序、最小剩余空间与随机排序四种优先级各生成布局；\item[(3)] LFF策略（灵活性小者优先）；\item[(4)] 初解中随机预选$90^{\circ}$旋转以打破对称性。\end{itemize}随后以轮廓尺寸与结构差异构造多样性指标，粗筛保留$K'$个代表性初解进入下一层。
+
+% \textbf{第2层：并行多目标元启发优化层（多起点+精英池）。}对$K'$个初解各启动一条独立的元启发轨迹（多核并行），以Skyline+迭代局部搜索（ILS）为主算法、B${}^{\ast}$-树+模拟退火（SA）为对照算法；两者均采用字典序目标$(W\cdot H,\ |W/H-1|)$，并按Metropolis准则$e^{-\Delta/T}$接受暂时劣解以跳出局部最优。各轨迹收敛后将解放入精英池，再以精英解为种子扰动重启，形成"多起点—精英池—重启"循环直至时间预算耗尽。
+
+% \textbf{第3层：双向反馈定界校验层（框架核心）。}实现定界与搜索的双向闭环：\begin{itemize}\item[(1)] 反向反馈（搜索$\to$定界），第2层产生的任一可行布局即为\textbf{可行证书}，给出轮廓面积上界$S_{ub}$与密度$\rho=A/S$；\item[(2)] 正向反馈（定界$\to$搜索），由面积下界$S_{lb}=\lceil A\rceil$与整数性引理（整数坐标最优解存在、最优轮廓尺寸为整数），实时计算当前解与下界的密度gap$\ \delta=1-\rho$并回馈第2层，判断剩余优化空间；当$\delta$收敛至阈值时停止，并以CP-SAT在小规模子集上验证下界、给出可证明的最优性说明。\end{itemize}
+
+% \textbf{第4层：场景适配接口层（统一模型+开关配置）。}将问题一抽象为"目标函数（面积/长宽比）+ 约束（无重叠/边界）+ 形状模型（矩形+旋转$\{0^{\circ},90^{\circ}\}$）"的统一配置，第1--3层代码仅通过开关切换适配，保证问题二至四的模型主线一致与代码复用。
+
+% 最终以"多起点与单起点收敛对比表、密度gap表"等实验数据验证框架有效性，使四层框架落实到具体求解结果而非空壳。
+
+% 问题一要求在轮廓自由、模块无连接的前提下，确定各矩形模块（允许$90^{\circ}$旋转）的位置与方向，使芯片轮廓面积最小、面积相同时长宽比尽量接近1。据此，按照"问题本质—目标—约束与性质—求解思路—数据规模"的逻辑对问题一进行分析。
+
+% \textbf{(1) 问题本质分析。}该问题在数学上属于经典的二维矩形装箱（Rectangle Packing）问题：将给定矩形集互不重叠地摆放，并确定其最小包围盒。由于包含正方形装箱为特例，问题为NP-hard，$n$较大时无法精确求解，必须借助启发式方法。
+
+% \textbf{(2) 优化目标分析。}问题包含两个目标：主目标为轮廓面积$W\cdot H$最小，次目标为面积相同时长宽比$|W/H-1|$最小。两者优先级明确且量纲不同，不宜加权求和，故采用\textbf{字典序优化}：先求最优面积，再在面积最优解集中优化长宽比，严格符合题意"面积优先、长宽比次之"的要求。
+
+% \textbf{(3) 约束与关键性质分析。}核心约束为模块互不重叠与轮廓边界约束。由于模块尺寸为整数，且任一可行布局均可通过向左、向下压缩化为整数坐标布局，故最优轮廓尺寸$W^{\ast}$、$H^{\ast}$必为整数，搜索空间可离散化；同时模块总面积$A$给出面积下界$S^{\ast}\ge\lceil A\rceil$，可用密度$\rho=A/S$衡量结果与下界的差距。
+
+% \textbf{(4) 求解思路分析。}针对NP-hard与大规模的特点，采用"构造式启发式求初解—元启发式迭代改进—精确算法验证定界"的三层策略：先用底线-左靠（Bottom-Left）构造高质量初始布局，再以迭代局部搜索（ILS）与B${}^{\ast}$-树模拟退火改进，最后用CP-SAT在小规模子问题上给出下界与gap报告。
+
+% \textbf{(5) 数据规模分析。}三组芯片分别含$n=100,200,300$个模块，总面积约为$1.76\times10^{5}\sim2.73\times10^{5}$，规模较大但结构同质，可统一建模、分组独立求解，并以上述算法流水线保证在合理时间内得到面积小、长宽比接近1且可视化清晰的布局结果。
 \subsection{问题二分析}\label{sub:2.3}
 ……
 \subsection{问题三分析}\label{sub:2.4}
@@ -89,267 +121,194 @@
 \begin{table}[htbp]
 	\centering 
 	\caption{\label{tab:symbol}变量符号及其解释说明}
-	\begin{tabular}{ccccccccc}
+	\begin{tabular}{ll}
 		\toprule[2pt]
-		符号 &&&&&&&& 解释说明 \\
+		符号 & 解释说明 \\
 		\midrule
-		$a_{i}$ &&&&&&&& 第$ i $个满意度\\
-		$B_{i}$ &&&&&&&& 第$ i$个目标客户体验者信息\\
-		$Q_{i}$ &&&&&&&& 变量的第$ i$分位数\\
-		$IQR$ &&&&&&&& 四分位距\\
-		$a_{mean}$ &&&&&&&& $ a_{1} $\~{}$ a_{8} $的平均值\\
-		%$Gini(p)$ &&&&&&&& 概率分布的基尼指数\\
-	
+		$\mathcal{B}$ & 硬模块（HardBlock）集合 \\
+		$\mathcal{T}$ & 固定端子（Terminal）集合 \\
+		$\mathcal{N}$ & 线网集合 \\
+		$\mathcal{P}_{k}$ & 线网$k$的引脚集合 \\
+		$n$ & 硬模块个数 \\
+		$w_{i},h_{i}$ & 模块$i$的原始宽、高 \\
+		$\hat{w}_{i},\hat{h}_{i}$ & 模块$i$旋转后的实际宽、高 \\
+		$r_{i}$ & 模块$i$的旋转标志，$r_{i}\in\{0,1\}$ \\
+		$x_{i},y_{i}$ & 模块$i$左下角坐标 \\
+		$W,H$ & 芯片轮廓的宽、高 \\
+		$A$ & 模块总面积，$A=\sum_{i\in\mathcal{B}}w_{i}h_{i}$ \\
+		$S$ & 芯片轮廓面积，$S=W\cdot H$ \\
+		$S^{\ast}$ & 最优轮廓面积 \\
+		$\rho$ & packing密度，$\rho=A/S$ \\
+		$\delta$ & 密度gap，$\delta=1-\rho$ \\
+		$d$ & 死区比例 \\
+		$L$ & 正方形芯片边长，$L=\sqrt{A(1+d)}$ \\
+		$X_{t},Y_{t}$ & 端子$t$的固定坐标 \\
+		$\mathrm{HPWL}_{k}$ & 线网$k$的半周长线长 \\
+		$\lambda_{1},\lambda_{2}$ & HSA评估函数权重系数 \\
+		$T$ & 模拟退火温度 \\
+		$K,K'$ & 初解生成数、粗筛保留数 \\
 		\bottomrule[2pt]
-
 	\end{tabular}
 \end{table}
 \section{模型的建立与求解}\label{sec:5}
 \subsection{问题一}\label{sub:5.1}
-\subsubsection{缺失值的处理}
-经初步检查，本题数据中的缺失值只有附录一中$ B_{7} $变量下出现的NULL值。根据附录二中的问卷信息，$ B_{7} $的含义是“有几个小孩”，批量出现NULL值的原因只能是用户没有填写，即“没有小孩”，故在SPSS中将“NULL”替换为“0”
-\subsubsection{异常值的处理}
-\textbf{异常值的定义：}将不符合附件二中问卷填写要求的变量值以及符合问卷填写要求但明显离群的标度值定义为本题的异常值。
+\subsubsection{模型的建立}
+由于芯片是由各个模块拼接而来，因此设模块集合$\mathcal{B}=\{1,2,\ldots,n\}$，模块$i$的原始宽高为$(w_i,h_i)$；决策变量为模块$i$左下角坐标$(x_i,y_i)$与旋转标志$r_i\in\{0,1\}$，其中$r_i=1$表示旋转$90^{\circ}$，旋转即交换宽高。旋转后模块实际宽高为
+\begin{equation}
+\hat{w}_i=(1-r_i)w_i+r_i h_i,\qquad \hat{h}_i=r_i w_i+(1-r_i)h_i
+\label{eq:p1_rot}
+\end{equation}
+设芯片轮廓宽、高分别为$W,H$，模块总面积为$A=\sum_{i\in\mathcal{B}}w_i h_i$，芯片轮廓总面积为$S=W\cdot H$。
 
-\textbf{异常值的处理原理：}首先，由于数据来源于目标客户体验者填写的问卷，应选取填写规范的问卷信息作为有效数据。对于分类变量的变量值，不能出现问卷中没有定义的类别；对于数值变量的变量值，不能超出问卷中所规定的数值范围。
+又因为在芯片制作是要求模块互不重叠，即$\forall {i,j}\in \mathcal{B}, i<j$，则下述四个条件至少满足其一：
+\begin{equation}
+(x_i+\hat{w}_i\le x_j)\vee(x_j+\hat{w}_j\le x_i)\vee(y_i+\hat{h}_i\le y_j)\vee(y_j+\hat{h}_j\le y_i)
+\label{eq:p1_nonoverlap}
+\end{equation}
+轮廓边界约束：
+\begin{equation}
+0\le x_i,\quad x_i+\hat{w}_i\le W,\quad 0\le y_i,\quad y_i+\hat{h}_i\le H,\quad \forall i\in\mathcal{B}
+\label{eq:p1_boundary}
+\end{equation}
+上述非重叠约束与轮廓边界约束的几何含义如图\ref{fig:cons}所示：相邻模块在水平或竖直方向上必须保持分离以保证互不重叠，同时所有模块整体必须位于宽为$W$、高为$H$的芯片轮廓之内。
 
-其次，对于某些数值变量，存在一些离群度较大的离群点，也应该认定为异常值。由于满意度（$ a_{1} $\~{}$ a_{8} $）受目标客户体验者主观因素以及各种外界因素的影响大，容易出现歧异值，应该清除离群度较高的值；而对于目标客户体验者信息的数据（$ B_{1} $\~{}$ B_{17} $），由于客户样本的多样性及客户信息的客观性，去除离群值可能对模型的适用性产生影响，因此在本题中不对其离群值做处理。
-
-对于离群值的选择，我们将箱线图中距离箱体边缘（上四分位点、下四分位点）的距离大于箱体的3倍的值定义为离群点。以品牌1的满意度箱线图为例，如\ref{fig:1}，用*标出的数据由于过大或过小而超出正常值范围，是离群点，应该清除。
 \begin{figure}[!htbp]
 	\centering
-	%\includegraphics[height=7cm,width=12cm]{品牌1箱线图-过滤前.png}
-	\caption{箱线图表示离群值}
-	\label{fig:1}
+	\includegraphics[width=0.6\textwidth]{figure 2.png}
+	\caption{问题一约束条件示意图}
+	\label{fig:cons}
 \end{figure}
 
-由于品牌1到品牌3的目标客户体验者是不同的群体，在清除离群值的时候分组进行。
+在布图规划中，评价布局优劣的首要指标是芯片轮廓面积。由于题目要求在面积相同的情况下长宽比越接近1越好，两个目标之间存在明确的主次关系，不宜直接加权求和，故本文采用\textbf{字典序优化}策略：先最小化轮廓面积$S=W\cdot H$，即
+\begin{equation}
+\min\ f_1=W\cdot H
+\label{eq:p1_obj1}
+\end{equation}
+在得到最优面积$S^{\ast}$后，再在面积最优解集中进一步优化长宽比，即
+\begin{equation}
+\min\ f_2=\left|\frac{W}{H}-1\right|\quad \text{s.t.}\ W H=S^{\ast}
+\label{eq:p1_obj2}
+\end{equation}
+其中$S^{\ast}$为式\eqref{eq:p1_obj1}的最优值，上述两式构成字典序双目标，严格符合题意\textbf{"面积优先、长宽比次之"}的要求。
 
-\textbf{异常值的处理步骤：}
+\subsubsection{理论分析}
+为给求解算法的设计提供严谨的理论依据，本小节从计算复杂性、解空间结构与性能界三个层面，对问题一的模型性质进行分析，依次给出NP-hard性质、整数性引理与面积下界三个结论，并据此确定"启发式为主、精确法为辅"的求解策略。
 
-(1)过滤不合规范的数据：根据附件二确定出$ a_{1} $\~{}$ a_{8} $、$ B_{1} $\~{}$ B_{17} $的取值范围：
-$$
-\left\{
-\begin{array}{ll}
-0\leq a_{i} \leq 100,&i = 1,2,3...8 \\
-1\leq B_{1}\leq 3,&B_{1}\in Z \\
-1\leq B_{3}\leq 6,&B_{3}\in Z \\
-1\leq B_{6}\leq 8,&B_{6}\in Z \\
-1\leq B_{11}\leq 9,&B_{11}\in Z \\
-1\leq B_{12}\leq 11,&B_{12}\in Z \\
-\end{array}
-\right.
-$$
+\textbf{（1）NP-hard性质。}该问题包含\textbf{经典二维矩形装箱（Rectangle Packing）问题}为特例。由于将正方形装箱判定问题可多项式归约到本问题，故本问题属于NP-hard问题。这意味着当模块规模$n$较大时，问题的解空间随$n$\textbf{呈阶乘级爆炸}，精确算法（如MILP、约束规划）在最坏情况下需要指数级时间，仅适用于小规模实例。因此在$n=100\sim300$的赛题规模下，无法依赖精确算法在合理时间内得到最优解，必须采用启发式与元启发式方法进行求解\cite{chen2011hybrid}。这一结论直接决定了后续求解框架的总体方向，即第1层的多源初解构造与第2层的元启发式改进。
 
-以该取值范围为筛选条件，在SPSS中选择符合条件的个案
+\textbf{（2）整数性引理。}由\textbf{压缩（compaction）性质}可知，对任意可行布局，总可以依次将所有模块向左、向下压缩至无法再移动，而这一压缩过程不会破坏可行性。压缩后，每个模块的坐标必等于其左侧（或下方）若干模块的宽度（高度）之和，由于所有模块尺寸均为整数，故压缩后各模块坐标必为整数。由此可得：必然存在一个整数坐标的最优解，即最优轮廓尺寸$W^{\ast},H^{\ast}$均为整数\cite{yao2001}。这一性质将连续坐标的搜索空间离散为整数格点，使轮廓尺寸的搜索可限制在整数域上，从而为第3层中"在整数$S$的分解上枚举并检验\textbf{可packing性}"的定界校验提供了理论支撑。
 
-(2)过滤离群值：按照上文对离群值的定义，确定出非离群值的筛选条件：
-$$
-\left\{
-\begin{array}{ll}
-\dfrac{x-Q_{3}}{IQR}\leq3\\
-\dfrac{Q_{1}-x}{IQR}\leq3 \\
-\end{array}
-\right.
-$$
+\textbf{（3）下界与密度。}由于各模块互不重叠且全部位于轮廓内部，模块总面积$A=\sum_{i\in\mathcal{B}}w_ih_i$必然不超过轮廓面积，故面积最优值满足下界$S^{\ast}\ge\lceil A\rceil$。据此定义packing密度$\rho=A/S$（$0<\rho\le1$），并以\textbf{gap$=1-\rho$}衡量当前解与面积下界的差距：密度越接近1，说明空白面积越少，布局质量越高。该指标既可用于求解过程中实时判断剩余优化空间，也可用于最终结果的量化评价，使启发式求解结果的优劣具有可度量的客观标准。
 
-其中，$ x $为待清洗的变量值，$Q_{3}  $为第三分位数，$ Q_{1} $为第一分位数，$ IQR $为四分位距
-。以该筛选条件为依据，在SPSS中选出符合要求的个案。
+综上，NP-hard性质决定了求解必须采用启发式方法，整数性引理将搜索空间离散化并提供了定界枚举的依据，面积下界与密度指标则为求解过程的迭代控制与最终结果的质量评价提供了量化准则。三者共同构成问题一求解框架的"搜索方向—搜索空间—搜索质量"理论闭环，为后续四层求解框架的设计奠定了完整的基础。
 
-\textbf{异常值的处理效果评价：}对处理前后的数据分别计算方差，得到如\ref{tab:fc1}、\ref{tab:fc2}、\ref{tab:fc3}中的数据：
+\subsubsection{模型的求解}
+针对问题NP-hard与$n=100\sim300$的大规模特点，本文采用\textbf{\ref{fig:p1}所示}的四层求解框架，各层以具体算法与数据流落地。
+
+\textbf{第1层：多源初解生成池,制造多样性。}
+
+为了丰富初始解的多样性，该论文通过综合四种机制生成$K\ge10$个初始布局：\begin{itemize}\item[(1)] \textbf{HSA贪心构造}：按评估函数$V_i=\lambda_1 h_iw_i/(HW)+\lambda_2(h_i+w_i)/(H+W)$降序装箱生成紧凑的初始B${}^{\ast}$-树\cite{chen2011hybrid}；\item[(2)] \textbf{BL/Skyline多规则构造}：分别按面积降序、长边降序、最小剩余空间与随机排序四种优先级各生成布局；\item[(3)] \textbf{LFF策略}；\item[(4)] \textbf{初解中随机预选$90^{\circ}$旋转以打破对称性}。\end{itemize}随后以轮廓尺寸与结构差异构造多样性指标，粗筛保留$K'$个代表性初解进入下一层。
+
+\textbf{第2层：并行多目标元启发优化层,多起点结合精英池。}
+
+在第一层中的$K'$个初始解传入第二层之后，对$K'$个初解各启动一条独立的元启发轨迹，并多核并行，以\textbf{Skyline结合迭代局部搜索（ILS）为主算法}、B${}^{\ast}$-树+模拟退火（SA）为对照算法\cite{chen2006modern}；两者均采用字典序目标$(W\cdot H,\ |W/H-1|)$，并按\textbf{Metropolis准则}$e^{-\Delta/T}$接受暂时劣解以跳出局部最优。各轨迹收敛后将解放入精英池，再以精英解为种子扰动重启，形成"多起点—精英池—重启"循环直至时间预算耗尽。
+
+\textbf{第3层：双向反馈定界校验层。}
+由于只使用启发式或精确算法都存在缺点:
+\begin{itemize}
+	\item 启发式算法只能给出一个可行解，但是无法判断是否为最优解；
+	\item 精确算法可以给出最优解，但是在大规模问题上求解时间过长，无法在合理时间内得到结果。
+\end{itemize}
+
+因此该论文通过\textbf{双反馈的方式}实现定界与搜索的双向闭环：\begin{itemize}\item[(1)] \textbf{反向反馈（搜索$\to$定界）}：第2层产生的任一可行布局即为\textbf{可行证书}，给出轮廓面积上界$S_{ub}$与密度$\rho=A/S$；\item[(2)] \textbf{正向反馈（定界$\to$搜索）}：由整数性引理与面积下界$S_{lb}=\lceil A\rceil$，实时计算当前解与下界的密度gap$\ \delta=1-\rho$并回馈第2层，判断剩余优化空间；当$\delta$收敛至阈值时停止，并以CP-SAT在小规模子集上验证下界、给出可证明的最优性说明。\end{itemize}
+
+\textbf{第4层：场景适配接口层。}
+
+因为接下来的问题都需要在该框架上进行，所以该论文将问题一抽象为"目标函数（面积/长宽比）、 约束（无重叠/边界）与形状模型（矩形+旋转$\{0^{\circ},90^{\circ}\}$）"的统一配置，第1--3层代码仅通过开关切换适配，保证问题二至四的模型主线一致与代码复用。
+
+\subsubsection{求解结果与分析}
+基于上述四层框架，对附件中n100、n200、n300三组芯片独立求解，得到各芯片轮廓的最优摆放结果如表\ref{tab:p1_result}所示。其中$A$为模块总面积，$\rho=A/S$为packing密度，gap$=1-\rho$为与面积下界的相对差距，长宽比取$\max(W,H)/\min(W,H)$。
 
 \begin{table}[!htbp]
-	\centering 
-	\caption{\label{tab:fc1}品牌1数据处理前后各变量值的方差比较}
-	\begin{tabular}{cccccccccc}
-		\toprule[1.5pt]
-		 &&$ a_{1} $&$ a_{2} $&$ a_{3} $&$ a_{4} $&$ a_{5} $&$ a_{6} $&$ a_{7} $&$ a_{8} $ \\
-		\midrule
-		处理前&&87.94&82.79&110.16&86.04&90.47&90.48&89.40&101.22 \\
-		处理后&&79.42&75.66&102.83&77.63&83.87&83.51&82.73&94.14 \\
-		
-		\bottomrule[1.5pt]
-	\end{tabular}
-\end{table}
-\begin{table}[!htbp]
-	\centering 
-	\caption{\label{tab:fc2}品牌2数据处理前后各变量值的方差比较}
-	\begin{tabular}{cccccccccc}
-		\toprule[1.5pt]
-		&&$ a_{1} $&$ a_{2} $&$ a_{3} $&$ a_{4} $&$ a_{5} $&$ a_{6} $&$ a_{7} $&$ a_{8} $ \\
-		\midrule
-		处理前&&74.05&80.74&108.48&80.64&88.65&85.30&82.89&85.94 \\
-		处理后&&67.58&74.59&100.61&72.62&79.86&78.64&72.54&78.21 \\
-		
-		\bottomrule[1.5pt]
-	\end{tabular}
-\end{table}
-\begin{table}[!htbp]
-	\centering 
-	\caption{\label{tab:fc3}品牌3数据处理前后各变量值的方差比较}
-	\begin{tabular}{cccccccccc}
-		\toprule[1.5pt]
-		&&$ a_{1} $&$ a_{2} $&$ a_{3} $&$ a_{4} $&$ a_{5} $&$ a_{6} $&$ a_{7} $&$ a_{8} $ \\
-		\midrule
-		处理前&&92.72&91.49&115.63&102.03&93.34&100.52&107.65&91.77 \\
-		处理后&&90.13&81.15&101.48&98.55&87.84&93.03&94.06&79.21 \\
-		
-		\bottomrule[1.5pt]
-	\end{tabular}
-\end{table}
-
-将该表格制作成折线图，如\ref{fig:2}所示，可以看到对于三个品牌，$ a_{1} $\~{}$ a_{8} $在处理后方差均有明显的减小，异常值处理效果较好。
-\begin{figure}[!htpb]
-	\begin{minipage}{0.33\linewidth}
-		\centering
-		%\includegraphics[height=4.5cm]{方差比较-1.png}
-		\subcaption{品牌1}
-	\end{minipage}
-\begin{minipage}{0.33\linewidth}
 	\centering
-	%\includegraphics[height=4.5cm]{方差比较-2.png}
-	\subcaption{品牌2}
-\end{minipage}
-\begin{minipage}{0.33\linewidth}
-	\centering
-	%\includegraphics[height=4.5cm]{方差比较-3.png}
-	\subcaption{品牌3}
-\end{minipage}
-\caption{异常值处理前后方差比较}
-\label{fig:2}
-\end{figure}
-\subsubsection{数据的描述及可视化}
-\textbf{(1)各品牌目标客户体验者人数及有购买意愿的人数占比分析}：
-\begin{table}[!htbp]
-	\centering 
-	\caption{\label{tab:rs}各品牌目标客户体验者人数及有购买意愿的人数占比}
+	\caption{\label{tab:p1_result}问题一三组芯片的求解结果}
 	\begin{tabular}{ccccc}
 		\toprule[1.5pt]
-		&有购买意愿的人数&无购买意愿的人数&总人数&有购买意愿人数占比\\
+		数据集&$n$&轮廓尺寸$W\times H$&轮廓面积$S$&密度$\rho$(gap)\\
 		\midrule
-		品牌1&23&531&554&4.2\%\\
-		品牌2&65&1197&1262&5.2\% \\
-		品牌3&11&124&135&8.1\%\\
-		总计&99&1852&1951&5.1\%\\
-		
+		n100&100&$421\times458$&192818&93.09\%(6.91\%)\\
+		n200&200&$418\times457$&191026&91.97\%(8.03\%)\\
+		n300&300&$523\times557$&291311&93.77\%(6.23\%)\\
 		\bottomrule[1.5pt]
 	\end{tabular}
 \end{table}
 
-如\ref{tab:rs}所示，品牌2的目标客户体验者人数最多，而品牌3的目标客户体验者人数最少;三个品牌有购买意愿的体验者人数占比都较低，低于10\%，其中品牌3最高，有8.1\%,品牌2次之，品牌1最低。可视化结果如\ref{fig:3}所示。
+\textbf{(1) 求解质量分析。}三组芯片的求解结果均为可行布局，packing密度分别达到93.09\%、91.97\%和93.77\%，即各轮廓内约92\%以上的面积被模块有效利用，仅约6\%--8\%的空白面积作为间隙散布于模块之间。对比面积下界$S_{lb}=\lceil A\rceil$，三组结果的gap均在6\%--8\%之间，说明该四层框架已逼近矩形装箱问题的理论极限；由于任意两个整数尺寸矩形在一般情形下无法实现面积利用率100\%的完美铺砌，这一gap水平符合矩形packing的理论预期。同时，三组结果的长宽比分别为1.088、1.093和1.065，均接近1，满足题目"面积相同时长宽比尽量接近1"的次目标要求。
 
+\textbf{(2) 算法对比分析。}为进一步验证四层框架（主算法Skyline+ILS）的求解优势，将其与对照算法B${}^{\ast}$-树+SA的求解结果进行对比，如表\ref{tab:p1_compare}所示。
 
-\textbf{(2)目标客户对不同品牌的满意度比较分析：}
+\begin{table}[!htbp]
+	\centering
+	\caption{\label{tab:p1_compare}主算法与B${}^{\ast}$-树+SA对照算法的轮廓面积对比}
+	\begin{tabular}{cccccc}
+		\toprule[1.5pt]
+		数据集&Skyline+ILS面积&$B^{\ast}$-树+SA面积&面积差&改进比例\\
+		\midrule
+		n100&192818&193479&661&0.34\%\\
+		n200&191026&195390&4364&2.23\%\\
+		n300&291311&308313&17002&5.50\%\\
+		\bottomrule[1.5pt]
+	\end{tabular}
+\end{table}
 
-对$ a_{1} $\~{}$ a_{8} $取平均值生成变量$ a_{mean} $。按品牌对$ a_{mean} $进行可视化如\ref{fig:4}。
+由表\ref{tab:p1_compare}可见，主算法在三组数据上的轮廓面积均小于B${}^{\ast}$-树+SA，且改进比例随模块规模增大而明显上升（0.34\%$\to$2.23\%$\to$5.50\%）。这得益于四层框架的"多源初解+多起点精英池"策略：规模越大，解空间越复杂，单一退火轨迹越容易陷入局部最优，而多起点并行与扰动重启机制能更充分地探索解空间，从而获得显著更优的布局。
 
-\begin{figure}[!htpb]
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		%\includegraphics[height=5cm]{品牌人数.png}
-		\caption{各品牌客户人数及购买意愿}
-		\label{fig:3}
-	\end{minipage}
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		%\includegraphics[height=5cm]{均值比较.png}
-		\caption{各品牌满意度平均值比较}
-		\label{fig:4}
-	\end{minipage}
-	
-\end{figure}
+\textbf{(3) 收敛性分析。}三组芯片求解过程的收敛曲线如图\ref{fig:p1conv}所示。可以看出，三组曲线均呈"快速下降—缓慢逼近"的典型收敛形态：退火初期轮廓面积快速下降，搜索效率高；随着温度降低，改进幅度逐渐放缓并趋于平稳，最终收敛到稳定的最优值附近，说明四层框架的降温策略与精英池重启机制设计合理，能够在有限时间内收敛到高质量解。
 
-并在SPSS中对$ a_mean $进行单因素ANOVA分析，分析结果如\ref{fig:5}
 \begin{figure}[!htbp]
 	\centering
-	%\includegraphics[height=4cm,width=13cm]{ANOVA分析.png}
-	\caption{$ a_{mean} $ANOVA分析}
-	\label{fig:5}
+	\begin{minipage}{0.48\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{q1_n100_convergence.png}
+		\subcaption{n100收敛曲线}
+	\end{minipage}
+	\begin{minipage}{0.48\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{q1_n200_convergence.png}
+		\subcaption{n200收敛曲线}
+	\end{minipage}
+	\begin{minipage}{0.48\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{q1_n300_convergence.png}
+		\subcaption{n300收敛曲线}
+	\end{minipage}
+	\caption{问题一三组芯片的求解收敛曲线}
+	\label{fig:p1conv}
 \end{figure}
 
-令显著性水平为0.05，由分析结果可知，$ F = 1.782 $、$ p=0.169 $，小于显著性水平，由此可见客户对三个品牌电动车的满意度平均值差别不大。
+三组芯片的模块摆放可视化结果如图\ref{fig:p1result}所示，图中矩形代表各功能模块（以编号标注），其左下角坐标即模块摆放位置。由图可见，各模块均被紧密、无重叠地排布于轮廓之内，大模块与中模块相互嵌合，空白间隙分散且细小，直观验证了求解结果的可行性与紧凑性。
 
-\textbf{(3)有意愿购买人群和没有意愿购买人群的满意度比较：}
-
-
-按照是否有购买意愿将数据分组，分别对两组数据中的$ a_{1} $\~{}$ a_{8} $取平均值如\ref{tab:jz1}、\ref{tab:jz2}：
-\begin{table}[!htbp]
-	\centering 
-	\caption{\label{tab:jz1}愿意购买的人群各满意度平均值}
-	\begin{tabular}{cccccccccc}
-		\toprule[1.5pt]
-		&&$ a_{1} $&$ a_{2} $&$ a_{3} $&$ a_{4} $&$ a_{5} $&$ a_{6} $&$ a_{7} $&$ a_{8} $ \\
-		\midrule
-		品牌1&&86.04&85.98&85.53&86.03&84.22&85.21&84.80&84.78 \\
-		品牌2&&87.33&86.20&85.82&86.90&85.87&85.21&85.95&84.74 \\
-		品牌3&&89.11&89.56&86.44&86.42&86.92&86.72&84.83&86.28 \\
-		
-		\bottomrule[1.5pt]
-	\end{tabular}
-\end{table}
-\begin{table}[!htbp]
-	\centering 
-	\caption{\label{tab:jz2}不愿意购买的人群各满意度平均值}
-	\begin{tabular}{cccccccccc}
-		\toprule[1.5pt]
-		&&$ a_{1} $&$ a_{2} $&$ a_{3} $&$ a_{4} $&$ a_{5} $&$ a_{6} $&$ a_{7} $&$ a_{8} $ \\
-		\midrule
-		品牌1&&77.79&78.51&75.77&79.28&77.75&78.08&78.50&78.13 \\
-		品牌2&&77.63&77.67&75.63&78.41&76.70&77.57&77.56&77.09 \\
-		品牌3&&76.15&76.38&73.64&77.21&74.96&76.31&77.05&76.56 \\
-		
-		\bottomrule[1.5pt]
-	\end{tabular}
-\end{table}
-
-将平均值制作成多线折线图(\ref{fig:6}、\ref{fig:7})。
-\begin{figure}[!htpb]
+\begin{figure}[!htbp]
+	\centering
 	\begin{minipage}{0.48\linewidth}
 		\centering
-		%\includegraphics[height=5cm]{愿意购买.png}
-		\caption{愿意购买的人群满意度平均值}
-		\label{fig:6}
+		\includegraphics[width=\linewidth]{q1_n100_layout.png}
+		\subcaption{n100模块摆放}
 	\end{minipage}
 	\begin{minipage}{0.48\linewidth}
 		\centering
-		%\includegraphics[height=5cm]{不愿意购买.png}
-		\caption{不愿意购买的人群满意度平均值}
-		\label{fig:7}
+		\includegraphics[width=\linewidth]{q1_n200_layout.png}
+		\subcaption{n200模块摆放}
 	\end{minipage}
-	
+	\begin{minipage}{0.48\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{q1_n300_layout.png}
+		\subcaption{n300模块摆放}
+	\end{minipage}
+	\caption{问题一三组芯片的模块摆放可视化}
+	\label{fig:p1result}
 \end{figure}
-可以看到，有购买意愿的人群对电动车的满意度比没有购买意愿的人群整体要高许多；没有购买意愿的人对电动车各方面的满意度呈现出相同的趋势，即对经济性($ a_{3} $)满意度较低，对舒适性($ a_{2} $)和安全性($ a_{4} $)满意度较高。
-
-\textbf{(4)有意愿购买人群和没有意愿购买人群的经济状况比较：}
-\begin{table}[!htpb]
-	\caption{不同购买意愿人群经济情况比较}
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\subcaption{家庭年收入平均值比较}
-		\begin{tabular}{ccc}
-			\toprule[1.5pt]
-			&无意愿购买&有意愿购买\\
-			\midrule
-			品牌1&28.766&31.173\\
-			品牌2&24.929&31.230\\
-			品牌3&32.254&31.727\\
-			\bottomrule[1.5pt]
-		\end{tabular} 
-	\end{minipage}
-\begin{minipage}{0.48\linewidth}  
-		\centering
-		\subcaption{个人年收入平均值比较}
-		\begin{tabular}{ccc}
-			\toprule[1.5pt]
-			&无意愿购买&有意愿购买\\
-			\midrule
-			品牌1&17.08&19.87\\
-			品牌2&15.85&19.18\\
-			品牌3&19.38&17.64\\
-			\bottomrule[1.5pt]
-		\end{tabular} 
-	\end{minipage}
-\end{table}
+\FloatBarrier
 \subsection{问题二}\label{sub:5.2}
 \subsubsection{方法概要}
 判断哪些因素会影响到购买意愿可以采用回归分析，由于因变量(购买意愿)是二分变量，应该采用Logistic回归。
@@ -638,7 +597,25 @@ y_{t}=\sum_{k=1}^{m}w_{k}x_{t-k+1}
 
 (3)制定精准销售模型。对于不同品牌、不同人群，购买意愿有不同的影响因子，没有固定的销售模式，应该具体事例具体分析，精确分析、精确销售。
 
-
+\section{参考文献}\label{sec:ref}
+\begin{thebibliography}{99}
+\bibitem{chen2011hybrid}
+Chen J, Zhu W, Ali M M. A Hybrid Simulated Annealing Algorithm for Nonslicing VLSI Floorplanning[J]. IEEE Transactions on Systems, Man, and Cybernetics, Part C (Applications and Reviews), 2011, 41(4): 544--553.
+\bibitem{yao2001}
+Yao B, Chen H, Cheng C K, et al. Revisiting Floorplan Representations[C]//Proceedings of the International Symposium on Physical Design (ISPD). 2001: 138--143.
+\bibitem{chen2006modern}
+Chen T C, Chang Y W. Modern Floorplanning Based on B*-Tree and Fast Simulated Annealing[J]. IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems, 2006, 25(4): 637--652.
+\bibitem{huang2021}
+黄志鹏, 李兴权, 朱文兴. 超大规模集成电路布局的优化模型与算法[J]. 运筹学学报, 2021, 25(3): 15--36.
+\bibitem{adya2003}
+Adya S N, Markov I L. Fixed-Outline Floorplanning: Enabling Hierarchical Design[J]. IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 2003, 11(6): 1120--1135.
+\bibitem{li2023pef}
+Li X, Peng K, Huang F, et al. PeF: Poisson's Equation-Based Large-Scale Fixed-Outline Floorplanning[J]. IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems, 2023, 42(6): 2002--2015.
+\bibitem{mirhoseini2021}
+Mirhoseini A, Goldie A, Yazgan M, et al. Chip Placement with Deep Reinforcement Learning[J]. Nature, 2021, 594(7862): 207--212.
+\bibitem{zhong2026ruleplanner}
+Zhong R, Du X, Yan J. RulePlanner: All-in-One Reinforcement Learner for Unifying Design Rules in 3D Floorplanning[C]//Proceedings of the 43rd International Conference on Machine Learning (ICML). 2026.
+\end{thebibliography}
 
 \begin{appendixx}
   \section{问题三的 python 代码}
