@@ -25,6 +25,7 @@ class Scenario:
     t_restart: float = 15.0
     t_sp: float = 30.0
     t_refine: float = 20.0
+    t_feas: float = 15.0   # Q3 单次可行性 oracle（Skyline-ILS 精调）时间预算
     nproc: int = 6
     seed: int = 2026
     cp_subset: int = 15

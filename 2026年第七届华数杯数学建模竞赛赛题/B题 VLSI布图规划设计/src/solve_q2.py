@@ -87,12 +87,13 @@ def run_parallel(tasks, nproc):
     return out
 
 
-def solve_dataset(ds, cfg, net):
+def solve_dataset(ds, cfg, net, Lhat=None):
     widths = np.asarray(ds.widths, dtype=np.int64)
     heights = np.asarray(ds.heights, dtype=np.int64)
     n = ds.n
     A = ds.total_area
-    Lhat = int(np.ceil(np.sqrt(A * (1.0 + 0.15))))
+    if Lhat is None:
+        Lhat = int(np.ceil(np.sqrt(A * (1.0 + 0.15))))
     t0 = time.time()
 
     # ---- L1 终端感知初解池 + 多样性粗筛 ----
