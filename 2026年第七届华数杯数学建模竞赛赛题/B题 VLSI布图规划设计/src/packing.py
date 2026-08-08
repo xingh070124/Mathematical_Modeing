@@ -8,10 +8,8 @@
 from __future__ import annotations
 
 import numpy as np
-from scipy.ndimage import maximum_filter1d
 
 BIG = 10_000_000  # 字典序中面积项的放大系数，使面积差严格支配长宽比差
-
 
 def lex_cost(W: int, H: int) -> int:
     """字典序目标 cost = WH*BIG + round(1e6*|W/H-1|)。"""
@@ -61,6 +59,16 @@ def pack_skyline(
     rh = np.zeros(n, dtype=np.int64)
     rot = np.asarray(rot, dtype=np.int64)
 
+    def window_max(size):
+        """滑动窗口最大：res[x] = max(contour[x : x+size])，向量化（避免 scipy 限制）。"""
+        nc = contour.shape[0]
+        size = int(max(1, min(size, nc)))
+        m = nc - size + 1
+        if m <= 0:
+            return np.zeros(0, dtype=np.int64)
+        from numpy.lib.stride_tricks import sliding_window_view
+        return sliding_window_view(contour, size).max(axis=1)
+
     for i, mid in enumerate(order):
         orientations = [(widths[mid], heights[mid]), (heights[mid], widths[mid])]
         if not auto_rotate:
@@ -69,8 +77,7 @@ def pack_skyline(
         for wi, hi in orientations:
             if wi > Wmax:
                 continue
-            M = maximum_filter1d(contour, size=wi, origin=-(wi - 1) // 2,
-                                 mode="constant", cval=0)
+            M = window_max(wi)
             cand = M[: Wmax - wi + 1]
             if box is not None:
                 W0, H0 = box

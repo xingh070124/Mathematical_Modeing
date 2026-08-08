@@ -139,27 +139,30 @@ def hpwl_of_placement(net: NetIndex, xs, ys, rw, rh) -> float:
 # --------------------------------------------------------------------------- #
 # L3：凸松弛下界（无重叠松弛 + 加权中位数坐标下降）
 # --------------------------------------------------------------------------- #
-def convex_lb(ds, Lhat: int, max_iter: int = 300, tol: float = 1e-6) -> float:
+def convex_lb(ds, Lhat: int, max_iter: int = 300, tol: float = 1e-6,
+              boundary: bool = False) -> float:
     """无重叠凸松弛问题 min Σ HPWL_k（只保留固定轮廓约束）的全局下界。
 
     理论依据（问题2建模性质3）：对单模块横坐标 x_i，其贡献为若干 hinge 函数
     max(0, x-h, l-x) 之和，最优值在断点加权中位数处取得；坐标下降收敛到全局最优。
+    boundary=True 时进一步约束模块中心到轮廓边界的最小距离（模块须完整位于
+    轮廓内），得到更紧的 LB1 下界；boundary=False 为仅去掉非重叠约束的 LB0。
     返回松弛问题最优值（原问题总 HPWL 的全局下界）。
     """
-    return _convex_lb_impl(ds, Lhat, max_iter, tol)[0]
+    return _convex_lb_impl(ds, Lhat, max_iter, tol, boundary)[0]
 
 
 def convex_lb_with_centers(ds, Lhat: int, max_iter: int = 300,
-                           tol: float = 1e-6):
+                           tol: float = 1e-6, boundary: bool = False):
     """返回 (lb_value, centers)。centers[i] = 模块 i 的松弛理想中心 (x, y)。
 
     该理想中心被 L1 用于构建"终端感知/松弛中心排序"初解（PeF 范式：
     松弛放置 → 合法化），使合法化后的布局天然贴近 HPWL 最优。
     """
-    return _convex_lb_impl(ds, Lhat, max_iter, tol)
+    return _convex_lb_impl(ds, Lhat, max_iter, tol, boundary)
 
 
-def _convex_lb_impl(ds, Lhat, max_iter, tol):
+def _convex_lb_impl(ds, Lhat, max_iter, tol, boundary=False):
     names = list(ds.names)
     name2idx = {nm: i for i, nm in enumerate(names)}
     n = ds.n
@@ -238,7 +241,12 @@ def _convex_lb_impl(ds, Lhat, max_iter, tol):
                 else:
                     bps.sort()
                     c = bps[len(bps) // 2]
-                c = min(max(c, 0.0), L)
+                if boundary:
+                    # LB1：模块中心须满足"模块完整位于轮廓内"的最小边距
+                    m = min(ds.widths[i], ds.heights[i]) / 2.0
+                    c = min(max(c, m), L - m)
+                else:
+                    c = min(max(c, 0.0), L)
                 if axis == 0:
                     cx[i] = c
                 else:
