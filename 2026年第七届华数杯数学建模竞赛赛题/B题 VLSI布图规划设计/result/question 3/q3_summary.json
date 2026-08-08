@@ -1,0 +1,152 @@
+[
+  {
+    "dataset": "n100",
+    "n": 100,
+    "total_area": 179501,
+    "L_lb_init": 424,
+    "L_ub_init": 455,
+    "L_star": 448,
+    "d_star": 0.11812190461334482,
+    "d_star_pct": 11.8122,
+    "L_lb_final": 448,
+    "L_ub_final": 448,
+    "interval_size": 0,
+    "hpwl": 285746.5,
+    "feasible": true,
+    "runtime_binary": 0.5,
+    "runtime_hpwl": 63.5,
+    "runtime_total": 64.0,
+    "search_log": [
+      {
+        "L": 439,
+        "feasible": false,
+        "L_lb": 440,
+        "L_ub": 455
+      },
+      {
+        "L": 447,
+        "feasible": false,
+        "L_lb": 448,
+        "L_ub": 455
+      },
+      {
+        "L": 451,
+        "feasible": true,
+        "L_lb": 448,
+        "L_ub": 451
+      },
+      {
+        "L": 449,
+        "feasible": true,
+        "L_lb": 448,
+        "L_ub": 449
+      },
+      {
+        "L": 448,
+        "feasible": true,
+        "L_lb": 448,
+        "L_ub": 448
+      }
+    ]
+  },
+  {
+    "dataset": "n200",
+    "n": 200,
+    "total_area": 175696,
+    "L_lb_init": 420,
+    "L_ub_init": 450,
+    "L_star": 436,
+    "d_star": 0.08195974865677069,
+    "d_star_pct": 8.196,
+    "L_lb_final": 436,
+    "L_ub_final": 436,
+    "interval_size": 0,
+    "hpwl": 547581.5,
+    "feasible": true,
+    "runtime_binary": 2.8,
+    "runtime_hpwl": 68.9,
+    "runtime_total": 71.8,
+    "search_log": [
+      {
+        "L": 435,
+        "feasible": false,
+        "L_lb": 436,
+        "L_ub": 450
+      },
+      {
+        "L": 443,
+        "feasible": true,
+        "L_lb": 436,
+        "L_ub": 443
+      },
+      {
+        "L": 439,
+        "feasible": true,
+        "L_lb": 436,
+        "L_ub": 439
+      },
+      {
+        "L": 437,
+        "feasible": true,
+        "L_lb": 436,
+        "L_ub": 437
+      },
+      {
+        "L": 436,
+        "feasible": true,
+        "L_lb": 436,
+        "L_ub": 436
+      }
+    ]
+  },
+  {
+    "dataset": "n300",
+    "n": 300,
+    "total_area": 273170,
+    "L_lb_init": 523,
+    "L_ub_init": 561,
+    "L_star": 541,
+    "d_star": 0.07142438774389581,
+    "d_star_pct": 7.1424,
+    "L_lb_final": 541,
+    "L_ub_final": 541,
+    "interval_size": 0,
+    "hpwl": 828644.0,
+    "feasible": true,
+    "runtime_binary": 9.7,
+    "runtime_hpwl": 75.9,
+    "runtime_total": 85.6,
+    "search_log": [
+      {
+        "L": 542,
+        "feasible": true,
+        "L_lb": 523,
+        "L_ub": 542
+      },
+      {
+        "L": 532,
+        "feasible": false,
+        "L_lb": 533,
+        "L_ub": 542
+      },
+      {
+        "L": 537,
+        "feasible": false,
+        "L_lb": 538,
+        "L_ub": 542
+      },
+      {
+        "L": 540,
+        "feasible": false,
+        "L_lb": 541,
+        "L_ub": 542
+      },
+      {
+        "L": 541,
+        "feasible": true,
+        "L_lb": 541,
+        "L_ub": 541
+      }
+    ]
+  }
+]
