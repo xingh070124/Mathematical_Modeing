@@ -26,6 +26,7 @@ from PIL import Image
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # 项目根
 RES1 = os.path.join(BASE, "result", "question 1")
 RES2 = os.path.join(BASE, "result", "question 2")
+RES3 = os.path.join(BASE, "result", "question 3")
 ATT = os.path.join(BASE, "附件")
 FIG = os.path.join(BASE, "paper", "figures")
 
@@ -75,6 +76,11 @@ def load_q2_metrics():
         return {r["dataset"]: r for r in json.load(f)}
 
 
+def load_q3_metrics():
+    with open(os.path.join(RES3, "q3_summary.json"), encoding="utf-8") as f:
+        return {r["dataset"]: r for r in json.load(f)}
+
+
 # ---------- 布局面板 ----------
 def draw_panel(ax, blocks, terminals, W, H, title, info):
     n = len(blocks)
@@ -103,28 +109,35 @@ def draw_panel(ax, blocks, terminals, W, H, title, info):
 
 
 def build_layout_figure(datasets, metrics, placement_dir, terminals_fn,
-                        q1, out_prefix):
-    """三组布局图拼成 1×3 单张图。terminals_fn: 返回终端列表或 None。"""
+                        qtype, out_prefix):
+    """三组布局图拼成 1×3 单张图。qtype ∈ {'q1','q2','q3'}。"""
     fig, axes = plt.subplots(1, 3, figsize=(13.2, 4.15))
     for ax, name in zip(axes, datasets):
-        blocks = load_placement(os.path.join(placement_dir,
-                                             f"q{1 if q1 else 2}_{name}_placement.txt"))
-        W, H = (metrics[name]["W"], metrics[name]["H"]) if q1 \
-            else (metrics[name]["Lhat"], metrics[name]["Lhat"])
-        if q1:
+        blocks = load_placement(os.path.join(
+            placement_dir, f"{qtype}_{name}_placement.txt"))
+        m = metrics[name]
+        if qtype == "q1":
+            W, H = m["W"], m["H"]
             asp = max(W, H) / min(W, H)
-            info = (f"{name}  {W}×{H}  面积{metrics[name]['area']:,}"
-                    f"  密度{metrics[name]['density']*100:.1f}%"
-                    f"  长宽比{asp:.3f}")
-        else:
-            info = (f"{name}  L={W}  总HPWL={metrics[name]['hpwl']:,.0f}"
-                    f"  gap={metrics[name]['gap_pct']:.1f}%  可行")
+            info = (f"{name}  {W}×{H}  面积{m['area']:,}"
+                    f"  密度{m['density']*100:.1f}%  长宽比{asp:.3f}")
+        elif qtype == "q2":
+            W = H = m["Lhat"]
+            info = (f"{name}  L={W}  总HPWL={m['hpwl']:,.0f}"
+                    f"  gap={m['gap_pct']:.1f}%  可行")
+        else:  # q3
+            W = H = m["L_star"]
+            info = (f"{name}  L*={W}  d*={m['d_star']*100:.1f}%"
+                    f"  总HPWL={m['hpwl']:,.0f}  gap={m['hpwl_gap_pct']:.1f}%")
         draw_panel(ax, blocks, terminals_fn(name) if terminals_fn else None,
                    W, H, name, info)
     fig.subplots_adjust(wspace=0.12)
-    title = "问题一  三组芯片模块摆放（轮廓面积最小·长宽比接近1）" if q1 \
-        else "问题二  三组芯片模块摆放（固定正方形轮廓内总HPWL最小）"
-    fig.suptitle(title, fontsize=9, fontweight="bold", y=0.98)
+    titles = {
+        "q1": "问题一  三组芯片模块摆放（轮廓面积最小·长宽比接近1）",
+        "q2": "问题二  三组芯片模块摆放（固定正方形轮廓内总HPWL最小）",
+        "q3": "问题三  三组芯片模块摆放（最小死区比例轮廓 L*）",
+    }
+    fig.suptitle(titles[qtype], fontsize=9, fontweight="bold", y=0.98)
     save_multi(fig, out_prefix)
 
 
@@ -164,15 +177,21 @@ def main():
     datasets = ["n100", "n200", "n300"]
     q1 = load_q1_metrics()
     q2 = load_q2_metrics()
-    # 问题一 / 问题二 布局拼图（不含 Terminal）
-    build_layout_figure(datasets, q1, RES1, None, True, os.path.join(FIG, "q1_layout_combined"))
-    build_layout_figure(datasets, q2, RES2, load_terminals, False,
+    q3 = load_q3_metrics()
+    # 问题一 / 问题二 / 问题三 布局拼图（Q1 不含 Terminal，Q2/Q3 含）
+    build_layout_figure(datasets, q1, RES1, None, "q1",
+                        os.path.join(FIG, "q1_layout_combined"))
+    build_layout_figure(datasets, q2, RES2, load_terminals, "q2",
                         os.path.join(FIG, "q2_layout_combined"))
+    build_layout_figure(datasets, q3, RES3, load_terminals, "q3",
+                        os.path.join(FIG, "q3_layout_combined"))
     # 收敛图拼接
     stitch_convergence(datasets, os.path.join(BASE, "result", "question 1"),
                        os.path.join(FIG, "q1_conv_combined.png"), "q1")
     stitch_convergence(datasets, os.path.join(BASE, "result", "question 2"),
                        os.path.join(FIG, "q2_conv_combined.png"), "q2")
+    stitch_convergence(datasets, os.path.join(BASE, "result", "question 3"),
+                       os.path.join(FIG, "q3_conv_combined.png"), "q3")
 
 
 if __name__ == "__main__":
