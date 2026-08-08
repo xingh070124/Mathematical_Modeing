@@ -212,3 +212,43 @@ def plot_convergence(traces, path):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     fig.savefig(path, dpi=150)
     plt.close(fig)
+
+
+def plot_layout_q4(modules, solution, W, H, path, title=None,
+                   area=None, density=None, aspect=None, dpi=150):
+    """问题四布局可视化：异形模块按子块绘制 + 轮廓框 + 指标标注。
+
+    modules: list[CompoundModule]
+    solution: {m: (x, y, r)}
+    """
+    cmap = plt.get_cmap("tab10")
+    fig, ax = plt.subplots(figsize=(7.2, 7.2 * H / max(W, 1)))
+    for m, (x, y, r) in solution.items():
+        mod = modules[m]
+        color = cmap(m % 10)
+        for w, h, a, b in mod.rotated(r):
+            ax.add_patch(Rectangle((x + a, y + b), w, h, facecolor=color,
+                                   edgecolor="black", linewidth=1.0, alpha=0.85))
+        ax.text(x + mod.bbox[0] / 2.0, y + mod.bbox[1] / 2.0, mod.name,
+                ha="center", va="center", fontsize=11, fontweight="bold")
+    ax.add_patch(Rectangle((0, 0), W, H, fill=False, edgecolor="crimson",
+                           linewidth=2.2, linestyle="--"))
+    ax.set_xlim(-W * 0.05, W * 1.05)
+    ax.set_ylim(-H * 0.05, H * 1.05)
+    ax.set_aspect("equal")
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    ax.grid(alpha=0.3, linewidth=0.5)
+    if title:
+        ax.set_title(title)
+    info = f"轮廓: {W} × {H}    面积: {W * H}"
+    if density is not None:
+        info += f"    密度: {density * 100:.2f}%"
+    if aspect is not None:
+        info += f"    长宽比: {W / H:.3f}"
+    ax.text(0.0, -0.09, info, transform=ax.transAxes, fontsize=10,
+            verticalalignment="top")
+    fig.tight_layout()
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    fig.savefig(path, dpi=dpi)
+    plt.close(fig)

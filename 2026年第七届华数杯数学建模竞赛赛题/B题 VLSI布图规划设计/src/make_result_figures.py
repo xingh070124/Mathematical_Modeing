@@ -173,6 +173,49 @@ def stitch_convergence(names, res_dir, out_path, prefix, h_px=1150):
     print(f"saved {os.path.basename(out_path)}")
 
 
+# ---------- 问题四：4 模块 6×4 完美铺砌布局图 ----------
+Q4_CELLS = {
+    "b1": [(0, 0), (1, 0), (0, 1), (1, 1), (2, 1), (3, 1),
+           (0, 2), (1, 2), (2, 2), (3, 2), (0, 3), (1, 3)],
+    "b2": [(2, 0), (3, 0), (4, 0), (5, 0), (4, 1), (5, 1)],
+    "b3": [(4, 2), (5, 2)],
+    "b4": [(2, 3), (3, 3), (4, 3), (5, 3)],
+}
+Q4_COLORS = {"b1": "#4C72B0", "b2": "#DD8452", "b3": "#55A868", "b4": "#C44E52"}
+
+
+def build_q4_layout(out_prefix):
+    """4 模块 6×4 完美铺砌布局（最小面积 S*=24，密度100%）。"""
+    W, H = 6, 4
+    fig, ax = plt.subplots(figsize=(6.4, 4.3))
+    ax.add_patch(Rectangle((0, 0), W, H, facecolor="#f4f4f4",
+                           edgecolor="none", zorder=0))
+    for name, cells in Q4_CELLS.items():
+        for (x, y) in cells:
+            ax.add_patch(Rectangle((x, y), 1, 1, facecolor=Q4_COLORS[name],
+                                   edgecolor="#2b2b2b", linewidth=0.8,
+                                   zorder=2, alpha=0.92))
+    for name, cells in Q4_CELLS.items():
+        xs = [x + 0.5 for x, _ in cells]
+        ys = [y + 0.5 for _, y in cells]
+        ax.text(sum(xs) / len(xs), sum(ys) / len(ys), name, ha="center",
+                va="center", fontsize=10, fontweight="bold", color="white",
+                zorder=3)
+    ax.add_patch(Rectangle((0, 0), W, H, fill=False, edgecolor="#c00000",
+                           linewidth=1.8, linestyle=(0, (4, 2)), zorder=3))
+    ax.set_xlim(-0.5, W + 0.5)
+    ax.set_ylim(-0.5, H + 0.5)
+    ax.set_aspect("equal")
+    ax.set_xticks(range(W))
+    ax.set_yticks(range(H))
+    ax.tick_params(labelsize=8)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.set_title("问题四  4模块最优摆放（6×4 完美铺砌，S*=24，密度100%）",
+                 fontsize=9.5, fontweight="bold")
+    save_multi(fig, out_prefix)
+
+
 def main():
     datasets = ["n100", "n200", "n300"]
     q1 = load_q1_metrics()
@@ -185,6 +228,8 @@ def main():
                         os.path.join(FIG, "q2_layout_combined"))
     build_layout_figure(datasets, q3, RES3, load_terminals, "q3",
                         os.path.join(FIG, "q3_layout_combined"))
+    # 问题四 4 模块完美铺砌布局
+    build_q4_layout(os.path.join(FIG, "q4_layout"))
     # 收敛图拼接
     stitch_convergence(datasets, os.path.join(BASE, "result", "question 1"),
                        os.path.join(FIG, "q1_conv_combined.png"), "q1")
