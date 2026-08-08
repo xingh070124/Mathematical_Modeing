@@ -2,34 +2,37 @@
   {
     "dataset": "n100",
     "Lhat": 455,
-    "hpwl": 294720.0,
+    "hpwl": 276865.0,
     "hpwl_lb": 111038.0,
-    "gap_pct": 165.4226,
+    "gap_pct": 149.3426,
     "overflow": 0,
     "feasible": true,
+    "bstar_hpwl": 294720.0,
     "sp_hpwl": 365988.0,
-    "runtime": 68.9
+    "runtime": 103.7
   },
   {
     "dataset": "n200",
     "Lhat": 450,
-    "hpwl": 540652.0,
+    "hpwl": 536429.5,
     "hpwl_lb": 185214.0,
-    "gap_pct": 191.9067,
+    "gap_pct": 189.6269,
     "overflow": 0,
     "feasible": true,
+    "bstar_hpwl": 540688.0,
     "sp_hpwl": 695054.5,
-    "runtime": 70.8
+    "runtime": 111.4
   },
   {
     "dataset": "n300",
     "Lhat": 561,
-    "hpwl": 812897.0,
+    "hpwl": 800201.5,
     "hpwl_lb": 233375.0,
-    "gap_pct": 248.3222,
+    "gap_pct": 242.8823,
     "overflow": 0,
     "feasible": true,
+    "bstar_hpwl": 812897.0,
     "sp_hpwl": 1081840.0,
-    "runtime": 72.5
+    "runtime": 176.4
   }
 ]
