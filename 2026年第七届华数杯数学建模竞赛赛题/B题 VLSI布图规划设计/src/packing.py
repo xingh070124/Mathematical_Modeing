@@ -31,11 +31,14 @@ def pack_skyline(
     bound_w: int,
     box: tuple[int, int | None] | None = None,
     auto_rotate: bool = False,
+    ideal_x: np.ndarray | None = None,
 ):
     """按给定放置顺序与旋转，用 Skyline 准则装箱。
 
     放置准则：在"最低"可行位置中，选取"该矩形下方残留空白面积最小"者（填平凹凸），
     并列时取最左，从而在经典 BL 基础上显著提升密度。
+    若给定 ideal_x（凸松弛理想中心横坐标），则在"最低"层内优先取离理想中心
+    最近的 x（PeF：松弛放置 → 合法化），使合法化后的布局贴近 HPWL 最优。
 
     Args:
         order: 模块序号放置顺序（长度 n）。
@@ -44,6 +47,7 @@ def pack_skyline(
         bound_w: 等高线数组宽度上界（需 >= 任意可行轮廓宽）。
         box: 可选 (W0, H0)，要求最终轮廓不超界；超界则返回 infeasible。
         auto_rotate: 若 True，放置每个模块时贪心选择更优朝向并同步更新 rot。
+        ideal_x: 可选 per-module 理想横坐标（中心），用于 PeF 合法化。
 
     Returns:
         (xs, ys, rw, rh, W, H) 或 None（box 下不可行）。
@@ -80,7 +84,14 @@ def pack_skyline(
             else:
                 feasible = np.arange(cand.size)
             y = int(cand.min())
-            x = int(feasible[int(np.argmax(cand == y))])
+            y_ok = cand == y
+            xs_cand = feasible[y_ok]
+            if ideal_x is not None:
+                # 最低层内取离理想中心最近的 x（PeF 合法化）
+                target = int(ideal_x[mid]) - wi // 2
+                x = int(xs_cand[int(np.argmin(np.abs(xs_cand - target)))])
+            else:
+                x = int(feasible[int(np.argmax(cand == y))])
             if best_place is None or (y, x) < (best_place[0], best_place[1]):
                 best_place = (y, x, wi, hi)
         if best_place is None:

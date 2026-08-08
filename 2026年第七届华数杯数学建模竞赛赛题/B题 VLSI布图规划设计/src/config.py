@@ -23,6 +23,8 @@ class Scenario:
     t_bstar: float = 20.0
     t_aspect: float = 12.0
     t_restart: float = 15.0
+    t_sp: float = 30.0
+    t_refine: float = 20.0
     nproc: int = 6
     seed: int = 2026
     cp_subset: int = 15

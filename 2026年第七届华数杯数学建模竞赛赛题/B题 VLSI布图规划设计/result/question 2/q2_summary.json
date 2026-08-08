@@ -1,0 +1,35 @@
+[
+  {
+    "dataset": "n100",
+    "Lhat": 455,
+    "hpwl": 294720.0,
+    "hpwl_lb": 111038.0,
+    "gap_pct": 165.4226,
+    "overflow": 0,
+    "feasible": true,
+    "sp_hpwl": 365988.0,
+    "runtime": 68.9
+  },
+  {
+    "dataset": "n200",
+    "Lhat": 450,
+    "hpwl": 540652.0,
+    "hpwl_lb": 185214.0,
+    "gap_pct": 191.9067,
+    "overflow": 0,
+    "feasible": true,
+    "sp_hpwl": 695054.5,
+    "runtime": 70.8
+  },
+  {
+    "dataset": "n300",
+    "Lhat": 561,
+    "hpwl": 812897.0,
+    "hpwl_lb": 233375.0,
+    "gap_pct": 248.3222,
+    "overflow": 0,
+    "feasible": true,
+    "sp_hpwl": 1081840.0,
+    "runtime": 72.5
+  }
+]

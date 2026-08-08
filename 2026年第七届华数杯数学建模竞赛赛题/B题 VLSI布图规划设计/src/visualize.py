@@ -63,6 +63,108 @@ def plot_layout(ds, xs, ys, rw, rh, W, H, path, title=None, density=None,
     plt.close(fig)
 
 
+def plot_layout_q2(ds, net, xs, ys, rw, rh, Lhat, path, title=None,
+                   hpwl=None, gap_pct=None, dpi=150, feasible=True):
+    """问题二布局可视化：矩形模块 + Terminal 点标注 + 固定轮廓框。
+
+    额外信息标注：总 HPWL（上界证书）、gap（相对凸松弛下界）。
+    """
+    xs = np.asarray(xs, dtype=np.int64)
+    ys = np.asarray(ys, dtype=np.int64)
+    rw = np.asarray(rw, dtype=np.int64)
+    rh = np.asarray(rh, dtype=np.int64)
+    cmap = plt.get_cmap("tab20")
+    fig, ax = plt.subplots(figsize=(7.2, 7.2))
+    for i in range(ds.n):
+        color = cmap(i % 20)
+        ax.add_patch(Rectangle((xs[i], ys[i]), rw[i], rh[i], facecolor=color,
+                               edgecolor="black", linewidth=0.5, alpha=0.85))
+    # Terminal 引脚标注（固定坐标，不占面积）
+    tx = [p[0] for p in ds.terminal_pos.values()]
+    ty = [p[1] for p in ds.terminal_pos.values()]
+    if tx:
+        ax.scatter(tx, ty, s=10, c="red", marker="o", zorder=3,
+                   edgecolors="black", linewidths=0.3, label="Terminal")
+    # 固定轮廓框
+    ax.add_patch(Rectangle((0, 0), Lhat, Lhat, fill=False,
+                           edgecolor="crimson", linewidth=2.2, linestyle="--"))
+    ax.set_xlim(-Lhat * 0.03, Lhat * 1.03)
+    ax.set_ylim(-Lhat * 0.03, Lhat * 1.03)
+    ax.set_aspect("equal")
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    if title:
+        ax.set_title(title)
+    info = f"轮廓: {Lhat} × {Lhat}"
+    if hpwl is not None:
+        info += f"    总HPWL: {hpwl:,.0f}"
+    if gap_pct is not None:
+        info += f"    gap: {gap_pct:.2f}%"
+    info += "    可行" if feasible else "    不可行"
+    ax.text(0.0, -0.09, info, transform=ax.transAxes, fontsize=9,
+            verticalalignment="top")
+    ax.legend(loc="upper right", fontsize=8)
+    fig.tight_layout()
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    fig.savefig(path, dpi=dpi)
+    plt.close(fig)
+
+
+def plot_convergence_q2(traces, hpwl_lb, path, pool_hpwl=None):
+    """问题二收敛曲线：多起点 B*-树+SA 各轨迹搜索进程 + 累积最优 + 参考线。
+
+    traces: 每条 SA 轨迹的 [(elapsed, best_hpwl, overflow), ...]（字典序最优）。
+      * 细线 = 各轨迹自身最优（从种子树状态下降，展示搜索进程）；
+      * 粗红线 = 多起点累积最优可行 HPWL（t=0 起锚定 L1 初解池最优）；
+      * 参考线 = 凸松弛下界 与 L1 初解池最优。
+    """
+    if not traces:
+        return
+    traces = [tr for tr in traces if len(tr) > 0]
+    if not traces:
+        return
+    tmax = max(tr[-1][0] for tr in traces)
+    grid = np.linspace(0, tmax, 400)
+
+    fig, ax = plt.subplots(figsize=(7.4, 5.0))
+    # 各轨迹自身最优（细线）
+    cmap = plt.get_cmap("Set2")
+    for ci, tr in enumerate(traces):
+        yy = [h for tt, h, _ in tr]
+        xx = [tt for tt, _, _ in tr]
+        ax.plot(xx, yy, color=cmap(ci % 8), lw=1.1, alpha=0.8,
+                label=f"轨迹{ci + 1}（自身最优）")
+    # 多起点累积最优可行解
+    def best_feasible_so_far(tr, t):
+        vals = [h for tt, h, ov in tr if tt <= t and ov == 0]
+        return vals[-1] if vals else None
+
+    multi = []
+    cur = float(pool_hpwl) if pool_hpwl is not None else float("inf")
+    for t in grid:
+        vals = [best_feasible_so_far(tr, t) for tr in traces]
+        vals = [v for v in vals if v is not None]
+        if vals:
+            cur = min(cur, min(vals))
+        multi.append(cur)
+    ax.plot(grid, multi, label="多起点累积最优（可行）",
+            color="tab:red", lw=2.6)
+    if pool_hpwl is not None:
+        ax.axhline(pool_hpwl, color="tab:blue", ls=":", lw=1.6,
+                   label=f"L1 初解池最优 HPWL={pool_hpwl:,.0f}")
+    ax.axhline(hpwl_lb, color="tab:green", ls="--", lw=1.6,
+               label=f"凸松弛下界 HPWL_lb={hpwl_lb:,.0f}")
+    ax.set_xlabel("时间（秒）")
+    ax.set_ylabel("总 HPWL")
+    ax.set_title("问题二 多起点 B*-树+SA 收敛与下界对比")
+    ax.grid(alpha=0.3)
+    ax.legend(fontsize=8, loc="upper right")
+    fig.tight_layout()
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    fig.savefig(path, dpi=150)
+    plt.close(fig)
+
+
 def plot_convergence(traces, path):
     """多起点 vs 单起点收敛对比曲线。
 
