@@ -51,7 +51,7 @@
 
 (2)问题二：问题二要求在\textbf{芯片轮廓固定为正方形}且\textbf{模块之间存在连接关系}的前提下，确定各矩形功能模块在芯片内的摆放位置与方向，并且允许各个模块进行$90^\circ$旋转，使其\textbf{模块之间总半周长线长（HPWL）最小}，同时满足\textbf{模块之间互不重叠、不超出芯片轮廓}的约束条件。需根据所建立的模型与附件信息，假设死区比例为\textbf{0.15}，对附件中的n100、n200、n300三组芯片分别独立完成模块摆放，并给出三组芯片的总连线长度及模块摆放的可视化结果。
 
-(3)问题三：
+(3)问题三：在\textbf{问题二}的基础上，为满足\textbf{模块互不重叠、不超出芯片轮廓}的约束条件，求解\textbf{死区比例的最小值}，即求解使得存在一个可行布局方案的最小死区比例（随着死区比例减小，芯片轮廓尺寸逐渐减小，布图越难以满足约束条件）。需分别给出附件中n100、n200、n300三组芯片的死区比例最小值，并基于\textbf{问题二所建立的模型}与死区比例最小值，更新问题二的总HPWL及模块摆放的可视化结果。
 
 (4)问题四：
 
@@ -104,7 +104,17 @@
 
 基于上述分析，针对问题二在问题一框架基础上沿用\textbf{四层实施框架}，其结构如图\ref{fig:p2}所示：由第4层场景适配接口将配置切换为"轮廓固定、目标HPWL、线网启用"，第1--3层分别以"终端感知多源初解、并行元启发优化（Skyline-ILS/SA主、B${}^{\ast}$-树-快速SA与SP-AGA对照）、凸松弛下界与可行性证书的双向定界"落地，各层环环相扣、以具体算法与数据流闭环验证。
 \subsection{问题三分析}\label{sub:2.4}
-……
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Figure 4.png}
+	\caption{问题三四层实施框架}
+	\label{fig:p3}
+\end{figure}
+问题三在问题二的基础上，求解使得存在可行布局的最小死区比例$d^*$，即最小可行正方形边长$L^*=\sqrt{A(1+d^*)}$。因此\textbf{问题的本质}在数学上属于\textbf{正方形装箱的可行性判定问题（Square Packing Decision Problem）}：判定给定的矩形模块集能否在$L\times L$的正方形轮廓内互不重叠地摆放，并在最小可行边长处寻找死区比例的临界值。该判定问题为NP-complete，$n$较大时无法精确求解，必须借助启发式方法给出可行证书、约束规划给出不可行证书。
+
+同时，与问题一、问题二不同，本问的优化对象既不是轮廓面积也不是总连线长度，而是\textbf{可行性的临界轮廓}：随着$L$减小，空白区被压缩，模块越难以同时满足不重叠与不超出轮廓的约束。其关键性质在于可行性关于$L$的\textbf{单调性}——若$L$可行则$L+1$必然可行，故可在整数$L$上\textbf{二分搜索}最小可行边长；由于启发式只能提供可行上界、不可行下界需由CP-SAT的不可行证明给出，故采用"启发式可行证书 + 约束规划不可行证书"的\textbf{双证书夹逼}策略，将最小死区比例的求解转化为可证明的搜索。
+
+基于上述分析，针对问题三沿用\textbf{四层实施框架}，其结构如图\ref{fig:p3}所示：由第4层场景适配接口将配置切换为"轮廓搜索$L^*$、目标最小死区比例、可行性判定不启用线网"，第1--3层分别以"紧凑装箱多源初解、整数二分与可行性双证书、双向反馈夹逼"落地；求得$L^*$（即$d^*$）后，再在$L^*$下复用问题二所建立的模型与算法更新总HPWL及模块摆放可视化，各层环环相扣、以具体算法与数据流闭环验证。
 \subsection{问题四分析}\label{sub:2.5}
 ……
 
@@ -309,44 +319,16 @@
 
 \begin{figure}[!htbp]
 	\centering
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q1_n100_convergence.png}
-		\subcaption{n100收敛曲线}
-	\end{minipage}
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q1_n200_convergence.png}
-		\subcaption{n200收敛曲线}
-	\end{minipage}
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q1_n300_convergence.png}
-		\subcaption{n300收敛曲线}
-	\end{minipage}
+	\includegraphics[width=0.98\textwidth]{q1_conv_combined.png}
 	\caption{问题一三组芯片的求解收敛曲线}
 	\label{fig:p1conv}
 \end{figure}
 
-三组芯片的模块摆放可视化结果如图\ref{fig:p1result}所示，图中矩形代表各功能模块（以编号标注），其左下角坐标即模块摆放位置。由图可见，各模块均被紧密、无重叠地排布于轮廓之内，大模块与中模块相互嵌合，空白间隙分散且细小，直观验证了求解结果的可行性与紧凑性。
+三组芯片的模块摆放可视化结果如图\ref{fig:p1result}所示，图中矩形代表各功能模块，其左下角坐标即模块摆放位置，红色虚线框为芯片轮廓。由图可见，各模块均被紧密、无重叠地排布于轮廓之内，大模块与中模块相互嵌合，空白间隙分散且细小，直观验证了求解结果的可行性与紧凑性。
 
 \begin{figure}[!htbp]
 	\centering
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q1_n100_layout.png}
-		\subcaption{n100模块摆放}
-	\end{minipage}
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q1_n200_layout.png}
-		\subcaption{n200模块摆放}
-	\end{minipage}
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q1_n300_layout.png}
-		\subcaption{n300模块摆放}
-	\end{minipage}
+	\includegraphics[width=0.98\textwidth]{q1_layout_combined.png}
 	\caption{问题一三组芯片的模块摆放可视化}
 	\label{fig:p1result}
 \end{figure}
@@ -485,220 +467,66 @@ Terminal不占用芯片面积，不参与面积、重叠与边界约束，允许
 
 \begin{figure}[!htbp]
 	\centering
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q2_n100_convergence.png}
-		\subcaption{n100收敛曲线}
-	\end{minipage}
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q2_n200_convergence.png}
-		\subcaption{n200收敛曲线}
-	\end{minipage}
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q2_n300_convergence.png}
-		\subcaption{n300收敛曲线}
-	\end{minipage}
+	\includegraphics[width=0.98\textwidth]{q2_conv_combined.png}
 	\caption{问题二三组芯片的求解收敛曲线}
 	\label{fig:p2conv}
 \end{figure}
 
-三组芯片的模块摆放可视化结果如图\ref{fig:p2result}所示，图中矩形代表各功能模块，其左下角坐标即模块摆放位置，红色虚线框为$L\times L$的芯片轮廓。由图可见，各模块均被紧密、无重叠地排布于轮廓之内，且模块的分布明显受到边界Terminal的影响，直观反映了"边界引力"作用下对总HPWL的优化结果。
+三组芯片的模块摆放可视化结果如图\ref{fig:p2result}所示，图中矩形代表各功能模块，其左下角坐标即模块摆放位置，红色虚线框为$L\times L$的芯片轮廓。由图可见，各模块均被紧密、无重叠地排布于轮廓之内，且模块的分布明显受到边界Terminal（图中红点）的影响，直观反映了"边界引力"作用下对总HPWL的优化结果。
 
 \begin{figure}[!htbp]
 	\centering
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q2_n100_layout.png}
-		\subcaption{n100模块摆放}
-	\end{minipage}
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q2_n200_layout.png}
-		\subcaption{n200模块摆放}
-	\end{minipage}
-	\begin{minipage}{0.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{q2_n300_layout.png}
-		\subcaption{n300模块摆放}
-	\end{minipage}
+	\includegraphics[width=0.98\textwidth]{q2_layout_combined.png}
 	\caption{问题二三组芯片的模块摆放可视化}
 	\label{fig:p2result}
 \end{figure}
 \FloatBarrier
 \subsection{问题三}\label{sub:5.3}
-第三题采用了多种方法进行不同品牌电动汽车的客户挖掘模型的建立，主要是CART决策树的生成和神经网络模型两种方法
-\subsubsection{CART决策树的生成}
-\textbf{基本原理：}CART决策树的生成就是递归地构建二叉决策树的过程。结点最优划分特征的选择使用基尼指数（Gini index），其中主要决定各个因素对于客户模型影响的程度，考虑到此处的数据较为分散，对影响的因素根据数据大小进行分组。
-
-先介绍基尼指数的定义：分类问题中，假设有K个类，样本点属于第k类的概率为$ p_{k} $，则概率分布的基尼指数定义为
+\subsubsection{模型的建立}
+由于问题三要求在问题二的基础上求解满足约束的最小死区比例，因此设模块集合$\mathcal{B}=\{1,2,\ldots,n\}$，模块$i$的原始宽高为$(w_i,h_i)$；决策变量为模块$i$左下角坐标$(x_i,y_i)$与旋转标志$r_i\in\{0,1\}$，其中$r_i=1$表示旋转$90^{\circ}$，旋转即交换宽高。旋转后模块实际宽高为
 \begin{equation}
-	Gini(p)=\sum_{k=1}^{K}p_{k}(1-p_{k})=1-\sum_{k=1}^{K}p_{k}^{2}
+\hat{w}_i=(1-r_i)w_i+r_i h_i,\qquad \hat{h}_i=r_i w_i+(1-r_i)h_i
+\label{eq:p3_rot}
 \end{equation}
-
-对于二分类问题，若样本点属于第1个类的概率是p，则概率分布的基尼指数为
+与问题二不同，芯片轮廓边长$L$不再是给定常数，而是\textbf{待求解的决策量}，与死区比例$d$通过公式(1)一一对应，即$L=\sqrt{A(1+d)}$。模块互不重叠约束与前述相同，即$\forall {i,j}\in \mathcal{B},\ i<j$，下述四个条件至少满足其一：
 \begin{equation}
-Gini(p)=2p(1-p)
+(x_i+\hat{w}_i\le x_j)\vee(x_j+\hat{w}_j\le x_i)\vee(y_i+\hat{h}_i\le y_j)\vee(y_j+\hat{h}_j\le y_i)
+\label{eq:p3_nonoverlap}
 \end{equation}
-
-对于给定的样本集合D，其基尼指数为
+轮廓边界约束为：
 \begin{equation}
-Gini(D)=1-\sum_{k=1}^{K}\left(\frac{|C_{k}|}{|D|} \right)^2
+0\le x_i,\quad x_i+\hat{w}_i\le L,\quad 0\le y_i,\quad y_i+\hat{h}_i\le L,\quad \forall i\in\mathcal{B}
+\label{eq:p3_boundary}
 \end{equation}
+称$L$可行，当且仅当存在$(x,y,r)$同时满足式\eqref{eq:p3_nonoverlap}与式\eqref{eq:p3_boundary}。Terminal不占用面积、不参与重叠与边界约束，故在可行性判定中无需考虑。
 
-在此处，$ C_k $是D中属于k类的样本子集，K是类的个数。
-
-如果样本集合D根据特征A是否取某一可能值a 被分割成$ D_1 $和$ D_{2} $两部分,即
-\begin{align}
-D_{1}={(x,y)\in D|A(x)=a},& D_{2}=D-D_{1}
-\end{align}
-
-则在特征A的条件下，集合D的基尼指数定义为
+本文的目标为求解最小可行正方形边长，进而得到最小死区比例，即
 \begin{equation}
-Gini(D,A)=\dfrac{|D_{1}|}{|D|}Gini(D_{1})+\dfrac{|D_{2}|}{|D|}Gini(D_{2})
-\label{eq:1}
+L^{*}=\min\Big\{L\in\mathbb{Z}_{>0}:\ \exists\ \text{满足式\eqref{eq:p3_nonoverlap}与式\eqref{eq:p3_boundary}的摆放}\Big\},\qquad
+d^{*}=\frac{(L^{*})^2}{A}-1
+\label{eq:p3_obj}
 \end{equation}
-
-基尼指数Gini(D)表示集合D的不确定性，基尼指数Gini(D, A)表示经A=a分割后集合D的不确定性。基尼指数值越大，样本集合的不确定性也就越大，这一点与熵相似。
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[height=7cm,width=12cm]{二分类.png}
-	\caption{二分类中  基尼指数、信息熵、和分类误差率的关系}
-	\label{fig:8}
-\end{figure}
-
-\textbf{CART生成算法：}
-
-输入:训练数据集D，停止计算的条件;
-
-输出:CART决策树。
-
-根据训练数据集，从根结点开始，递归地对每个结点进行以下操作，构建二叉决策树:
-
-(1）设结点的训练数据集为D，计算现有特征对该数据集的基尼指数。此时，对每一个特征A，对其可能取的每个值a，根据样本点对A= a的测试为“是”或“否”将D分割成$ D_{1} $和$ D_{2} $部分，利用式\ref{eq:1}计算A= a时的基尼指数。
-
-(2)在所有可能的特征A以及它们所有可能的切分点a中，选择基尼指数最小的特征及其对应的切分点作为最优特征与最优切分点。依最优特征与最优切分点，从现结点生成两个子结点，将训练数据集依特征分配到两个子结点中去。
-
-(3)对两个子结点递归地调用(1)，(2)，直至满足停止条件。(4)生成CART决策树。
-
-算法停止计算的条件是结点中的样本个数小于预定阈值，或样本集的基尼指数小于预定阈值(样本基本属于同一类)，或者没有更多特征。
-
-具体的情况如下文所示：
-
-\textbf{决策树模型结果：}
-(1)品牌1:与城市居住龄高度相关，但出来决策树效果不好，这里我加上了弱相关的因素（Person系数大于0.17）
-
-对于品牌1，对客户购买意愿的影响因素有：房贷占比，车贷占比，电池，经济
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[height=7cm,width=12cm]{品牌1决策树.png}
-	\caption{品牌1决策树模型}
-	\label{fig:9}
-\end{figure}
-
-对模型进行精度检验，得到模型评价精度94.5，评价结果如\ref{fig:10}
-
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[height= 5cm,width=15cm]{品牌1精度.png}
-	\caption{品牌1决策树模型评价精度}
-	\label{fig:10}
-\end{figure}
-
-(2)品牌2:对于品牌2，外观，动力，安全，经济，舒适，电池与客户购买意愿有一般正相关关系，与房贷占比有一般负相关关系，与个人年收入和单位有非常紧密关系，与城市居住龄有紧密关系。
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[height=7cm,width=12cm]{品牌2决策树.png}
-	\caption{品牌2决策树模型}
-	\label{fig:11}
-\end{figure}
-
-对模型进行精度检验，得到模型评价精度92.86，评价结果如\ref{fig:12}
-
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[height= 5cm,width=15cm]{品牌2精度.png}
-	\caption{品牌2决策树模型评价精度}
-	\label{fig:12}
-\end{figure}
-
-(3)品牌3:对于品牌3，客户购买意愿与电池，品质，外观，操控性，动力性，安全性，经济型，舒适性，具有一般线性关系
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[height=7cm,width=12cm]{品牌3决策树.png}
-	\caption{品牌3决策树模型}
-	\label{fig:13}
-\end{figure}
-
-对模型进行精度检验，得到模型评价精度88.89，评价结果如\ref{fig:13}
-
-对附录三中的客户数据进行预测，预测结果为：
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[height= 5cm,width=15cm]{品牌2精度.png}
-	\caption{品牌2决策树模型评价精度}
-	\label{fig:14}
-\end{figure}
-
-\textbf{对于品牌1：2、4、5号顾客有购买的意愿，1、3号顾客没有购买的意愿;对于品牌2：7、10号有购买的意愿，6、8、9号顾客没有购买的意愿;对于品牌3：11、12号顾客有购买的意愿，13、14、15号顾客没有购买的意愿}
-\subsubsection{神经网络模型}
-采用神经网络模型，其中输入的影响的因素采用的问题二中的影响因素，并将其作为输入部分的参数，将最后结果是否有购买意愿的0,1作为标签。本处使用卷积神经网络CNN是一种前馈神经网络，主要原理步骤如下：
-
-给定一个输入信号序列$x$和滤波器$f$,卷积的输出为：
+求得$L^{*}$后，还需在$L=L^{*}$下复用问题二的模型最小化总HPWL，即
 \begin{equation}
-y_{t}=\sum_{k=1}^{m}w_{k}x_{t-k+1}
+\min_{x,y,r}\ \sum_{k\in\mathcal{N}}\mathrm{HPWL}_k\quad \text{s.t.}\ \eqref{eq:p3_nonoverlap},\ \eqref{eq:p3_boundary},\ L=L^{*}
+\label{eq:p3_obj2}
 \end{equation}
+式\eqref{eq:p3_obj}与式\eqref{eq:p3_obj2}构成字典序双目标：先求最小死区比例，再在最小轮廓内优化线长，与题目"基于问题二模型和死区比例最小值更新总HPWL"的要求一致。
 
-本次采用的二维卷积如\ref{fig:15}：
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[]{二维卷积.png}
-	\caption{二维卷积}
-	\label{fig:15}
-\end{figure}
+\subsubsection{理论分析}
+为给求解算法的设计提供理论依据，本小节从计算复杂性、单调性与下界三个层面对问题三的模型性质进行分析。
 
-用卷积层代替全连接层：
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[]{卷积层.png}
-	\caption{卷积层}
-	\label{fig:16}
-\end{figure}
+\textbf{（1）NP-complete（决策版本）。}判定"给定的矩形模块集能否在$L\times L$正方形内无重叠摆放"是经典正方形装箱决策问题，为NP-complete；在$n=100\sim300$的规模下，精确判定无法在时限内闭合，必须借助启发式给出可行证书、约束规划给出不可行证书，这决定了本问"双证书夹逼"的求解方向。
 
-框图结构如\ref{fig:17}：
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[]{框结构.png}
-	\caption{卷积层}
-	\label{fig:17}
-\end{figure}
+\textbf{（2）可行性关于$L$的单调性。}若$L$可行，则$L+1$必然可行——因为$L$下的任一可行摆放整体不变地落在$(L+1)\times(L+1)$内仍满足式\eqref{eq:p3_nonoverlap}与式\eqref{eq:p3_boundary}。因此可行性在整数$L$上单调，可在整数域上\textbf{二分搜索}最小可行边长，这是本问高效求解的关键性质。
 
-模型的精度和损失函数的情况随着训练次数的情况如\ref{fig:18}所示：
-
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[height=15cm,width=13cm]{神经网络模型精度.png}
-	\caption{神经网络模型精度}
-	\label{fig:18}
-\end{figure}
-
-由图易得随着训练次数的上升，整体的训练精度提高，但是预测精度会稍稍下降，这是因为训练的精度过高后易发生模型的过拟合现象，从曲线上看，模型整体的拟合效果较好。
-
-利用模型进行预测结果如\ref{fig:19}：
-\begin{figure}[!htbp]
-	\centering
-	%\includegraphics[width=16cm,height=3cm]{预测结果.png}
-	\caption{神经网络模型预测结果}
-	\label{fig:19}
-\end{figure}
-
-\textbf{对于品牌1：2、4、5号顾客有购买的意愿，1、3号顾客没有购买的意愿;对于品牌2：7、10号有购买的意愿，6、8、9号顾客没有购买的意愿;对于品牌3：11、12号顾客有购买的意愿，13、14、15号顾客没有购买的意愿}
-\subsubsection{预测结果}
-第三题采用了CART决策树的生成和神经网络模型两种方法进行挖掘模型的拟合，两种方法的模型的拟合效果和预测效果均比较好，尤其是卷积神经网络网络，训练精度高达96.67\%，可根据训练的次数去决定训练精度和预测精度，最后的15名目标客户购买电动车的可能性如下：
-
-\textbf{对于品牌1：2、4、5号顾客有购买的意愿，1、3号顾客没有购买的意愿;对于品牌2：7、10号有购买的意愿，6、8、9号顾客没有购买的意愿;对于品牌3：11、12号顾客有购买的意愿，13、14、15号顾客没有购买的意愿}
-
+\textbf{（3）整数性引理与下界。}由问题一的压缩论证，存在整数坐标的最优可行解，故$L^{*}$为整数，二分域可限制在整数上。同时，模块总面积$A$给出边长下界
+\begin{equation}
+L^{*}\ge L_{lb}=\max\Big(\lceil\sqrt{A}\rceil,\ \max_i\max(w_i,h_i)\Big),\qquad
+d^{*}\ge d_{lb}=\frac{L_{lb}^2}{A}-1
+\label{eq:p3_lb}
+\end{equation}
+n100、n200、n300的下界实测值分别为$L_{lb}=424,420,523$，对应$d_{lb}\approx0.153\%,0.401\%,0.131\%$；该下界假定面积利用率100\%，一般不可达，仅作夹逼下界。结合启发式给出的可行上界，可构成$[L_{lb},L_{ub}]$的夹逼区间并据此二分。
 \subsection{问题四}\label{sub:5.4}
 第四问中需要基于这种思路和前面的研究成果，在附件3每个品牌中各挑选1名没有购买电动汽车的目标客户，实施销售策略。我们根据第三问的结果：\textbf{对于品牌1：2、4、5号顾客有购买的意愿，1、3号顾客没有购买的意愿；对于品牌2：7、10号有购买的意愿，6、8、9号顾客没有购买的意愿；对于品牌3：11、12号顾客有购买的意愿，13、14、15号顾客没有购买的意愿}对模型进行优化。
 \subsubsection{决策树模型的优化}
