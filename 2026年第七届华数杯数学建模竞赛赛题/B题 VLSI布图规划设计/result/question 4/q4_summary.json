@@ -1,0 +1,51 @@
+{
+  "dataset": "q4",
+  "total_area": 24,
+  "S_star": 24,
+  "W": 4,
+  "H": 6,
+  "density": 1.0,
+  "trials": [
+    {
+      "W": 4,
+      "H": 6,
+      "ok": true
+    }
+  ],
+  "exact_placements": [
+    {
+      "module": "b1",
+      "rot": 2,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    {
+      "module": "b2",
+      "rot": 2,
+      "anchor": [
+        2,
+        2
+      ]
+    },
+    {
+      "module": "b3",
+      "rot": 1,
+      "anchor": [
+        1,
+        4
+      ]
+    },
+    {
+      "module": "b4",
+      "rot": 0,
+      "anchor": [
+        0,
+        2
+      ]
+    }
+  ],
+  "bstar_area": 30,
+  "runtime": 40.0
+}

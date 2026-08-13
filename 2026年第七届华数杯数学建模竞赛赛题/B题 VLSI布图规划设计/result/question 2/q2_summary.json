@@ -1,0 +1,14 @@
+[
+  {
+    "dataset": "n100",
+    "Lhat": 455,
+    "hpwl": 281398.5,
+    "hpwl_lb": 111038.0,
+    "gap_pct": 153.4254,
+    "overflow": 0,
+    "feasible": true,
+    "bstar_hpwl": 294720.0,
+    "sp_hpwl": 370703.5,
+    "runtime": 26.8
+  }
+]

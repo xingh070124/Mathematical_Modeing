@@ -1,0 +1,62 @@
+[
+  {
+    "dataset": "n100",
+    "A": 179501,
+    "L_lb": 424,
+    "L_ub0": 455,
+    "L_star": 448,
+    "d_star": 0.118122,
+    "density": 0.894357,
+    "gap_area": 0.11659,
+    "cp": [
+      "feasible",
+      15
+    ],
+    "hpwl": 282949.5,
+    "hpwl_lb": 111012.0,
+    "hpwl_gap_pct": 154.8819,
+    "q2_hpwl_d15": 276865.0,
+    "feasible": true,
+    "runtime": 215.2
+  },
+  {
+    "dataset": "n200",
+    "A": 175696,
+    "L_lb": 420,
+    "L_ub0": 450,
+    "L_star": 436,
+    "d_star": 0.08196,
+    "density": 0.924249,
+    "gap_area": 0.077953,
+    "cp": [
+      "feasible",
+      15
+    ],
+    "hpwl": 551697.5,
+    "hpwl_lb": 185144.0,
+    "hpwl_gap_pct": 197.9829,
+    "q2_hpwl_d15": 536429.5,
+    "feasible": true,
+    "runtime": 66.8
+  },
+  {
+    "dataset": "n300",
+    "A": 273170,
+    "L_lb": 523,
+    "L_ub0": 561,
+    "L_star": 541,
+    "d_star": 0.071424,
+    "density": 0.933337,
+    "gap_area": 0.07011,
+    "cp": [
+      "feasible",
+      15
+    ],
+    "hpwl": 847564.0,
+    "hpwl_lb": 233343.0,
+    "hpwl_gap_pct": 263.2267,
+    "q2_hpwl_d15": 800201.5,
+    "feasible": true,
+    "runtime": 72.0
+  }
+]

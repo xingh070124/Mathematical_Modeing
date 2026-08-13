@@ -1,0 +1,8 @@
+B题_数学建模与算法分析.md
+*.txt
+*.log
+*.aux
+*.out
+*.gz
+__pycache__/
+*提示词.md

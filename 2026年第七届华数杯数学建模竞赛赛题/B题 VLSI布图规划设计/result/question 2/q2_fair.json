@@ -1,0 +1,9 @@
+[
+  {
+    "dataset": "n100",
+    "budget": 10.0,
+    "skyline_ils": 277823.0,
+    "bstar": 283706.0,
+    "sp_aga": null
+  }
+]

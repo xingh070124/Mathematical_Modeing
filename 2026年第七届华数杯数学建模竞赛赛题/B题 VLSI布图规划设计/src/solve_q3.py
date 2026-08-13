@@ -1,0 +1,501 @@
+"""问题三主求解入口：最小死区比例（双证书整数二分 + 可行性夹逼）。
+
+沿用问题一/二四层框架（L4 配置 Q3：outline=search, objective=min_L, nets=False）：
+  L1 紧凑装箱初解（复用 Q1 机制）→ L2 整数二分 + 可行性证书
+  （Skyline-ILS 可行 · CP-SAT 子集不可行）→ L3 双向反馈夹逼 → 第二阶
+  段在 L* 下更新 HPWL（复用 Q2 流水线）。
+
+输出：
+  * 三组芯片最小可行边长 L*、最小死区比例 d*、夹逼区间与 gap；
+  * L* 下总 HPWL（与 d=0.15 对比，量化死区压缩代价）；
+  * 模块摆放可视化（Terminal 标注 + L*×L* 轮廓框）。
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+import time
+import numpy as np
+from concurrent.futures import ProcessPoolExecutor
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from config import SCENARIOS                      # noqa: E402
+from data_io import load_dataset, dataset_stats   # noqa: E402
+from hpwl import NetIndex, overflow                # noqa: E402
+from packing import pack_skyline                  # noqa: E402
+from layer1_pool_q2 import (                       # noqa: E402
+    generate_initial_pool_q2, diversity_filter_q2,
+)
+from skyline_ils_q2 import ils_hpwl_trajectory     # noqa: E402
+from layer3_bound_q3 import (                      # noqa: E402
+    lower_bound_L, upper_bound_L, d_of_L, density,
+    gap_report_q3, cp_sat_subset_infeasible,
+)
+from layer3_bound_q2 import lower_bound_hpwl, check_feasible_q2, gap_report_q2  # noqa: E402
+from solve_q2 import solve_dataset as solve_q2_dataset  # noqa: E402
+from visualize import plot_layout_q2, plot_convergence_q2  # noqa: E402
+
+
+# --------------------------------------------------------------------------- #
+# 可行性 oracle（L1 多源 + L2 Skyline-ILS）
+# --------------------------------------------------------------------------- #
+def _feas_orders(widths, heights, rng):
+    """面向紧凑装箱的排序规则池（10 种规则 + 随机）。"""
+    n = len(widths)
+    area = widths * heights
+    longside = np.maximum(widths, heights)
+    perimeter = widths + heights
+    flexibility = np.abs(widths - heights)
+    orders = {
+        "area_desc": np.argsort(-area, kind="stable").tolist(),
+        "long_desc": np.argsort(-longside, kind="stable").tolist(),
+        "perim_desc": np.argsort(-perimeter, kind="stable").tolist(),
+        "lff_desc": np.argsort(-flexibility, kind="stable").tolist(),
+        "area_asc": np.argsort(area, kind="stable").tolist(),
+        "long_asc": np.argsort(longside, kind="stable").tolist(),
+        "width_desc": np.argsort(-widths, kind="stable").tolist(),
+        "height_desc": np.argsort(-heights, kind="stable").tolist(),
+        "maxside_asc": np.argsort(longside, kind="stable").tolist(),
+        "min_side_desc": np.argsort(-np.minimum(widths, heights), kind="stable").tolist(),
+    }
+    for j in range(12):
+        orders[f"rand_{j}"] = rng.permutation(n).tolist()
+    return orders
+
+
+def pack_feasible(widths, heights, order, rot, L, ideal_x=None):
+    """在 (L,L) 内 Skyline 装箱，返回 (xs,ys,rw,rh,ovf) 或 None。"""
+    res = pack_skyline(order, rot, widths, heights, L,
+                       box=(L, L), auto_rotate=True, ideal_x=ideal_x)
+    if res is None:
+        return None
+    xs, ys, rw, rh, W, H = res
+    ovf = overflow(xs, ys, rw, rh, L)
+    return xs, ys, rw, rh, ovf
+
+
+def feasible_oracle(ds, widths, heights, net, L, cfg, seed,
+                    ideal_x=None, budget_ils=None, warm_seed=None):
+    """三态可行性 oracle：返回 (status, layout)。
+
+    status ∈ {'feasible', 'infeasible', 'unknown'}。
+    layout = dict(xs,ys,rw,rh,hpwl,order,rot,overflow) 或 None。
+    warm_seed: 上一可行 L 的解 dict(order, rot)，原样作为本 L 的种子
+               （增量收缩 warm start，避免每层 L 从头搜索）。
+    """
+    rng = np.random.default_rng(seed)
+    n = ds.n
+    orders = _feas_orders(widths, heights, rng)
+    # (0) Warm start：上一可行解直接套算（极快，且已贴近可行边界）
+    if warm_seed is not None:
+        res = pack_feasible(widths, heights, warm_seed["order"],
+                            warm_seed["rot"], L, ideal_x=ideal_x)
+        if res is not None and res[4] == 0:
+            xs, ys, rw, rh, _ = res
+            hpwl = net.total_hpwl(xs, ys, rw, rh)
+            return "feasible", dict(xs=xs, ys=ys, rw=rw, rh=rh, hpwl=hpwl,
+                                    order=warm_seed["order"],
+                                    rot=warm_seed["rot"], overflow=0)
+    # L1 多源初解：各排序 × {0%, 25% 旋转}，取最低越界（同时记录 order/rot）
+    best = None        # (xs,ys,rw,rh,ovf,order,rot)
+    for key, order in orders.items():
+        for rot_frac in (0.0, 0.25):
+            rot = (rng.random(n) < rot_frac).astype(np.int64)
+            res = pack_feasible(widths, heights, order, rot, L, ideal_x=ideal_x)
+            if res is None:
+                continue
+            xs, ys, rw, rh, ovf = res
+            if ovf == 0:
+                hpwl = net.total_hpwl(xs, ys, rw, rh)
+                return "feasible", dict(xs=xs, ys=ys, rw=rw, rh=rh, hpwl=hpwl,
+                                        order=order, rot=rot, overflow=0)
+            if best is None or ovf < best[4]:
+                best = (xs, ys, rw, rh, ovf, order, rot)
+    # L2 Skyline-ILS：固定 (L,L)，扰动 order/rot 把越界压到 0。
+    # ILS 起点优先取 warm seed（上一可行解，已贴近边界），其次多源最优。
+    if budget_ils is None:
+        budget_ils = cfg.t_feas
+    seed_order, seed_rot = None, None
+    if warm_seed is not None:
+        seed_order, seed_rot = warm_seed["order"], warm_seed["rot"]
+    elif best is not None:
+        seed_order, seed_rot = best[5], best[6]
+    if seed_order is None:
+        return "unknown", None
+    r2 = ils_feasible_refine(widths, heights, seed_order, seed_rot, net, L,
+                             budget_ils, seed + 3)
+    if r2 is not None and r2["overflow"] == 0:
+        return "feasible", r2
+    return "unknown", None
+
+
+def ils_feasible_refine(widths, heights, order, rot, net, L, budget_s, seed):
+    """Skyline + ILS 压越界到 0（可行性精调 oracle）。
+
+    扰动 = 重插 k=n//8 模块 + 翻转少量旋转；目标 = 越界量最小化（溢出 0 即可行），
+    Metropolis 接受 + 几何降温。
+    """
+    if order is None:
+        return None
+    rng = np.random.default_rng(seed)
+    n = len(widths)
+    widths = np.asarray(widths, dtype=np.int64)
+    heights = np.asarray(heights, dtype=np.int64)
+    bound_w = L + 5
+    res0 = pack_skyline(order, rot, widths, heights, bound_w,
+                        box=(L, L), auto_rotate=True)
+    if res0 is None:
+        return None
+    xs, ys, rw, rh, W, H = res0
+    order = list(order)
+    rot = np.asarray(rot, dtype=np.int64).copy()
+    ovf = max(0, int(W) - L) + max(0, int(H) - L)
+    best = dict(xs=xs, ys=ys, rw=rw, rh=rh, hpwl=net.total_hpwl(xs, ys, rw, rh),
+                order=order, rot=rot.copy(), overflow=ovf)
+    T = 50.0
+    alpha = 0.94
+    start = time.time()
+    it = 0
+    while time.time() - start < budget_s and T > 0.1:
+        inner = max(30, n * 2)
+        for _ in range(inner):
+            o2 = order[:]
+            k = max(1, n // 8)
+            idx = sorted(rng.choice(n, min(k, n), replace=False), reverse=True)
+            vals = [o2[i] for i in idx]
+            for v in vals:
+                o2.remove(v)
+            rng.shuffle(vals)
+            posns = sorted(rng.integers(0, len(o2) + 1, size=len(vals)))
+            for v, p in zip(vals, posns):
+                o2.insert(p, v)
+            r2 = rot.copy()
+            flip = rng.choice(n, max(1, n // 12), replace=False)
+            r2[flip] ^= 1
+            res2 = pack_skyline(o2, r2, widths, heights, bound_w,
+                                box=(L, L), auto_rotate=True)
+            if res2 is None:
+                continue
+            xs2, ys2, rw2, rh2, W2, H2 = res2
+            ovf2 = max(0, int(W2) - L) + max(0, int(H2) - L)
+            it += 1
+            if ovf2 <= ovf or rng.random() < np.exp(-(ovf2 - ovf) / T):
+                order, rot = o2, r2
+                ovf = ovf2
+                if ovf2 == 0:
+                    hpwl = net.total_hpwl(xs2, ys2, rw2, rh2)
+                    return dict(xs=xs2, ys=ys2, rw=rw2, rh=rh2, hpwl=hpwl,
+                                order=list(order), rot=rot.copy(), overflow=0)
+                if ovf2 < best["overflow"]:
+                    best = dict(xs=xs2, ys=ys2, rw=rw2, rh=rh2,
+                                hpwl=net.total_hpwl(xs2, ys2, rw2, rh2),
+                                order=list(order), rot=rot.copy(), overflow=ovf2)
+        T *= alpha
+    best["iterations"] = it
+    return best
+
+
+# --------------------------------------------------------------------------- #
+# 整数二分 + 双证书
+# --------------------------------------------------------------------------- #
+def binary_search_min_L(ds, net, widths, heights, cfg, L_lb, L_ub):
+    """在整数域二分最小可行边长（可行性单调）。返回 (L_star, 可行布局, 日志)。
+
+    增量收缩 warm start：上一可行 L 的解（order/rot）原样作为下一更小 L 的
+    初始种子，避免每层 L 从头构造，加速可行性边界精调。
+    """
+    rng = np.random.default_rng(cfg.seed)
+    lb, ub = L_lb, L_ub
+    cert = None            # 当前上界对应的可行布局
+    warm_seed = None       # 上一可行 L 的解（用于 warm start）
+    steps = []
+    # 先直接探测 ub（问题二已证可行，但拿布局当证书）
+    status, layout = feasible_oracle(ds, widths, heights, net, ub, cfg,
+                                     cfg.seed, budget_ils=cfg.t_feas)
+    if status == "feasible":
+        cert = layout
+        warm_seed = dict(order=layout["order"], rot=layout["rot"])
+    while lb < ub:
+        mid = (lb + ub) // 2
+        status, layout = feasible_oracle(ds, widths, heights, net, mid, cfg,
+                                         cfg.seed + mid * 31,
+                                         budget_ils=cfg.t_feas,
+                                         warm_seed=warm_seed)
+        steps.append((mid, status))
+        if status == "feasible":
+            ub = mid
+            cert = layout
+            warm_seed = dict(order=layout["order"], rot=layout["rot"])
+        elif status == "infeasible":
+            lb = mid + 1
+        else:
+            # 未知：启发式失败且 CP-SAT 未在时限内闭合 → 尝试子集不可行证书
+            cp = "unknown"
+            if ub - lb >= 3:   # gap 较大时才调用 CP-SAT，避免浪费
+                cp, cnt, el = cp_sat_subset_infeasible(ds, mid, cfg.cp_subset,
+                                                       cfg.cp_timeout)
+            if cp == "infeasible":
+                lb = mid + 1    # 子集不可行 ⇒ 整体不可行（严格证书）
+            else:
+                # 无严格证书：仅把探测点右移一位继续，不把 lb 视为已证不可行下界
+                # （最终 L*=ub 作为最佳已知可行上界报告，不再称其已证最小）
+                lb = mid + 1
+    # 兜底：确保 ub 有可行证书
+    if cert is None:
+        status, layout = feasible_oracle(ds, widths, heights, net, ub, cfg,
+                                         cfg.seed + 999, budget_ils=cfg.t_feas)
+        if status == "feasible":
+            cert = layout
+    return ub, cert, steps
+
+
+# --------------------------------------------------------------------------- #
+# 主流程
+# --------------------------------------------------------------------------- #
+def solve_dataset_q3(ds, cfg, net):
+    widths = np.asarray(ds.widths, dtype=np.int64)
+    heights = np.asarray(ds.heights, dtype=np.int64)
+    A = ds.total_area
+    L_lb = lower_bound_L(ds)
+    L_ub = upper_bound_L(ds, 0.15)
+    t0 = time.time()
+
+    # ---- L1：紧凑装箱初解（获取 ideal_x 用 PeF 合法化加速 oracle）----
+    _, centers = None, None
+    from hpwl import convex_lb_with_centers
+    _, centers = convex_lb_with_centers(ds, L_ub)
+    ideal_x = np.asarray([c[0] for c in centers], dtype=np.int64)
+
+    # ---- L2：整数二分 + 可行性证书 ----
+    L_star, cert, steps = binary_search_min_L(
+        ds, net, widths, heights, cfg, L_lb, L_ub)
+
+    # ---- L3：证书夹逼与 gap ----
+    cp, cp_cnt, cp_el = cp_sat_subset_infeasible(ds, L_star, cfg.cp_subset,
+                                                 cfg.cp_timeout)
+    gap = gap_report_q3(ds, L_star, L_lb)
+    d_star = d_of_L(ds, L_star)
+
+    # ---- 第二阶段：L* 下更新 HPWL（从二分可行证书出发，Skyline-ILS 优化）----
+    # 极紧轮廓（d*≤7-12%）下 L1 初解池可能无一可行，故直接用二分得到的
+    # 可行布局证书作为起点，再跑 Skyline-ILS 压低 HPWL。
+    r2 = _hpwl_at_L(ds, net, L_star, cfg, cert)
+    if r2 is None:
+        # 回退：仍尝试 Q2 完整管线
+        q2_cfg = SCENARIOS["Q2"]
+        q2_cfg.nproc = cfg.nproc
+        q2_cfg.seed = cfg.seed
+        q2_cfg.t_ils = cfg.t_ils
+        q2_cfg.t_restart = cfg.t_restart
+        q2_cfg.t_bstar = cfg.t_bstar
+        q2_cfg.t_sp = cfg.t_sp
+        q2_cfg.t_refine = cfg.t_refine
+        q2_cfg.kp = cfg.kp
+        r2 = solve_q2_dataset(ds, q2_cfg, net, Lhat=int(L_star))
+
+    # 对比基线：问题二（d=0.15）下 HPWL —— 优先读取已有结果，否则同预算重算
+    q2_d15 = _load_q2_d15(ds.name, cfg.out_dir)
+    if q2_d15 is None:
+        L15 = upper_bound_L(ds, 0.15)
+        r15 = solve_q2_dataset(ds, q2_cfg, net, Lhat=int(L15))
+        q2_d15 = r15["best"]["hpwl"]
+    runtime = time.time() - t0
+
+    return dict(
+        dataset=ds.name, A=A, L_lb=int(L_lb), L_ub0=int(L_ub),
+        L_star=int(L_star), d_star=d_star, gap=gap,
+        cp=(cp, cp_cnt, cp_el), steps=steps, cert=cert,
+        hpwl=r2["best"]["hpwl"], hpwl_lb=r2["hpwl_lb"],
+        hpwl_gap=r2["gap"], feasible=r2["feasible"],
+        q2_hpwl=r2, q2_hpwl_d15=q2_d15, runtime=runtime,
+    )
+
+
+def _hpwl_at_L(ds, net, L, cfg, cert):
+    """在 L×L 内从可行证书出发优化 HPWL（Skyline+ILS/SA，多起点）。
+
+    返回与 solve_q2_dataset 同构的 dict（best/sp/hpwl_lb/gap/traces/...）。
+    """
+    from skyline_ils_q2 import ils_hpwl_trajectory, pack_and_eval
+    from sp_ga import sp_aga_solve
+    from layer3_bound_q2 import lower_bound_hpwl, check_feasible_q2, gap_report_q2
+    widths = np.asarray(ds.widths, dtype=np.int64)
+    heights = np.asarray(ds.heights, dtype=np.int64)
+    n = ds.n
+    tasks = []
+    # 起点1：二分可行证书
+    if cert is not None:
+        tasks.append((cert["order"], cert["rot"]))
+    # 起点2-4：L1 初解池中可行者（若有）
+    rng = np.random.default_rng(cfg.seed)
+    pool = generate_initial_pool_q2(ds, net, L, rng, prob_rot=0.3)
+    for s in pool:
+        if s["overflow"] == 0 and len(tasks) < cfg.kp:
+            tasks.append((s["order"], s["rot"]))
+    # 起点5：连接度排序
+    conn = {name: 0 for name in ds.names}
+    for net_list in ds.nets:
+        for pin in net_list:
+            if pin in conn:
+                conn[pin] += 1
+    conn_order = sorted(range(n), key=lambda i: (-conn[ds.names[i]],
+                                                 -(ds.widths[i] * ds.heights[i])))
+    tasks.append((conn_order, np.zeros(n, dtype=np.int64)))
+
+    results = []
+    for i, (o, r) in enumerate(tasks):
+        res = ils_hpwl_trajectory(widths, heights, o, r, net, L,
+                                  cfg.t_ils, seed=cfg.seed + i * 101 + 7)
+        if res is not None:
+            results.append(res)
+    if not results:
+        return None
+    best = min(results, key=lambda r: r["hpwl"])
+    # 对照：SP+GA
+    sp_res = None
+    try:
+        sp_res = sp_aga_solve(widths, heights, net, L, cfg.t_sp,
+                              seed=cfg.seed + 7000)
+    except Exception:
+        sp_res = None
+    hpwl_lb = lower_bound_hpwl(ds, L)
+    ok, max_ov, ovf = check_feasible_q2(ds, net, best["xs"], best["ys"],
+                                        best["rw"], best["rh"], L)
+    gap = gap_report_q2(best["hpwl"], hpwl_lb)
+    return dict(
+        best=best, sp=sp_res, hpwl_lb=hpwl_lb, feasible=ok,
+        max_overlap=max_ov, overflow=ovf, gap=gap,
+        traces=[r["trace"] for r in results],
+        pool_hpwl=min((s["hpwl"] for s in pool), default=None),
+        results_hpwl=[(r["hpwl"], 0) for r in results],
+    )
+
+
+def _load_q2_d15(ds_name, out_dir="result"):
+    """读取已生成的问题2（d=0.15）HPWL 汇总（若存在）。"""
+    p = os.path.join(out_dir, "question 2", "q2_summary.json")
+    try:
+        with open(p, encoding="utf-8") as f:
+            for row in json.load(f):
+                if row.get("dataset") == ds_name:
+                    return float(row.get("hpwl"))
+    except Exception:
+        pass
+    return None
+
+
+def _worker_ils(task):
+    from skyline_ils_q2 import ils_hpwl_trajectory
+    return ils_hpwl_trajectory(**task)
+
+
+def main():
+    here = os.path.dirname(os.path.abspath(__file__))
+    parser = argparse.ArgumentParser(description="问题三：最小死区比例")
+    parser.add_argument("--data-dir", default=os.path.normpath(os.path.join(here, "..", "附件")))
+    parser.add_argument("--out-dir", default=os.path.normpath(os.path.join(here, "..", "result")))
+    parser.add_argument("--datasets", default="n100,n200,n300")
+    parser.add_argument("--nproc", type=int, default=6)
+    parser.add_argument("--scale", type=float, default=1.0,
+                        help="时间预算缩放系数（快速测试用）")
+    args = parser.parse_args()
+
+    cfg = SCENARIOS["Q3"]
+    cfg.nproc = args.nproc
+    cfg.out_dir = args.out_dir
+    cfg.t_feas *= args.scale
+    cfg.t_ils *= args.scale
+    cfg.t_restart *= args.scale
+    cfg.t_bstar *= args.scale
+    cfg.t_sp *= args.scale
+    cfg.t_refine *= args.scale
+    cfg.kp = max(2, int(round(cfg.kp * args.scale)))
+    out_root = os.path.join(args.out_dir, "question 3")
+    os.makedirs(out_root, exist_ok=True)
+
+    datasets = [s.strip() for s in args.datasets.split(",") if s.strip()]
+    results = []
+    for name in datasets:
+        ds = load_dataset(args.data_dir, name)
+        net = NetIndex(ds.names, ds.nets, ds.terminal_pos)
+        print(f"\n===== 数据集 {name}  {dataset_stats(ds)}  =====", flush=True)
+        r = solve_dataset_q3(ds, cfg, net)
+        results.append(r)
+        print(f"  L_lb={r['L_lb']}  L*={r['L_star']}  "
+              f"d*={r['d_star']*100:.3f}%  密度={r['gap']['density']*100:.2f}%  "
+              f"L*下总HPWL={r['hpwl']:,.0f}  可行={r['feasible']}  "
+              f"耗时={r['runtime']:.1f}s", flush=True)
+
+    # ---- 结果表 ----
+    print("\n" + "=" * 116)
+    print("表1  问题三求解结果（最小死区比例）")
+    print("=" * 116)
+    print(f"{'数据集':<8}{'L_lb':>6}{'L*':>6}{'d*':>12}{'密度':>10}"
+          f"{'L*下HPWL':>14}{'问题2 HPWL':>14}{'HPWL增幅':>10}{'可行':>6}")
+    for r in results:
+        q2hp = r["q2_hpwl_d15"]
+        inc = (r["hpwl"] - q2hp) / q2hp * 100 if q2hp else 0.0
+        print(f"{r['dataset']:<8}{r['L_lb']:>6}{r['L_star']:>6}"
+              f"{r['d_star']*100:>11.3f}%{r['gap']['density']*100:>9.2f}%"
+              f"{r['hpwl']:>14,.0f}{q2hp:>14,.0f}{inc:>9.2f}%"
+              f"{'是' if r['feasible'] else '否':>6}")
+
+    # ---- 二分过程表 ----
+    print("\n" + "=" * 80)
+    print("表2  整数二分可行性探测过程")
+    print("=" * 80)
+    for r in results:
+        s = ", ".join(f"{m}:{'可行' if st=='feasible' else ('不可行' if st=='infeasible' else '未知')}"
+                      for m, st in r["steps"])
+        print(f"{r['dataset']:<8}  {s}")
+
+    # ---- 可视化 ----
+    for r in results:
+        ds = load_dataset(args.data_dir, r["dataset"])
+        net = NetIndex(ds.names, ds.nets, ds.terminal_pos)
+        b = r["q2_hpwl"]["best"]
+        plot_layout_q2(
+            ds, net, b["xs"], b["ys"], b["rw"], b["rh"], r["L_star"],
+            os.path.join(out_root, f"q3_{r['dataset']}_layout.png"),
+            title=f"问题三 {r['dataset']}  最小死区比例 d*={r['d_star']*100:.3f}%",
+            hpwl=b["hpwl"], gap_pct=r["hpwl_gap"]["gap_pct"],
+            feasible=r["feasible"])
+        plot_convergence_q2(r["q2_hpwl"]["traces"], r["hpwl_lb"],
+                            os.path.join(out_root, f"q3_{r['dataset']}_convergence.png"),
+                            pool_hpwl=r["q2_hpwl"]["pool_hpwl"])
+
+    # ---- 保存结果 ----
+    summary = []
+    for r in results:
+        b = r["q2_hpwl"]["best"]
+        ds = load_dataset(args.data_dir, r["dataset"])
+        lines = [f"# {r['dataset']} Q3 placement  L*={r['L_star']} "
+                 f"d*={r['d_star']:.4f} HPWL={b['hpwl']:.0f}"]
+        for i in range(ds.n):
+            lines.append(f"{ds.names[i]} {b['xs'][i]} {b['ys'][i]} "
+                         f"{b['rw'][i]} {b['rh'][i]} {int(b['rot'][i])}")
+        with open(os.path.join(out_root, f"q3_{r['dataset']}_placement.txt"),
+                  "w", encoding="utf-8") as fh:
+            fh.write("\n".join(lines))
+        summary.append(dict(
+            dataset=r["dataset"], A=r["A"], L_lb=r["L_lb"], L_ub0=r["L_ub0"],
+            L_star=r["L_star"], d_star=round(r["d_star"], 6),
+            density=round(r["gap"]["density"], 6),
+            gap_area=round(r["gap"]["gap_area"], 6),
+            cp=(r["cp"][0], r["cp"][1]),
+            hpwl=round(r["hpwl"], 1), hpwl_lb=round(r["hpwl_lb"], 1),
+            hpwl_gap_pct=round(r["hpwl_gap"]["gap_pct"], 4),
+            q2_hpwl_d15=round(r["q2_hpwl_d15"], 1) if r["q2_hpwl_d15"] else None,
+            feasible=r["feasible"], runtime=round(r["runtime"], 1),
+        ))
+    with open(os.path.join(out_root, "q3_summary.json"), "w",
+              encoding="utf-8") as fh:
+        json.dump(summary, fh, ensure_ascii=False, indent=2)
+    print(f"\n结果与可视化已输出至: {os.path.abspath(out_root)}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,243 @@
+"""问题一/二 结果图表优化：三组布局图拼成单张出版级图 + 收敛图拼接。
+
+遵循 nature-figure 约定：
+  * 单张图一个核心结论——Q1：三组芯片均实现高密度近方形紧凑布局；
+    Q2：三组芯片在固定正方形轮廓内总 HPWL 最小且受边界 Terminal 引力影响。
+  * 白色背景、模块色一致（tab20 低饱和）、crimson 虚线轮廓、Terminal 红色点；
+  * 直接标注（不用图例），导出 PNG/PDF/SVG/TIFF（PNG 600dpi 供 LaTeX）。
+
+输出到 paper/figures/：
+  q1_layout_combined.png/pdf/svg/tiff   Q2_layout_combined.png/pdf/svg/tiff
+  q1_conv_combined.png                  q2_conv_combined.png  （拼接现有收敛图）
+"""
+from __future__ import annotations
+
+import os
+import json
+import math
+import numpy as np
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+from matplotlib import font_manager
+from PIL import Image
+
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # 项目根
+RES1 = os.path.join(BASE, "result", "question 1")
+RES2 = os.path.join(BASE, "result", "question 2")
+RES3 = os.path.join(BASE, "result", "question 3")
+ATT = os.path.join(BASE, "附件")
+FIG = os.path.join(BASE, "paper", "figures")
+
+# ---------- 中文字体（西文保持 Arial 风格） ----------
+_avail = {f.name for f in font_manager.fontManager.ttflist}
+_cjk = next((n for n in ["Microsoft YaHei", "SimHei", "DengXian", "SimSun",
+                         "Noto Sans CJK SC"] if n in _avail), "sans-serif")
+plt.rcParams.update({
+    "font.family": "sans-serif",
+    "font.sans-serif": [_cjk, "Arial", "Helvetica", "DejaVu Sans"],
+    "font.size": 7,
+    "svg.fonttype": "none",
+    "pdf.fonttype": 42,
+    "axes.unicode_minus": False,
+})
+
+
+# ---------- 数据读取 ----------
+def load_placement(path):
+    blocks = []
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            p = line.split()
+            if not p or p[0].startswith("#"):
+                continue
+            blocks.append((p[0], int(p[1]), int(p[2]), int(p[3]), int(p[4])))
+    return blocks
+
+
+def load_terminals(name):
+    pos = []
+    with open(os.path.join(ATT, f"{name}.pl"), encoding="utf-8") as f:
+        for line in f:
+            p = line.split()
+            if len(p) >= 3:
+                pos.append((int(p[1]), int(p[2])))
+    return pos
+
+
+def load_q1_metrics():
+    with open(os.path.join(RES1, "q1_summary.json"), encoding="utf-8") as f:
+        return {r["dataset"]: r for r in json.load(f)}
+
+
+def load_q2_metrics():
+    with open(os.path.join(RES2, "q2_summary.json"), encoding="utf-8") as f:
+        return {r["dataset"]: r for r in json.load(f)}
+
+
+def load_q3_metrics():
+    with open(os.path.join(RES3, "q3_summary.json"), encoding="utf-8") as f:
+        return {r["dataset"]: r for r in json.load(f)}
+
+
+# ---------- 布局面板 ----------
+def draw_panel(ax, blocks, terminals, W, H, title, info):
+    n = len(blocks)
+    cmap = plt.get_cmap("tab20")
+    norm = plt.Normalize(0, max(n, 1))
+    ax.add_patch(Rectangle((0, 0), W, H, facecolor="#f4f4f4",
+                           edgecolor="none", zorder=0))           # die 底色
+    for i, (_name, x, y, w, h) in enumerate(blocks):
+        ax.add_patch(Rectangle((x, y), w, h, facecolor=cmap(norm(i)),
+                               edgecolor="#2b2b2b", linewidth=0.4,
+                               zorder=2, alpha=0.92))
+    if terminals:
+        ax.scatter([t[0] for t in terminals], [t[1] for t in terminals],
+                   s=7, c="#d62728", marker="o", zorder=3,
+                   edgecolors="#1f1f1f", linewidths=0.25)
+    ax.add_patch(Rectangle((0, 0), W, H, fill=False, edgecolor="#c00000",
+                           linewidth=1.5, linestyle=(0, (4, 2)), zorder=3))
+    m = 0.025 * max(W, H)
+    ax.set_xlim(-m, W + m)
+    ax.set_ylim(-m, H + m)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    ax.set_title(title, fontsize=8.5, pad=3)
+    ax.text(0.5, -0.045, info, transform=ax.transAxes, ha="center",
+            va="top", fontsize=6.6)
+
+
+def build_layout_figure(datasets, metrics, placement_dir, terminals_fn,
+                        qtype, out_prefix):
+    """三组布局图拼成 1×3 单张图。qtype ∈ {'q1','q2','q3'}。"""
+    fig, axes = plt.subplots(1, 3, figsize=(13.2, 4.15))
+    for ax, name in zip(axes, datasets):
+        blocks = load_placement(os.path.join(
+            placement_dir, f"{qtype}_{name}_placement.txt"))
+        m = metrics[name]
+        if qtype == "q1":
+            W, H = m["W"], m["H"]
+            asp = max(W, H) / min(W, H)
+            info = (f"{name}  {W}×{H}  面积{m['area']:,}"
+                    f"  密度{m['density']*100:.1f}%  长宽比{asp:.3f}")
+        elif qtype == "q2":
+            W = H = m["Lhat"]
+            info = (f"{name}  L={W}  总HPWL={m['hpwl']:,.0f}"
+                    f"  gap={m['gap_pct']:.1f}%  可行")
+        else:  # q3
+            W = H = m["L_star"]
+            info = (f"{name}  L*={W}  d*={m['d_star']*100:.1f}%"
+                    f"  总HPWL={m['hpwl']:,.0f}  gap={m['hpwl_gap_pct']:.1f}%")
+        draw_panel(ax, blocks, terminals_fn(name) if terminals_fn else None,
+                   W, H, name, info)
+    fig.subplots_adjust(wspace=0.12)
+    titles = {
+        "q1": "问题一  三组芯片模块摆放（轮廓面积最小·长宽比接近1）",
+        "q2": "问题二  三组芯片模块摆放（固定正方形轮廓内总HPWL最小）",
+        "q3": "问题三  三组芯片模块摆放（最小死区比例轮廓 L*）",
+    }
+    fig.suptitle(titles[qtype], fontsize=9, fontweight="bold", y=0.98)
+    save_multi(fig, out_prefix)
+
+
+# ---------- 导出 ----------
+def save_multi(fig, prefix):
+    os.makedirs(FIG, exist_ok=True)
+    fig.savefig(f"{prefix}.png", dpi=600, bbox_inches="tight")
+    fig.savefig(f"{prefix}.pdf", bbox_inches="tight")
+    fig.savefig(f"{prefix}.svg", bbox_inches="tight")
+    fig.savefig(f"{prefix}.tiff", dpi=600, bbox_inches="tight")
+    plt.close(fig)
+    print(f"saved {os.path.basename(prefix)} (.png/.pdf/.svg/.tiff)")
+
+
+# ---------- 收敛图拼接（复用既有单数据收敛图） ----------
+def stitch_convergence(names, res_dir, out_path, prefix, h_px=1150):
+    imgs = []
+    for name in names:
+        p = os.path.join(res_dir, f"{prefix}_{name}_convergence.png")
+        im = Image.open(p).convert("RGB")
+        im = im.resize((int(im.width * h_px / im.height), h_px),
+                       Image.LANCZOS)
+        imgs.append(im)
+    gap = 24
+    canvas = Image.new("RGB", (sum(i.width for i in imgs) + gap * (len(imgs) - 1),
+                               h_px), "white")
+    x = 0
+    for im in imgs:
+        canvas.paste(im, (x, 0))
+        x += im.width + gap
+    os.makedirs(FIG, exist_ok=True)
+    canvas.save(out_path, dpi=(600, 600))
+    print(f"saved {os.path.basename(out_path)}")
+
+
+# ---------- 问题四：4 模块 6×4 完美铺砌布局图 ----------
+Q4_CELLS = {
+    "b1": [(0, 0), (1, 0), (0, 1), (1, 1), (2, 1), (3, 1),
+           (0, 2), (1, 2), (2, 2), (3, 2), (0, 3), (1, 3)],
+    "b2": [(2, 0), (3, 0), (4, 0), (5, 0), (4, 1), (5, 1)],
+    "b3": [(4, 2), (5, 2)],
+    "b4": [(2, 3), (3, 3), (4, 3), (5, 3)],
+}
+Q4_COLORS = {"b1": "#4C72B0", "b2": "#DD8452", "b3": "#55A868", "b4": "#C44E52"}
+
+
+def build_q4_layout(out_prefix):
+    """4 模块 6×4 完美铺砌布局（最小面积 S*=24，密度100%）。"""
+    W, H = 6, 4
+    fig, ax = plt.subplots(figsize=(6.4, 4.3))
+    ax.add_patch(Rectangle((0, 0), W, H, facecolor="#f4f4f4",
+                           edgecolor="none", zorder=0))
+    for name, cells in Q4_CELLS.items():
+        for (x, y) in cells:
+            ax.add_patch(Rectangle((x, y), 1, 1, facecolor=Q4_COLORS[name],
+                                   edgecolor="#2b2b2b", linewidth=0.8,
+                                   zorder=2, alpha=0.92))
+    for name, cells in Q4_CELLS.items():
+        xs = [x + 0.5 for x, _ in cells]
+        ys = [y + 0.5 for _, y in cells]
+        ax.text(sum(xs) / len(xs), sum(ys) / len(ys), name, ha="center",
+                va="center", fontsize=10, fontweight="bold", color="white",
+                zorder=3)
+    ax.add_patch(Rectangle((0, 0), W, H, fill=False, edgecolor="#c00000",
+                           linewidth=1.8, linestyle=(0, (4, 2)), zorder=3))
+    ax.set_xlim(-0.5, W + 0.5)
+    ax.set_ylim(-0.5, H + 0.5)
+    ax.set_aspect("equal")
+    ax.set_xticks(range(W))
+    ax.set_yticks(range(H))
+    ax.tick_params(labelsize=8)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.set_title("问题四  4模块最优摆放（6×4 完美铺砌，S*=24，密度100%）",
+                 fontsize=9.5, fontweight="bold")
+    save_multi(fig, out_prefix)
+
+
+def main():
+    datasets = ["n100", "n200", "n300"]
+    q1 = load_q1_metrics()
+    q2 = load_q2_metrics()
+    q3 = load_q3_metrics()
+    # 问题一 / 问题二 / 问题三 布局拼图（Q1 不含 Terminal，Q2/Q3 含）
+    build_layout_figure(datasets, q1, RES1, None, "q1",
+                        os.path.join(FIG, "q1_layout_combined"))
+    build_layout_figure(datasets, q2, RES2, load_terminals, "q2",
+                        os.path.join(FIG, "q2_layout_combined"))
+    build_layout_figure(datasets, q3, RES3, load_terminals, "q3",
+                        os.path.join(FIG, "q3_layout_combined"))
+    # 问题四 4 模块完美铺砌布局
+    build_q4_layout(os.path.join(FIG, "q4_layout"))
+    # 收敛图拼接
+    stitch_convergence(datasets, os.path.join(BASE, "result", "question 1"),
+                       os.path.join(FIG, "q1_conv_combined.png"), "q1")
+    stitch_convergence(datasets, os.path.join(BASE, "result", "question 2"),
+                       os.path.join(FIG, "q2_conv_combined.png"), "q2")
+    stitch_convergence(datasets, os.path.join(BASE, "result", "question 3"),
+                       os.path.join(FIG, "q3_conv_combined.png"), "q3")
+
+
+if __name__ == "__main__":
+    main()
