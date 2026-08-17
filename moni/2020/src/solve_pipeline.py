@@ -305,35 +305,35 @@ def objective_q3(x, alpha):
     return A + 1e6 * viol
 
 
+def _obj_q3(x, alpha):
+    return objective_q3(x, alpha)
+
+
 def solve_q3(alpha, seed=2026):
     bounds = [(165, 185), (185, 205), (225, 245), (245, 265), (65, 100)]
+    lo = np.array([b[0] for b in bounds])
+    hi = np.array([b[1] for b in bounds])
     res = differential_evolution(
-        lambda x: objective_q3(x, alpha), bounds,
-        strategy='best1bin', maxiter=180, popsize=14, tol=1e-7,
+        _obj_q3, bounds, args=(alpha,),
+        strategy='best1bin', maxiter=50, popsize=8, tol=1e-6,
         polish=True, seed=seed, workers=1,
         mutation=(0.5, 1.0), recombination=0.8)
-    # SLSQP 多起点精化
+    # L-BFGS-B 多起点精化（罚函数，避免 SLSQP 约束雅可比开销）
     best = dict(x=res.x, A=res.fun, viol=0)
     rng = np.random.default_rng(seed + 7)
-    cons = [{'type': 'ineq', 'fun': lambda x, lo=lo, hi=hi, k=k:
-             metric_ineq(x, alpha, lo, hi, k)}
-            for lo, hi, k in [(240, 250, 'T_pk'), (0, 3, 'S_r'),
-                              (-3, 0, 'S_d'), (60, 120, 'dt_150_190'),
-                              (40, 90, 'dt_gt217')]]
-    starts = [res.x] + [res.x + rng.normal(0, 2.0, 5) for _ in range(10)]
+    starts = [res.x] + [res.x + rng.normal(0, 2.0, 5) for _ in range(4)]
     for s0 in starts:
-        s = np.clip(s0, [b[0] for b in bounds], [b[1] for b in bounds])
+        s = np.clip(s0, lo, hi)
         try:
             r = minimize(lambda x: objective_q3(x, alpha), s,
-                         method='SLSQP', bounds=bounds, constraints=cons,
-                         options=dict(ftol=1e-10, maxiter=400))
-            if r.success or r.fun < best['A']:
-                zt = (r.x[0], r.x[1], r.x[2], r.x[3], 25.0)
-                ts, Ts = solve_curve(r.x[4] / 60.0, alpha, zt)
-                viol = constraint_violation(process_metrics(ts, Ts))
-                A = excess_area_up(ts, Ts)
-                if viol <= best['viol'] and A < best['A']:
-                    best = dict(x=r.x.copy(), A=A, viol=viol)
+                         method='L-BFGS-B', bounds=bounds,
+                         options=dict(ftol=1e-8, maxiter=80))
+            zt = (r.x[0], r.x[1], r.x[2], r.x[3], 25.0)
+            ts, Ts = solve_curve(r.x[4] / 60.0, alpha, zt)
+            viol = constraint_violation(process_metrics(ts, Ts))
+            A = excess_area_up(ts, Ts)
+            if viol <= best['viol'] + 1e-9 and A < best['A']:
+                best = dict(x=r.x.copy(), A=A, viol=viol)
         except Exception:
             continue
     return best
@@ -360,55 +360,70 @@ def objective_q4(x, alpha, A_ref, D_ref, lam):
     return (1.0 - lam) * A / A_ref + lam * D / D_ref
 
 
+def _obj_q4(x, alpha, A_ref, D_ref, lam):
+    return objective_q4(x, alpha, A_ref, D_ref, lam)
+
+
 def solve_q4(alpha, A_ref, D_ref, lam=0.4, seed=2026):
     bounds = [(165, 185), (185, 205), (225, 245), (245, 265), (65, 100)]
+    lo = np.array([b[0] for b in bounds])
+    hi = np.array([b[1] for b in bounds])
     res = differential_evolution(
-        lambda x: objective_q4(x, alpha, A_ref, D_ref, lam), bounds,
-        strategy='best1bin', maxiter=180, popsize=14, tol=1e-7,
+        _obj_q4, bounds, args=(alpha, A_ref, D_ref, lam),
+        strategy='best1bin', maxiter=50, popsize=8, tol=1e-6,
         polish=True, seed=seed, workers=1,
         mutation=(0.5, 1.0), recombination=0.8)
     best = dict(x=res.x, F=res.fun, viol=0)
     rng = np.random.default_rng(seed + 11)
-    cons = [{'type': 'ineq', 'fun': lambda x, lo=lo, hi=hi, k=k:
-             metric_ineq(x, alpha, lo, hi, k)}
-            for lo, hi, k in [(240, 250, 'T_pk'), (0, 3, 'S_r'),
-                              (-3, 0, 'S_d'), (60, 120, 'dt_150_190'),
-                              (40, 90, 'dt_gt217')]]
-    starts = [res.x] + [res.x + rng.normal(0, 2.0, 5) for _ in range(10)]
+    starts = [res.x] + [res.x + rng.normal(0, 2.0, 5) for _ in range(4)]
     for s0 in starts:
-        s = np.clip(s0, [b[0] for b in bounds], [b[1] for b in bounds])
+        s = np.clip(s0, lo, hi)
         try:
             r = minimize(lambda x: objective_q4(x, alpha, A_ref, D_ref, lam),
-                         s, method='SLSQP', bounds=bounds, constraints=cons,
-                         options=dict(ftol=1e-10, maxiter=400))
-            if r.fun < best['F']:
-                zt = (r.x[0], r.x[1], r.x[2], r.x[3], 25.0)
-                ts, Ts = solve_curve(r.x[4] / 60.0, alpha, zt)
-                viol = constraint_violation(process_metrics(ts, Ts))
-                if viol <= 1e-9:
-                    best = dict(x=r.x.copy(), F=r.fun, viol=viol)
+                         s, method='L-BFGS-B', bounds=bounds,
+                         options=dict(ftol=1e-8, maxiter=80))
+            zt = (r.x[0], r.x[1], r.x[2], r.x[3], 25.0)
+            ts, Ts = solve_curve(r.x[4] / 60.0, alpha, zt)
+            viol = constraint_violation(process_metrics(ts, Ts))
+            if viol <= 1e-9 and r.fun < best['F']:
+                best = dict(x=r.x.copy(), F=r.fun, viol=viol)
         except Exception:
             continue
     return best
 
 
 # ---------------- 绘图 ----------------
-def make_figures():
+def make_figures(alpha, v_cal, zt_cal, t_obs, T_obs,
+                 q1, q2, q3, q4, q4_A, q4_D):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
+    from matplotlib import font_manager
+
+    # 配置中文字体，避免图内中文乱码
+    for name in ["Microsoft YaHei", "SimHei", "DengXian", "SimSun"]:
+        try:
+            font_manager.findfont(name, fallback_to_default=False)
+            plt.rcParams["font.sans-serif"] = [name]
+            plt.rcParams["font.family"] = "sans-serif"
+            plt.rcParams["axes.unicode_minus"] = False
+            break
+        except Exception:
+            continue
 
     os.makedirs(FIGDIR, exist_ok=True)
+    alpha_star = alpha
 
-    # 校准对比
-    t_obs, T_obs = load_obs()
+    # 校准对比（对齐后的模型曲线）
     ts, Ts = solve_curve(v_cal, alpha_star, zt_cal)
-    T_fit = np.interp(t_obs, ts, Ts)
+    i0 = int(np.argmin(np.abs(Ts - 30.03)))
+    t_star = float(np.interp(30.03, Ts[:i0 + 1], ts[:i0 + 1]))
+    tau = t_obs - 19.0
+    T_fit = np.interp(t_star + tau, ts, Ts)
     fig, ax = plt.subplots(figsize=(7, 4.5))
-    ax.plot(ts, Ts, 'b-', lw=1.2, label='模型曲线')
-    ax.plot(t_obs, T_obs, 'r.', ms=2, label='实测数据')
-    ax.axhline(30, color='gray', ls='--', lw=0.8)
-    ax.set_xlabel('时间 t / s'); ax.set_ylabel('温度 / ℃')
+    ax.plot(tau, T_fit, 'b-', lw=1.2, label='模型曲线（对齐）')
+    ax.plot(tau, T_obs, 'r.', ms=2, label='实测数据')
+    ax.set_xlabel('时间（传感器零点）τ / s'); ax.set_ylabel('温度 / ℃')
     ax.set_title('参数标定：模型 vs 实测')
     ax.legend(); ax.grid(alpha=0.3)
     fig.tight_layout(); fig.savefig(os.path.join(FIGDIR, 'q1_calibration.png'), dpi=150)
@@ -558,8 +573,9 @@ if __name__ == '__main__':
         q2s = solve_q2(a, zt2)
         q1m = process_metrics(*solve_curve(78 / 60.0, a, zt1)[:2])
         sens_alpha[f"{eta:+.0%}"] = dict(
-            v_max=q2s['v_max'], T_pk_q1=q1m['T_pk'],
-            dt_gt217_q2=q2s['metrics']['dt_gt217'])
+            v_max=(q2s['v_max'] if q2s else None),
+            T_pk_q1=q1m['T_pk'],
+            dt_gt217_q2=(q2s['metrics']['dt_gt217'] if q2s else None))
     print("\n[敏感性] alpha 扰动:")
     for k, v in sens_alpha.items():
         print(f"  {k}: {v}")
@@ -596,6 +612,7 @@ if __name__ == '__main__':
         json.dump(out, fh, ensure_ascii=False, indent=2)
 
     # ---- 绘图 ----
-    make_figures()
+    make_figures(alpha_star, v_cal, zt_cal, t_obs, T_obs,
+                 q1, q2, q3, q4, q4_A, q4_D)
 
     print(f"\n总耗时 {time.time()-t0:.1f}s，结果已写入 results.json 与 result.csv")

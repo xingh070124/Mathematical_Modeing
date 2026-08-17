@@ -12,57 +12,57 @@
 \contentsline {subsection}{\numberline {5\,.\,2}集总热容模型}{8}{subsection.5.2}%
 \contentsline {subsection}{\numberline {5\,.\,3}集总热容假设的合理性}{9}{subsection.5.3}%
 \contentsline {subsection}{\numberline {5\,.\,4}综合换热参数辨识}{9}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5\,.\,5}问题一给定工况}{9}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5\,.\,6}数值误差控制}{10}{subsection.5.6}%
-\contentsline {section}{\numberline {六、}问题二：最大允许过炉速度}{11}{section.6}%
-\contentsline {subsection}{\numberline {6\,.\,1}制程指标定义}{11}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6\,.\,2}约束优化模型}{11}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6\,.\,3}搜索算法}{12}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6\,.\,4}结果与活跃约束}{12}{subsection.6.4}%
-\contentsline {section}{\numberline {七、}问题三：超温面积最小化}{13}{section.7}%
-\contentsline {subsection}{\numberline {7\,.\,1}决策变量}{13}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7\,.\,2}目标函数的严格定义}{13}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7\,.\,3}约束条件}{13}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7\,.\,4}数值求解}{14}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7\,.\,5}问题三结果}{14}{subsection.7.5}%
-\contentsline {section}{\numberline {八、}问题四：兼顾超温面积与曲线对称性}{15}{section.8}%
-\contentsline {subsection}{\numberline {8\,.\,1}对称性指标}{15}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8\,.\,2}双目标处理}{15}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8\,.\,3}问题四求解}{16}{subsection.8.3}%
-\contentsline {section}{\numberline {九、}模型验证与敏感性分析}{16}{section.9}%
-\contentsline {subsection}{\numberline {9\,.\,1}参数敏感性}{16}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9\,.\,2}数值步长敏感性}{17}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9\,.\,3}边界复核}{17}{subsection.9.3}%
-\contentsline {section}{\numberline {十、}模型评价}{17}{section.10}%
-\contentsline {subsection}{\numberline {10\,.\,1}模型优点}{17}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10\,.\,2}模型不足}{18}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10\,.\,3}模型改进方向}{18}{subsection.10.3}%
-\contentsline {section}{\numberline {十一、}结论}{19}{section.11}%
-\contentsline {subsection}{\numberline {11\,.\,1}问题一结论}{19}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11\,.\,2}问题二结论}{19}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11\,.\,3}问题三结论}{20}{subsection.11.3}%
-\contentsline {subsection}{\numberline {11\,.\,4}问题四结论}{20}{subsection.11.4}%
-\contentsline {subsection}{\numberline {11\,.\,5}总体结论}{20}{subsection.11.5}%
-\contentsline {section}{参考文献}{20}{section*.7}%
-\contentsline {section}{附录 \numberline {A}问题一求解核心程序}{21}{appendix.1.A}%
-\contentsline {subsection}{\numberline {1\,.\,1}环境温度函数}{21}{subsection.1.A.1}%
-\contentsline {subsection}{\numberline {1\,.\,2}温度微分方程}{23}{subsection.1.A.2}%
-\contentsline {subsection}{\numberline {1\,.\,3}四阶Runge--Kutta数值积分}{23}{subsection.1.A.3}%
-\contentsline {subsection}{\numberline {1\,.\,4}综合换热参数辨识}{24}{subsection.1.A.4}%
-\contentsline {section}{附录 \numberline {B}问题二求解核心程序}{26}{appendix.1.B}%
-\contentsline {subsection}{\numberline {2\,.\,1}制程约束判断}{26}{subsection.1.B.1}%
-\contentsline {subsection}{\numberline {2\,.\,2}最大允许速度搜索}{27}{subsection.1.B.2}%
-\contentsline {subsection}{\numberline {2\,.\,3}最大速度边界验证}{28}{subsection.1.B.3}%
-\contentsline {section}{附录 \numberline {C}问题三求解核心程序}{29}{appendix.1.C}%
-\contentsline {subsection}{\numberline {3\,.\,1}超温面积计算}{29}{subsection.1.C.1}%
-\contentsline {subsection}{\numberline {3\,.\,2}问题三目标函数}{30}{subsection.1.C.2}%
-\contentsline {subsection}{\numberline {3\,.\,3}问题三优化}{31}{subsection.1.C.3}%
-\contentsline {section}{附录 \numberline {D}问题四求解核心程序}{32}{appendix.1.D}%
-\contentsline {subsection}{\numberline {4\,.\,1}峰值两侧曲线归一化}{32}{subsection.1.D.1}%
-\contentsline {subsection}{\numberline {4\,.\,2}问题四综合目标函数}{34}{subsection.1.D.2}%
-\contentsline {subsection}{\numberline {4\,.\,3}问题四优化}{36}{subsection.1.D.3}%
-\contentsline {section}{附录 \numberline {E}数值计算与结果复核}{37}{appendix.1.E}%
-\contentsline {subsection}{\numberline {5\,.\,1}步长敏感性分析}{37}{subsection.1.E.1}%
-\contentsline {subsection}{\numberline {5\,.\,2}参数敏感性分析}{38}{subsection.1.E.2}%
-\contentsline {subsection}{\numberline {5\,.\,3}最终制程约束检查}{39}{subsection.1.E.3}%
-\contentsline {subsection}{\numberline {5\,.\,4}结果记录}{40}{subsection.1.E.4}%
+\contentsline {subsection}{\numberline {5\,.\,5}问题一给定工况}{10}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5\,.\,6}数值误差控制}{11}{subsection.5.6}%
+\contentsline {section}{\numberline {六、}问题二：最大允许过炉速度}{12}{section.6}%
+\contentsline {subsection}{\numberline {6\,.\,1}制程指标定义}{12}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6\,.\,2}约束优化模型}{12}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6\,.\,3}搜索算法}{13}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6\,.\,4}结果与活跃约束}{13}{subsection.6.4}%
+\contentsline {section}{\numberline {七、}问题三：超温面积最小化}{14}{section.7}%
+\contentsline {subsection}{\numberline {7\,.\,1}决策变量}{14}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7\,.\,2}目标函数的严格定义}{14}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7\,.\,3}约束条件}{15}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7\,.\,4}数值求解}{15}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7\,.\,5}问题三结果}{16}{subsection.7.5}%
+\contentsline {section}{\numberline {八、}问题四：兼顾超温面积与曲线对称性}{17}{section.8}%
+\contentsline {subsection}{\numberline {8\,.\,1}对称性指标}{17}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8\,.\,2}双目标处理}{17}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8\,.\,3}问题四求解}{18}{subsection.8.3}%
+\contentsline {section}{\numberline {九、}模型验证与敏感性分析}{19}{section.9}%
+\contentsline {subsection}{\numberline {9\,.\,1}参数敏感性}{19}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9\,.\,2}数值步长敏感性}{20}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9\,.\,3}边界复核}{20}{subsection.9.3}%
+\contentsline {section}{\numberline {十、}模型评价}{21}{section.10}%
+\contentsline {subsection}{\numberline {10\,.\,1}模型优点}{21}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10\,.\,2}模型不足}{22}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10\,.\,3}模型改进方向}{22}{subsection.10.3}%
+\contentsline {section}{\numberline {十一、}结论}{22}{section.11}%
+\contentsline {subsection}{\numberline {11\,.\,1}问题一结论}{22}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11\,.\,2}问题二结论}{23}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11\,.\,3}问题三结论}{23}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11\,.\,4}问题四结论}{23}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11\,.\,5}总体结论}{24}{subsection.11.5}%
+\contentsline {section}{参考文献}{24}{section*.15}%
+\contentsline {section}{附录 \numberline {A}问题一求解核心程序}{25}{appendix.1.A}%
+\contentsline {subsection}{\numberline {1\,.\,1}环境温度函数}{25}{subsection.1.A.1}%
+\contentsline {subsection}{\numberline {1\,.\,2}温度微分方程}{26}{subsection.1.A.2}%
+\contentsline {subsection}{\numberline {1\,.\,3}四阶Runge--Kutta数值积分}{27}{subsection.1.A.3}%
+\contentsline {subsection}{\numberline {1\,.\,4}综合换热参数辨识}{28}{subsection.1.A.4}%
+\contentsline {section}{附录 \numberline {B}问题二求解核心程序}{30}{appendix.1.B}%
+\contentsline {subsection}{\numberline {2\,.\,1}制程约束判断}{30}{subsection.1.B.1}%
+\contentsline {subsection}{\numberline {2\,.\,2}最大允许速度搜索}{31}{subsection.1.B.2}%
+\contentsline {subsection}{\numberline {2\,.\,3}最大速度边界验证}{32}{subsection.1.B.3}%
+\contentsline {section}{附录 \numberline {C}问题三求解核心程序}{33}{appendix.1.C}%
+\contentsline {subsection}{\numberline {3\,.\,1}超温面积计算}{33}{subsection.1.C.1}%
+\contentsline {subsection}{\numberline {3\,.\,2}问题三目标函数}{34}{subsection.1.C.2}%
+\contentsline {subsection}{\numberline {3\,.\,3}问题三优化}{35}{subsection.1.C.3}%
+\contentsline {section}{附录 \numberline {D}问题四求解核心程序}{36}{appendix.1.D}%
+\contentsline {subsection}{\numberline {4\,.\,1}峰值两侧曲线归一化}{36}{subsection.1.D.1}%
+\contentsline {subsection}{\numberline {4\,.\,2}问题四综合目标函数}{38}{subsection.1.D.2}%
+\contentsline {subsection}{\numberline {4\,.\,3}问题四优化}{40}{subsection.1.D.3}%
+\contentsline {section}{附录 \numberline {E}数值计算与结果复核}{41}{appendix.1.E}%
+\contentsline {subsection}{\numberline {5\,.\,1}步长敏感性分析}{41}{subsection.1.E.1}%
+\contentsline {subsection}{\numberline {5\,.\,2}参数敏感性分析}{42}{subsection.1.E.2}%
+\contentsline {subsection}{\numberline {5\,.\,3}最终制程约束检查}{43}{subsection.1.E.3}%
+\contentsline {subsection}{\numberline {5\,.\,4}结果记录}{44}{subsection.1.E.4}%
