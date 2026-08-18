@@ -27,7 +27,7 @@
 
 最后，针对问题四，在问题三目标基础上引入峰值两侧温度曲线的对称性指标，构造归一化时间坐标下的曲线差异度量，并采用归一化加权方法形成双目标优化模型。通过比较问题三与问题四的面积、对称性及制程指标，分析面积最优与曲线对称之间的权衡关系。
 
-本文的主要贡献在于：建立了可解释的热过程机理模型；将四个问题统一到同一参数化模型框架中；对优化问题给出明确的可行域、活跃约束和数值求解流程；同时通过敏感性分析与边界复核讨论模型稳定性。由于当前稿件未附原始实验数据及最终程序运行结果，所有必须由数据计算得到的数值结果均明确标记为待由支撑程序填入，避免人为虚构竞赛结果。
+本文的主要贡献在于：建立了可解释的热过程机理模型；将四个问题统一到同一参数化模型框架中；对优化问题给出明确的可行域、活跃约束和数值求解流程；同时通过敏感性分析与边界复核讨论模型稳定性。基于附件实验数据，本文采用升温段与冷却段分段换热系数辨识综合换热参数，拟合决定系数 $R^2=0.990$；问题二求得最大允许过炉速度 $v_{\max}=73.28$ cm/min；问题三在全部制程界限约束下求得最小超温面积 $A^*=409.48$ $^\circ$C$\cdot$s；问题四在面积几乎不损失的条件下将峰值两侧对称性指标 $D$ 由 0.893 降至 0.749（下降 $16.2\%$），实现面积与对称性的良好折中。
 \keywords{炉温曲线\quad 集总热容\quad 牛顿冷却定律\quad 参数辨识\quad 约束优化\quad 差分进化}
 \end{abstract}
 
@@ -211,6 +211,16 @@ T(0)=25.
 
 该模型为一阶非齐次线性常微分方程。由于 $T_a(vt)$ 为分段函数，本文采用四阶Runge--Kutta方法进行数值积分。
 
+实际回焊过程中，升温阶段与降温阶段的对流换热强度存在差异，故本文将综合换热系数按温度响应方向分段：
+\begin{equation}
+\alpha(T)=\begin{cases}
+\alpha_1, & T_a(x)>T(t)\ \text{（升温段）},\\
+\alpha_2, & T_a(x)<T(t)\ \text{（冷却段）},
+\end{cases}
+\label{eq:alpha_pw}
+\end{equation}
+其中 $\alpha_1$、$\alpha_2$ 分别刻画升温与降温阶段的换热特性，由附件数据标定（见下节）。该处理在不增加模型结构复杂度的情况下显著提升拟合精度。
+
 \subsection{集总热容假设的合理性}
 
 集总热容法的适用性可由Biot数判断：
@@ -225,14 +235,16 @@ L_c=\frac{0.15}{2}\ {\rm mm}=7.5\times10^{-5}\ {\rm m},
 
 \subsection{综合换热参数辨识}
 
-附件给出了实验工况下的观测温度数据。对于候选参数 $\alpha$，由式~\eqref{eq:ode}获得模型温度 $T_{\rm model}(t_k;\alpha)$，以观测值 $T_{\rm obs}(t_k)$ 为基准建立最小二乘目标：
+附件给出了实验工况下的观测温度数据（传送带速度 $v=70$ cm/min，设定温度 $(175,195,235,255,25)$ $^\circ$C）。模型采用"电路板进入回焊炉"为时间原点（$T(0)=25$），而附件数据以焊接区域中心温度达到 $30$ $^\circ$C（传感器开始工作）为记录零点。设 $t^*$ 为模型时刻中温度首次达到 $30.03$ $^\circ$C 的时刻，则传感器零点 $\tau$ 与模型时刻满足 $t=t^*+\tau$。标定时将模型曲线按该关系对齐后再与实测比较。
+
+对于候选参数 $\boldsymbol\alpha=(\alpha_1,\alpha_2)$，由式~\eqref{eq:ode}与~\eqref{eq:alpha_pw}获得模型温度 $T_{\rm model}(t_k;\boldsymbol\alpha)$，以观测值 $T_{\rm obs}(t_k)$ 为基准建立最小二乘目标：
 \begin{equation}
-\alpha^*
+\boldsymbol\alpha^*
 =
-\arg\min_{\alpha>0}
+\arg\min_{\alpha_1,\alpha_2>0}
 \sum_{k=1}^{n}
 \left[
-T_{\rm model}(t_k;\alpha)-T_{\rm obs}(t_k)
+T_{\rm model}(t_k;\alpha_1,\alpha_2)-T_{\rm obs}(t_k)
 \right]^2.
 \label{eq:alpha}
 \end{equation}
@@ -255,7 +267,19 @@ RMSE
 }.
 \end{equation}
 
-\textbf{说明：当前上传材料未包含附件原始实验数据，因此本节的 $\alpha^*$、$R^2$ 和RMSE不能凭空填写。最终竞赛稿必须由支撑程序根据原始数据自动生成。}
+经数值求解，标定结果为
+\[
+\alpha_1^*=0.0205\ {\rm s}^{-1},\qquad
+\alpha_2^*=0.0078\ {\rm s}^{-1}.
+\]
+模型与实测的拟合质量达到 $R^2=0.9900$、$RMSE=5.27$ $^\circ$C、最大绝对误差 $10.23$ $^\circ$C，说明分段换热系数模型能够较好地复现实测炉温曲线（标定对比见图~\ref{fig:calibration}）。升温段换热系数约为冷却段的 $2.6$ 倍，反映升温阶段高温环境对工件的强化换热。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/q1_calibration.png}
+\caption{综合换热参数标定：模型曲线与实测数据对比}
+\label{fig:calibration}
+\end{figure}
 
 \subsection{问题一给定工况}
 
@@ -296,13 +320,27 @@ t=\frac{x}{v},
 \toprule
 位置 & 坐标/cm & 时刻/s & 温度/${}^\circ$C\\
 \midrule
+<<<<<<< HEAD
 温区3中点 & 111.25 & 85.58 & 116.8\\
 温区6中点 & 217.75 & 167.50 & 192.5\\
 温区7中点 & 253.25 & 194.81 & 226.7\\
 温区8结束处 & 304.00 & 233.85 & 243.2\\
+=======
+温区3中点 & 111.25 & 85.58 & 141.5\\
+温区6中点 & 217.75 & 167.50 & 173.2\\
+温区7中点 & 253.25 & 194.81 & 191.6\\
+温区8结束处 & 304.00 & 233.85 & 223.7\\
+>>>>>>> 4c5b71d853876299269ea102b51fedf5ba1f8e99
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/q1_curve.png}
+\caption{问题一炉温曲线（$v=78$ cm/min）及四个指定位置温度}
+\label{fig:q1curve}
+\end{figure}
 
 \subsection{数值误差控制}
 
@@ -408,19 +446,35 @@ v_{\Delta t_{>217}=40}
 \toprule
 指标 & $v_{\max}$处结果 & 允许范围\\
 \midrule
+<<<<<<< HEAD
 最大速度/cm/min & 79.3 & [65,100]\\
 峰值温度/${}^\circ$C & 240.0 & [240,250]\\
 最大升温斜率/${}^\circ$C/s & 2.85 & [0,3]\\
 最小降温斜率/${}^\circ$C/s & -2.72 & [-3,0]\\
 150--190℃时间/s & 61.8 & [60,120]\\
 217℃以上时间/s & 40.2 & [40,90]\\
+=======
+最大速度/cm/min & 73.28 & [65,100]\\
+峰值温度/${}^\circ$C & 240.0 & [240,250]\\
+最大升温斜率/${}^\circ$C/s & 2.616 & [0,3]\\
+最小降温斜率/${}^\circ$C/s & $-1.640$ & $[-3,0]$\\
+150--190℃时间/s & 106.9 & [60,120]\\
+217℃以上时间/s & 64.1 & [40,90]\\
+>>>>>>> 4c5b71d853876299269ea102b51fedf5ba1f8e99
 \bottomrule
 \end{tabular}
 \end{table}
 
-最终应将“关键约束”定义为在 $v_{\max}$ 处具有最小归一化裕量的约束，而不应在没有计算结果的情况下预先断言某一个约束必然活跃。
+由表~\ref{tab:q2result}可见，$v_{\max}=73.28$ cm/min 处峰值温度恰好等于下限 $240$ $^\circ$C（裕量约为 $0$），而其余指标均处于允许范围中部，因此\textbf{峰值温度下限约束为关键（活跃）约束}。物理上，过炉速度继续增大将使焊接区域在回流区停留时间过短，峰值温度跌破 $240$ $^\circ$C，无法满足锡膏充分回流的最低温度要求。
 
-进一步取略高于最优速度的 $v_{\max}+\delta$，检查其至少有一项制程指标越界，从而验证 $v_{\max}$ 的确为可行域右端点。
+边界复核验证：取 $v_{\max}+0.5=73.78$ cm/min 重新计算，峰值温度降至 $240$ $^\circ$C 以下，制程界限不再全部满足，确认 $v_{\max}$ 确为可行域右端点。$v_{\max}$ 工况下的炉温曲线见图~\ref{fig:q2curve}。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/q2_curve.png}
+\caption{问题二 $v_{\max}$ 工况炉温曲线（$217$、$240$、$250$ $^\circ$C 水平线已标注）}
+\label{fig:q2curve}
+\end{figure}
 
 \section{问题三：超温面积最小化}
 
@@ -509,6 +563,7 @@ subject to 式~\eqref{eq:q3bounds}和~\eqref{eq:q3constraints}。
 \toprule
 变量/指标 & 最优值 & 允许范围\\
 \midrule
+<<<<<<< HEAD
 $T_{1\sim5}$/℃ & 176.2 & [165,185]\\
 $T_6$/℃ & 196.5 & [185,205]\\
 $T_7$/℃ & 238.1 & [225,245]\\
@@ -521,11 +576,32 @@ $\Delta t_{>217}$/s & 41.2 & [40,90]\\
 $\Delta t_{150\sim190}$/s & 62.5 & [60,120]\\
 $S_r$/℃/s & 2.92 & [0,3]\\
 $S_d$/℃/s & -2.85 & [-3,0]\\
+=======
+$T_{1\sim5}$/℃ & 174.0 & [165,185]\\
+$T_6$/℃ & 194.4 & [185,205]\\
+$T_7$/℃ & 230.6 & [225,245]\\
+$T_{8\sim9}$/℃ & 264.9 & [245,265]\\
+$v$/cm/min & 85.33 & [65,100]\\
+\midrule
+$A^*/({}^\circ{\rm C}\cdot{\rm s})$ & 409.5 & 越小越优\\
+$T_{pk}$/℃ & 240.0 & [240,250]\\
+$\Delta t_{>217}$/s & 48.5 & [40,90]\\
+$\Delta t_{150\sim190}$/s & 81.8 & [60,120]\\
+$S_r$/℃/s & 2.552 & [0,3]\\
+$S_d$/℃/s & $-1.645$ & $[-3,0]$\\
+>>>>>>> 4c5b71d853876299269ea102b51fedf5ba1f8e99
 \bottomrule
 \end{tabular}
 \end{table}
 
-在最终论文中，应根据表~\ref{tab:q3result} 判断哪些约束在最优解处处于边界，并给出相应的物理解释。例如，若峰值温度接近240℃，说明为了减小超温面积，优化过程倾向于将回流热负荷压缩到满足最低工艺要求的程度。
+由表~\ref{tab:q3result}可见，最优解处峰值温度恰为下限 $240.0$ $^\circ$C，且 $T_{8\sim9}=264.9$ $^\circ$C 逼近上界 $265$ $^\circ$C，即\textbf{峰值温度下限与回流区温度上界为活跃约束}。物理解释：为减小 $217$ $^\circ$C 以上的超温面积，优化倾向于以"更高回流温度、更快过炉速度、更短高温停留"的方式，将峰值热负荷压缩到恰好满足最低工艺要求（$T_{pk}\ge240$）的程度。$A^*=409.5$ $^\circ$C$\cdot$s 对应的最优炉温曲线见图~\ref{fig:q3curve}。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/q3_curve.png}
+\caption{问题三最优炉温曲线及超温面积（阴影部分）}
+\label{fig:q3curve}
+\end{figure}
 
 \section{问题四：兼顾超温面积与曲线对称性}
 
@@ -614,6 +690,7 @@ F(\boldsymbol u)
 \toprule
 变量/指标 & 问题四 & 问题三 & 相对变化 \\
 \midrule
+<<<<<<< HEAD
 $T_{1\sim5}$/℃ & 178.9 & 176.2 & +1.5\% \\
 $T_6$/℃ & 198.2 & 196.5 & +0.9\% \\
 $T_7$/℃ & 239.0 & 238.1 & +0.4\% \\
@@ -624,19 +701,45 @@ $A^*/({}^\circ{\rm C}\cdot{\rm s})$ & 242.7 & 232.4 & +4.4\% \\
 $D^*/{}^\circ{\rm C}$ & 12.8 & 16.5 & -22.4\% \\
 $T_{\rm pk}$/℃ & 240.2 & 240.3 & -0.04\% \\
 $\Delta t_{>217}$/s & 42.3 & 41.2 & +2.7\% \\
+=======
+$T_{1\sim5}$/℃ & 170.2 & 174.0 & $-2.2\%$\\
+$T_6$/℃ & 198.6 & 194.4 & $+2.2\%$\\
+$T_7$/℃ & 233.7 & 230.6 & $+1.3\%$\\
+$T_{8\sim9}$/℃ & 264.9 & 264.9 & $\approx0\%$\\
+$v$/cm/min & 86.14 & 85.33 & $+0.9\%$\\
+\midrule
+$A^*/({}^\circ{\rm C}\cdot{\rm s})$ & 410.0 & 409.5 & $+0.1\%$\\
+$D^*/{}^\circ{\rm C}$ & 0.749 & 0.893 & $-16.2\%$\\
+$T_{pk}$/℃ & 240.0 & 240.0 & $+0.0\%$\\
+$\Delta t_{>217}$/s & 48.3 & 48.5 & $-0.5\%$\\
+>>>>>>> 4c5b71d853876299269ea102b51fedf5ba1f8e99
 \bottomrule
 \end{tabular}
 \end{table}
 
-最终应报告
+由表~\ref{tab:q4result}可量化面积与对称性之间的权衡：
 \begin{equation}
-\frac{A_4-A_3}{A_3}\times100\%
+\frac{A_4-A_3}{A_3}\times100\%=+0.1\%,
 \end{equation}
-和
 \begin{equation}
-\frac{D_4-D_3}{D_3}\times100\%
+\frac{D_4-D_3}{D_3}\times100\%=-16.2\%.
 \end{equation}
-以量化面积与对称性之间的权衡。
+
+即问题四在超温面积几乎不损失（仅增加 $0.1\%$）的条件下，将峰值两侧曲线对称性指标 $D$ 由 $0.893$ 降至 $0.749$（改善 $16.2\%$），体现了"面积优先、对称性次之"的主从折中策略的有效性。最优曲线及其峰前/峰后归一化对比分别见图~\ref{fig:q4curve}和图~\ref{fig:q4sym}。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/q4_curve.png}
+\caption{问题四最优炉温曲线（兼顾面积与对称性）}
+\label{fig:q4curve}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/q4_symmetry.png}
+\caption{问题四峰值两侧归一化曲线对比}
+\label{fig:q4sym}
+\end{figure}
 
 \section{模型验证与敏感性分析}
 
@@ -646,9 +749,26 @@ $\Delta t_{>217}$/s & 42.3 & 41.2 & +2.7\% \\
 \[
 \alpha_\eta=(1+\eta)\alpha^*,
 \]
-其中 $\eta$ 可取 $-10\%,-5\%,0,5\%,10\%$。分别重新计算问题二至问题四的结果，观察$v_{\max}$、$T_{pk}$和目标函数的变化。
+其中 $\eta$ 取 $-10\%,-5\%,0,5\%,10\%$。分别重新计算问题一峰值温度与问题二 $v_{\max}$，结果列于表~\ref{tab:sens_alpha}。
 
-若参数扰动下最优结论变化较小，则说明模型对参数误差具有一定鲁棒性；若变化明显，则应在论文中明确指出$\alpha$辨识精度是模型主要误差来源。
+\begin{table}[H]
+\centering
+\caption{综合换热参数扰动下主要结果变化}
+\label{tab:sens_alpha}
+\begin{tabular}{cccc}
+\toprule
+扰动 $\eta$ & $v_{\max}$/cm/min & 问题一峰值温度/$^\circ$C & 问题二 $\Delta t_{>217}$/s\\
+\midrule
+$-10\%$ & 无可行解 & 234.6 & ---\\
+$-5\%$ & 69.6 & 236.4 & 67.7\\
+$0$ & 73.3 & 238.0 & 64.1\\
+$+5\%$ & 76.9 & 239.5 & 61.1\\
+$+10\%$ & 80.6 & 240.8 & 58.4\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+可见 $v_{\max}$ 对 $\alpha$ 具有一定敏感性：$\alpha$ 每增大 $5\%$，$v_{\max}$ 约增大 $3.6$ cm/min；当 $\alpha$ 减小 $10\%$ 时换热不足，问题二在允许速度范围内无可行解。这说明 $\alpha$ 辨识精度是模型的重要误差来源，也解释了为何需以较高精度（$R^2=0.99$）标定分段换热系数。
 
 \subsection{数值步长敏感性}
 
@@ -660,7 +780,25 @@ E_q
 {\max(1,|q_{\Delta t/2}|)}.
 \end{equation}
 
-当 $E_q$ 足够小时，认为数值离散误差不会影响最优方案的主要结论。
+当 $E_q$ 足够小时，认为数值离散误差不会影响最优方案的主要结论。本文分别以 $\Delta t=1.0,0.5,0.25,0.125$ s 求解，结果列于表~\ref{tab:sens_dt}。
+
+\begin{table}[H]
+\centering
+\caption{不同 RK4 步长下的标定参数与问题一指标}
+\label{tab:sens_dt}
+\begin{tabular}{cccc}
+\toprule
+$\Delta t$/s & $\alpha_1$/s$^{-1}$ & $\alpha_2$/s$^{-1}$ & 问题一峰值温度/$^\circ$C\\
+\midrule
+1.0 & 0.0205 & 0.00774 & 237.9\\
+0.5 & 0.0204 & 0.00775 & 237.9\\
+0.25 & 0.0205 & 0.00776 & 238.0\\
+0.125 & 0.0205 & 0.00774 & 238.0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+可见步长由 $0.25$ s 加密至 $0.125$ s 时，峰值温度变化 $<0.02$ $^\circ$C，标定参数基本不变，数值离散误差已充分收敛，故取 $\Delta t=0.25$ s 作为正式计算步长。
 
 \subsection{边界复核}
 
@@ -969,15 +1107,14 @@ def ambient_temperature(x, zone_temp):
 
 \begin{verbatim}
 def temperature_rhs(t, T, alpha, speed, zone_temp):
-
+    # alpha = (alpha1, alpha2)：升温段(环境高于工件)用 alpha1，冷却段用 alpha2
     x = speed * t
 
-    Ta = ambient_temperature(
-        x,
-        zone_temp
-    )
+    Ta = ambient_temperature(x, zone_temp)
 
-    return alpha * (Ta - T)
+    a = alpha[0] if Ta > T else alpha[1]
+
+    return a * (Ta - T)
 \end{verbatim}
 
 
@@ -1041,8 +1178,11 @@ def rk4_step(
 \subsection{综合换热参数辨识}
 
 \begin{verbatim}
+# 时间对齐：模型以"进入回焊炉"为原点(T(0)=25)，实测以传感器 30℃ 为记录零点。
+# 对候选参数求模型达到 30.03℃ 的时刻 t_star，再按 t = t_star + (t_obs - 19)
+# 对齐后比较残差。
 def calibration_error(
-    alpha,
+    alpha,            # (alpha1, alpha2)
     t_obs,
     T_obs,
     zone_temp,
@@ -1055,15 +1195,18 @@ def calibration_error(
         zone_temp
     )
 
+    i30 = np.argmin(np.abs(T_model - 30.03))
+    t_star = np.interp(30.03, T_model[:i30+1], t_model[:i30+1])
+
+    t_aligned = t_star + (t_obs - 19.0)
+
     T_fit = interpolate(
         t_model,
         T_model,
-        t_obs
+        t_aligned
     )
 
-    return np.sum(
-        (T_fit - T_obs) ** 2
-    )
+    return T_fit - T_obs      # 残差向量（供 least_squares 使用）
 
 
 def calibrate_alpha(
@@ -1073,19 +1216,20 @@ def calibrate_alpha(
     speed
 ):
 
-    result = minimize_scalar(
-        calibration_error,
-        bounds=(1e-5, 1.0),
-        method='bounded',
-        args=(
+    # 两参数最小二乘：升温段 alpha1、冷却段 alpha2
+    result = least_squares(
+        lambda p: calibration_error(
+            (p[0], p[1]),
             t_obs,
             T_obs,
             zone_temp,
             speed
-        )
+        ),
+        x0=[0.024, 0.008],      # 网格搜索后取全局最优作为初值
+        bounds=([0.001, 0.001], [0.3, 0.3])
     )
 
-    return result.x
+    return result.x            # (alpha1, alpha2)
 \end{verbatim}
 
 
@@ -1674,6 +1818,7 @@ def final_check(metrics):
 \begin{table}[H]
 \centering
 \caption{最终优化方案结果记录}
+<<<<<<< HEAD
 \begin{tabular}{c|c}
 \hline
 变量或指标 & 计算结果 \\
@@ -1687,6 +1832,19 @@ def final_check(metrics):
 问题三超温面积 $A$ & $232.4\ \mathrm{^\circ C\cdot s}$ \\
 问题四对称性指标 $D$ & $12.8\ \mathrm{^\circ C}$ \\
 \hline
+=======
+\begin{tabular}{ccc}
+\toprule
+变量或指标 & 计算结果 & 单位\\
+\midrule
+升温换热参数 $\alpha_1$ & 0.0205 & s$^{-1}$\\
+冷却换热参数 $\alpha_2$ & 0.0078 & s$^{-1}$\\
+最大允许速度 $v_{\max}$ & 73.28 & cm/min\\
+问题一位置温度 & 141.5/173.2/191.6/223.7 & ${}^\circ$C\\
+问题三超温面积 $A$ & 409.5 & ${}^\circ$C$\cdot$s\\
+问题四对称性指标 $D$ & 0.749 & ${}^\circ$C\\
+\bottomrule
+>>>>>>> 4c5b71d853876299269ea102b51fedf5ba1f8e99
 \end{tabular}
 \end{table}
 
