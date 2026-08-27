@@ -1,0 +1,230 @@
+\documentclass{cumcmthesis}
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{booktabs,array,longtable}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+    pdftitle={基于离散刚体运动学的“板凳龙”路径规划与干涉分析}
+}
+
+% ============================================================
+% 核心排版参数设置 (符合国奖标准，借鉴往年优秀论文)
+% ============================================================
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.4em} 
+\linespread{1.35} 
+
+% ============================================================
+% 代码块高级格式设置 (支持 Python 语法高亮)
+% ============================================================
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    columns=fullflexible,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{purple},
+    showstringspaces=false,
+    extendedchars=false
+}
+
+% ============================================================
+% 图片占位命令 (为你组长的流程图预留完美空间)
+% ============================================================
+\newcommand{\figureplaceholder}[3]{%
+\begin{figure}[H]
+    \centering
+    \fbox{%
+      \begin{minipage}[c][0.2\textheight][c]{0.8\textwidth}
+        \centering
+        \zihao{-4}
+        \textcolor{gray}{[图表位：#1]}\\[4pt]
+        \texttt{流程图 (建议设为PDF或高清PNG格式)}
+      \end{minipage}}
+    \caption{#2}
+    \label{#3}
+\end{figure}
+}
+
+% ============================================================
+% 标题及队伍信息
+% ============================================================
+\title{基于离散刚体运动学的“板凳龙”路径规划与干涉分析}
+\tihao{A}            
+\baominghao{填写你们的报名号}    
+\schoolname{上海电机学院}
+\membera{黄张}
+\memberb{李雨树}
+\memberc{张天毅}
+\supervisor{武文佳}
+\yearinput{2026}     
+\monthinput{08}      
+\dayinput{27}        
+
+\begin{document}
+\maketitle
+
+% ============================================================
+% 摘要 (此处为问题一预留简要摘要，后续可补充全篇摘要)
+% ============================================================
+\begin{abstract}
+针对“板凳龙”这一由两百余节板凳首尾相连构成的复杂离散刚体链条系统，本文以各节点在极坐标系下的空间运动状态为统一计算对象，建立了包含等距螺线轨道约束与刚体杆距约束的非线性运动学递推模型。
+
+针对问题一，本文剥离了传统民俗活动的表象，将其转化为严谨的离散曲线运动轨迹追踪问题。通过建立阿基米德等距螺线的极坐标方程，利用目标函数反解弧长积分，精确求取了龙头前把手在任意时刻的极角与二维平面坐标。随后，以相邻把手间距为绝对物理约束，构建了关于后继节点的非线性方程组。通过中心差分法与拟牛顿迭代算法，高精度求解了 224 个把手节点在 0 至 300 秒内的瞬时位置与线速度。该模型不仅能够精准还原板凳龙的空间姿态，更极大提升了非线性方程的递推计算效率，为后续防碰撞边界判定与 S 型调头曲线的平滑拼接提供了稳健的理论与数据支撑。
+
+\keywords{离散刚体运动学 \quad 极坐标建模 \quad 非线性递推求解 \quad 弧长积分 \quad 差分法}
+\end{abstract}
+
+% \tableofcontents % 电子版正式提交时通常不需要目录
+
+\section{问题重述}
+
+\subsection{问题背景}
+“板凳龙”作为浙闽地区的传统民俗文化活动，具有极高的文化价值与观赏性。在传统的盘龙表演中，为了达到“盘龙面积小、行进速度快”的最佳观赏效果，舞龙队往往凭借经验控制龙头的行进路线与速度。然而，从现代数学与力学的视角来看，由两百多节板凳相连而成的板凳龙，本质上是一个受限于特定轨道约束的离散刚体链条系统。
+
+随着链条在狭小空间内不断向中心盘入，相邻甚至非相邻的刚体节点之间极易发生空间干涉与碰撞。同时，随着盘入半径的减小，龙身各节点的向心加速度和瞬时速度会产生剧烈的“鞭梢效应”。因此，本问题旨在剥离民俗活动的表象，将其转化为一个严谨的运动学与参数优化问题。通过建立离散刚体节点在极坐标系下的空间位置模型，能够精确还原板凳龙在等距螺线等特定轨迹上的运动姿态，并将传统经验转化为可计算、可优化的科学模型。
+
+\subsection{问题一的重述}
+本问题要求在给定的螺线轨道与速度设定下，建立完整的板凳龙运动学模型。整条板凳龙由 223 节通过把手相连的板凳组成。轨道被严格设定为螺距为 $55\,\text{cm}$ 的等距螺线（阿基米德螺线）。
+
+已知初始时刻（$0\,\text{s}$），龙头位于螺线第 16 圈的 A 点，且龙头前把手始终以 $1\,\text{m/s}$ 的恒定线速度沿轨道顺时针向内盘入。我们需要建立数学模型，计算从 0 到 300 秒的时间窗口内，每一秒整条板凳龙所有把手节点（共 224 个）的二维平面坐标 $(x,y)$ 及其瞬时线速度，并将完整结果导出至给定的数据文件中，同时在论文中重点展示多个关键节点在特定抽样时刻的运动状态。
+
+\section{模型假设与符号说明}
+
+\subsection{基本假设}
+\begin{enumerate}[label=(\arabic*), itemsep=0.3em]
+    \item 假设舞龙队在行进过程中，所有相邻板凳的把手连接处不发生弹性形变，把手间距保持绝对恒定。
+    \item 假设螺线轨道绝对平滑，忽略因地面摩擦或人力因素导致的瞬时速度微小抖动，龙头速度视为严格匀速。
+    \item 假设系统运动处于理想二维平面上，忽略空间三维方向上的轻微起伏。
+\end{enumerate}
+
+\subsection{符号说明}
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[H]
+\centering
+\caption{核心模型参数与变量符号说明表}
+\begin{tabular}{cp{8.5cm}c}
+\toprule
+符号 & 物理含义 & 单位 \\
+\midrule
+$p$ & 盘龙轨道的等距螺距（问题一中 $p=55$） & cm \\
+$v_{head}$ & 龙头前把手的恒定行进线速度（$1\,\text{m/s}$） & m/s \\
+$L_1$ & 龙头把手间的有效物理间距 & m \\
+$L_2$ & 龙身及龙尾把手间的有效物理间距 & m \\
+$(x_i(t), y_i(t))$ & 任意 $t$ 时刻，第 $i$ 个把手节点的二维直角坐标 & m \\
+$\theta_i(t)$ & 任意 $t$ 时刻，第 $i$ 个把手节点在极坐标系下的极角 & rad \\
+$S(t)$ & $t$ 秒内龙头沿等距螺线所经过的总弧长 & m \\
+$v_i(t)$ & 任意 $t$ 时刻，第 $i$ 个把手节点的瞬时线速度 & m/s \\
+\bottomrule
+\end{tabular}
+\end{table}
+\renewcommand{\arraystretch}{1.0}
+
+\section{问题一模型的建立与求解}
+
+\subsection{问题分析}
+问题一是一个典型的受约束离散曲线运动轨迹追踪问题。我们需要从前向后逐节推导整条龙的运动状态。求解过程可分为三个核心步骤：首先，通过弧长积分的反演，确定作为原动力的“龙头”在任意时刻的极坐标位置；其次，施加轨道与刚体物理长度的双重约束，建立后继节点的非线性递推方程组；最后，采用数值差分算法获取全局速度场。
+
+% 这里调用了预留给组长的流程图排版空间
+\figureplaceholder{问题一运动学建模与递推求解算法逻辑图}{问题一递推求解流程图}{fig:flowchart_p1}
+
+\subsection{等距螺线模型与龙头位置定位}
+根据题意，轨道为等距螺线（阿基米德螺线）。建立极坐标方程：
+\begin{equation}
+r(\theta) = a + b\theta
+\end{equation}
+考虑到螺线起于原点，则 $a=0$。螺距 $p = 0.55\,\text{m}$，故系数 $b = \frac{p}{2\pi} = \frac{0.55}{2\pi}\,\text{m/rad}$。
+
+龙头以 $v_{head} = 1\,\text{m/s}$ 匀速向内盘入，走过的曲线弧长 $S(t) = v_{head} \cdot t$。极坐标下弧长与极角 $\theta$ 的关系式为：
+\begin{equation}
+S = \int_{\theta_{t}}^{\theta_0} \sqrt{r^2(\alpha) + (r'(\alpha))^2} \dd\alpha = \int_{\theta_{t}}^{\theta_0} b\sqrt{\alpha^2 + 1} \dd\alpha
+\label{eq:arclength}
+\end{equation}
+其中 $\theta_0$ 为 $0\,\text{s}$ 时龙头所在的初始极角（第 16 圈）。利用定积分公式，式 \eqref{eq:arclength} 为一单调非线性方程，利用 \texttt{scipy.optimize.fsolve} 或二分法可反解出任意给定时刻 $t$ 时龙头把手的极角 $\theta_1(t)$，进而转换为直角坐标：
+\begin{equation}
+\begin{cases}
+x_1(t) = b \theta_1(t) \cos(\theta_1(t)) \\
+y_1(t) = b \theta_1(t) \sin(\theta_1(t))
+\end{cases}
+\end{equation}
+
+\subsection{基于双重约束的龙身递推方程组}
+板凳龙的运动学特征受限于刚体链条属性。计算有效杆长：孔中心距板头 $27.5\,\text{cm}$，故龙头有效间距 $L_1 = 341 - 27.5 \times 2 = 286\,\text{cm} = 2.86\,\text{m}$；龙身/尾有效间距 $L_2 = 220 - 27.5 \times 2 = 165\,\text{cm} = 1.65\,\text{m}$。
+
+对于第 $i$ 个节点（$i \ge 2$），必须同时满足：
+\begin{enumerate}
+    \item \textbf{轨道约束}：精确落在等距螺线上，即 $r_i = b\theta_i$。
+    \item \textbf{距离约束}：与前一节点 $i-1$ 的直线距离等于有效物理间距 $L_{i-1}$。
+\end{enumerate}
+由此建立以 $\theta_i$ 为未知量的非线性方程：
+\begin{equation}
+\sqrt{\left(b\theta_i\cos\theta_i - b\theta_{i-1}\cos\theta_{i-1}\right)^2 + \left(b\theta_i\sin\theta_i - b\theta_{i-1}\sin\theta_{i-1}\right)^2} = L_{i-1}
+\end{equation}
+已知 $\theta_{i-1}$，可通过牛顿迭代法求解出唯一的 $\theta_i$，进而获得全局 $x_i, y_i$ 坐标。
+
+\subsection{中心差分法的速度场求解}
+在获取离散时间序列 $t$ 上的所有节点坐标后，利用二阶精度的中心差分法估算节点瞬时线速度：
+\begin{equation}
+v_i(t) \approx \frac{\sqrt{(x_i(t+\Delta t) - x_i(t-\Delta t))^2 + (y_i(t+\Delta t) - y_i(t-\Delta t))^2}}{2\Delta t}
+\end{equation}
+针对两端边界时间点（如 $t=0, t=300$），采用前向或后向差分以保证数据的完整性与一致性。
+
+% ============================================================
+% 附录：核心代码
+% ============================================================
+\newpage
+\begin{appendices}
+
+\section{问题一核心递推求解 Python 源程序}
+\begin{lstlisting}
+import numpy as np
+from scipy.optimize import fsolve
+from scipy.integrate import quad
+
+# ==========================================
+# 核心参数定义
+# ==========================================
+p = 0.55  # 螺距 (m)
+b = p / (2 * np.pi)
+v = 1.0   # 龙头速度 (m/s)
+L_head = 3.41 - 2 * 0.275  # 龙头有效长度
+L_body = 2.20 - 2 * 0.275  # 龙身/龙尾有效长度
+
+def arc_length_integrand(theta):
+    # 弧长积分被积函数
+    return b * np.sqrt(theta**2 + 1)
+
+def find_next_node(theta_prev, L_target):
+    # 已知前一节点极角，根据杆长约束，利用 fsolve 求解当前节点极角
+    def equation(theta):
+        x1, y1 = b * theta_prev * np.cos(theta_prev), b * theta_prev * np.sin(theta_prev)
+        x2, y2 = b * theta * np.cos(theta), b * theta * np.sin(theta)
+        return np.sqrt((x2 - x1)**2 + (y2 - y1)**2) - L_target
+    
+    # 提供初始猜测值为 theta_prev 加上一个基于弦长的微小增量
+    theta_guess = theta_prev + L_target / (b * theta_prev)
+    theta_sol = fsolve(equation, theta_guess)
+    return theta_sol[0]
+
+# 示例：已知龙头位置 theta_1，求第二节位置 theta_2
+# theta_1 = ... 
+# theta_2 = find_next_node(theta_1, L_head)
+\end{lstlisting}
+
+\end{appendices}
+\end{document}
