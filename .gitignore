@@ -1,8 +1,58 @@
-cat.pdf
-f1.png
-gongzhonghao2.jpg
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+*.egg
+
+# ===== 虚拟环境 / 解释器 =====
+.venv/
+venv/
+env/
+.conda/
+ENV/
+
+# ===== IDE / 编辑器 =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+*.ipynb_checkpoint*
+
+# ===== 临时 / 缓存 =====
+.tmp/
+temp/
+tmp/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== 日志与编译辅助（LaTeX / 一般） =====
 *.aux
 *.log
 *.out
 *.gz
+*.nav
+*.snm
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# ===== 运行测试与覆盖率 =====
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# ===== 旧版已忽略文件（保留） =====
+cat.pdf
+f1.png
+gongzhonghao2.jpg
 smokeblk.pdf
