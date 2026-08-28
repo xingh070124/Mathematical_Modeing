@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0",
+  "doc_type": "ai_index",
+  "subject": "2024 CUMCM Problem A - 板凳龙 (Bench Dragon)",
+  "indexed_at": "2026-08-27",
+  "indexed_by": "opencode",
+  "root_dir": "D:\\github\\myself\\Mathematical_Modeing\\模拟\\2024\\docs",
+  "companion_docs": [
+    "LITERATURE_REVIEW.md",
+    "AI_INDEX.md",
+    "AGENT_MEMORY.md"
+  ],
+  "extraction_toolchain": {
+    "pdfplumber": "0.11.7",
+    "pypdf": "6.14.2",
+    "pymupdf": null
+  },
+  "papers": [
+    {
+      "id": "C1",
+      "filename": "C1_Michalek_N-trailer.pdf",
+      "real_type": "html_error_page",
+      "diagnosis": "ScienceDirect Cloudflare error page (CPE00001 ::CLOUDFLARE_ERROR_1000S_BOX::), reference a31afd122df6c4f0. Not a PDF.",
+      "readable": false,
+      "pages": 0,
+      "intended_topic": "Michalek - generalized N-trailer kinematics and tracking control (off-axle hitching, singular configurations, VFO)",
+      "status": "corrupt - needs re-download",
+      "relevance": ["Q1 kinematics", "Q2 collision/singularity"],
+      "review_section": "LITERATURE_REVIEW.md#32-c1michalekn-trailer文件损坏标注性介绍"
+    },
+    {
+      "id": "C3",
+      "filename": "C3_Multiobjective_control_of_a_ve.pdf",
+      "real_type": "pdf",
+      "diagnosis": "ok",
+      "readable": true,
+      "pages": 38,
+      "citation": {
+        "authors": "Kazuo Tanaka, Shigeki Hori, Hua O. Wang",
+        "title": "Multi-objective Control of a Vehicle with Triple Trailers",
+        "affiliation": "University of Electro-Communications, Japan; Duke University, USA"
+      },
+      "keywords": ["Takagi-Sugeno fuzzy", "PDC", "LMI", "jack-knife", "backing control", "triple trailer", "articulated kinematics"],
+      "key_equations": [
+        "theta0(t+1) = theta0(t) + (nu*dt/l)*tan(u)",
+        "thetai(t+1) = thetai(t) + (nu*dt/L)*sin(theta_{i-1,i}) for i=1,2,3",
+        "theta01 = theta0 - theta1; theta12 = theta1 - theta2; theta23 = theta2 - theta3",
+        "state x = [theta01, theta12, theta23, theta3, y]^T"
+      ],
+      "page_map": {
+        "kinematics_model": [5, 6],
+        "ts_fuzzy_model_and_pdc": [7, 8, 9],
+        "lmi_stability_decay_rate": [10, 11, 12],
+        "input_output_constraints_jackknife": [12, 13, 14, 15],
+        "disturbance_rejection": [16, 17]
+      },
+      "relevance": ["Q1 relative-angle kinematics of 223-bench chain", "Q2 collision = jack-knife bound"],
+      "review_section": "LITERATURE_REVIEW.md#31-c3tanaka-hori-wangmulti-objective-control-of-a-vehicle-with-triple-trailers"
+    },
+    {
+      "id": "E1",
+      "filename": "E1_Continuous-Curvature_Path_Gene.pdf",
+      "real_type": "pdf",
+      "diagnosis": "ok",
+      "readable": true,
+      "pages": 16,
+      "citation": {
+        "authors": "Anastasios M. Lekkas, Andreas R. Dahl, Morten Breivik, Thor I. Fossen",
+        "title": "Continuous-Curvature Path Generation Using Fermat's Spiral",
+        "venue": "Modeling, Identification and Control",
+        "volume": "34",
+        "issue": "4",
+        "pages_range": "183-198",
+        "year": 2013
+      },
+      "keywords": ["Fermat's spiral", "continuous curvature", "clothoid", "path planning", "path tracking", "G2 continuity", "parametrization singularity"],
+      "key_equations": [
+        "r = k*sqrt(theta)",
+        "kappa(theta) = 12*sqrt(theta)*(3+4*theta^2) / (k*(1+4*theta^2)^(3/2))",
+        "kappa(0) = 0",
+        "p_FS(u) = [x0 + k*u*cos(rho*u^2 + chi0); y0 + k*u*sin(rho*u^2 + chi0)],  u := sqrt(theta)",
+        "|d/du p_FS(u)| = k*sqrt(2)*sqrt(1+4*rho^2*u^4) != 0"
+      ],
+      "page_map": {
+        "introduction_and_categories": [2, 3],
+        "dubins_curvature_discontinuity_clothoid": [3, 4, 5],
+        "fermat_spiral_definition_curvature": [6],
+        "cartesian_parametrization": [7],
+        "regularization_change_of_variable": [7, 8],
+        "arc_length_and_path_construction": [8, 9]
+      },
+      "relevance": ["Q3 spiral-turnaround transition", "Q4 curvature-continuous S-turn shortening", "path terminology for paper writing"],
+      "review_section": "LITERATURE_REVIEW.md#42-e1lekkas-dahl-breivik-fossencontinuous-curvature-path-generation-using-fermats-spiral2013"
+    },
+    {
+      "id": "E3",
+      "filename": "E3_Optimal_paths_for_a_car_that_g.pdf",
+      "real_type": "truncated_pdf",
+      "diagnosis": "real PDF but truncated: EOF marker not found; root /Pages has no /Kids; 0 pages readable via pdfplumber/pypdf/pikepdf/pymupdf",
+      "readable": false,
+      "pages": 0,
+      "intended_topic": "Reeds & Shepp (1990), Optimal paths for a car that goes both forwards and backwards, Pacific J. Math. 145(2):367-393. Shortest paths with forward+reverse motion, at most 6 segments (lines/arcs).",
+      "status": "corrupt - needs re-download",
+      "relevance": ["Q4 turnaround shortest-path lower bound"],
+      "review_section": "LITERATURE_REVIEW.md#41-e3reeds--sheppoptimal-paths-for-a-car-that-goes-both-forwards-and-backwards1990文件损坏标注性介绍"
+    },
+    {
+      "id": "F1",
+      "filename": "F1_Verscheure.pdf",
+      "real_type": "pdf",
+      "diagnosis": "ok",
+      "readable": true,
+      "pages": 10,
+      "citation": {
+        "authors": "Diederik Verscheure, Bram Demeulenaere, Jan Swevers, Joris De Schutter, Moritz Diehl",
+        "title": "Practical Time-Optimal Trajectory Planning for Robots: a Convex Optimization Approach",
+        "venue": "IEEE Transactions on Automatic Control",
+        "year": 2008,
+        "affiliation": "K.U.Leuven, OPTEC"
+      },
+      "keywords": ["time-optimal", "convex optimization", "SOCP", "path coordinate", "trajectory planning", "direct transcription"],
+      "key_equations": [
+        "tau(s) = m(s)*s_ddot + c(s)*s_dot^2 + g(s)",
+        "a(s) = s_ddot",
+        "b(s) = s_dot^2",
+        "b'(s) = 2*a(s)",
+        "T = int_0^1 1/sqrt(b(s)) ds",
+        "velocity constraint: (qi'(s))^2 * b(s) <= qdot_i_max^2"
+      ],
+      "page_map": {
+        "problem_formulation": [2],
+        "convex_reformulation": [2, 3],
+        "convexity_preserving_extensions": [3, 4],
+        "direct_transcription_socp": [4],
+        "validation_examples": [5, 6]
+      },
+      "relevance": ["Q5 strict feasibility/optimality of constrained speed profile"],
+      "review_section": "LITERATURE_REVIEW.md#51-f1verscheure-demeulenaere-swevers-de-schutter-diehlpractical-time-optimal-trajectory-planning-for-robots-a-convex-optimization-approach"
+    },
+    {
+      "id": "F2",
+      "filename": "F2_Jerk-Limited_Time-Optimal_Spee.pdf",
+      "real_type": "pdf",
+      "diagnosis": "ok",
+      "readable": true,
+      "pages": 13,
+      "citation": {
+        "authors": "Antonio Artuñedo, Jorge Villagra, Jorge Godoy",
+        "title": "Jerk-limited time-optimal speed planning for arbitrary paths",
+        "venue": "Journal of Intelligent & Robotic Systems",
+        "year": "2020-2021",
+        "affiliation": "CSIC-UPM, Madrid, Spain"
+      },
+      "keywords": ["jerk-limited", "time-optimal speed", "speed limit curve", "lateral acceleration", "arbitrary paths", "autonomous driving", "bang-bang"],
+      "key_equations": [
+        "v_SLC_i = min{v_max, sqrt(a_lat_max / |kappa_i|)}"
+      ],
+      "page_map": {
+        "related_work": [2],
+        "speed_limit_curve": [2, 3],
+        "algorithm1_acceleration_limited": [3, 4],
+        "parameter_table": [3],
+        "jerk_limited_stage": [4, 5]
+      },
+      "relevance": ["Q5 curvature-dependent head speed limit so all handles <= 2 m/s"],
+      "review_section": "LITERATURE_REVIEW.md#52-f2artuedo-villagra-godoyjerk-limited-time-optimal-speed-planning-for-arbitrary-paths"
+    }
+  ],
+  "theme_to_paper": {
+    "articulated_chain_kinematics": ["C3", "C1"],
+    "jackknife_collision": ["C3"],
+    "ntrailer_offaxle_singularity": ["C1"],
+    "continuous_curvature_path": ["E1"],
+    "shortest_path_with_reverse": ["E3"],
+    "time_optimal_convex_socp": ["F1"],
+    "speed_limit_curve_jerk": ["F2"],
+    "spiral_parametrization": ["E1", "problem_statement"]
+  },
+  "problem_to_paper": {
+    "Q1_spiral_positions_velocities": ["C3", "C1"],
+    "Q2_collision_stop_time": ["C3", "C1"],
+    "Q3_min_pitch_turnaround": ["E1"],
+    "Q4_s_turn_shortening": ["E3", "E1"],
+    "Q5_max_head_speed_2mps": ["F2", "F1"]
+  },
+  "verdict": {
+    "fully_usable": ["C3", "E1", "F1", "F2"],
+    "needs_redownload": ["C1", "E3"],
+    "note": "C1 and E3 are corrupt downloads. Do not cite as verified originals until re-downloaded. Placeholder descriptions are in LITERATURE_REVIEW.md sections 3.2 and 4.1."
+  }
+}

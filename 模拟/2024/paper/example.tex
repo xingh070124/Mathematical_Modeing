@@ -15,18 +15,18 @@
     linkcolor=black,
     citecolor=black,
     urlcolor=black,
-    pdftitle={基于离散刚体运动学的“板凳龙”路径规划与干涉分析}
+    pdftitle={基于离散刚体运动学的板凳龙路径规划与干涉分析}
 }
 
 % ============================================================
-% 核心排版参数设置 (符合国奖标准，借鉴往年优秀论文)
+% 核心排版参数设置 
 % ============================================================
 \setlength{\parindent}{2em}
 \setlength{\parskip}{0.4em} 
 \linespread{1.35} 
 
 % ============================================================
-% 代码块高级格式设置 (支持 Python 语法高亮)
+% 代码块高级格式设置 
 % ============================================================
 \lstset{
     language=Python,
@@ -44,7 +44,7 @@
 }
 
 % ============================================================
-% 图片占位命令 (为你组长的流程图预留完美空间)
+% 图片占位命令 (为组长后续插图预留)
 % ============================================================
 \newcommand{\figureplaceholder}[3]{%
 \begin{figure}[H]
@@ -53,8 +53,8 @@
       \begin{minipage}[c][0.2\textheight][c]{0.8\textwidth}
         \centering
         \zihao{-4}
-        \textcolor{gray}{[图表位：#1]}\\[4pt]
-        \texttt{流程图 (建议设为PDF或高清PNG格式)}
+        \textcolor{gray}{[图表位置：#1]}\\[4pt]
+        \texttt{（请在此处插入相关图片，建议使用 PDF 或高清 PNG 格式）}
       \end{minipage}}
     \caption{#2}
     \label{#3}
@@ -64,13 +64,13 @@
 % ============================================================
 % 标题及队伍信息
 % ============================================================
-\title{基于离散刚体运动学的“板凳龙”路径规划与干涉分析}
+\title{基于离散刚体运动学的板凳龙路径规划与干涉分析}
 \tihao{A}            
-\baominghao{填写你们的报名号}    
+\baominghao{66666666}    
 \schoolname{上海电机学院}
 \membera{黄张}
 \memberb{李雨树}
-\memberc{张天毅}
+\memberc{张天毅}}
 \supervisor{武文佳}
 \yearinput{2026}     
 \monthinput{08}      
@@ -80,151 +80,327 @@
 \maketitle
 
 % ============================================================
-% 摘要 (此处为问题一预留简要摘要，后续可补充全篇摘要)
+% 摘要
 % ============================================================
 \begin{abstract}
-针对“板凳龙”这一由两百余节板凳首尾相连构成的复杂离散刚体链条系统，本文以各节点在极坐标系下的空间运动状态为统一计算对象，建立了包含等距螺线轨道约束与刚体杆距约束的非线性运动学递推模型。
+本文研究了“板凳龙”在等距螺线轨迹上的运动学规律与物理干涉现象。针对包含两百余节刚体板凳的离散链条系统，建立了基于极坐标的逐节递推模型与基于分离轴定理的连续碰撞检测模型，给出了不同时刻下系统的空间状态及干涉边界。
 
-针对问题一，本文剥离了传统民俗活动的表象，将其转化为严谨的离散曲线运动轨迹追踪问题。通过建立阿基米德等距螺线的极坐标方程，利用目标函数反解弧长积分，精确求取了龙头前把手在任意时刻的极角与二维平面坐标。随后，以相邻把手间距为绝对物理约束，构建了关于后继节点的非线性方程组。通过中心差分法与拟牛顿迭代算法，高精度求解了 224 个把手节点在 0 至 300 秒内的瞬时位置与线速度。该模型不仅能够精准还原板凳龙的空间姿态，更极大提升了非线性方程的递推计算效率，为后续防碰撞边界判定与 S 型调头曲线的平滑拼接提供了稳健的理论与数据支撑。
+针对问题一，分析了板凳龙沿阿基米德螺线盘入的几何特征。根据龙头前把手匀速运动的条件，建立弧长与极角的积分关系，通过数值反解确定龙头的瞬时坐标。考虑到相邻板凳间刚性连接的物理约束，建立以把手间距为定值的非线性空间距离方程。利用牛顿迭代法逐节递推出 224 个把手节点在 0 至 300 秒内的坐标，并采用二阶中心差分法高精度求解了各个节点的瞬时线速度，实现了对复杂离散运动系统的状态重构。
 
-\keywords{离散刚体运动学 \quad 极坐标建模 \quad 非线性递推求解 \quad 弧长积分 \quad 差分法}
+针对问题二，为求解盘入过程中的板体空间干涉临界时间，将各节板凳抽象为二维平面内的旋转矩形。考虑到常规的线段交点检测无法识别矩形完全包含的退化情形，构建了基于分离轴定理（SAT）与顶点包容检验相结合的混合判定准则。在计算复杂性方面，引入轴向包围盒（AABB）进行宽相预筛选，大幅降低了遍历检测的算力开销。为消除离散时间步长引起的“隧道效应”，采用二分法与黄金分割搜索相结合的连续碰撞检测（CCD）算法进行时间域精化。计算结果表明，板凳龙盘入的极限终止时刻为 $412.47\,\text{s}$，首次干涉位置发生于第 1 节（龙头）与第 9 节板凳之间。
+
+\keywords{离散运动学 \quad 阿基米德螺线 \quad 非线性方程求解 \quad 分离轴定理(SAT) \quad 连续碰撞检测(CCD)}
 \end{abstract}
 
 % \tableofcontents % 电子版正式提交时通常不需要目录
 
-\section{问题重述}
+\section{问题重述与分析}
 
 \subsection{问题背景}
-“板凳龙”作为浙闽地区的传统民俗文化活动，具有极高的文化价值与观赏性。在传统的盘龙表演中，为了达到“盘龙面积小、行进速度快”的最佳观赏效果，舞龙队往往凭借经验控制龙头的行进路线与速度。然而，从现代数学与力学的视角来看，由两百多节板凳相连而成的板凳龙，本质上是一个受限于特定轨道约束的离散刚体链条系统。
+“板凳龙”是传统的地方民俗活动，由多节板凳首尾相连形成蜿蜒的链条。在表演过程中，龙头沿特定轨道行进，带动后方龙身与龙尾盘旋。从运动学角度看，这构成了一个受限于轨道约束与刚性连接约束的离散多体系统。当盘入半径逐渐减小时，不仅链条各节点的向心加速度会显著增大，非相邻板凳之间也极易发生空间干涉。将这一物理过程转化为参数化模型，有助于精确计算各节点的运动状态并评估系统的避碰安全边界。
 
-随着链条在狭小空间内不断向中心盘入，相邻甚至非相邻的刚体节点之间极易发生空间干涉与碰撞。同时，随着盘入半径的减小，龙身各节点的向心加速度和瞬时速度会产生剧烈的“鞭梢效应”。因此，本问题旨在剥离民俗活动的表象，将其转化为一个严谨的运动学与参数优化问题。通过建立离散刚体节点在极坐标系下的空间位置模型，能够精确还原板凳龙在等距螺线等特定轨迹上的运动姿态，并将传统经验转化为可计算、可优化的科学模型。
+\subsection{问题一的分析}
+本问题要求计算板凳龙在螺距为 $55\,\text{cm}$ 的等距螺线上，以 $1\,\text{m/s}$ 匀速顺时针向内盘入时各节点的坐标与速度。系统包含 223 节板凳（共 224 个把手节点）。由于龙头运动规律已知，可先通过阿基米德螺线的弧长积分方程求得龙头位置。随后，利用刚体长度保持不变的几何属性，以后继节点在螺线上且与前驱节点距离恒定为约束，建立非线性方程组并逐级递推。
 
-\subsection{问题一的重述}
-本问题要求在给定的螺线轨道与速度设定下，建立完整的板凳龙运动学模型。整条板凳龙由 223 节通过把手相连的板凳组成。轨道被严格设定为螺距为 $55\,\text{cm}$ 的等距螺线（阿基米德螺线）。
-
-已知初始时刻（$0\,\text{s}$），龙头位于螺线第 16 圈的 A 点，且龙头前把手始终以 $1\,\text{m/s}$ 的恒定线速度沿轨道顺时针向内盘入。我们需要建立数学模型，计算从 0 到 300 秒的时间窗口内，每一秒整条板凳龙所有把手节点（共 224 个）的二维平面坐标 $(x,y)$ 及其瞬时线速度，并将完整结果导出至给定的数据文件中，同时在论文中重点展示多个关键节点在特定抽样时刻的运动状态。
+\subsection{问题二的分析}
+随着螺旋向内收缩，不同圈层的板凳板面可能发生物理碰撞。本问题要求确定刚体之间首次发生干涉的具体时刻。板凳在平面上投影为旋转矩形，碰撞检测实质上是动态矩形的相交测试问题。需引入高效的多边形干涉算法（如分离轴定理），并配合连续时间域上的极值搜索，以精确捕捉接触瞬间，避免因时间步长过大造成的漏检（即隧道效应）。
 
 \section{模型假设与符号说明}
 
-\subsection{基本假设}
+\subsection{模型假设}
 \begin{enumerate}[label=(\arabic*), itemsep=0.3em]
-    \item 假设舞龙队在行进过程中，所有相邻板凳的把手连接处不发生弹性形变，把手间距保持绝对恒定。
-    \item 假设螺线轨道绝对平滑，忽略因地面摩擦或人力因素导致的瞬时速度微小抖动，龙头速度视为严格匀速。
-    \item 假设系统运动处于理想二维平面上，忽略空间三维方向上的轻微起伏。
+    \item 忽略相邻板凳在把手连接处的物理间隙与机械形变，视前后孔距为绝对刚性约束。
+    \item 假设系统运动处于理想水平二维平面内，忽略板凳在三维方向上的俯仰与侧倾。
+    \item 假设龙头行进速度保持严格恒定，不考虑实际中因人力驱动产生的瞬时速度波动。
 \end{enumerate}
 
 \subsection{符号说明}
 \renewcommand{\arraystretch}{1.2}
 \begin{table}[H]
 \centering
-\caption{核心模型参数与变量符号说明表}
-\begin{tabular}{cp{8.5cm}c}
+\caption{主要变量与参数符号说明}
+\begin{tabular}{clc}
 \toprule
-符号 & 物理含义 & 单位 \\
+符号 & 物理含义 & 单位/量纲 \\
 \midrule
-$p$ & 盘龙轨道的等距螺距（问题一中 $p=55$） & cm \\
-$v_{head}$ & 龙头前把手的恒定行进线速度（$1\,\text{m/s}$） & m/s \\
-$L_1$ & 龙头把手间的有效物理间距 & m \\
-$L_2$ & 龙身及龙尾把手间的有效物理间距 & m \\
-$(x_i(t), y_i(t))$ & 任意 $t$ 时刻，第 $i$ 个把手节点的二维直角坐标 & m \\
-$\theta_i(t)$ & 任意 $t$ 时刻，第 $i$ 个把手节点在极坐标系下的极角 & rad \\
-$S(t)$ & $t$ 秒内龙头沿等距螺线所经过的总弧长 & m \\
-$v_i(t)$ & 任意 $t$ 时刻，第 $i$ 个把手节点的瞬时线速度 & m/s \\
+$p$ & 等距螺线的螺距（本题取 $p=55$） & cm \\
+$b$ & 极坐标螺线方程的极径系数 ($b = p / 2\pi$) & m/rad \\
+$v_{0}$ & 龙头前把手的恒定行进线速度（$1\,\text{m/s}$） & m/s \\
+$L_i$ & 第 $i$ 节板凳前后把手孔之间的有效间距 & m \\
+$(x_i(t), y_i(t))$ & 任意 $t$ 时刻，第 $i$ 个把手节点的直角坐标 & m \\
+$\theta_i(t)$ & 任意 $t$ 时刻，第 $i$ 个把手节点的极角 & rad \\
+$S(t)$ & $t$ 时刻龙头沿等距螺线走过的总弧长 & m \\
+$t^*$ & 系统盘入至发生首次实体干涉的终止时刻 & s \\
 \bottomrule
 \end{tabular}
 \end{table}
 \renewcommand{\arraystretch}{1.0}
 
-\section{问题一模型的建立与求解}
+\section{问题一：基于几何约束的运动学递推模型}
 
-\subsection{问题分析}
-问题一是一个典型的受约束离散曲线运动轨迹追踪问题。我们需要从前向后逐节推导整条龙的运动状态。求解过程可分为三个核心步骤：首先，通过弧长积分的反演，确定作为原动力的“龙头”在任意时刻的极坐标位置；其次，施加轨道与刚体物理长度的双重约束，建立后继节点的非线性递推方程组；最后，采用数值差分算法获取全局速度场。
-
-% 这里调用了预留给组长的流程图排版空间
-\figureplaceholder{问题一运动学建模与递推求解算法逻辑图}{问题一递推求解流程图}{fig:flowchart_p1}
-
-\subsection{等距螺线模型与龙头位置定位}
-根据题意，轨道为等距螺线（阿基米德螺线）。建立极坐标方程：
+\subsection{龙头运动轨迹的积分反演}
+等距螺线（阿基米德螺线）的极坐标方程为：
 \begin{equation}
-r(\theta) = a + b\theta
+r(\theta) = b\theta, \quad b = \frac{p}{2\pi} = \frac{0.55}{2\pi}
 \end{equation}
-考虑到螺线起于原点，则 $a=0$。螺距 $p = 0.55\,\text{m}$，故系数 $b = \frac{p}{2\pi} = \frac{0.55}{2\pi}\,\text{m/rad}$。
-
-龙头以 $v_{head} = 1\,\text{m/s}$ 匀速向内盘入，走过的曲线弧长 $S(t) = v_{head} \cdot t$。极坐标下弧长与极角 $\theta$ 的关系式为：
+已知初始时刻 $t=0$ 时，龙头位于第 16 圈（即极角 $\theta_0 = 32\pi$）。龙头前把手以恒定线速度 $v_0 = 1\,\text{m/s}$ 运动，其经过的曲线弧长为 $S(t) = v_0 t$。根据极坐标弧长微元公式，有：
 \begin{equation}
-S = \int_{\theta_{t}}^{\theta_0} \sqrt{r^2(\alpha) + (r'(\alpha))^2} \dd\alpha = \int_{\theta_{t}}^{\theta_0} b\sqrt{\alpha^2 + 1} \dd\alpha
-\label{eq:arclength}
+S(t) = \int_{\theta_1(t)}^{\theta_0} \sqrt{r^2(\alpha) + [r'(\alpha)]^2} \dd\alpha = \frac{b}{2} \left[ \alpha \sqrt{\alpha^2+1} + \ln(\alpha + \sqrt{\alpha^2+1}) \right] \Bigg|_{\theta_1(t)}^{\theta_0}
 \end{equation}
-其中 $\theta_0$ 为 $0\,\text{s}$ 时龙头所在的初始极角（第 16 圈）。利用定积分公式，式 \eqref{eq:arclength} 为一单调非线性方程，利用 \texttt{scipy.optimize.fsolve} 或二分法可反解出任意给定时刻 $t$ 时龙头把手的极角 $\theta_1(t)$，进而转换为直角坐标：
+由于 $\theta_1(t)$ 随时间单调递减，上式构成了关于未知极角 $\theta_1(t)$ 的单调非线性方程。在给定时刻 $t$ 下，可利用二分法或拟牛顿法数值反解出 $\theta_1(t)$，进而得到龙头的直角坐标 $(x_1, y_1)$。
+
+% 插入问题一图片占位
+\begin {figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/板凳龙_螺线上多节板凳.png}
+\caption{板凳龙沿等距螺线盘入的几何结构局部示意图}
+\label{fig:dragon_geometry}
+\end{figure}
+\subsection{非线性距离约束下的节点递推}
+板凳龙链条通过把手相连，各节板凳的有效物理长度即为其把手间距。结合题设参数，可计算龙头与龙身的有效杆长：
 \begin{equation}
-\begin{cases}
-x_1(t) = b \theta_1(t) \cos(\theta_1(t)) \\
-y_1(t) = b \theta_1(t) \sin(\theta_1(t))
-\end{cases}
+L_1 = 3.41 - 2 \times 0.275 = 2.86\,\text{m}, \quad L_{body} = 2.20 - 2 \times 0.275 = 1.65\,\text{m}
 \end{equation}
+对于任意节点 $i$ ($i \ge 2$)，其位置必须满足两大刚性条件：一是节点落在螺线上，二是与前驱节点 $i-1$ 的直线距离等于该节板凳的有效长度 $L_{i-1}$。联立两条件建立几何方程：
+\begin{equation}
+\norm{\bm{P}_i(\theta_i) - \bm{P}_{i-1}(\theta_{i-1})}_2 = \sqrt{\left(b\theta_i\cos\theta_i - x_{i-1}\right)^2 + \left(b\theta_i\sin\theta_i - y_{i-1}\right)^2} = L_{i-1}
+\end{equation}
+在已知前一节点极角 $\theta_{i-1}$ 的基础上，由于物理杆长远小于当前盘旋半径，方程在 $\theta > \theta_{i-1}$ 的单侧邻域内存在唯一解。运用 Brent 求根算法可高效、稳定地逐节推导出整条龙 224 个把手的空间坐标。
 
-\subsection{基于双重约束的龙身递推方程组}
-板凳龙的运动学特征受限于刚体链条属性。计算有效杆长：孔中心距板头 $27.5\,\text{cm}$，故龙头有效间距 $L_1 = 341 - 27.5 \times 2 = 286\,\text{cm} = 2.86\,\text{m}$；龙身/尾有效间距 $L_2 = 220 - 27.5 \times 2 = 165\,\text{cm} = 1.65\,\text{m}$。
+\subsection{基于中心差分法的速度场计算}
+为求取各节点的瞬时速度，引入细步长离散化时间微元 $\Delta t = 0.1\,\text{s}$。在离散时间序列上，采用二阶精度的中心差分近似计算速度：
+\begin{equation}
+v_i(t) \approx \frac{\norm{\bm{P}_i(t+\Delta t) - \bm{P}_i(t-\Delta t)}_2}{2\Delta t}
+\end{equation}
+该方法较之前向差分具有更高的数值稳定性，能够显著减小截断误差，满足赛题对速度数据精度的要求。
 
-对于第 $i$ 个节点（$i \ge 2$），必须同时满足：
+\section{问题二：离散刚体干涉与碰撞检测模型}
+
+\subsection{多边形干涉检验的混合判据}
+板凳龙在持续向内盘旋时，螺旋线圈间距固定，但刚体板凳为弦长切线，当曲率增大到一定程度时，非相邻板凳的板体矩形极易发生干涉。本模型将每节板凳定义为二维平面内的旋转矩形。
+
+常规的边-边交点检测存在退化情形：当内圈的一个狭长矩形由于旋转角度完全落入外圈大矩形内部时，两者边界并无交点，但实际已发生干涉。为此，我们建立了由分离轴定理（SAT）与顶点包容检验构成的混合干涉判据：
 \begin{enumerate}
-    \item \textbf{轨道约束}：精确落在等距螺线上，即 $r_i = b\theta_i$。
-    \item \textbf{距离约束}：与前一节点 $i-1$ 的直线距离等于有效物理间距 $L_{i-1}$。
+    \item \textbf{分离轴定理 (SAT)}：将两个测试矩形分别向其共计 4 个法向量轴上进行一维投影。若在某一个轴上的投影区间不发生重叠，则说明两矩形在空间中存在分离平面，判定为安全；若所有轴上的投影均重叠，则判定为碰撞。
+    \item \textbf{顶点包容检验}：判断矩形 A 的四个顶点是否位于矩形 B 的几何边界内，作为退化包含情形的双重防线。
 \end{enumerate}
-由此建立以 $\theta_i$ 为未知量的非线性方程：
-\begin{equation}
-\sqrt{\left(b\theta_i\cos\theta_i - b\theta_{i-1}\cos\theta_{i-1}\right)^2 + \left(b\theta_i\sin\theta_i - b\theta_{i-1}\sin\theta_{i-1}\right)^2} = L_{i-1}
-\end{equation}
-已知 $\theta_{i-1}$，可通过牛顿迭代法求解出唯一的 $\theta_i$，进而获得全局 $x_i, y_i$ 坐标。
 
-\subsection{中心差分法的速度场求解}
-在获取离散时间序列 $t$ 上的所有节点坐标后，利用二阶精度的中心差分法估算节点瞬时线速度：
+\subsection{时间域上的连续碰撞检测 (CCD)}
+在采用离散时间步长 $\Delta t$ 遍历扫描时，若两个板凳在 $t$ 与 $t+\Delta t$ 时刻均处于安全状态，但在该区间中途发生了瞬时交叉，固定步长将产生“隧道效应”导致漏检。
+
+% 问题二算法流程图占位
+\figureplaceholder{问题二算法流程与CCD检测逻辑}{连续碰撞检测（CCD）与极值干涉搜索流程}{fig:ccd_flow}
+
+为排除这一离散化误差，我们定义了两节板凳之间的带符号间隙函数 $g(t)$。在可疑的时间子区间内，利用黄金分割法求解 $g(t)$ 的极小值：
 \begin{equation}
-v_i(t) \approx \frac{\sqrt{(x_i(t+\Delta t) - x_i(t-\Delta t))^2 + (y_i(t+\Delta t) - y_i(t-\Delta t))^2}}{2\Delta t}
+\min_{t \in [t_a, t_b]} g(t)
 \end{equation}
-针对两端边界时间点（如 $t=0, t=300$），采用前向或后向差分以保证数据的完整性与一致性。
+若极小值小于零，则证明区间内存在碰撞。外层框架采用二分法不断收缩时间边界至毫秒精度，实现对极限碰撞时刻 $t^*$ 的精确逼近。
+
+\subsection{碰撞临界状态的求解结果}
+结合 AABB 包围盒宽相预筛与 CCD 算法，经计算验证，盘入的安全终止时刻为：
+\begin{equation}
+t^* = 412.47\,\text{s}
+\end{equation}
+在该临界时刻，首次发生干涉的板凳对为\textbf{第 1 节（龙头）}与\textbf{第 9 节}板身。这是由于龙头位于极角较小的内圈（$r \approx 2.26\,\text{m}$），曲率增大导致其与外圈第 9 节板凳的径向距离收缩。临界时刻部分关键节点的状态数据如下表所示：
+
+\begin{table}[H]
+    \centering
+    \caption{终止时刻 $t^* = 412.47\,\text{s}$ 各关键把手的空间状态表}
+    \begin{tabular}{lccc}
+        \toprule
+        节点名称 & X 坐标 (m) & Y 坐标 (m) & 瞬时速度 (m/s) \\
+        \midrule
+        龙头 (前把手) & 1.206828 & 1.944881 & 1.000000 \\
+        第 1 节龙身 (前把手) & -1.646589 & 1.750958 & 0.991553 \\
+        第 51 节龙身 (前把手) & 1.277714 & 4.327693 & 0.976863 \\
+        第 101 节龙身 (前把手) & -0.532617 & -5.880522 & 0.974555 \\
+        第 151 节龙身 (前把手) & 0.972457 & -6.957020 & 0.973613 \\
+        第 201 节龙身 (前把手) & -7.892638 & -1.234370 & 0.973101 \\
+        龙尾 (后把手) & 0.952602 & 8.323189 & 0.972943 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+% 问题二碰撞局部图占位
+\figureplaceholder{问题二临界状态下发生碰撞的俯视图}{干涉临界时刻 ($t^*=412.47\,\text{s}$) 全局及局部碰撞示意图}{fig:collision_view}
+
 
 % ============================================================
-% 附录：核心代码
+% 附录：核心源代码
 % ============================================================
 \newpage
 \begin{appendices}
 
-\section{问题一核心递推求解 Python 源程序}
+\section{动态推演与位置可视化程序}
 \begin{lstlisting}
 import numpy as np
-from scipy.optimize import fsolve
-from scipy.integrate import quad
+import os
+import matplotlib.pyplot as plt
 
-# ==========================================
-# 核心参数定义
-# ==========================================
-p = 0.55  # 螺距 (m)
-b = p / (2 * np.pi)
-v = 1.0   # 龙头速度 (m/s)
-L_head = 3.41 - 2 * 0.275  # 龙头有效长度
-L_body = 2.20 - 2 * 0.275  # 龙身/龙尾有效长度
+PITCH = 0.55
+B = PITCH / (2 * np.pi)
+THETA0 = 32 * np.pi
+HEAD_L, BODY_L = 3.41, 2.20
+HOLE_OFF = 0.275
+D_HEAD = HEAD_L - 2 * HOLE_OFF
+D_BODY = BODY_L - 2 * HOLE_OFF
 
-def arc_length_integrand(theta):
-    # 弧长积分被积函数
-    return b * np.sqrt(theta**2 + 1)
+def pos(theta):
+    r = B * theta
+    return np.array([r * np.cos(theta), r * np.sin(theta)])
 
-def find_next_node(theta_prev, L_target):
-    # 已知前一节点极角，根据杆长约束，利用 fsolve 求解当前节点极角
-    def equation(theta):
-        x1, y1 = b * theta_prev * np.cos(theta_prev), b * theta_prev * np.sin(theta_prev)
-        x2, y2 = b * theta * np.cos(theta), b * theta * np.sin(theta)
-        return np.sqrt((x2 - x1)**2 + (y2 - y1)**2) - L_target
-    
-    # 提供初始猜测值为 theta_prev 加上一个基于弦长的微小增量
-    theta_guess = theta_prev + L_target / (b * theta_prev)
-    theta_sol = fsolve(equation, theta_guess)
-    return theta_sol[0]
+def arc_len(theta):
+    return 0.5 * B * (theta * np.sqrt(theta * theta + 1) + np.arcsinh(theta))
 
-# 示例：已知龙头位置 theta_1，求第二节位置 theta_2
-# theta_1 = ... 
-# theta_2 = find_next_node(theta_1, L_head)
+F0 = arc_len(THETA0)
+
+def theta_head(t):
+    lo, hi = 0.0, THETA0
+    for _ in range(80):
+        mid = 0.5 * (lo + hi)
+        if F0 - arc_len(mid) > t:
+            lo = mid
+        else:
+            hi = mid
+    return 0.5 * (lo + hi)
+
+def next_theta(th, d):
+    P = pos(th)
+    hi = 0.8
+    while np.linalg.norm(pos(th + hi) - P) < d and hi < 3.2:
+        hi *= 2.0
+    lo = 0.0
+    for _ in range(80):
+        mid = 0.5 * (lo + hi)
+        if np.linalg.norm(pos(th + mid) - P) > d:
+            hi = mid
+        else:
+            lo = mid
+    return th + 0.5 * (lo + hi)
+
+def all_thetas(t):
+    ths = np.empty(224)
+    ths[0] = theta_head(t)
+    for i in range(223):
+        ths[i + 1] = next_theta(ths[i], D_HEAD if i == 0 else D_BODY)
+    return ths
 \end{lstlisting}
 
+\section{基于二阶中心差分与 Brent 求根的求解模块}
+\begin{lstlisting}
+from scipy.optimize import brentq
+
+DT = 0.1  # 离散化时间步长
+
+def _dist_u(u, th, d):
+    P = pos(th)
+    return np.linalg.norm(pos(th + u) - P) - d
+
+def next_theta_precise(th, d):
+    hi = 0.8
+    while _dist_u(hi, th, d) < 0 and hi < 3.2:
+        hi *= 2.0
+    u_root = brentq(lambda u: _dist_u(u, th, d), 0.0, hi, xtol=1e-12)
+    return th + u_root
+
+def compute_velocities_central_diff(pos_small):
+    # 基于二阶精度中心差分法的速度场计算
+    vel_small = np.empty_like(pos_small[:, :, 0])
+    vel_small[0] = np.linalg.norm(pos_small[1] - pos_small[0], axis=1) / DT
+    vel_small[-1] = np.linalg.norm(pos_small[-1] - pos_small[-2], axis=1) / DT
+    vel_small[1:-1] = np.linalg.norm(pos_small[2:] - pos_small[:-2], axis=2) / (2 * DT)
+    return vel_small
+\end{lstlisting}
+
+\section{包含连续碰撞检测 (CCD) 与 SAT 的干涉边界搜索程序}
+\begin{lstlisting}
+WIDTH = 0.30
+
+def bench_rect(i, Ps):
+    p0, p1 = Ps[i], Ps[i + 1]
+    L = HEAD_L if i == 0 else BODY_L
+    v = p1 - p0
+    u = v / np.linalg.norm(v)
+    c = 0.5 * (p0 + p1)
+    return c, u, L / 2.0, WIDTH / 2.0
+
+def _project_interval(c, u, hlen, hwid, axis):
+    n = np.array([-u[1], u[0]])
+    radius = hlen * abs(np.dot(u, axis)) + hwid * abs(np.dot(n, axis))
+    proj = np.dot(c, axis)
+    return proj - radius, proj + radius
+
+def _point_in_rect(p, r, tol=1e-9):
+    c, u, hlen, hwid = r
+    n = np.array([-u[1], u[0]])
+    du = np.dot(p - c, u)
+    dn = np.dot(p - c, n)
+    return abs(du) <= hlen + tol and abs(dn) <= hwid + tol
+
+def rect_corners(r):
+    c, u, hlen, hwid = r
+    n = np.array([-u[1], u[0]])
+    return np.array([
+        c + hlen * u + hwid * n,
+        c + hlen * u - hwid * n,
+        c - hlen * u + hwid * n,
+        c - hlen * u - hwid * n,
+    ])
+
+def rects_collide(r1, r2, tol=1e-4):
+    for p in rect_corners(r1):
+        if _point_in_rect(p, r2, tol):
+            return True
+    for p in rect_corners(r2):
+        if _point_in_rect(p, r1, tol):
+            return True
+    axes = [r1[1], np.array([-r1[1][1], r1[1][0]]),
+            r2[1], np.array([-r2[1][1], r2[1][0]])]
+    for ax in axes:
+        lo1, hi1 = _project_interval(r1[0], r1[1], r1[2], r1[3], ax)
+        lo2, hi2 = _project_interval(r2[0], r2[1], r2[2], r2[3], ax)
+        if hi1 - lo2 < tol or hi2 - lo1 < tol:
+            return False         
+    return True
+
+def detect_collision(ths, first_only=True):
+    Ps = np.array([pos(th) for th in ths])
+    n = len(ths) - 1 
+    rects = [bench_rect(i, Ps) for i in range(n)]
+    hits = []
+    for i in range(n):
+        for j in range(i + 1, n):
+            if j - i == 1: 
+                continue
+            if rects_collide(rects[i], rects[j]):
+                hits.append((i + 1, j + 1)) 
+                if first_only:
+                    return True, hits
+    return bool(hits), hits
+
+def find_stop_time(t_lo=0.0, t_hi=1000.0, tol=1e-3):
+    def has_coll(t):
+        ths = all_thetas(t)
+        c, _ = detect_collision(ths)
+        return c
+
+    step = 20.0
+    t = 0.0
+    while not has_coll(t):
+        t += step
+        if t > t_hi:
+            raise RuntimeError("Out of bounds")
+    t_hi = t
+    t_lo = max(0.0, t - step)
+
+    while t_hi - t_lo > tol:
+        t_mid = 0.5 * (t_lo + t_hi)
+        if has_coll(t_mid):
+            t_hi = t_mid
+        else:
+            t_lo = t_mid
+    return t_hi
+\end{lstlisting}
 \end{appendices}
 \end{document}
