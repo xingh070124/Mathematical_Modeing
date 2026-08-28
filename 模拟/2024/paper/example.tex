@@ -1,5 +1,7 @@
 \documentclass{cumcmthesis}
 \usepackage{amsmath,amssymb,amsfonts,bm}
+\providecommand{\dd}{\mathrm{d}}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
 \usepackage{booktabs,array,longtable}
 \usepackage{graphicx}
 \usepackage{xcolor}
@@ -70,7 +72,7 @@
 \schoolname{上海电机学院}
 \membera{黄张}
 \memberb{李雨树}
-\memberc{张天毅}}
+\memberc{张天毅}
 \supervisor{武文佳}
 \yearinput{2026}     
 \monthinput{08}      
@@ -149,11 +151,11 @@ S(t) = \int_{\theta_1(t)}^{\theta_0} \sqrt{r^2(\alpha) + [r'(\alpha)]^2} \dd\alp
 \end{equation}
 由于 $\theta_1(t)$ 随时间单调递减，上式构成了关于未知极角 $\theta_1(t)$ 的单调非线性方程。在给定时刻 $t$ 下，可利用二分法或拟牛顿法数值反解出 $\theta_1(t)$，进而得到龙头的直角坐标 $(x_1, y_1)$。
 
-% 插入问题一图片占位
+% 插入问题一图片
 \begin {figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/板凳龙_螺线上多节板凳.png}
-\caption{板凳龙沿等距螺线盘入的几何结构局部示意图}
+\includegraphics[width=0.82\textwidth]{figures/dragon_geometry.png}
+\caption{板凳龙沿等距螺线盘入的几何结构示意图（黑白，内圈局部）}
 \label{fig:dragon_geometry}
 \end{figure}
 \subsection{非线性距离约束下的节点递推}
@@ -188,8 +190,13 @@ v_i(t) \approx \frac{\norm{\bm{P}_i(t+\Delta t) - \bm{P}_i(t-\Delta t)}_2}{2\Del
 \subsection{时间域上的连续碰撞检测 (CCD)}
 在采用离散时间步长 $\Delta t$ 遍历扫描时，若两个板凳在 $t$ 与 $t+\Delta t$ 时刻均处于安全状态，但在该区间中途发生了瞬时交叉，固定步长将产生“隧道效应”导致漏检。
 
-% 问题二算法流程图占位
-\figureplaceholder{问题二算法流程与CCD检测逻辑}{连续碰撞检测（CCD）与极值干涉搜索流程}{fig:ccd_flow}
+% 问题二算法流程图
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/ccd_flow.png}
+\caption{问题二算法流程与 CCD 连续碰撞检测逻辑}
+\label{fig:ccd_flow}
+\end{figure}
 
 为排除这一离散化误差，我们定义了两节板凳之间的带符号间隙函数 $g(t)$。在可疑的时间子区间内，利用黄金分割法求解 $g(t)$ 的极小值：
 \begin{equation}
