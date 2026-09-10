@@ -1,0 +1,77 @@
+﻿id,quantity,value,unit,uncertainty,source,command,note
+P01,热扩散系数 alpha = k/(rho cp),1.688555347e-07,m^2/s,解析精确,附录2,python src/q1_solve.py,
+P02,用户文中 alpha 数值 1.679e-7 的相对偏差,0.005691094158,-,解析精确,用户方案 2.1,python src/q1_solve.py,"用户写 1.679e-7, 实为 1.6886e-7"
+P03,D(C0=2.55),4.937655094e-09,m^2/s,解析精确,附录2,python src/q1_solve.py,
+P04,D(C=0.15),1.854744595e-11,m^2/s,解析精确,附录2,python src/q1_solve.py,问题3阈值处
+P05,D(C=0.0331),1.471273937e-20,m^2/s,解析精确,附录2,python src/q1_solve.py,1800s C_inf
+P06,D 在 C0..0.0331 上的量级跨度,3.356040619e+11,-,解析精确,附录2,python src/q1_solve.py,12 个数量级
+P07,热 Biot 数 Bi = hR/k,1.388888889,-,解析精确,附录2,python src/q1_solve.py,>0.1 内部温度不均匀
+P08,传质 Biot 数 Bi_m = hm R/D(C0),3.240404543,-,解析精确,附录2,python src/q1_solve.py,
+P09,导热特征时间 R^2/alpha,2368.888889,s,解析精确,附录2,python src/q1_solve.py,与 1800 s 比较
+P10,含水率扩散特征时间 R^2/D(C0),81010.11358,s,解析精确,附录2,python src/q1_solve.py,
+P11,长径比 L/R,12.5,-,解析精确,题面,python src/q1_solve.py,
+P12,端面面积/侧面面积,0.04,-,解析精确,题面,python src/q1_solve.py,忽略轴向的相对误差量级
+P13,附件1 温度范围,28.000..50.246,degC,解析精确,附件1,python src/q1_solve.py,
+P14,附件1 水分浓度范围,0.01963..0.05025,kg/kg,解析精确,附件1,python src/q1_solve.py,
+P15,附件1 采样间隔,60,s,解析精确,附件1,python src/q1_solve.py,
+P16,附件1 C_inf 下降步数 / 总步数,80/240,-,解析精确,附件1,python src/q1_solve.py,非单调 => 数据含噪声
+P17,附件1 C_inf 最大单步降幅,0.00044,kg/kg,解析精确,附件1,python src/q1_solve.py,
+P18,附件1 T_inf 下降步数 / 总步数,95/240,-,解析精确,附件1,python src/q1_solve.py,
+P19,附件2 半径范围,1.198..2.000,cm,解析精确,附件2,python src/q1_solve.py,
+P20,附件2 采样间隔,1800,s,解析精确,附件2,python src/q1_solve.py,
+P21,附件2 t=1800s 半径,1.873,cm,解析精确,附件2,python src/q1_solve.py,问题1时段末
+P22,附件1 覆盖时长,14400,s,解析精确,附件1,python src/q1_solve.py,问题1只需 1800 s
+P23,1800s 时 C_inf/C0,0.01296862745,-,解析精确,附件1,python src/q1_solve.py,
+S01,正确内部对角元 b_i (乘 1/alpha),-2*alpha/dr**2,1/m^2,符号精确,sympy 重算,python src/q1_solve.py,
+S02,用户内部对角元 b_i (乘 1/alpha),alpha*(2*i + 1)/(2*dr**2*i),1/m^2,符号精确,用户方案 4.3,python src/q1_solve.py,
+S03,两者之差 (乘 1/alpha),alpha*(6*i + 1)/(2*dr**2*i),1/m^2,符号精确,sympy,python src/q1_solve.py,
+S04,用户系数行和 a+b+c (乘 1/alpha),(1/2 - i)/(dr**2*i),1/m^2,符号精确,用户方案 4.3,python src/q1_solve.py,非 0 => 非守恒
+S08,解析级数初始条件重构误差 max,0.002350258988,-,级数截断=120项,run robin_cylinder,python src/q1_solve.py,<1e-6 说明特征值与系数正确
+S09_M100,"FV vs 解析解最大偏差 (M=100, t=300s)",0.0003715464938,K,解析级数120项,run robin compare,python src/q1_solve.py,
+S09_M200,"FV vs 解析解最大偏差 (M=200, t=300s)",0.0002696205508,K,解析级数120项,run robin compare,python src/q1_solve.py,
+S09_M400,"FV vs 解析解最大偏差 (M=400, t=300s)",0.0002441338801,K,解析级数120项,run robin compare,python src/q1_solve.py,
+S09_M800,"FV vs 解析解最大偏差 (M=800, t=300s)",0.000237761853,K,解析级数120项,run robin compare,python src/q1_solve.py,
+S09_M1600,"FV vs 解析解最大偏差 (M=1600, t=300s)",0.0002361694297,K,解析级数120项,run robin compare,python src/q1_solve.py,
+S10,网格收敛: M=800 vs M=1600 温度最大偏差,1.357228143e-07,K,vs M=1600,run solve_q1,python src/q1_solve.py,
+S11,网格收敛: M=800 vs M=1600 水分最大偏差,8.104628124e-07,kg/kg,vs M=1600,run solve_q1,python src/q1_solve.py,
+S12,"网格收敛经验阶 (温度, M=400->800)",2.276355417,-,对数斜率,run solve_q1,python src/q1_solve.py,
+S13,"网格收敛经验阶 (水分, M=400->800)",2.321996329,-,对数斜率,run solve_q1,python src/q1_solve.py,
+S14_dt4.0,"时间步误差 dt=4.0s (vs M=1600,dt=0.05)",0.004727008015,-,vs 参考,run solve_q1,python src/q1_solve.py,dT=4.727e-03 K; dC=4.213e-04
+S14_dt2.0,"时间步误差 dt=2.0s (vs M=1600,dt=0.05)",0.002331574762,-,vs 参考,run solve_q1,python src/q1_solve.py,dT=2.332e-03 K; dC=2.084e-04
+S14_dt1.0,"时间步误差 dt=1.0s (vs M=1600,dt=0.05)",0.001135351471,-,vs 参考,run solve_q1,python src/q1_solve.py,dT=1.135e-03 K; dC=1.019e-04
+S14_dt0.5,"时间步误差 dt=0.5s (vs M=1600,dt=0.05)",0.0005376352196,-,vs 参考,run solve_q1,python src/q1_solve.py,dT=5.376e-04 K; dC=4.871e-05
+S14_dt0.25,"时间步误差 dt=0.25s (vs M=1600,dt=0.05)",0.0002388793685,-,vs 参考,run solve_q1,python src/q1_solve.py,dT=2.389e-04 K; dC=2.210e-05
+S14_dt0.125,"时间步误差 dt=0.125s (vs M=1600,dt=0.05)",8.952763949e-05,-,vs 参考,run solve_q1,python src/q1_solve.py,dT=8.953e-05 K; dC=8.794e-06
+S15,半隐式 D 回滞 vs 全非线性 温度最大偏差 (M=200),5.948810332e-05,K,semi-implicit lag,run solve_mol,python src/q1_solve.py,
+S16,半隐式 D 回滞 vs 全非线性 水分最大偏差 (M=200),5.323263407e-06,kg/kg,semi-implicit lag,run solve_mol,python src/q1_solve.py,
+S17,MOL(M=200) vs FV 参考 温度偏差,6.097305345e-05,K,vs M=1600,run solve_mol,python src/q1_solve.py,
+S18,MOL(M=200) vs FV 参考 水分偏差,1.17007158e-05,kg/kg,vs M=1600,run solve_mol,python src/q1_solve.py,
+S19_linear,插值敏感性 linear vs pchip: 温度最大差,0.0004837419131,K,方法敏感性,run,python src/q1_solve.py,
+S20_linear,插值敏感性 linear vs pchip: 水分最大差,1.172409125e-07,kg/kg,方法敏感性,run,python src/q1_solve.py,
+S19_cubic,插值敏感性 cubic vs pchip: 温度最大差,0.0003308078758,K,方法敏感性,run,python src/q1_solve.py,
+S20_cubic,插值敏感性 cubic vs pchip: 水分最大差,2.510856698e-07,kg/kg,方法敏感性,run,python src/q1_solve.py,
+S21,生产解 vs 高分辨率解 温度最大偏差,7.459262088e-05,K,vs M=1600,run solve_q1,python src/q1_solve.py,"生产设置 M=800, dt=0.125 s"
+S22,生产解 vs 高分辨率解 水分最大偏差,7.463437155e-06,kg/kg,vs M=1600,run solve_q1,python src/q1_solve.py,"生产设置 M=800, dt=0.125 s"
+R_T_100,"T(r,t=100s) degC @ 0/0.5/1/1.5/2cm",28.0001 / 28.0003 / 28.0039 / 28.0319 / 28.1796,degC,±1e-4 K (见 S21),run solve_q1,python src/q1_solve.py,表1
+R_C_100,"C(r,t=100s) kg/kg @ 0/0.5/1/1.5/2cm",2.5500 / 2.5500 / 2.5500 / 2.5500 / 2.2471,kg/kg,±1e-6 (见 S22),run solve_q1,python src/q1_solve.py,表2
+R_T_300,"T(r,t=300s) degC @ 0/0.5/1/1.5/2cm",28.0407 / 28.0635 / 28.1514 / 28.3674 / 28.8487,degC,±1e-4 K (见 S21),run solve_q1,python src/q1_solve.py,表1
+R_C_300,"C(r,t=300s) kg/kg @ 0/0.5/1/1.5/2cm",2.5500 / 2.5500 / 2.5500 / 2.5492 / 2.0509,kg/kg,±1e-6 (见 S22),run solve_q1,python src/q1_solve.py,表2
+R_T_600,"T(r,t=600s) degC @ 0/0.5/1/1.5/2cm",28.4535 / 28.5363 / 28.8041 / 29.3157 / 30.1642,degC,±1e-4 K (见 S21),run solve_q1,python src/q1_solve.py,表1
+R_C_600,"C(r,t=600s) kg/kg @ 0/0.5/1/1.5/2cm",2.5500 / 2.5500 / 2.5500 / 2.5353 / 1.8770,kg/kg,±1e-6 (见 S22),run solve_q1,python src/q1_solve.py,表2
+R_T_900,"T(r,t=900s) degC @ 0/0.5/1/1.5/2cm",29.3245 / 29.4586 / 29.8759 / 30.6166 / 31.7296,degC,±1e-4 K (见 S21),run solve_q1,python src/q1_solve.py,表1
+R_C_900,"C(r,t=900s) kg/kg @ 0/0.5/1/1.5/2cm",2.5500 / 2.5500 / 2.5497 / 2.5045 / 1.7547,kg/kg,±1e-6 (见 S22),run solve_q1,python src/q1_solve.py,表2
+R_T_1200,"T(r,t=1200s) degC @ 0/0.5/1/1.5/2cm",30.5431 / 30.7101 / 31.2227 / 32.1132 / 33.4296,degC,±1e-4 K (见 S21),run solve_q1,python src/q1_solve.py,表1
+R_C_1200,"C(r,t=1200s) kg/kg @ 0/0.5/1/1.5/2cm",2.5500 / 2.5500 / 2.5482 / 2.4646 / 1.6586,kg/kg,±1e-6 (见 S22),run solve_q1,python src/q1_solve.py,表2
+R_T_1500,"T(r,t=1500s) degC @ 0/0.5/1/1.5/2cm",31.9962 / 32.1872 / 32.7669 / 33.7477 / 35.1212,degC,±1e-4 K (见 S21),run solve_q1,python src/q1_solve.py,表1
+R_C_1500,"C(r,t=1500s) kg/kg @ 0/0.5/1/1.5/2cm",2.5500 / 2.5499 / 2.5445 / 2.4206 / 1.5787,kg/kg,±1e-6 (见 S22),run solve_q1,python src/q1_solve.py,表2
+R_T_1800,"T(r,t=1800s) degC @ 0/0.5/1/1.5/2cm",33.5760 / 33.7725 / 34.3644 / 35.3623 / 36.7859,degC,±1e-4 K (见 S21),run solve_q1,python src/q1_solve.py,表1
+R_C_1800,"C(r,t=1800s) kg/kg @ 0/0.5/1/1.5/2cm",2.5500 / 2.5497 / 2.5383 / 2.3755 / 1.5102,kg/kg,±1e-6 (见 S22),run solve_q1,python src/q1_solve.py,表2
+S23_1,体积平均含水率 <C>(t=1s),2.549724829,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
+S23_10,体积平均含水率 <C>(t=10s),2.547785323,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
+S23_60,体积平均含水率 <C>(t=60s),2.538062477,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
+S23_300,体积平均含水率 <C>(t=300s),2.496411871,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
+S23_900,体积平均含水率 <C>(t=900s),2.406565268,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
+S23_1800,体积平均含水率 <C>(t=1800s),2.291601526,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
+S24,<C> 从 0 到 1800 s 的相对下降,0.1012357489,-,解析比值,run solve_q1,python src/q1_solve.py,预热平衡阶段的干燥比例
+S25,C(r=R) 与 C_inf 的比值 (t=1800s),77.1089301,-,解析比值,run solve_q1,python src/q1_solve.py,>1 表示仍在干燥
+S26,中心含水率 C(r=0) 相对初始值的下降 (t=1800s),0.1013327349,-,解析比值,run solve_q1,python src/q1_solve.py,
