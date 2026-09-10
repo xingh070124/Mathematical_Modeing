@@ -1,0 +1,28 @@
+===== FONT xref 49 =====
+<<
+  /BaseFont /DY2+ZBUIIt-2
+  /Encoding 70 0 R
+  /FirstChar 33
+  /FontDescriptor 71 0 R
+  /LastChar 78
+  /Subtype /Type1
+  /ToUnicode 72 0 R
+  /Type /Font
+  /Widths [ 999 999 999 999 999 999 999 999 999 999 999 999 999
+      999 999 999 999 999 999 999 999 999 999 999 999 999 999
+      999 999 999 999 999 999 999 999 999 999 999 999 999 999
+      999 999 999 999 0 ]
+>>
+===== FONT xref 138 =====
+<<
+  /BaseFont /DY27+ZBUIIv-27
+  /Encoding 158 0 R
+  /FirstChar 33
+  /FontDescriptor 159 0 R
+  /LastChar 58
+  /Subtype /Type1
+  /ToUnicode 160 0 R
+  /Type /Font
+  /Widths [ 999 999 999 999 999 999 999 999 999 999 999 999 999
+      999 999 999 999 999 999 999 999 999 999 999 999 0 ]
+>>

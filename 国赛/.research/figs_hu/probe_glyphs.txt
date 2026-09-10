@@ -1,0 +1,56 @@
+PROBE OF FONT-PRIVATE (PUA) GLYPHS IN 胡众欢 (2020)
+PDF: 基于多物理场耦合的热风干燥模型及其验证_胡众欢.pdf
+Discriminator: enclosed-hole count.  nabla -> 0 holes ; partial -> 1 hole.
+Ink threshold: grey < 160, raster 600 dpi. Holes smaller than 9 px ignored.
+
+--- page 3 (PDF page index 2) : U+E065 ---
+   font=DY2+ZBUIIt-2       at (285.8,207.1)  holes=1  ink_px=641  box=123x123
+   font=DY2+ZBUIIt-2       at (234.4,238.6)  holes=1  ink_px=537  box=123x122
+
+--- page 3 (PDF page index 2) : U+E785 ---
+   font=DY27+ZBUIIv-27     at (253.7,200.1)  holes=2  ink_px=1493  box=122x137
+   font=DY27+ZBUIIv-27     at (256.5,213.7)  holes=1  ink_px=920  box=123x137
+   font=DY27+ZBUIIv-27     at (151.7,231.6)  holes=1  ink_px=1297  box=122x137
+   font=DY27+ZBUIIv-27     at (156.2,245.2)  holes=1  ink_px=920  box=123x137
+
+--- page 3 : U+E785 ---
+   font=DY27+ZBUIIv-27     at (253.7,200.1)  holes=2  ink_px=1493  box=122x137
+   font=DY27+ZBUIIv-27     at (256.5,213.7)  holes=1  ink_px=920  box=123x137
+   font=DY27+ZBUIIv-27     at (151.7,231.6)  holes=1  ink_px=1297  box=122x137
+   font=DY27+ZBUIIv-27     at (156.2,245.2)  holes=1  ink_px=920  box=123x137
+
+--- page 4 (PDF page index 3) : U+E065 ---
+   font=DY2+ZBUIIt-2       at (282.5,204.6)  holes=1  ink_px=538  box=123x122
+   font=DY2+ZBUIIt-2       at (313.8,204.6)  holes=1  ink_px=517  box=123x122
+   font=DY2+ZBUIIt-2       at (342.6,204.6)  holes=1  ink_px=662  box=123x123
+
+--- page 4 (PDF page index 3) : U+E785 ---
+   font=DY27+ZBUIIv-27     at (219.8,198.1)  holes=1  ink_px=1477  box=122x138
+   font=DY27+ZBUIIv-27     at (221.4,211.2)  holes=1  ink_px=920  box=123x138
+   font=DY27+ZBUIIv-27     at (214.7,418.5)  holes=1  ink_px=1133  box=122x137
+
+--- page 4 : U+E785 ---
+   font=DY27+ZBUIIv-27     at (219.8,198.1)  holes=1  ink_px=1477  box=122x138
+   font=DY27+ZBUIIv-27     at (221.4,211.2)  holes=1  ink_px=920  box=123x138
+   font=DY27+ZBUIIv-27     at (214.7,418.5)  holes=1  ink_px=1133  box=122x137
+   font=DY27+ZBUIIv-27     at (216.9,432.1)  holes=1  ink_px=920  box=122x138
+
+--- page 5 (PDF page index 4) : U+E065 ---
+   font=DY2+ZBUIIt-2       at (326.7,135.2)  holes=1  ink_px=779  box=122x122
+   font=DY2+ZBUIIt-2       at (240.8,250.7)  holes=1  ink_px=500  box=123x122
+   font=DY2+ZBUIIt-2       at (275.9,250.7)  holes=1  ink_px=862  box=123x122
+   font=DY2+ZBUIIt-2       at (334.0,250.7)  holes=1  ink_px=664  box=123x123
+
+--- page 5 (PDF page index 4) : U+E785 ---
+   font=DY27+ZBUIIv-27     at (209.8,243.7)  holes=1  ink_px=1130  box=123x137
+   font=DY27+ZBUIIv-27     at (211.6,257.3)  holes=1  ink_px=920  box=123x137
+
+--- page 5 : U+E785 ---
+   font=DY27+ZBUIIv-27     at (209.8,243.7)  holes=1  ink_px=1130  box=123x137
+   font=DY27+ZBUIIv-27     at (211.6,257.3)  holes=1  ink_px=920  box=123x137
+
+
+INTERPRETATION RULE (fixed before running):
+  U+E065 with holes==0 in all samples  => it is the nabla operator  (gradient/divergence).
+  U+E785 with holes==1 in all samples  => it is the partial-derivative operator.
+  Any mixture of hole counts within one codepoint falsifies the guess.

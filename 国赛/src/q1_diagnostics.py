@@ -29,6 +29,27 @@ except Exception:
 
 hr = lambda s: (print("=" * 92), print(s), print("=" * 92))
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REG = []
+REG_PATH = os.path.join(ROOT, "outputs", "registry_q1_diagnostics.csv")
+CMD = "python src/q1_diagnostics.py"
+
+
+def add(id_, q, v, u, unc="run", src="run q1_diagnostics", note=""):
+    vs = v if isinstance(v, str) else (f"{v:.10g}" if isinstance(v, (int, float, np.floating)) else str(v))
+    REG.append([id_, q, vs, u, unc, src, CMD, note])
+    print(f"    [reg] {id_:14s} {q[:54]:54s} = {vs} {u}")
+
+
+def write_reg():
+    os.makedirs(os.path.dirname(REG_PATH), exist_ok=True)
+    import csv as _csv
+    with open(REG_PATH, "w", newline="", encoding="utf-8-sig") as f:
+        w = _csv.writer(f)
+        w.writerow(["id", "quantity", "value", "unit", "uncertainty", "source", "command", "note"])
+        w.writerows(REG)
+    print(f"\n注册表: {REG_PATH} ({len(REG)} 行)")
+
 
 # ---------------------------------------------------------------------------
 # D1
@@ -170,17 +191,24 @@ def d3():
         r_a, T_a, C_a, _, _ = solve_q1(M_, 0.125, t_end, env, corr=True)
         r_b, T_b, C_b = solve_q1_noded(M_, 0.125, t_end, env)
         pr = np.array([0.0, 0.005, 0.01, 0.015, 0.02])
-        dC = np.max(np.abs(np.interp(pr, r_a, C_a) - np.interp(pr, r_b, C_b)))
-        dT = np.max(np.abs(np.interp(pr, r_a, T_a) - np.interp(pr, r_b, T_b)))
+        dC = float(np.max(np.abs(np.interp(pr, r_a, C_a) - np.interp(pr, r_b, C_b))))
+        dT = float(np.max(np.abs(np.interp(pr, r_a, T_a) - np.interp(pr, r_b, T_b))))
         print(f"      M={M_:>4}: max|dC| = {dC:.3e} kg/kg   max|dT| = {dT:.3e} K")
+        add(f"D10_M{M_}", f"节点D vs 面平均D: 水分最大差 (M={M_})", dC, "kg/kg",
+            "解析", "run D3", "网格无关")
+        add(f"D11_M{M_}", f"节点D vs 面平均D: 温度最大差 (M={M_})", dT, "K",
+            "解析", "run D3", "温度方程 k 为常数, 应为 0")
     # 同样比较 3 小时 (含水率下降更多)
     print("  延长到 t=3 h (含水率下降更多, D 变化更大):")
     t3 = 10800.0
     r_a, T_a, C_a, _, _ = solve_q1(400, 0.5, t3, env, corr=True)
     r_b, T_b, C_b = solve_q1_noded(400, 0.5, t3, env)
     pr = np.array([0.0, 0.005, 0.01, 0.015, 0.02])
+    d3 = float(np.max(np.abs(np.interp(pr, r_a, C_a) - np.interp(pr, r_b, C_b))))
     print(f"      t=3h: C 范围 {C_a.min():.4f}..{C_a.max():.4f}; "
-          f"max|dC| = {np.max(np.abs(np.interp(pr,r_a,C_a)-np.interp(pr,r_b,C_b))):.3e} kg/kg")
+          f"max|dC| = {d3:.3e} kg/kg")
+    add("D12", "节点D vs 面平均D: 水分最大差 (t=3h)", d3, "kg/kg", "解析", "run D3",
+        "3 小时含水率下降更多, 差异显著放大")
 
 
 if __name__ == "__main__":
@@ -191,3 +219,4 @@ if __name__ == "__main__":
         d2()
     if which in ("all", "d3"):
         d3()
+    write_reg()

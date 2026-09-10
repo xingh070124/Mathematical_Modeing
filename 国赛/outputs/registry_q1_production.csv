@@ -1,0 +1,93 @@
+﻿id,quantity,value,unit,uncertainty,source,command,note
+X01,result1.xlsx 温度工作表 行数,1800,行,结构,outputs/result1.xlsx,python src/q1_produce.py,t=1..1800 s
+X02,result1.xlsx 温度工作表 列数,21,列,结构,outputs/result1.xlsx,python src/q1_produce.py,"r=0..2.0 cm, 步长 0.1 cm"
+X03,输出半径步长,0.1,cm,结构,outputs/result1.xlsx,python src/q1_produce.py,
+X04,输出时间步长,1.0,s,结构,outputs/result1.xlsx,python src/q1_produce.py,
+T1_100_0p0,"表1 温度 T(r=0.0cm, t=100s)",28.0000,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_100_0p5,"表1 温度 T(r=0.5cm, t=100s)",28.0003,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_100_1p0,"表1 温度 T(r=1.0cm, t=100s)",28.0039,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_100_1p5,"表1 温度 T(r=1.5cm, t=100s)",28.0319,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_100_2p0,"表1 温度 T(r=2.0cm, t=100s)",28.1795,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_300_0p0,"表1 温度 T(r=0.0cm, t=300s)",28.0406,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_300_0p5,"表1 温度 T(r=0.5cm, t=300s)",28.0634,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_300_1p0,"表1 温度 T(r=1.0cm, t=300s)",28.1513,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_300_1p5,"表1 温度 T(r=1.5cm, t=300s)",28.3673,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_300_2p0,"表1 温度 T(r=2.0cm, t=300s)",28.8486,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_600_0p0,"表1 温度 T(r=0.0cm, t=600s)",28.4534,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_600_0p5,"表1 温度 T(r=0.5cm, t=600s)",28.5361,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_600_1p0,"表1 温度 T(r=1.0cm, t=600s)",28.8039,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_600_1p5,"表1 温度 T(r=1.5cm, t=600s)",29.3156,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_600_2p0,"表1 温度 T(r=2.0cm, t=600s)",30.1641,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_900_0p0,"表1 温度 T(r=0.0cm, t=900s)",29.3243,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_900_0p5,"表1 温度 T(r=0.5cm, t=900s)",29.4583,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_900_1p0,"表1 温度 T(r=1.0cm, t=900s)",29.8758,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_900_1p5,"表1 温度 T(r=1.5cm, t=900s)",30.6164,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_900_2p0,"表1 温度 T(r=2.0cm, t=900s)",31.7295,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1200_0p0,"表1 温度 T(r=0.0cm, t=1200s)",30.5429,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1200_0p5,"表1 温度 T(r=0.5cm, t=1200s)",30.7099,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1200_1p0,"表1 温度 T(r=1.0cm, t=1200s)",31.2225,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1200_1p5,"表1 温度 T(r=1.5cm, t=1200s)",32.1130,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1200_2p0,"表1 温度 T(r=2.0cm, t=1200s)",33.4295,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1500_0p0,"表1 温度 T(r=0.0cm, t=1500s)",31.9960,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1500_0p5,"表1 温度 T(r=0.5cm, t=1500s)",32.1871,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1500_1p0,"表1 温度 T(r=1.0cm, t=1500s)",32.7667,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1500_1p5,"表1 温度 T(r=1.5cm, t=1500s)",33.7476,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1500_2p0,"表1 温度 T(r=2.0cm, t=1500s)",35.1211,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1800_0p0,"表1 温度 T(r=0.0cm, t=1800s)",33.5758,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1800_0p5,"表1 温度 T(r=0.5cm, t=1800s)",33.7724,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1800_1p0,"表1 温度 T(r=1.0cm, t=1800s)",34.3642,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1800_1p5,"表1 温度 T(r=1.5cm, t=1800s)",35.3622,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+T1_1800_2p0,"表1 温度 T(r=2.0cm, t=1800s)",36.7858,degC,<3.7e-06 K (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_100_0p0,"表2 水分浓度 C(r=0.0cm, t=100s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_100_0p5,"表2 水分浓度 C(r=0.5cm, t=100s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_100_1p0,"表2 水分浓度 C(r=1.0cm, t=100s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_100_1p5,"表2 水分浓度 C(r=1.5cm, t=100s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_100_2p0,"表2 水分浓度 C(r=2.0cm, t=100s)",2.2470,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_300_0p0,"表2 水分浓度 C(r=0.0cm, t=300s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_300_0p5,"表2 水分浓度 C(r=0.5cm, t=300s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_300_1p0,"表2 水分浓度 C(r=1.0cm, t=300s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_300_1p5,"表2 水分浓度 C(r=1.5cm, t=300s)",2.5492,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_300_2p0,"表2 水分浓度 C(r=2.0cm, t=300s)",2.0508,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_600_0p0,"表2 水分浓度 C(r=0.0cm, t=600s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_600_0p5,"表2 水分浓度 C(r=0.5cm, t=600s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_600_1p0,"表2 水分浓度 C(r=1.0cm, t=600s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_600_1p5,"表2 水分浓度 C(r=1.5cm, t=600s)",2.5353,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_600_2p0,"表2 水分浓度 C(r=2.0cm, t=600s)",1.8770,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_900_0p0,"表2 水分浓度 C(r=0.0cm, t=900s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_900_0p5,"表2 水分浓度 C(r=0.5cm, t=900s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_900_1p0,"表2 水分浓度 C(r=1.0cm, t=900s)",2.5497,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_900_1p5,"表2 水分浓度 C(r=1.5cm, t=900s)",2.5045,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_900_2p0,"表2 水分浓度 C(r=2.0cm, t=900s)",1.7547,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1200_0p0,"表2 水分浓度 C(r=0.0cm, t=1200s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1200_0p5,"表2 水分浓度 C(r=0.5cm, t=1200s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1200_1p0,"表2 水分浓度 C(r=1.0cm, t=1200s)",2.5482,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1200_1p5,"表2 水分浓度 C(r=1.5cm, t=1200s)",2.4646,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1200_2p0,"表2 水分浓度 C(r=2.0cm, t=1200s)",1.6586,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1500_0p0,"表2 水分浓度 C(r=0.0cm, t=1500s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1500_0p5,"表2 水分浓度 C(r=0.5cm, t=1500s)",2.5499,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1500_1p0,"表2 水分浓度 C(r=1.0cm, t=1500s)",2.5445,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1500_1p5,"表2 水分浓度 C(r=1.5cm, t=1500s)",2.4206,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1500_2p0,"表2 水分浓度 C(r=2.0cm, t=1500s)",1.5787,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1800_0p0,"表2 水分浓度 C(r=0.0cm, t=1800s)",2.5500,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1800_0p5,"表2 水分浓度 C(r=0.5cm, t=1800s)",2.5497,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1800_1p0,"表2 水分浓度 C(r=1.0cm, t=1800s)",2.5383,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1800_1p5,"表2 水分浓度 C(r=1.5cm, t=1800s)",2.3755,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+C2_1800_2p0,"表2 水分浓度 C(r=2.0cm, t=1800s)",1.5102,kg/kg,<1.2e-05 kg/kg (离散),outputs/result1.xlsx,python src/q1_produce.py,"生产解 M=3200, dt=2^-8 s"
+X10,"温度场最小值 (t=1s, r=0)",28.0000,degC,结构,outputs/result1.xlsx,python src/q1_produce.py,
+X11,温度场在 t=1800s 的最大值 (r=R),36.7858,degC,结构,outputs/result1.xlsx,python src/q1_produce.py,
+X12,温度场在 t=1800s 的径向温差 T(R)-T(0),3.2100,degC,解析差,outputs/result1.xlsx,python src/q1_produce.py,
+X13,水分场在 t=1800s 的中心值 C(0),2.5500,kg/kg,结构,outputs/result1.xlsx,python src/q1_produce.py,
+X14,水分场在 t=1800s 的表面值 C(R),1.5102,kg/kg,结构,outputs/result1.xlsx,python src/q1_produce.py,
+X15,整个文件的最小温度,28.0000,degC,结构,outputs/result1.xlsx,python src/q1_produce.py,
+X16,整个文件的最大温度,36.7858,degC,结构,outputs/result1.xlsx,python src/q1_produce.py,
+X17,整个文件的最小水分浓度,1.5102,kg/kg,结构,outputs/result1.xlsx,python src/q1_produce.py,
+X18,整个文件的最大水分浓度,2.5500,kg/kg,结构,outputs/result1.xlsx,python src/q1_produce.py,
+X20,t=1800s 中心含水率相对初始值的变化,0.000000e+00,kg/kg,解析差,outputs/result1.xlsx,python src/q1_produce.py,几乎为零: 中心未失水
+X21,t=1800s 表面含水率相对初始值的下降比例,0.407765,-,解析比值,outputs/result1.xlsx,python src/q1_produce.py,
+X25,C0 / C_inf(t=0),129.9032,-,解析比值,附件1,python src/q1_produce.py,初始含水率与环境含湿量之比
+X26,C0 / C_inf(t=14400s),51.1432,-,解析比值,附件1,python src/q1_produce.py,初始含水率与环境含湿量之比
+X27,C0 / C_inf 的范围,51.1..129.9,倍,解析比值,附件1,python src/q1_produce.py,即约 50 ~ 130 倍
+X30,温度离散不确定度 (时间步减半),3.7420e-06,K,-,outputs/q1_production.log,python src/q1_produce.py,
+X31,温度离散不确定度 (网格加密),6.1150e-08,K,-,outputs/q1_production.log,python src/q1_produce.py,
+X32,水分离散不确定度 (时间步减半),8.0290e-06,kg/kg,-,outputs/q1_production.log,python src/q1_produce.py,
+X33,水分离散不确定度 (网格加密),1.1710e-05,kg/kg,-,outputs/q1_production.log,python src/q1_produce.py,

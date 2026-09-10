@@ -1,0 +1,494 @@
+
+===== [page 1] =====
+                                                                 
+  DOI: 10.3303/CET2187033 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Paper Received: 2 September 2020; Revised: 19 March 2021; Accepted: 5 April 2021 
+Please cite this article as: Brasiello A., Venditti C., Adrover A., 2021, Non-isothermal Moving-boundary Model for Food Drying, Chemical 
+Engineering Transactions, 87, 193-198  DOI:10.3303/CET2187033 
+ CHEMICAL ENGINEERING TRANSACTIONS 
+VOL. 87, 2021 
+A publication of 
+The Italian Association 
+of Chemical Engineering 
+Online at www.cetjournal.it 
+Guest Editors: Laura Piazza, Mauro Moresi, Francesco Donsì
+Copyright © 2021, AIDIC Servizi S.r.l. 
+ISBN 978-88-95608-85-3; ISSN 2283-9216
+Non-Isothermal Moving-Boundary Model for Food Drying 
+Antonio Brasiello *, Claudia Venditti, Alessandra Adrover
+Dipartimento di Ingegneria Chimica Materiali Ambiente, Università degli Studi di Roma “La Sapienza”, via Eudossiana 18 
+00184 Roma, Italy  
+antonio.brasiello@uniroma1.it 
+Mathematical modeling of food drying represents a key research topic. Drying is one of the most used 
+processes in food technology. It is a complex process in which water concentration changes are very often 
+associated with volume and structural variations of materials. This phenomenon, known as shrinkage, limits 
+the possibility of using classical transport models to obtain reliable results for drying process analysis and 
+control. Drying is intrinsically a non-isothermal process, even when it is performed under “isothermal” 
+conditions, meaning when the air temperature in the drying chamber is kept constant. Indeed, thermal inertial 
+of food samples, as well as thermal effects due to water evaporation at the sample boundary, must be 
+necessarily taken into account for a deep understanding of the process and a reliable estimate of the effective 
+water diffusivity. Moreover, in many practical applications, food drying takes place in non-isothermal 
+conditions. The isothermal moving-boundary model for food dehydration and shrinkage, recently proposed by 
+Adrover et al. (2019b,c), is here improved to account for thermal effects. A convection-diffusion heat transport 
+equation, accounting for heat transfer, water evaporation, and shrinkage at the sample surface, is added to 
+the convection-diffusion water transport equation. Experimental dehydration curves, in continuous and 
+intermittent conditions, are accurately predicted by the model with an effective water diffusivity ܦeffሺܶ) 
+depending exclusively on the local temperature. The non-isothermal model is successfully applied to 
+experimental data of continuous and intermittent drying of Guava slices, reported by Chua et al. 2000a.  
+1. Introduction
+Food drying processes are often carried out in non-isothermal conditions. In the case of natural drying, for 
+example, temperature strongly depends on the environmental conditions of the production sites (climate, day-
+night temperature range, and seasonal variations). In some cases, natural drying ensures added value to the 
+final products from the point of view of organoleptic properties deeply influenced by the specific production 
+area. In many other cases, natural drying is chosen only for its economic advantage. In such cases, the main 
+drawback stands in being the characteristics of the final products highly heterogeneous.  
+Intermittent drying is a technical solution providing the advantage of increasing drying efficiency and product 
+quality, assuring uniform characteristics, through the suitable choice of the optimal temperature and humidity 
+profiles during the process. Moreover, several literature papers (see Yang et al., 2013 and reference therein) 
+highlight the possibility of reducing color degradation through intermittent drying. 
+The possibility of optimizing process conduction is directly connected to the availability of theoretical models 
+that provide the technical tools for the process evolution analysis as conditions vary. 
+Mathematical model development in this field is not an easy task due to the complexity of the materials 
+involved. During drying, foods undergo structural and volume variations not predictable with the classic 
+mathematical models (diffusive models based on Fick's law of diffusion). The phenomenon is known as 
+shrinkage. Two approaches are available in literature: in the first, based on mechanical equations for 
+deformable bodies, shrinkage is taken into account through constitutive equations for stress-deformation 
+tensor, depending on the internal structure of the material and process variables (as in the model of Curcio 
+and Aversa (2014) or the pore-mechanical model of Dhall and Datta (2011)); the second approach, borrowed 
+from polymer science (Papanu et al., 1989; Tu and Ouano, 1977), is the moving-boundary model developed 
+by Adrover et al. (2019b). In this case, shrinkage is taken into account through a suitable parameter, 
+describing the point-wise shrinkage velocity evolution as a function of the local water content gradient. Adrover 
+193
+
+===== [page 2] =====
+et al. (2019c) have shown that such a parameter can be easily derived from the experimental diagram of 
+volume vs. total water content evolution of drying sample. The moving-boundary model has been recently 
+extended to account for non-isothermal effects, see Adrover et al., 2020. Thermal effects are modeled through 
+the introduction of a convection-diffusion heat transport equation, accounting for sample shrinkage, heat 
+transfer, and water evaporation at the sample surface. When the spatio-temporal evolution of the temperature 
+field is properly accounted for, the experimental dehydration curves, in continuous and intermittent conditions, 
+can be accurately predicted by the moving-boundary model with an effective water diffusivity ܦeffሺܶ) 
+depending exclusively on the local temperature.  
+In this paper, the non-isothermal model is applied to a case of non-isothermal drying available in literature 
+(Chua et al, 2000a,b). The interesting papers by Chua et al. (2000a,b) report a set of experimental data of 
+continuous and intermittent drying of Guava slices in which air temperature and relative humidity vary 
+cyclically in a climatic chamber. Guavas are characterized by high initial moisture content and exhibit a large 
+ideal shrinkage. The model, applied to continuous dehydration experiments, allows for a reliable estimate of 
+the effective water diffusivity, which is the only unknown parameter that enters the non-isothermal model. All 
+the other parameters have been estimated from independent measurements (e.g. water adsorption isotherms) 
+and reliable correlations for heat and mass transfer coefficients. The model is subsequently successfully 
+applied, in a fully predictive way, to capture all the salient features of the intermittent drying experiments, 
+highlighting the importance of accounting for thermal inertial of the food sample as well as thermal effects of 
+water evaporation at the sample boundary for a correct description of the drying process. 
+2. Drying experiments
+Experimental data of continuous and intermittent dehydration of Guava fruit (Psidium Guajava) are taken from 
+the paper of Chua et al., 2000a. Guava samples were dried in a two-stage heat pump dryer in which the 
+drying chamber temperature and humidity profiles are imposed through PID controllers. Fresh guava fruits 
+were skinned, peeled, and cut to obtain square slices with thickness ܪ଴= 3 mm and side ܮ଴= 30mm. Guava 
+slices were then placed in a single layer on the dryer’s tray. Details about the experimental setup can be found 
+in the original papers of Chua et al., 2000a,b. Two types of drying experiments were considered: continuous 
+(C), in which the air temperature and humidity were kept constant, and intermittent (I) in which square wave 
+(period 60 min) temperature profiles where imposed, corresponding to square wave humidity profiles, since 
+the air humidity and velocity were held constant at Ω = 0.0089 kg/kg and ܷஶ= 2.5 m/s, respectively. The 
+operating temperature and humidity for continuous experiments C25, C30 and C40 as well as the maximum 
+and minimum values of temperature and humidity for the three intermittent experiments I25, I30, I40 are 
+summarized in Table 1.  
+Table 1: Continuous and intermittent experiments. 
+Type 
+T∞ 
+RH∞ 
+C25 
+25°C 
+43.2 
+C30 
+30°C 
+32.5 
+C40 
+40°C 
+19.8 
+I25 
+30°C - 20°C 
+31.8 - 65.1 
+I30 
+35°C - 25°C 
+24.8 - 47.9 
+I40 
+40°C - 30°C 
+18.9 - 33.5 
+3. Mathematical model
+The moving-boundary model developed in Adrover et al., 2020 for non-isothermal drying consists of a system 
+of two advection-diffusion partial differential equations for mass and energy transport, coupled with an 
+equation for the boundary evolution, the material being assumed homogeneous and isotropic.  
+In the one-dimensional formulation that can be adopted for Guava slices (heat and mass transport along the 
+thickness coordinate −H଴/2 ≤x ≤H଴/2), the transport equations for the water content ܿ௪ሺݔ, ݐ) [g water/mଷ] 
+and the sample temperature ܶሺݔ, ݐ) read as: 
+(1) 
+(2) 
+194
+
+===== [page 3] =====
+Where ρ௣ is the sample density, ܥ௣
+௣ the specific heat at constant pressure, ݇௣ the thermal conductivity and 
+ܦeffሺܶ) the effective water diffusivity. The velocity ݒ௦ሺݔ, ݐ) is the point-wise shrinkage velocity 
+(3) 
+affecting both the heat and mass transport equations and controlling the temporal evolution of the sample 
+surface ݔ௕ሺݐ). The shrinkage proportionality factor αሺܿ௪), entering the shrinkage velocity and depending on 
+the point-wise water content ܿ௪ሺݔ, ݐ), is the fingerprint of the specific food material under investigation. The 
+simplest case is that of a constant shrinkage factor, αሺܿ௪) = α଴. Specifically, α଴= 0 represents the case of a 
+rigid solid (no shrinkage), while ߙ଴= 1 represents the case of ideal shrinkage, in which volume reduction 
+corresponds exactly to the volume of water flowing outside the sample.  
+The two transport equations (1) and (2) are linked together and must be solved simultaneously by further 
+enforcing the symmetry boundary conditions at 
+ and the mixed boundary conditions at ݔ௕ሺݐ) also referred 
+to as Robin or “evaporative” or third order boundary condition (da Silva et al., 2015) 
+ 
+(4)
+(5)
+where ܯ௪ is the water molecular weight, ݌௩ሺܶ) the saturated vapor pressure at temperature ܶ, ℎ௠ and ℎ் are 
+the mass and heat transport coefficients, ܴܪ௕ and ܶ௕ the relative humidity and the temperature at the sample 
+boundary ݔ௕ሺݐ), ܴܪஶ and ܶஶ the air relative humidity and the temperature in the drying chamber.  
+The boundary condition (5) takes into account both heat transfer resistance and heat subtracted for water 
+evaporation at the air/sample interface (Carslaw and Jaeger, 1959), λ௩ሺܶ௕) being the heat of water 
+evaporation evaluated at ܶ௕.  
+The heat and mass transfer coefficients ℎ௠ and ℎ் can be evaluated from well-known correlation functions for 
+the Sherwood (ܵℎ) and Nusselt (ܰݑ) numbers, specific for the sample geometry (slab) under investigation, 
+(6)
+(7)
+with all the physical parameters of the wet air evaluated at the average film temperature ܶav = ሺܶஶ+ ܶ௕)/2. 
+All the physical parameters of the food sample, namely ߩ௣, ܥ௣
+௣, and ݇௣, are functions of the local water 
+concentration ܿ௪. Specifically, the sample density ߩ௣ is evaluated as the average of the water and solid (pulp) 
+densities, averaged with respect to their volume fractions ρ௣= ρ௪ ϕ௪+ ρ௦ሺ1 −ϕ௪),  with ρௌ≃1.5 g/cmଷ for 
+carbohydrates. The product heat capacity ܥ௣
+௣ is evaluated as the average of the water and solid specific heat 
+capacity ܥ௣
+௣= ܥ௣௪ ݔ௪+ ܥ௣ௌ ሺ1 −ݔ௪), averaged with respect to their weight fractions ݔ௪= ϕ௪ሺρ௪/ρ௣). The 
+sample thermal conductivity ݇௣ is evaluated from a parallel model 1/݇௣= ϕ௪/݇௪+ ሺ1 −ϕ௪)/݇ௌ where ݇௪ 
+and ݇ௌ are the water and solid thermal conductivities, respectively. Since Guava fruits contain mainly water 
+and carbohydrate (Rahman et al., 1997), the thermal conductivity ݇ௌ and the specific heat capacity ܥ௣ௌ of the 
+solid are estimated from that of carbohydrate (Becker and Fricke, 2003)  
+݇௦[W/ሺm K)] = 2.01 × 10ିଵ+ 1.39 × 10ିଷܶ−4.33 × 10ି଺ܶଶ ,  ܶ[௢ܥ]
+ 
+(8)
+ܥ௣௦[J/ሺg K)] = 1.5488 + 1.9625 × 10ିଷܶ−5.9399 × 10ି଺ܶଶ ,   ܶ[௢ܥ]
+ 
+(9)
+The relative humidity at the air/sample interface ܴܪ௕ evolves in time because both ܿ௪ሺݔ௕) and ܶ௕ change 
+during the course of the dehydration process. The relationship ܴܪ௕= ݂ሺܶ௕, ܿ௪) can be estimated from water 
+vapor adsorption isotherms of Guava reported from (Hubinger et al., 1992). Adsorption isotherms in the range 
+[25௢ܥ, 50௢ܥ] are almost independent of temperature and well fitted (ܴଶ= 0.999) with the modified Anderson 
+model (Guinè, 2009) relating the equilibrium relative humidity ܴܪ௘௤ to the equilibrium moisture content ܺ௘௤ 
+  (10) 
+195
+
+===== [page 4] =====
+A latter observation regarding the shrinkage proportionality factor αሺܿ௪) adopted for Guava fruits: Guavas, as 
+pears and carrots, are characterized by very high-water content ݔ௪∈ሺ80%, 82%) [g water/g product] (USDA, 
+2020). All fruits with high initial moisture content exhibit an almost ideal shrinkage, that implies αሺܿ௪) = α଴= 1 
+ and ܸஶ/ܸ଴≃1 −ϕ௪ሺ0), ܸஶ being the asymptotic sample volume at the end of the dehydration process and
+ the initial water volume fraction, supposed uniform within the sample. For a slice sample with aspect 
+ratio ܣܴ= ܮ଴/ܪ଴= 10, shrinkage affects all the three slice dimensions, even if the most affected is the slice 
+thickness, and the asymptotic rescaled slice thickness ܪஶ/ܪ଴ can be approximately related to the asymptotic 
+volume ratio ܸஶ/ܸ଴ by the relation (Adrover et al., 2019a)  
+ (11) 
+This implies that an asymptotic thickness reduction ܪஶ/ܪ଴≃1/3 corresponds to an asymptotic volume 
+reduction ܸஶ/ܸ଴≃0.2. Therefore, in a one-dimensional model of the drying process in which only thickness 
+reduction is accounted for, it is necessary to introduce a constant shrinkage factor α଴≃0.83 < 1 to guarantee 
+ܪஶ/ܪ଴≃1/3, corresponding to the ideal volume shrinkage, and therefore to have a correct estimate of the 
+diffusional lengths along the principal transport/shrinkage direction. 
+4. Results and discussion
+The only parameter, entering the non-isothermal model, that needs to be estimated is the effective water 
+diffusivity ܦeffሺܶ) and its dependence on temperature ܶ. ܦeffሺܶ) can be estimated from continuous dehydration 
+curves C25, C30 and C40, reported in Figure 1A, showing the temporal decay of the moisture content ܺሺݐ) 
+[kg w/kg dry basis] rescaled onto the initial moisture content ܺ଴, for the three temperatures ܶஶ= 25, 30, 40௢ܥ. 
+Figure 1. A) Rescaled moisture ratio vs time for the three continuous drying experiments at T=25, 30, 40°C. 
+Continuous lines represent model predictions with the effective water diffusion coefficient ܦeffሺܶ) reported in 
+Figure B. 
+Continuous lines in Figure 1A represent best-fit non-isothermal model curves obtained with the best-fitted 
+Arrhenius-type curve for the effective water diffusivity ܦeffሺܶ) 
+ܦeffሺܶ) [mଶ/s] = ܦ଴expሺ−ܧ/ܴܶ)   ܦ଴= expሺ14.63) [mଶ/s]   ܧ/ܴ= 11095[ܭ]    
+ (12) 
+reported in figure 1B. It can be observed that the estimated effective water diffusivity is highly sensitive to 
+temperature as it exhibits a significant increase with temperature (Table 2.). These values of the water 
+diffusivity are in agreement with those of other vegetables and fruits with high initial moisture ratio, although it 
+has to be pointed out that a one-dimensional model, like the one adopted, tends to overestimate the effective 
+diffusivity (Adrover et al., 2019a). 
+Table 2: Estimated effective water diffusivity Deff. 
+T [°C] 
+Deff [m2/s] 
+25 
+1.557x10-10
+30 
+2.877x10-10 
+40 
+9.258x10-10 
+ 0
+ 0.2
+ 0.4
+ 0.6
+ 0.8
+ 1
+ 0
+ 50
+ 100
+ 150
+ 200
+ 250
+ 300
+ 350
+A
+X(t)/X0
+t [min]
+C25
+C30
+C40
+ 0
+ 2
+ 4
+ 6
+ 8
+ 10
+ 12
+ 14
+ 16
+ 18
+ 20
+ 25
+ 30
+ 35
+ 40
+ 45
+B
+Deff x 1010 [m2/s]
+ToC 
+196
+
+===== [page 5] =====
+The estimate of ܦeffሺܶ) from continuous drying experiments permits to verify the potentialities of the non-
+isothermal model by comparing experimental intermittent dehydration curves I25, I30 and I40 with model 
+predictions (with no adjustable parameters) as shown in Figure 2.  
+Figure 2: Model predictions of the three intermittent experiments (square wave, ߂ܶ= 10௢ܥ, time period 60 
+min). Arrow indicates increasing values of the average processing temperature ( 25, 30, 40௢ܥ, respectively). 
+It can be clearly observed the excellent capability of the model to follow accurately the step changes in the 
+operating air and relative humidity conditions, by perfectly reproducing the periodic sudden changes in the 
+slope of the curve for the rescaled moisture content ܺሺݐ)/ܺ଴. The model allows us to estimate the spatio-
+temporal evolution of all the basic quantities controlling the drying process. As an instance, Figure 3A-D show 
+the time-behavior of the rescaled slab thickness (A), temperature (B) and relative humidity (C) at the 
+air/sample interface as well as the heat and mass transfer coefficients (D) for the case I25. In Figure 3B it can 
+be observed that the boundary temperature exhibits a sudden decrease at the beginning of the drying process 
+induced by water surface evaporation. Moreover, the Guava slice has a significant thermal inertia so that the 
+boundary temperature needs at least five periods to follow closely the square-wave air temperature. 
+Figure 3. Model predictions of the I25 intermittent experiment (square wave, time period 60 min). 
+ 0
+ 0.2
+ 0.4
+ 0.6
+ 0.8
+ 1
+ 0
+ 60
+ 120
+ 180
+ 240
+ 300
+ 360
+X(t)/X0
+t [min]
+I25
+I30
+I40
+ 0
+ 0.2
+ 0.4
+ 0.6
+ 0.8
+ 1
+ 0
+ 60
+ 120
+ 180
+ 240
+ 300
+ 360
+A
+H(t)/H0
+t [min]
+ 10
+ 15
+ 20
+ 25
+ 30
+ 0
+ 60
+ 120
+ 180
+ 240
+ 300
+ 360
+B
+T∞
+oC, Tb
+oC
+t [min]
+Tb
+T∞
+ 0
+ 20
+ 40
+ 60
+ 80
+ 100
+ 0
+ 60
+ 120
+ 180
+ 240
+ 300
+ 360
+C
+RH∞ %, RHb %
+t [min]
+RHb
+RH∞
+ 32
+ 32.5
+ 33
+ 33.5
+ 34
+ 34.5
+ 35
+ 35.5
+ 36
+ 0
+ 60
+ 120
+ 180
+ 240
+ 300
+ 360
+D
+hmx103 [m/s], hT [W/(m2 K)]
+t [min]
+hm
+hT
+197
+
+===== [page 6] =====
+A similar observation can be done for the boundary relative humidity (see Figure 3C). Specifically, it can be 
+observed that partial rehydration of the sample may occur when the moisture content is low. These effects are 
+extremely important and must be accounted for when degradation kinetics of nutrients and vitamins are 
+investigated. In this context, a reliable estimate of the internal sample temperature is extremely useful to 
+optimize intermittent dehydration protocols to obtain low water activity while keeping significant amounts of 
+vitamins, e.g. ascorbic acid.  
+Conclusions 
+The one-dimensional non-isothermal formulation of the moving-boundary model for food dehydration, recently 
+proposed by Adrover et al. (2019 b,c) is here applied for the case of Guava slices. The model accounts for 
+sample shrinkage via the introduction of the pointwise shrinkage velocity dependent on the local volumetric 
+water flux. A suitable convection-diffusion heat transport equation, affected by sample shrinkage, heat 
+transfer, and water evaporation at the sample surface, is added to the convection-diffusion transport equation 
+for water concentration. The advantage of the model lies in the possibility of obtaining reliable data without 
+huge experimental efforts. The excellent predictive capability of the non-isothermal model makes it a useful 
+tool for non-isothermal process optimization and control at both laboratory and industrial scales. 
+References 
+Adrover A., Brasiello A., 2019a, A Moving Boundary Model for Isothermal Drying and Shrinkage of Chayote 
+Discoid Samples: Comparison between the Fully Analytical and the Shortcut Numerical Approaches, 
+International Journal of Chemical Engineering, 2019, 3926897.  
+Adrover A., Brasiello A., Ponso G., 2019b, A moving boundary model for food isothermal drying and 
+shrinkage: General setting, Journal of Food Engineering, 244, 178-191.  
+Adrover A., Brasiello A., Ponso G., 2019c, A moving boundary model for food isothermal drying and 
+shrinkage: A shortcut numerical method for estimating the shrinkage factor, Journal of Food Engineering, 
+244, 212-219. 
+Adrover A., Venditti C., Brasiello A., 2020, A Non-Isothermal Moving-Boundary Model for Continuous and 
+Intermittent Drying of Pears, Foods, 9, 1577. 
+Becker B., Fricke B., 2003, Freezing Principles. In Encyclopedia of Food Sciences and Nutrition, 2nd ed.;  
+Caballero, B., Ed.; Academic Press, Oxford, UK, 2706–2711.  
+Carslaw H., Jaeger J., 1959, Conduction of Heat in Solids, Oxford University Press, Oxford, UK.  
+Chua K.J., Mujumdar A.S., Chou S.K., Hawlander M.N.A., Ho J.C., 2000b, Convective drying of banana, 
+guava and potato pieces: effect of cyclical variations of air temperature on drying kinetics and color 
+change, 18, 907-936. 
+Chua K.J., Chou S.K., Ho J.C., Mujumdar A.S., Hawlander M.N.A., 2000a, Cyclic air temperature drying of 
+guava pieces: effects on moisture and ascorbic acid contents, Trans IChemE, 78, 72-78. 
+Curcio S., Aversa M., 2014, Influence of shrinkage on convective drying of fresh vegetables: A theoretical 
+model, Journal of Food Engineering, 123, 36-49. 
+da Silva W.P., Rodrigues A.F., e Silva C.M.D.P.S., de Castro D.S., Gomes J.P., 2015, Comparison between 
+continuous and intermittent drying of whole bananas using empirical and diffusion models to describe the 
+processes, Journal of Food Engineering, 166, 230-236.  
+Dhall A., Datta A., 2011, Transport in deformable food materials: A poromechanics approach, Chemical 
+Engineering Science, 66, 6482-6497. 
+Guiné R.P.F., 2009, Sorption isotherms of pears using different models, International Journal of fruit science, 
+9, 11–22. 
+Hubinger M., Menegalli F.C., Aguerre R.J., Suarez C., 1992, Water Vapor Adsorption Isotherms of Guava, 
+Mango and Pineapple, Journal of Food Science, 57, 1405-1407. 
+Papanu J., Soane (Soong) D., Bell A., Hess D., 1989, Transport models for swelling and dissolution of thin 
+polymer films, Journal of Applied Polymer Science, 38, 859-885. 
+Rahman M.S., Chen X.D., Perera C.O., 1997, An improved thermal conductivity prediction model for fruits and  
+vegetables as a function of temperature, water content and porosity, Journal of Food Engineering, 31, 163-
+170. 
+Tu Y. O., Ouano A.C., 1977, Model for the kinematics of polymer dissolution, IBM Journal of Research and 
+Development, 21, 131-142.  
+USDA, 2020, Food Composition Databases, Department of Agriculture, <https:// ndb.nal.usda.gov/ndb> 
+(9/18/2020). 
+Yang Z., Zhu E., Zhu Z., Wang J., Li S., 2013, A comparative study on intermittent heat pump drying process 
+of Chinese cabbage (Brassica Campestris L. SSP) seeds, Food and Bioproducts Processing, 91, 381-388. 
+198

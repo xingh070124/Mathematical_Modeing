@@ -1,539 +1,613 @@
-% 为了满足 2025 年上传要求可以选择不生成封面和编号页，参考这里
-% 参考这里：https://cumcm.cnki.net/cumcm/studentHome/noticeDetail?id=c0c5220f-0226-4cd8-bce1-e1f81e1e23f6
-
-%\documentclass{cumcmthesis}
-
+% 2026 年高教社杯全国大学生数学建模竞赛 A 题：药材的烘干问题
+% 编译方式：xelatex example（或 latexmk -xelatex example），需编译两遍以生成交叉引用
 \documentclass[withoutpreface,bwprint]{cumcmthesis} %去掉封面与编号页，电子版提交的时候使用。
 
-\usepackage[most]{tcolorbox}
-\usepackage{tikz}
-  
-\newtcolorbox{framee}[1][]{
-  enhanced,
-  skin=enhancedlast jigsaw,
-  attach boxed title to top left={xshift=-4mm,yshift=-0.5mm},
-  fonttitle=\bfseries\sffamily,
-  colbacktitle=blue!45,
-  colframe=red!50!black,
-  interior style={
-    top color=blue!10,
-    bottom color=red!10
-  },
-  boxed title style={
-    empty,
-    arc=0pt,
-    outer arc=0pt,
-    boxrule=0pt
-  },
-  underlay boxed title={
-    \fill[blue!45!white]
-      (title.north west) --
-      (title.north east) --
-      +(\tcboxedtitleheight-1mm,-\tcboxedtitleheight+1mm) --
-      ([xshift=4mm,yshift=0.5mm]frame.north east) --
-      +(0mm,-1mm) --
-      (title.south west) -- cycle;
-    \fill[blue!45!white!50!black]
-      ([yshift=-0.5mm]frame.north west) --
-      +(-0.4,0) --
-      +(0,-0.3) -- cycle;
-    \fill[blue!45!white!50!black]
-      ([yshift=-0.5mm]frame.north east) --
-      +(0,-0.3) --
-      +(0.4,0) -- cycle;
-  },
-  title={2025 年建模比赛格式变化说明},
-  #1
-}
-
-\usepackage{url}   % 网页链接
+\usepackage{url}        % 网页链接
 \usepackage{subcaption} % 子标题
-\title{全国大学生数学建模竞赛编写的 \LaTeX{} 模板}
+\usepackage{tikz}       % 后续问题分析流程图使用
+
+\title{药材热风干燥过程的传热传质耦合建模与动边界数值模拟} % 工作标题，定稿前可再调整
 
 %%=======如下信息已经不再需要填写========
 \tihao{A}
-\baominghao{4321}
-\schoolname{XX大学}
+\baominghao{}
+\schoolname{}
 \membera{ }
 \memberb{ }
 \memberc{ }
-\supervisor{ }%辅导老师
-\yearinput{2023}
+\supervisor{ }
+\yearinput{2026}
 \monthinput{9}
-\dayinput{8}
+\dayinput{13}
 %===================================
 
 \begin{document}
 
  \maketitle
+
  \begin{abstract}
-cumcmthesis 是为全国大学生数学建模竞赛编写的\LaTeX{}模板, 旨在让大家专注于 论文的内容写作, 而不用花费过多精力在格式的定制和调整上.  使用者需要有一 定的 \LaTeX{} 的使用经验, 至少要会使用常用宏包的一些功能, 比如参考文献，数学公式，图片使用，列表环境等等. 例子文件参看 \texttt{example.tex}.
+ 干燥是决定中药材成品品质的关键工序，热风烘干通过调控烘房温湿环境使药材先后经历预热平衡与恒温干燥两个阶段，其内部温度与水分的演化规律难以直接试验观测，亟需借助数理建模与数值仿真获得干燥规律。针对圆柱形药材的热风烘干问题，本文建立了一般化的径向传热--传质数学模型：以含湿圆柱的导热--Fick 扩散方程组为骨架，扩散系数写成覆盖附录~2$\sim$4 的统一经验形式，并逐问经物性、耦合关系与边界的特化求解；数值上采用守恒型节点式有限体积与全隐式 Euler 时间推进，界面扩散系数取相邻节点算术平均，使离散水量收支闭合到机器精度，每步归结为严格对角占优的三对角系统以追赶法求解。
 
-\begin{framee} 
- 
-今年的格式变化如下：
-\begin{enumerate}
-\item 论文提交明确不需要承诺书内容，模版进行了删减，要求如下：
+ \textbf{针对问题一}，建立预热平衡阶段（$0\sim1800\,\mathrm{s}$）药材温度场与水分浓度场的演化模型。由热 Biot 数 $\mathrm{Bi}=1.389$ 与传质 Biot 数 $\mathrm{Bi}_m=3.24$ 论证集总参数法不适用，采用一维径向分布参数模型；由扩散系数不依赖温度判定热、湿单向解耦。守恒格式在 $M=3200$、$\Delta t=2^{-8}\,\mathrm{s}$ 生产设置下经三重独立验证（Robin 圆柱解析级数解偏差 $4.5\times10^{-6}\,\mathrm{K}$、全非线性线条法偏差 $5.95\times10^{-5}\,\mathrm{K}$，并满足极值原理与全局水量守恒），辅以灵敏度与 Monte Carlo 鲁棒性检验。结果表明：$30\,\mathrm{min}$ 内中心与表面温度分别为 $33.5758\,^\circ\mathrm{C}$ 与 $36.7858\,^\circ\mathrm{C}$，径向温差 $3.21\,^\circ\mathrm{C}$，预热尚未完成；水分仅在表层松弛，体积平均含水率下降 $10.1\%$ 而中心几乎不变；水分浓度的四位小数对数据噪声稳健，温度的第四位由附件~1 数据噪声主导，表面水分主要由 $C_0$、$h_m$、$D_0$ 控制。
 
-\centerline{\includegraphics[width=11cm]{upload}}
+ % TODO 针对问题二：附录 3 变物性、D(C,T) 双向耦合模型的建立与交替迭代求解，3 h 内温度与水分浓度结果句待定稿后补入。
 
-\item 字体设置进行了删减，保证 overleaf 等平台可以直接使用。
+ % TODO 针对问题三：以各处 C < 0.15 kg/kg 为终止条件的事件定位方法与烘干时长结果句待定稿后补入。
 
-\end{enumerate}
+ % TODO 针对问题四：xi = r/R(t) 动边界与附录 4 物性下的烘干时长结果句待定稿后补入。
 
-\end{framee}
+ \textbf{总结}：本文以``一般化模型 + 逐问特化''的路线统一了四个问题的建模，以守恒格式、三重独立验证与灵敏度--鲁棒性实验保证了四位小数报告的可信性，识别出表面水分的主导参数（$C_0$、$h_m$、$D_0$），可为烘干工艺参数优化与后续问题的求解提供可靠基础。
 
+ \keywords{热风干燥\quad 传热传质\quad 守恒型有限体积\quad 模型验证\quad 灵敏度与鲁棒性\quad 动边界}
+ \end{abstract}
 
-\url{https://www.latexstudio.net} 陆续推出了更优质的资源，欢迎学习 。欢迎大家到QQ群里沟通交流：91940767/200392395。问答区交流 \LaTeX{}技术：\url{https://ask.latexstudio.net}，有问题就来这里，与大神零距离。
-
-\uwave{关注我们的微信公众号}：
-
-\centerline{\includegraphics[width=6cm]{gongzhonghao2}}
-
-\keywords{\TeX{}\quad  图片\quad   表格\quad  公式}
-\end{abstract}
-
-%目录  2019 明确不要目录，我觉得这个规定太好了
+%目录  2019 明确不要目录
 %\tableofcontents
 
-%\newpage
+\section{问题重述}
 
-\section{模板的基本使用}
+\subsection{问题背景}
 
-要使用 \LaTeX{} 来完成建模论文，首先要确保正确安装一个 \LaTeX{} 的发行版本。
+干燥是决定中药材成品品质的关键工序之一，热风烘干通过调控烘房温湿环境，使药材先后经历预热平衡与恒温干燥两个阶段，是最常见的干燥方式。烘干过程本质上是物料内部热量传导与水分扩散相互耦合的传热传质问题\upcite{hu2020}，且药材会随水分流失发生明显收缩\upcite{brasiello2021,rani2020}；工艺参数选取不当，容易导致干燥效率低、能耗高、成品品质不稳定，而传统试验优化模式成本高、周期长，难以全面获取烘房内的温湿环境信息，亟需借助数理分析与数值仿真的方法得到干燥规律。本文围绕圆柱形药材的热风烘干过程，建立预热平衡阶段及全干燥过程的温度与水分浓度变化模型，确定烘干所需时间，并进一步计入收缩效应确定烘干时长，为烘干工艺参数优化提供依据。
 
-\begin{itemize}
-    \item Mac 下可以使用 Mac\TeX{}
-    \item Linux 下可以使用 \TeX{}Live ；
-    \item windows 下可以使用 \TeX{}Live 或者 Mik\TeX{} ;
-\end{itemize}
+\subsection{问题提出}
 
-具体安装可以参考 \href{https://github.com/OsbertWang/install-latex-guide-zh-cn/releases/}{Install-LaTeX-Guide-zh-cn} 或者其它靠谱的文章。另外可以安装一个易用的编辑器，例如 \href{https://mirrors.tuna.tsinghua.edu.cn/github-release/texstudio-org/texstudio/LatestRelease/}{\TeX{}studio} 。
+题目给定圆柱形药材，长为 $25\,\mathrm{cm}$、半径 $2\,\mathrm{cm}$，初始温度 $28\,^\circ\mathrm{C}$，初始水分浓度即干基含水率 $2.55\,\mathrm{kg/kg}$；附件~1 给出了烘干初期（$0\sim14400\,\mathrm{s}$）烘房温度与水分浓度的时变数据，附件~2 给出了烘干过程中药材半径随时间的变化数据。要求建立数学模型解决以下问题，所有结果保留四位小数：
 
-使用该模板前，请阅读模板的使用说明文档。下面给出模板使用的大概样式。
+\begin{enumerate}
+    \item \textbf{问题1}：问题一要求我们建立预热平衡阶段药材温度和水分浓度变化规律的数学模型，其中问题一的相关参数依据\textbf{附录2}，并且要求我们基于建立的预热平衡阶段的药材水分模型完成\textbf{表1、表2} 的格式给出指定时刻与位置的结果，并将 $1800\,\mathrm{s}$ 内每隔 $1\,\mathrm{s}$、到药材中心距离每隔 $0.1\,\mathrm{cm}$ 的完整结果保存到 \texttt{result1.xlsx}。
+    \item \textbf{问题2}：问题二要求我们建立完整的烘干过程，由于完整的药材烘干过程通常需要持续2~3天，并且因为预热平衡阶段和恒温干燥阶段的作用不同，所以参数也有所不同，基于问题一建立的物理模型以及预热平衡阶段的数学模型，并结合\textbf{附录3}的经验公式建立温度和水分浓度变化规律的数学模型，并完成按\textbf{表3、表4} 的格式给出 $3\,\mathrm{h}$ 内每隔 $0.5\,\mathrm{h}$ 的结果，并将每隔 $1\,\mathrm{s}$、每隔 $0.1\,\mathrm{cm}$ 的完整结果保存到 \texttt{result2.xlsx}。
+    \item \textbf{问题3}：
+    \item \textbf{问题4}：
+\end{enumerate}
 
-\begin{tcode}
-    \documentclass{cumcmthesis}
-    %\documentclass[withoutpreface,bwprint]{cumcmthesis} %去掉封面与编号页
+%================= 以下各节待后续撰写 =================
 
-    \title{论文题目}
-    \tihao{A}            % 题号
-    \baominghao{4321}    % 报名号
-    \schoolname{你的大学}
-    \membera{成员A}
-    \memberb{成员B}
-    \memberc{成员C}
-    \supervisor{指导老师}
-    \yearinput{2017}     % 年
-    \monthinput{08}      % 月
-    \dayinput{22}        % 日
+\section{模型假设}
+\begin{enumerate}
+    \item 药材为均质、各向同性的连续介质，形状为正圆柱（题面给定``形状大致呈圆柱形''）；
+    \item 传热传质仅沿径向一维：在圆柱中截面 $z=0$ 上，由上下两半的对称性，
+    $\partial T/\partial z=\partial C/\partial z=0$ 精确成立；远离中截面处，
+    端面换热面积仅占侧面积的 $4\%$，端部效应限于端部附近，而题面要求的输出位置
+    位于中截面径线上；
+    \item 药材内部满足局部热平衡，固相与液相温度相同；
+    \item 问题一中物性 $\rho$、$c_p$、$k$、$h$、$h_m$ 为常数（附录~2）；问题二起
+    按附录~3、附录~4 的经验公式随 $C$（和 $T$）变化；
+    \item 水分迁移由 Fick 扩散描述，扩散系数 $D$ 由附录给定的经验公式确定，
+    忽略毛细压力驱动、重力与对流携带项；
+    \item 药材表面以第三类边界条件与烘房环境耦合，$h_m$ 与 $C_\infty$ 均按题面
+    给定值建模；
+    \item 预热平衡阶段（$1800\,\mathrm{s}$）内药材不收缩，半径 $R$ 取常数，
+    干基含水率以该固定几何为参考（Fick 定律中的浓度定义据此确定）；
+    收缩效应在问题四中显式考虑（附件~2 显示 $30\,\mathrm{min}$ 内 $R$ 由
+    $2.000\,\mathrm{cm}$ 收缩至 $1.873\,\mathrm{cm}$）。
+\end{enumerate}
 
-    \begin{document}
-        \maketitle
-        \begin{abstract}
-            摘要的具体内容。
-            \keywords{关键词1\quad  关键词2\quad   关键词3}
-        \end{abstract}
-        \tableofcontents
-        \section{问题重述}
-        \subsection{问题的提出}
-        \section{模型的假设}
-        \section{符号说明}
-        \begin{center}
-            \begin{tabular}{cc}
-                \hline
-                \makebox[0.3\textwidth][c]{符号}	&  \makebox[0.4\textwidth][c]{意义} \\ \hline
-                D	    & 木条宽度（cm） \\ \hline
-            \end{tabular}
-        \end{center}
-        \section{问题分析}
-        \section{总结}
-        \begin{thebibliography}{9}%宽度9
-            \bibitem{bib:one} ....
-        \end{thebibliography}
-        \begin{appendices}
-            附录的内容。
-        \end{appendices}
-    \end{document}
-\end{tcode}
+\section{符号说明}
+\begin{center}
+\begin{tabular}{clcl}
+    \toprule
+    符号 & 含义 & 符号 & 含义 \\
+    \midrule
+    $T(r,t)$ & 药材温度场（$^\circ$C，计算用 K） & $T_\infty(t)$ & 烘房温度（$^\circ$C） \\
+    $C(r,t)$ & 水分浓度（干基含水率，kg/kg） & $C_\infty(t)$ & 烘房水分浓度（kg/kg） \\
+    $r,\ R,\ L$ & 径向坐标、半径、长度 & $T_0,\ C_0$ & 初始温度、初始含水率 \\
+    $t$ & 时间（s） & $D$ & 水分扩散系数（m$^2$/s） \\
+    $\rho$ & 密度（kg/m$^3$） & $\alpha=k/(\rho c_p)$ & 热扩散率（m$^2$/s） \\
+    $c_p$ & 比热容（J/(kg$\cdot$K)） & $h$ & 对流换热系数（W/(m$^2\cdot$K)） \\
+    $k$ & 热传导系数（W/(m$\cdot$K)） & $h_m$ & 对流传质系数（m/s） \\
+    $\mathrm{Bi}=hR/k$ & 热 Biot 数 & $\mathrm{Bi}_m=h_mR/D$ & 传质 Biot 数 \\
+    \bottomrule
+\end{tabular}
+\end{center}
 
-根据要求，电子版论文提交时需去掉封面和编号页。可以加上 \verb|withoutpreface|  选项来实现，即：
-\begin{tcode}
-    \documentclass[withoutpreface]{cumcmthesis}
-\end{tcode}
-这样就能实现了。打印的时候有超链接的地方不需要彩色，可以加上 \verb|bwprint| 选项。
+\section{问题分析}
 
-另外目录也是不需要的，将 \verb|\tableofcontents| 注释或删除，目录就不会出现了。
+\subsection{问题一的分析}
 
-团队的信息填入指定的位置，并且确保信息的正确性，以免因此白忙一场。
+问题一要求建立预热平衡阶段（$0\sim1800\,\mathrm{s}$）药材内部温度场 $T(r,t)$ 与
+水分浓度场 $C(r,t)$ 的演化模型，并按表~1、表~2 格式给出指定时刻与位置的结果。药材为
+长 $25\,\mathrm{cm}$、半径 $2\,\mathrm{cm}$ 的圆柱，其中截面 $z=0$ 上由对称性给出
+$\partial T/\partial z=\partial C/\partial z=0$ 的精确条件，题面要求的输出位置恰位于
+该径线，故采用一维径向模型。附录~2 的扩散系数 $D$ 只依赖 $C$，温度方程亦不含蒸发潜热
+项，热、湿单向解耦；热 Biot 数 $\mathrm{Bi}=1.389>0.1$，须采用分布参数模型；导热与
+湿分扩散特征时间相差约 $34$ 倍，可预判 $30\,\mathrm{min}$ 内温度已建立明显径向梯度而
+水分仅在表层松弛。附件~1 的环境激励含测量噪声（$240$ 步中 $80$ 步下降，
+图~\ref{fig:env}），采用 PCHIP 保形插值连续化；结果保留四位小数，要求数值格式守恒、
+无条件稳定，并经独立验证与灵敏度、鲁棒性检验。表面以第三类边界与烘房耦合，
+$h$、$h_m$、$C_\infty$ 均按题面给定值建模。
 
-编译记得使用 \verb|xelatex|，而不是用 \verb|pdflatex|。在命令行编译的可以按如下方式编译：
-\begin{tcode}
-	xelatex example
-\end{tcode}
-或者使用 \verb|latexmk| 来编译，更推荐这种方式。
-\begin{tcode}
-	latexmk -xelatex example
-\end{tcode}
-
-下面给出写作与排版上的一些建议。
-
-\section{图片}
-
-建模中不可避免要插入图片。图片可以分为矢量图与位图。位图推荐使用 \verb|jpg,png| 这两种格式，避免使用 \verb|bmp| 这类图片，容易出现图片插入失败这样情况的发生。矢量图一般有 \verb|pdf,eps| ，推荐使用 \verb|pdf|  格式的图片，尽量不要使用 \verb|eps| 图片，理由相同。
-
-注意图片的命名，避免使用中文来命名图片，可以用英文与数字的组合来命名图片。避免使用\verb|1,2,3| 这样顺序的图片命名方式。图片多了，自己都不清楚那张图是什么了，命名尽量让它有意义。下面是一个插图的示例代码。
-\begin{figure}[!h]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=.6\textwidth]{smokeblk}
-    \caption{电路图}
-    \label{fig:circuit-diagram}
+    \includegraphics[width=0.86\textwidth]{figures/fig_q1_env.pdf}
+    \caption{附件~1 给出的烘房环境激励。色带为问题一使用的预热平衡时段
+    ($0\sim1800\,\mathrm{s}$)；(b) 中圆圈标出水分浓度序列出现下降的采样步
+    （$80/240$ 步），表明数据含测量噪声，而问题一时段内序列单调。}
+    \label{fig:env}
 \end{figure}
 
-注意 \verb|figure| 环境是一个浮动体环境，图片的最终位置可能会跑动。\verb|[!h]| 中的 \verb|h| 是 here 的意思， \verb|!| 表示忽略一些浮动体的严格规则。另外里面还可以加上 \verb|btp| 选项，它们分别是 bottom, top, page 的意思。只要这几个参数在花括号里面，作用是不分先后顺序的。page 在这里表示浮动页。
+\section{模型的建立与求解}
+\label{sec:model}
 
-\verb|\label{fig:circuit-diagram}| 是一个标签，供交叉引用使用的。例如引用图片 \verb|\cref{fig:circuit-diagram}| 的实际效果是\cref{fig:circuit-diagram}。图片是自动编号的，比起手动编号，它更加高效。\verb|\cref{label}| 由 \verb|cleveref| 宏包提供，比普通的 \verb|\ref{label}| 更加自动化。 \verb|label| 要确保唯一，命名方式推荐用图片的命名方式。
+\subsection{问题一模型的建立与求解}
 
-图片并排的需求解决方式多种多样，下面用 \verb|minipage| 环境来展示一个简单的例子。注意，以下例子用到了 \verb|subcaption| 命令，需要加载 subcaption 宏包。
+\subsubsection{建模思路}
 
-\begin{figure}
+因为问题给出的圆柱体的长度和半径相差太多，
+所以在对药材进行建模时，
+可以将圆柱体视为一个无限长的圆柱体，
+水分的扩散和温度变化只需要考虑径向的变化。
+将模型简化代入Fourier导热定律的能量守恒形式以及Fick扩散方程得到其一维形式后，
+可以知道其中的热扩散系数$\alpha$ 和水分扩散系数$D(C)$都时含水率$C$的函数，而$C$又是时间和空间的函数，
+所以求解过程中将两个方程联立求解。
+
+\subsubsection{一维Fourier导热定律的能量守恒形式}
+
+根据问题假设以及题目条件，
+由于在预热阶段温度缓慢上升减少了自然对流和热冲击效应，
+故我们只考虑导热过程中的能量守恒而不考虑动量守恒。
+Fourier导热定律的能量守恒形式为:
+\begin{equation}
+\rho c \frac{\partial T}{\partial t}=\nabla \cdot (k\nabla T)+\dot\Phi_v
+\end{equation}
+其中$\alpha=\frac{k}{\rho c}$为热扩散系数，$k$为热传导系数，则热扩散系数为$1.6886\times 10^{-7} W/(m\cdot K)$,
+$\dot\Phi_v$为体积内热源。
+又因为轴径比过大且不考虑体积内热源，
+所以可以将其简化为在圆柱坐标系下的一维Fourier导热定律的能量守恒形式，
+即
+\begin{equation}
+\frac{\partial T}{\partial t}=\frac{\alpha}{r}\frac{\partial}{\partial r}(r\frac{\partial T}{\partial r})
+\end{equation}
+
+\subsubsection{一维Fick扩散方程}
+
+水分总是表面的先蒸发，而内部的水分蒸发是通过扩散现象扩散至表面进行蒸发，所以需要建立扩散方程。
+Fick第二定律为：
+\begin{equation}
+    \frac{\partial C}{\partial t}=D[\frac{1}{r}\frac{\partial}{}]
+
+四个问题共享同一物理过程：含湿圆柱药材在时变烘房环境下的径向导热与水分扩散。
+取柱坐标系 $(r,\theta,z)$，$z$ 轴与药材轴线重合、原点在中截面圆心，由假设~2 只需
+求解径向一维问题。由能量守恒与水分质量守恒（假设~3、假设~5），得到统一控制方程——
+\textbf{能量方程}（Fourier 导热）与\textbf{水分方程}（Fick 扩散）：
+\begin{gather}
+    \rho(C)\,c_p(C)\,\frac{\partial T}{\partial t}
+    =\frac{1}{r}\frac{\partial}{\partial r}\!\left(r\,k(C)\,\frac{\partial T}{\partial r}\right),\quad\text{（能量方程）}\\[2pt]
+    \frac{\partial C}{\partial t}
+    =\frac{1}{r}\frac{\partial}{\partial r}\!\left(r\,D\,\frac{\partial C}{\partial r}\right),\quad\text{（水分方程）}
+\end{gather}
+其中水分扩散系数可统一写成 Arrhenius 型经验公式，覆盖附录~2$\sim$4：
+\begin{equation}
+    D=D_0\,\exp\!\left(-\frac{E_C}{C}\right)\exp\!\left(-\frac{E_T}{T}\right).
+\end{equation}
+三套经验公式的参数如下表所示（附录~2 无温度项，即 $E_T=0$，且物性为常数）。方程的
+定解条件为
+\begin{equation}
+\left\{
+\begin{aligned}
+    &T(r,0)=T_0,\qquad C(r,0)=C_0, &&\text{（初始条件）}\\[1pt]
+    &\partial_r T\big|_{r=0}=\partial_r C\big|_{r=0}=0, &&\text{（对称条件）}\\[1pt]
+    &-k\,\partial_r T\big|_{r=R}=h\,\bigl[T(R,t)-T_\infty(t)\bigr], &&\text{（第三类边界）}\\[1pt]
+    &-D\,\partial_r C\big|_{r=R}=h_m\,\bigl[C(R,t)-C_\infty(t)\bigr], &&
+\end{aligned}
+\right.
+\end{equation}
+其中环境激励 $T_\infty(t)$、$C_\infty(t)$ 由附件~1 经保形分段三次插值（PCHIP）
+连续化：PCHIP 在采样节点处一阶连续、区间内保形单调，光滑性满足与隐式格式联立
+求解的要求，图~\ref{fig:env} 显示其与全部采样点吻合，不同插值方法对结果的影响
+在~\S\ref{sec:sens} 中量化。这一``导热--扩散''型建模思路与文献中的多物理场干燥
+模型一致\upcite{hu2020}。问题四将固定边界换为动边界：令 $\xi=r/R(t)$ 把求解域归一化到 $\xi\in[0,1]$，
+方程中出现网格对流（速度）项，例如变换后的温度方程变为
+\begin{equation}
+    \frac{\partial T}{\partial t}
+    -\frac{\xi\,\dot R(t)}{R(t)}\,\frac{\partial T}{\partial \xi}
+    =\frac{\alpha}{R^2(t)}\,\frac{1}{\xi}
+    \frac{\partial}{\partial \xi}\!\left(\xi\,\frac{\partial T}{\partial \xi}\right),
+\end{equation}
+$R(t)$ 由附件~2 插值给出，水分方程同理。
+
+\begin{center}
+\small
+\textbf{附录~2$\sim$4 的统一扩散系数与物性参数}\\[2pt]
+\begin{tabular}{lcccccc}
+\toprule
+附录 & $D_0$ & $E_C$ & $E_T$ & $\rho$ (kg/m$^3$) & $c_p$ (J/(kg$\cdot$K)) & $k$ (W/(m$\cdot$K)) \\
+\midrule
+附录~2（问题一） & $7\times10^{-9}$ & 0.89 & --- & $820$ & $2600$ & $0.36$ \\
+附录~3（问题二、三） & $2.4\times10^{-3}$ & 0.45 & 3850 & $650+128C$ & $1450+2736\frac{C}{C+1}$ & $0.21+0.38\frac{C}{C+1}$ \\
+附录~4（问题四） & $4.2\times10^{-4}$ & 0.30 & 3850 & $760+90C$ & $1850+2150\frac{C}{C+1}$ & $0.12+0.20\frac{C}{C+1}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+数值上，统一采用\textbf{节点式有限体积}离散（保证界面通量守恒）、\textbf{全隐式
+Euler}时间推进（对长时间模拟无条件稳定）、界面扩散系数取相邻节点算术平均，每步
+归结为严格对角占优的三对角方程组用追赶法以 $O(M)$ 求解；问题二$\sim$四中 $D$ 依赖
+$T$、物性依赖 $C$ 时，对 $(T,C)$ 交替迭代至收敛。验证与检验体系对所有问题统一：
+解析解对照、独立数值方法（线条法+BDF）交叉验证、极值原理与离散守恒检验、
+网格与时间步收敛外推，以及灵敏度与鲁棒性实验（\S\ref{sec:sens}）。
+
+\subsection{问题一模型的建立与求解}
+
+\subsubsection{问题一模型的建立}
+
+问题一中 $\rho=820\,\mathrm{kg/m^3}$、$c_p=2600\,\mathrm{J/(kg\cdot K)}$、
+$k=0.36\,\mathrm{W/(m\cdot K)}$ 均为常数（假设~4），$D(C)=7\times10^{-9}\exp(-0.89/C)$
+不含温度项（假设~5），且温度方程无蒸发潜热项，故两个方程\textbf{单向解耦}，可独立求解：温度方程为常物性\textbf{导热方程}，水分方程为非线性 \textbf{Fick 扩散方程}，分别为
+\begin{gather}
+    \frac{\partial T}{\partial t}
+    =\frac{\alpha}{r}\frac{\partial}{\partial r}\!\left(r\,\frac{\partial T}{\partial r}\right),\quad\text{（导热方程）}\\[2pt]
+    \frac{\partial C}{\partial t}
+    =\frac{1}{r}\frac{\partial}{\partial r}\!\left(r\,D(C)\,\frac{\partial C}{\partial r}\right),\quad\text{（扩散方程）}
+\end{gather}
+其中 $\alpha=k/(\rho c_p)=1.6886\times10^{-7}\,\mathrm{m^2/s}$。定解条件为
+\begin{equation}
+\left\{
+\begin{aligned}
+    &T(r,0)=T_0=301.15\,\mathrm{K},\qquad C(r,0)=C_0=2.55\,\mathrm{kg/kg}, &&\text{（初始条件）}\\[1pt]
+    &\partial_r T\big|_{r=0}=\partial_r C\big|_{r=0}=0, &&\text{（对称条件）}\\[1pt]
+    &-k\,\partial_r T\big|_{r=R}=h\,[T(R,t)-T_\infty(t)], &&\text{（第三类边界）}\\[1pt]
+    &-D\,\partial_r C\big|_{r=R}=h_m\,[C(R,t)-C_\infty(t)], &&
+\end{aligned}
+\right.
+\end{equation}
+其中 $R=0.02\,\mathrm{m}$ 在阶段内固定（假设~7），$h=25\,\mathrm{W/(m^2\cdot K)}$、
+$h_m=8\times10^{-7}\,\mathrm{m/s}$ 与 $C_\infty$ 按题面给定值建模（假设~6）。
+物理模型与求解域见图~\ref{fig:schematic}。
+
+\begin{figure}[htbp]
     \centering
-    \begin{minipage}[c]{0.3\textwidth}
-        \centering
-        \includegraphics[width=0.95\textwidth]{f1}
-        \subcaption{流程图}
-        \label{fig:sample-figure-a}
-    \end{minipage}
-    \begin{minipage}[c]{0.3\textwidth}
-        \centering
-        \includegraphics[width=0.95\textwidth]{f1}
-        \subcaption{流程图}
-        \label{fig:sample-figure-b}
-    \end{minipage}
-    \begin{minipage}[c]{0.3\textwidth}
-        \centering
-        \includegraphics[width=0.95\textwidth]{f1}
-        \subcaption{流程图}
-        \label{fig:sample-figure-c}
-    \end{minipage}
-    \caption{多图并排示例}
-    \label{fig:sample-figure}
+    \includegraphics[width=0.94\textwidth]{figures/fig_q1_schematic.pdf}
+    \caption{物理模型与一维径向求解域。(a) 圆柱药材与第三类边界条件，热流进入
+    药材、水分自表面流出；(b) 节点式有限体积网格：控制体
+    $V_i=\pi(r_{i+1/2}^2-r_{i-1/2}^2)$（单位轴长），通量 $G$ 在界面上守恒。}
+    \label{fig:schematic}
 \end{figure}
-这相当于整体是一张大图片，大图片引用是\cref{fig:sample-figure}，子图引用别分是\cref{fig:sample-figure-a}、\cref{fig:sample-figure-b}、\cref{fig:sample-figure-c}。
 
-如果原本两张图片的高度不同，但是希望它们缩放后等高的排在同一行，参考这个例子：
-\begin{figure}
+模型的两个关键特性决定了求解与检验的设计。其一为\textbf{分布参数效应与尺度
+分离}：热 Biot 数 $\mathrm{Bi}=hR/k=1.389>0.1$，传质 Biot 数
+$\mathrm{Bi}_m=h_mR/D(C_0)=3.24$，内部导热/扩散阻力与表面对流阻力同量级，
+\textbf{集总参数法不适用}——若强行集总，其时间常数 $\rho c_pR/(2h)=852.8\,
+\mathrm{s}$ 所预示的快速趋同，与后文解出的 $1800\,\mathrm{s}$ 时 $3.21\,^\circ
+\mathrm{C}$ 的径向温差相矛盾；同时导热特征时间 $R^2/\alpha=2368.9\,\mathrm{s}$
+与湿分扩散特征时间 $R^2/D(C_0)=81010\,\mathrm{s}$ 相差约 $34$ 倍，可预判
+$30\,\mathrm{min}$ 内温度快速响应而水分仅在表层松弛。
+其二为\textbf{强非线性}：$D$ 随 $C$ 指数变化，在 $C_0=2.55$ 处
+$D=4.9377\times10^{-9}\,\mathrm{m^2/s}$，而 $C_\infty(1800\,\mathrm{s})=0.0331$
+处仅 $1.4713\times10^{-20}\,\mathrm{m^2/s}$，比值达 $3.36\times10^{11}$，离散格式
+必须守恒。
+
+\subsubsection{问题一模型的求解}
+
+\textbf{网格。}取节点式网格 $r_i=i\,\Delta r$，$\Delta r=R/M$，$i=0,1,\dots,M$，
+$r=0$ 与 $r=R$ 均为节点，使输出位置 $0,0.1,\dots,2.0\,\mathrm{cm}$ 在 $M$ 为
+$10$ 的整数倍时恰好落在节点上。节点 $i$ 的控制体体积与界面面积（单位轴长）为
+$V_i=\pi(r_{i+1/2}^2-r_{i-1/2}^2)$、$A_{i\pm1/2}=2\pi r_{i\pm1/2}$，几何比
+$f_i^{\pm}=A_{i\pm1/2}/V_i=(2i\pm1)/(2i\,\Delta r)$。
+
+\textbf{温度方程的全隐式离散。}对内部节点 $i=1,\dots,M-1$，控制体能量平衡
+$\rho c_p V_i\,\mathrm{d}T_i/\mathrm{d}t=k[A_{i+1/2}(T_{i+1}-T_i)-A_{i-1/2}(T_i-T_{i-1})]/\Delta r$
+后取后向 Euler，得三对角系统 $a_iT_{i-1}^{n+1}+b_iT_i^{n+1}+c_iT_{i+1}^{n+1}=T_i^n/\Delta t$，
+其三对角系数为
+\begin{equation}
+    a_i=-\frac{\alpha(i-\tfrac12)}{i\,\Delta r^2},\qquad
+    b_i=\frac{1}{\Delta t}+\frac{2\alpha}{\Delta r^2},\qquad
+    c_i=-\frac{\alpha(i+\tfrac12)}{i\,\Delta r^2},
+\end{equation}
+行和 $a_i+b_i+c_i=0$ 恒成立（离散算子湮灭常数场），这是守恒性与极值原理在离散
+层面的基础。中心 $r=0$ 为方程的可去奇点：由 L'H\^opital 法则
+$(1/r)\,\partial_r(r\,\partial_rT)\to 2\,\partial_r^2T$，结合对称条件离散得
+$4(T_1-T_0)/\Delta r^2$，与半控制体 $V_0=\pi(\Delta r/2)^2$ 的通量平衡结果完全
+一致（两种推导互为校核），即中心节点为 $b_0=1/\Delta t+4\alpha/\Delta r^2$、
+$c_0=-4\alpha/\Delta r^2$；表面节点为半控制体
+$[R-\Delta r/2,R]$，外侧界面直接代入第三类边界的实际热流，得表面节点的三对角
+系数与右端项：
+\begin{gather}
+    a_M=-\frac{\alpha f_M^-}{\Delta r},\qquad
+    b_M=\frac{1}{\Delta t}+\frac{\alpha f_M^-}{\Delta r}+g_h,\\[2pt]
+    d_M=\frac{T_M^n}{\Delta t}+g_h\,T_\infty^{n+1},
+    \qquad g_h=\frac{A_s h}{\rho c_p V_M},
+\end{gather}
+$A_s=2\pi R$。
+
+\textbf{水分方程的守恒离散。}空间结构与温度完全平行，仅以 $\alpha\to D$ 替换。
+由于 $D$ 随 $C$ 变化，守恒型格式要求\textbf{同一条界面的通量取单一扩散系数}，
+本文取相邻节点算术平均 $D_{i+1/2}=\tfrac12[D(C_i)+D(C_{i+1})]$。若改用节点值
+$D(C_i)$ 于两侧界面，则离散水量收支残差达表面总通量的 $10.1\%$，且网格加密
+（$M=100,200,400$）时不减小（$10.10\%,10.12\%,10.12\%$），属相容性错误；界面
+平均后残差降至 $10^{-14}$ 量级（机器精度）。上述对比即\textbf{全局水量守恒校验}：
+以离散水量增量 $\sum_i V_i\,(C_i^{n+1}-C_i^n)$ 对表面累计通量
+$2\pi Rh_m\int_0^t\,[C_\infty-C_M(\tau)]\,\mathrm{d}\tau$ 的闭合差为指标。时间上
+$D(C)$ 用上一时刻的 $C^n$ 计算（半隐式），每步仍只需解一个线性三对角系统，无需
+Newton 迭代，引入的误差为 $O(\Delta t)$。该近似的误差随 $D$ 的变化幅度增长：
+问题一时段内 $D$ 仅由 $4.9377\times10^{-9}$ 降至 $3.88\times10^{-9}\,\mathrm{m^2/s}$
+（约 $21\%$），与全非线性解的实测偏差 $5.32\times10^{-6}\,\mathrm{kg/kg}$
+（见独立验证）一致；干燥后期（问题二$\sim$四）$C$ 逼近 $0.15$ 时 $D$ 变化约
+$266$ 倍，届时改用预测--校正（以 $C^n$ 外推 $C^{n+1}$ 计算 $D$ 后隐式回代）或
+全隐式 Newton 迭代。表面节点的对流传质项 $g_m=A_s h_m/V_M$ 不含 $D$：
+$d_M^C=C_M^n/\Delta t+g_m C_\infty^{n+1}$。
+
+\textbf{算法流程。}问题一的数值求解流程如算法~1 所示，每个时间步执行一次
+Step~2--6 的循环体。
+
+\begin{center}
+\begin{minipage}{0.92\textwidth}
+\centering\small
+\textbf{算法~1\quad 问题一的数值求解流程（每个时间步）}\\[3pt]
+\begin{tabular}{cp{0.82\textwidth}}
+\toprule
+Step & 操作 \\
+\midrule
+1 & \textbf{输入}：网格数 $M$、时间步长 $\Delta t$、初值 $T_i^0=T_0$、$C_i^0=C_0$；由附件~1 的 PCHIP 插值得到 $T_\infty(t)$、$C_\infty(t)$ \\
+2 & \textbf{for} $n=0,1,\dots,1800/\Delta t-1$：取 $T_\infty^{n+1}$、$C_\infty^{n+1}$ \\
+3 & \qquad 组装温度三对角系数 $(a_i,b_i,c_i,d_i)$，追赶法求解得 $T^{n+1}$ \\
+4 & \qquad 由 $C^n$ 计算界面扩散系数 $D_{i+1/2}=\frac{1}{2}\bigl[D(C_i)+D(C_{i+1})\bigr]$ \\
+5 & \qquad 组装水分三对角系数，追赶法求解得 $C^{n+1}$ \\
+6 & $n\leftarrow n+1$；若 $t<1800\,\mathrm{s}$ 转入 \textbf{Step 2}，否则 \textbf{输出} $T(r_i,t)$、$C(r_i,t)$，$t=1,2,\dots,1800\,\mathrm{s}$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+\textbf{时间格式的选择。}时间方向采用全隐式 Euler 而非精度高一阶的
+Crank--Nicolson（CN），理由有二：其一，启动瞬态刚性强（最初 $1\,\mathrm{s}$ 内
+表面温度与表面水分迅速变化），CN 仅 A-稳定而非 L-稳定，对刚性分量会产生符号
+振荡，全隐式 Euler 为 L-稳定，无此风险；其二，生产步长下时间离散误差已比报告
+精度低一个数量级以上（见下），CN 的二阶精度无实际收益。若后续问题需要更大
+步长，可在不改离散骨架的前提下换用 CN 或 BDF2。
+
+\textbf{数值实现与精度控制。}全部中间计算采用双精度浮点（约 $16$ 位有效数字），
+$\alpha$ 以未舍入值 $0.36/(820\times2600)=1.6885553\times10^{-7}\,\mathrm{m^2/s}$
+参与运算，仅在输出时舍入到四位小数；状态变量以 K 计算，输出按
+$T(^\circ\mathrm{C})=T(\mathrm{K})-273.15$ 转换，转换正确性由全场最小温度
+$28.0000\,^\circ\mathrm{C}$（即 $T_0$，出现于 $t=1\,\mathrm{s}$ 的中心节点）自检。
+
+\textbf{网格无关性与时间步敏感性。}空间离散的经验收敛阶为二阶（$M$ 加密时
+$2.0\to2.3$），时间为一阶（$\Delta t$ 减半误差减半）。生产设置取
+$M=3200$（$\Delta r=6.25\times10^{-6}\,\mathrm{m}$）、$\Delta t=2^{-8}=0.00390625\,
+\mathrm{s}$（$1\,\mathrm{s}$ 恰为第 $256$ 步，输出时刻不需插值）；与两组独立加密解
+（$\Delta t$ 减半、$M$ 加倍）比较，输出场最大偏差温度 $<3.8\times10^{-6}\,\mathrm{K}$、
+水分 $<1.2\times10^{-5}\,\mathrm{kg/kg}$，低于四位小数的半 ulp（$5\times10^{-5}$），
+故四位小数报告是安全的。
+
+\textbf{独立验证。}数值解与四个独立基准的对比汇总如下表：
+
+\begin{center}
+\begin{minipage}{0.94\textwidth}
+\centering\small
+\textbf{问题一数值解的独立验证汇总}\\[3pt]
+\begin{tabular}{p{0.30\textwidth}p{0.28\textwidth}p{0.26\textwidth}}
+\toprule
+验证手段 & 设置 & 结果 \\
+\midrule
+Robin 圆柱解析级数解（Carslaw--Jaeger 形式） & 常数 $T_\infty=50\,^\circ\mathrm{C}$，$M=800$，$\Delta t=5\times10^{-4}\,\mathrm{s}$ & 最大偏差 $4.5\times10^{-6}\,\mathrm{K}$ \\
+全非线性线条法（BDF） & $M=200$，$D$ 每步取当前值 & $\max|\Delta T|=5.95\times10^{-5}\,\mathrm{K}$，$\max|\Delta C|=5.32\times10^{-6}\,\mathrm{kg/kg}$ \\
+极值原理 & 全部 $1800\times21$ 个输出值 & 落于 $[28.0000,\ 36.7858]\,^\circ\mathrm{C}$ 内，无越界振荡 \\
+全局水量守恒 & 界面平均格式，$0\sim1800\,\mathrm{s}$ & 收支残差 $\sim10^{-14}$（机器精度） \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+其中级数解 $\theta=\sum_n C_nJ_0(\lambda_n r/R)\exp(-\lambda_n^2\mathrm{Fo})$
+取 $120$ 项截断，$\lambda_n$ 为 $\lambda J_1(\lambda)=\mathrm{Bi}\,J_0(\lambda)$
+的正根；作为对照，节点值 $D$ 取法的守恒残差为 $10.1\%$ 且不随网格加密消失
+（\S5.2.2），进一步说明界面平均格式的必要性。此外，本文的全部解析推导——控制体
+几何比、三对角系数及其行和恒等式、中心节点的两种独立推导（半控制体与
+L'H\^opital 极限）、表面节点的渐近系数、严格对角占优、时间格式增长因子
+（全隐式 Euler 的 L-稳定性与 Crank--Nicolson 的刚性符号振荡）、级数解特征根，以及
+节点值 $D$ 取法的伸缩恒等式与空间算子谱——均已用符号计算逐项复核，$12$ 项检查
+全部通过（脚本 \texttt{src/verify\_derivation.py}，日志
+\texttt{outputs/derivation\_check.log}）。
+
+\subsubsection{灵敏度与鲁棒性检验}
+\label{sec:sens}
+
+\textbf{单参数扰动灵敏度（OAT）。}对 $h,h_m,D_0,k,\rho,c_p,T_0,C_0$ 各作
+$\pm10\%$ 扰动，以中心差分计算归一化灵敏度系数
+$S=(\Delta y/y)/(\Delta p/p)$，响应量取 $t_e=1800\,\mathrm{s}$ 时的
+$T(0,t_e)$、$T(R,t_e)$、$C(R,t_e)$ 与体积平均 $\langle C\rangle(t_e)$，
+各参数的灵敏度系数汇总如下表（图~\ref{fig:sens} 为可视化）：
+
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+\centering\small
+\textbf{OAT 灵敏度系数 $S$（$\pm10\%$ 扰动，中心差分；$0$ 表示响应严格为零）}\\[3pt]
+\begin{tabular}{lcccc}
+\toprule
+参数 & $T(0,t_e)$ & $T(R,t_e)$ & $C(R,t_e)$ & $\langle C\rangle(t_e)$ \\
+\midrule
+$T_0$ & 0.270 & 0.148 & 0 & 0 \\
+$C_0$ & 0 & 0 & 1.097 & 0.991 \\
+$h_m$ & 0 & 0 & $-0.475$ & $-0.076$ \\
+$D_0$ & 0 & 0 & 0.219 & $-0.017$ \\
+$h$ & 0.009 & 0.011 & 0 & 0 \\
+$k$ & 0.008 & $-0.002$ & 0 & 0 \\
+$\rho$ & $-0.016$ & $-0.010$ & 0 & 0 \\
+$c_p$ & $-0.016$ & $-0.010$ & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+温度输出对 $h_m,D_0,C_0$、水分输出对 $h,k,\rho,c_p,T_0$ 的响应严格为零，是
+问题一热湿单向解耦的直接数值证据；表面水分浓度主要由 $C_0$、$h_m$ 与 $D_0$ 控制，
+其中 $T_0$ 对中心温度的影响最强（$S=0.270$）。
+
+\begin{figure}[htbp]
     \centering
-    \begin{minipage}[c]{0.48\textwidth}
-        \centering
-        \includegraphics[height=0.2\textheight]{cat}
-        \subcaption{一只猫}
-    \end{minipage}
-    \begin{minipage}[c]{0.48\textwidth}
-        \centering
-        \includegraphics[height=0.2\textheight]{smokeblk}
-        \subcaption{电路图}
-    \end{minipage}
-    \caption{多图并排示例}
+    \includegraphics[width=0.94\textwidth]{figures/fig_q1_sensitivity.pdf}
+    \caption{单参数扰动（$\pm10\%$）灵敏度龙卷风图。热参数只影响温度输出、湿参数
+    只影响水分输出（其余响应严格为 $0$），是问题一热湿单向解耦的直接数值证据。}
+    \label{fig:sens}
 \end{figure}
 
-\section{绘制普通三线表格}
-表格应具有三线表格式，因此常用 booktabs宏包，其标准格式如\cref{tab:001}~所示。
-\begin{table}[!htbp]
-    \caption{标准三线表格}\label{tab:001} \centering
-    \begin{tabular}{ccccc}
-        \toprule[1.5pt]
-        $D$(in) & $P_u$(lbs) & $u_u$(in) & $\beta$ & $G_f$(psi.in)\\
-        \midrule[1pt]
-        5 & 269.8 & 0.000674 & 1.79 & 0.04089\\
-        10 & 421.0 & 0.001035 & 3.59 & 0.04089\\
-        20 & 640.2 & 0.001565 & 7.18 & 0.04089\\
-        \bottomrule[1.5pt]
+\textbf{边界数据噪声鲁棒性。}按问题分析中估计的噪声水平
+（$\sigma_T\approx0.153\,^\circ\mathrm{C}$、
+$\sigma_C\approx1.27\times10^{-4}\,\mathrm{kg/kg}$）对附件~1 采样值加高斯噪声，
+重拟合 PCHIP 并全程重解，重复 $100$ 次（图~\ref{fig:robust}a）。水分输出的波动
+远低于报告精度（表面水分标准差 $1.6\times10^{-5}$、最大偏差
+$4.7\times10^{-5}\,\mathrm{kg/kg}<$ 半 ulp；体积平均标准差 $2.3\times10^{-6}$），
+即水分浓度的四位小数对边界噪声稳健；温度输出的波动（标准差
+$2.5\times10^{-2}\sim3.8\times10^{-2}\,\mathrm{K}$，最大 $0.105\,\mathrm{K}$）由
+数据噪声主导——这是输入数据精度（$\sigma_T\approx0.15\,^\circ\mathrm{C}$）的
+传导，而非数值方法误差。
+
+\textbf{参数联合不确定性。}将 $h,h_m,D_0,k,\rho,c_p$ 同时在标称值 $\pm10\%$ 内
+均匀扰动，重复 $100$ 次（图~\ref{fig:robust}b）："中心不失水、温度内低外高、
+水分内高外低"三项定性结论在全部 realisation 中保持（$100\%$）；输出量最大相对
+偏差 $6.2\%$（表面水分），由 $C_0$ 与 $h_m$ 主导——属于物理输入不确定性的传导。
+
+\textbf{数值参数鲁棒性。}网格 $M=100,200,400$ 与参考解（$M=800$）的最大偏差分别
+为 $6.8\times10^{-5}$、$1.6\times10^{-5}$、$3.2\times10^{-6}$（温度为 K、水分为
+kg/kg）；环境插值方法取线性/三次样条与 PCHIP 的输出差异不超过
+$4.9\times10^{-4}\,\mathrm{K}$ 与 $2.6\times10^{-7}\,\mathrm{kg/kg}$
+（图~\ref{fig:robust}c）。离散与插值选择的影响远小于数据噪声。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth]{figures/fig_q1_robustness.pdf}
+    \caption{鲁棒性检验。(a) 边界数据噪声 Monte Carlo（$N=100$）；(b) 参数联合
+    $\pm10\%$ Monte Carlo（$N=100$）；(c) 网格收敛。纵轴为输出量偏差与四位小数
+    报告精度（半 ulp $5\times10^{-5}$）之比；虚线为报告精度基准。}
+    \label{fig:robust}
+\end{figure}
+
+\subsubsection{求解结果与分析}
+
+按上述模型与生产设置求解，表~1、表~2 给出题面要求的温度与水分浓度，完整结果
+（每隔 $1\,\mathrm{s}$、每隔 $0.1\,\mathrm{cm}$，共 $1800\times21$ 个值）保存于
+\texttt{result1.xlsx} 的``温度''与``水分浓度''两个工作表，全部数值保留四位小数。
+
+\begin{table}[htbp]
+    \centering
+    \caption{30 分钟内药材的温度（单位：$^\circ$C）}
+    \label{tab:t1}
+    \begin{tabular}{rccccc}
+    \toprule
+    时间/s & 0 cm & 0.5 cm & 1 cm & 1.5 cm & 2 cm \\
+    \midrule
+    100 & 28.0000 & 28.0003 & 28.0039 & 28.0319 & 28.1795 \\
+    300 & 28.0406 & 28.0634 & 28.1513 & 28.3673 & 28.8486 \\
+    600 & 28.4534 & 28.5361 & 28.8039 & 29.3156 & 30.1641 \\
+    900 & 29.3243 & 29.4583 & 29.8758 & 30.6164 & 31.7295 \\
+    1200 & 30.5429 & 30.7099 & 31.2225 & 32.1130 & 33.4295 \\
+    1500 & 31.9960 & 32.1871 & 32.7667 & 33.7476 & 35.1211 \\
+    1800 & 33.5758 & 33.7724 & 34.3642 & 35.3622 & 36.7858 \\
+    \bottomrule
     \end{tabular}
 \end{table}
 
-其绘制表格的代码及其说明如下。
-\begin{tcode}
-    \begin{table}[!htbp]
-        \caption[标签名]{中文标题}
-        \begin{tabular}{cc...c}
-            \toprule[1.5pt]
-            表头第1个格   & 表头第2个格   & ... & 表头第n个格  \\
-            \midrule[1pt]
-            表中数据(1,1) & 表中数据(1,2) & ... & 表中数据(1,n)\\
-            表中数据(2,1) & 表中数据(2,2) & ... & 表中数据(2,n)\\
-            ...................................................\\
-            表中数据(m,1) & 表中数据(m,2) & ... & 表中数据(m,n)\\
-            \bottomrule[1.5pt]
-        \end{tabular}
-    \end{table}
-\end{tcode}
+\begin{table}[htbp]
+    \centering
+    \caption{30 分钟内药材的水分浓度（单位：kg/kg）}
+    \label{tab:t2}
+    \begin{tabular}{rccccc}
+    \toprule
+    时间/s & 0 cm & 0.5 cm & 1 cm & 1.5 cm & 2 cm \\
+    \midrule
+    100 & 2.5500 & 2.5500 & 2.5500 & 2.5500 & 2.2470 \\
+    300 & 2.5500 & 2.5500 & 2.5500 & 2.5492 & 2.0508 \\
+    600 & 2.5500 & 2.5500 & 2.5500 & 2.5353 & 1.8770 \\
+    900 & 2.5500 & 2.5500 & 2.5497 & 2.5045 & 1.7547 \\
+    1200 & 2.5500 & 2.5500 & 2.5482 & 2.4646 & 1.6586 \\
+    1500 & 2.5500 & 2.5499 & 2.5445 & 2.4206 & 1.5787 \\
+    1800 & 2.5500 & 2.5497 & 2.5383 & 2.3755 & 1.5102 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
-\bigskip
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.94\textwidth]{figures/fig_q1_fields.pdf}
+    \caption{问题一求解结果。(a)(b) 温度场与水分浓度场（数据取自
+    \texttt{result1.xlsx}）；(c)(d) 表~1、表~2 对应时刻的径向剖面，线色随时间
+    变化。}
+    \label{fig:fields}
+\end{figure}
 
-table环境是一个将表格嵌入文本的浮动环境。tabular环境的必选参数由每列对应一个格式字符所组成：c表示居中，l表示左对齐，r表示右对齐，其总个数应与表的列数相同。此外，\verb|@{文本}|可以出现在任意两个上述的列格式之间，其中的文本将被插入每一行的同一位置。表格的各行以\verb|\\|分隔，同一行的各列则以\&分隔。 \verb|\toprule| 、\verb|\midrule| 和 \verb|\bottomrule| 三个命令是由booktabs宏包提供的，其中 \verb|\toprule| 和 \verb|\bottomrule| 分别用来绘制表格的第一条（表格最顶部）和第三条（表格最底部）水平线， \verb|\midrule| 用来绘制第二条（表头之下）水平线，且第一条和第三条水平线的线宽为 1.5pt ，第二条水平线的线宽为 1pt 。引用方法与图片的相同。
-
-\section{公式}
-
-数学建模必然涉及不少数学公式的使用。下面简单介绍一个可能用得上的数学环境。
-
-首先是行内公式，例如 $ \theta $ 是角度。行内公式使用 \verb|$  $| 包裹。
-
-行间公式不需要编号的可以使用 \verb|\[  \]| 包裹，例如
-\[
-E=mc^2
-\]
-其中 $ E $ 是能量，$ m $ 是质量，$ c $ 是光速。
-
-如果希望某个公式带编号，并且在后文中引用可以参考下面的写法：
-\begin{equation}
-E=mc^2
-\label{eq:energy}
-\end{equation}
-式\cref{eq:energy}是质能方程。
-
-多行公式有时候希望能够在特定的位置对齐，以下是其中一种处理方法。
-\begin{align}
-P & = UI \\
-& = I^2R
-\end{align}
-\verb|&| 是对齐的位置， \verb|&| 可以有多个，但是每行的个数要相同。
-
-矩阵的输入也不难。
-\[
-\mathbf{X} = \left(
-    \begin{array}{cccc}
-    x_{11} & x_{12} & \ldots & x_{1n}\\
-    x_{21} & x_{22} & \ldots & x_{2n}\\
-    \vdots & \vdots & \ddots & \vdots\\
-    x_{n1} & x_{n2} & \ldots & x_{nn}\\
-    \end{array} \right)
-\]
-
-分段函数这些可以用 \verb|case| 环境，但是它要放在数学环境里面。
-\[
-f(x) =
-    \begin{cases}
-        0 &  x \text{为无理数} ,\\
-        1 &  x \text{为有理数} .
-    \end{cases}
-\]
-在数学环境里面，字体用的是数学字体，一般与正文字体不同。假如要公式里面有个别文字，则需要把这部分放在 \verb|text| 环境里面，即 \verb|\text{文本环境}| 。
-
-公式中个别需要加粗的字母可以用 \verb|$\bm{math symbol}$| 。如 $ \alpha a\bm{\alpha a} $ 。
-
-以上仅简单介绍了基础的使用，对于更复杂的需求，可以阅读相关的宏包手册，如 \href{http://texdoc.net/texmf-dist/doc/latex/amsmath/amsldoc.pdf}{amsmath}。
-
-希腊字母这些如果不熟悉，可以去查找符号文件 \href{http://mirrors.ctan.org/info/symbols/comprehensive/symbols-a4.pdf}{symbols-a4.pdf} ，也可以去 \href{http://detexify.kirelabs.org/classify.html}{detexify} 网站手写识别。另外还有数学公式识别软件 \href{https://mathpix.com/}{mathpix} 。
-
-下面简单介绍一下定理、证明等环境的使用。
-\begin{definition}
-    定义环境
-    \label{def:nosense}
-\end{definition}
-\cref{def:nosense}除了告诉你怎么使用这个环境以外，没有什么其它的意义。
-
-除了 definition 环境，还可以使用 theorem 、lemma、corollary、assumption、conjecture、axiom、principle、problem、example、proof、solution 这些环境，根据论文的实际需求合理使用。
-
-\begin{theorem}
-    这是一个定理。
-    \label{thm:example}
-\end{theorem}
-由\cref{thm:example}我们知道了定理环境的使用。
-
-\begin{lemma}
-    这是一个引理。
-    \label{lem:example}
-\end{lemma}
-由\cref{lem:example}我们知道了引理环境的使用。
-
-\begin{corollary}
-    这是一个推论。
-    \label{cor:example}
-\end{corollary}
-由\cref{cor:example}我们知道了推论环境的使用。
-
-\begin{assumption}
-    这是一个假设。
-    \label{asu:example}
-\end{assumption}
-由\cref{asu:example}我们知道了假设环境的使用。
-
-\begin{conjecture}
-    这是一个猜想。
-    \label{con:example}
-\end{conjecture}
-由\cref{con:example}我们知道了猜想环境的使用。
-
-\begin{axiom}
-    这是一个公理。
-    \label{axi:example}
-\end{axiom}
-由\cref{axi:example}我们知道了公理环境的使用。
-
-\begin{principle}
-    这是一个定律。
-    \label{pri:example}
-\end{principle}
-由\cref{pri:example}我们知道了定律环境的使用。
-
-\begin{problem}
-    这是一个问题。
-    \label{pro:example}
-\end{problem}
-由\cref{pro:example}我们知道了问题环境的使用。
-
-\begin{example}
-    这是一个例子。
-    \label{exa:example}
-\end{example}
-由\cref{exa:example}我们知道了例子环境的使用。
-
-\begin{proof}
-    这是一个证明。
-    \label{prf:example}
-\end{proof}
-由\cref{prf:example}我们知道了证明环境的使用。
-
-\begin{solution}
-    这是一个解。
-    \label{sol:example}
-\end{solution}
-由\cref{sol:example}我们知道了解环境的使用。
-
-
-
-\section{其它小功能}
-\subsection{脚注}
-
-利用 \verb|\footnote{具体内容}| 可以生成脚注\footnote{脚注可以补充说明一些东西}。
-
-\subsection{无序列表与有序列表}
-
-无序列表是这样的：
-\begin{itemize}
-    \item one
-    \item two
-    \item ...
-\end{itemize}
-
-有序列表是这样子的：
+结果的物理分析与问题分析中的预判一致：
 \begin{enumerate}
-    \item one
-    \item two
-    \item ...
+    \item \textbf{温度快速响应且存在径向梯度}：$t=1800\,\mathrm{s}$ 时中心与表面
+    分别为 $33.5758\,^\circ\mathrm{C}$ 与 $36.7858\,^\circ\mathrm{C}$，径向温差
+    $3.21\,^\circ\mathrm{C}$，印证 $\mathrm{Bi}>0.1$ 的分布参数特征；由于导热
+    特征时间 $R^2/\alpha=2368.9\,\mathrm{s}$ 大于 $1800\,\mathrm{s}$，预热平衡
+    阶段结束时热平衡尚未完成。
+    \item \textbf{水分只在表层松弛}：中心含水率在 $30\,\mathrm{min}$ 内几乎不变
+    （相对下降仅 $3.01\times10^{-6}$），体积平均含水率下降 $10.1\%$，全部来自
+    表面薄层；$t=1800\,\mathrm{s}$ 时表面含水率 $C(R)=1.5102\,\mathrm{kg/kg}$
+    （较初值下降 $40.8\%$），仍是环境值 $C_\infty$ 的 $45.7$ 倍
+    （整个烘干期内 $C_0/C_\infty\approx51\sim130$），干燥驱动力依然充足。
+    \item \textbf{对后续问题的提示}：$D(C)$ 随 $C$ 下降而骤减（$C=0.15$ 处比
+    初值小约 $266$ 倍），干燥前沿将形成``干壳''，水分向 $0.15\,\mathrm{kg/kg}$
+    目标收敛的过程会显著减慢，这是问题三确定烘干时间时需要专门处理的时间尺度问题。
 \end{enumerate}
 
-\subsection{字体加粗与斜体}
+\textbf{不确定度小结。}
+\begin{enumerate}
+    \item \textbf{数值不确定度}：温度 $<3.8\times10^{-6}\,\mathrm{K}$、水分
+    $<1.2\times10^{-5}\,\mathrm{kg/kg}$（与独立加密解比较），与解析级数解偏差
+    $<4.5\times10^{-6}\,\mathrm{K}$；
+    \item \textbf{数据不确定度}：附件~1 噪声 $\sigma_T\approx0.153\,^\circ\mathrm{C}$
+    使温度的第四位小数由数据精度主导，而水分浓度的四位小数对噪声稳健
+    （\S\ref{sec:sens}）；
+    \item \textbf{模型形式不确定度}：$h_m$ 按题面给定值
+    （$8\times10^{-7}\,\mathrm{m/s}$）建模，与热质传递类比估算值相差约 $4$ 个
+    数量级，且模型把 $C_\infty$ 直接作为表面平衡浓度——水分浓度的\textbf{绝对
+    数值}因此带有模型形式不确定度，但其时间趋势与径向分布形态对该假设不敏感。
+\end{enumerate}
 
-如果想强调部分内容，可以使用加粗的手段来实现。加粗字体可以用 \verb|\textbf{加粗}| 来实现。例如： \textbf{这是加粗的字体。 This is bold fonts} 。
+\subsection{问题二模型的建立与求解}
+% TODO：附录3 变物性与 D(C,T) 双向耦合模型的建立、交替迭代求解，表3/表4 与 result2.xlsx
 
-中文字体没有斜体设计，但是英文字体有。\textit{斜体 Italics}。
+\subsection{问题三模型的建立与求解}
+% TODO：以各处 C < 0.15 kg/kg 为终止条件的事件定位，表5 与 result3.xlsx
 
-\section{参考文献与引用}
+\subsection{问题四模型的建立与求解}
+% TODO：xi=r/R(t) 动边界与附录4 物性，表6 与 result4.xlsx
 
-参考文献对于一篇正式的论文来说是必不可少的，在建模中重要的参考文献当然应该列出。\LaTeX{}在这方面的功能也是十分强大的，下面进介绍一个比较简单的参考文献制作方法。有兴趣的可以学习 \verb|bibtex| 或 \verb|biblatex| 的使用。
-
-\LaTeX{}的入门书籍可以看《\LaTeX{}入门》\cite{liuhaiyang2013latex}。这是一个简单的引用，用 \verb|\cite{bibkey}| 来完成。要引用成功，当然要维护好 bibitem 了。下面是个简单的例子。
-
-
+\section{模型评价与推广}
+% TODO：优点、缺点、改进与推广
 
 %参考文献
 \begin{thebibliography}{9}%宽度9
-    \bibitem[1]{liuhaiyang2013latex}
-    刘海洋.
-    \newblock \LaTeX {}入门\allowbreak[J].
-    \newblock 电子工业出版社, 北京, 2013.
-    \bibitem[2]{mathematical-modeling}
-    全国大学生数学建模竞赛论文格式规范 (2023 年 修改).
-    \bibitem{3} \url{https://www.latexstudio.net}
+    \bibitem{hu2020}
+    胡众欢, 杨明金, 杨卓然, 杨玲.
+    \newblock 基于多物理场耦合的热风干燥模型及其验证\allowbreak[J].
+    \newblock 西南大学学报(自然科学版), 2020, 42(2): 118--128.
+    \bibitem{rani2020}
+    Rani P, Tripathy P P.
+    \newblock Modelling of moisture migration during convective drying of pineapple slice considering non-isotropic shrinkage and variable transport properties\allowbreak[J].
+    \newblock Journal of Food Science and Technology, 2020, 57(10): 3748--3761.
+    \bibitem{oliveira2003}
+    Oliveira P C, Lima J L.
+    \newblock Flux-Spline discretization scheme applied to drying in capillary porous media\allowbreak[J].
+    \newblock Revista Brasileira de Engenharia Agr\'icola e Ambiental, 2003, 7(1): 135--140.
+    \bibitem{solomon2021}
+    Solomon A B, Fanta S W, Delele M A, et al.
+    \newblock Modeling and simulation of heat and mass transfer in an Ethiopian fresh injera drying process\allowbreak[J].
+    \newblock Heliyon, 2021, 7: e06201.
+    \bibitem{brasiello2021}
+    Brasiello A, Venditti C, Adrover A.
+    \newblock Non-isothermal moving-boundary model for food drying\allowbreak[J].
+    \newblock Chemical Engineering Transactions, 2021, 87: 193--198.
+    \bibitem{amankwah2018}
+    Amankwah E A, Dzisi K A, van Straten G, et al.
+    \newblock Moisture dependent diffusion and shrinkage in yam during drying\allowbreak[J].
+    \newblock International Journal of Food Engineering, 2018, 14(7/8).
+    \bibitem{marques2023}
+    Marques B C, Flick D, Tadini C C, et al.
+    \newblock Modeling convective drying of food products: the case study of yacon (\textit{Smallanthus sonchifolius})\allowbreak[R].
+    \newblock Research Square 预印本, 2023.
 \end{thebibliography}
 
 \newpage
 %附录
 \begin{appendices}
 
-\section{模板所用的宏包}
-\begin{table}[htbp]
-    \centering
-    \caption{宏包罗列}
-    \begin{tabular}{ccccc}
-        \toprule
-        \multicolumn{5}{c}{模板中已经加载的宏包} \\
-        \midrule
-        amsbsy & amsfonts & {amsgen} & {amsmath} & {amsopn} \\
-        amssymb & amstext & {appendix} & {array} & {atbegshi} \\
-        atveryend & auxhook & {bigdelim} & {bigintcalc} & {bigstrut} \\
-        bitset & bm    & {booktabs} & {calc} & {caption} \\
-        caption3 & CJKfntef & {cprotect} & {ctex} & {ctexhook} \\
-        ctexpatch & enumitem & {etexcmds} & {etoolbox} & {everysel} \\
-        expl3 & fix-cm & {fontenc} & {fontspec} & {fontspec-xetex} \\
-        geometry & gettitlestring & {graphics} & {graphicx} & {hobsub} \\
-        hobsub-generic & hobsub-hyperref & {hopatch} & {hxetex} & {hycolor} \\
-        hyperref & ifluatex & {ifpdf} & {ifthen} & {ifvtex} \\
-        ifxetex & indentfirst & {infwarerr} & {intcalc} & {keyval} \\
-        kvdefinekeys & kvoptions & {kvsetkeys} & {l3keys2e} & {letltxmacro} \\
-        listings & longtable & {lstmisc} & {ltcaption} & {ltxcmds} \\
-        multirow & nameref & {pdfescape} & {pdftexcmds} & {refcount} \\
-        rerunfilecheck & stringenc & {suffix} & {titletoc} & {tocloft} \\
-        trig  & ulem  & {uniquecounter} & {url} & {xcolor} \\
-        xcolor-patch & xeCJK & {xeCJKfntef} & {xeCJK-listings} & {xparse} \\
-        xtemplate & zhnumber &       &       &  \\
-        \bottomrule
-    \end{tabular}%
-    \label{tab:addlabel}%
-\end{table}%
+\section{附录：结果文件与源程序}
+% TODO：附上 result1--result4.xlsx 的生成方式与 Q1--Q4 核心代码（src/ 目录）
 
-以上宏包都已经加载过了，不要重复加载它们。
-
-\section{排队算法--matlab 源程序}
-
-\begin{lstlisting}[language=matlab]
-kk=2;[mdd,ndd]=size(dd);
-while ~isempty(V)
-[tmpd,j]=min(W(i,V));tmpj=V(j);
-for k=2:ndd
-[tmp1,jj]=min(dd(1,k)+W(dd(2,k),V));
-tmp2=V(jj);tt(k-1,:)=[tmp1,tmp2,jj];
-end
-tmp=[tmpd,tmpj,j;tt];[tmp3,tmp4]=min(tmp(:,1));
-if tmp3==tmpd, ss(1:2,kk)=[i;tmp(tmp4,2)];
-else,tmp5=find(ss(:,tmp4)~=0);tmp6=length(tmp5);
-if dd(2,tmp4)==ss(tmp6,tmp4)
-ss(1:tmp6+1,kk)=[ss(tmp5,tmp4);tmp(tmp4,2)];
-else, ss(1:3,kk)=[i;dd(2,tmp4);tmp(tmp4,2)];
-end;end
-dd=[dd,[tmp3;tmp(tmp4,2)]];V(tmp(tmp4,3))=[];
-[mdd,ndd]=size(dd);kk=kk+1;
-end; S=ss; D=dd(1,:);
- \end{lstlisting}
-
- \section{规划解决程序--lingo源代码}
-
-\begin{lstlisting}[language=c]
-kk=2;
-[mdd,ndd]=size(dd);
-while ~isempty(V)
-    [tmpd,j]=min(W(i,V));tmpj=V(j);
-for k=2:ndd
-    [tmp1,jj]=min(dd(1,k)+W(dd(2,k),V));
-    tmp2=V(jj);tt(k-1,:)=[tmp1,tmp2,jj];
-end
-    tmp=[tmpd,tmpj,j;tt];[tmp3,tmp4]=min(tmp(:,1));
-if tmp3==tmpd, ss(1:2,kk)=[i;tmp(tmp4,2)];
-else,tmp5=find(ss(:,tmp4)~=0);tmp6=length(tmp5);
-if dd(2,tmp4)==ss(tmp6,tmp4)
-    ss(1:tmp6+1,kk)=[ss(tmp5,tmp4);tmp(tmp4,2)];
-else, ss(1:3,kk)=[i;dd(2,tmp4);tmp(tmp4,2)];
-end;
-end
-    dd=[dd,[tmp3;tmp(tmp4,2)]];V(tmp(tmp4,3))=[];
-    [mdd,ndd]=size(dd);
-    kk=kk+1;
-end;
-S=ss;
-D=dd(1,:);
- \end{lstlisting}
 \end{appendices}
 
-\end{document} 
+\end{document}

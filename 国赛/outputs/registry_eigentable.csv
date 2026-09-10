@@ -1,0 +1,26 @@
+id,quantity,value,unit,uncertainty,source,command,note
+T00,热 Biot 数 Bi = hR/k,1.3888888889e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,定义由附录2
+T01_1,feishu §6.1 表值 x_1,2.0000000000e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,占位值
+T02_1,真实本征值 x_1,1.4184725188e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,数值求根
+T03_1,表值相对真值偏差 (%) x_1,4.0996739341e+01,%,机器精度,run audit_eigentable,python src/audit_eigentable.py,正 = 表值偏大
+T01_2,feishu §6.1 表值 x_2,5.0000000000e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,占位值
+T02_2,真实本征值 x_2,4.1664696010e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,数值求根
+T03_2,表值相对真值偏差 (%) x_2,2.0005675759e+01,%,机器精度,run audit_eigentable,python src/audit_eigentable.py,正 = 表值偏大
+T01_3,feishu §6.1 表值 x_3,8.0000000000e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,占位值
+T02_3,真实本征值 x_3,7.2084784644e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,数值求根
+T03_3,表值相对真值偏差 (%) x_3,1.0980424503e+01,%,机器精度,run audit_eigentable,python src/audit_eigentable.py,正 = 表值偏大
+T01_4,feishu §6.1 表值 x_4,1.1000000000e+01,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,占位值
+T02_4,真实本征值 x_4,1.0308273154e+01,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,数值求根
+T03_4,表值相对真值偏差 (%) x_4,6.7104047029e+00,%,机器精度,run audit_eigentable,python src/audit_eigentable.py,正 = 表值偏大
+T04,表值偏差下界 (最小),6.7104047029e+00,%,机器精度,run audit_eigentable,python src/audit_eigentable.py,表值偏大
+T05,表值偏差上界 (最大),4.0996739341e+01,%,机器精度,run audit_eigentable,python src/audit_eigentable.py,表值偏大
+T06_1,表值 x=2 反推的 Bi,5.1518406427e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,彼此相差近 2 倍 => 不属于同一 Bi
+T06_2,表值 x=5 反推的 Bi,9.2225532921e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,彼此相差近 2 倍 => 不属于同一 Bi
+T06_3,表值 x=8 反推的 Bi,1.0935519653e+01,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,彼此相差近 2 倍 => 不属于同一 Bi
+T06_4,表值 x=11 反推的 Bi,1.1359512098e+01,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,彼此相差近 2 倍 => 不属于同一 Bi
+T07,反推 Bi 的极差 (max-min),6.2076714552e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,若表值同属一个 Bi 应为 0
+T08_1,真根间隔 x_1->x_2,2.7479970822e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,趋于 pi
+T08_2,真根间隔 x_2->x_3,3.0420088634e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,趋于 pi
+T08_3,真根间隔 x_3->x_4,3.0997946891e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,趋于 pi
+T09,真根间隔均值 (k=1..4),2.9632668782e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,趋于 pi
+T10,表值间隔 (均匀),3.0000000000e+00,-,机器精度,run audit_eigentable,python src/audit_eigentable.py,"人为等距, 与真根间隔不符"

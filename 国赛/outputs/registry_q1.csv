@@ -5,6 +5,7 @@ P03,D(C0=2.55),4.937655094e-09,m^2/s,解析精确,附录2,python src/q1_solve.py
 P04,D(C=0.15),1.854744595e-11,m^2/s,解析精确,附录2,python src/q1_solve.py,问题3阈值处
 P05,D(C=0.0331),1.471273937e-20,m^2/s,解析精确,附录2,python src/q1_solve.py,1800s C_inf
 P06,D 在 C0..0.0331 上的量级跨度,3.356040619e+11,-,解析精确,附录2,python src/q1_solve.py,12 个数量级
+P06b,D(C0)/D(0.15) (初始 vs 问题3阈值),266.2175217,-,解析精确,附录2,python src/q1_solve.py,干壳效应的量级
 P07,热 Biot 数 Bi = hR/k,1.388888889,-,解析精确,附录2,python src/q1_solve.py,>0.1 内部温度不均匀
 P08,传质 Biot 数 Bi_m = hm R/D(C0),3.240404543,-,解析精确,附录2,python src/q1_solve.py,
 P09,导热特征时间 R^2/alpha,2368.888889,s,解析精确,附录2,python src/q1_solve.py,与 1800 s 比较
@@ -67,11 +68,37 @@ R_C_1500,"C(r,t=1500s) kg/kg @ 0/0.5/1/1.5/2cm",2.5500 / 2.5499 / 2.5445 / 2.420
 R_T_1800,"T(r,t=1800s) degC @ 0/0.5/1/1.5/2cm",33.5760 / 33.7725 / 34.3644 / 35.3623 / 36.7859,degC,±1e-4 K (见 S21),run solve_q1,python src/q1_solve.py,表1
 R_C_1800,"C(r,t=1800s) kg/kg @ 0/0.5/1/1.5/2cm",2.5500 / 2.5497 / 2.5383 / 2.3755 / 1.5102,kg/kg,±1e-6 (见 S22),run solve_q1,python src/q1_solve.py,表2
 S23_1,体积平均含水率 <C>(t=1s),2.549724829,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
-S23_10,体积平均含水率 <C>(t=10s),2.547785323,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
-S23_60,体积平均含水率 <C>(t=60s),2.538062477,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
-S23_300,体积平均含水率 <C>(t=300s),2.496411871,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
-S23_900,体积平均含水率 <C>(t=900s),2.406565268,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
-S23_1800,体积平均含水率 <C>(t=1800s),2.291601526,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
-S24,<C> 从 0 到 1800 s 的相对下降,0.1012357489,-,解析比值,run solve_q1,python src/q1_solve.py,预热平衡阶段的干燥比例
-S25,C(r=R) 与 C_inf 的比值 (t=1800s),77.1089301,-,解析比值,run solve_q1,python src/q1_solve.py,>1 表示仍在干燥
-S26,中心含水率 C(r=0) 相对初始值的下降 (t=1800s),0.1013327349,-,解析比值,run solve_q1,python src/q1_solve.py,
+S23c_1,"中心含水率 C(r=0,t=1s)",2.55,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23s_1,"表面含水率 C(r=R,t=1s)",2.519954564,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23r_1,C(r=R)/C_inf (t=1s),128.3365407,-,解析比值,run solve_q1,python src/q1_solve.py,表面仍远未与热风平衡
+S23q_1,C(r=0)/C_inf (t=1s),129.8666982,-,解析比值,run solve_q1,python src/q1_solve.py,中心
+S23_10,体积平均含水率 <C>(t=10s),2.547785327,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
+S23c_10,"中心含水率 C(r=0,t=10s)",2.55,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23s_10,"表面含水率 C(r=R,t=10s)",2.450129225,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23r_10,C(r=R)/C_inf (t=10s),124.4551055,-,解析比值,run solve_q1,python src/q1_solve.py,表面仍远未与热风平衡
+S23q_10,C(r=0)/C_inf (t=10s),129.5280738,-,解析比值,run solve_q1,python src/q1_solve.py,中心
+S23_60,体积平均含水率 <C>(t=60s),2.538062496,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
+S23c_60,"中心含水率 C(r=0,t=60s)",2.55,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23s_60,"表面含水率 C(r=R,t=60s)",2.311873849,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23r_60,C(r=R)/C_inf (t=60s),115.4782143,-,解析比值,run solve_q1,python src/q1_solve.py,表面仍远未与热风平衡
+S23q_60,C(r=0)/C_inf (t=60s),127.3726274,-,解析比值,run solve_q1,python src/q1_solve.py,中心
+S23_300,体积平均含水率 <C>(t=300s),2.496411955,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
+S23c_300,"中心含水率 C(r=0,t=300s)",2.55,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23s_300,"表面含水率 C(r=R,t=300s)",2.050935337,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23r_300,C(r=R)/C_inf (t=300s),93.60727233,-,解析比值,run solve_q1,python src/q1_solve.py,表面仍远未与热风平衡
+S23q_300,C(r=0)/C_inf (t=300s),116.3852122,-,解析比值,run solve_q1,python src/q1_solve.py,中心
+S23_900,体积平均含水率 <C>(t=900s),2.406565492,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
+S23c_900,"中心含水率 C(r=0,t=900s)",2.55,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23s_900,"表面含水率 C(r=R,t=900s)",1.754763702,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23r_900,C(r=R)/C_inf (t=900s),65.96856021,-,解析比值,run solve_q1,python src/q1_solve.py,表面仍远未与热风平衡
+S23q_900,C(r=0)/C_inf (t=900s),95.86466165,-,解析比值,run solve_q1,python src/q1_solve.py,中心
+S23_1800,体积平均含水率 <C>(t=1800s),2.291601929,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,体积加权
+S23c_1800,"中心含水率 C(r=0,t=1800s)",2.549992318,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23s_1800,"表面含水率 C(r=R,t=1800s)",1.510265658,kg/kg,网格不确定度见 S11,run solve_q1,python src/q1_solve.py,
+S23r_1800,C(r=R)/C_inf (t=1800s),45.66875287,-,解析比值,run solve_q1,python src/q1_solve.py,表面仍远未与热风平衡
+S23q_1800,C(r=0)/C_inf (t=1800s),77.1089301,-,解析比值,run solve_q1,python src/q1_solve.py,中心
+S24,<C> 从 0 到 1800 s 的相对下降,0.1012355911,-,解析比值,run solve_q1,python src/q1_solve.py,预热平衡阶段的整体干燥比例
+S25,C(r=R) 与 C_inf 的比值 (t=1800s),45.66875287,-,解析比值,run solve_q1,python src/q1_solve.py,表面: >>1 表示表面仍远未与热风平衡
+S25b,C(r=0) 与 C_inf 的比值 (t=1800s),77.1089301,-,解析比值,run solve_q1,python src/q1_solve.py,中心
+S26,中心含水率 C(r=0) 相对初始值的下降 (t=1800s),3.012441907e-06,-,解析比值,run solve_q1,python src/q1_solve.py,预热平衡阶段中心几乎不失水
+S26b,体积平均含水率相对初始值的下降 (t=1800s),0.1012355911,-,解析比值,run solve_q1,python src/q1_solve.py,

@@ -1,0 +1,14 @@
+id,quantity,value,unit,uncertainty,source,command,note
+X01,两独立求根器的最大本征值差 (k=1..8),3.5527136788e-15,-,session1 vs session2,run audit_series_cross,python src/audit_series_cross.py,session1 vs session2
+X02,两独立实现的最大展开系数差 (k=1..8),2.2759572005e-15,-,应接近 0,run audit_series_cross,python src/audit_series_cross.py,应接近 0
+X03,常 Tinf=50C 时物理设定温度 (热风),3.2315000000e+02,K,定义,run audit_series_cross,python src/audit_series_cross.py,定义
+X04_t60,两独立级数实现在 t=60 s 时的最大差,5.6843418861e-14,K,机器精度,run audit_series_cross,python src/audit_series_cross.py,机器精度
+X04_t300,两独立级数实现在 t=300 s 时的最大差,0.0000000000e+00,K,机器精度,run audit_series_cross,python src/audit_series_cross.py,机器精度
+X04_t900,两独立级数实现在 t=900 s 时的最大差,5.6843418861e-14,K,机器精度,run audit_series_cross,python src/audit_series_cross.py,机器精度
+X04_t1800,两独立级数实现在 t=1800 s 时的最大差,5.6843418861e-14,K,机器精度,run audit_series_cross,python src/audit_series_cross.py,机器精度
+X05,两独立级数实现的总最大差 (t=60..1800 s),5.6843418861e-14,K,用于证明半解析参照解非循环,run audit_series_cross,python src/audit_series_cross.py,用于证明半解析参照解非循环
+X06_n8,"重构常数1 的两实现差 (n_modes=8, r=R)",3.3306690739e-16,-,机器精度,run audit_series_cross,python src/audit_series_cross.py,机器精度
+X06_n20,"重构常数1 的两实现差 (n_modes=20, r=R)",1.1102230246e-16,-,机器精度,run audit_series_cross,python src/audit_series_cross.py,机器精度
+X06_n50,"重构常数1 的两实现差 (n_modes=50, r=R)",1.8873791419e-15,-,机器精度,run audit_series_cross,python src/audit_series_cross.py,机器精度
+X06_n100,"重构常数1 的两实现差 (n_modes=100, r=R)",1.7763568394e-15,-,机器精度,run audit_series_cross,python src/audit_series_cross.py,机器精度
+X07,重构常数1 两实现的最大差 (n_modes=8..100),1.8873791419e-15,-,机器精度,run audit_series_cross,python src/audit_series_cross.py,机器精度

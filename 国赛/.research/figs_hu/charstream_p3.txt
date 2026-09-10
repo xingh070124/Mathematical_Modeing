@@ -1,0 +1,119 @@
+==============================================================================
+PDF page index 2 (printed p.119)  -- 1238 characters
+==============================================================================
+y=   66.6 | FW:1FW:2FW:0西南大学学报FW:(自然科学版FW:)　　　　　FW:hFW:tFW:tFW:pFW::FW:/FW:/FW:xFW:bFW:bFW:jFW:bFW:.FW:sFW:wFW:uFW:.FW:eFW:dFW:uFW:.FW:cFW:n　　　　　第FW:4FW:2卷
+y=   91.9 | 式中表示空气密度FW:,FW:kFW:gFW:/FW:mFW:3FW:;FW:u表示空气运动速度FW:,FW:mFW:/FW:sFW:;FW:p表示压力FW:,FW:PFW:aFW:; 表示空气动力黏度FW:,FW:PFW:aMIDDOTFW:sFW:;
+y=  127.4 | 式FW:(FW:1FW:)是流体的连续性方程FW:,其本质是质量守恒定律FW:.式FW:(FW:2FW:)是流体的动量方程FW:,其本质是牛顿第二定
+y=  144.9 | 律FW:(动量守恒定律FW:)FW:.
+y=  162.3 | 当流场方程作用于物料内部区域时FW:,需要根据物料属性对式FW:(FW:1FW:)、式FW:(FW:2FW:)进行处理FW:.本文将被干燥物料
+y=  179.8 | 视为多孔介质FW:,采用体积平均的思想对式FW:(FW:1FW:)、式FW:(FW:2FW:)进行处理FW:[FW:2FW:5FW:]FW:,可得如下方程FW::
+y=  200.1 | PARTIAL?ρ
+y=  203.6 | FW:aFW:(FW:uFW:)FW:0FW:(FW:3FW:)
+y=  207.1 | εFW:+NABLA?ρFW:=
+y=  213.7 | PARTIAL?
+y=  231.6 | FW:1PARTIAL?FW:uFW:1FW:1FW:1
+y=  235.1 | FW:aFW:(FW:uMIDDOTFW:)FW:uFW:2　FW:uFW:(FW:uFW:)FW:FFW:(FW:4FW:)
+y=  240.3 | ρFW:+ρNABLA?FW:=FW:-NABLA?FW:pFW:+μNABLA?FW:-μNABLA?NABLA?FW:+
+y=  245.2 | εPARTIAL?εε ε 
+y=  260.5 | 式中ε表示FW:(多孔介质FW:)物料的孔隙率FW:.式FW:(FW:3FW:)、FW:(FW:4FW:)可用于描述物料内部的气体运动规律FW:.但考虑到多孔介质
+y=  315.8 | FW:1PARTIAL?FW:uFW:1μ
+y=  319.3 | FW:aFW:(FW:uMIDDOTFW:)FW:uFW:uFW:(FW:5FW:)
+y=  324.5 | ρFW:+ρNABLA?FW:=FW:-
+y=  329.4 | εPARTIAL?ε
+y=  362.5 | 将达西流作用插入到式FW:(FW:4FW:)可得FW::
+y=  382.6 | FW:1PARTIAL?FW:uFW:1FW:1FW:1μ
+y=  386.0 | FW:aFW:(MIDDOTFW:)FW:2　FW:(FW:)FW:(FW:)
+y=  391.3 | ρFW:+ρFW:uNABLA?FW:uFW:=FW:-NABLA?FW:pFW:+μNABLA?FW:uFW:-μNABLA?NABLA?FW:uFW:-FW:uFW:+FW:FFW:6
+y=  396.2 | εPARTIAL?εε ε 
+y=  411.4 | 式FW:(FW:3FW:)、FW:(FW:6FW:)可直接用于物料内部气体流场的计算FW:.
+y=  428.9 | 考虑到空气可压缩且其密度受温度影响FW:,所以式FW:(FW:1FW:)、FW:(FW:2FW:)、FW:(FW:3FW:)、FW:(FW:6FW:)中的密度均需要重新计算FW:.根
+y=  473.0 | FW:1FW:.FW:2FW:9FW:3FW:0FW:(FW:7FW:)
+y=  475.2 | ρFW:=
+y=  552.5 | μFW:(FW:)
+y=  557.2 | FW:=FW:(FW:)FW:8
+y=  579.4 | 式中表示FW:1FW:5℃时的空气动力黏度FW:,FW:1FW:.FW:7FW:8FW:9FW:4×FW:1FW:0FW:-FW:5　FW:PFW:aMIDDOTFW:sFW:;FW:B为常数FW:,FW:1FW:1FW:0FW:.FW:4FW:KFW:.
+y=  704.5 | PARTIAL?FW:T
+y=  710.5 | FW:cFW:+FW:cFW:uNABLA?FW:TFW:=NABLA?FW:(λNABLA?FW:TFW:)FW:+FW:qFW:(FW:9FW:)
+y=  717.6 | PARTIAL?FW:t
+y=  732.9 | 式中表示空气密度FW:,FW:kFW:gFW:/FW:mFW:3FW:;FW:c表示空气比热容FW:,FW:JFW:/FW:(FW:kFW:gMIDDOTFW:KFW:)FW:;λ 表示空气导热系数FW:,FW:WFW:/FW:(FW:mMIDDOTFW:KFW:)FW:;FW:q表示
+y=  767.8 | 式FW:(FW:9FW:)表明了温度变化率与能量之间的关系FW:,方程左边第一项是能量变化率FW:,第二项是由对流作用引
+
+==============================================================================
+PDF page index 3 (printed p.120)  -- 1294 characters
+==============================================================================
+y=  109.2 | 交换FW:,第二项表示内热源FW:,即介质内部产生的热量FW:.需要注意的是式FW:(FW:9FW:)中的密度仍为变量FW:,需按照式
+y=  127.1 | FW:(FW:7FW:)计算FW:.
+y=  161.0 | 种FW:,因此需要对式FW:(FW:9FW:)进行修正FW:.根据FW:DFW:aFW:tFW:tFW:a所述FW:[FW:2FW:6FW:]FW:,并考虑到物料内部液相蒸发为气相时需要吸收热量FW:,
+y=  178.3 | 式FW:(FW:9FW:)可修改为如下形式FW::
+y=  198.1 | PARTIAL?FW:T
+y=  202.7 | FW:(FW:cFW:)FW:+FW:cFW:uNABLA?FW:TFW:=NABLA?FW:(λNABLA?FW:TFW:)FW:+γFW:IFW:+FW:qFW:(FW:1FW:0FW:)
+y=  211.2 | PARTIAL?FW:t
+y=  225.9 | 式中γ 表示水的蒸发潜热FW:,FW:JFW:/FW:kFW:gFW:;FW:I表示液相单位体积蒸发速率FW:,FW:kFW:gFW:/FW:(FW:mFW:3MIDDOTFW:sFW:)FW:;下标FW:eFW:fFW:f表示各物理量有效
+y=  261.1 | FW:(FW:cFW:)FW:=FW:(FW:1FW:-εFW:)FW:(FW:cFW:)FW:+FW:SεFW:(FW:cFW:)FW:+FW:SεFW:(FW:cFW:)FW:(FW:1FW:1FW:)
+y=  280.3 | λFW:=FW:(FW:1FW:-εFW:)λFW:+εFW:SλFW:+εFW:SλFW:(FW:1FW:2FW:)
+y=  295.0 | 式中FW:S表示饱和度FW:;下标FW:s、FW:l、FW:g分别表示固、液、气相FW:.式FW:(FW:1FW:1FW:)、FW:(FW:1FW:2FW:)实质是对多孔介质物料的各项物性
+y=  348.9 | FW:SFW:+FW:SFW:=FW:1FW:(FW:1FW:3FW:)
+y=  418.5 | PARTIAL?FW:c
+y=  422.0 | FW:vMIDDOTFW:(FW:DFW:cFW:)FW:uMIDDOTFW:cFW:0FW:(FW:1FW:4FW:)
+y=  425.5 | FW:+NABLA?NABLA?FW:+NABLA?FW:=
+y=  432.1 | PARTIAL?
+y=  464.1 | 递FW:,第三项是由于空气自身流动引起的传递FW:,该项中速度场FW:u直接由式FW:(FW:1FW:)、FW:(FW:2FW:)计算FW:.
+y=  501.1 | PARTIAL?FW:c
+y=  504.6 | FW:vMIDDOTFW:(FW:DFW:cFW:)FW:uMIDDOTFW:cFW:RFW:(FW:1FW:5FW:)
+y=  508.1 | FW:+NABLA?NABLA?FW:+NABLA?FW:=
+y=  514.7 | PARTIAL?
+y=  566.4 | FW:RFW:=FW:KFW:(FW:aFW:cFW:-FW:cFW:)FW:(FW:1FW:6FW:)
+y=  599.1 | 式FW:(FW:1FW:5FW:)中的FW:u表示空气运动的速度场FW:,但是此处并不能按照式FW:(FW:3FW:)、FW:(FW:6FW:)直接计算FW:.物料内部空气流
+y=  670.3 | FW:uFW:=FW:uFW:+FW:uFW:(FW:1FW:7FW:)
+y=  722.1 | FW:JFW:=FW:-FW:DNABLA?FW:cFW:(FW:1FW:8FW:)
+y=  737.6 | 式中FW:J表示扩散通量FW:,FW:mFW:oFW:lFW:/FW:(FW:mFW:2MIDDOTFW:sFW:)FW:;FW:c表示空气浓度FW:,FW:mFW:oFW:lFW:/FW:mFW:3FW:.扩散通量与扩散速度的关系可表示成FW::
+y=  763.4 | FW:uFW:=FW:JFW:(FW:1FW:9FW:)
+
+==============================================================================
+PDF page index 4 (printed p.121)  -- 907 characters
+==============================================================================
+y=   66.6 | FW:1FW:2FW:2西南大学学报FW:(自然科学版FW:)　　　　　FW:hFW:tFW:tFW:pFW::FW:/FW:/FW:xFW:bFW:bFW:jFW:bFW:.FW:sFW:wFW:uFW:.FW:eFW:dFW:uFW:.FW:cFW:n　　　　　第FW:4FW:2卷
+y=  109.2 | 将式FW:(FW:1FW:8FW:)、FW:(FW:1FW:9FW:)带入式FW:(FW:1FW:7FW:)可得物料内部空气迁移总速率FW::
+y=  134.7 | FW:uFW:=FW:uFW:+FW:DNABLA?FW:cFW:(FW:2FW:0FW:)
+y=  156.3 | 其中FW:u由式FW:(FW:3FW:)、FW:(FW:6FW:)直接计算FW:.
+y=  190.2 | 液相传递现象只发生在物料内部区域FW:,其扩散控制方程形式上与式FW:(FW:1FW:4FW:)一致FW:,但考虑到实际物理过程
+y=  207.2 | 中液相总是蒸发成气相FW:,所以液态传递中具有与气相方程中对偶的源项FW:,即数值上与式FW:(FW:1FW:5FW:)的一致FW:,但符
+y=  243.7 | PARTIAL?FW:c
+y=  247.2 | FW:lMIDDOTFW:(FW:DFW:cFW:)FW:uMIDDOTFW:cFW:RFW:(FW:2FW:1FW:)
+y=  250.7 | FW:+NABLA?NABLA?FW:+NABLA?FW:=FW:-
+y=  257.3 | PARTIAL?
+y=  314.3 | FW:uFW:=FW:-NABLA?FW:pFW:(FW:2FW:2FW:)
+y=  335.8 | 式中FW:k表示渗透系数FW:,FW:mFW:2FW:.压力FW:p直接由式FW:(FW:3FW:)、FW:(FW:6FW:)计算得到FW:.
+y=  470.4 | 风进口尺寸为FW:0FW:.FW:1FW:5FW:m×FW:0FW:.FW:1FW:5FW:mFW:,热风出口FW:(排湿口FW:)
+y=  557.2 | 后样品FW:2FW:0FW:0FW:gFW:(误差FW:0FW:.FW:0FW:1FW:gFW:)FW:,即油菜籽的初始质量为FW:2FW:0FW:0FW:gFW:,重复FW:3次实验FW:,测量结果取平均值FW:.实验环境温
+y=  684.5 | 密度FW:/FW:(FW:kFW:gMIDDOTFW:mFW:-FW:3FW:)FW:1　FW:1FW:0FW:0
+y=  700.8 | 导热系数FW:/FW:(FW:WMIDDOTFW:mFW:-FW:1MIDDOTFW:KFW:-FW:1FW:)FW:0FW:.FW:2FW:1
+y=  717.0 | 比热FW:/FW:(FW:JMIDDOT FW:kFW:gFW:-FW:1MIDDOTFW:KFW:-FW:1FW:)FW:1　FW:6FW:5FW:0
+y=  765.7 | 密度FW:/FW:(FW:kFW:gMIDDOTFW:mFW:-FW:3FW:)FW:1FW:.FW:2FW:0FW:5
+
+==============================================================================
+PDF page index 5 (printed p.122)  -- 767 characters
+==============================================================================
+y=  134.1 | 导热系数FW:/FW:(FW:WMIDDOTFW:mFW:-FW:1MIDDOTFW:KFW:-FW:1FW:)FW:0FW:.FW:0FW:2FW:5
+y=  151.1 | 比热FW:/FW:(FW:JMIDDOT FW:kFW:gFW:-FW:1MIDDOTFW:KFW:-FW:1FW:)FW:1FW:.FW:0FW:0FW:6×FW:1FW:0FW:3
+y=  168.2 | 黏度FW:/FW:(FW:kFW:gMIDDOT FW:mFW:-FW:1MIDDOTFW:sFW:-FW:1FW:)FW:1FW:.FW:8FW:1×FW:1FW:0FW:5
+y=  185.2 | 扩散系数FW:/FW:(FW:mFW:2MIDDOTFW:sFW:-FW:1FW:)FW:2FW:.FW:6×FW:1FW:0FW:-FW:5
+y=  219.3 | 密度FW:/FW:(FW:kFW:gMIDDOTFW:mFW:-FW:3FW:)FW:9FW:9FW:8FW:.FW:2
+y=  236.3 | 导热系数FW:/FW:(FW:WMIDDOTFW:mFW:-FW:1MIDDOTFW:KFW:-FW:1FW:)FW:0FW:.FW:5FW:9
+y=  253.4 | 比热FW:/FW:(FW:JMIDDOT FW:kFW:gFW:-FW:1MIDDOTFW:KFW:-FW:1FW:)FW:4FW:.FW:1FW:8FW:2×FW:1FW:0FW:3
+y=  270.5 | 黏度FW:/FW:(FW:kFW:gMIDDOT FW:mFW:-FW:1MIDDOTFW:sFW:-FW:1FW:)FW:1FW:.FW:0FW:0FW:2×FW:1FW:0FW:-FW:3
+y=  287.5 | 扩散系数FW:/FW:(FW:mFW:2MIDDOTFW:sFW:-FW:1FW:)FW:1×FW:1FW:0FW:-FW:1FW:4
+y=  304.5 | 蒸发潜热FW:/FW:(FW:JMIDDOTFW:kFW:gFW:-FW:1FW:)FW:2FW:.FW:4FW:5FW:4×FW:1FW:0FW:6
+y=  355.7 | 初始浓度FW:/FW:(FW:mFW:oFW:lMIDDOTFW:mFW:-FW:3FW:)FW:6　FW:8FW:2FW:3FW:.FW:5
+y=  389.7 | 导热系数FW:/FW:(FW:WMIDDOTFW:mFW:-FW:1MIDDOTFW:KFW:-FW:1FW:)FW:0FW:.FW:0FW:2FW:6
+y=  406.8 | 比热FW:/FW:(FW:JMIDDOT FW:kFW:gFW:-FW:1MIDDOTFW:KFW:-FW:1FW:)FW:2FW:.FW:0FW:2FW:6×FW:1FW:0FW:3
+y=  423.8 | 黏度FW:/FW:(FW:kFW:gMIDDOT FW:mFW:-FW:1MIDDOTFW:sFW:-FW:1FW:)FW:1FW:.FW:8×FW:1FW:0FW:-FW:5
+y=  440.9 | 扩散系数FW:/FW:(FW:mFW:2MIDDOTFW:sFW:-FW:1FW:)FW:2FW:.FW:2×FW:1FW:0FW:-FW:5
+y=  458.0 | 初始浓度FW:/FW:(FW:mFW:oFW:lMIDDOTFW:mFW:-FW:3FW:)FW:0
+y=  509.1 | 进口风速FW:/FW:(FW:mMIDDOTFW:sFW:-FW:1FW:)FW:0FW:.FW:9
+
+
+LEGEND: NABLA? = U+E065 ; PARTIAL? = U+E785 ; MIDDOT = U+00B7 (a real middle dot,
+        which the text layer DOES carry where the producer typed one).
+Read the eq.(2) row: whatever sits between the two NABLA? glyphs in the second
+viscous term is the complete truth the text layer can give.

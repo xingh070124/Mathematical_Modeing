@@ -1,0 +1,1204 @@
+
+===== [page 1] =====
+Heliyon 7 (2021) e06201
+Contents lists available at ScienceDirect
+Heliyon
+journal homepage: www.cell.com/heliyon
+Research article
+Modeling and simulation of heat and mass transfer in an Ethiopian fresh 
+injera drying process
+Alamrew B. Solomon a, Solomon W. Fanta b,∗, Mulugeta A. Delele b, Maarten Vanierschot c
+a Department of Chemical Engineering, Kombolcha Institute of Technology, Wollo University, Ethiopia
+b Faculty of Chemical and Food Engineering, Bahirdar Institute of Technology, Bahirdar University, Ethiopia
+c KU Leuven, Department of Mechanical Engineering, B-3000 Leuven, Belgium
+A R T I C L E 
+I N F O
+A B S T R A C T
+Keywords:
+Diﬀusion
+Drying
+Injera
+Mathematical modeling
+Simulation
+In this paper, we developed a mathematical model to simulate the heat and mass transfer during the convective 
+drying of injera. The coupled set of heat and moisture partial diﬀerential equations (PDEs) were numerically 
+solved by the ﬁnite element method (FEM) using COMSOL Multi-physics, 5.5. To validate the simulated results, 
+drying experiments were performed using a tunnel dryer at two air temperatures (313.15 and 333.15 K) and 
+velocities (0.25 and 0.5 ms−1). The predicted versus the experimental results showed a very good agreement 
+with a coeﬃcient of determination, 𝑅2 > 0.95 for both temperature and moisture ratio and a Root Mean Square 
+Error, RMSE < 0.05 for moisture ratio and <3.5 K for temperature. The predicted temperature and moisture 
+ratio distributions of the injera at diﬀerent times and positions (thickness and diameter) clearly showed the 
+uniformity of drying. The time required to reduce the moisture ratio of injera from 1 (-) to 0.03 (-) at a 
+temperature of 333.15 K, relative humidity of 11% and air velocity of 0.5 ms−1 was 125 min. Both temperature 
+and velocity have a signiﬁcant eﬀect on moisture reduction when drying was conducted (p < 0.05). The 
+interaction eﬀect between them also indicates a signiﬁcant diﬀerence (p < 0.05) in the moisture removal rate of 
+injera.
+1. Introduction
+Injera is one of the leading staple foods and is widely consumed 
+in Ethiopia and some areas of Eritrea, Somalia and Sudan (Tesfay et 
+al., 2014). It is a ﬂat, round, pancake like product prepared from the 
+ﬂour of the super grain teﬀ [Eragrostistef (Zucc.) Trotter], sorghum, 
+barely or combinations of those (Satheesh and Fanta, 2018). Teﬀ is 
+an indigenous tropical cereal to Ethiopia (Neela and Fanta, 2020). At 
+ﬁrst, it was not so much appreciated until researchers discovered that 
+teﬀ contains no gluten, which makes it very appealing as healthy nu-
+trition (Gebremariam et al., 2014). In recent years, special attention 
+has been given to the beneﬁts of injera and many types of research 
+have studied teﬀ-based food products (Gebremariam et al., 2015). De-
+spite this fact, injera is not shelf stable and gets spoiled after three or 
+four days of storage at surrounding temperature due to spoilage molds 
+(Ashagrie and Abate, 2012). Apparently, food materials who have been 
+dried in an open ﬁeld using sun drying to control spoilage, are not suit-
+* Corresponding author.
+E-mail address: Solomon.Workneh@bdu.edu.et (S.W. Fanta).
+able for large scale production due to inconsistent ambient conditions 
+and possibilities of contamination with dust and insect infestations or 
+spoilage related to moisture re-absorption (Ertekin and Yaldiz, 2004). 
+Nowadays, scientiﬁcally suggested convective drying technologies are 
+devised as an important tool to preserve food products (Tripathy and 
+Kumar, 2008). Convective air ﬂow around the food product has two 
+main purposes: one is the transfer of heat to evaporate the moisture 
+within the food and the second one is to remove the formed vapour. 
+As such, the reduction in moist content promotes food preservation by 
+avoiding microbial growth or reducing chemical reactions, both causing 
+deterioration of the food product (Law et al., 2016; Vásquez-Parra et al., 
+2013). The modeling of simultaneously occurring heat and mass trans-
+port phenomena involved in food drying is complicated as it involves 
+several interrelated physical phenomena in the evaporation process 
+(Datta, 2007b). As such, mathematical tools like COMSOL Multiphysics, 
+MATLAB and ANSYS are imperative to solve the heat, mass and momen-
+tum transport equations, including the porous media modeling of food 
+https://doi.org/10.1016/j.heliyon.2021.e06201
+Received 7 November 2020; Received in revised form 12 December 2020; Accepted 2 February 2021
+2405-8440/© 2021 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/).
+
+===== [page 2] =====
+A.B. Solomon, S.W. Fanta, M.A. Delele et al.
+Heliyon 7 (2021) e06201
+Nomenclature
+Abbreviation
+AOAC
+Association of Oﬃcial Analytical Chemists
+CHMC
+Convective Heat and Mass Coeﬃcients
+FAO
+Food and Agricultural Organization
+FEM
+Finite Element Method
+HAD
+Hot Air Drying
+MR
+Dimensionless Moisture Ratio . . . . . . . . . . . . . . . . . . . . . . . . . . -
+Greek symbols
+𝛽1,𝛽2,𝛽3
+Drying kinetics constants. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . -
+𝜅1,𝜅2,𝜅3,𝜅4
+Drying kinetics constants. . . . . . . . . . . . . . . . . . . . . . . . . . . . -
+𝜖
+Porosity of sample
+𝜌
+Density of sample . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . kg/m3
+𝛼,𝛼2
+Drying kinetics constants. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . -
+Roman symbols
+c
+Concentration. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . mol/m3
+C
+Molar density . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . mol/m3
+𝐶𝑝
+Speciﬁc heat capacity . . . . . . . . . . . . . . . . . . . . . . . . . . . . J/kg.K
+𝐷𝑤𝑎
+Water air diﬀusivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . m2/s
+𝐷𝑣𝑎
+Vapour air diﬀusivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . m2/s
+𝐸𝑖
+Volume fraction of components . . . . . . . . . . . . . . . . . . . . . . . . -
+K
+Thermal conductivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . W/m.K
+𝐾𝑖𝑝
+Intrinsic permeability . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . -
+m
+Mass of the sample . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . g
+𝑚𝑠
+Mass of the sample after ashing . . . . . . . . . . . . . . . . . . . . . . . . g
+𝑚𝑎
+Mass of the sample before ashing . . . . . . . . . . . . . . . . . . . . . . g
+p
+Pressure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Pa
+R
+Universal gas constant. . . . . . . . . . . . . . . . . . . . . . . . . . . J/molK
+r
+Personal correlation coeﬃcient
+RH
+Relative humidity. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . %
+𝑆𝑤
+Saturation of water. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . -
+𝑆ℎ
+Heat source. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . W/m3
+𝑆𝑚
+Mass sources. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . mol/(m3.s)
+𝑇
+Temperature . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . K
+u
+Velocity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ms−1
+x,y,z
+Coordinates . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . m
+Subscripts
+𝜕
+Partial
+∇
+Radiant
+𝑎
+Air
+eﬀ
+Eﬀective
+evap
+Evaporation
+i
+Component of the sample
+in
+Solid (injera)
+l
+Liquid
+sat
+Saturation
+v
+Vapor
+w
+Water
+materials (Datta, 2007a). An interesting numerical model to solve those 
+coupled equations is computational ﬂuid dynamics (CFD) as it can si-
+multaneously solve the ﬂuid ﬂow in combination with heat and mass 
+transfer. (Aregawi et al., 2014a; Datta, 2007b). Post-processing the nu-
+merical data can help in describing the involved physical phenomena, 
+which can then afterwards be optimised to enhance the overall drying 
+process and product quality (Bennamoun et al., 2015; Bird et al., 2015). 
+The most critical step in the numerical model development is the choice 
+of material property values. Biological materials are often anisotropic in 
+behavior and it is not always possible to neglect this heterogeneity and 
+apply bulk conditions. Also, several properties, like for instance density, 
+thermal conductivity, moisture diﬀusivity etc., are dependent on tem-
+perature, composition, humidity and time during the drying process 
+(Berk, 2018; Datta, 2007a; Feyissa et al., 2013). This variation needs to 
+be incorporated in various simulations of heat and mass transport phe-
+nomena used in the design of food matrix storage and drying processes. 
+Hence mathematical models need to be developed which take these 
+variations into account in order to have accurate simulations (Datta, 
+2007b). Given the importance of the above-mentioned, the goal of the 
+study in this paper is to investigate the applicability of several mathe-
+matical models to simulate heat and mass transport phenomena during 
+the drying process of injera. The model results were experimentally val-
+idated by comparing the mean moisture content. Finally, the inﬂuence 
+of process temperature on the moisture removal rate was evaluated and 
+the time required to obtain the desired moisture content was deter-
+mined.
+2. Mathematical model development
+Mathematical modeling is a good tool to obtain solutions for opti-
+mising drying related problems. It is well suited for evaluating the eﬀect 
+of various process parameters (temperature, velocity and humidity) and 
+drying time (Kumar et al., 2014). Developing a drying model for food 
+products including the relevant physical phenomena is a very challeng-
+ing task. The main reason is the complex structure of food products and
+the change of their material properties during the drying process. More-
+over, heat and mass transport are both highly coupled during drying, 
+making it a very complex process. As such, modeling assumptions are 
+indispensable, but these should be carefully made to ensure suﬃcient 
+representation of the involved physics (Datta, 2007b).
+2.1. Governing equations
+Steady-state momentum and unsteady heat and mass transfer mod-
+eling during Ethiopian fresh injera drying was developed based on 
+Newton’s, Fourier’s and Fick’s laws. The model applied for momentum, 
+continuity, mass and heat transfer with representative governing equa-
+tions is described in Eqs. (1), (2), (3) and (15) respectively.
+2.1.1. Momentum equations
+Based on the conservation of momentum and continuity, the gov-
+erning equations for stationary air ﬂow around the product to dry are 
+given by
+𝜌(𝑢⋅∇𝑢) = −∇𝑝+ 𝛁⋅[𝜇(∇𝑢+ (∇𝑢)𝑇)],
+(1)
+𝛁⋅𝑢= 0,
+(2)
+where 𝜌is the density (kg/m3), 𝜇is the dynamic viscosity (Pa.s), u is 
+the velocity vector (ms−1) and p is the pressure (Pa) (Bird et al., 2001, 
+2015).
+2.1.2. Mass transfer equation
+Fick’s Laws of diﬀusion can be formulated in terms of the material 
+ﬂux, which is the rate of substance transported per unit area (Bird et 
+al., 2015).
+𝜕𝑐
+𝜕𝑡
+⏟⏟⏟
+I
++𝛁⋅(−𝐷∇𝑐)
+⏟⏞⏞⏞⏞⏟⏞⏞⏞⏞⏟
+II
++ 𝑢𝑖⋅∇𝑐
+⏟⏟⏟
+III
+=
+𝑆𝑚
+⏟⏟⏟
+IV
+(3)
+2
+
+===== [page 3] =====
+A.B. Solomon, S.W. Fanta, M.A. Delele et al.
+Heliyon 7 (2021) e06201
+The ﬁrst, second and third term on the left side of Eq. (3) denotes the 
+accumulation of moisture, moisture transport due to diﬀusion and due 
+to convection respectively. The right side term (𝑆𝑚) is the evaporation 
+mass ﬂux. The moisture concentration (c) is related to the wet base 
+moisture content according to (Law et al., 2016),
+𝑐=
+𝑀𝑤𝑏𝜌𝑝
+𝑀𝑤
+,
+(4)
+where 𝑀𝑏𝑤is the moisture content (kg/kg wet base), 𝜌𝑝is the sample 
+density (kg/m3) and 𝑀𝑤is the molecular mass of water (kg/mol), D in 
+Eq. (3) is the diﬀusion coeﬃcient and is deﬁned as (Shen et al., 2020),
+𝐷= 𝐷𝑣𝑎𝜖3∕4𝑆10∕3
+𝑔
+,
+(5)
+where 𝐷𝑣𝑎represent vapor-air diﬀusivity and 𝑆𝑔gas saturation. The 
+velocity ﬁeld (𝑢𝑖) was obtained from Darcy’s law (Datta, 2007a) and 
+deﬁned as
+𝑢𝑖= 𝑘𝑖
+𝜇Δ𝑝,
+(6)
+𝑘𝑖= 𝑘𝑖𝑖𝑘𝑖𝑟,
+(7)
+where Δ𝑝is the pressure gradient, 𝑘𝑖the permeability of the ﬂuid as 
+shown in Eq. (7), 𝑘𝑖𝑖represents the intrinsic permeability of water or 
+gas at fully saturated state and 𝑘𝑖𝑟represents the relative permeabil-
+ity of water (𝑘𝑤𝑟) or gas (𝑘𝑔𝑟) with phase variations between 0 no 
+phase) and 1 (saturated phase) in food materials. Measuring the intrin-
+sic permeability value of food material is diﬃcult and some reasonable 
+approximation can be made by
+𝑘𝑤𝑟=
+{
+( 𝑆𝑤−𝑆𝑖𝑟
+1−𝑆𝑖𝑟)3 for 𝑆𝑤>
+1
+1.1
+0 for 𝑆𝑤<
+1
+1.1
+,
+(8)
+𝑘𝑔𝑟=
+{
+1 −1.1𝑆𝑤for 𝑆𝑤<
+1
+1.1
+0 for 𝑆𝑤>
+1
+1.1
+,
+(9)
+where 𝑆𝑤is the water saturation and deﬁned as 𝑀𝑤𝑐
+𝜖𝜌𝑤, 𝑆𝑖𝑟is the irre-
+ducible liquid saturation expressed as 2.88(
+1
+𝑇𝑡=0 ln( 1
+𝜖)0.48) according to 
+(Datta, 2007b). The source term 𝑆𝑚in Eq. (3) incorporates the change 
+of phase between liquid water and vapour (Kuznetsov and Nield, 2013) 
+and is deﬁned through the following expression
+𝑆𝑚= 𝐾𝑣𝑎𝑝(𝑎𝑤𝑐𝑣,𝑠𝑎𝑡−𝑐),
+(10)
+where 𝑆𝑚is the mass source ﬂux due to evaporation from the sam-
+ple surface in (mol/m3.s), 𝐾𝑣𝑎𝑝is an evaporative constant considering 
+strong evaporation (s−1), 𝑎𝑤is the water activity which is a function 
+of the dry base moisture content (𝑋𝑑𝑏), Eq. (11) (Datta, 2007a), 𝑐𝑣,𝑠𝑎𝑡
+is the concentration of saturation and is related to the saturation pres-
+sure Eq. (13) 𝑝𝑣,𝑠𝑎𝑡which is a function of temperature.
+𝑎𝑤= exp(−0.0267𝑋−1.656
+𝑑𝑏
++ 0.0107𝑋1.51
+𝑑𝑏exp(−1.287𝑋𝑑𝑏)),
+(11)
+𝑋𝑑𝑏=
+𝑐𝑙+ 𝑐𝑣
+(1 −𝜖)𝜌𝑝
+,
+(12)
+𝐶𝑣,𝑠𝑎𝑡=
+𝑝𝑣,𝑠𝑎𝑡
+𝑅𝑇,
+(13)
+𝑝𝑣,𝑠𝑎𝑡=exp(−5800.2206𝑇−1 + 1.3915 −0.0486𝑇
++ 4.176𝑥10−5𝑇2 −1.445𝑥10−8𝑇3 + 6.546ln(𝑇)),
+(14)
+where 𝑋𝑑𝑏is the moisture concentration in dry base which is the ratio 
+of ﬂuid present in a sample to dry solid matrix and R is the universal 
+gas constant.
+2.1.3. Heat transfer equation
+The law of thermal conduction ﬂux in a solid matrix was ﬁrst for-
+mulated by Jean-Baptiste Joseph Fourier (Bird et al., 2015) and the 
+general governing equation for heat transport including convection can 
+be given by (Bird, 2004; Bird et al., 2015),
+(𝜌𝐶𝑝)𝑒𝑓𝑓
+𝜕𝑇
+𝜕𝑡
+⏟⏞⏞⏞⏞⏞⏟⏞⏞⏞⏞⏞⏟
+I
++𝛁⋅(−𝑘𝑒𝑓𝑓∇𝑇)
+⏟⏞⏞⏞⏞⏞⏞⏞⏟⏞⏞⏞⏞⏞⏞⏞⏟
+II
++(𝜌𝑓)(𝐶𝑝𝑓)𝑢𝑖⋅∇𝑇
+⏟⏞⏞⏞⏞⏞⏞⏞⏞⏟⏞⏞⏞⏞⏞⏞⏞⏞⏟
+III
+=
+𝑆ℎ
+⏟⏟⏟
+IV
+.
+(15)
+The ﬁrst, second, third and fourth term of Eq. (15) denotes the accu-
+mulation of heat, conduction, convective and source term respectively. 
+The term (𝜌𝐶𝑝)𝑒𝑓𝑓is the eﬀective volumetric heat capacity, 𝑘𝑒𝑓𝑓is the 
+eﬀective thermal conductivity, 𝜌𝑓is the density of the ﬂuid and 𝐶𝑝𝑓is 
+the thermal conductivity, which are deﬁned as following:
+(𝜌𝐶𝑝)𝑒𝑓𝑓= 𝜌𝑝𝐶𝑝𝑝−(1 −𝜖)𝜌𝑓𝑐𝑝𝑓,
+(16)
+𝑘𝑒𝑓𝑓= 𝜖𝑘𝑝+ (1 −𝜖)𝑘𝑓,
+(17)
+𝑘𝑓= 𝑘𝑤−(𝑘𝑤−𝑘𝑎)𝑋𝑣,
+(18)
+𝜌𝑓= 𝜌𝑤−(𝜌𝑤−𝜌𝑎)𝑋𝑣,
+(19)
+𝐶𝑝𝑓= 𝐶𝑝𝑤−(𝐶𝑝𝑤−𝐶𝑝𝑎)𝑋𝑣.
+(20)
+The porosity of injera (𝜖) in Eqs. (16) and (17) is deﬁned as
+𝜖= 1 −𝜌𝑠
+𝜌𝑏
+,
+(21)
+where 𝜌𝑠is the density of the solid and 𝜌𝑏is the bulk solid includ-
+ing air and water (Datta, 2007b). The thermophysical properties in 
+Eqs. (16) and (17), density (𝜌), thermal conductivity (𝑘𝑝) and speciﬁc 
+heat capacity (𝐶𝑝) are important for modeling and simulation of pro-
+cesses involving heating and cooling (Datta, 2007a) and are calculated 
+by Eqs. (22) to (24) respectively,
+𝜌=
+1
+∑𝑥𝑖
+𝜌𝑖
+,
+(22)
+𝐶𝑝=
+𝑛
+∑
+𝑖=1
+(𝑐𝑝𝑖𝑋𝑖),
+(23)
+𝑘=
+𝑛
+∑
+𝑖=1
+(𝑘𝑖𝐸𝑖),
+(24)
+𝐸𝑖=
+𝑥𝑖∕𝜌𝑖
+∑𝑥𝑖∕𝜌𝑖.
+(25)
+The index i in Eqs. (22) to (24) represents the components of injera
+(protein, fat, ash, carbohydrate and water). The source term (𝑆ℎ) from 
+the air interface towards the sample in Eq. (15) is the product of latent 
+heat of evaporation and mass source which is deﬁned as
+𝑆ℎ= 𝐻𝑒𝑣𝑎𝑝𝑀𝑣𝑆𝑚,
+(26)
+where 𝑆ℎis heat source (W/m3), 𝐻𝑒𝑣𝑎𝑝is the latent heat of evaporation 
+(J/kg) and 𝑀𝑣is the molecular weight of vapor (kg/mol).
+2.2. Computational domain and initial and boundary conditions
+The computational domain and the boundary and initial conditions 
+of injera are illustrated in Fig. 1. At the inlet (1), where dry hot air enters 
+the channel in the 𝑥-direction, uniform proﬁles of velocity and temper-
+ature are imposed, together with zero vapour concentration (𝑢 = 𝑢𝑡=0, 
+𝑇= 𝑇𝑡=0, 𝑐𝑣= 0). Fully developed ﬂow conditions are used at the out-
+let (4) of the channel ( 𝜕𝑐
+𝜕𝑛= 𝜕𝑇
+𝜕𝑛= 0, with 𝑛the normal direction to the 
+boundary). No-slip conditions with adiabatic walls for top (5) and bot-
+tom (6) are utilized (𝑢 = 𝑣 = 𝑤 = 0, 𝜕𝑇
+𝜕𝑛= 𝜕𝑐
+𝜕𝑛= 0). Initial temperature and 
+concentration in the sample domain are 298.15 K and 49,750 mol/m3
+respectively.
+3
+
+===== [page 4] =====
+A.B. Solomon, S.W. Fanta, M.A. Delele et al.
+Heliyon 7 (2021) e06201
+Table 1. Initial and constant input parameters.
+Symbol
+Value (units)
+Reference
+𝑝𝑡=0
+1 𝑎𝑡𝑚
+Current study
+𝑐𝑡=0
+𝑆𝑙𝜌𝑤𝜖
+𝑀𝑤
+= 49,750 mol/m3
+Current study
+𝑇𝑡=0
+323.15 & 333.15 K
+Current study
+𝑈𝑡=0
+0.25 & 0.5 ms−1
+Current study
+𝐷𝑤𝑎
+2.6e-5 m2/s
+(Cengel and Ghajar, 2011)
+𝐷𝑣𝑎
+2.6e-5 m2/s
+(Cengel and Ghajar, 2011)
+𝐻𝑒𝑣𝑎𝑝
+2.454e+6 J/kg
+(Kumar et al., 2014)
+𝜖
+0.74
+Current study
+Table 2. Thermophysical properties of injera, air and water.
+Symbol
+Value (units)
+Reference
+Density
+𝜌𝑖𝑛
+𝜌(𝑥, 𝑇) (kg/m3)
+Eq. (22) Current study
+𝜌𝑎
+1.25 kg/m3
+(Karim and Hawlader, 2005)
+𝜌𝑤
+998 kg/m3
+(Kumar et al., 2014)
+Speciﬁc heat capacity
+𝑐𝑝𝑖𝑛
+𝑐𝑝(𝑥, 𝑇) (J/kgK)
+Eq. (23) Current study
+𝑐𝑝𝑎
+1000 J/kgK
+(Kumar et al., 2014)
+𝑐𝑝𝑤
+1000 J/kgK
+(Kumar et al., 2014)
+Thermal conductivity
+𝑘𝑖𝑛
+k(x,T) (W/mK)
+Eq. (24) Current study
+𝑘𝑎
+0.0285 W/mK
+Karim and Hawlader (2005)
+𝑘𝑤
+0.59 W/mK
+(Cengel and Boles, 2002)
+Viscosity
+𝜇𝑎
+1.81e-5 kg/ms
+(Cengel and Boles, 2002)
+𝜇𝑤
+1.002e-3 kg/ms
+(Kumar et al., 2014)
+Fig. 1. 2D schematic diagram of the drying equipment (1) inlet, (2) Injera sam-
+ple, (3) air zone, (4) exit, (5) top wall, (6) bottom wall.
+2.2.1. Initial condition
+The initials values, constants and thermophysical properties of the 
+injera sample are given in Tables 1 and 2.
+2.2.2. Boundary condition
+Based on the descriptions given in Section 2.2 and Fig. 1, the energy 
+and mass boundary conditions are given by
+Boundary conditions
+=
+{
+−𝑘𝑑𝑇
+𝑑𝑛= ℎ𝑇(𝑇𝑠−𝑇𝑎), Energy boundary equation
+−𝐷𝑑𝑐
+𝑑𝑛= ℎ𝑚(𝐶𝑠−𝐶𝑎), Mass boundary equation
+.
+(27)
+The local heat (ℎ𝑇) and mass (ℎ𝑚) transfer coeﬃcients along the inter-
+face between the channel ﬂow and injera are deﬁned by utilizing the 
+following equations (Shen et al., 2020),
+ℎ𝑇=
+⎧
+⎪
+⎨
+⎪⎩
+2
+𝑘𝑒𝑓𝑓
+𝐿
+0.3387𝑅𝑒1∕2𝑃𝑟1∕3
+(1 + (0.0468∕𝑃𝑟)2∕3)1∕3 , 𝑅𝑒≥5𝑥105
+2
+𝑘𝑒𝑓𝑓
+𝐿𝑃𝑟1∕3(0.037𝑅𝑒4∕5 −871), 𝑅𝑒≤5𝑥105
+,
+(28)
+ℎ𝑚= 𝐷𝑎𝑖𝑟
+𝐿(2 + 0.552𝑅1∕2
+𝑒
+𝑆1∕3
+𝑐
+),
+(29)
+where 𝑘𝑒𝑓𝑓is the eﬀective thermal conductivity of injera (W/mK) and 
+L is the characteristic length (cm). The Reynolds number (𝑅𝑒), Prandtl 
+number (𝑃𝑟) and Schmidt number (𝑆𝑐) in Eqs. (28) and (29) can be 
+expressed by Eqs. (30) to (32) respectively (Yu et al., 2020), where 𝜌𝑎
+is the density of air, 𝜇𝑎is the viscosity of air, 𝐶𝑝𝑎is the speciﬁc heat 
+capacity of air, 𝐷𝑎air diﬀusivity and 𝑢𝑎is velocity of air.
+Fig. 2. 2D schematic diagram of the drying equipment.
+𝑅𝑒= 𝜌𝑎𝑢𝑎𝐿
+𝜇𝑎
+(30)
+𝑃𝑟=
+𝐶𝑝𝑎𝜇𝑎
+𝑘𝑎
+(31)
+𝑆𝑐=
+𝜇𝑎
+𝜌𝑎𝐷𝑎
+(32)
+3. Materials and methods
+Based on its popularity among Ethiopian teﬀ farmers and users, the 
+qounchotef variety was selected and obtained from the Bahirdar Agri-
+cultural research Center and the injera sample was analysed according 
+to the method of Gebremariam et al. (2014).
+3.1. Chemical composition
+The chemical composition of injera was determined according to 
+well known tabulated methods. The moisture content was determined 
+by the gravimetric method at 378.15 K (Horwitz et al., 2010; Baur and 
+Ensminger, 1977), fat content was determined by the Soxhlet method 
+(Kasiramar, 2019), ash content was determined by incineration in a 
+muﬄe furnace at 823.15 K until there was no carbon left (Baur and En-
+sminger, 1977; Horwitz et al., 1970), the protein content was obtained 
+by the Kjeldahl method (Bradstreet, 1954) and carbohydrates were ob-
+tained as the diﬀerence (Horwitz et al., 1970).
+3.2. Experimental setup for drying
+Fig. 2 shows a schematic of the experimental set-up with a cham-
+ber size of 0.3×0.4×0.5 m. It was equipped with an electrical heater 
+4
+
+===== [page 5] =====
+A.B. Solomon, S.W. Fanta, M.A. Delele et al.
+Heliyon 7 (2021) e06201
+Fig. 3. Computational independence analysis (a) grid independence (b) time step independence.
+(3), air blower (1), air outlet chamber (8) and an electronic balance (6). 
+A thermocouple, thermal anemometer and humidity transmitter (2,4,7) 
+were used to measure the temperature, velocity and relative humidity. 
+The air was supplied by an air blower with a damper used for adjust-
+ing the airﬂow rate. The air was heated by an electric heater and its 
+velocity was measured by a thermal anemometer with an accuracy of 
+±0.01 ms−1 and its temperature by a K-type thermocouple with an ac-
+curacy of ±1◦C. The values of air temperature (323.15 and 333.15 K) 
+were ﬁxed for the set point. The air humidity was determined by a psy-
+chrometer and it was 15.7 and 11% for the temperatures of 323.15 
+and 333.15 K respectively. For the experimental investigation, an injera
+sample of 3 cm thickness and 30 cm diameter was used for drying. The 
+initial temperature of the sample was 298.15 K. The sample was put on 
+a tray (5) made of a plastic net which was placed in front of a forced 
+airﬂow system. It was used to reduce conduction heat transfer between 
+try plate and sample. Each run included approximately 100 g of mate-
+rial. During the experiments, the weight of the sample was continuously 
+measured until no noticeable diﬀerence was observed anymore.
+3.3. Numerical approach
+In this study, coupled heat and mass transfer in convective drying 
+of injera was solved by the ﬁnite element method using commercial 
+software (COMSOL Multiphysics, version 5.5). The choice for this ﬁnite 
+element based software is due to the complex nature of the coupled 
+heat and mass transfer models (Feyissa et al., 2013). The deﬁnitions 
+of geometry, mesh size, material properties, boundary conditions and 
+physical models were implemented in the package and both solving 
+and post-processing of the data was done using the same software. The 
+calculation was performed with laminar airﬂow through the injera sam-
+ple. The Multifrontal Massively Parallel Sparse (MUMPS) direct solver 
+was used to solve the governing equations. The simulation runs were 
+carried out on a local computer, intel (R) Core (TM) i5 with 2.4 GHz 
+processor speed, 8.00 GB installed RAM, operating under Windows 10 
+(64 bit).
+3.4. Grid and time step independence analysis
+For credible simulation results, choosing an appropriate grid and 
+time step size is important. The grid independence study for the mois-
+ture ratio (MR) was conducted from extremely course to ﬁne mesh sizes 
+and time steps ranged from 0.5 to 15 min as shown in Fig. 3. The mois-
+ture content was measured at the center of sample. It can be seen that 
+the moisture ratio decreases up to a certain mesh size of about 400000 
+elements and that the solution becomes mesh independent when in-
+creasing the cell count further. Fig. 3b also shows the same mechanism 
+for the time step: at low time step, the measured moisture ratio was al-
+most constant up to a certain value (5 min) which shows the time step 
+independency for time steps below 5 minutes.
+3.5. Statistical tests and validation
+Drying kinetics was modeled by means of three semi-empirical 
+equations widely used in most food and biological materials, namely 
+Henderson–Pabis in Eq. (34), two term model in Eq. (35) and Page in 
+Eq. (36) (Omolola et al., 2014). All these models used the dimensionless 
+moisture ratio (MR) as the dependent variable, deﬁned as
+𝑀𝑅= 𝑀𝑎𝑣𝑎−𝑀𝑒
+𝑀𝑜−𝑀𝑒
+,
+(33)
+where 𝑀𝑒is the equilibrium moisture content, 𝑀𝑎𝑣𝑎is the moisture 
+content at time t and 𝑀𝑜is the initial moisture content at t𝑜.
+Empirical correlations of the moisture ratio, involving only velocity 
+and air temperature as a variable, are given as (Tunckal and Doymaz, 
+2020).
+𝑀𝑅= 𝛼1𝑒𝑥𝑝(−𝛼2𝑡),
+(34)
+𝑀𝑅= 𝛽1𝑒𝑥𝑝(−𝛽2𝑡) + 𝛽3𝑒𝑥𝑝(−𝛽4𝑡),
+(35)
+𝑀𝑅= 𝑒𝑥𝑝(−𝛾4𝑡𝑛).
+(36)
+The correlation coeﬃcient (𝑅2) and root mean square error (RMSE) 
+were major criteria for selection of the best model equation to describe 
+the drying curve. For best ﬁt, 𝑅2 (square of the Pearson correlation 
+coeﬃcient (r)) should be high and RMSE should be low (Cárcel et al., 
+2011; Demir et al., 2004; Ertekin and Yaldiz, 2004; Garau et al., 2006). 
+In order to evaluate the goodness of ﬁt of the simulation provided by the 
+model, root means square error and Pearson correlation coeﬃcient were 
+provided in Eqs. (37) and (38) respectively. In the above equations, 𝑦𝑖
+is the 𝑖𝑡ℎpredicted moisture ratio, 𝑥𝑖is the 𝑖𝑡ℎexperimental moisture 
+ratio, ̄𝑦is predicted sample means, ̄𝑥is experimental sample means and 
+n is the number of observations.
+𝑅𝑀𝑆𝐸=
+√
+√
+√
+√1
+𝑛
+𝑛
+∑
+𝑖=1
+(𝑥𝑖−𝑦𝑖)2
+(37)
+𝑟=
+∑(𝑥𝑖−̄𝑥)(𝑦𝑖−̄𝑦)
+√∑(𝑥𝑖−̄𝑥)2(𝑦𝑖−̄𝑦)2
+(38)
+4. Results and discussion
+4.1. Proximate composition of injera
+The contents of carbohydrate, protein, crude ﬁber, ash and fat of 
+dried injera were found to be 31.26±1.2 g/100 g, 4.85±0.1 g/100 g, 
+5
+
+===== [page 6] =====
+A.B. Solomon, S.W. Fanta, M.A. Delele et al.
+Heliyon 7 (2021) e06201
+Fig. 4. Experimental and simulated moisture ratio and temperature at constant air velocity (0.5 ms−1).
+1.63±0.06 g/100 g, 1.83±0.1 g/100 g and 0.46 ±0.02 g/100 g respec-
+tively. The percentage deviation with previous reports for carbohydrate, 
+protein, crude ﬁber, ash and fat contents of dried injera was 7.3, 4.1, 
+8.7, 8.5, 3.2 and 6.7% respectively, as it depends upon maturity, soil 
+and the type of teﬀ cereal (Haard, 1999). The moisture content of injera
+showed a value of 60.8±1.65 g/100 g which is in agreement with pre-
+vious work, between the range of 60 to 65 g/100 g sample (Ashagrie 
+and Abate, 2012).
+4.2. Thermo physical properties
+The thermophysical properties of injera as a function of composition 
+and temperature are variable instead of constant. The density of injera
+was 1136.49 and 1135.41 kg/m3 at a temperature range of 323.15 K to 
+333.15 K respectively. This shows a reduction of density with increas-
+ing temperature due to the molecular kinetics (motion) of ﬂuid, which 
+increases the void space (Marcotte et al., 2008). The speciﬁc heat ca-
+pacity of the injera sample was determined by the water content (60%) 
+with showed values of 3676 to 3675.5 J/kgK at a temperature range 
+from 323.15 K to 333.15 K. It did not have a signiﬁcant variation when 
+the temperature was increased (Shemishere et al., 2018). The thermal 
+conductivity value ranges a maximum value of 0.3657 at a temperature 
+of 313.15 K and a minimum value of 0.3434 W/m◦C at a temperature 
+of 333.15 K. An increasing temperature slightly decreases the thermal 
+conductivity because of the inter molecular spacing is much larger and 
+the motion of the molecules is more random in the ﬂuid part and there 
+is an increased lattice vibration in the solid content of injera. There-
+fore, the thermal conductivity decreases with increasing temperature 
+(Telis-Romero et al., 1998).
+4.3. Moisture ratio and temperature curves
+The results in Fig. 4a below clearly indicate the predicted moisture 
+content of injera with the corresponding experimental data at an in-
+let air temperature of 323.15 and 333.15 K and an inlet velocity of 
+0.5 ms−1. The ﬁgure illustrates typical falling rate drying stages and 
+there is a short constant drying stage for most food drying processes 
+(Vásquez-Parra et al., 2013). In the early drying time, the curves were 
+signiﬁcantly reduced and termed as ﬁrst stage failing as the drying was 
+controlled by external conditions (the area exposed to dry air, temper-
+ature and velocity). In a later stage, the reduction was low and mainly 
+controlled by internal mass transfer conditions (thickness and internal 
+structure of the material), the so called second stage. As can be seen 
+from the ﬁgure below, the simulated results agreed well with the ex-
+perimental data. This is aﬃrmed because the experimental data are 
+bounded around the simulated solid line, indicating the suitability of 
+the model for predicting the drying behavior of injera. An increasing 
+drying temperature caused an important increase in the drying rate, 
+Fig. 5. Velocity contour plot at inlet air velocity (0.5 ms−1).
+thus the drying time was decreased. The time taken to reduce the mois-
+ture content of injera from the initial dimensionless moisture ratio of 1 
+(-) to a ﬁnal 0.03(-) was 125 min at an air temperature of 333.15 K. 
+However, it took about 150 min to reach the same dryness eﬀect at 
+323.15 K. A similar result was observed in other works (Hussain and 
+Dincer, 2003; Lemus-Mondaca et al., 2013; Villa-Corrales et al., 2010).
+Fig. 4b shows the typical trends of the product temperature at hot-
+air temperatures (333.15 and 323.15 K) during drying of injera. From 
+the ﬁgure, three diﬀerent stages can be observed. In the early time, 
+the product temperature was lower than the ambient air temperature. 
+This could be explained by the evaporating cooling eﬀect due to the 
+rapid moisture ﬂux on the surface during this period. It requires more 
+energy for moisture evaporation and hence less heat received by the 
+product initially. As the surface moisture was already removed from the 
+sample by convective ﬂow on the outside, water moves from the core 
+towards the surface due to the low water potential there. The transport 
+phenomena are controlled by internal ﬂow conditions. Finally, equilib-
+rium is reached with the drying air temperature remaining in a steady 
+state. The temperature values obtained from the numerical simulation 
+were in reasonable agreement with the measured temperature values 
+obtained from the hot-air drying experiment (𝑅2 > 0.95). The reason 
+for slight discrepancies might be attributed to the limited information 
+or approximate representation of material properties for the injera as 
+they change during the process. A similar observation was reported by 
+Doymaz (2004).
+4.4. Velocity distribution in the drying chamber
+Fig. 5 illustrates the ﬂuid ﬂow distribution in the drying cham-
+ber. The velocity values decrease when approaching the wall of the 
+drying chamber due to the resistance between the wall and the ﬂuid it-
+self. Higher velocity values were observed in the center of the drying 
+chamber. Also, the food acts as a bluﬀ body to the ﬂow creating a re-
+circulation zone behind it. In this zone the velocities are low, hindering 
+the removal of moist and heat transfer at the back (Khan et al., 2020; 
+Pham et al., 2020).
+6
+
+===== [page 7] =====
+A.B. Solomon, S.W. Fanta, M.A. Delele et al.
+Heliyon 7 (2021) e06201
+Fig. 6. Schematic representation of surface moisture ratio distribution on the injera sample domain proﬁle at an air temperature of 333.15 K and air velocity of 
+0.5 ms−1.
+Fig. 7. Schematic representation of the surface moisture ratio distribution on the injera sample domain proﬁle at air temperature of 323.15 K and air velocity of 
+0.5 ms−1.
+4.5. Surface moisture distribution on the injera
+Fig. 6 shows the time evolution of moisture distribution of injera
+at diﬀerent drying times. In this ﬁgure, the evolution of moisture in 
+the sample was portrayed for an air temperature of 333.15 K at an air 
+velocity of 0.5 ms−1. During the initial drying time (t=0 min), the di-
+mensionless moisture distribution across the sample surface is virtually 
+uniform as can be seen in Fig. 6a. As the drying proceeds, high surface 
+moisture evaporation has occurred due to a moisture gradient between 
+the injera and the surrounding air. In addition, the injera sample gained 
+enough heat to remove moisture, creating a moisture diﬀerence be-
+tween the surface and the inner core of the sample (Datta et al., 2007). 
+This is attributed to the fact that a high amount of water evaporates 
+from the inside of the injera to the surface and this water is removed 
+by the surrounding air due to convective hot air currents during the 
+ﬁrst stage of the drying process Figs. 6b to 6e. Eventually, the rate of 
+moisture transfer ceases due to internal mass transfer resistance that 
+has come into play during high temperature drying because of bounded 
+moisture in the sample. This results in lowering the rate of moisture 
+migration to the surface despite the application of high temperatures 
+and it took a great deal of time to reach the equilibrium moisture con-
+tent, beyond which no further moisture removal occurred (MR=0.03), 
+as shown in Fig. 6f. However, unlike at 333.15 K, there was more need 
+of time and energy to remove the remaining moisture content from the 
+sample at 323.15 K Figs. 7a to 7f. Similar phenomena were observed in 
+most previous works (Aregawi et al., 2014a; Tzempelikos et al., 2015; 
+Villa-Corrales et al., 2010).
+4.6. Surface temperature distribution on the injera
+Fig. 8 shows the temperature distributions of the injera at diﬀer-
+ent drying times. In this ﬁgure, the evolution of temperature inside the 
+sample was shown for an air temperature of 333.15 K and air velocity 
+of 0.5 ms−1. At the initial drying time (t=0 min), the temperature pro-
+ﬁle at the sample surface is virtually uniform and in equilibrium with 
+the ambient temperature, Fig. 8a. At the beginning of the drying pro-
+cess, moisture evaporation at the surface of the injera is dominant and 
+heat removal by evaporation prevents heating up of the interior part 
+of the sample, Figs. 8a to 8c. As the drying proceeds, the evaporation 
+rate decreases and the core of the sample gradually warms up towards 
+the drying air temperature, Figs. 8e and 8f. It was found that the tem-
+perature gradient at a drying temperature of 323.15 K that had been 
+observed in Figs. 9a to 9f followed the same trend as in Figs. 8a to 8f 
+except for the excessive time consumed to reach the equilibrium tem-
+perature. The same trends were observed by other works (Aregawi et 
+al., 2014a; Villa-Corrales et al., 2010).
+4.7. Eﬀect of air velocity and temperature on the drying rate
+ANOVA results showed that both temperature and velocity were 
+signiﬁcantly more interesting in moisture reduction when drying was 
+conducted (p < 1.4 × 10−8). As it can be seen from the ANOVA results, 
+the interaction eﬀect between temperature and velocity also indicates 
+a signiﬁcance diﬀerence (p< 2.17 × 10−5). Fig. 10 depicts the changes in 
+moisture content at diﬀerent air velocities (u=0.25 and 0.5 ms−1) and 
+drying air temperatures (323.15 and 333.15 K). For the ﬁrst 20 min, 
+7
+
+===== [page 8] =====
+A.B. Solomon, S.W. Fanta, M.A. Delele et al.
+Heliyon 7 (2021) e06201
+Fig. 8. Schematic representation of surface temperature distribution proﬁle on the injera sample domain at an air temperature of 333.15 K and air velocity of 
+0.5 ms−1.
+Fig. 9. Schematic representation of surface temperature distribution proﬁle on the injera sample domain at an air temperature of 323.15 K and air velocity of 
+0.5 ms−1.
+moisture reduction was collapsed due to the dominant eﬀect of external 
+drying conditions. Higher air velocity and temperature induce a faster 
+moisture transport rate. As the convective ﬂow of moisture on the sam-
+ple surface increases, the diﬀusion of liquid from the inner core of the 
+injera to the surface followed by an evaporation towards the air domain 
+increases. A similar expression was seen from Ateeque et al. (2014); 
+Gulati and Datta (2013); Zhang and Datta (2004). As shown in the ﬁg-
+ure below, the eﬀect of increasing temperature on the drying process 
+is dominant over the increased velocity. From the ﬁgure it can be seen 
+that drying rate is very high at the beginning. However, the surface gets 
+dried quickly. Therefore, in a later stage, the velocity magnitude has a 
+small eﬀect on the evaporation because moisture levels on the surface 
+are low. A similar behavior was observed by other studies (Pasban et 
+al., 2017; Villa-Corrales et al., 2010).
+4.8. Eﬀective moisture diﬀusivity of the injera
+Experimentally obtained eﬀective moisture diﬀusivity Table 3, of 
+the injera was increasing with rising of airﬂow rate and air temperature. 
+The minimum value of moisture diﬀusivity was 6.29e-9 at an air tem-
+perature of 323.15 K and air velocity of 0.25 ms−1 and the maximum 
+value was 1.29e-8 at an air temperature of 333.15 K and air velocity 
+of 0.5 ms−1. Higher drying air temperature and air velocity resulted in 
+the increment of the eﬀective moisture diﬀusivity due to an increased 
+moisture loss on the sample surface. A similar observation was reported 
+in previous studies (Arslan and Özcan, 2010; Pasban et al., 2017)
+4.9. Moisture ratio distribution
+Fig. 11a illustrates the moisture distribution during the injera dry-
+ing process at diﬀerent positions (y-coordinate) and times (t=0,20,40,..
+Fig. 10. Eﬀect of air velocity and temperature on moisture reduction rate.
+Table 3. Average eﬀective moisture diﬀusivity.
+T (K)
+u (ms−1)
+𝐷𝑒𝑓𝑓(m2s−1)
+𝑆𝐷
+323.15
+0.25
+6.29e-9
+±0.012
+323.15
+0.5
+7.66e-9
+±0.017
+333.15
+0.25
+9.21e-9
+±0.019
+333.15
+0.5
+1.29e-8
+±0.016
+120 min). The ﬁgure shows the moisture proﬁle through the sample 
+of the injera with increasing time. Moisture was decreased as the tem-
+perature rises with time. This decrease is the highest in the air inlet 
+domain due to low air and surface temperature gradients and the gra-
+8
+
+===== [page 9] =====
+A.B. Solomon, S.W. Fanta, M.A. Delele et al.
+Heliyon 7 (2021) e06201
+Fig. 11. Moisture ratio distribution along the thickness and diameter (cm) of the injera at an air temperature of 333.15 K, relative humidity of 11% and velocity of 
+0.5 ms−1.
+Fig. 12. Temperature distribution along the thickness and diameter (cm) of the injera at an air temperature of 333.15 K, relative humidity of 11% and velocity of 
+0.5 ms−1.
+dients become higher as the thickness of the sample increases. Initially, 
+the moisture content was uniformly distributed through the sample with 
+a value of 1(-) and progressively reduces to 0.03 (-) with increasing time 
+from 0 min to 125 min at a time interval of 20 min. As can be seen in 
+the ﬁgure, moisture removal capacity was signiﬁcant at the time range 
+of 0 to 80 min. Because moisture gradient of the sample and air is high, 
+this leads to dominant convective evaporation on the surface of the in-
+jera. After a time of 80 min, the reduction of moisture is dominated by 
+diﬀusion.
+Fig. 11b illustrates the moisture distribution in diﬀerent x-co-
+ordinates and times. At the beginning, the moisture ratio of the injera
+is still high. The increased temperature over time reduces the moisture 
+ratio at the surface due to the decreased water binding capacity at that 
+location. The water transport from the inner part of the injera sample 
+is large due to a high temperature gradient, creating a signiﬁcant mois-
+ture gradient towards the center. This gradient decreases rapidly due to 
+the low permeability of the still unheated injera towards the center (x >
+5 mm). At a later time, the temperature gradient is drastically reduced 
+and ﬁnally, at t=125 min, the temperature distribution became almost 
+uniform which is called the steady state temperature. The same behav-
+ior was observed in the literature (Pasban et al., 2017; Tzempelikos et 
+al., 2015; Villa-Corrales et al., 2010)
+4.10. Temperature distribution
+Fig. 12a shows the temperature distribution during the injera drying 
+process at diﬀerent positions (y-coordinate) and times. In the early dry-
+ing stage, the simulation shows a slight drop in product temperature, 
+except for the top boundary at the injera-air interface which remains 
+constant. The reason for this phenomenon is that the absorbed energy 
+of heating was greater and acts as a sink for the incoming energy. As the 
+drying time progresses, the temperature of the product also increases 
+due to the removal of surface moisture from the sample and a rapid 
+increment of product temperature. At later drying stages, its proﬁle re-
+mained constant and becomes uniform, due to steady state conditions. 
+A similar eﬀect was reported in previous studies (Aregawi et al., 2014a; 
+Datta, 2007b; Tzempelikos et al., 2015).
+Fig. 12b shows the simulated temperature evolution along the diam-
+eter. It shows that the temperature is always higher on the surface of the 
+injera compared to the inner part, despite the fact that air temperature 
+and sample contact is higher at the surface. Initially the sample tem-
+perature is relatively low because of the convection and evaporation 
+cooling which reduces the temperature at the surface. A similar pat-
+tern has been observed in the studies of Kumar et al. (2012); Shahari 
+(2012). The temperature gradient is higher when x < 12 cm. The reason 
+is that the hot air is staying most of its time at the back of the sample 
+9
+
+===== [page 10] =====
+A.B. Solomon, S.W. Fanta, M.A. Delele et al.
+Heliyon 7 (2021) e06201
+Fig. 13. Simulated versus experimental moisture ratio and temperature of the injera at an air temperature of 333.15 K, relative humidity of 11% and velocity of 
+0.5 ms−1.
+with increased heat transfer and yet facilitating the formation of va-
+por. As drying time increases, temperature of the product also increased 
+signiﬁcantly, which has remained constant right away throughout the 
+coordinate of the sample.
+4.11. Validation of moisture ratio and temperature curves
+Fig. 13a illustrates the experimental and numerical moisture values 
+at drying conditions of 333.15 K temperature, RH=11% and velocity of 
+0.5 ms−1. Both root mean square error (RMSE) and coeﬃcient of de-
+termination (𝑅2) of moisture rate were 0.045 and 0.9874 respectively, 
+which are indicators of how much the model approaches the experimen-
+tal values. The model was reasonably acceptable. A similar observation 
+was reported by (ElGamal et al., 2017; Zielinska and Markowski, 2010).
+Fig. 13b shows the comparison of the measured value of tempera-
+ture at the center of the food sample, which was recorded every 15 min 
+during a 125 min total drying time, with the corresponding simulated 
+result. The coeﬃcient of determination 𝑅2 is 0.9874 and root mean 
+square error, RMSE=3.5 K. These ﬁgures indicate that the measured 
+and simulated temperatures are in reasonable agreement, which in turn 
+implies that the model is capable of predicting the temperature distri-
+bution at the center of the sample. These ﬁndings are in agreement with 
+the result reported by (Doymaz, 2004; Zielinska and Markowski, 2010).
+4.12. Comparison of the injera and other drying kinetics models
+Comparison of drying kinetics models (Henderson and Pabis, two-
+term, Pages) with the current injera drying process model is shown in 
+Fig. 14. The drying models were ﬁtted to the drying data and sorted in 
+descending order of 𝑅2 and ascending order of RMSE. The values of 𝑅2
+and RMSE of the drying models are shown in Table 4. From these re-
+sults, the best statistical result was achieved with the Henderson and 
+Pabis equation (𝑅2 = 0.9952 and RMSE = 0.04). For this reason, the 
+close approximation by this model can be observed in the ﬁgure. Good 
+agreement was observed at the beginning. Nevertheless, a signiﬁcant 
+deviation was seen after 80 min due to the nature of the moist object, 
+which aﬀects liquid diﬀusion transport towards the surface. In general, 
+two terms and Pages also showed a good agreement between the math-
+ematical model and the experimental moisture results as also conﬁrmed 
+by Aregawi et al. (2014b); Lemus-Mondaca et al. (2013); Tzempelikos 
+et al. (2015). The comparison clearly indicates that the coupled heat 
+and mass transfer numerical model of this study can give a better pre-
+diction of the drying characteristics of injera.
+5. Conclusion
+A coupled mathematical model of heat and mass transfer during dry-
+ing was developed to study the drying process of injera. Moisture ratio 
+Fig. 14. Comparison of simulated drying kinetics and well known mathematical 
+models at an air temperature of 333.15 K and velocity of 0.5 ms−1.
+Table 4. Kinetics modeling of drying rate (MR) as a function of time (min).
+Models
+Constants
+𝑅2
+𝑅𝑀𝑆𝐸
+Henderson & 
+Pabis
+𝛼= 1, 𝛾1 = −0.0189
+0.9952
+0.04
+Two term
+𝛽1 = 0.875, 𝛽2 = 0.135, 
+𝛾2 = −0.021, 𝛾3 = −0.0236
+0.9916
+0.047
+Page
+𝛾4 = −0.06, 𝑛 = 0.745
+0.9617
+0.087
+and temperature distributions in the sample as a function of time were 
+predicted. Based on the simulation results, the high value of the coef-
+ﬁcient of determination (R2 > 0.95 for both moisture and temperature) 
+and low value of root mean square error (RMSE < 3.5 K for temperature 
+and <0.05 for dimensionless moisture ratio) showed the good agree-
+ment between experiments and simulations. It can be concluded that 
+temperature, velocity and their interaction has a signiﬁcant eﬀect on 
+the moisture removal rate (p < 0.05). This model provides a better un-
+derstanding of the heat and moisture transport phenomena inside the 
+sample and the study could be safely used for further practical appli-
+cations and serves as a theoretical basis for the analysis of food drying 
+processes.
+Author Contribution Statement
+Alamrew B. Solomon: Conceived and designed the experiments; 
+Performed the experiments; Analyzed and interpreted the data; Con-
+10
+
+===== [page 11] =====
+A.B. Solomon, S.W. Fanta, M.A. Delele et al.
+Heliyon 7 (2021) e06201
+tributed reagents, materials, analysis tools or data; Wrote the paper. 
+Solomon W. Fanta: Conceived and designed the experiments; Analyzed 
+and interpreted the data; Contributed reagents, materials, analysis tools 
+or data; Wrote the paper. Mulugeta A. Delele; Maarten Vanierschot: An-
+alyzed and interpreted the data; Wrote the paper.
+Funding Statement
+This research did not receive any speciﬁc grant from funding agen-
+cies in the public, commercial, or not-for-proﬁt sectors.
+Data Availability Statement
+Data will be made available on request.
+5.1. Declaration of Interests Statement
+The authors declare no conﬂict of interest.
+Additional Information
+No additional information is available for this paper.
+Acknowledgements
+The author would like to acknowledge Wollo and Bahirdar Univer-
+sity for their ﬁnancial and technical support which made the current 
+research possible.
+References
+Aregawi, W., Defraeye, T., Saneinejad, S., Vontobel, P., Lehmann, E., Carmeliet, J., Ver-
+boven, P., Derome, D., Nicolai, B., 2014a. Understanding forced convective drying of 
+apple tissue: combining neutron radiography and numerical modelling. Innov. Food 
+Sci. Emerg. Technol. 24, 97–105.
+Aregawi, W.A., Abera, M.K., Fanta, S.W., Verboven, P., Nicolai, B., 2014b. Prediction of 
+water loss and viscoelastic deformation of apple tissue using a multiscale model. J. 
+Phys. Condens. Matter 26 (46), 464111.
+Arslan, D., Özcan, M.M., 2010. Study the eﬀect of sun, oven and microwave drying on 
+quality of onion slices. Lebensm.-Wiss. Technol. 43 (7), 1121–1127.
+Ashagrie, Z., Abate, D., 2012. Improvement of injera shelf life through the use of chemical 
+preservatives. Afr. J. Food Agric. Nutr. Dev. 12 (5), 6409–6423.
+Ateeque, M., Mishra, R.K., Chandramohan, V., Talukdar, P., et al., 2014. Numerical mod-
+eling of convective drying of food with spatially dependent transfer coeﬃcient in a 
+turbulent ﬂow ﬁeld. Int. J. Therm. Sci. 78, 145–157.
+Baur, F.J., Ensminger, L.G., 1977. The association of oﬃcial analytical chemists (aoac). J. 
+Am. Oil Chem. Soc. 54 (4), 171–172.
+Bennamoun, L., Khama, R., Léonard, A., 2015. Convective drying of a single cherry 
+tomato: modeling and experimental study. Food Bioprod. Process. 94, 114–123.
+Berk, Z., 2018. Food Process Engineering and Technology. Academic Press.
+Bird, R., Stewart, W., Lighfoot, E., 2001. Transport Phenomena, 2nd edn. 912 pp.
+Bird, R.B., 2004. Five decades of transport phenomena. AIChE J. 50 (2), 273–287.
+Bird, R.B., Stewart, W.E., Lightfoot, E.N., Klingenberg, D.J., 2015. Introductory Transport 
+Phenomena. Wiley Global Education.
+Bradstreet, R.B., 1954. Kjeldahl method for organic nitrogen. Anal. Chem. 26 (1), 
+185–187.
+Cárcel, J., Garcia-Perez, J.V., Riera, E., Mulet, A., 2011. Improvement of convective dry-
+ing of carrot by applying power ultrasound—inﬂuence of mass load density. Dry. 
+Technol. 29 (2), 174–182.
+Cengel, Y., Ghajar, A., 2011. Chapter eight: internal forced convection. In: Heat and Mass 
+Transfer, Fundamentals and Applications. McGraw-Hill, New York, p. 489.
+Cengel, Y.A., Boles, M.A., 2002. Thermodynamics: an engineering approach. Sea 1000, 
+8862.
+Datta, A., 2007a. Porous media approaches to studying simultaneous heat and mass trans-
+fer in food processes. i: Problem formulations. J. Food Eng. 80 (1), 80–95.
+Datta, A., 2007b. Porous media approaches to studying simultaneous heat and mass trans-
+fer in food processes. ii: Property data and representative results. J. Food Eng. 80 (1), 
+96–110.
+Datta, A.K., Sahin, S., Sumnu, G., Keskin, S.O., 2007. Porous media characterization of 
+breads baked using novel heating modes. J. Food Eng. 79 (1), 106–116.
+Demir, V., Gunhan, T., Yagcioglu, A., Degirmencioglu, A., 2004. Mathematical modelling 
+and the determination of some quality parameters of air-dried bay leaves. Biosyst. 
+Eng. 88 (3), 325–335.
+Doymaz, I., 2004. Convective air drying characteristics of thin layer carrots. J. Food 
+Eng. 61 (3), 359–364.
+ElGamal, R.A., Kishk, S.S., ElMasry, G.M., 2017. Validation of cfd models for the deep-bed 
+drying of rice using thermal imaging. Biosyst. Eng. 161, 135–144.
+Ertekin, C., Yaldiz, O., 2004. Drying of eggplant and selection of a suitable thin layer 
+drying model. J. Food Eng. 63 (3), 349–359.
+Feyissa, A.H., Gernaey, K.V., Adler-Nissen, J., 2013. 3d modelling of coupled mass and 
+heat transfer of a convection-oven roasting process. Meat Sci. 93 (4), 810–820.
+Garau, M., Simal, S., Femenia, A., Rosselló, C., 2006. Drying of orange skin: drying kinet-
+ics modelling and functional properties. J. Food Eng. 75 (2), 288–295.
+Gebremariam, M.M., Hassani, A., Zarnkow, M., Becker, T., 2015. Investigation of fer-
+mentation conditions for teﬀ (eragrostis tef) malt-wort by lactobacillus amylolyticus. 
+Lebensm.-Wiss. Technol. 61 (1), 164–171.
+Gebremariam, M.M., Zarnkow, M., Becker, T., 2014. Teﬀ (eragrostis tef) as a raw material 
+for malting, brewing and manufacturing of gluten-free foods and beverages: a review. 
+Int. J. Food Sci. Technol. 51 (11), 2881–2895.
+Gulati, T., Datta, A.K., 2013. Enabling computer-aided food process engineering: property 
+estimation equations for transport phenomena-based models. J. Food Eng. 116 (2), 
+483–504.
+Haard, N.F., 1999. Fermented Cereals: A Global Perspective, Vol. 138. Food & Agriculture 
+Org.
+Horwitz, W., Chichilo, P., Reynolds, H., et al., 1970. Oﬃcial methods of analysis of the 
+association of oﬃcial analytical chemists. Oﬃcial methods of analysis of the Associ-
+ation of Oﬃcial Analytical Chemists.
+Horwitz, W., et al., 2010. Oﬃcial Methods of Analysis of AOAC International. Volume 
+i, Agricultural Chemicals, Contaminants, Drugs/Edited by William Horwitz. AOAC 
+International, Gaithersburg (Maryland). 1997.
+Hussain, M., Dincer, I., 2003. Two-dimensional heat and moisture transfer analysis of a 
+cylindrical moist object subjected to drying: a ﬁnite-diﬀerence approach. Int. J. Heat 
+Mass Transf. 46 (21), 4033–4039.
+Karim, M.A., Hawlader, M., 2005. Mathematical modelling and experimental investiga-
+tion of tropical fruits drying. Int. J. Heat Mass Transf. 48 (23–24), 4914–4925.
+Kasiramar, G., 2019. Signiﬁcant role of soxhlet extraction process in phytochemical re-
+search. Mintage J. Pharm. & Med. Sci. 7, 43–47.
+Khan, M.I.H., Welsh, Z., Gu, Y., Karim, M., Bhandari, B., 2020. Modelling of simultane-
+ous heat and mass transfer considering the spatial distribution of air velocity during 
+intermittent microwave convective drying. Int. J. Heat Mass Transf. 153, 119–148.
+Kumar, C., Karim, A., Joardder, M.U.H., Miller, G., 2012. Modeling heat and mass transfer 
+process during convection drying of fruit. In: The 4th International Conference on 
+Computational Methods (ICCM2012).
+Kumar, C., Karim, M., Joardder, M.U., 2014. Intermittent drying of food products: a crit-
+ical review. J. Food Eng. 121, 48–57.
+Kuznetsov, A., Nield, D., 2013. The cheng–minkowycz problem for natural convective 
+boundary layer ﬂow in a porous medium saturated by a nanoﬂuid: a revised model. 
+Int. J. Heat Mass Transf. 65, 682–685.
+Law, M., Liew, E., Chang, S., Chan, Y., Leo, C., 2016. Modelling microwave heating of 
+discrete samples of oil palm kernels. Appl. Therm. Eng. 98, 702–726.
+Lemus-Mondaca, R.A., Zambra, C.E., Vega-Gálvez, A., Moraga, N.O., 2013. Coupled 3d 
+heat and mass transfer model for numerical analysis of drying process in papaya 
+slices. J. Food Eng. 116 (1), 109–117.
+Marcotte, M., Taherian, A.R., Karimi, Y., 2008. Thermophysical properties of processed 
+meat and poultry products. J. Food Eng. 88 (3), 315–322.
+Neela, S., Fanta, S.W., 2020. Injera (an ethnic, traditional staple food of ethiopia): a 
+review on traditional practice to scientiﬁc developments. J. Ethnic Foods 7 (1), 1–15.
+Omolola, A.O., Jideani, A.I., Kapila, P.F., 2014. Modeling microwave drying kinetics and 
+moisture diﬀusivity of mabonde banana variety. Int. J. Agricult. Biol. Eng. 7 (6), 
+107–113.
+Pasban, A., Sadrnia, H., Mohebbi, M., Shahidi, S.A., 2017. Spectral method for simulating 
+3d heat and mass transfer during drying of apple slices. J. Food Eng. 212, 201–212.
+Pham, N.D., Khan, M., Karim, M., 2020. A mathematical model for predicting the trans-
+port process and quality changes during intermittent microwave convective drying. 
+Food Chem., 126–138.
+Satheesh, N., Fanta, S.W., 2018. Review on structural, nutritional and anti-nutritional 
+composition of teﬀ (eragrostis tef) in comparison with quinoa (chenopodium 
+quinoa willd.). Cogent Food Agricult. 4 (1). https://doi .org /10 .1080 /23311932 .
+2018 .1546942.
+Shahari, N.A., 2012. Mathematical modelling of drying food products: application to trop-
+ical fruits. PhD thesis. University of Nottingham.
+Shemishere, U., Taiwo, J., Erhunse, N., Omoregie, E., 2018. Comparative study on the 
+proximate analysis and nutritional composition of musanga cercropioides and mae-
+sobotyra barteri leaves. J. Appl. Sci. Environ. Manag. 22 (2), 287–291.
+Shen, L., Zhu, Y., Liu, C., Wang, L., Liu, H., Kamruzzaman, M., Liu, C., Zhang, Y., Zheng, 
+X., 2020. Modelling of moving drying process and analysis of drying characteristics 
+for germinated brown rice under continuous microwave drying. Biosyst. Eng. 195, 
+64–88.
+Telis-Romero, J., Telis, V., Gabas, A., Yamashita, F., 1998. Thermophysical properties of 
+brazilian orange juice as aﬀected by temperature and water content. J. Food Eng. 38 
+(1), 27–40.
+Tesfay, A.H., Kahsay, M.B., Nydal, O.J., 2014. Design and development of solar thermal 
+injera baking: steam based direct baking. Energy Proc. 57, 2946–2955.
+11
+
+===== [page 12] =====
+A.B. Solomon, S.W. Fanta, M.A. Delele et al.
+Heliyon 7 (2021) e06201
+Tripathy, P., Kumar, S., 2008. Determination of temperature dependent drying parameters 
+for potato cylinders and slices during solar drying. Energy Convers. Manag. 49 (11), 
+2941–2948.
+Tunckal, C., Doymaz, ˙I., 2020. Performance analysis and mathematical modelling of ba-
+nana slices in a heat pump drying system. Renew. Energy 150, 918–923.
+Tzempelikos, D.A., Mitrakos, D., Vouros, A.P., Bardakas, A.V., Filios, A.E., Margaris, D.P., 
+2015. Numerical modeling of heat and mass transfer during convective drying of 
+cylindrical quince slices. J. Food Eng. 156, 10–21.
+Vásquez-Parra, J., Ochoa-Martínez, C., Bustos-Parra, M., 2013. Eﬀect of chemical and 
+physical pretreatments on the convective drying of cape gooseberry fruits (physalis 
+peruviana). J. Food Eng. 119 (3), 648–654.
+Villa-Corrales, L., Flores-Prieto, J., Xamán-Villaseñor, J., García-Hernández, E., 2010. Nu-
+merical and experimental analysis of heat and moisture transfer during drying of 
+ataulfo mango. J. Food Eng. 98 (2), 198–206.
+Yu, X.-L., Zielinska, M., Ju, H.-Y., Mujumdar, A.S., Duan, X., Gao, Z.-J., Xiao, H.-W., 2020. 
+Multistage relative humidity control strategy enhances energy and exergy eﬃciency 
+of convective drying of carrot cubes. Int. J. Heat Mass Transf. 149, 119–231.
+Zhang, J., Datta, A., 2004. Some considerations in modeling of moisture transport in 
+heating of hygroscopic materials. Dry. Technol. 22 (8), 1983–2008.
+Zielinska, M., Markowski, M., 2010. Air drying characteristics and moisture diﬀusivity of 
+carrots. Chem. Eng. Process. 49 (2), 212–218.
+12

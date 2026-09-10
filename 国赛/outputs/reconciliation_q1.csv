@@ -1,0 +1,1204 @@
+﻿document,line,token,value,status,source,rel_dev,context
+problem1.md,3,2026,2026.0,REGISTRY,E32_M1600_dt0.002_ratio,3.758e-04,> 本文建立 2026 年高教社杯 A 题问题一（预热平衡阶段，0 ~ 1800 s）的数学模型。
+problem1.md,3,0,0.0,ALLOW,零,0.0,> 本文建立 2026 年高教社杯 A 题问题一（预热平衡阶段，0 ~ 1800 s）的数学模型。
+problem1.md,3,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,> 本文建立 2026 年高教社杯 A 题问题一（预热平衡阶段，0 ~ 1800 s）的数学模型。
+problem1.md,4,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 全部参数取自题面附录 2 与附件 1；全部数值结论均由 `src/q1_solve.py`、
+problem1.md,4,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 全部参数取自题面附录 2 与附件 1；全部数值结论均由 `src/q1_solve.py`、
+problem1.md,4,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 全部参数取自题面附录 2 与附件 1；全部数值结论均由 `src/q1_solve.py`、
+problem1.md,5,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> `src/q1_produce.py` 运行得到，数字注册表见 `outputs/registry_q1.csv` 与
+problem1.md,5,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> `src/q1_produce.py` 运行得到，数字注册表见 `outputs/registry_q1.csv` 与
+problem1.md,6,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> `outputs/registry_q1_production.csv`。
+problem1.md,9,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 并在 `problem_slove1.md` 中给出数值验证。**
+problem1.md,15,25,25.0,ALLOW,题面: 长度 25 cm,0.0,一根圆柱形中药材，长 $L=25 \mathrm{cm}$、半径 $R=2 \mathrm{cm}$，初始温度
+problem1.md,15,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,一根圆柱形中药材，长 $L=25 \mathrm{cm}$、半径 $R=2 \mathrm{cm}$，初始温度
+problem1.md,16,28,28.0,ALLOW,题面: 初始温度 28 degC,0.0,$T=28 ^\circ\mathrm{C}$、初始干基含水率 $C=2.55 \mathrm{kg/kg}$，置于热风烘房
+problem1.md,16,2.55,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,$T=28 ^\circ\mathrm{C}$、初始干基含水率 $C=2.55 \mathrm{kg/kg}$，置于热风烘房
+problem1.md,17,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,中。烘房温度 $T_\infty(t)$ 与烘房水分浓度 $C_\infty(t)$ 随时间变化，由附件 1 给出
+problem1.md,18,60,60.0,ALLOW,附件1 采样间隔 60 s,0.0,（采样间隔 60 s，覆盖 0 ~ 14400 s）。
+problem1.md,18,0,0.0,ALLOW,零,0.0,（采样间隔 60 s，覆盖 0 ~ 14400 s）。
+problem1.md,18,14400,14400.0,ALLOW,附件1 覆盖时长 14400 s,0.0,（采样间隔 60 s，覆盖 0 ~ 14400 s）。
+problem1.md,20,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,"要求建立预热平衡阶段（前 1800 s）药材内部温度场 $T(r,t)$ 与水分浓度场 $C(r,t)$"
+problem1.md,21,100,100.0,ALLOW,题面表1/2 时间点,0.0,的数学模型，并给出 100、300、600、900、1200、1500、1800 s 时刻，到药材中心距离
+problem1.md,21,300,300.0,ALLOW,题面表1/2 时间点,0.0,的数学模型，并给出 100、300、600、900、1200、1500、1800 s 时刻，到药材中心距离
+problem1.md,21,600,600.0,ALLOW,题面表1/2 时间点,0.0,的数学模型，并给出 100、300、600、900、1200、1500、1800 s 时刻，到药材中心距离
+problem1.md,21,900,900.0,ALLOW,题面表1/2 时间点,0.0,的数学模型，并给出 100、300、600、900、1200、1500、1800 s 时刻，到药材中心距离
+problem1.md,21,1200,1200.0,ALLOW,题面表1/2 时间点,0.0,的数学模型，并给出 100、300、600、900、1200、1500、1800 s 时刻，到药材中心距离
+problem1.md,21,1500,1500.0,ALLOW,题面表1/2 时间点,0.0,的数学模型，并给出 100、300、600、900、1200、1500、1800 s 时刻，到药材中心距离
+problem1.md,21,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,的数学模型，并给出 100、300、600、900、1200、1500、1800 s 时刻，到药材中心距离
+problem1.md,22,0,0.0,ALLOW,零,0.0,"$0, 0.5, 1, 1.5, 2 \mathrm{cm}$ 处的结果（表 1、表 2），以及 1800 s 内"
+problem1.md,22,0.5,0.5,ALLOW,题面: 半径网格 / 通用,0.0,"$0, 0.5, 1, 1.5, 2 \mathrm{cm}$ 处的结果（表 1、表 2），以及 1800 s 内"
+problem1.md,22,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"$0, 0.5, 1, 1.5, 2 \mathrm{cm}$ 处的结果（表 1、表 2），以及 1800 s 内"
+problem1.md,22,1.5,1.5,ALLOW,题面: 半径网格,0.0,"$0, 0.5, 1, 1.5, 2 \mathrm{cm}$ 处的结果（表 1、表 2），以及 1800 s 内"
+problem1.md,22,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$0, 0.5, 1, 1.5, 2 \mathrm{cm}$ 处的结果（表 1、表 2），以及 1800 s 内"
+problem1.md,22,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"$0, 0.5, 1, 1.5, 2 \mathrm{cm}$ 处的结果（表 1、表 2），以及 1800 s 内"
+problem1.md,22,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$0, 0.5, 1, 1.5, 2 \mathrm{cm}$ 处的结果（表 1、表 2），以及 1800 s 内"
+problem1.md,22,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,"$0, 0.5, 1, 1.5, 2 \mathrm{cm}$ 处的结果（表 1、表 2），以及 1800 s 内"
+problem1.md,23,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,每隔 1 s、径向每隔 0.1 cm 的完整结果（`result1.xlsx`）。
+problem1.md,23,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,每隔 1 s、径向每隔 0.1 cm 的完整结果（`result1.xlsx`）。
+problem1.md,23,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,每隔 1 s、径向每隔 0.1 cm 的完整结果（`result1.xlsx`）。
+problem1.md,25,0,0.0,ALLOW,零,0.0,"**待求解的未知场**：$T(r,t)$、$C(r,t)$，$r\in[0,R]$，$t\in[0,1800 \mathrm{s}]$。"
+problem1.md,25,0,0.0,ALLOW,零,0.0,"**待求解的未知场**：$T(r,t)$、$C(r,t)$，$r\in[0,R]$，$t\in[0,1800 \mathrm{s}]$。"
+problem1.md,25,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,"**待求解的未知场**：$T(r,t)$、$C(r,t)$，$r\in[0,R]$，$t\in[0,1800 \mathrm{s}]$。"
+problem1.md,33,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"| **A1** | 药材为均质、各向同性的连续介质，形状为正圆柱 | 题面给定""形状大致呈圆柱形"" |"
+problem1.md,34,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| **A2** | 只考虑径向一维传递，忽略轴向与周向 | 周向由轴对称性严格成立；轴向见 §2.1 |
+problem1.md,35,3,3.0,ALLOW,3 小时,0.0,| **A3** | 药材内部满足局部热平衡（LTE），固相与液相温度相同 | 含湿多孔介质尺度远小于试样尺度，$R=2 \mathrm{cm}$ 下成立 |
+problem1.md,35,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| **A3** | 药材内部满足局部热平衡（LTE），固相与液相温度相同 | 含湿多孔介质尺度远小于试样尺度，$R=2 \mathrm{cm}$ 下成立 |
+problem1.md,36,4,4.0,ALLOW,结构/常数,0.0,"| **A4** | 预热平衡阶段物性为常数（$\rho,c_p,k$ 取自附录 2） | 附录 2 对问题 1 只给常数；问题 2 起才给随 $C$ 变化的经验式 |"
+problem1.md,36,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"| **A4** | 预热平衡阶段物性为常数（$\rho,c_p,k$ 取自附录 2） | 附录 2 对问题 1 只给常数；问题 2 起才给随 $C$ 变化的经验式 |"
+problem1.md,36,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"| **A4** | 预热平衡阶段物性为常数（$\rho,c_p,k$ 取自附录 2） | 附录 2 对问题 1 只给常数；问题 2 起才给随 $C$ 变化的经验式 |"
+problem1.md,36,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"| **A4** | 预热平衡阶段物性为常数（$\rho,c_p,k$ 取自附录 2） | 附录 2 对问题 1 只给常数；问题 2 起才给随 $C$ 变化的经验式 |"
+problem1.md,36,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"| **A4** | 预热平衡阶段物性为常数（$\rho,c_p,k$ 取自附录 2） | 附录 2 对问题 1 只给常数；问题 2 起才给随 $C$ 变化的经验式 |"
+problem1.md,37,5,5.0,ALLOW,结构/常数,0.0,| **A5** | 水分迁移由 Fick 扩散描述，扩散系数 $D=D(C)$ 由附录 2 给定 | 题面明确要求；忽略毛细压力驱动、重力与对流项 |
+problem1.md,37,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| **A5** | 水分迁移由 Fick 扩散描述，扩散系数 $D=D(C)$ 由附录 2 给定 | 题面明确要求；忽略毛细压力驱动、重力与对流项 |
+problem1.md,38,6,6.0,ALLOW,结构,0.0,| **A6** | 表面水分浓度对应的平衡值为热风水分浓度 $C_\infty(t)$（第三类边界） | 与附录 2 给出的对流传质系数 $h_m$ 配套，见 §7.2 的适用性
+problem1.md,38,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| **A6** | 表面水分浓度对应的平衡值为热风水分浓度 $C_\infty(t)$（第三类边界） | 与附录 2 给出的对流传质系数 $h_m$ 配套，见 §7.2 的适用性
+problem1.md,39,7,7.0,ALLOW,结构,0.0,| **A7** | 预热平衡阶段（1800 s）体积不收缩，$R$ 视为常数 | 附件 2 显示 $t=1800 \mathrm{s}$ 时 $R$ 降至 1.873 cm（相对
+problem1.md,39,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,| **A7** | 预热平衡阶段（1800 s）体积不收缩，$R$ 视为常数 | 附件 2 显示 $t=1800 \mathrm{s}$ 时 $R$ 降至 1.873 cm（相对
+problem1.md,39,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| **A7** | 预热平衡阶段（1800 s）体积不收缩，$R$ 视为常数 | 附件 2 显示 $t=1800 \mathrm{s}$ 时 $R$ 降至 1.873 cm（相对
+problem1.md,39,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,| **A7** | 预热平衡阶段（1800 s）体积不收缩，$R$ 视为常数 | 附件 2 显示 $t=1800 \mathrm{s}$ 时 $R$ 降至 1.873 cm（相对
+problem1.md,39,1.873,1.873,REGISTRY,P21,0.000e+00,| **A7** | 预热平衡阶段（1800 s）体积不收缩，$R$ 视为常数 | 附件 2 显示 $t=1800 \mathrm{s}$ 时 $R$ 降至 1.873 cm（相对
+problem1.md,39,4,4.0,ALLOW,结构/常数,0.0,| **A7** | 预热平衡阶段（1800 s）体积不收缩，$R$ 视为常数 | 附件 2 显示 $t=1800 \mathrm{s}$ 时 $R$ 降至 1.873 cm（相对
+problem1.md,41,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,### 2.1 轴向维度的处理（对假设 A2 的严格论证）
+problem1.md,43,12.5,12.5,REGISTRY,P11,0.000e+00,"常见的一维化理由是""长径比 $L/R=12.5$ 足够大""（题面参数给出 $L/R=12.5$）。"
+problem1.md,43,12.5,12.5,REGISTRY,P11,0.000e+00,"常见的一维化理由是""长径比 $L/R=12.5$ 足够大""（题面参数给出 $L/R=12.5$）。"
+problem1.md,44,0,0.0,ALLOW,零,0.0,但更严格的论证来自对称性：**在圆柱的中截面 $z=0$ 上，$\partial T/\partial z=0$、
+problem1.md,44,0,0.0,ALLOW,零,0.0,但更严格的论证来自对称性：**在圆柱的中截面 $z=0$ 上，$\partial T/\partial z=0$、
+problem1.md,45,0,0.0,ALLOW,零,0.0,$\partial C/\partial z=0$ 是上下两半对称性导致的精确条件**，与 $L/R$ 无关。因此对
+problem1.md,46,0,0.0,ALLOW,零,0.0,$z=0$ 所在的径线，纯径向导热/扩散方程在该线上**精确成立**，并非近似。
+problem1.md,48,12.5,12.5,REGISTRY,P11,0.000e+00,$L/R=12.5$ 真正的作用是论证**远离中截面的截面**受端面影响的深度有限。端面面积与
+problem1.md,51,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$(\pi R)/(2\pi R L)=(R)/(2L)=(2)/(2x 25)=0.04,$$"
+problem1.md,51,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$(\pi R)/(2\pi R L)=(R)/(2L)=(2)/(2x 25)=0.04,$$"
+problem1.md,51,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$(\pi R)/(2\pi R L)=(R)/(2L)=(2)/(2x 25)=0.04,$$"
+problem1.md,51,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$(\pi R)/(2\pi R L)=(R)/(2L)=(2)/(2x 25)=0.04,$$"
+problem1.md,51,25,25.0,ALLOW,题面: 长度 25 cm,0.0,"$$(\pi R)/(2\pi R L)=(R)/(2L)=(2)/(2x 25)=0.04,$$"
+problem1.md,51,0.04,0.04,REGISTRY,P12,0.000e+00,"$$(\pi R)/(2\pi R L)=(R)/(2L)=(2)/(2x 25)=0.04,$$"
+problem1.md,53,4,4.0,ALLOW,结构/常数,0.0,即端面换热面积仅占侧面的 4 %，同时轴向导热会把端面扰动限制在 $\sim\sqrt{\alpha t}$
+problem1.md,54,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,深度内：1800 s 时 $\sqrt{\alpha t}=\sqrt{1.6886e-7x1800}\approx 1.74 \mathrm{cm}$，
+problem1.md,54,1.6886e-7,1.6886e-07,REGISTRY,X20,1.689e-10,深度内：1800 s 时 $\sqrt{\alpha t}=\sqrt{1.6886e-7x1800}\approx 1.74 \mathrm{cm}$，
+problem1.md,54,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,深度内：1800 s 时 $\sqrt{\alpha t}=\sqrt{1.6886e-7x1800}\approx 1.74 \mathrm{cm}$，
+problem1.md,54,1.74,1.74,REGISTRY,X20,1.740e-03,深度内：1800 s 时 $\sqrt{\alpha t}=\sqrt{1.6886e-7x1800}\approx 1.74 \mathrm{cm}$，
+problem1.md,55,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,与 $R=2 \mathrm{cm}$ 同量级，说明 30 min 以内轴向影响尚局限于端部附近。题面要求的
+problem1.md,55,30,30.0,ALLOW,题面: 30 分钟,0.0,与 $R=2 \mathrm{cm}$ 同量级，说明 30 min 以内轴向影响尚局限于端部附近。题面要求的
+problem1.md,56,0,0.0,ALLOW,零,0.0,输出位置（距中心 0 ~ 2 cm）位于中截面径线上，故一维径向导热模型是恰当的。
+problem1.md,56,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,输出位置（距中心 0 ~ 2 cm）位于中截面径线上，故一维径向导热模型是恰当的。
+problem1.md,58,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"> 说明：本文未对完整二维轴对称模型作数值对比，因此 A2 的""远端截面""部分属于"
+problem1.md,66,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,长度 $1 \mathrm{m}$ 分析。
+problem1.md,70,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,- 侧面积（半径 $r$ 的侧面）：$A(r)=2\pi r$
+problem1.md,75,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$(1)/(r)(\partial)/(\partial r)\left(r(\partial \phi)/(\partial r)\right)
+problem1.md,90,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,= (1)/(r)(\partial)/(\partial r)\left(kr(\partial T)/(\partial r)\right)$$
+problem1.md,92,4,4.0,ALLOW,结构/常数,0.0,$k$ 为常数（假设 A4），可移至微分号外；两边除以 $\rho c_p$：
+problem1.md,100,5,5.0,ALLOW,结构/常数,0.0,对同一薄环作干基水分的质量守恒（忽略对流携带项，假设 A5）：
+problem1.md,103,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,=(1)/(r)(\partial)/(\partial r)\left(rD(C)(\partial C)/(\partial r)\right) }$$
+problem1.md,105,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,其中（附录 2）
+problem1.md,107,7e-9,7e-09,ALLOW,附录2: 扩散系数系数,0.0,$$D(C)=7e-9\exp\!\left(-(0.89)/(C)\right)\quad (\mathrm{m/s}).$$
+problem1.md,107,0.89,0.89,ALLOW,附录2: 扩散系数指数常数,0.0,$$D(C)=7e-9\exp\!\left(-(0.89)/(C)\right)\quad (\mathrm{m/s}).$$
+problem1.md,109,2.55,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,**非线性来源**：$D$ 随 $C$ 呈指数变化。在 $C=2.55$ 处 $D=4.9377e-9 \mathrm{m/s}$；
+problem1.md,109,4.9377e-9,4.9377e-09,REGISTRY,X20,4.938e-12,**非线性来源**：$D$ 随 $C$ 呈指数变化。在 $C=2.55$ 处 $D=4.9377e-9 \mathrm{m/s}$；
+problem1.md,110,3,3.0,ALLOW,3 小时,0.0,在问题 3 的干燥目标 $C=0.15$ 处 $D=1.8547e-11 \mathrm{m/s}$；
+problem1.md,110,0.15,0.15,ALLOW,题面问题3: 含水率目标 0.15 kg/kg,0.0,在问题 3 的干燥目标 $C=0.15$ 处 $D=1.8547e-11 \mathrm{m/s}$；
+problem1.md,110,1.8547e-11,1.8547e-11,REGISTRY,X20,1.855e-14,在问题 3 的干燥目标 $C=0.15$ 处 $D=1.8547e-11 \mathrm{m/s}$；
+problem1.md,111,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,在 1800 s 时的环境湿度 $C_\infty=0.0331$ 处 $D=1.4713e-20 \mathrm{m/s}$。
+problem1.md,111,0.0331,0.0331,REGISTRY,X20,3.310e-05,在 1800 s 时的环境湿度 $C_\infty=0.0331$ 处 $D=1.4713e-20 \mathrm{m/s}$。
+problem1.md,111,1.4713e-20,1.4713e-20,REGISTRY,X20,1.471e-23,在 1800 s 时的环境湿度 $C_\infty=0.0331$ 处 $D=1.4713e-20 \mathrm{m/s}$。
+problem1.md,112,3.36e11,336000000000.0,REGISTRY,P06,1.180e-03,即在整个可能的浓度范围内 $D$ 跨越 $3.36e11$ 个数量级。后文 §9.6 说明这一
+problem1.md,121,820,820.0,ALLOW,附录2: 密度,0.0,| $\rho$ | 药材密度 | $820 \mathrm{kg/m}$ | 附录 2 |
+problem1.md,121,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| $\rho$ | 药材密度 | $820 \mathrm{kg/m}$ | 附录 2 |
+problem1.md,122,2600,2600.0,ALLOW,附录2: 比热容,0.0,| $c_p$ | 比热容 | $2600 \mathrm{J/(kg\cdot K)}$ | 附录 2 |
+problem1.md,122,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| $c_p$ | 比热容 | $2600 \mathrm{J/(kg\cdot K)}$ | 附录 2 |
+problem1.md,123,0.36,0.36,ALLOW,附录2: 热传导系数,0.0,| $k$ | 热传导系数 | $0.36 \mathrm{W/(m\cdot K)}$ | 附录 2 |
+problem1.md,123,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| $k$ | 热传导系数 | $0.36 \mathrm{W/(m\cdot K)}$ | 附录 2 |
+problem1.md,124,25,25.0,ALLOW,题面: 长度 25 cm,0.0,| $h$ | 对流换热系数 | $25 \mathrm{W/(m\cdot K)}$ | 附录 2 |
+problem1.md,124,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| $h$ | 对流换热系数 | $25 \mathrm{W/(m\cdot K)}$ | 附录 2 |
+problem1.md,125,8e-7,8e-07,ALLOW,附录2: 对流传质系数,0.0,| $h_m$ | 对流传质系数 | $8e-7 \mathrm{m/s}$ | 附录 2 |
+problem1.md,125,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| $h_m$ | 对流传质系数 | $8e-7 \mathrm{m/s}$ | 附录 2 |
+problem1.md,126,7e-9,7e-09,ALLOW,附录2: 扩散系数系数,0.0,| $D$ | 扩散系数系数 | $7e-9 \mathrm{m/s}$ | 附录 2 |
+problem1.md,126,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| $D$ | 扩散系数系数 | $7e-9 \mathrm{m/s}$ | 附录 2 |
+problem1.md,127,0.89,0.89,ALLOW,附录2: 扩散系数指数常数,0.0,| $D$ 指数常数 | — | $0.89$ | 附录 2 |
+problem1.md,127,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| $D$ 指数常数 | — | $0.89$ | 附录 2 |
+problem1.md,128,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| $R$ | 半径 | $2 \mathrm{cm}=0.02 \mathrm{m}$ | 题面 |
+problem1.md,128,0.02,0.02,ALLOW,LTE 判据阈值 / 长度换算,0.0,| $R$ | 半径 | $2 \mathrm{cm}=0.02 \mathrm{m}$ | 题面 |
+problem1.md,129,25,25.0,ALLOW,题面: 长度 25 cm,0.0,| $L$ | 长度 | $25 \mathrm{cm}$ | 题面 |
+problem1.md,130,28,28.0,ALLOW,题面: 初始温度 28 degC,0.0,| $T$ | 初始温度 | $28 ^\circ\mathrm{C}=301.15 \mathrm{K}$ | 题面 |
+problem1.md,130,301.15,301.15,ALLOW,题面: T0 = 28 degC = 301.15 K,0.0,| $T$ | 初始温度 | $28 ^\circ\mathrm{C}=301.15 \mathrm{K}$ | 题面 |
+problem1.md,131,2.55,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| $C$ | 初始含水率 | $2.55 \mathrm{kg/kg}$ | 题面 |
+problem1.md,135,0.36,0.36,ALLOW,附录2: 热传导系数,0.0,$$\alpha=(k)/(\rho c_p)=(0.36)/(820x2600)=1.6885553e-7 \mathrm{m/s}.$$
+problem1.md,135,820,820.0,ALLOW,附录2: 密度,0.0,$$\alpha=(k)/(\rho c_p)=(0.36)/(820x2600)=1.6885553e-7 \mathrm{m/s}.$$
+problem1.md,135,2600,2600.0,ALLOW,附录2: 比热容,0.0,$$\alpha=(k)/(\rho c_p)=(0.36)/(820x2600)=1.6885553e-7 \mathrm{m/s}.$$
+problem1.md,135,1.6885553e-7,1.6885553e-07,REGISTRY,X20,1.689e-10,$$\alpha=(k)/(\rho c_p)=(0.36)/(820x2600)=1.6885553e-7 \mathrm{m/s}.$$
+problem1.md,137,1.679e-7,1.679e-07,REGISTRY,X20,1.679e-10,> **修正说明 ①**：原始建模思路中写作 $\alpha=1.679e-7 \mathrm{m/s}$。
+problem1.md,138,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 按附录 2 的参数重算应为 $1.6885553e-7 \mathrm{m/s}$，原值偏低
+problem1.md,138,1.6885553e-7,1.6885553e-07,REGISTRY,X20,1.689e-10,> 按附录 2 的参数重算应为 $1.6885553e-7 \mathrm{m/s}$，原值偏低
+problem1.md,139,0.569,0.569,REGISTRY,P02,1.923e-04,> $0.569 %$。本文采用重算值。
+problem1.md,142,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,但为与问题 2 ~ 4（附录 3、4 的 $D$ 含 Arrhenius 温度项）保持一致，本文统一使用
+problem1.md,142,4,4.0,ALLOW,结构/常数,0.0,但为与问题 2 ~ 4（附录 3、4 的 $D$ 含 Arrhenius 温度项）保持一致，本文统一使用
+problem1.md,142,3,3.0,ALLOW,3 小时,0.0,但为与问题 2 ~ 4（附录 3、4 的 $D$ 含 Arrhenius 温度项）保持一致，本文统一使用
+problem1.md,142,4,4.0,ALLOW,结构/常数,0.0,但为与问题 2 ~ 4（附录 3、4 的 $D$ 含 Arrhenius 温度项）保持一致，本文统一使用
+problem1.md,149,0,0.0,ALLOW,零,0.0,### 6.1 初始条件（$t=0$，$0\le r\le R$）
+problem1.md,149,0,0.0,ALLOW,零,0.0,### 6.1 初始条件（$t=0$，$0\le r\le R$）
+problem1.md,151,0,0.0,ALLOW,零,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad C(r,0)=C=2.55 \mathrm{kg/kg}$$"
+problem1.md,151,28,28.0,ALLOW,题面: 初始温度 28 degC,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad C(r,0)=C=2.55 \mathrm{kg/kg}$$"
+problem1.md,151,301.15,301.15,ALLOW,题面: T0 = 28 degC = 301.15 K,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad C(r,0)=C=2.55 \mathrm{kg/kg}$$"
+problem1.md,151,0,0.0,ALLOW,零,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad C(r,0)=C=2.55 \mathrm{kg/kg}$$"
+problem1.md,151,2.55,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad C(r,0)=C=2.55 \mathrm{kg/kg}$$"
+problem1.md,153,0,0.0,ALLOW,零,0.0,### 6.2 中心对称条件（$r=0$）
+problem1.md,157,0,0.0,ALLOW,零,0.0,"$$\left.(\partial T)/(\partial r)\right|=0,\qquad"
+problem1.md,158,0,0.0,ALLOW,零,0.0,\left.(\partial C)/(\partial r)\right|=0.$$
+problem1.md,175,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,附件 1 给出离散值（$\Delta t=60 \mathrm{s}$），需插值为连续函数。本文采用**保形分段三
+problem1.md,175,60,60.0,ALLOW,附件1 采样间隔 60 s,0.0,附件 1 给出离散值（$\Delta t=60 \mathrm{s}$），需插值为连续函数。本文采用**保形分段三
+problem1.md,176,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,次插值（PCHIP）**，理由：附件 1 的水分浓度序列含明显测量噪声——240 个时间步中有
+problem1.md,176,240,240.0,ALLOW,附件1 步数,0.0,次插值（PCHIP）**，理由：附件 1 的水分浓度序列含明显测量噪声——240 个时间步中有
+problem1.md,177,80,80.0,REGISTRY,P16,0.000e+00,**80 步出现下降**，单步降幅最大达 $4.4e-4 \mathrm{kg/kg}$，而该序列的
+problem1.md,177,4.4e-4,0.00044,REGISTRY,P17,0.000e+00,**80 步出现下降**，单步降幅最大达 $4.4e-4 \mathrm{kg/kg}$，而该序列的
+problem1.md,178,1.3e-4,0.00013,REGISTRY,X20,1.300e-07,平均趋势仅约 $1.3e-4 \mathrm{kg/kg}$ 每步，即噪声标准差约为趋势增量的
+problem1.md,179,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,2 倍。PCHIP 单调分段，不会因过冲产生负浓度或虚假极值；普通三次样条在
+problem1.md,180,0,0.0,ALLOW,零,0.0,$0\sim1800 \mathrm{s}$ 区间虽未过冲，但在全区间会产生超出数据范围的外推值。
+problem1.md,180,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,$0\sim1800 \mathrm{s}$ 区间虽未过冲，但在全区间会产生超出数据范围的外推值。
+problem1.md,182,0,0.0,ALLOW,零,0.0,在问题一实际用到的 $0\sim1800 \mathrm{s}$（附件 1 前 31 个点）内，该序列是单调递增的，
+problem1.md,182,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,在问题一实际用到的 $0\sim1800 \mathrm{s}$（附件 1 前 31 个点）内，该序列是单调递增的，
+problem1.md,182,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,在问题一实际用到的 $0\sim1800 \mathrm{s}$（附件 1 前 31 个点）内，该序列是单调递增的，
+problem1.md,182,31,31.0,ALLOW,附件1 前 31 点,0.0,在问题一实际用到的 $0\sim1800 \mathrm{s}$（附件 1 前 31 个点）内，该序列是单调递增的，
+problem1.md,183,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,因此插值方法的选择对本问结果影响极小（见 `problem_slove1.md` §6 的敏感性验证）。
+problem1.md,195,1.3889,1.3889,REGISTRY,P07,8.000e-06,| 热 Biot 数 | $\mathrm{Bi}=hR/k$ | $1.3889$ | $>0.1$，内部温度梯度不可忽略，必须求解分布参数模型而非集中参数模型 |
+problem1.md,195,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,| 热 Biot 数 | $\mathrm{Bi}=hR/k$ | $1.3889$ | $>0.1$，内部温度梯度不可忽略，必须求解分布参数模型而非集中参数模型 |
+problem1.md,196,3.2404,3.2404,REGISTRY,P08,1.402e-06,| 传质 Biot 数 | $\mathrm{Bi}_m=h_mR/D(C)$ | $3.2404$ | 表面传质与内部扩散阻力同量级 |
+problem1.md,197,2368.9,2368.9,REGISTRY,P09,4.690e-06,| 导热特征时间 | $R/\alpha$ | $2368.9 \mathrm{s}$ | 与 1800 s 同量级，说明 30 min 内温度尚未充分平衡 |
+problem1.md,197,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,| 导热特征时间 | $R/\alpha$ | $2368.9 \mathrm{s}$ | 与 1800 s 同量级，说明 30 min 内温度尚未充分平衡 |
+problem1.md,197,30,30.0,ALLOW,题面: 30 分钟,0.0,| 导热特征时间 | $R/\alpha$ | $2368.9 \mathrm{s}$ | 与 1800 s 同量级，说明 30 min 内温度尚未充分平衡 |
+problem1.md,198,81010,81010.0,REGISTRY,P10,1.402e-06,| 湿分特征时间 | $R/D(C)$ | $81010 \mathrm{s}$ | 比 1800 s 大 45 倍，说明水分松弛远慢于温度 |
+problem1.md,198,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,| 湿分特征时间 | $R/D(C)$ | $81010 \mathrm{s}$ | 比 1800 s 大 45 倍，说明水分松弛远慢于温度 |
+problem1.md,198,45,45.0,ALLOW,量级,0.0,| 湿分特征时间 | $R/D(C)$ | $81010 \mathrm{s}$ | 比 1800 s 大 45 倍，说明水分松弛远慢于温度 |
+problem1.md,199,12.5,12.5,REGISTRY,P11,0.000e+00,| 长径比 | $L/R$ | $12.5$ | 见 §2.1 |
+problem1.md,201,1.39,1.39,REGISTRY,P07,8.000e-04,**关键结论**：$\mathrm{Bi}=1.39$ 意味着不能把药材当作等温体处理；$R/\alpha=2368.9 \mathrm{s}$
+problem1.md,201,2368.9,2368.9,REGISTRY,P09,4.690e-06,**关键结论**：$\mathrm{Bi}=1.39$ 意味着不能把药材当作等温体处理；$R/\alpha=2368.9 \mathrm{s}$
+problem1.md,202,81010,81010.0,REGISTRY,P10,1.402e-06,与 $R/D(C)=81010 \mathrm{s}$ 相差 34 倍，说明**温度与水分的时间尺度显著分离**，
+problem1.md,202,34,34.0,REGISTRY,R_T_1800,6.736e-03,与 $R/D(C)=81010 \mathrm{s}$ 相差 34 倍，说明**温度与水分的时间尺度显著分离**，
+problem1.md,203,30,30.0,ALLOW,题面: 30 分钟,0.0,这是预热平衡阶段的物理本质：温度在 30 min 内快速响应，而水分几乎不动。
+problem1.md,207,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,附录 2 给定 $h_m=8e-7 \mathrm{m/s}$。若按热质传递类比（Chilton–Colburn
+problem1.md,207,8e-7,8e-07,ALLOW,附录2: 对流传质系数,0.0,附录 2 给定 $h_m=8e-7 \mathrm{m/s}$。若按热质传递类比（Chilton–Colburn
+problem1.md,208,25,25.0,ALLOW,题面: 长度 25 cm,0.0,类比）由 $h=25 \mathrm{W/(m\cdot K)}$ 估算，对空气取
+problem1.md,209,1.2,1.2,REGISTRY,X20,1.200e-03,$\rho_a c\approx1.2x1005\approx1.2e3 \mathrm{J/(m\cdot K)}$，
+problem1.md,209,1005,1005.0,REGISTRY,E55_M200_g_ratio,3.744e-03,$\rho_a c\approx1.2x1005\approx1.2e3 \mathrm{J/(m\cdot K)}$，
+problem1.md,209,1.2e3,1200.0,ALLOW,题面表1/2 时间点,0.0,$\rho_a c\approx1.2x1005\approx1.2e3 \mathrm{J/(m\cdot K)}$，
+problem1.md,212,0.02,0.02,ALLOW,LTE 判据阈值 / 长度换算,0.0,"$$h_m\sim\frac{h}{\rho_a c}\approx 0.02 \mathrm{m/s},$$"
+problem1.md,214,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,比附录 2 给定的 $8e-7$ 大**约 4 个数量级**。
+problem1.md,214,8e-7,8e-07,ALLOW,附录2: 对流传质系数,0.0,比附录 2 给定的 $8e-7$ 大**约 4 个数量级**。
+problem1.md,214,4,4.0,ALLOW,结构/常数,0.0,比附录 2 给定的 $8e-7$ 大**约 4 个数量级**。
+problem1.md,218,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（吸附等温线），通常远高于同温度下空气本身的含湿量。附件 1 给出的 $C_\infty$ 在
+problem1.md,219,0.0196,0.0196,REGISTRY,X20,1.960e-05,$0.0196\sim0.0503 \mathrm{kg/kg}$ 量级，而药材初始含水率 $C=2.55 \mathrm{kg/kg}$，
+problem1.md,219,0.0503,0.0503,REGISTRY,X20,5.030e-05,$0.0196\sim0.0503 \mathrm{kg/kg}$ 量级，而药材初始含水率 $C=2.55 \mathrm{kg/kg}$，
+problem1.md,219,2.55,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,$0.0196\sim0.0503 \mathrm{kg/kg}$ 量级，而药材初始含水率 $C=2.55 \mathrm{kg/kg}$，
+problem1.md,220,50,50.0,ALLOW,解析解校核用的常 T_inf = 50 degC,0.0,两者相差约 50 ~ 130 倍。
+problem1.md,220,130,130.0,REGISTRY,X25,7.452e-04,两者相差约 50 ~ 130 倍。
+problem1.md,222,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,**处理方式**：$h_m$ 与 $C_\infty$ 均由题面附录 2 与附件 1 直接规定，本文**按题目给定值
+problem1.md,222,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,**处理方式**：$h_m$ 与 $C_\infty$ 均由题面附录 2 与附件 1 直接规定，本文**按题目给定值
+problem1.md,225,3,3.0,ALLOW,3 小时,0.0,**水分浓度的绝对值应以相对趋势而非绝对平衡值来解读**。这一判断影响问题 3 的目标
+problem1.md,230,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,附件 2 给出 $R$ 从 $2.000 \mathrm{cm}$（$t=0$）降至 $1.873 \mathrm{cm}$
+problem1.md,230,2.000,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,附件 2 给出 $R$ 从 $2.000 \mathrm{cm}$（$t=0$）降至 $1.873 \mathrm{cm}$
+problem1.md,230,0,0.0,ALLOW,零,0.0,附件 2 给出 $R$ 从 $2.000 \mathrm{cm}$（$t=0$）降至 $1.873 \mathrm{cm}$
+problem1.md,230,1.873,1.873,REGISTRY,P21,0.000e+00,附件 2 给出 $R$ 从 $2.000 \mathrm{cm}$（$t=0$）降至 $1.873 \mathrm{cm}$
+problem1.md,231,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,（$t=1800 \mathrm{s}$），即 30 min 内相对收缩 $6.35 %$。问题一只要求建立
+problem1.md,231,30,30.0,ALLOW,题面: 30 分钟,0.0,（$t=1800 \mathrm{s}$），即 30 min 内相对收缩 $6.35 %$。问题一只要求建立
+problem1.md,231,6.35,6.35,REGISTRY,D10_M200,5.946e-04,（$t=1800 \mathrm{s}$），即 30 min 内相对收缩 $6.35 %$。问题一只要求建立
+problem1.md,232,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,**预热平衡阶段**的模型，且附录 2 的物性为常数，故本文按 A7 取 $R$ 为常数。
+problem1.md,232,7,7.0,ALLOW,结构,0.0,**预热平衡阶段**的模型，且附录 2 的物性为常数，故本文按 A7 取 $R$ 为常数。
+problem1.md,233,4,4.0,ALLOW,结构/常数,0.0,收缩的显式处理属问题 4（附录 4），本文不做。
+problem1.md,233,4,4.0,ALLOW,结构/常数,0.0,收缩的显式处理属问题 4（附录 4），本文不做。
+problem1.md,244,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,但问题 2 ~ 4 的附录 3、4 给出的扩散系数为
+problem1.md,244,4,4.0,ALLOW,结构/常数,0.0,但问题 2 ~ 4 的附录 3、4 给出的扩散系数为
+problem1.md,244,3,3.0,ALLOW,3 小时,0.0,但问题 2 ~ 4 的附录 3、4 给出的扩散系数为
+problem1.md,244,4,4.0,ALLOW,结构/常数,0.0,但问题 2 ~ 4 的附录 3、4 给出的扩散系数为
+problem1.md,246,2.4e-3,0.0024,ALLOW,附录3: D 的系数,0.0,$$D=2.4e-3\exp\!\left(-(0.45)/(C)\right)\exp\!\left(-(3850)/(T)\right)
+problem1.md,246,0.45,0.45,ALLOW,附录3: D 的指数常数,0.0,$$D=2.4e-3\exp\!\left(-(0.45)/(C)\right)\exp\!\left(-(3850)/(T)\right)
+problem1.md,246,3850,3850.0,ALLOW,附录3/4: D 的 Arrhenius 常数,0.0,$$D=2.4e-3\exp\!\left(-(0.45)/(C)\right)\exp\!\left(-(3850)/(T)\right)
+problem1.md,247,3,3.0,ALLOW,3 小时,0.0,"\quad(\text{附录 3}),\qquad"
+problem1.md,248,4.2e-4,0.00042,ALLOW,附录4: D 的系数,0.0,D=4.2e-4\exp\!\left(-(0.30)/(C)\right)\exp\!\left(-(3850)/(T)\right)
+problem1.md,248,0.30,0.3,ALLOW,附录4: D 的指数常数,0.0,D=4.2e-4\exp\!\left(-(0.30)/(C)\right)\exp\!\left(-(3850)/(T)\right)
+problem1.md,248,3850,3850.0,ALLOW,附录3/4: D 的 Arrhenius 常数,0.0,D=4.2e-4\exp\!\left(-(0.30)/(C)\right)\exp\!\left(-(3850)/(T)\right)
+problem1.md,249,4,4.0,ALLOW,结构/常数,0.0,"\quad(\text{附录 4}),$$"
+problem1.md,251,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,**含温度**。因此从问题 2 起温度场与水分场是**双向耦合**的，不能再当作独立过程处理。
+problem1.md,259,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,1. **适定性**：$\alpha>0$ 常数、$D(C)>0$，两个方程均为一致抛物型；初值有界且
+problem1.md,259,0,0.0,ALLOW,零,0.0,1. **适定性**：$\alpha>0$ 常数、$D(C)>0$，两个方程均为一致抛物型；初值有界且
+problem1.md,259,0,0.0,ALLOW,零,0.0,1. **适定性**：$\alpha>0$ 常数、$D(C)>0$，两个方程均为一致抛物型；初值有界且
+problem1.md,260,0,0.0,ALLOW,零,0.0,$C_\infty>0$，满足极值原理，解有界且唯一。
+problem1.md,261,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,2. **极值原理**：温度不会超过初始值与边界值包络，即
+problem1.md,263,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,该性质是数值格式的**硬性检验标准**（见 `problem_slove1.md` §4）。
+problem1.md,264,3,3.0,ALLOW,3 小时,0.0,3. **强非线性**：$D$ 随 $C$ 指数变化（§4.2），且在干燥前沿附近变化剧烈，要求空间离散
+problem1.md,273,0,0.0,ALLOW,零,0.0,"取**节点式**网格：$r_i=i\Delta r$，$\Delta r=R/M$，$i=0,1,\dots,M$。"
+problem1.md,273,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"取**节点式**网格：$r_i=i\Delta r$，$\Delta r=R/M$，$i=0,1,\dots,M$。"
+problem1.md,274,0,0.0,ALLOW,零,0.0,即 $r=0$（中心）与 $r_M=R$（表面）都是节点。这一选择的理由是题面要求的输出位置
+problem1.md,275,0,0.0,ALLOW,零,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ 为 10 的整数倍时恰好落在节点上，可直接取值而"
+problem1.md,275,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ 为 10 的整数倍时恰好落在节点上，可直接取值而"
+problem1.md,275,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ 为 10 的整数倍时恰好落在节点上，可直接取值而"
+problem1.md,275,10,10.0,ALLOW,结构/常数,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ 为 10 的整数倍时恰好落在节点上，可直接取值而"
+problem1.md,280,12,12.0,ALLOW,结构,0.0,"$$r=\left(i\pm\tfrac12\right)\Delta r,\qquad"
+problem1.md,281,0,0.0,ALLOW,零,0.0,"r=0,\quad r=R .$$"
+problem1.md,283,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,控制体体积（单位轴向长度已约去 $2\pi$）：$V_i=\pi\left(r-r\right)$；
+problem1.md,284,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,界面面积：$A=2\pi r$。
+problem1.md,288,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r\left[(i+\frac12)-(i-\frac12)\right]
+problem1.md,288,12,12.0,ALLOW,结构,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r\left[(i+\frac12)-(i-\frac12)\right]
+problem1.md,288,12,12.0,ALLOW,结构,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r\left[(i+\frac12)-(i-\frac12)\right]
+problem1.md,288,12,12.0,ALLOW,结构,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r\left[(i+\frac12)-(i-\frac12)\right]
+problem1.md,289,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"=(2i+1)/(2i\Delta r)=:f_i,\qquad"
+problem1.md,289,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"=(2i+1)/(2i\Delta r)=:f_i,\qquad"
+problem1.md,289,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"=(2i+1)/(2i\Delta r)=:f_i,\qquad"
+problem1.md,290,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,\frac{A}{V_i}=(2i-1)/(2i\Delta r)=:f_i.$$
+problem1.md,290,-1,-1.0,REGISTRY,X20,1.000e-03,\frac{A}{V_i}=(2i-1)/(2i\Delta r)=:f_i.$$
+problem1.md,290,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,\frac{A}{V_i}=(2i-1)/(2i\Delta r)=:f_i.$$
+problem1.md,313,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_i+f_i=((2i+1)+(2i-1))/(2i\Delta r)=(4i)/(2i\Delta r)=(2)/(\Delta r),$$"
+problem1.md,313,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"$$f_i+f_i=((2i+1)+(2i-1))/(2i\Delta r)=(4i)/(2i\Delta r)=(2)/(\Delta r),$$"
+problem1.md,313,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_i+f_i=((2i+1)+(2i-1))/(2i\Delta r)=(4i)/(2i\Delta r)=(2)/(\Delta r),$$"
+problem1.md,313,-1,-1.0,REGISTRY,X20,1.000e-03,"$$f_i+f_i=((2i+1)+(2i-1))/(2i\Delta r)=(4i)/(2i\Delta r)=(2)/(\Delta r),$$"
+problem1.md,313,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_i+f_i=((2i+1)+(2i-1))/(2i\Delta r)=(4i)/(2i\Delta r)=(2)/(\Delta r),$$"
+problem1.md,313,4,4.0,ALLOW,结构/常数,0.0,"$$f_i+f_i=((2i+1)+(2i-1))/(2i\Delta r)=(4i)/(2i\Delta r)=(2)/(\Delta r),$$"
+problem1.md,313,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_i+f_i=((2i+1)+(2i-1))/(2i\Delta r)=(4i)/(2i\Delta r)=(2)/(\Delta r),$$"
+problem1.md,313,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_i+f_i=((2i+1)+(2i-1))/(2i\Delta r)=(4i)/(2i\Delta r)=(2)/(\Delta r),$$"
+problem1.md,317,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),\qquad"
+problem1.md,317,-1,-1.0,REGISTRY,X20,1.000e-03,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),\qquad"
+problem1.md,317,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),\qquad"
+problem1.md,317,12,12.0,ALLOW,结构,0.0,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),\qquad"
+problem1.md,318,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"\boxed{b_i=-(2\alpha)/(\Delta r)},\qquad"
+problem1.md,319,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,c_i=(\alpha(2i+1))/(2i\Delta r)=(\alpha(i+\frac12))/(i\Delta r).$$
+problem1.md,319,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,c_i=(\alpha(2i+1))/(2i\Delta r)=(\alpha(i+\frac12))/(i\Delta r).$$
+problem1.md,319,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,c_i=(\alpha(2i+1))/(2i\Delta r)=(\alpha(i+\frac12))/(i\Delta r).$$
+problem1.md,319,12,12.0,ALLOW,结构,0.0,c_i=(\alpha(2i+1))/(2i\Delta r)=(\alpha(i+\frac12))/(i\Delta r).$$
+problem1.md,322,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$(dT_i)/(dt)\approx\dfrac{T_i-T_i}{\Delta t}$，并要求右端在 $n+1$ 时刻取值：
+problem1.md,324,12,12.0,ALLOW,结构,0.0,$$\left(-(\alpha(i-\frac12))/(i\Delta r)\right)T
+problem1.md,325,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,+\left((2\alpha)/(\Delta r)+(1)/(\Delta t)\right)T_i
+problem1.md,325,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,+\left((2\alpha)/(\Delta r)+(1)/(\Delta t)\right)T_i
+problem1.md,326,12,12.0,ALLOW,结构,0.0,+\left(-(\alpha(i+\frac12))/(i\Delta r)\right)T
+problem1.md,331,12,12.0,ALLOW,结构,0.0,"$$\boxed{ a_i=-(\alpha(i-\frac12))/(i\Delta r),\quad"
+problem1.md,332,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),\quad"
+problem1.md,332,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),\quad"
+problem1.md,333,12,12.0,ALLOW,结构,0.0,"c_i=-(\alpha(i+\frac12))/(i\Delta r),\quad"
+problem1.md,337,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> $$b_i^{\text{(原)}}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)
+problem1.md,337,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> $$b_i^{\text{(原)}}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)
+problem1.md,337,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> $$b_i^{\text{(原)}}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)
+problem1.md,337,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> $$b_i^{\text{(原)}}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)
+problem1.md,338,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> =(1)/(\Delta t)-c_i,$$"
+problem1.md,339,9.3,9.3,REGISTRY,X20,9.300e-03,> 即把 $T$ 的系数 $c_i$ 误当成了对角元。按 §9.2—9.3 的守恒型推导，对角元应为
+problem1.md,340,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> $1/\Delta t+2\alpha/\Delta r$。两式之差恰为
+problem1.md,340,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> $1/\Delta t+2\alpha/\Delta r$。两式之差恰为
+problem1.md,341,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> $$b_i^{(\text{原})}-b_i=(\alpha(2i+1))/(2i\Delta r)-(2\alpha)/(\Delta r)
+problem1.md,341,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> $$b_i^{(\text{原})}-b_i=(\alpha(2i+1))/(2i\Delta r)-(2\alpha)/(\Delta r)
+problem1.md,341,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> $$b_i^{(\text{原})}-b_i=(\alpha(2i+1))/(2i\Delta r)-(2\alpha)/(\Delta r)
+problem1.md,341,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> $$b_i^{(\text{原})}-b_i=(\alpha(2i+1))/(2i\Delta r)-(2\alpha)/(\Delta r)
+problem1.md,342,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> =-(\alpha(2i-1))/(2i\Delta r)=-a_i\neq0 .$$
+problem1.md,342,-1,-1.0,REGISTRY,X20,1.000e-03,> =-(\alpha(2i-1))/(2i\Delta r)=-a_i\neq0 .$$
+problem1.md,342,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> =-(\alpha(2i-1))/(2i\Delta r)=-a_i\neq0 .$$
+problem1.md,342,0,0.0,ALLOW,零,0.0,> =-(\alpha(2i-1))/(2i\Delta r)=-a_i\neq0 .$$
+problem1.md,345,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> $a_i+b_i^{(\text{原})}+c_i=-(\alpha(2i-1))/(2i\Delta r)\neq0$，
+problem1.md,345,-1,-1.0,REGISTRY,X20,1.000e-03,> $a_i+b_i^{(\text{原})}+c_i=-(\alpha(2i-1))/(2i\Delta r)\neq0$，
+problem1.md,345,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> $a_i+b_i^{(\text{原})}+c_i=-(\alpha(2i-1))/(2i\Delta r)\neq0$，
+problem1.md,345,0,0.0,ALLOW,零,0.0,> $a_i+b_i^{(\text{原})}+c_i=-(\alpha(2i-1))/(2i\Delta r)\neq0$，
+problem1.md,346,0,0.0,ALLOW,零,0.0,> 而守恒型格式恒有 $a_i+b_i+c_i=0$（离散算子湮灭常数，是守恒性的必要条件）。
+problem1.md,349,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 实部为**正值**（反耗散），全隐式格式会以 $(1+\lambda\Delta t)^n$ 的因子放大扰动。
+problem1.md,350,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 数值验证见 `problem_slove1.md` §4。**本文采用修正后的系数。**
+problem1.md,352,0,0.0,ALLOW,零,0.0,### 9.4 中心节点 $i=0$
+problem1.md,354,0,0.0,ALLOW,零,0.0,"控制体为 $[0,\Delta r/2]$，内侧界面 $r=0$，面积为零，无热流："
+problem1.md,354,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"控制体为 $[0,\Delta r/2]$，内侧界面 $r=0$，面积为零，无热流："
+problem1.md,354,0,0.0,ALLOW,零,0.0,"控制体为 $[0,\Delta r/2]$，内侧界面 $r=0$，面积为零，无热流："
+problem1.md,357,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"V=\pi\left((\Delta r)/(2)\right),\quad A=2\pi(\Delta r)/(2)=\pi\Delta r .$$"
+problem1.md,357,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"V=\pi\left((\Delta r)/(2)\right),\quad A=2\pi(\Delta r)/(2)=\pi\Delta r .$$"
+problem1.md,357,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"V=\pi\left((\Delta r)/(2)\right),\quad A=2\pi(\Delta r)/(2)=\pi\Delta r .$$"
+problem1.md,359,4,4.0,ALLOW,结构/常数,0.0,$$\frac{A}{V}=(\pi\Delta r)/(\pi\Delta r/4)=(4)/(\Delta r)$$
+problem1.md,359,4,4.0,ALLOW,结构/常数,0.0,$$\frac{A}{V}=(\pi\Delta r)/(\pi\Delta r/4)=(4)/(\Delta r)$$
+problem1.md,363,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"$$\boxed{ b=(1)/(\Delta t)+(4\alpha)/(\Delta r),\qquad"
+problem1.md,363,4,4.0,ALLOW,结构/常数,0.0,"$$\boxed{ b=(1)/(\Delta t)+(4\alpha)/(\Delta r),\qquad"
+problem1.md,364,4,4.0,ALLOW,结构/常数,0.0,"c=-(4\alpha)/(\Delta r),\qquad d=\frac{T}{\Delta t} }$$"
+problem1.md,366,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 该式与原始思路一致（原始思路由 L'Hôpital 法则得到 $\partial_tT|=2\alpha\partialT|$
+problem1.md,371,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"表面节点控制体为半控制体 $[R-\Delta r/2, R]$，内侧面 $A=2\pi(R-\Delta r/2)$，"
+problem1.md,371,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"表面节点控制体为半控制体 $[R-\Delta r/2, R]$，内侧面 $A=2\pi(R-\Delta r/2)$，"
+problem1.md,371,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"表面节点控制体为半控制体 $[R-\Delta r/2, R]$，内侧面 $A=2\pi(R-\Delta r/2)$，"
+problem1.md,372,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,外表面即 $r=R$，$A_s=2\pi R$。能量平衡中，外侧界面**不再用差分近似**，而是直接代入
+problem1.md,382,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_M=(1)/(\Delta t)+\frac{\alpha f_M}{\Delta r}+g_h,\qquad"
+problem1.md,385,0,0.0,ALLOW,零,0.0,**渐近形式**：当 $M\to\infty$（$\Delta r\to0$）时，
+problem1.md,386,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$V_M=\pi\!\left(R-(R-(\Delta r)/(2))\right)=\pi\Delta r\left(R-(\Delta r)/(4)\right)\to\pi
+problem1.md,386,4,4.0,ALLOW,结构/常数,0.0,$V_M=\pi\!\left(R-(R-(\Delta r)/(2))\right)=\pi\Delta r\left(R-(\Delta r)/(4)\right)\to\pi
+problem1.md,387,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,（**半环**体积，不是整环 $2\pi R\Delta r$）、$A=2\pi(R-(\Delta r)/(2))\to2\pi R$，故
+problem1.md,387,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,（**半环**体积，不是整环 $2\pi R\Delta r$）、$A=2\pi(R-(\Delta r)/(2))\to2\pi R$，故
+problem1.md,387,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,（**半环**体积，不是整环 $2\pi R\Delta r$）、$A=2\pi(R-(\Delta r)/(2))\to2\pi R$，故
+problem1.md,387,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,（**半环**体积，不是整环 $2\pi R\Delta r$）、$A=2\pi(R-(\Delta r)/(2))\to2\pi R$，故
+problem1.md,389,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_M=\frac{A}{V_M}\to(2\pi R)/(\pi R\Delta r)=(2)/(\Delta r),$$"
+problem1.md,389,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_M=\frac{A}{V_M}\to(2\pi R)/(\pi R\Delta r)=(2)/(\Delta r),$$"
+problem1.md,393,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_M\to-(2\alpha)/(\Delta r),\qquad"
+problem1.md,394,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_M\to(1)/(\Delta t)+(2\alpha)/(\Delta r)+(2h\alpha)/(k\Delta r),\qquad"
+problem1.md,394,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_M\to(1)/(\Delta t)+(2\alpha)/(\Delta r)+(2h\alpha)/(k\Delta r),\qquad"
+problem1.md,394,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_M\to(1)/(\Delta t)+(2\alpha)/(\Delta r)+(2h\alpha)/(k\Delta r),\qquad"
+problem1.md,395,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,d_M\to\frac{T_M}{\Delta t}+(2h\alpha)/(k\Delta r)T_\infty.$$
+problem1.md,399,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 误取为整环 $2\pi R\Delta r$（正确为半环 $\pi R\Delta r$）所致。取错后 $f_M^-\to1/\Delta r$，
+problem1.md,399,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 误取为整环 $2\pi R\Delta r$（正确为半环 $\pi R\Delta r$）所致。取错后 $f_M^-\to1/\Delta r$，
+problem1.md,400,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"> 便会错误地得出""原方案扩散项偏大 2 倍""的结论。"
+problem1.md,403,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"> $$a_M^{\text{exact}}=-(2\alpha)/(\Delta r)\cdot(R-\Delta r/2)/(R-\Delta r/4),"
+problem1.md,403,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"> $$a_M^{\text{exact}}=-(2\alpha)/(\Delta r)\cdot(R-\Delta r/2)/(R-\Delta r/4),"
+problem1.md,403,4,4.0,ALLOW,结构/常数,0.0,"> $$a_M^{\text{exact}}=-(2\alpha)/(\Delta r)\cdot(R-\Delta r/2)/(R-\Delta r/4),"
+problem1.md,405,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> g_h^{\text{exact}}=(2\alpha h)/(k\Delta r)\cdot(R)/(R-\Delta r/4)$$
+problem1.md,405,4,4.0,ALLOW,结构/常数,0.0,> g_h^{\text{exact}}=(2\alpha h)/(k\Delta r)\cdot(R)/(R-\Delta r/4)$$
+problem1.md,406,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 与用户写法相差相对量 $1/(4M)$：$M=200$ 时 $1.25e-3$，$M=3200$ 时 $7.81e-5$
+problem1.md,406,4,4.0,ALLOW,结构/常数,0.0,> 与用户写法相差相对量 $1/(4M)$：$M=200$ 时 $1.25e-3$，$M=3200$ 时 $7.81e-5$
+problem1.md,406,200,200.0,ALLOW,网格/常数,0.0,> 与用户写法相差相对量 $1/(4M)$：$M=200$ 时 $1.25e-3$，$M=3200$ 时 $7.81e-5$
+problem1.md,406,1.25e-3,0.00125,REGISTRY,X20,1.250e-06,> 与用户写法相差相对量 $1/(4M)$：$M=200$ 时 $1.25e-3$，$M=3200$ 时 $7.81e-5$
+problem1.md,406,3200,3200.0,ALLOW,网格: 生产设置 M=3200,0.0,> 与用户写法相差相对量 $1/(4M)$：$M=200$ 时 $1.25e-3$，$M=3200$ 时 $7.81e-5$
+problem1.md,406,7.81e-5,7.81e-05,REGISTRY,X20,7.810e-08,> 与用户写法相差相对量 $1/(4M)$：$M=200$ 时 $1.25e-3$，$M=3200$ 时 $7.81e-5$
+problem1.md,407,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> （均已核验，见 `outputs/registry_q1_energy.csv` 的 E4 组）。
+problem1.md,407,4,4.0,ALLOW,结构/常数,0.0,> （均已核验，见 `outputs/registry_q1_energy.csv` 的 E4 组）。
+problem1.md,409,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> **保留这些几何因子与否，改变的是边界离散的收敛阶**（见 `problem_slove1.md` §5）：
+problem1.md,410,800,800.0,ALLOW,网格/常数,0.0,> 用户写法为**一阶**，精确半控制体为**二阶**。在 $M=800$ 时前者误差
+problem1.md,411,4.0e-2,0.04,REGISTRY,P12,0.000e+00,> $4.0e-2 \mathrm{K}$、后者 $4.5e-6 \mathrm{K}$。
+problem1.md,411,4.5e-6,4.5e-06,REGISTRY,X20,4.500e-09,> $4.0e-2 \mathrm{K}$、后者 $4.5e-6 \mathrm{K}$。
+problem1.md,412,5e-5,5e-05,ALLOW,四位小数的半 ulp,0.0,> 由于题面要求四位小数（阈值 $5e-5$），即便取 $M=3200$，用户写法仍残留约
+problem1.md,412,3200,3200.0,ALLOW,网格: 生产设置 M=3200,0.0,> 由于题面要求四位小数（阈值 $5e-5$），即便取 $M=3200$，用户写法仍残留约
+problem1.md,413,0.01,0.01,ALLOW,百分比换算,0.0,> $0.01 \mathrm{K}$ 的误差，故**本文保留精确几何因子**。这是一处**精度改进**，
+problem1.md,417,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> $M\to\infty$ 时趋于 $2h_m/\Delta r$，与原始思路写法一致；同样保留几何因子。
+problem1.md,429,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,看是 $D(C_i)$、从节点 $i+1$ 看是 $D(C)$，**两者不等，离散水量不再守恒**。
+problem1.md,433,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$D=\frac{D(C_i)+D(C)}{2}$$
+problem1.md,438,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i=(1)/(\Delta t)+\frac{Df_i+Df_i}{\Delta r},\qquad"
+problem1.md,444,10.1,10.1,REGISTRY,E11_node_M100,1.864e-04,> 数值上其离散水量收支残差达**表面总通量的 10.1 %**，且**不随网格加密减小**
+problem1.md,445,100,100.0,ALLOW,题面表1/2 时间点,0.0,> （$M=100/200/400$ 时分别为 10.10 %/10.12 %/10.12 %）——即这是一个
+problem1.md,445,200,200.0,ALLOW,网格/常数,0.0,> （$M=100/200/400$ 时分别为 10.10 %/10.12 %/10.12 %）——即这是一个
+problem1.md,445,400,400.0,ALLOW,网格/常数,0.0,> （$M=100/200/400$ 时分别为 10.10 %/10.12 %/10.12 %）——即这是一个
+problem1.md,445,10.10,10.1,REGISTRY,E11_node_M100,1.864e-04,> （$M=100/200/400$ 时分别为 10.10 %/10.12 %/10.12 %）——即这是一个
+problem1.md,445,10.12,10.12,REGISTRY,E11_node_M400,3.503e-05,> （$M=100/200/400$ 时分别为 10.10 %/10.12 %/10.12 %）——即这是一个
+problem1.md,445,10.12,10.12,REGISTRY,E11_node_M400,3.503e-05,> （$M=100/200/400$ 时分别为 10.10 %/10.12 %/10.12 %）——即这是一个
+problem1.md,446,-14,-14.0,REGISTRY,E13_dt10_min,2.422e-03,> **相容性量级的错误**而非精度问题。改用界面平均值后残差降至 $e-14$ 量级
+problem1.md,447,6.35e-2,0.0635,REGISTRY,X20,6.350e-05,> （机器精度）。对问题一结果的实际影响为最大 $|\Delta C|\approx6.35e-2 \mathrm{kg/kg}$
+problem1.md,448,2.5,2.5,ALLOW,时间步/通用,0.0,> （出现在表面附近，网格无关），约为 $C$ 的 2.5 %；但该误差在后续问题
+problem1.md,449,3,3.0,ALLOW,3 小时,0.0,> （含水率更低、$D$ 变化更大）中会迅速增大（3 h 时达 $0.68 \mathrm{kg/kg}$），
+problem1.md,449,0.68,0.68,REGISTRY,X20,6.800e-04,> （含水率更低、$D$ 变化更大）中会迅速增大（3 h 时达 $0.68 \mathrm{kg/kg}$），
+problem1.md,458,5.9e-5,5.9e-05,REGISTRY,X20,5.900e-08,$\max|\Delta T|=5.9e-5 \mathrm{K}$、$\max|\Delta C|=5.3e-6 \mathrm{kg/kg}$
+problem1.md,458,5.3e-6,5.3e-06,REGISTRY,X20,5.300e-09,$\max|\Delta T|=5.9e-5 \mathrm{K}$、$\max|\Delta C|=5.3e-6 \mathrm{kg/kg}$
+problem1.md,459,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（见 `problem_slove1.md` §6），远低于四位小数的报告精度。
+problem1.md,469,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_M=(1)/(\Delta t)+\frac{Df_M}{\Delta r}+g_m,\qquad"
+problem1.md,478,0,0.0,ALLOW,零,0.0,"未知量为 $T_i$、$C_i$（$i=0,\dots,M$），各 $M+1$ 个；方程为："
+problem1.md,478,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"未知量为 $T_i$、$C_i$（$i=0,\dots,M$），各 $M+1$ 个；方程为："
+problem1.md,482,0,0.0,ALLOW,零,0.0,| $i=0$ | 对称（二对角） | 对称（二对角） |
+problem1.md,483,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"| $i=1,\dots,M-1$ | 三对角（§9.3） | 三对角（§9.6a） |"
+problem1.md,483,-1,-1.0,REGISTRY,X20,1.000e-03,"| $i=1,\dots,M-1$ | 三对角（§9.3） | 三对角（§9.6a） |"
+problem1.md,486,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,两个系统均为**严格对角占优**的三对角方程组（$b_i>|a_i|+|c_i|$，因含 $1/\Delta t$），
+problem1.md,493,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"1. 由附件 1 插值得到 T_inf, C_inf"
+problem1.md,493,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"1. 由附件 1 插值得到 T_inf, C_inf"
+problem1.md,494,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"2. 组装温度三对角系数 (§9.3, §9.4, §9.5)  -> 追赶法 -> T"
+problem1.md,495,3,3.0,ALLOW,3 小时,0.0,3. 由 C^n 计算界面扩散系数 D      (§9.6a)
+problem1.md,496,4,4.0,ALLOW,结构/常数,0.0,4. 组装水分三对角系数 (§9.6)              -> 追赶法 -> C
+problem1.md,497,5,5.0,ALLOW,结构/常数,0.0,"5. n <- n+1, 重复"
+problem1.md,497,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"5. n <- n+1, 重复"
+problem1.md,500,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,由于问题一中两方程解耦（§7.4），步骤 2、3–4 相互独立，不存在迭代收敛问题。
+problem1.md,500,3,3.0,ALLOW,3 小时,0.0,由于问题一中两方程解耦（§7.4），步骤 2、3–4 相互独立，不存在迭代收敛问题。
+problem1.md,500,4,4.0,ALLOW,结构/常数,0.0,由于问题一中两方程解耦（§7.4），步骤 2、3–4 相互独立，不存在迭代收敛问题。
+problem1.md,506,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,**论文表 1（温度，单位 $^\circ\mathrm{C}$）与表 2（水分浓度，单位 $\mathrm{kg/kg}$）**：
+problem1.md,506,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,**论文表 1（温度，单位 $^\circ\mathrm{C}$）与表 2（水分浓度，单位 $\mathrm{kg/kg}$）**：
+problem1.md,507,100,100.0,ALLOW,题面表1/2 时间点,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,507,300,300.0,ALLOW,题面表1/2 时间点,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,507,600,600.0,ALLOW,题面表1/2 时间点,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,507,900,900.0,ALLOW,题面表1/2 时间点,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,507,1200,1200.0,ALLOW,题面表1/2 时间点,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,507,1500,1500.0,ALLOW,题面表1/2 时间点,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,507,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,507,0,0.0,ALLOW,零,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,507,0.5,0.5,ALLOW,题面: 半径网格 / 通用,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,507,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,507,1.5,1.5,ALLOW,题面: 半径网格,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,507,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"时间 $100,300,600,900,1200,1500,1800 \mathrm{s}$ $x$ 距离 $0,0.5,1,1.5,2 \mathrm{cm}$。"
+problem1.md,509,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,**`result1.xlsx`**：两个工作表
+problem1.md,511,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"- 工作表 `温度`：$A$ 列为时间（$1,2,\dots,1800 \mathrm{s}$），第 1 行为到中心距离"
+problem1.md,511,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"- 工作表 `温度`：$A$ 列为时间（$1,2,\dots,1800 \mathrm{s}$），第 1 行为到中心距离"
+problem1.md,511,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,"- 工作表 `温度`：$A$ 列为时间（$1,2,\dots,1800 \mathrm{s}$），第 1 行为到中心距离"
+problem1.md,511,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"- 工作表 `温度`：$A$ 列为时间（$1,2,\dots,1800 \mathrm{s}$），第 1 行为到中心距离"
+problem1.md,512,0,0.0,ALLOW,零,0.0,"$0,0.1,0.2,\dots,2.0 \mathrm{cm}$，共 $1800x21$ 个温度值；"
+problem1.md,512,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,"$0,0.1,0.2,\dots,2.0 \mathrm{cm}$，共 $1800x21$ 个温度值；"
+problem1.md,512,0.2,0.2,REGISTRY,X20,2.000e-04,"$0,0.1,0.2,\dots,2.0 \mathrm{cm}$，共 $1800x21$ 个温度值；"
+problem1.md,512,2.0,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$0,0.1,0.2,\dots,2.0 \mathrm{cm}$，共 $1800x21$ 个温度值；"
+problem1.md,512,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,"$0,0.1,0.2,\dots,2.0 \mathrm{cm}$，共 $1800x21$ 个温度值；"
+problem1.md,512,21,21.0,ALLOW,结构: 表格列数,0.0,"$0,0.1,0.2,\dots,2.0 \mathrm{cm}$，共 $1800x21$ 个温度值；"
+problem1.md,515,4,4.0,ALLOW,结构/常数,0.0,所有数值**保留 4 位小数**（$^\circ\mathrm{C}$ 与 $\mathrm{kg/kg}$ 均按此精度报告）。
+problem1.md,523,1.679e-7,1.679e-07,REGISTRY,X20,1.679e-10,| ① | $\alpha$ 数值 | $1.679e-7$ | $1.6885553e-7 \mathrm{m/s}$ | 数值误差（$-0.569%$） |
+problem1.md,523,1.6885553e-7,1.6885553e-07,REGISTRY,X20,1.689e-10,| ① | $\alpha$ 数值 | $1.679e-7$ | $1.6885553e-7 \mathrm{m/s}$ | 数值误差（$-0.569%$） |
+problem1.md,523,-0.569,-0.569,REGISTRY,X20,5.690e-04,| ① | $\alpha$ 数值 | $1.679e-7$ | $1.6885553e-7 \mathrm{m/s}$ | 数值误差（$-0.569%$） |
+problem1.md,524,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| ② | 内部对角元 $b_i$ | $(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)$ | $(1)/(\Delta t)+(2\alph
+problem1.md,524,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| ② | 内部对角元 $b_i$ | $(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)$ | $(1)/(\Delta t)+(2\alph
+problem1.md,524,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| ② | 内部对角元 $b_i$ | $(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)$ | $(1)/(\Delta t)+(2\alph
+problem1.md,524,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| ② | 内部对角元 $b_i$ | $(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)$ | $(1)/(\Delta t)+(2\alph
+problem1.md,524,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| ② | 内部对角元 $b_i$ | $(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)$ | $(1)/(\Delta t)+(2\alph
+problem1.md,524,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| ② | 内部对角元 $b_i$ | $(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)$ | $(1)/(\Delta t)+(2\alph
+problem1.md,525,10.1,10.1,REGISTRY,E11_node_M100,1.864e-04,| ③ | 水分界面扩散系数 | 节点值 $D_i^n$ 用于两侧界面 | 界面平均值 $D$ | **非守恒，残差 10.1 % 且不收敛** |
+problem1.md,526,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| ④ | 表面扩散/对流项 | $a_M=-(2\alpha)/(\Delta r)$，$g_h=(2\alpha h)/(k\Delta r)$ | 保留几何因子：$a_M=-
+problem1.md,526,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| ④ | 表面扩散/对流项 | $a_M=-(2\alpha)/(\Delta r)$，$g_h=(2\alpha h)/(k\Delta r)$ | 保留几何因子：$a_M=-
+problem1.md,526,800,800.0,ALLOW,网格/常数,0.0,| ④ | 表面扩散/对流项 | $a_M=-(2\alpha)/(\Delta r)$，$g_h=(2\alpha h)/(k\Delta r)$ | 保留几何因子：$a_M=-
+problem1.md,526,0.040,0.04,REGISTRY,P12,0.000e+00,| ④ | 表面扩散/对流项 | $a_M=-(2\alpha)/(\Delta r)$，$g_h=(2\alpha h)/(k\Delta r)$ | 保留几何因子：$a_M=-
+problem1.md,526,4.5e-6,4.5e-06,REGISTRY,X20,4.500e-09,| ④ | 表面扩散/对流项 | $a_M=-(2\alpha)/(\Delta r)$，$g_h=(2\alpha h)/(k\Delta r)$ | 保留几何因子：$a_M=-
+problem1.md,527,12.5,12.5,REGISTRY,P11,0.000e+00,| ⑤ | 轴向简化理由 | 以 $L/R=12.5$ 为唯一依据 | 补充中截面 $\partial_z=0$ 的**精确**论证 | 论证加强 |
+problem1.md,527,0,0.0,ALLOW,零,0.0,| ⑤ | 轴向简化理由 | 以 $L/R=12.5$ 为唯一依据 | 补充中截面 $\partial_z=0$ 的**精确**论证 | 论证加强 |
+problem1.md,528,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"| ⑥ | ""两过程相互独立"" | 作为普遍结论 | 仅问题一成立；问题 2–4 因 $D=f(C,T)$ 而**双向耦合** | 适用范围限定 |"
+problem1.md,528,4,4.0,ALLOW,结构/常数,0.0,"| ⑥ | ""两过程相互独立"" | 作为普遍结论 | 仅问题一成立；问题 2–4 因 $D=f(C,T)$ 而**双向耦合** | 适用范围限定 |"
+problem1.md,529,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,| ⑦ | 时间步取值 | $\Delta t=0.1 \mathrm{s}$（$M=200$） | $\Delta t=2 \mathrm{s}$（$M=3200$） | 原取值
+problem1.md,529,200,200.0,ALLOW,网格/常数,0.0,| ⑦ | 时间步取值 | $\Delta t=0.1 \mathrm{s}$（$M=200$） | $\Delta t=2 \mathrm{s}$（$M=3200$） | 原取值
+problem1.md,529,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| ⑦ | 时间步取值 | $\Delta t=0.1 \mathrm{s}$（$M=200$） | $\Delta t=2 \mathrm{s}$（$M=3200$） | 原取值
+problem1.md,529,3200,3200.0,ALLOW,网格: 生产设置 M=3200,0.0,| ⑦ | 时间步取值 | $\Delta t=0.1 \mathrm{s}$（$M=200$） | $\Delta t=2 \mathrm{s}$（$M=3200$） | 原取值
+problem1.md,532,-2,-2.0,REGISTRY,S01,0.000e+00,**表面节点系数的渐近形式**（$a_M\to-2\alpha/\Delta r$、$g_h\to2\alpha h/(k\Delta r)$，
+problem1.md,532,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,**表面节点系数的渐近形式**（$a_M\to-2\alpha/\Delta r$、$g_h\to2\alpha h/(k\Delta r)$，
+problem1.md,542,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `model/problem1.md` | 本文（模型建立） |
+problem1.md,543,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `model/problem_slove1.md` | 数值求解、验证、表 1/表 2 与结果说明 |
+problem1.md,543,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `model/problem_slove1.md` | 数值求解、验证、表 1/表 2 与结果说明 |
+problem1.md,543,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| `model/problem_slove1.md` | 数值求解、验证、表 1/表 2 与结果说明 |
+problem1.md,544,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `src/q1_solve.py` | 求解器 + 符号验证 + 收敛性 + 解析/MOL 独立验证 |
+problem1.md,545,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `src/q1_diagnostics.py` | 方案诊断（稳定性阈值、守恒性、面值取法） |
+problem1.md,546,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `src/q1_energy_check.py` | 算子特征值、离散水量收支、$\Delta t\to0$ 极限 |
+problem1.md,546,0,0.0,ALLOW,零,0.0,| `src/q1_energy_check.py` | 算子特征值、离散水量收支、$\Delta t\to0$ 极限 |
+problem1.md,547,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `src/q1_produce.py` | 生产计算，生成 `outputs/result1.xlsx` |
+problem1.md,547,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `src/q1_produce.py` | 生产计算，生成 `outputs/result1.xlsx` |
+problem1.md,548,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/result1.xlsx` | 问题一完整结果（温度 / 水分浓度） |
+problem1.md,549,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"| `outputs/registry_q1.csv`, `outputs/registry_q1_production.csv` | 数字注册表 |"
+problem1.md,549,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"| `outputs/registry_q1.csv`, `outputs/registry_q1_production.csv` | 数字注册表 |"
+problem_slove1.md,3,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 本文求解 `problem1.md` 建立的模型，给出问题一要求的表 1、表 2 与 `result1.xlsx`，
+problem_slove1.md,3,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 本文求解 `problem1.md` 建立的模型，给出问题一要求的表 1、表 2 与 `result1.xlsx`，
+problem_slove1.md,3,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 本文求解 `problem1.md` 建立的模型，给出问题一要求的表 1、表 2 与 `result1.xlsx`，
+problem_slove1.md,3,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 本文求解 `problem1.md` 建立的模型，给出问题一要求的表 1、表 2 与 `result1.xlsx`，
+problem_slove1.md,10,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> | `python src/q1_solve.py` | 符号验证、收敛性、解析解对比、MOL 对比 | `outputs/q1_run.log`, `outputs/regi"
+problem_slove1.md,10,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> | `python src/q1_solve.py` | 符号验证、收敛性、解析解对比、MOL 对比 | `outputs/q1_run.log`, `outputs/regi"
+problem_slove1.md,10,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> | `python src/q1_solve.py` | 符号验证、收敛性、解析解对比、MOL 对比 | `outputs/q1_run.log`, `outputs/regi"
+problem_slove1.md,11,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> | `python src/q1_diagnostics.py` | 稳定性与守恒性诊断 | `outputs/q1_diagnostics.log` |
+problem_slove1.md,11,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> | `python src/q1_diagnostics.py` | 稳定性与守恒性诊断 | `outputs/q1_diagnostics.log` |
+problem_slove1.md,12,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> | `python src/q1_energy_check.py` | 算子特征值、水量收支、$\Delta t\to0$ 极限 | `outputs/q1_energy_ch
+problem_slove1.md,12,0,0.0,ALLOW,零,0.0,> | `python src/q1_energy_check.py` | 算子特征值、水量收支、$\Delta t\to0$ 极限 | `outputs/q1_energy_ch
+problem_slove1.md,12,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> | `python src/q1_energy_check.py` | 算子特征值、水量收支、$\Delta t\to0$ 极限 | `outputs/q1_energy_ch
+problem_slove1.md,13,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> | `python src/q1_produce.py` | 生产计算 | `outputs/result1.xlsx`, `outputs/q1_production.log"
+problem_slove1.md,13,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> | `python src/q1_produce.py` | 生产计算 | `outputs/result1.xlsx`, `outputs/q1_production.log"
+problem_slove1.md,13,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> | `python src/q1_produce.py` | 生产计算 | `outputs/result1.xlsx`, `outputs/q1_production.log"
+problem_slove1.md,15,3.12,3.12,REGISTRY,X20,3.120e-03,> 环境：Python 3.12.3，numpy 2.5.1，scipy 1.18.1，openpyxl 3.1.2。
+problem_slove1.md,15,3,3.0,ALLOW,3 小时,0.0,> 环境：Python 3.12.3，numpy 2.5.1，scipy 1.18.1，openpyxl 3.1.2。
+problem_slove1.md,15,2.5,2.5,ALLOW,时间步/通用,0.0,> 环境：Python 3.12.3，numpy 2.5.1，scipy 1.18.1，openpyxl 3.1.2。
+problem_slove1.md,15,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 环境：Python 3.12.3，numpy 2.5.1，scipy 1.18.1，openpyxl 3.1.2。
+problem_slove1.md,15,1.18,1.18,REGISTRY,X20,1.180e-03,> 环境：Python 3.12.3，numpy 2.5.1，scipy 1.18.1，openpyxl 3.1.2。
+problem_slove1.md,15,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 环境：Python 3.12.3，numpy 2.5.1，scipy 1.18.1，openpyxl 3.1.2。
+problem_slove1.md,15,3.1,3.1,REGISTRY,X20,3.100e-03,> 环境：Python 3.12.3，numpy 2.5.1，scipy 1.18.1，openpyxl 3.1.2。
+problem_slove1.md,15,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 环境：Python 3.12.3，numpy 2.5.1，scipy 1.18.1，openpyxl 3.1.2。
+problem_slove1.md,23,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（Thomas 算法）以 $O(M)$ 直接求解。因问题一中温度与水分解耦（`problem1.md` §7.4），
+problem_slove1.md,26,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"离散系统（以温度为例，$i=1,\dots,M-1$）："
+problem_slove1.md,26,-1,-1.0,REGISTRY,X20,1.000e-03,"离散系统（以温度为例，$i=1,\dots,M-1$）："
+problem_slove1.md,30,12,12.0,ALLOW,结构,0.0,"$$a_i=-(\alpha(i-\frac12))/(i\Delta r),\quad"
+problem_slove1.md,31,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),\quad"
+problem_slove1.md,31,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),\quad"
+problem_slove1.md,32,12,12.0,ALLOW,结构,0.0,"c_i=-(\alpha(i+\frac12))/(i\Delta r),\quad"
+problem_slove1.md,35,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,边界行按 `problem1.md` §9.4、§9.5 处理；水分方程按 §9.6 处理，界面扩散系数取相邻节点
+problem_slove1.md,36,12,12.0,ALLOW,结构,0.0,算术平均 $D=\tfrac12[D(C_i)+D(C)]$，$D$ 用上一时间步的值（半隐式）。
+problem_slove1.md,46,12,12.0,ALLOW,结构,0.0,"$$a_i=-(\alpha(i-\frac12))/(i\Delta r),\quad"
+problem_slove1.md,47,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),\quad"
+problem_slove1.md,47,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),\quad"
+problem_slove1.md,47,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),\quad"
+problem_slove1.md,47,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),\quad"
+problem_slove1.md,48,12,12.0,ALLOW,结构,0.0,c_i=-(\alpha(i+\frac12))/(i\Delta r).$$
+problem_slove1.md,50,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,用 sympy 对**原方案自己给出的**守恒型差分表达式重新整理系数（`src/q1_solve.py` §S1），
+problem_slove1.md,53,12,12.0,ALLOW,结构,0.0,"$$a_i=(\alpha(i-\frac12))/(i\Delta r),\qquad"
+problem_slove1.md,54,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i=-(2\alpha)/(\Delta r),\qquad"
+problem_slove1.md,55,12,12.0,ALLOW,结构,0.0,"c_i=(\alpha(i+\frac12))/(i\Delta r),\qquad a_i+b_i+c_i=0 .$$"
+problem_slove1.md,55,0,0.0,ALLOW,零,0.0,"c_i=(\alpha(i+\frac12))/(i\Delta r),\qquad a_i+b_i+c_i=0 .$$"
+problem_slove1.md,57,-2,-2.0,REGISTRY,S01,0.000e+00,即守恒型差分本身给出的对角元是 $-2\alpha/\Delta r$，而原方案写成
+problem_slove1.md,58,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$+\alpha(2i+1)/(2i\Delta r)$，恰好等于 $T$ 的系数 $c_i$ 的反号。两者之差
+problem_slove1.md,58,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$+\alpha(2i+1)/(2i\Delta r)$，恰好等于 $T$ 的系数 $c_i$ 的反号。两者之差
+problem_slove1.md,58,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$+\alpha(2i+1)/(2i\Delta r)$，恰好等于 $T$ 的系数 $c_i$ 的反号。两者之差
+problem_slove1.md,60,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$b_i^{(\text{原})}-b_i=-(\alpha(2i-1))/(2i\Delta r)=-a_i .$$
+problem_slove1.md,60,-1,-1.0,REGISTRY,X20,1.000e-03,$$b_i^{(\text{原})}-b_i=-(\alpha(2i-1))/(2i\Delta r)=-a_i .$$
+problem_slove1.md,60,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$b_i^{(\text{原})}-b_i=-(\alpha(2i-1))/(2i\Delta r)=-a_i .$$
+problem_slove1.md,64,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_i+b_i^{(\text{原})}+c_i=-(\alpha(2i-1))/(2i\Delta r)\neq0,$$"
+problem_slove1.md,64,-1,-1.0,REGISTRY,X20,1.000e-03,"$$a_i+b_i^{(\text{原})}+c_i=-(\alpha(2i-1))/(2i\Delta r)\neq0,$$"
+problem_slove1.md,64,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_i+b_i^{(\text{原})}+c_i=-(\alpha(2i-1))/(2i\Delta r)\neq0,$$"
+problem_slove1.md,64,0,0.0,ALLOW,零,0.0,"$$a_i+b_i^{(\text{原})}+c_i=-(\alpha(2i-1))/(2i\Delta r)\neq0,$$"
+problem_slove1.md,70,200,200.0,ALLOW,网格/常数,0.0,把两种系数分别组装成矩阵 $A$（按 $d\mathbf{T}/dt=A\mathbf{T}$），在 $M=200$ 下计算特征值：
+problem_slove1.md,74,3.93e-16,3.93e-16,REGISTRY,X20,3.930e-19,| 修正格式 $A_{\text{corr}}$ | $3.93e-16 \mathrm{s}$ | 数值零，耗散（正确） |
+problem_slove1.md,75,16.816,16.816,REGISTRY,E02,9.018e-06,| 原方案 $A_{\text{user}}$ | $\mathbf{+16.816} \mathrm{s}$ | **正实部，反耗散** |
+problem_slove1.md,77,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：`outputs/q1_energy_check.log` §E1）
+problem_slove1.md,79,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,全隐式 Euler 的放大因子为 $(1)/(1-\lambda\Delta t)$。当 $0<\lambda\Delta t<1$ 时
+problem_slove1.md,79,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,全隐式 Euler 的放大因子为 $(1)/(1-\lambda\Delta t)$。当 $0<\lambda\Delta t<1$ 时
+problem_slove1.md,79,0,0.0,ALLOW,零,0.0,全隐式 Euler 的放大因子为 $(1)/(1-\lambda\Delta t)$。当 $0<\lambda\Delta t<1$ 时
+problem_slove1.md,79,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,全隐式 Euler 的放大因子为 $(1)/(1-\lambda\Delta t)$。当 $0<\lambda\Delta t<1$ 时
+problem_slove1.md,80,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$|1-\lambda\Delta t|<1$，放大因子的模长大于 1，即扰动按
+problem_slove1.md,80,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$|1-\lambda\Delta t|<1$，放大因子的模长大于 1，即扰动按
+problem_slove1.md,80,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$|1-\lambda\Delta t|<1$，放大因子的模长大于 1，即扰动按
+problem_slove1.md,82,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$\left((1)/(1-\lambda\Delta t)\right)=\left(1-\lambda\Delta t\right)$$
+problem_slove1.md,82,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$\left((1)/(1-\lambda\Delta t)\right)=\left(1-\lambda\Delta t\right)$$
+problem_slove1.md,82,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$\left((1)/(1-\lambda\Delta t)\right)=\left(1-\lambda\Delta t\right)$$
+problem_slove1.md,86,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> **更正**：此前文中写作 $\left(1+\lambda\Delta t\right)$，**这是错的**。两者量级
+problem_slove1.md,87,16.816152,16.816152,REGISTRY,E02,2.081e-08,> 相差极大：取 $\lambda=\lambda=16.816152 \mathrm{s}$、$\Delta t=0.05 \mathrm{s}$、
+problem_slove1.md,87,0.05,0.05,ALLOW,时间步/通用,0.0,> 相差极大：取 $\lambda=\lambda=16.816152 \mathrm{s}$、$\Delta t=0.05 \mathrm{s}$、
+problem_slove1.md,88,100,100.0,ALLOW,题面表1/2 时间点,0.0,> $n=100$（$t=5 \mathrm{s}$），则
+problem_slove1.md,88,5,5.0,ALLOW,结构/常数,0.0,> $n=100$（$t=5 \mathrm{s}$），则
+problem_slove1.md,89,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> $$(1-\lambda\Delta t)=6.4234e79\quad(\text{正确}),\qquad"
+problem_slove1.md,89,6.4234e79,6.4234e+79,REGISTRY,E15_dt0.05_correct,6.421e-06,"> $$(1-\lambda\Delta t)=6.4234e79\quad(\text{正确}),\qquad"
+problem_slove1.md,90,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> (1+\lambda\Delta t)=3.1684e26\quad(\text{错误}),$$"
+problem_slove1.md,90,3.1684e26,3.1684e+26,REGISTRY,E16_dt0.05_wrong,1.264e-06,"> (1+\lambda\Delta t)=3.1684e26\quad(\text{错误}),$$"
+problem_slove1.md,91,8.08e79,8.08e+79,REGISTRY,E06_dt0.05,3.649e-04,> 而实测放大为 $8.08e79$——只有前者与之相符。
+problem_slove1.md,95,5,5.0,ALLOW,结构/常数,0.0,对原方案（`corr=False`）作纯导热试算（$t_{\text{end}}=5 \mathrm{s}$，$M=200$）：
+problem_slove1.md,95,200,200.0,ALLOW,网格/常数,0.0,对原方案（`corr=False`）作纯导热试算（$t_{\text{end}}=5 \mathrm{s}$，$M=200$）：
+problem_slove1.md,99,0.0005,0.0005,REGISTRY,X20,5.000e-07,| 0.0005 | $1.54e39$ | $5.10e36$ | 发散 |
+problem_slove1.md,99,1.54e39,1.54e+39,REGISTRY,E07_dt0.0005,2.823e-03,| 0.0005 | $1.54e39$ | $5.10e36$ | 发散 |
+problem_slove1.md,99,5.10e36,5.1e+36,REGISTRY,E06_dt0.0005,1.300e-04,| 0.0005 | $1.54e39$ | $5.10e36$ | 发散 |
+problem_slove1.md,100,0.002,0.002,ALLOW,序数量级,0.0,| 0.002 | $4.58e39$ | $1.52e37$ | 发散 |
+problem_slove1.md,100,4.58e39,4.58e+39,REGISTRY,E07_dt0.002,1.413e-04,| 0.002 | $4.58e39$ | $1.52e37$ | 发散 |
+problem_slove1.md,100,1.52e37,1.52e+37,REGISTRY,E06_dt0.002,4.090e-04,| 0.002 | $4.58e39$ | $1.52e37$ | 发散 |
+problem_slove1.md,101,0.01,0.01,ALLOW,百分比换算,0.0,| 0.01 | $3.17e42$ | $1.05e40$ | 发散 |
+problem_slove1.md,101,3.17e42,3.17e+42,REGISTRY,E07_dt0.01,1.491e-03,| 0.01 | $3.17e42$ | $1.05e40$ | 发散 |
+problem_slove1.md,101,1.05e40,1.05e+40,REGISTRY,E06_dt0.01,3.988e-03,| 0.01 | $3.17e42$ | $1.05e40$ | 发散 |
+problem_slove1.md,102,0.05,0.05,ALLOW,时间步/通用,0.0,| 0.05 | $2.43e82$ | $8.08e79$ | 发散 |
+problem_slove1.md,102,2.43e82,2.43e+82,REGISTRY,E07_dt0.05,1.717e-03,| 0.05 | $2.43e82$ | $8.08e79$ | 发散 |
+problem_slove1.md,102,8.08e79,8.08e+79,REGISTRY,E06_dt0.05,3.649e-04,| 0.05 | $2.43e82$ | $8.08e79$ | 发散 |
+problem_slove1.md,103,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,| 0.1（原方案推荐值） | $4.90e174$ | $1.63e172$ | 发散 |
+problem_slove1.md,103,4.90e174,4.9e+174,REGISTRY,E07_dt0.1,9.746e-04,| 0.1（原方案推荐值） | $4.90e174$ | $1.63e172$ | 发散 |
+problem_slove1.md,103,1.63e172,1.63e+172,REGISTRY,E06_dt0.1,2.761e-03,| 0.1（原方案推荐值） | $4.90e174$ | $1.63e172$ | 发散 |
+problem_slove1.md,105,60,60.0,ALLOW,附件1 采样间隔 60 s,0.0,在 $t_{\text{end}}=60 \mathrm{s}$、$\Delta t=0.1 \mathrm{s}$ 时原方案出现
+problem_slove1.md,105,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,在 $t_{\text{end}}=60 \mathrm{s}$、$\Delta t=0.1 \mathrm{s}$ 时原方案出现
+problem_slove1.md,106,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,NaN/Inf（`src/q1_solve.py` §S2）。
+problem_slove1.md,108,5e-4,0.0005,REGISTRY,X20,5.000e-07,"**这不是""时间步过大""的问题**：把 $\Delta t$ 减小到 $5e-4 \mathrm{s}$"
+problem_slove1.md,109,200,200.0,ALLOW,网格/常数,0.0,（比推荐值小 200 倍）仍然发散。原因是算子本身具有正特征值，**不存在任何稳定的
+problem_slove1.md,110,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,时间步**；减小 $\Delta t$ 只是把溢出的时间推迟（$\Delta t=0.1 \mathrm{s}$ 时约 8.7 s，
+problem_slove1.md,110,8.7,8.7,REGISTRY,X20,8.700e-03,时间步**；减小 $\Delta t$ 只是把溢出的时间推迟（$\Delta t=0.1 \mathrm{s}$ 时约 8.7 s，
+problem_slove1.md,111,5e-4,0.0005,REGISTRY,X20,5.000e-07,$\Delta t=5e-4 \mathrm{s}$ 时约 40 s），并不能消除失稳。
+problem_slove1.md,111,40,40.0,ALLOW,量级,0.0,$\Delta t=5e-4 \mathrm{s}$ 时约 40 s），并不能消除失稳。
+problem_slove1.md,113,66,66.0,ALLOW,量级,0.0,> **阈值说明（更正）**：$A_{\text{user}}$ 共有 **66 个正特征值**，
+problem_slove1.md,114,0.267798,0.267798,REGISTRY,E10,1.364e-06,"> $\lambda\in[0.267798, 16.816152] \mathrm{s}$。幅值增长由**最小**正特征值控制，"
+problem_slove1.md,114,16.816152,16.816152,REGISTRY,E02,2.081e-08,"> $\lambda\in[0.267798, 16.816152] \mathrm{s}$。幅值增长由**最小**正特征值控制，"
+problem_slove1.md,116,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"> $$\Delta t=\frac{2}{\lambda}=(2)/(0.267798)=7.4683 \mathrm{s},$$"
+problem_slove1.md,116,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"> $$\Delta t=\frac{2}{\lambda}=(2)/(0.267798)=7.4683 \mathrm{s},$$"
+problem_slove1.md,116,0.267798,0.267798,REGISTRY,E10,1.364e-06,"> $$\Delta t=\frac{2}{\lambda}=(2)/(0.267798)=7.4683 \mathrm{s},$$"
+problem_slove1.md,116,7.4683,7.4683,REGISTRY,E11,7.343e-07,"> $$\Delta t=\frac{2}{\lambda}=(2)/(0.267798)=7.4683 \mathrm{s},$$"
+problem_slove1.md,117,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> **不是** $2/\lambda=0.1189 \mathrm{s}$。此前文中出现的 $0.1189 \mathrm{s}$
+problem_slove1.md,117,0.1189,0.1189,REGISTRY,X20,1.189e-04,> **不是** $2/\lambda=0.1189 \mathrm{s}$。此前文中出现的 $0.1189 \mathrm{s}$
+problem_slove1.md,117,0.1189,0.1189,REGISTRY,X20,1.189e-04,> **不是** $2/\lambda=0.1189 \mathrm{s}$。此前文中出现的 $0.1189 \mathrm{s}$
+problem_slove1.md,120,200,200.0,ALLOW,网格/常数,0.0,> 数值验证（$M=200$，纯导热，$t_{\text{end}}=1800 \mathrm{s}$）：
+problem_slove1.md,120,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,> 数值验证（$M=200$，纯导热，$t_{\text{end}}=1800 \mathrm{s}$）：
+problem_slove1.md,124,0.5,0.5,ALLOW,题面: 半径网格 / 通用,0.0,"> | 0.5, 1, 2, 3 | 溢出（NaN/Inf） | — |"
+problem_slove1.md,124,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> | 0.5, 1, 2, 3 | 溢出（NaN/Inf） | — |"
+problem_slove1.md,124,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"> | 0.5, 1, 2, 3 | 溢出（NaN/Inf） | — |"
+problem_slove1.md,124,3,3.0,ALLOW,3 小时,0.0,"> | 0.5, 1, 2, 3 | 溢出（NaN/Inf） | — |"
+problem_slove1.md,125,5,5.0,ALLOW,结构/常数,0.0,"> | 5 | 未溢出 | $[-4.40e172, 2.07e172]$ |"
+problem_slove1.md,125,-4.40e172,-4.4e+172,REGISTRY,E13_dt5_min,1.521e-04,"> | 5 | 未溢出 | $[-4.40e172, 2.07e172]$ |"
+problem_slove1.md,125,2.07e172,2.07e+172,REGISTRY,E14_dt5_max,1.781e-03,"> | 5 | 未溢出 | $[-4.40e172, 2.07e172]$ |"
+problem_slove1.md,126,6,6.0,ALLOW,结构,0.0,"> | 6 | 未溢出 | $[-5.07e67, 2.38e67]$ |"
+problem_slove1.md,126,-5.07e67,-5.07e+67,REGISTRY,E13_dt6_min,1.188e-05,"> | 6 | 未溢出 | $[-5.07e67, 2.38e67]$ |"
+problem_slove1.md,126,2.38e67,2.38e+67,REGISTRY,E14_dt6_max,5.454e-04,"> | 6 | 未溢出 | $[-5.07e67, 2.38e67]$ |"
+problem_slove1.md,127,7.4,7.4,REGISTRY,X20,7.400e-03,"> | 7.4 | 未溢出 | $[-6.4e3, 1.4e4]$ |"
+problem_slove1.md,127,-6.4e3,-6400.0,REGISTRY,E13_dt7.4_min,1.190e-03,"> | 7.4 | 未溢出 | $[-6.4e3, 1.4e4]$ |"
+problem_slove1.md,127,1.4e4,14000.0,REGISTRY,P22,2.778e-02,"> | 7.4 | 未溢出 | $[-6.4e3, 1.4e4]$ |"
+problem_slove1.md,128,7.47,7.47,REGISTRY,E11,2.269e-04,"> | 7.47 | 未溢出 | $[-76.6, 163.6]$ |"
+problem_slove1.md,128,-76.6,-76.6,REGISTRY,OAT_hm_C体积,3.269e-03,"> | 7.47 | 未溢出 | $[-76.6, 163.6]$ |"
+problem_slove1.md,128,163.6,163.6,REGISTRY,C2_1200_2p0,1.363e-02,"> | 7.47 | 未溢出 | $[-76.6, 163.6]$ |"
+problem_slove1.md,129,7.5,7.5,REGISTRY,E11,4.244e-03,"> | 7.5 | 未溢出 | $[-4.90, 11.0]$ |"
+problem_slove1.md,129,-4.90,-4.9,REGISTRY,E13_dt7.5_min,9.295e-04,"> | 7.5 | 未溢出 | $[-4.90, 11.0]$ |"
+problem_slove1.md,129,11.0,11.0,ALLOW,结构,0.0,"> | 7.5 | 未溢出 | $[-4.90, 11.0]$ |"
+problem_slove1.md,130,10,10.0,ALLOW,结构/常数,0.0,"> | 10, 20 | 未溢出 | $[-13.97, 30.27]$ |"
+problem_slove1.md,130,20,20.0,ALLOW,结构,0.0,"> | 10, 20 | 未溢出 | $[-13.97, 30.27]$ |"
+problem_slove1.md,130,-13.97,-13.97,REGISTRY,E13_dt10_min,2.739e-04,"> | 10, 20 | 未溢出 | $[-13.97, 30.27]$ |"
+problem_slove1.md,130,30.27,30.27,REGISTRY,E14_dt20_max,2.134e-05,"> | 10, 20 | 未溢出 | $[-13.97, 30.27]$ |"
+problem_slove1.md,132,7.4683,7.4683,REGISTRY,E11,7.343e-07,> 即 $\Delta t \ge 7.4683 \mathrm{s}$ 后虽不再溢出，解仍是无意义的符号振荡：
+problem_slove1.md,133,10,10.0,ALLOW,结构/常数,0.0,> $\Delta t=10 \mathrm{s}$ 时 $T$ 在 $-13.97 \mathrm{K}$ 与 $+30.27 \mathrm{K}$
+problem_slove1.md,133,-13.97,-13.97,REGISTRY,E13_dt10_min,2.739e-04,> $\Delta t=10 \mathrm{s}$ 时 $T$ 在 $-13.97 \mathrm{K}$ 与 $+30.27 \mathrm{K}$
+problem_slove1.md,133,30.27,30.27,REGISTRY,E14_dt20_max,2.134e-05,> $\Delta t=10 \mathrm{s}$ 时 $T$ 在 $-13.97 \mathrm{K}$ 与 $+30.27 \mathrm{K}$
+problem_slove1.md,134,301.15,301.15,ALLOW,题面: T0 = 28 degC = 301.15 K,0.0,> 之间振荡，而物理值应为 $301.15 \mathrm{K}$ 附近——**幅值低一个数量级且不断变号**。
+problem_slove1.md,140,200,200.0,ALLOW,网格/常数,0.0,水分对角元求解，在 $M=200$ 下：
+problem_slove1.md,144,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,| 0.1 | 修正 | 未失稳 | 1.51026 | 2.54999 |
+problem_slove1.md,144,1.51026,1.51026,REGISTRY,E43_dt0.05,1.762e-06,| 0.1 | 修正 | 未失稳 | 1.51026 | 2.54999 |
+problem_slove1.md,144,2.54999,2.54999,REGISTRY,E44_dt0.1,9.000e-07,| 0.1 | 修正 | 未失稳 | 1.51026 | 2.54999 |
+problem_slove1.md,145,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,| 0.1 | **原方案** | 787.8 | $\infty$ | $\infty$ |
+problem_slove1.md,145,787.8,787.8,REGISTRY,E40_dt0.1,0.000e+00,| 0.1 | **原方案** | 787.8 | $\infty$ | $\infty$ |
+problem_slove1.md,146,0.05,0.05,ALLOW,时间步/通用,0.0,| 0.05 | 修正 | 未失稳 | 1.51026 | 2.54999 |
+problem_slove1.md,146,1.51026,1.51026,REGISTRY,E43_dt0.05,1.762e-06,| 0.05 | 修正 | 未失稳 | 1.51026 | 2.54999 |
+problem_slove1.md,146,2.54999,2.54999,REGISTRY,E44_dt0.1,9.000e-07,| 0.05 | 修正 | 未失稳 | 1.51026 | 2.54999 |
+problem_slove1.md,147,0.05,0.05,ALLOW,时间步/通用,0.0,| 0.05 | **原方案** | 805.0 | $\infty$ | $\infty$ |
+problem_slove1.md,147,805.0,805.0,REGISTRY,E40_dt0.05,0.000e+00,| 0.05 | **原方案** | 805.0 | $\infty$ | $\infty$ |
+problem_slove1.md,148,0.01,0.01,ALLOW,百分比换算,0.0,| 0.01 | 修正 | 未失稳 | 1.51025 | 2.54999 |
+problem_slove1.md,148,1.51025,1.51025,REGISTRY,E43_dt0.01,2.039e-06,| 0.01 | 修正 | 未失稳 | 1.51025 | 2.54999 |
+problem_slove1.md,148,2.54999,2.54999,REGISTRY,E44_dt0.1,9.000e-07,| 0.01 | 修正 | 未失稳 | 1.51025 | 2.54999 |
+problem_slove1.md,149,0.01,0.01,ALLOW,百分比换算,0.0,| 0.01 | **原方案** | 817.3 | $\infty$ | $\infty$ |
+problem_slove1.md,149,817.3,817.3,REGISTRY,E40_dt0.01,4.894e-05,| 0.01 | **原方案** | 817.3 | $\infty$ | $\infty$ |
+problem_slove1.md,151,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：本文 `src/q1_energy_check.py` §E5，注册表 `registry_q1_energy.csv` 的 E40–E44 组）
+problem_slove1.md,151,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：本文 `src/q1_energy_check.py` §E5，注册表 `registry_q1_energy.csv` 的 E40–E44 组）
+problem_slove1.md,151,40,40.0,ALLOW,量级,0.0,（源：本文 `src/q1_energy_check.py` §E5，注册表 `registry_q1_energy.csv` 的 E40–E44 组）
+problem_slove1.md,151,44,44.0,REGISTRY,E4_C表面_std,6.635e-03,（源：本文 `src/q1_energy_check.py` §E5，注册表 `registry_q1_energy.csv` 的 E40–E44 组）
+problem_slove1.md,153,788,788.0,REGISTRY,E40_dt0.1,2.539e-04,水分方程在 $t\approx788\sim817 \mathrm{s}$ 时溢出。**失稳时刻几乎不随时间步变化**
+problem_slove1.md,153,817,817.0,REGISTRY,E40_dt0.01,4.160e-04,水分方程在 $t\approx788\sim817 \mathrm{s}$ 时溢出。**失稳时刻几乎不随时间步变化**
+problem_slove1.md,154,10,10.0,ALLOW,结构/常数,0.0,（$\Delta t$ 减小 10 倍，失稳时刻仅从 787.8 s 移至 817.3 s）——这与 §2.3 的机理一致：
+problem_slove1.md,154,787.8,787.8,REGISTRY,E40_dt0.1,0.000e+00,（$\Delta t$ 减小 10 倍，失稳时刻仅从 787.8 s 移至 817.3 s）——这与 §2.3 的机理一致：
+problem_slove1.md,154,817.3,817.3,REGISTRY,E40_dt0.01,4.894e-05,（$\Delta t$ 减小 10 倍，失稳时刻仅从 787.8 s 移至 817.3 s）——这与 §2.3 的机理一致：
+problem_slove1.md,155,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,放大因子为 $(1-\lambda\Delta t)$（见 §2.3 更正），发散时刻由 $\lambda t$ 决定，
+problem_slove1.md,159,787.8,787.8,REGISTRY,E40_dt0.1,0.000e+00,失稳时刻为 787.8 / 805.0 / 817.31 s，与上表的 787.8 / 805.0 / 817.34 s 实质相同。
+problem_slove1.md,159,805.0,805.0,REGISTRY,E40_dt0.05,0.000e+00,失稳时刻为 787.8 / 805.0 / 817.31 s，与上表的 787.8 / 805.0 / 817.34 s 实质相同。
+problem_slove1.md,159,817.31,817.31,REGISTRY,E40_dt0.01,3.670e-05,失稳时刻为 787.8 / 805.0 / 817.31 s，与上表的 787.8 / 805.0 / 817.34 s 实质相同。
+problem_slove1.md,159,787.8,787.8,REGISTRY,E40_dt0.1,0.000e+00,失稳时刻为 787.8 / 805.0 / 817.31 s，与上表的 787.8 / 805.0 / 817.34 s 实质相同。
+problem_slove1.md,159,805.0,805.0,REGISTRY,E40_dt0.05,0.000e+00,失稳时刻为 787.8 / 805.0 / 817.31 s，与上表的 787.8 / 805.0 / 817.34 s 实质相同。
+problem_slove1.md,159,817.34,817.34,REGISTRY,E40_dt0.01,0.000e+00,失稳时刻为 787.8 / 805.0 / 817.31 s，与上表的 787.8 / 805.0 / 817.34 s 实质相同。
+problem_slove1.md,165,381,381.0,ALLOW,引用独立核验日志 outputs/audit_moist_stab.log 的水分失稳时刻,0.0,> $t\approx381\sim394 \mathrm{s}$，与本文的 $788\sim817 \mathrm{s}$ 不同。
+problem_slove1.md,165,394,394.0,ALLOW,"同上, 引用独立核验日志的水分失稳时刻",0.0,> $t\approx381\sim394 \mathrm{s}$，与本文的 $788\sim817 \mathrm{s}$ 不同。
+problem_slove1.md,165,788,788.0,REGISTRY,E40_dt0.1,2.539e-04,> $t\approx381\sim394 \mathrm{s}$，与本文的 $788\sim817 \mathrm{s}$ 不同。
+problem_slove1.md,165,817,817.0,REGISTRY,E40_dt0.01,4.160e-04,> $t\approx381\sim394 \mathrm{s}$，与本文的 $788\sim817 \mathrm{s}$ 不同。
+problem_slove1.md,167,788,788.0,REGISTRY,E40_dt0.1,2.539e-04,> 失稳时刻均为 $788\sim817 \mathrm{s}$，故以本文数值为准。发散本身是稳健结论，
+problem_slove1.md,167,817,817.0,REGISTRY,E40_dt0.01,4.160e-04,> 失稳时刻均为 $788\sim817 \mathrm{s}$，故以本文数值为准。发散本身是稳健结论，
+problem_slove1.md,170,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,"> **对照**：修正格式在 $\Delta t=0.1, 1.0, 10.0 \mathrm{s}$ 下均保持物理合理"
+problem_slove1.md,170,1.0,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> **对照**：修正格式在 $\Delta t=0.1, 1.0, 10.0 \mathrm{s}$ 下均保持物理合理"
+problem_slove1.md,170,10.0,10.0,ALLOW,结构/常数,0.0,"> **对照**：修正格式在 $\Delta t=0.1, 1.0, 10.0 \mathrm{s}$ 下均保持物理合理"
+problem_slove1.md,171,0,0.0,ALLOW,零,0.0,> （$T$ 单调趋近 $T_\infty$），因为全隐式对 $\lambda<0$ 无条件稳定。
+problem_slove1.md,176,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,看去取不同的 $D$，离散水量不再守恒。用显式水量收支检验（`outputs/q1_energy_check.log` §E2）：
+problem_slove1.md,180,-2,-2.0,REGISTRY,S01,0.000e+00,\underbrace{-2\pi Rh_m\!\int(C_M-C_\infty)dt}_{\text{表面累计通量}}$$
+problem_slove1.md,184,100,100.0,ALLOW,题面表1/2 时间点,0.0,| 100 | 节点值 | $-3.196e-5$ | $10.10 %$ |
+problem_slove1.md,184,-3.196e-5,-3.196e-05,REGISTRY,X20,3.196e-08,| 100 | 节点值 | $-3.196e-5$ | $10.10 %$ |
+problem_slove1.md,184,10.10,10.1,REGISTRY,E11_node_M100,1.864e-04,| 100 | 节点值 | $-3.196e-5$ | $10.10 %$ |
+problem_slove1.md,185,200,200.0,ALLOW,网格/常数,0.0,| 200 | 节点值 | $-3.200e-5$ | $10.12 %$ |
+problem_slove1.md,185,-3.200e-5,-3.2e-05,REGISTRY,X20,3.200e-08,| 200 | 节点值 | $-3.200e-5$ | $10.12 %$ |
+problem_slove1.md,185,10.12,10.12,REGISTRY,E11_node_M400,3.503e-05,| 200 | 节点值 | $-3.200e-5$ | $10.12 %$ |
+problem_slove1.md,186,400,400.0,ALLOW,网格/常数,0.0,| 400 | 节点值 | $-3.202e-5$ | $10.12 %$ |
+problem_slove1.md,186,-3.202e-5,-3.202e-05,REGISTRY,X20,3.202e-08,| 400 | 节点值 | $-3.202e-5$ | $10.12 %$ |
+problem_slove1.md,186,10.12,10.12,REGISTRY,E11_node_M400,3.503e-05,| 400 | 节点值 | $-3.202e-5$ | $10.12 %$ |
+problem_slove1.md,187,100,100.0,ALLOW,题面表1/2 时间点,0.0,| 100 | 界面平均 | $2.114e-17$ | $6.56e-14$ |
+problem_slove1.md,187,2.114e-17,2.114e-17,REGISTRY,X20,2.114e-20,| 100 | 界面平均 | $2.114e-17$ | $6.56e-14$ |
+problem_slove1.md,187,6.56e-14,6.56e-14,REGISTRY,X20,6.560e-17,| 100 | 界面平均 | $2.114e-17$ | $6.56e-14$ |
+problem_slove1.md,188,200,200.0,ALLOW,网格/常数,0.0,| 200 | 界面平均 | $2.114e-18$ | $6.56e-15$ |
+problem_slove1.md,188,2.114e-18,2.114e-18,REGISTRY,X20,2.114e-21,| 200 | 界面平均 | $2.114e-18$ | $6.56e-15$ |
+problem_slove1.md,188,6.56e-15,6.56e-15,REGISTRY,X20,6.560e-18,| 200 | 界面平均 | $2.114e-18$ | $6.56e-15$ |
+problem_slove1.md,189,400,400.0,ALLOW,网格/常数,0.0,| 400 | 界面平均 | $5.638e-18$ | $1.75e-14$ |
+problem_slove1.md,189,5.638e-18,5.638e-18,REGISTRY,X20,5.638e-21,| 400 | 界面平均 | $5.638e-18$ | $1.75e-14$ |
+problem_slove1.md,189,1.75e-14,1.75e-14,REGISTRY,X20,1.750e-17,| 400 | 界面平均 | $5.638e-18$ | $1.75e-14$ |
+problem_slove1.md,191,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,（单位：$\mathrm{kg/kg\cdot m}$，已约去 $2\pi$）
+problem_slove1.md,193,4,4.0,ALLOW,结构/常数,0.0,**关键判据**：节点值取法的相对残差在网格加密 4 倍后仍为 $10.12 %$，
+problem_slove1.md,193,10.12,10.12,REGISTRY,E11_node_M400,3.503e-05,**关键判据**：节点值取法的相对残差在网格加密 4 倍后仍为 $10.12 %$，
+problem_slove1.md,196,0,0.0,ALLOW,零,0.0,该错误对问题一结果的实际影响：两种取法在输出半径（$0\sim2 \mathrm{cm}$）上的
+problem_slove1.md,196,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,该错误对问题一结果的实际影响：两种取法在输出半径（$0\sim2 \mathrm{cm}$）上的
+problem_slove1.md,201,200,200.0,ALLOW,网格/常数,0.0,| 200 | $6.354e-2$ | $0$ |
+problem_slove1.md,201,6.354e-2,0.06354,REGISTRY,D10_M200,3.495e-05,| 200 | $6.354e-2$ | $0$ |
+problem_slove1.md,201,0,0.0,ALLOW,零,0.0,| 200 | $6.354e-2$ | $0$ |
+problem_slove1.md,202,400,400.0,ALLOW,网格/常数,0.0,| 400 | $6.356e-2$ | $0$ |
+problem_slove1.md,202,6.356e-2,0.06356,REGISTRY,D10_M400,5.293e-05,| 400 | $6.356e-2$ | $0$ |
+problem_slove1.md,202,0,0.0,ALLOW,零,0.0,| 400 | $6.356e-2$ | $0$ |
+problem_slove1.md,203,800,800.0,ALLOW,网格/常数,0.0,| 800 | $6.357e-2$ | $0$ |
+problem_slove1.md,203,6.357e-2,0.06357,REGISTRY,D10_M800,3.777e-06,| 800 | $6.357e-2$ | $0$ |
+problem_slove1.md,203,0,0.0,ALLOW,零,0.0,| 800 | $6.357e-2$ | $0$ |
+problem_slove1.md,205,6.35e-2,0.0635,REGISTRY,X20,6.350e-05,差值为 $6.35e-2 \mathrm{kg/kg}$（约为 $C$ 的 2.5 %），且网格无关。
+problem_slove1.md,205,2.5,2.5,ALLOW,时间步/通用,0.0,差值为 $6.35e-2 \mathrm{kg/kg}$（约为 $C$ 的 2.5 %），且网格无关。
+problem_slove1.md,206,0,0.0,ALLOW,零,0.0,注意 $\max|\Delta T|=0$：温度场完全不受影响，因为（如本文所实现）温度方程中 $k$ 为常数，
+problem_slove1.md,213,200,200.0,ALLOW,网格/常数,0.0,原方案推荐的 $M=200$、$\Delta t=0.1 \mathrm{s}$ 在修正后**不再必要**，本文据收敛性
+problem_slove1.md,213,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,原方案推荐的 $M=200$、$\Delta t=0.1 \mathrm{s}$ 在修正后**不再必要**，本文据收敛性
+problem_slove1.md,218,100,100.0,ALLOW,题面表1/2 时间点,0.0,| $M$: 100→200 | 2.015 | 2.018 |
+problem_slove1.md,218,200,200.0,ALLOW,网格/常数,0.0,| $M$: 100→200 | 2.015 | 2.018 |
+problem_slove1.md,218,2.015,2.015,REGISTRY,E31_M1600_dt0.002_cell,1.580e-03,| $M$: 100→200 | 2.015 | 2.018 |
+problem_slove1.md,218,2.018,2.018,REGISTRY,E31_M1600_dt0.002_cell,9.354e-05,| $M$: 100→200 | 2.015 | 2.018 |
+problem_slove1.md,219,200,200.0,ALLOW,网格/常数,0.0,| $M$: 200→400 | 2.063 | 2.071 |
+problem_slove1.md,219,400,400.0,ALLOW,网格/常数,0.0,| $M$: 200→400 | 2.063 | 2.071 |
+problem_slove1.md,219,2.063,2.063,REGISTRY,X20,2.063e-03,| $M$: 200→400 | 2.063 | 2.071 |
+problem_slove1.md,219,2.071,2.071,REGISTRY,X20,2.071e-03,| $M$: 200→400 | 2.063 | 2.071 |
+problem_slove1.md,220,400,400.0,ALLOW,网格/常数,0.0,| $M$: 400→800 | 2.276 | 2.322 |
+problem_slove1.md,220,800,800.0,ALLOW,网格/常数,0.0,| $M$: 400→800 | 2.276 | 2.322 |
+problem_slove1.md,220,2.276,2.276,REGISTRY,S12,1.561e-04,| $M$: 400→800 | 2.276 | 2.322 |
+problem_slove1.md,220,2.322,2.322,REGISTRY,S13,1.581e-06,| $M$: 400→800 | 2.276 | 2.322 |
+problem_slove1.md,222,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：`outputs/q1_run.log` §S4）即**空间二阶收敛**。时间上为**一阶**，误差随
+problem_slove1.md,223,4,4.0,ALLOW,结构/常数,0.0,$\Delta t$ 减半而减半（$\Delta t$ 从 4 s 减到 0.125 s 时，$\max|\Delta T|$ 从
+problem_slove1.md,223,0.125,0.125,REGISTRY,P11,0.000e+00,$\Delta t$ 减半而减半（$\Delta t$ 从 4 s 减到 0.125 s 时，$\max|\Delta T|$ 从
+problem_slove1.md,224,4.727e-3,0.004727,REGISTRY,S14_dt4.0,1.696e-06,$4.727e-3$ 降到 $8.953e-5 \mathrm{K}$，比值稳定在 2 附近）。
+problem_slove1.md,224,8.953e-5,8.953e-05,REGISTRY,X20,8.953e-08,$4.727e-3$ 降到 $8.953e-5 \mathrm{K}$，比值稳定在 2 附近）。
+problem_slove1.md,224,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$4.727e-3$ 降到 $8.953e-5 \mathrm{K}$，比值稳定在 2 附近）。
+problem_slove1.md,226,3200,3200.0,ALLOW,网格: 生产设置 M=3200,0.0,**生产设置**：$M=3200$（$\Delta r=6.25e-6 \mathrm{m}$），
+problem_slove1.md,226,6.25e-6,6.25e-06,REGISTRY,X20,6.250e-09,**生产设置**：$M=3200$（$\Delta r=6.25e-6 \mathrm{m}$），
+problem_slove1.md,227,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$\Delta t=2=0.00390625 \mathrm{s}$（$t=1 \mathrm{s}$ 恰为第 256 步，
+problem_slove1.md,227,0.00390625,0.00390625,ALLOW,生产时间步 dt = 2^-8 s,0.0,$\Delta t=2=0.00390625 \mathrm{s}$（$t=1 \mathrm{s}$ 恰为第 256 步，
+problem_slove1.md,227,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$\Delta t=2=0.00390625 \mathrm{s}$（$t=1 \mathrm{s}$ 恰为第 256 步，
+problem_slove1.md,227,256,256.0,ALLOW,步数,0.0,$\Delta t=2=0.00390625 \mathrm{s}$（$t=1 \mathrm{s}$ 恰为第 256 步，
+problem_slove1.md,236,50,50.0,ALLOW,解析解校核用的常 T_inf = 50 degC,0.0,对**常环境温度** $T_\infty=50 ^\circ\mathrm{C}$ 的情形，无限长圆柱在 Robin 边界
+problem_slove1.md,245,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$C_n=(2J(\lambda_n))/(\lambda_n\left[J(\lambda_n)+J(\lambda_n)\right])$。
+problem_slove1.md,247,1.388889,1.388889,REGISTRY,P07,7.992e-08,本文取 $\mathrm{Bi}=hR/k=1.388889$，前 5 个特征根为
+problem_slove1.md,247,5,5.0,ALLOW,结构/常数,0.0,本文取 $\mathrm{Bi}=hR/k=1.388889$，前 5 个特征根为
+problem_slove1.md,248,1.418473,1.418473,REGISTRY,X20,1.418e-03,"$\lambda=1.418473, 4.166470, 7.208478, 10.308273, 13.427161$，"
+problem_slove1.md,248,4.166470,4.16647,REGISTRY,E32_M800_dt0.02_ratio,3.358e-03,"$\lambda=1.418473, 4.166470, 7.208478, 10.308273, 13.427161$，"
+problem_slove1.md,248,7.208478,7.208478,REGISTRY,X20,7.208e-03,"$\lambda=1.418473, 4.166470, 7.208478, 10.308273, 13.427161$，"
+problem_slove1.md,248,10.308273,10.308273,REGISTRY,E4_C平均_std,1.675e-04,"$\lambda=1.418473, 4.166470, 7.208478, 10.308273, 13.427161$，"
+problem_slove1.md,248,13.427161,13.427161,REGISTRY,X20,1.343e-02,"$\lambda=1.418473, 4.166470, 7.208478, 10.308273, 13.427161$，"
+problem_slove1.md,249,1.265822,1.265822,REGISTRY,X20,1.266e-03,"$C=1.265822, -0.377974, 0.174964, -0.103759, 0.070187$。"
+problem_slove1.md,249,-0.377974,-0.377974,REGISTRY,X20,3.780e-04,"$C=1.265822, -0.377974, 0.174964, -0.103759, 0.070187$。"
+problem_slove1.md,249,0.174964,0.174964,REGISTRY,X20,1.750e-04,"$C=1.265822, -0.377974, 0.174964, -0.103759, 0.070187$。"
+problem_slove1.md,249,-0.103759,-0.103759,REGISTRY,X20,1.038e-04,"$C=1.265822, -0.377974, 0.174964, -0.103759, 0.070187$。"
+problem_slove1.md,249,0.070187,0.070187,REGISTRY,X20,7.019e-05,"$C=1.265822, -0.377974, 0.174964, -0.103759, 0.070187$。"
+problem_slove1.md,250,0,0.0,ALLOW,零,0.0,级数在 $t\to0$ 时重构初始条件 $\theta\equiv1$ 的最大误差为 $2.35e-3$
+problem_slove1.md,250,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,级数在 $t\to0$ 时重构初始条件 $\theta\equiv1$ 的最大误差为 $2.35e-3$
+problem_slove1.md,250,2.35e-3,0.00235,REGISTRY,X20,2.350e-06,级数在 $t\to0$ 时重构初始条件 $\theta\equiv1$ 的最大误差为 $2.35e-3$
+problem_slove1.md,251,120,120.0,REGISTRY,P19,1.669e-03,（120 项）并随项数增加收敛到 $2.203e-3$ 的平台，与 Gibbs 型端点误差一致。
+problem_slove1.md,251,2.203e-3,0.002203,REGISTRY,X20,2.203e-06,（120 项）并随项数增加收敛到 $2.203e-3$ 的平台，与 Gibbs 型端点误差一致。
+problem_slove1.md,253,0.126642,0.126642,REGISTRY,X20,1.266e-04,在 $\mathrm{Fo}=\alpha t/R=0.126642$（$t=300 \mathrm{s}$）处对比：
+problem_slove1.md,253,300,300.0,ALLOW,题面表1/2 时间点,0.0,在 $\mathrm{Fo}=\alpha t/R=0.126642$（$t=300 \mathrm{s}$）处对比：
+problem_slove1.md,257,200,200.0,ALLOW,网格/常数,0.0,| 200 | 0.05 | $2.696e-4$ |
+problem_slove1.md,257,0.05,0.05,ALLOW,时间步/通用,0.0,| 200 | 0.05 | $2.696e-4$ |
+problem_slove1.md,257,2.696e-4,0.0002696,REGISTRY,X20,2.696e-07,| 200 | 0.05 | $2.696e-4$ |
+problem_slove1.md,258,200,200.0,ALLOW,网格/常数,0.0,| 200 | 0.0005 | $3.634e-5$ |
+problem_slove1.md,258,0.0005,0.0005,REGISTRY,X20,5.000e-07,| 200 | 0.0005 | $3.634e-5$ |
+problem_slove1.md,258,3.634e-5,3.634e-05,REGISTRY,X20,3.634e-08,| 200 | 0.0005 | $3.634e-5$ |
+problem_slove1.md,259,400,400.0,ALLOW,网格/常数,0.0,| 400 | 0.0005 | $1.085e-5$ |
+problem_slove1.md,259,0.0005,0.0005,REGISTRY,X20,5.000e-07,| 400 | 0.0005 | $1.085e-5$ |
+problem_slove1.md,259,1.085e-5,1.085e-05,REGISTRY,X20,1.085e-08,| 400 | 0.0005 | $1.085e-5$ |
+problem_slove1.md,260,800,800.0,ALLOW,网格/常数,0.0,| 800 | 0.0005 | $4.477e-6$ |
+problem_slove1.md,260,0.0005,0.0005,REGISTRY,X20,5.000e-07,| 800 | 0.0005 | $4.477e-6$ |
+problem_slove1.md,260,4.477e-6,4.477e-06,REGISTRY,X20,4.477e-09,| 800 | 0.0005 | $4.477e-6$ |
+problem_slove1.md,262,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：`outputs/q1_energy_check.log` §E3）
+problem_slove1.md,264,2.4e-4,0.00024,REGISTRY,X20,2.400e-07,**结论**：先前的 $2.4e-4 \mathrm{K}$ 平台**不是格式误差**，而是
+problem_slove1.md,266,800,800.0,ALLOW,网格/常数,0.0,在 $M=800$、$\Delta t=5e-4 \mathrm{s}$ 时本文格式与解析解吻合到
+problem_slove1.md,266,5e-4,0.0005,REGISTRY,X20,5.000e-07,在 $M=800$、$\Delta t=5e-4 \mathrm{s}$ 时本文格式与解析解吻合到
+problem_slove1.md,267,4.5e-6,4.5e-06,REGISTRY,X20,4.500e-09,$4.5e-6 \mathrm{K}$。
+problem_slove1.md,271,1e-10,1e-10,REGISTRY,X20,1.000e-13,用 method of lines（空间离散相同，时间用 scipy 的 BDF，`rtol=1e-10`）求解，
+problem_slove1.md,272,200,200.0,ALLOW,网格/常数,0.0,$D$ 不再滞后而是每个 RHS 求值都按当前 $C$ 计算。在 $M=200$ 上比较：
+problem_slove1.md,276,200,200.0,ALLOW,网格/常数,0.0,| 半隐式滞后 $D$ vs 全非线性（同网格 $M=200$） | $5.95e-5$ | $5.32e-6$ |
+problem_slove1.md,276,5.95e-5,5.95e-05,REGISTRY,X20,5.950e-08,| 半隐式滞后 $D$ vs 全非线性（同网格 $M=200$） | $5.95e-5$ | $5.32e-6$ |
+problem_slove1.md,276,5.32e-6,5.32e-06,REGISTRY,X20,5.320e-09,| 半隐式滞后 $D$ vs 全非线性（同网格 $M=200$） | $5.95e-5$ | $5.32e-6$ |
+problem_slove1.md,277,200,200.0,ALLOW,网格/常数,0.0,| MOL（$M=200$）vs 本文生产解（$M=3200$） | $6.10e-5$ | $1.17e-5$ |
+problem_slove1.md,277,3200,3200.0,ALLOW,网格: 生产设置 M=3200,0.0,| MOL（$M=200$）vs 本文生产解（$M=3200$） | $6.10e-5$ | $1.17e-5$ |
+problem_slove1.md,277,6.10e-5,6.1e-05,REGISTRY,X20,6.100e-08,| MOL（$M=200$）vs 本文生产解（$M=3200$） | $6.10e-5$ | $1.17e-5$ |
+problem_slove1.md,277,1.17e-5,1.17e-05,REGISTRY,X20,1.170e-08,| MOL（$M=200$）vs 本文生产解（$M=3200$） | $6.10e-5$ | $1.17e-5$ |
+problem_slove1.md,279,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：`outputs/q1_run.log` §S6）
+problem_slove1.md,281,5e-5,5e-05,ALLOW,四位小数的半 ulp,0.0,**结论**：滞后 $D$ 引入的误差远低于四位小数的报告精度（半 ulp $5e-5$），
+problem_slove1.md,287,100,100.0,ALLOW,题面表1/2 时间点,0.0,"$t=100 \mathrm{s}$ 时本文解为 $T\in[28.0000, 28.1795] ^\circ\mathrm{C}$，"
+problem_slove1.md,287,28.0000,28.0,ALLOW,题面: 初始温度 28 degC,0.0,"$t=100 \mathrm{s}$ 时本文解为 $T\in[28.0000, 28.1795] ^\circ\mathrm{C}$，"
+problem_slove1.md,287,28.1795,28.1795,REGISTRY,T1_100_2p0,0.000e+00,"$t=100 \mathrm{s}$ 时本文解为 $T\in[28.0000, 28.1795] ^\circ\mathrm{C}$，"
+problem_slove1.md,288,100,100.0,ALLOW,题面表1/2 时间点,0.0,而 $T_\infty(100)=28.55 ^\circ\mathrm{C}$（附件 1），满足
+problem_slove1.md,288,28.55,28.55,REGISTRY,R_T_600,4.801e-04,而 $T_\infty(100)=28.55 ^\circ\mathrm{C}$（附件 1），满足
+problem_slove1.md,288,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,而 $T_\infty(100)=28.55 ^\circ\mathrm{C}$（附件 1），满足
+problem_slove1.md,289,28.0,28.0,ALLOW,题面: 初始温度 28 degC,0.0,$28.0\le T\le T_\infty$。全部 $1800x21$ 个输出值均通过该检验，
+problem_slove1.md,289,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,$28.0\le T\le T_\infty$。全部 $1800x21$ 个输出值均通过该检验，
+problem_slove1.md,289,21,21.0,ALLOW,结构: 表格列数,0.0,$28.0\le T\le T_\infty$。全部 $1800x21$ 个输出值均通过该检验，
+problem_slove1.md,298,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"此前本文曾判断原方案的表面扩散项""偏大 2 倍""。**该判断是错的，在此更正。**"
+problem_slove1.md,299,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"重新逐项比较节点式**半控制体** $\left[R-(\Delta r)/(2),R\right]$ 的精确系数与用户写法："
+problem_slove1.md,301,-2,-2.0,REGISTRY,S01,0.000e+00,| $M$ | $a_M^{\text{exact}}$ | $-2\alpha/\Delta r$（用户） | 比值 | $g_h^{\text{exact}}$ | $2\al
+problem_slove1.md,301,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| $M$ | $a_M^{\text{exact}}$ | $-2\alpha/\Delta r$（用户） | 比值 | $g_h^{\text{exact}}$ | $2\al
+problem_slove1.md,303,200,200.0,ALLOW,网格/常数,0.0,| 200 | $-3.372884e1$ | $-3.377111e1$ | 0.998748 | $2.348151e-1$ | $2.345216e-1$ | 1.00125
+problem_slove1.md,303,-3.372884e1,-33.72884,REGISTRY,E50_M200_a_ex,6.523e-09,| 200 | $-3.372884e1$ | $-3.377111e1$ | 0.998748 | $2.348151e-1$ | $2.345216e-1$ | 1.00125
+problem_slove1.md,303,-3.377111e1,-33.77111,REGISTRY,E51_M200_a_us,9.061e-08,| 200 | $-3.372884e1$ | $-3.377111e1$ | 0.998748 | $2.348151e-1$ | $2.345216e-1$ | 1.00125
+problem_slove1.md,303,0.998748,0.998748,REGISTRY,E52_M200_a_ratio,4.360e-07,| 200 | $-3.372884e1$ | $-3.377111e1$ | 0.998748 | $2.348151e-1$ | $2.345216e-1$ | 1.00125
+problem_slove1.md,303,2.348151e-1,0.2348151,REGISTRY,E53_M200_g_ex,2.172e-08,| 200 | $-3.372884e1$ | $-3.377111e1$ | 0.998748 | $2.348151e-1$ | $2.345216e-1$ | 1.00125
+problem_slove1.md,303,2.345216e-1,0.2345216,REGISTRY,E54_M200_g_us,1.023e-07,| 200 | $-3.372884e1$ | $-3.377111e1$ | 0.998748 | $2.348151e-1$ | $2.345216e-1$ | 1.00125
+problem_slove1.md,303,1.001252,1.001252,REGISTRY,E55_M200_g_ratio,4.355e-07,| 200 | $-3.372884e1$ | $-3.377111e1$ | 0.998748 | $2.348151e-1$ | $2.345216e-1$ | 1.00125
+problem_slove1.md,304,800,800.0,ALLOW,网格/常数,0.0,| 800 | $-5.401688e2$ | $-5.403377e2$ | 0.999687 | $9.383795e-1$ | $9.380863e-1$ | 1.00031
+problem_slove1.md,304,-5.401688e2,-540.1688,REGISTRY,E50_M800_a_ex,5.184e-09,| 800 | $-5.401688e2$ | $-5.403377e2$ | 0.999687 | $9.383795e-1$ | $9.380863e-1$ | 1.00031
+problem_slove1.md,304,-5.403377e2,-540.3377,REGISTRY,E51_M800_a_us,2.054e-08,| 800 | $-5.401688e2$ | $-5.403377e2$ | 0.999687 | $9.383795e-1$ | $9.380863e-1$ | 1.00031
+problem_slove1.md,304,0.999687,0.999687,REGISTRY,E52_M800_a_ratio,4.024e-07,| 800 | $-5.401688e2$ | $-5.403377e2$ | 0.999687 | $9.383795e-1$ | $9.380863e-1$ | 1.00031
+problem_slove1.md,304,9.383795e-1,0.9383795,REGISTRY,E53_M800_g_ex,5.062e-08,| 800 | $-5.401688e2$ | $-5.403377e2$ | 0.999687 | $9.383795e-1$ | $9.380863e-1$ | 1.00031
+problem_slove1.md,304,9.380863e-1,0.9380863,REGISTRY,E54_M800_g_us,4.157e-09,| 800 | $-5.401688e2$ | $-5.403377e2$ | 0.999687 | $9.383795e-1$ | $9.380863e-1$ | 1.00031
+problem_slove1.md,304,1.000313,1.000313,REGISTRY,E55_M800_g_ratio,4.019e-07,| 800 | $-5.401688e2$ | $-5.403377e2$ | 0.999687 | $9.383795e-1$ | $9.380863e-1$ | 1.00031
+problem_slove1.md,305,3200,3200.0,ALLOW,网格: 生产设置 M=3200,0.0,| 3200 | $-8.644728e3$ | $-8.645403e3$ | 0.999922 | $3.752638$ | $3.752345$ | 1.000078 |
+problem_slove1.md,305,-8.644728e3,-8644.728,REGISTRY,E50_M3200_a_ex,1.134e-08,| 3200 | $-8.644728e3$ | $-8.645403e3$ | 0.999922 | $3.752638$ | $3.752345$ | 1.000078 |
+problem_slove1.md,305,-8.645403e3,-8645.403,REGISTRY,E51_M3200_a_us,4.361e-08,| 3200 | $-8.644728e3$ | $-8.645403e3$ | 0.999922 | $3.752638$ | $3.752345$ | 1.000078 |
+problem_slove1.md,305,0.999922,0.999922,REGISTRY,E52_M3200_a_ratio,1.311e-07,| 3200 | $-8.644728e3$ | $-8.645403e3$ | 0.999922 | $3.752638$ | $3.752345$ | 1.000078 |
+problem_slove1.md,305,3.752638,3.752638,REGISTRY,E53_M3200_g_ex,1.042e-07,| 3200 | $-8.644728e3$ | $-8.645403e3$ | 0.999922 | $3.752638$ | $3.752345$ | 1.000078 |
+problem_slove1.md,305,3.752345,3.752345,REGISTRY,E54_M3200_g_us,5.756e-08,| 3200 | $-8.644728e3$ | $-8.645403e3$ | 0.999922 | $3.752638$ | $3.752345$ | 1.000078 |
+problem_slove1.md,305,1.000078,1.000078,REGISTRY,E55_M3200_g_ratio,1.310e-07,| 3200 | $-8.644728e3$ | $-8.645403e3$ | 0.999922 | $3.752638$ | $3.752345$ | 1.000078 |
+problem_slove1.md,307,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：`outputs/q1_energy_check.log`；精确系数 $a_M^{\text{exact}}=-\alpha A/(\Delta rV_M)$，
+problem_slove1.md,308,4,4.0,ALLOW,结构/常数,0.0,$V_M=\pi\Delta r(R-\Delta r/4)\to\pi R\Delta r$ 为**半环**体积，故 $f_M^-\to2/\Delta r$、
+problem_slove1.md,308,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$V_M=\pi\Delta r(R-\Delta r/4)\to\pi R\Delta r$ 为**半环**体积，故 $f_M^-\to2/\Delta r$、
+problem_slove1.md,309,-2,-2.0,REGISTRY,S01,0.000e+00,$a_M\to-2\alpha/\Delta r$。）
+problem_slove1.md,311,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,即：**用户写法就是精确半控制体系数的首项**，相对偏差恰为 $1/(4M)$
+problem_slove1.md,311,4,4.0,ALLOW,结构/常数,0.0,即：**用户写法就是精确半控制体系数的首项**，相对偏差恰为 $1/(4M)$
+problem_slove1.md,312,800,800.0,ALLOW,网格/常数,0.0,"（$M=800$ 时 $3.13e-4$）。先前的""偏大 2 倍""结论源于把 $V_M$ 的极限误取为整环"
+problem_slove1.md,312,3.13e-4,0.000313,REGISTRY,X20,3.130e-07,"（$M=800$ 时 $3.13e-4$）。先前的""偏大 2 倍""结论源于把 $V_M$ 的极限误取为整环"
+problem_slove1.md,312,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"（$M=800$ 时 $3.13e-4$）。先前的""偏大 2 倍""结论源于把 $V_M$ 的极限误取为整环"
+problem_slove1.md,313,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$2\pi R\Delta r$ 而非半环 $\pi R\Delta r$。
+problem_slove1.md,317,50,50.0,ALLOW,解析解校核用的常 T_inf = 50 degC,0.0,虽然首项相同，两种取法在**误差常数与收敛阶**上有实质差别。在常 $T_\infty=50 ^\circ\mathrm{C}$
+problem_slove1.md,322,400,400.0,ALLOW,网格/常数,0.0,| 400 | 0.02 | $1.028e-4$ | $8.067e-2$ | 785 |
+problem_slove1.md,322,0.02,0.02,ALLOW,LTE 判据阈值 / 长度换算,0.0,| 400 | 0.02 | $1.028e-4$ | $8.067e-2$ | 785 |
+problem_slove1.md,322,1.028e-4,0.0001028,REGISTRY,X20,1.028e-07,| 400 | 0.02 | $1.028e-4$ | $8.067e-2$ | 785 |
+problem_slove1.md,322,8.067e-2,0.08067,REGISTRY,E31_M400_dt0.02_cell,1.823e-05,| 400 | 0.02 | $1.028e-4$ | $8.067e-2$ | 785 |
+problem_slove1.md,322,785,785.0,REGISTRY,E32_M400_dt0.02_ratio,6.621e-05,| 400 | 0.02 | $1.028e-4$ | $8.067e-2$ | 785 |
+problem_slove1.md,323,400,400.0,ALLOW,网格/常数,0.0,| 400 | 0.0005 | $1.085e-5$ | $8.075e-2$ | 7442 |
+problem_slove1.md,323,0.0005,0.0005,REGISTRY,X20,5.000e-07,| 400 | 0.0005 | $1.085e-5$ | $8.075e-2$ | 7442 |
+problem_slove1.md,323,1.085e-5,1.085e-05,REGISTRY,X20,1.085e-08,| 400 | 0.0005 | $1.085e-5$ | $8.075e-2$ | 7442 |
+problem_slove1.md,323,8.075e-2,0.08075,REGISTRY,E31_M400_dt0.002_cell,1.807e-05,| 400 | 0.0005 | $1.085e-5$ | $8.075e-2$ | 7442 |
+problem_slove1.md,323,7442,7442.0,REGISTRY,E32_M400_dt0.0005_ratio,5.677e-05,| 400 | 0.0005 | $1.085e-5$ | $8.075e-2$ | 7442 |
+problem_slove1.md,324,800,800.0,ALLOW,网格/常数,0.0,| 800 | 0.02 | $9.639e-5$ | $4.029e-2$ | 418 |
+problem_slove1.md,324,0.02,0.02,ALLOW,LTE 判据阈值 / 长度换算,0.0,| 800 | 0.02 | $9.639e-5$ | $4.029e-2$ | 418 |
+problem_slove1.md,324,9.639e-5,9.639e-05,REGISTRY,X20,9.639e-08,| 800 | 0.02 | $9.639e-5$ | $4.029e-2$ | 418 |
+problem_slove1.md,324,4.029e-2,0.04029,REGISTRY,X20,4.029e-05,| 800 | 0.02 | $9.639e-5$ | $4.029e-2$ | 418 |
+problem_slove1.md,324,418,418.0,REGISTRY,E32_M800_dt0.02_ratio,1.219e-04,| 800 | 0.02 | $9.639e-5$ | $4.029e-2$ | 418 |
+problem_slove1.md,325,800,800.0,ALLOW,网格/常数,0.0,| 800 | 0.0005 | $4.477e-6$ | $4.038e-2$ | 9018 |
+problem_slove1.md,325,0.0005,0.0005,REGISTRY,X20,5.000e-07,| 800 | 0.0005 | $4.477e-6$ | $4.038e-2$ | 9018 |
+problem_slove1.md,325,4.477e-6,4.477e-06,REGISTRY,X20,4.477e-09,| 800 | 0.0005 | $4.477e-6$ | $4.038e-2$ | 9018 |
+problem_slove1.md,325,4.038e-2,0.04038,REGISTRY,X20,4.038e-05,| 800 | 0.0005 | $4.477e-6$ | $4.038e-2$ | 9018 |
+problem_slove1.md,325,9018,9018.0,REGISTRY,E32_M800_dt0.0005_ratio,4.678e-05,| 800 | 0.0005 | $4.477e-6$ | $4.038e-2$ | 9018 |
+problem_slove1.md,326,1600,1600.0,ALLOW,网格/常数,0.0,| 1600 | 0.0005 | $2.886e-6$ | $2.019e-2$ | 6996 |
+problem_slove1.md,326,0.0005,0.0005,REGISTRY,X20,5.000e-07,| 1600 | 0.0005 | $2.886e-6$ | $2.019e-2$ | 6996 |
+problem_slove1.md,326,2.886e-6,2.886e-06,REGISTRY,X20,2.886e-09,| 1600 | 0.0005 | $2.886e-6$ | $2.019e-2$ | 6996 |
+problem_slove1.md,326,2.019e-2,0.02019,REGISTRY,X20,2.019e-05,| 1600 | 0.0005 | $2.886e-6$ | $2.019e-2$ | 6996 |
+problem_slove1.md,326,6996,6996.0,REGISTRY,E32_M1600_dt0.0005_ratio,1.875e-05,| 1600 | 0.0005 | $2.886e-6$ | $2.019e-2$ | 6996 |
+problem_slove1.md,328,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：`outputs/q1_energy_check.log` §E4）
+problem_slove1.md,331,8.067e-2,0.08067,REGISTRY,E31_M400_dt0.02_cell,1.823e-05,（$8.067e-2\to4.029e-2\to2.019e-2 \mathrm{K}$，
+problem_slove1.md,331,4.029e-2,0.04029,REGISTRY,X20,4.029e-05,（$8.067e-2\to4.029e-2\to2.019e-2 \mathrm{K}$，
+problem_slove1.md,331,2.019e-2,0.02019,REGISTRY,X20,2.019e-05,（$8.067e-2\to4.029e-2\to2.019e-2 \mathrm{K}$，
+problem_slove1.md,337,800,800.0,ALLOW,网格/常数,0.0,- 用户写法在 $M=800$ 时误差 $4.0e-2 \mathrm{K}$，**比四位小数的报告阈值
+problem_slove1.md,337,4.0e-2,0.04,REGISTRY,P12,0.000e+00,- 用户写法在 $M=800$ 时误差 $4.0e-2 \mathrm{K}$，**比四位小数的报告阈值
+problem_slove1.md,338,5e-5,5e-05,ALLOW,四位小数的半 ulp,0.0,（$5e-5$）大 3 个数量级**；即使加密到 $M=3200$，仍残留约 $0.01 \mathrm{K}$；
+problem_slove1.md,338,3,3.0,ALLOW,3 小时,0.0,（$5e-5$）大 3 个数量级**；即使加密到 $M=3200$，仍残留约 $0.01 \mathrm{K}$；
+problem_slove1.md,338,3200,3200.0,ALLOW,网格: 生产设置 M=3200,0.0,（$5e-5$）大 3 个数量级**；即使加密到 $M=3200$，仍残留约 $0.01 \mathrm{K}$；
+problem_slove1.md,338,0.01,0.01,ALLOW,百分比换算,0.0,（$5e-5$）大 3 个数量级**；即使加密到 $M=3200$，仍残留约 $0.01 \mathrm{K}$；
+problem_slove1.md,339,4.5e-6,4.5e-06,REGISTRY,X20,4.500e-09,- 本文取法在同网格为 $4.5e-6 \mathrm{K}$。
+problem_slove1.md,350,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,附件 1 的水分浓度序列含噪声（240 步中 80 步下降，单步最大降幅
+problem_slove1.md,350,240,240.0,ALLOW,附件1 步数,0.0,附件 1 的水分浓度序列含噪声（240 步中 80 步下降，单步最大降幅
+problem_slove1.md,350,80,80.0,REGISTRY,P16,0.000e+00,附件 1 的水分浓度序列含噪声（240 步中 80 步下降，单步最大降幅
+problem_slove1.md,351,4.4e-4,0.00044,REGISTRY,P17,0.000e+00,$4.4e-4 \mathrm{kg/kg}$）。在问题一使用的 $0\sim1800 \mathrm{s}$ 区间内，
+problem_slove1.md,351,0,0.0,ALLOW,零,0.0,$4.4e-4 \mathrm{kg/kg}$）。在问题一使用的 $0\sim1800 \mathrm{s}$ 区间内，
+problem_slove1.md,351,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,$4.4e-4 \mathrm{kg/kg}$）。在问题一使用的 $0\sim1800 \mathrm{s}$ 区间内，
+problem_slove1.md,352,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,该序列单调递增。三种插值方法在 $t=1800 \mathrm{s}$ 第 5 个输出点上的差异：
+problem_slove1.md,352,5,5.0,ALLOW,结构/常数,0.0,该序列单调递增。三种插值方法在 $t=1800 \mathrm{s}$ 第 5 个输出点上的差异：
+problem_slove1.md,356,4.84e-4,0.000484,REGISTRY,X20,4.840e-07,| 线性 vs PCHIP | $4.84e-4$ | $1.17e-7$ |
+problem_slove1.md,356,1.17e-7,1.17e-07,REGISTRY,X20,1.170e-10,| 线性 vs PCHIP | $4.84e-4$ | $1.17e-7$ |
+problem_slove1.md,357,3.31e-4,0.000331,REGISTRY,X20,3.310e-07,| 三次样条 vs PCHIP | $3.31e-4$ | $2.51e-7$ |
+problem_slove1.md,357,2.51e-7,2.51e-07,REGISTRY,X20,2.510e-10,| 三次样条 vs PCHIP | $3.31e-4$ | $2.51e-7$ |
+problem_slove1.md,359,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：`outputs/q1_run.log` §S7）
+problem_slove1.md,361,4.8e-4,0.00048,REGISTRY,X20,4.800e-07,**结论**：温度差异 $4.8e-4 \mathrm{K}$ 出现在四位小数的末位上，水分差异
+problem_slove1.md,370,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| 时间步减半（$\Delta t\to\Delta t/2$） | $3.742e-6$ | $8.029e-6$ |
+problem_slove1.md,370,3.742e-6,3.742e-06,REGISTRY,X30,0.000e+00,| 时间步减半（$\Delta t\to\Delta t/2$） | $3.742e-6$ | $8.029e-6$ |
+problem_slove1.md,370,8.029e-6,8.029e-06,REGISTRY,X32,0.000e+00,| 时间步减半（$\Delta t\to\Delta t/2$） | $3.742e-6$ | $8.029e-6$ |
+problem_slove1.md,371,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| 网格加密（$M\to2M$） | $6.115e-8$ | $1.171e-5$ |
+problem_slove1.md,371,6.115e-8,6.115e-08,REGISTRY,X31,0.000e+00,| 网格加密（$M\to2M$） | $6.115e-8$ | $1.171e-5$ |
+problem_slove1.md,371,1.171e-5,1.171e-05,REGISTRY,X33,0.000e+00,| 网格加密（$M\to2M$） | $6.115e-8$ | $1.171e-5$ |
+problem_slove1.md,377,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| 1 – 9 s | $1.54e-8$ | $1.171e-5$ |
+problem_slove1.md,377,9,9.0,ALLOW,结构,0.0,| 1 – 9 s | $1.54e-8$ | $1.171e-5$ |
+problem_slove1.md,377,1.54e-8,1.54e-08,REGISTRY,X20,1.540e-11,| 1 – 9 s | $1.54e-8$ | $1.171e-5$ |
+problem_slove1.md,377,1.171e-5,1.171e-05,REGISTRY,X33,0.000e+00,| 1 – 9 s | $1.54e-8$ | $1.171e-5$ |
+problem_slove1.md,378,10,10.0,ALLOW,结构/常数,0.0,| 10 – 99 s | $4.75e-8$ | $3.449e-6$ |
+problem_slove1.md,378,99,99.0,REGISTRY,OAT_C0_C体积,1.404e-03,| 10 – 99 s | $4.75e-8$ | $3.449e-6$ |
+problem_slove1.md,378,4.75e-8,4.75e-08,REGISTRY,X20,4.750e-11,| 10 – 99 s | $4.75e-8$ | $3.449e-6$ |
+problem_slove1.md,378,3.449e-6,3.449e-06,REGISTRY,X20,3.449e-09,| 10 – 99 s | $4.75e-8$ | $3.449e-6$ |
+problem_slove1.md,379,100,100.0,ALLOW,题面表1/2 时间点,0.0,| 100 – 599 s | $6.12e-8$ | $8.71e-7$ |
+problem_slove1.md,379,599,599.0,REGISTRY,S03,1.667e-03,| 100 – 599 s | $6.12e-8$ | $8.71e-7$ |
+problem_slove1.md,379,6.12e-8,6.12e-08,REGISTRY,X20,6.120e-11,| 100 – 599 s | $6.12e-8$ | $8.71e-7$ |
+problem_slove1.md,379,8.71e-7,8.71e-07,REGISTRY,X20,8.710e-10,| 100 – 599 s | $6.12e-8$ | $8.71e-7$ |
+problem_slove1.md,380,600,600.0,ALLOW,题面表1/2 时间点,0.0,| 600 – 1800 s | $4.97e-8$ | $2.35e-7$ |
+problem_slove1.md,380,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,| 600 – 1800 s | $4.97e-8$ | $2.35e-7$ |
+problem_slove1.md,380,4.97e-8,4.97e-08,REGISTRY,X20,4.970e-11,| 600 – 1800 s | $4.97e-8$ | $2.35e-7$ |
+problem_slove1.md,380,2.35e-7,2.35e-07,REGISTRY,X20,2.350e-10,| 600 – 1800 s | $4.97e-8$ | $2.35e-7$ |
+problem_slove1.md,382,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：`outputs/q1_production.log`）
+problem_slove1.md,384,10,10.0,ALLOW,结构/常数,0.0,**结论**：水分浓度的离散误差集中在最初的 10 s 内（表面浓度快速下降的启动瞬态），
+problem_slove1.md,385,1.2e-5,1.2e-05,REGISTRY,X20,1.200e-08,最大 $1.2e-5 \mathrm{kg/kg}$；温度误差 $<4e-6 \mathrm{K}$。
+problem_slove1.md,385,4e-6,4e-06,REGISTRY,X20,4.000e-09,最大 $1.2e-5 \mathrm{kg/kg}$；温度误差 $<4e-6 \mathrm{K}$。
+problem_slove1.md,386,5e-5,5e-05,ALLOW,四位小数的半 ulp,0.0,两者均显著低于四位小数所需的分辨率（$5e-5$），因此
+problem_slove1.md,387,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,**表 1、表 2 与 `result1.xlsx` 按四位小数报告是安全的**。
+problem_slove1.md,387,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,**表 1、表 2 与 `result1.xlsx` 按四位小数报告是安全的**。
+problem_slove1.md,387,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,**表 1、表 2 与 `result1.xlsx` 按四位小数报告是安全的**。
+problem_slove1.md,389,800,800.0,ALLOW,网格/常数,0.0,> 说明：在更粗的网格（$M=800$）上，$t=1 \mathrm{s}$ 的表面水分浓度误差可达
+problem_slove1.md,389,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 说明：在更粗的网格（$M=800$）上，$t=1 \mathrm{s}$ 的表面水分浓度误差可达
+problem_slove1.md,390,2.4e-4,0.00024,REGISTRY,X20,2.400e-07,> $2.4e-4 \mathrm{kg/kg}$，会影响到第四位小数——这正是本文把生产网格
+problem_slove1.md,391,3200,3200.0,ALLOW,网格: 生产设置 M=3200,0.0,> 提高到 $M=3200$ 的原因。
+problem_slove1.md,397,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,### 7.1 表 1 预热平衡阶段药材温度（单位：$^\circ\mathrm{C}$）
+problem_slove1.md,399,0,0.0,ALLOW,零,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+problem_slove1.md,399,0.5,0.5,ALLOW,题面: 半径网格 / 通用,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+problem_slove1.md,399,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+problem_slove1.md,399,1.5,1.5,ALLOW,题面: 半径网格,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+problem_slove1.md,399,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+problem_slove1.md,401,100,100.0,ALLOW,题面表1/2 时间点,0.0,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+problem_slove1.md,401,28.0000,28.0,ALLOW,题面: 初始温度 28 degC,0.0,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+problem_slove1.md,401,28.0003,28.0003,REGISTRY,T1_100_0p5,0.000e+00,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+problem_slove1.md,401,28.0039,28.0039,REGISTRY,T1_100_1p0,0.000e+00,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+problem_slove1.md,401,28.0319,28.0319,REGISTRY,T1_100_1p5,0.000e+00,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+problem_slove1.md,401,28.1795,28.1795,REGISTRY,T1_100_2p0,0.000e+00,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+problem_slove1.md,402,300,300.0,ALLOW,题面表1/2 时间点,0.0,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+problem_slove1.md,402,28.0406,28.0406,REGISTRY,T1_300_0p0,0.000e+00,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+problem_slove1.md,402,28.0634,28.0634,REGISTRY,T1_300_0p5,0.000e+00,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+problem_slove1.md,402,28.1513,28.1513,REGISTRY,T1_300_1p0,0.000e+00,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+problem_slove1.md,402,28.3673,28.3673,REGISTRY,T1_300_1p5,0.000e+00,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+problem_slove1.md,402,28.8486,28.8486,REGISTRY,T1_300_2p0,0.000e+00,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+problem_slove1.md,403,600,600.0,ALLOW,题面表1/2 时间点,0.0,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+problem_slove1.md,403,28.4534,28.4534,REGISTRY,T1_600_0p0,0.000e+00,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+problem_slove1.md,403,28.5361,28.5361,REGISTRY,T1_600_0p5,0.000e+00,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+problem_slove1.md,403,28.8039,28.8039,REGISTRY,T1_600_1p0,0.000e+00,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+problem_slove1.md,403,29.3156,29.3156,REGISTRY,T1_600_1p5,0.000e+00,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+problem_slove1.md,403,30.1641,30.1641,REGISTRY,T1_600_2p0,0.000e+00,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+problem_slove1.md,404,900,900.0,ALLOW,题面表1/2 时间点,0.0,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+problem_slove1.md,404,29.3243,29.3243,REGISTRY,T1_900_0p0,0.000e+00,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+problem_slove1.md,404,29.4583,29.4583,REGISTRY,T1_900_0p5,0.000e+00,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+problem_slove1.md,404,29.8758,29.8758,REGISTRY,T1_900_1p0,0.000e+00,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+problem_slove1.md,404,30.6164,30.6164,REGISTRY,T1_900_1p5,0.000e+00,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+problem_slove1.md,404,31.7295,31.7295,REGISTRY,T1_900_2p0,0.000e+00,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+problem_slove1.md,405,1200,1200.0,ALLOW,题面表1/2 时间点,0.0,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+problem_slove1.md,405,30.5429,30.5429,REGISTRY,T1_1200_0p0,0.000e+00,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+problem_slove1.md,405,30.7099,30.7099,REGISTRY,T1_1200_0p5,0.000e+00,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+problem_slove1.md,405,31.2225,31.2225,REGISTRY,T1_1200_1p0,0.000e+00,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+problem_slove1.md,405,32.1130,32.113,REGISTRY,T1_1200_1p5,0.000e+00,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+problem_slove1.md,405,33.4295,33.4295,REGISTRY,T1_1200_2p0,0.000e+00,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+problem_slove1.md,406,1500,1500.0,ALLOW,题面表1/2 时间点,0.0,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+problem_slove1.md,406,31.9960,31.996,REGISTRY,T1_1500_0p0,0.000e+00,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+problem_slove1.md,406,32.1871,32.1871,REGISTRY,T1_1500_0p5,0.000e+00,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+problem_slove1.md,406,32.7667,32.7667,REGISTRY,T1_1500_1p0,0.000e+00,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+problem_slove1.md,406,33.7476,33.7476,REGISTRY,T1_1500_1p5,0.000e+00,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+problem_slove1.md,406,35.1211,35.1211,REGISTRY,T1_1500_2p0,0.000e+00,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+problem_slove1.md,407,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+problem_slove1.md,407,33.5758,33.5758,REGISTRY,T1_1800_0p0,0.000e+00,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+problem_slove1.md,407,33.7724,33.7724,REGISTRY,T1_1800_0p5,0.000e+00,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+problem_slove1.md,407,34.3642,34.3642,REGISTRY,T1_1800_1p0,0.000e+00,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+problem_slove1.md,407,35.3622,35.3622,REGISTRY,T1_1800_1p5,0.000e+00,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+problem_slove1.md,407,36.7858,36.7858,REGISTRY,T1_1800_2p0,0.000e+00,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+problem_slove1.md,409,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（列首为到药材中心的距离，单位 cm。源：`outputs/q1_production.log`）
+problem_slove1.md,411,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,### 7.2 表 2 预热平衡阶段药材水分浓度（单位：$\mathrm{kg/kg}$）
+problem_slove1.md,413,0,0.0,ALLOW,零,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+problem_slove1.md,413,0.5,0.5,ALLOW,题面: 半径网格 / 通用,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+problem_slove1.md,413,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+problem_slove1.md,413,1.5,1.5,ALLOW,题面: 半径网格,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+problem_slove1.md,413,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+problem_slove1.md,415,100,100.0,ALLOW,题面表1/2 时间点,0.0,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+problem_slove1.md,415,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+problem_slove1.md,415,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+problem_slove1.md,415,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+problem_slove1.md,415,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+problem_slove1.md,415,2.2470,2.247,REGISTRY,C2_100_2p0,0.000e+00,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+problem_slove1.md,416,300,300.0,ALLOW,题面表1/2 时间点,0.0,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+problem_slove1.md,416,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+problem_slove1.md,416,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+problem_slove1.md,416,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+problem_slove1.md,416,2.5492,2.5492,REGISTRY,C2_300_1p5,0.000e+00,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+problem_slove1.md,416,2.0508,2.0508,REGISTRY,C2_300_2p0,0.000e+00,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+problem_slove1.md,417,600,600.0,ALLOW,题面表1/2 时间点,0.0,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+problem_slove1.md,417,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+problem_slove1.md,417,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+problem_slove1.md,417,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+problem_slove1.md,417,2.5353,2.5353,REGISTRY,C2_600_1p5,0.000e+00,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+problem_slove1.md,417,1.8770,1.877,REGISTRY,C2_600_2p0,0.000e+00,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+problem_slove1.md,418,900,900.0,ALLOW,题面表1/2 时间点,0.0,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+problem_slove1.md,418,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+problem_slove1.md,418,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+problem_slove1.md,418,2.5497,2.5497,REGISTRY,C2_900_1p0,0.000e+00,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+problem_slove1.md,418,2.5045,2.5045,REGISTRY,C2_900_1p5,0.000e+00,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+problem_slove1.md,418,1.7547,1.7547,REGISTRY,C2_900_2p0,0.000e+00,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+problem_slove1.md,419,1200,1200.0,ALLOW,题面表1/2 时间点,0.0,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+problem_slove1.md,419,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+problem_slove1.md,419,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+problem_slove1.md,419,2.5482,2.5482,REGISTRY,C2_1200_1p0,0.000e+00,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+problem_slove1.md,419,2.4646,2.4646,REGISTRY,C2_1200_1p5,0.000e+00,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+problem_slove1.md,419,1.6586,1.6586,REGISTRY,C2_1200_2p0,0.000e+00,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+problem_slove1.md,420,1500,1500.0,ALLOW,题面表1/2 时间点,0.0,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+problem_slove1.md,420,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+problem_slove1.md,420,2.5499,2.5499,REGISTRY,C2_1500_0p5,0.000e+00,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+problem_slove1.md,420,2.5445,2.5445,REGISTRY,C2_1500_1p0,0.000e+00,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+problem_slove1.md,420,2.4206,2.4206,REGISTRY,C2_1500_1p5,0.000e+00,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+problem_slove1.md,420,1.5787,1.5787,REGISTRY,C2_1500_2p0,0.000e+00,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+problem_slove1.md,421,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+problem_slove1.md,421,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+problem_slove1.md,421,2.5497,2.5497,REGISTRY,C2_900_1p0,0.000e+00,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+problem_slove1.md,421,2.5383,2.5383,REGISTRY,C2_1800_1p0,0.000e+00,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+problem_slove1.md,421,2.3755,2.3755,REGISTRY,C2_1800_1p5,0.000e+00,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+problem_slove1.md,421,1.5102,1.5102,REGISTRY,C2_1800_2p0,0.000e+00,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+problem_slove1.md,423,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：`outputs/q1_production.log`）
+problem_slove1.md,425,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,对应的 Markdown 版本另存为 `outputs/table1_temperature.md`、
+problem_slove1.md,426,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,`outputs/table2_moisture.md`。
+problem_slove1.md,428,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,### 7.3 `result1.xlsx`
+problem_slove1.md,430,3,3.0,ALLOW,3 小时,0.0,按附件 3 模板格式生成 `outputs/result1.xlsx`：
+problem_slove1.md,430,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,按附件 3 模板格式生成 `outputs/result1.xlsx`：
+problem_slove1.md,432,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,"- 工作表 **`温度`**：$1800x21$，A 列为时间（$1,2,\dots,1800 \mathrm{s}$），"
+problem_slove1.md,432,21,21.0,ALLOW,结构: 表格列数,0.0,"- 工作表 **`温度`**：$1800x21$，A 列为时间（$1,2,\dots,1800 \mathrm{s}$），"
+problem_slove1.md,432,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"- 工作表 **`温度`**：$1800x21$，A 列为时间（$1,2,\dots,1800 \mathrm{s}$），"
+problem_slove1.md,432,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"- 工作表 **`温度`**：$1800x21$，A 列为时间（$1,2,\dots,1800 \mathrm{s}$），"
+problem_slove1.md,432,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,"- 工作表 **`温度`**：$1800x21$，A 列为时间（$1,2,\dots,1800 \mathrm{s}$），"
+problem_slove1.md,433,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"第 1 行为到中心距离（$0,0.1,\dots,2.0 \mathrm{cm}$），时间 $t$ 位于第 $t+1$ 行；"
+problem_slove1.md,433,0,0.0,ALLOW,零,0.0,"第 1 行为到中心距离（$0,0.1,\dots,2.0 \mathrm{cm}$），时间 $t$ 位于第 $t+1$ 行；"
+problem_slove1.md,433,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,"第 1 行为到中心距离（$0,0.1,\dots,2.0 \mathrm{cm}$），时间 $t$ 位于第 $t+1$ 行；"
+problem_slove1.md,433,2.0,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"第 1 行为到中心距离（$0,0.1,\dots,2.0 \mathrm{cm}$），时间 $t$ 位于第 $t+1$ 行；"
+problem_slove1.md,433,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"第 1 行为到中心距离（$0,0.1,\dots,2.0 \mathrm{cm}$），时间 $t$ 位于第 $t+1$ 行；"
+problem_slove1.md,435,4,4.0,ALLOW,结构/常数,0.0,- 全部数值保留 4 位小数。
+problem_slove1.md,443,30,30.0,ALLOW,题面: 30 分钟,0.0,30 min 内药材中心仅升温至 $33.58 ^\circ\mathrm{C}$，表面升至 $36.79 ^\circ\mathrm{C}$，
+problem_slove1.md,443,33.58,33.58,REGISTRY,R_T_1800,1.191e-04,30 min 内药材中心仅升温至 $33.58 ^\circ\mathrm{C}$，表面升至 $36.79 ^\circ\mathrm{C}$，
+problem_slove1.md,443,36.79,36.79,REGISTRY,R_T_1800,1.115e-04,30 min 内药材中心仅升温至 $33.58 ^\circ\mathrm{C}$，表面升至 $36.79 ^\circ\mathrm{C}$，
+problem_slove1.md,444,41.51,41.51,REGISTRY,X21,1.799e-02,而烘房已升至 $41.51 ^\circ\mathrm{C}$。中心与表面的温差从 0 增至
+problem_slove1.md,444,0,0.0,ALLOW,零,0.0,而烘房已升至 $41.51 ^\circ\mathrm{C}$。中心与表面的温差从 0 增至
+problem_slove1.md,445,3.21,3.21,REGISTRY,X12,0.000e+00,$3.21 ^\circ\mathrm{C}$，说明 $\mathrm{Bi}=1.389>0.1$ 的分布参数特征确实显著，
+problem_slove1.md,445,1.389,1.389,REGISTRY,P07,8.000e-05,$3.21 ^\circ\mathrm{C}$，说明 $\mathrm{Bi}=1.389>0.1$ 的分布参数特征确实显著，
+problem_slove1.md,445,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,$3.21 ^\circ\mathrm{C}$，说明 $\mathrm{Bi}=1.389>0.1$ 的分布参数特征确实显著，
+problem_slove1.md,448,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,表面温度始终明显滞后于 $T_\infty$：$t=1800 \mathrm{s}$ 时表面与烘房温差仍达
+problem_slove1.md,449,4.72,4.72,REGISTRY,S14_dt4.0,1.483e-03,$4.72 ^\circ\mathrm{C}$。这与导热特征时间 $R/\alpha=2368.9 \mathrm{s}$
+problem_slove1.md,449,2368.9,2368.9,REGISTRY,P09,4.690e-06,$4.72 ^\circ\mathrm{C}$。这与导热特征时间 $R/\alpha=2368.9 \mathrm{s}$
+problem_slove1.md,450,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,大于 1800 s 一致——**预热平衡阶段结束时热平衡尚未完成**。
+problem_slove1.md,454,0,0.0,ALLOW,零,0.0,| 时刻/s | $C(r=0)$ | $C(r=R)$ | 体积平均 $\langle C\rangle$ | $C(R)/C_\infty$ |
+problem_slove1.md,456,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| 1 | 2.550000 | 2.519955 | 2.549725 | 128.3 |
+problem_slove1.md,456,2.550000,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 1 | 2.550000 | 2.519955 | 2.549725 | 128.3 |
+problem_slove1.md,456,2.519955,2.519955,REGISTRY,S23s_1,1.730e-07,| 1 | 2.550000 | 2.519955 | 2.549725 | 128.3 |
+problem_slove1.md,456,2.549725,2.549725,REGISTRY,S23_1,6.707e-08,| 1 | 2.550000 | 2.519955 | 2.549725 | 128.3 |
+problem_slove1.md,456,128.3,128.3,REGISTRY,S23r_1,2.847e-04,| 1 | 2.550000 | 2.519955 | 2.549725 | 128.3 |
+problem_slove1.md,457,10,10.0,ALLOW,结构/常数,0.0,| 10 | 2.550000 | 2.450129 | 2.547785 | 124.4 |
+problem_slove1.md,457,2.550000,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 10 | 2.550000 | 2.450129 | 2.547785 | 124.4 |
+problem_slove1.md,457,2.450129,2.450129,REGISTRY,S23s_10,9.183e-08,| 10 | 2.550000 | 2.450129 | 2.547785 | 124.4 |
+problem_slove1.md,457,2.547785,2.547785,REGISTRY,S23_10,1.283e-07,| 10 | 2.550000 | 2.450129 | 2.547785 | 124.4 |
+problem_slove1.md,457,124.4,124.4,REGISTRY,S23r_10,4.428e-04,| 10 | 2.550000 | 2.450129 | 2.547785 | 124.4 |
+problem_slove1.md,458,60,60.0,ALLOW,附件1 采样间隔 60 s,0.0,| 60 | 2.550000 | 2.311874 | 2.538062 | 115.5 |
+problem_slove1.md,458,2.550000,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 60 | 2.550000 | 2.311874 | 2.538062 | 115.5 |
+problem_slove1.md,458,2.311874,2.311874,REGISTRY,S23s_60,6.531e-08,| 60 | 2.550000 | 2.311874 | 2.538062 | 115.5 |
+problem_slove1.md,458,2.538062,2.538062,REGISTRY,S23_60,1.954e-07,| 60 | 2.550000 | 2.311874 | 2.538062 | 115.5 |
+problem_slove1.md,458,115.5,115.5,REGISTRY,S23r_60,1.887e-04,| 60 | 2.550000 | 2.311874 | 2.538062 | 115.5 |
+problem_slove1.md,459,300,300.0,ALLOW,题面表1/2 时间点,0.0,| 300 | 2.550000 | 2.050935 | 2.496412 | 93.6 |
+problem_slove1.md,459,2.550000,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 300 | 2.550000 | 2.050935 | 2.496412 | 93.6 |
+problem_slove1.md,459,2.050935,2.050935,REGISTRY,S23s_300,1.643e-07,| 300 | 2.550000 | 2.050935 | 2.496412 | 93.6 |
+problem_slove1.md,459,2.496412,2.496412,REGISTRY,S23_300,1.803e-08,| 300 | 2.550000 | 2.050935 | 2.496412 | 93.6 |
+problem_slove1.md,459,93.6,93.6,REGISTRY,S23r_300,7.769e-05,| 300 | 2.550000 | 2.050935 | 2.496412 | 93.6 |
+problem_slove1.md,460,900,900.0,ALLOW,题面表1/2 时间点,0.0,| 900 | 2.550000 | 1.754764 | 2.406565 | 66.0 |
+problem_slove1.md,460,2.550000,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 900 | 2.550000 | 1.754764 | 2.406565 | 66.0 |
+problem_slove1.md,460,1.754764,1.754764,REGISTRY,S23s_900,1.698e-07,| 900 | 2.550000 | 1.754764 | 2.406565 | 66.0 |
+problem_slove1.md,460,2.406565,2.406565,REGISTRY,S23_900,2.044e-07,| 900 | 2.550000 | 1.754764 | 2.406565 | 66.0 |
+problem_slove1.md,460,66.0,66.0,ALLOW,量级,0.0,| 900 | 2.550000 | 1.754764 | 2.406565 | 66.0 |
+problem_slove1.md,461,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,| 1800 | 2.549992 | 1.510266 | 2.291602 | 45.7 |
+problem_slove1.md,461,2.549992,2.549992,REGISTRY,E44_dt0.1,1.157e-07,| 1800 | 2.549992 | 1.510266 | 2.291602 | 45.7 |
+problem_slove1.md,461,1.510266,1.510266,REGISTRY,S23s_1800,2.265e-07,| 1800 | 2.549992 | 1.510266 | 2.291602 | 45.7 |
+problem_slove1.md,461,2.291602,2.291602,REGISTRY,S23_1800,3.098e-08,| 1800 | 2.549992 | 1.510266 | 2.291602 | 45.7 |
+problem_slove1.md,461,45.7,45.7,REGISTRY,S23r_1800,6.842e-04,| 1800 | 2.549992 | 1.510266 | 2.291602 | 45.7 |
+problem_slove1.md,463,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（源：`outputs/q1_run.log` §S9，$M=400$）
+problem_slove1.md,463,400,400.0,ALLOW,网格/常数,0.0,（源：`outputs/q1_run.log` §S9，$M=400$）
+problem_slove1.md,467,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,1. **中心含水率在 30 min 内完全不变**：$C(r=0)$ 从 2.550000 降到 2.549992，
+problem_slove1.md,467,30,30.0,ALLOW,题面: 30 分钟,0.0,1. **中心含水率在 30 min 内完全不变**：$C(r=0)$ 从 2.550000 降到 2.549992，
+problem_slove1.md,467,0,0.0,ALLOW,零,0.0,1. **中心含水率在 30 min 内完全不变**：$C(r=0)$ 从 2.550000 降到 2.549992，
+problem_slove1.md,467,2.550000,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,1. **中心含水率在 30 min 内完全不变**：$C(r=0)$ 从 2.550000 降到 2.549992，
+problem_slove1.md,467,2.549992,2.549992,REGISTRY,E44_dt0.1,1.157e-07,1. **中心含水率在 30 min 内完全不变**：$C(r=0)$ 从 2.550000 降到 2.549992，
+problem_slove1.md,468,3.01e-6,3.01e-06,REGISTRY,X20,3.010e-09,相对下降仅 $3.01e-6$。这与湿分特征时间
+problem_slove1.md,469,81010,81010.0,REGISTRY,P10,1.402e-06,$R/D(C)=81010 \mathrm{s}$ 远大于 1800 s 一致——水分来不及扩散到中心区。
+problem_slove1.md,469,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,$R/D(C)=81010 \mathrm{s}$ 远大于 1800 s 一致——水分来不及扩散到中心区。
+problem_slove1.md,470,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,2. **只有表面薄层脱水**：体积平均含水率下降 $10.12 %$，全部来自表面附近的薄层。
+problem_slove1.md,470,10.12,10.12,REGISTRY,E11_node_M400,3.503e-05,2. **只有表面薄层脱水**：体积平均含水率下降 $10.12 %$，全部来自表面附近的薄层。
+problem_slove1.md,471,3,3.0,ALLOW,3 小时,0.0,3. **表面远未与热风平衡**：$t=1800 \mathrm{s}$ 时 $C(R)/C_\infty=45.7$，
+problem_slove1.md,471,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,3. **表面远未与热风平衡**：$t=1800 \mathrm{s}$ 时 $C(R)/C_\infty=45.7$，
+problem_slove1.md,471,45.7,45.7,REGISTRY,S23r_1800,6.842e-04,3. **表面远未与热风平衡**：$t=1800 \mathrm{s}$ 时 $C(R)/C_\infty=45.7$，
+problem_slove1.md,472,46,46.0,ALLOW,量级,0.0,即表面含水率仍是环境值的 46 倍，干燥驱动力依然充足。
+problem_slove1.md,476,2368.9,2368.9,REGISTRY,P09,4.690e-06,$R/\alpha=2368.9 \mathrm{s}$（热）与 $R/D(C)=81010 \mathrm{s}$（湿）
+problem_slove1.md,476,81010,81010.0,REGISTRY,P10,1.402e-06,$R/\alpha=2368.9 \mathrm{s}$（热）与 $R/D(C)=81010 \mathrm{s}$（湿）
+problem_slove1.md,477,34.2,34.2,REGISTRY,T1_1800_1p0,4.778e-03,之比为 **34.2**。这是预热平衡阶段的核心特征：热量在 30 min 内可显著改变温度分布，
+problem_slove1.md,477,30,30.0,ALLOW,题面: 30 分钟,0.0,之比为 **34.2**。这是预热平衡阶段的核心特征：热量在 30 min 内可显著改变温度分布，
+problem_slove1.md,478,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,而水分只能改变最表层。因此表 1 有可见的径向梯度，而表 2 中除了 $r\ge1.5 \mathrm{cm}$
+problem_slove1.md,478,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,而水分只能改变最表层。因此表 1 有可见的径向梯度，而表 2 中除了 $r\ge1.5 \mathrm{cm}$
+problem_slove1.md,478,1.5,1.5,ALLOW,题面: 半径网格,0.0,而水分只能改变最表层。因此表 1 有可见的径向梯度，而表 2 中除了 $r\ge1.5 \mathrm{cm}$
+problem_slove1.md,479,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,以外全部保持在初值 2.5500 附近。
+problem_slove1.md,481,3,3.0,ALLOW,3 小时,0.0,### 8.4 对问题 3 的提示（非本问结论）
+problem_slove1.md,483,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,按 `problem1.md` §7.2 记录的适用性边界：若沿用本模型，水分向 0.15 kg/kg 收敛的过程
+problem_slove1.md,483,0.15,0.15,ALLOW,题面问题3: 含水率目标 0.15 kg/kg,0.0,按 `problem1.md` §7.2 记录的适用性边界：若沿用本模型，水分向 0.15 kg/kg 收敛的过程
+problem_slove1.md,484,0.15,0.15,ALLOW,题面问题3: 含水率目标 0.15 kg/kg,0.0,将极其缓慢，因为表面附近 $D$ 随 $C$ 下降而骤减（$C=0.15$ 时
+problem_slove1.md,485,1.855e-11,1.855e-11,REGISTRY,X20,1.855e-14,"$D=1.855e-11 \mathrm{m/s}$，比初值小 266 倍），形成""干壳""阻碍。"
+problem_slove1.md,485,266,266.0,REGISTRY,P06b,8.171e-04,"$D=1.855e-11 \mathrm{m/s}$，比初值小 266 倍），形成""干壳""阻碍。"
+problem_slove1.md,494,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| 温度 | 表 1、`result1.xlsx` | 离散不确定度 $<3.8e-6 \mathrm{K}$；与解析解偏差 $<4.5e-6 \mathrm{K}$（§4.1） 
+problem_slove1.md,494,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| 温度 | 表 1、`result1.xlsx` | 离散不确定度 $<3.8e-6 \mathrm{K}$；与解析解偏差 $<4.5e-6 \mathrm{K}$（§4.1） 
+problem_slove1.md,494,3.8e-6,3.8e-06,REGISTRY,X20,3.800e-09,| 温度 | 表 1、`result1.xlsx` | 离散不确定度 $<3.8e-6 \mathrm{K}$；与解析解偏差 $<4.5e-6 \mathrm{K}$（§4.1） 
+problem_slove1.md,494,4.5e-6,4.5e-06,REGISTRY,X20,4.500e-09,| 温度 | 表 1、`result1.xlsx` | 离散不确定度 $<3.8e-6 \mathrm{K}$；与解析解偏差 $<4.5e-6 \mathrm{K}$（§4.1） 
+problem_slove1.md,495,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| 水分浓度 | 表 2、`result1.xlsx` | 离散不确定度 $<1.2e-5 \mathrm{kg/kg}$；半隐式滞后 $D$ 引入偏差 $<5.4e-6 \mat
+problem_slove1.md,495,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| 水分浓度 | 表 2、`result1.xlsx` | 离散不确定度 $<1.2e-5 \mathrm{kg/kg}$；半隐式滞后 $D$ 引入偏差 $<5.4e-6 \mat
+problem_slove1.md,495,1.2e-5,1.2e-05,REGISTRY,X20,1.200e-08,| 水分浓度 | 表 2、`result1.xlsx` | 离散不确定度 $<1.2e-5 \mathrm{kg/kg}$；半隐式滞后 $D$ 引入偏差 $<5.4e-6 \mat
+problem_slove1.md,495,5.4e-6,5.4e-06,REGISTRY,X20,5.400e-09,| 水分浓度 | 表 2、`result1.xlsx` | 离散不确定度 $<1.2e-5 \mathrm{kg/kg}$；半隐式滞后 $D$ 引入偏差 $<5.4e-6 \mat
+problem_slove1.md,499,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,1. **物性取常数**（`problem1.md` 假设 A4）。问题一的附录 2 未提供
+problem_slove1.md,499,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,1. **物性取常数**（`problem1.md` 假设 A4）。问题一的附录 2 未提供
+problem_slove1.md,499,4,4.0,ALLOW,结构/常数,0.0,1. **物性取常数**（`problem1.md` 假设 A4）。问题一的附录 2 未提供
+problem_slove1.md,499,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,1. **物性取常数**（`problem1.md` 假设 A4）。问题一的附录 2 未提供
+problem_slove1.md,501,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,2. **表面传质边界的形式**（`problem1.md` §7.2）。附录 2 的
+problem_slove1.md,501,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,2. **表面传质边界的形式**（`problem1.md` §7.2）。附录 2 的
+problem_slove1.md,501,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,2. **表面传质边界的形式**（`problem1.md` §7.2）。附录 2 的
+problem_slove1.md,502,8e-7,8e-07,ALLOW,附录2: 对流传质系数,0.0,$h_m=8e-7 \mathrm{m/s}$ 与热质类比估算值相差约 4 个数量级，
+problem_slove1.md,502,4,4.0,ALLOW,结构/常数,0.0,$h_m=8e-7 \mathrm{m/s}$ 与热质类比估算值相差约 4 个数量级，
+problem_slove1.md,505,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,（表 2 的定性形态）对该假设不敏感。
+problem_slove1.md,506,3,3.0,ALLOW,3 小时,0.0,3. **环境数据噪声**（§6.1）。附件 1 的 $C_\infty$ 信噪比约为 0.5，
+problem_slove1.md,506,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,3. **环境数据噪声**（§6.1）。附件 1 的 $C_\infty$ 信噪比约为 0.5，
+problem_slove1.md,506,0.5,0.5,ALLOW,题面: 半径网格 / 通用,0.0,3. **环境数据噪声**（§6.1）。附件 1 的 $C_\infty$ 信噪比约为 0.5，
+problem_slove1.md,507,5e-4,0.0005,REGISTRY,X20,5.000e-07,但问题一区间内单调，插值方法影响 $<5e-4 \mathrm{K}$。
+problem_slove1.md,508,4,4.0,ALLOW,结构/常数,0.0,4. **一维径向简化**（`problem1.md` §2.1）。中截面上的结果是精确的；
+problem_slove1.md,508,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,4. **一维径向简化**（`problem1.md` §2.1）。中截面上的结果是精确的；
+problem_slove1.md,517,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,python src/q1_solve.py
+problem_slove1.md,520,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,python src/q1_solve.py --selftest
+problem_slove1.md,523,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,python src/q1_diagnostics.py
+problem_slove1.md,525,0,0.0,ALLOW,零,0.0,# 算子特征值 / 水量收支 / dt->0 极限
+problem_slove1.md,526,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,python src/q1_energy_check.py
+problem_slove1.md,528,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,# 生产计算 -> outputs/result1.xlsx
+problem_slove1.md,529,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,python src/q1_produce.py
+problem_slove1.md,538,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/result1.xlsx` | 问题一完整结果（工作表 `温度`、`水分浓度`，$1800x21$） |
+problem_slove1.md,538,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,| `outputs/result1.xlsx` | 问题一完整结果（工作表 `温度`、`水分浓度`，$1800x21$） |
+problem_slove1.md,538,21,21.0,ALLOW,结构: 表格列数,0.0,| `outputs/result1.xlsx` | 问题一完整结果（工作表 `温度`、`水分浓度`，$1800x21$） |
+problem_slove1.md,539,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/table1_temperature.md` | 表 1（Markdown） |
+problem_slove1.md,539,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/table1_temperature.md` | 表 1（Markdown） |
+problem_slove1.md,540,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| `outputs/table2_moisture.md` | 表 2（Markdown） |
+problem_slove1.md,540,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| `outputs/table2_moisture.md` | 表 2（Markdown） |
+problem_slove1.md,541,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/registry_q1.csv` | 诊断数值注册表 |
+problem_slove1.md,542,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/registry_q1_production.csv` | 生产数值注册表（表 1/表 2 逐值） |
+problem_slove1.md,542,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/registry_q1_production.csv` | 生产数值注册表（表 1/表 2 逐值） |
+problem_slove1.md,542,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| `outputs/registry_q1_production.csv` | 生产数值注册表（表 1/表 2 逐值） |
+problem_slove1.md,543,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q1_run.log` | 主运行日志 |
+problem_slove1.md,544,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q1_diagnostics.log` | 诊断日志 |
+problem_slove1.md,545,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q1_energy_check.log` | 特征值/守恒/极限日志 |
+problem_slove1.md,546,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q1_production.log` | 生产运行日志 |
+table1_temperature.md,1,0,0.0,ALLOW,零,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+table1_temperature.md,1,0.5,0.5,ALLOW,题面: 半径网格 / 通用,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+table1_temperature.md,1,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+table1_temperature.md,1,1.5,1.5,ALLOW,题面: 半径网格,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+table1_temperature.md,1,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+table1_temperature.md,3,100,100.0,ALLOW,题面表1/2 时间点,0.0,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+table1_temperature.md,3,28.0000,28.0,ALLOW,题面: 初始温度 28 degC,0.0,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+table1_temperature.md,3,28.0003,28.0003,REGISTRY,T1_100_0p5,0.000e+00,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+table1_temperature.md,3,28.0039,28.0039,REGISTRY,T1_100_1p0,0.000e+00,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+table1_temperature.md,3,28.0319,28.0319,REGISTRY,T1_100_1p5,0.000e+00,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+table1_temperature.md,3,28.1795,28.1795,REGISTRY,T1_100_2p0,0.000e+00,| 100 | 28.0000 | 28.0003 | 28.0039 | 28.0319 | 28.1795 |
+table1_temperature.md,4,300,300.0,ALLOW,题面表1/2 时间点,0.0,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+table1_temperature.md,4,28.0406,28.0406,REGISTRY,T1_300_0p0,0.000e+00,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+table1_temperature.md,4,28.0634,28.0634,REGISTRY,T1_300_0p5,0.000e+00,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+table1_temperature.md,4,28.1513,28.1513,REGISTRY,T1_300_1p0,0.000e+00,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+table1_temperature.md,4,28.3673,28.3673,REGISTRY,T1_300_1p5,0.000e+00,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+table1_temperature.md,4,28.8486,28.8486,REGISTRY,T1_300_2p0,0.000e+00,| 300 | 28.0406 | 28.0634 | 28.1513 | 28.3673 | 28.8486 |
+table1_temperature.md,5,600,600.0,ALLOW,题面表1/2 时间点,0.0,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+table1_temperature.md,5,28.4534,28.4534,REGISTRY,T1_600_0p0,0.000e+00,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+table1_temperature.md,5,28.5361,28.5361,REGISTRY,T1_600_0p5,0.000e+00,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+table1_temperature.md,5,28.8039,28.8039,REGISTRY,T1_600_1p0,0.000e+00,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+table1_temperature.md,5,29.3156,29.3156,REGISTRY,T1_600_1p5,0.000e+00,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+table1_temperature.md,5,30.1641,30.1641,REGISTRY,T1_600_2p0,0.000e+00,| 600 | 28.4534 | 28.5361 | 28.8039 | 29.3156 | 30.1641 |
+table1_temperature.md,6,900,900.0,ALLOW,题面表1/2 时间点,0.0,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+table1_temperature.md,6,29.3243,29.3243,REGISTRY,T1_900_0p0,0.000e+00,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+table1_temperature.md,6,29.4583,29.4583,REGISTRY,T1_900_0p5,0.000e+00,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+table1_temperature.md,6,29.8758,29.8758,REGISTRY,T1_900_1p0,0.000e+00,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+table1_temperature.md,6,30.6164,30.6164,REGISTRY,T1_900_1p5,0.000e+00,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+table1_temperature.md,6,31.7295,31.7295,REGISTRY,T1_900_2p0,0.000e+00,| 900 | 29.3243 | 29.4583 | 29.8758 | 30.6164 | 31.7295 |
+table1_temperature.md,7,1200,1200.0,ALLOW,题面表1/2 时间点,0.0,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+table1_temperature.md,7,30.5429,30.5429,REGISTRY,T1_1200_0p0,0.000e+00,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+table1_temperature.md,7,30.7099,30.7099,REGISTRY,T1_1200_0p5,0.000e+00,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+table1_temperature.md,7,31.2225,31.2225,REGISTRY,T1_1200_1p0,0.000e+00,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+table1_temperature.md,7,32.1130,32.113,REGISTRY,T1_1200_1p5,0.000e+00,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+table1_temperature.md,7,33.4295,33.4295,REGISTRY,T1_1200_2p0,0.000e+00,| 1200 | 30.5429 | 30.7099 | 31.2225 | 32.1130 | 33.4295 |
+table1_temperature.md,8,1500,1500.0,ALLOW,题面表1/2 时间点,0.0,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+table1_temperature.md,8,31.9960,31.996,REGISTRY,T1_1500_0p0,0.000e+00,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+table1_temperature.md,8,32.1871,32.1871,REGISTRY,T1_1500_0p5,0.000e+00,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+table1_temperature.md,8,32.7667,32.7667,REGISTRY,T1_1500_1p0,0.000e+00,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+table1_temperature.md,8,33.7476,33.7476,REGISTRY,T1_1500_1p5,0.000e+00,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+table1_temperature.md,8,35.1211,35.1211,REGISTRY,T1_1500_2p0,0.000e+00,| 1500 | 31.9960 | 32.1871 | 32.7667 | 33.7476 | 35.1211 |
+table1_temperature.md,9,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+table1_temperature.md,9,33.5758,33.5758,REGISTRY,T1_1800_0p0,0.000e+00,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+table1_temperature.md,9,33.7724,33.7724,REGISTRY,T1_1800_0p5,0.000e+00,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+table1_temperature.md,9,34.3642,34.3642,REGISTRY,T1_1800_1p0,0.000e+00,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+table1_temperature.md,9,35.3622,35.3622,REGISTRY,T1_1800_1p5,0.000e+00,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+table1_temperature.md,9,36.7858,36.7858,REGISTRY,T1_1800_2p0,0.000e+00,| 1800 | 33.5758 | 33.7724 | 34.3642 | 35.3622 | 36.7858 |
+table2_moisture.md,1,0,0.0,ALLOW,零,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+table2_moisture.md,1,0.5,0.5,ALLOW,题面: 半径网格 / 通用,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+table2_moisture.md,1,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+table2_moisture.md,1,1.5,1.5,ALLOW,题面: 半径网格,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+table2_moisture.md,1,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| 时间/s | 0 | 0.5 | 1 | 1.5 | 2 |
+table2_moisture.md,3,100,100.0,ALLOW,题面表1/2 时间点,0.0,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+table2_moisture.md,3,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+table2_moisture.md,3,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+table2_moisture.md,3,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+table2_moisture.md,3,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+table2_moisture.md,3,2.2470,2.247,REGISTRY,C2_100_2p0,0.000e+00,| 100 | 2.5500 | 2.5500 | 2.5500 | 2.5500 | 2.2470 |
+table2_moisture.md,4,300,300.0,ALLOW,题面表1/2 时间点,0.0,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+table2_moisture.md,4,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+table2_moisture.md,4,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+table2_moisture.md,4,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+table2_moisture.md,4,2.5492,2.5492,REGISTRY,C2_300_1p5,0.000e+00,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+table2_moisture.md,4,2.0508,2.0508,REGISTRY,C2_300_2p0,0.000e+00,| 300 | 2.5500 | 2.5500 | 2.5500 | 2.5492 | 2.0508 |
+table2_moisture.md,5,600,600.0,ALLOW,题面表1/2 时间点,0.0,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+table2_moisture.md,5,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+table2_moisture.md,5,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+table2_moisture.md,5,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+table2_moisture.md,5,2.5353,2.5353,REGISTRY,C2_600_1p5,0.000e+00,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+table2_moisture.md,5,1.8770,1.877,REGISTRY,C2_600_2p0,0.000e+00,| 600 | 2.5500 | 2.5500 | 2.5500 | 2.5353 | 1.8770 |
+table2_moisture.md,6,900,900.0,ALLOW,题面表1/2 时间点,0.0,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+table2_moisture.md,6,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+table2_moisture.md,6,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+table2_moisture.md,6,2.5497,2.5497,REGISTRY,C2_900_1p0,0.000e+00,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+table2_moisture.md,6,2.5045,2.5045,REGISTRY,C2_900_1p5,0.000e+00,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+table2_moisture.md,6,1.7547,1.7547,REGISTRY,C2_900_2p0,0.000e+00,| 900 | 2.5500 | 2.5500 | 2.5497 | 2.5045 | 1.7547 |
+table2_moisture.md,7,1200,1200.0,ALLOW,题面表1/2 时间点,0.0,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+table2_moisture.md,7,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+table2_moisture.md,7,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+table2_moisture.md,7,2.5482,2.5482,REGISTRY,C2_1200_1p0,0.000e+00,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+table2_moisture.md,7,2.4646,2.4646,REGISTRY,C2_1200_1p5,0.000e+00,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+table2_moisture.md,7,1.6586,1.6586,REGISTRY,C2_1200_2p0,0.000e+00,| 1200 | 2.5500 | 2.5500 | 2.5482 | 2.4646 | 1.6586 |
+table2_moisture.md,8,1500,1500.0,ALLOW,题面表1/2 时间点,0.0,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+table2_moisture.md,8,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+table2_moisture.md,8,2.5499,2.5499,REGISTRY,C2_1500_0p5,0.000e+00,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+table2_moisture.md,8,2.5445,2.5445,REGISTRY,C2_1500_1p0,0.000e+00,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+table2_moisture.md,8,2.4206,2.4206,REGISTRY,C2_1500_1p5,0.000e+00,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+table2_moisture.md,8,1.5787,1.5787,REGISTRY,C2_1500_2p0,0.000e+00,| 1500 | 2.5500 | 2.5499 | 2.5445 | 2.4206 | 1.5787 |
+table2_moisture.md,9,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+table2_moisture.md,9,2.5500,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+table2_moisture.md,9,2.5497,2.5497,REGISTRY,C2_900_1p0,0.000e+00,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+table2_moisture.md,9,2.5383,2.5383,REGISTRY,C2_1800_1p0,0.000e+00,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+table2_moisture.md,9,2.3755,2.3755,REGISTRY,C2_1800_1p5,0.000e+00,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+table2_moisture.md,9,1.5102,1.5102,REGISTRY,C2_1800_2p0,0.000e+00,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |

@@ -1,0 +1,1941 @@
+
+===== [page 1] =====
+Modeling Convective Drying of Food Products:The
+Case Study of Yacon (Smallanthus sonchifolius)
+Bianca C. Marques 
+Universidade de São Paulo
+Denis Flick 
+University of Paris-Saclay
+Carmen C. Tadini 
+Universidade de São Paulo
+Artemio Plana-Fattori  (  artemio.planafattori@agroparistech.fr )
+University of Paris-Saclay
+Research Article
+Keywords: convective drying, shrinkage, water diffusion, yac´on
+Posted Date: March 26th, 2023
+DOI: https://doi.org/10.21203/rs.3.rs-2720541/v1
+License:   This work is licensed under a Creative Commons Attribution 4.0 International License.  
+Read Full License
+Additional Declarations: No competing interests reported.
+
+===== [page 2] =====
+Springer Nature 2021 LATEX template
+Modeling Convective Drying of Food
+Products: The Case Study of Yac´on
+(Smallanthus sonchifolius)
+Bianca C. Marques1,2, Denis Flick3, Carmen C. Tadini1,2
+and Artemio Plana-Fattori3*
+1Universidade de S˜ao Paulo, Escola Polit´ecnica, Chemical
+Engineering Department, Main Campus, Butant˜a, 05508-010 S˜ao
+Paulo, SP, Brazil.
+2Universidade de S˜ao Paulo, FoRC/NAPAN Food Research
+Center, 05508-010 S˜ao Paulo, SP, Brazil.
+3*Universit´e Paris-Saclay, INRAE, AgroParisTech, UMR
+SayFood, 91123 Palaiseau, France.
+*Corresponding author(s). E-mail(s):
+artemio.planafattori@agroparistech.fr;
+Contributing authors: biancacm1@usp.br;
+denis.ﬂick@agroparistech.fr; catadini@usp.br;
+Abstract
+The convective drying of a food product whose dehydration occurs
+under large deformation is studied. A numerical model is proposed for
+solving the heat and water mass transfer phenomena while accounting
+for shrinkage. The ﬁnite volume method is applied; mesh boundaries
+move with the dry matter. Shrinkage is predicted from geometrical
+considerations only, hence no information about the product’s mechan-
+ical properties is required. Water diﬀusivity in the product is assumed
+to depend on both temperature and water content. The approach is
+illustrated for cylindrical samples of yac´on, associated with high water
+content in natura and signiﬁcant volume reduction after drying. This
+study considers previous experimental work with a convective drying
+pilot unit under controlled air temperature and relative humidity con-
+ditions. Numerical results reveal, ﬁrstly, that the signiﬁcant evolutions
+of sample volume (to about 10 % of initial value) and of total water
+1
+
+===== [page 3] =====
+Springer Nature 2021 LATEX template
+2
+Drying of yac´on
+content (to less than 5 % of initial value) are quite well represented. Sec-
+ondly, despite the relative homogeneity of temperature ﬁeld, the water
+content exhibits diﬀerences between the sample surface and its core even
+after six hours of drying. Sensitivity tests put in evidence the major
+role played by the convective heat and mass transfer coeﬃcients. The
+physical model and the numerical approach can be adapted in order to
+predict the evolution of materials with high water content in natura,
+which experience large deformation during the convective drying process.
+Keywords: convective drying, shrinkage, water diﬀusion, yac´on
+1 Introduction
+Drying commonly describes the process of thermally removing volatile sub-
+stances to yield a solid product. The ﬁrst objective of dehydration of food
+materials is to reduce the potential for growth and metabolic activity of
+microorganisms, as a way to increase the accessibility of food products beyond
+harvesting conditions. Other objectives are to enhance its quality; to ease its
+handling; and to allow further processing (Sokhansanj & Jayas, 2006).
+When a wet solid is subjected to thermal drying, two processes occur simul-
+taneously: 1) transfer of energy (heat) from the surrounding environment to
+evaporate the surface moisture, and 2) transfer of internal moisture to the sur-
+face of the solid and its subsequent evaporation due to process 1. The rate at
+which drying is accomplished is governed by the rate at which the two processes
+proceed. Heat transfer from the surrounding environment to the wet solid can
+occur as a result of convection, conduction, or radiation and in some cases as
+a result of a combination of these eﬀects. For convective hot air drying, the
+removal of water as vapor from the material surface depends on the external
+conditions (temperature, humidity and ﬂow of drying air), and on the area of
+exposed surface. The mobility of moisture within the product is a function of
+its temperature and water content. In a drying operation, heat or mass trans-
+fers may be the limiting factor governing the rate of drying, although they
+both proceed simultaneously throughout the drying cycle. Following these cou-
+pled transfers, spatial ﬁelds of water content and temperature develop inside
+the product. Understanding these transfer aspects is the primary objective of
+most works published in the ﬁeld of drying because they enable useful indi-
+cators of the drying process to be addressed, such as the drying time, the
+eﬀect of product size, and the energy consumption. The drying could be partly
+addressed as well, for example the chemical degradation due to the coupled
+eﬀect of hydric and thermal activation over time. Due to the strong coupling
+and the non-linear behavior, analytic solutions are available only under strong
+and somehow unrealistic assumptions: computational simulation is therefore
+mandatory (Perr´e et al., 2023).
+
+===== [page 4] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+3
+In the particular case of convective drying, relatively warm dry air ﬂows
+around cold moist food samples. A simultaneous transfer of both heat and
+water takes place so that heat is transported from the air to the material,
+whereas water is transported from the food core, then to its surface, and,
+eventually, to the air. Theoretical models have been designed for studying
+the whole ensemble of phenomena; they involve coupled nonlinear partial dif-
+ferential equations that can be solved by cumbersome numerical methods,
+which are time-consuming and diﬃcult to incorporate in on-line control devices
+(Ramachandran et al., 2018).
+One of the most important physical changes that food materials suﬀer
+during drying is the reduction of its volume. Loss of water and heating cause
+stresses in the cellular structure of the food matrix leading to change in shape
+and decrease in dimension. Deformation, internal stress, product failure and
+poor re-hydration are among the major challenges encountered in the drying
+process. Shrinkage of food materials can be seen as a negative consequence on
+the quality of the dehydrated product: changes in shape, loss of volume and
+increased hardness cause in most cases a negative impression on the consumer.
+There are, on the other hand, some dried products that have had traditionally
+a shrunken aspect, a requirement for the consumer of raisins, dried plums,
+peaches or dates (Mayor & Sereno, 2004). Decades of experimental work reveal
+that shrinkage of food materials under drying is inﬂuenced by the product
+biophysical properties, by the sample size and geometry, by the exposure of
+the sample to transfer mechanisms, and by the processing approach and its
+operating conditions (e.g. Mahiuddin et al., 2018).
+Fruits and vegetables have a heterogeneous micro-structure which dynam-
+ically changes during drying. Currently, food drying models approximate the
+material’s structure through a representative elementary volume which adopts
+a larger scale of description and considers the ﬂuid phases as ﬁctitious con-
+tinuum. This assumption limits the ability of the models to capture the
+heterogeneity of food material. The multi-scale modeling is considered to have
+the ability to overcome this limitation and advance the understanding of the
+micro level transport processes; it constitutes an alternative approach to calcu-
+late the water diﬀusivity by explicitly considering the material’s heterogeneity
+rather than the use of a simple empirical relationships. However, multi-scale
+modeling become very computationally demanding in the case of large defor-
+mation, and solution techniques for such a challenging problem remain a
+subject of investigation (Welsh et al., 2018, 2021). Macro-scale modeling (i.e.
+continuum-based approach for ﬂuid ﬂow, heat and mass transfer) is the most
+developed in the food applications; furthermore, this approach has the great-
+est potential to be integrated into the design process (Datta, 2008). Main
+challenges for the macro-scale modelling of convective drying of fruits and veg-
+etables are a) the dependence of experimentation to generate parameters of
+the model, b) the diﬃculty to include the shrinkage, and c) that the results
+of the model are dependent on the product and the range of conditions under
+which it is tested (Castro et al., 2018).
+
+===== [page 5] =====
+Springer Nature 2021 LATEX template
+4
+Drying of yac´on
+Physics-based modeling can provide better insights into the shrinkage that
+accompanies simultaneous heat and mass transfer during drying (Castro et al.,
+2018; Mahiuddin et al., 2018; Chandramohan, 2020). Accounting for shrinkage
+yields drying rates which are more realistic, and higher, than those obtained in
+neglecting it (Golestani et al., 2013). With shrinkage, the pathway for water to
+migrate across the matrix to the surface becomes smaller, leading to a faster
+water removal (Defraeye and Radu, 2018).
+Detailed physics-based models can be closer to reality than simpler
+approaches, but their solutions are more diﬃcult to reach. A complete thermo-
+hygro- mechanical model requires, in addition to thermal conductivity and
+water diﬀusivity, the knowledge of rheological parameters (Young’s modulus,
+Poisson’s coeﬃcient, contraction coeﬃcient due to water loss...). Moreover,
+especially under large deformation, the food material cannot be considered
+as purely elastic; plastic or visco- elastic behavior, with additional parame-
+ters, should be taken into account. All these mechanical parameters depend
+on temperature and moisture, and are diﬃcult to measure or estimate (e.g.,
+Curcio et al., 2016; Yuan et al., 2019). Modeling these strongly coupled phe-
+nomena (water mass and heat transfer, mechanics) provides a comprehensive
+and in-depth view of the process: time, cost, and economical value. One could
+dream at an ideal simulation tool that is able to account for all these coupled
+transport phenomena, allowing the eﬀect of each parameter to be investigated
+and the whole process to be improved or even optimized as a function of the
+expectations of the end-users. However, to achieve this ultimate objective is a
+long and diﬃcult route (Perr´e et al., 2023).
+Most published drying models do not take shrinkage into account or use a
+numerical artiﬁce called domain adaptation. This approach considers that the
+domain is ﬁxed at each computation time step (for heat and mass transfer),
+and is updated continuously according to geometric global rule. For instance,
+each node is moved homothetically towards the center of the matrix, to reduce
+the volume without changing the temperature and water content attached to
+the node. While this methodology presents good results from an engineering
+point of view, it is questionable whether it is valid in providing information
+regarding the phenomena occurring during drying, while undoubtedly useful
+for design, analysis, and optimization of industrial dryers (Katekawa and Silva,
+2006). Recent contributions incorporate experimental assessment of shrinkage
+in studying the evolution of food products, while allowing the identiﬁcation of
+parameters describing the inﬂuence of temperature on the water diﬀusivity in
+the product (e.g. Brasiello et al., 2021).
+Here we present an approach for studying the evolution of food products
+that can experience signiﬁcant shrinkage under convective drying. The original
+contribution here proposed lies in experimental-based geometrical considera-
+tions for estimating how shrinkage is locally distributed in diﬀerent directions.
+The detailed mechanical behavior of the food material is not required. The
+approach is implemented in a ﬂexible numerical model which includes i) the
+coupling between heat and water mass transfer, and ii) the variation of water
+
+===== [page 6] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+5
+diﬀusivity in the food matrix with the temperature and the water content itself.
+The latter issue deserves special attention: parameters describing the inﬂu-
+ence of temperature and water content on water diﬀusivity are identiﬁed by
+comparing model predictions (including shrinkage) and observations of water
+content. The approach is illustrated for cylindrical slices of yac´on (Smallantus
+sonchifolius), a plant cultivated originally in the Andean region for its tuber-
+ous, mildly sweet roots. The interest in yac´on has increased (Caetano et al.,
+2016): it constitutes a good option for low- carbohydrate diets because of its
+low amounts of sucrose and glucose, and its high amount of non- digestible
+carbohydrates. The industrial utilization of yac´on is quite broad (Lebeda et
+al., 2012). More than 70 % of the fresh tuberous root biomass of yac´on is com-
+posed of water (Lachman et al., 2003). Water activity is high, suggesting a
+short shelf-life: partial hydrolysis of fructans can start a few days after harvest
+(Graefe et al., 2004). Drying is a convenient way to prepare yac´on for storage,
+and the inﬂuence of drying conditions on its composition has been investigated
+(Scher et al., 2009; Campos et al., 2016; Khajehei et al., 2018; Salinas et al.,
+2018). In the particular case of convective drying, the ﬁnal color parameters
+of the dehydrated product (and hence the consumer’s perception) can eﬀec-
+tively depend on the pre-treatment applied to raw yac´on samples (Martins et
+al., 2022).
+Shrinkage cannot be neglected in studying the evolution of yac´on submit-
+ted to convective drying: the sample shape can be completely modiﬁed and
+the ﬁnal volume can reach 10 % of initial value (Bernstein & Norena, 2014).
+Such a ﬁnding has not forbidden the assumption of negligible shrinkage of
+yac´on samples in preliminary studies devoted to the physics-based modeling
+of coupled heat and mass transfer (Perussello et al., 2013, 2014), as well as to
+the assessment of constant water diﬀusivity in the product (Shi et al., 2013;
+Lisboa et al., 2018).
+The evolution of yac´on samples under convective drying is hereafter studied
+while coupling heat and mass transfer phenomena, allowing the inﬂuence of
+both temperature and water content on the equivalent water diﬀusivity in
+the product; in addition, the sample shrinkage is estimated from geometrical
+considerations based on previous experimental work (Marques et al., 2022)
+conducted with a convective drying pilot unit, under controlled air temperature
+and relative humidity conditions. The present study has as main objective
+to predict the evolution of temperature and water content depending on the
+position in yac´on samples exposed to convective drying while accounting for
+their shrinkage. This will allow to investigate not only the eﬀect of various
+drying conditions (air ﬂow, temperature, humidity) on the drying time (i.e. the
+productivity of drying equipment) and on the ﬁnal shape of the sample (say,
+acceptability by consumer) but also on the local transformation of product (e.g.
+vitamin degradation, positive/negative neo-formed compounds) which could
+be assessed by thermo-hygro dependent reactional models. This could help to
+optimize drying conditions.
+
+===== [page 7] =====
+Springer Nature 2021 LATEX template
+6
+Drying of yac´on
+2 Heat and Mass Transfer Modeling
+The convective drying of a slice of food matrix is hereafter studied by taking
+into account the following assumptions:
+• evaporation occurs at the surface only;
+• energy transfer occurs due to heat conduction inside the food matrix and
+convection at its surface;
+• liquid water migrates inside the matrix relatively to dry matter following
+moisture gradient; and
+• no porosity appears during drying.
+The last assumption means that, locally, the total volume occupied by the
+food matrix containing 1 kg of dry matter can be expressed as the sum of
+volumes that are occupied by dry matter and water:
+1
+ρdm
+=
+1
+ρ#
+dm
++ Xw
+ρ#
+w
+(1)
+wherein ρdm is expressed in kg of dry matter [kg-dm] by cubic meter of food
+product; Xw is the water content in the food product, dry basis [kg-w/kg-dm];
+and ρ#
+dm and ρ#
+w are the intrinsic dry matter and water mass densities.
+The conservation equation for the water content can be expressed, in its
+convective form, as:
+∂Xw
+∂t
++ ⃗vdm · ⃗∇Xw =
+1
+ρdm
+⃗∇·⃗jw/dm
+(2)
+wherein ⃗vdm is the dry matter velocity in the food product. The water ﬂux
+relative to the dry matter is given by:
+⃗jw/dm = −Dw ⃗∇(ρdm Xw)
+(3)
+wherein Dw is the water diﬀusivity [m2/s] in the food product. Equation 2 is
+solved by taking into account the following boundary condition at the food
+matrix surfaces:
+⃗jw/dm · ⃗n = k (aw{Xw} Csat{T} −RHair Csat{Tair})
+(4)
+wherein k is the mass transfer coeﬃcient [m/s], aw{Xw} is the water activity
+in the product at the water content Xw, and Csat{T} is the saturated water
+vapor concentration [kg-w/m3] at the temperature T.
+The internal energy of the food product (by kg of dry matter) is the sum
+of the internal energies of dry matter and water:
+u = udm + Xw uw =
+
+C#
+dm + Xw C#
+w
+
+T
+(5)
+
+===== [page 8] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+7
+wherein C#
+dm and C#
+w are the dry matter and water heat capacities. The
+conservation equation for the internal energy can be expressed as:
+∂u
+∂t + ⃗vdm · ⃗∇u =
+1
+ρdm
+
+⃗∇·⃗jw/dm uw + ⃗∇·⃗jq
+
+(6)
+wherein the energy ﬂux is given by:
+⃗jq = −λ ⃗∇T
+(7)
+wherein λ is the bulk thermal conductivity, obtained as λ = (λ#
+dm)α(λ#
+w)(1−α);
+λ#
+dm and λ#
+w are the intrinsic dry matter and water thermal conductivity values,
+and α is the volume fraction occupied by dry matter in the food matrix, given
+by 1/(1 + ρ#
+dm Xw/ρ#
+w).
+Equation 6 is solved by taking into account the following boundary
+condition at the food matrix surfaces:
+⃗jq · ⃗n = h (T −Tair) + Lv ⃗jw/dm · ⃗n
+(8)
+wherein h is the heat transfer coeﬃcient [W/m2/K] and Lv is the latent heat
+of water vaporization [J/kg].
+Water diﬀusivity Dw in the product is required for evaluating water migra-
+tion inside the food matrix (equation 3). The two-phase model proposed by
+Maroulis et al. (2001) is used:
+Dw{Xw, T} =
+1
+1 + Xw
+Dw,dry{T} +
+Xw
+1 + Xw
+Dw,wet{T}
+(9)
+Dw,dry{T} = Dw,dry,ref exp
+
+−Edry
+R
+ 1
+T −
+1
+Tref
+
+(10)
+Dw,wet{T} = Dw,wet,ref exp
+
+−Ewet
+R
+ 1
+T −
+1
+Tref
+
+.
+(11)
+Activation energy values Edry and Ewet for diﬀusion in very dry (Xw <<
+1) and very wet material (Xw >> 1) were both assumed to be 30 kJ/mol,
+from experimental convective drying of yac´on (Shi et al., 2013). Reference
+temperature Tref was chosen equal to 333.15 K (60 oC). Diﬀusivity values in
+very dry (Dw,dry,ref) and in very wet material (Dw,wet,ref) at the reference
+temperature were identiﬁed by comparing observations and model predictions
+of dimensionless water content in the whole food matrix (X
+⋆
+w = Xw/Xw,0).
+Water activity aw in the product is required for evaluating surface evapo-
+ration (equation 4). Experimental work has provided measurements of water
+content as a function of the water activity in slices of yacon (Figure 2
+of Marques et al., 2022); those measurements were approximated by the
+
+===== [page 9] =====
+Springer Nature 2021 LATEX template
+8
+Drying of yac´on
+Guggenheim-Anderson-deBoer (GAB) model:
+Xw =
+C K Xw,mono aw
+( 1 −K aw ) ( 1 −K aw + C K aw )
+(12)
+Parameters were identiﬁed from desorption measurements of yac´on samples
+(see Table 3 of Marques et al., 2022).
+Mass k and heat h transfer coeﬃcients are required for evaluating water
+mass and energy ﬂuxes at the surface (equations 4 and 8). On one hand, the
+ratio h/k was estimated after invoking the heat and mass transfer analogy,
+through the expression ρair CP, air Le2/3 (Incropera et al., 2003, pp.410-411).
+Lewis number was computed as the ratio of the thermal diﬀusivity of air to
+the mass diﬀusivity of water vapor in the air. On the other hand, the heat
+transfer coeﬃcient was estimated after assuming that all the incoming heat is
+translated into evaporation at the wet-bulb temperature at the beginning of
+drying when the surface is wet (aw ≃1) (McCabe et al., 2014, p.807). Such
+an assumption allowed the following expression:
+h =
+mdm Lv
+S0 ( Tair −Twb )
+dXw
+dt
+
+t=0
+.
+(13)
+This equation involves the initial values of the whole surface S0 of the product
+slice and of the time derivative of water content (dXw/dt)|t=0. The latter
+was identiﬁed from analysis of observations of water content during drying
+experiments, for each of operating conditions here considered (see equation 13
+and Table 4 of Marques et al., 2022).
+Tables 1 and 2 summarize the drying operating conditions taken into
+account as well as the product and water thermo-physical properties consid-
+ered, among other key parameters required by the numerical model.
+3 Shrinkage Modeling
+The crux of our approach is the representation of shrinkage, as a consequence of
+evaporation at the surface and water migration within the food matrix. Insight
+about the shrinkage of yac´on comes from a companion study (Marques et al.,
+2023). The drying behavior of yac´on samples at cellular level was observed in
+Environmental Scanning Electron Microscope images; the most striking result
+is the collapse of elliptical-shaped cells during drying. The similarity between
+volumetric water loss and total volume loss suggests that the porosity of yac´on
+is likely to be negligible. In other words, the total volume reduction equals the
+volume of removed water. These ﬁndings justify equation 1. Such an assump-
+tion has been considered in previous studies devoted to drying of selected fruits
+and vegetables (Raghavan et al., 1995; Sabarez, 2012).
+The macroscopic perspective of the problem is featured in Figure 4 of
+Marques et al. (2022), which displays experimental values of the dimension-
+less diameter D⋆= D/D0 of yac´on slices under selected drying conditions.
+
+===== [page 10] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+9
+The possible inﬂuence of drying conditions seemed shadowed by experimental
+uncertainties. That Figure compared observations with hypothetical shrinkage
+behavior of the form
+D⋆= (V ⋆)β ⇐⇒S⋆= (V ⋆)2β ; S = π D2 / 4
+(14)
+where V ⋆= V/V0 is the dimensionless volume and S⋆= S/S0 is the dimen-
+sionless horizontal surface. Isotropic shrinkage (β = 1/3) could be excluded.
+A more realistic representation for the shrinkage behavior can be reached in
+focusing the attention on the values of slice diameter and volume under van-
+ishing water content. On one hand, for the fully dried matrix (Xw →0),
+observations suggest that D⋆∼0.6. On the other hand, the application of
+equation 1 to the condition Xw →0 and later to Xw = Xw,0 provides
+V ⋆∼0.05. Combining these results in equation 14, we reach a value close to
+β = 1/6, which is considered in the calculation of diameter reduction in the
+numerical model. This means that the diameter reduces much less than the
+height during shrinkage.
+The microscopic perspective of the problem is featured in Figure 1. In the
+beginning (left-hand displays), the food matrix is assumed to have a cylindri-
+cal shape with total radius R0 and total height H0. The matrix is assumed
+to be steadily exposed to a uniform transfer of heat and mass across all its
+surfaces, suggesting the adoption of the same value for the heat transfer coef-
+ﬁcients at the upper, lower and lateral surfaces. The lower boundary of the
+domain corresponds to the plane of symmetry which divides the matrix into
+two identical halves. The domain is subdivided into a number of control vol-
+umes: they constitute rectangular rings, characterized by their initial radius
+r0 and by their elementary values of width δr0, height δz0, horizontal surface
+δS0, and volume δV0.
+With the occurrence of drying (right-hand displays in Figure 1), liquid
+water is assumed to migrate inside the matrix relatively to the dry matter,
+while appearance of porosity is neglected. Control volumes deform following
+the dry matter (the mass of dry matter remains constant in each control vol-
+ume along drying); their volume decreases and their shape can be distorted.
+Shrinkage of the product matrix, as assessed by changes in geometric charac-
+teristics r, δr, δz, δS and δV , can be diﬀerent depending on the position of
+the control volume under consideration.
+The vicinity of the plane of symmetry (z ∼0) corresponds to the highest
+water content values in the matrix; these positions are the last to be dried and
+hereafter they can be assumed to constitute the “backbone” of the slice. Near
+to the symmetry plane shrinkage along the radial direction is characterized
+by the decrease in elementary horizontal surfaces (δS/δS0 < 1) and radii
+(δr/δr0 < 1), and both depend on the decrease of elementary volumes:
+δS
+δS0
+=
+2 π r δr
+2 π r0 δr0
+=
+ δV
+δV0
+2β
+z=0
+.
+(15)
+
+===== [page 11] =====
+Springer Nature 2021 LATEX template
+10
+Drying of yac´on
+This equation, considered in the vicinity of the plane of symmetry (z ∼0),
+constitutes a local translation of the empirical relationship (14).
+It is assumed that the same radial evolution applies whatever the z position.
+Figure 1 put in evidence that elementary volumes can become trapezoidal
+rings along the drying period. Shrinkage along the axial (vertical) direction
+is characterized by the decrease in elementary heights (δz/δz0 < 1), which
+depends on the decrease in elementary volumes and horizontal surfaces:
+δz
+δz0
+=
+ δV
+δV0
+
+/
+ δS
+δS0
+
+.
+(16)
+Finally, elementary volumes before drying (δV0) and later on (δV ) can be
+related via the corresponding values of the mass density of the dry matter:
+δV
+δV0
+=
+1/ρdm
+1/ρdm,0
+,
+(17)
+wherein mass densities of dry matter are related through equation 1 to the
+local water content Xw, which constitutes the solution of the conservation
+equation 2.
+The numerical solving of coupled phenomena of heat and water mass
+transfer while accounting for shrinkage is summarized in the Appendix.
+4 Results and Discussion
+4.1 Reference Drying Condition: Inﬂuence of Key Model
+Parameters
+Looking for the application of the numerical model in the prediction of water
+content values along the drying period, two key parameters involved in the
+model of Maroulis et al. (2001) remained to be identiﬁed (see equations 9
+to 11): the water diﬀusivity values Dw,dry,ref in very dry (Xw << 1) and
+Dw,wet,ref for very wet material (Xw >> 1) at the reference temperature.
+These parameters were identiﬁed by comparing model predictions and obser-
+vations of water content conducted only under the reference drying condition:
+air ﬂow 4 m/s, Tair = 60 oC, and RHair = 20 % (case A in Table 1) (see
+Marques et al., 2022).
+Figure 2a displays observations of water content conducted under this
+drying condition. A quite linear decrease of water content with time can be
+recognized up to about t1/2 ≃1h15min, when the average water content is half
+of its initial value (X
+⋆
+w = Xw/Xw,0 = 1/2). Along this “constant drying rate”
+period, the product surface remains wet (aw ∼1), and the drying rate depends
+on external conditions only. Later on, diﬀusion from core to surface becomes
+limiting, whose importance depends on the product structure and characteris-
+tics (Mujumdar, 2006). As shown in Figure 2a, the drying time t1/8 ≃3h10min
+(when X
+⋆
+w = 1/8) is clearly out of the constant drying rate period and its value
+
+===== [page 12] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+11
+constitutes a complementary information about the drying kinetics. Figure 2a
+indicates both drying times, according to observations.
+The black line in Figure 2a features model predictions reached after
+assuming, in equations 9 to 11, the values Dw,dry,ref = 10−12 m2/s and
+Dw,wet,ref = 1.6 10−10 m2/s. These values were identiﬁed by minimizing the
+diﬀerence between predicted and observed drying times t1/2 and t1/8; the appli-
+cation of these values allows diﬀerences smaller than 5 min between model
+predictions and observations. The vanishing value of the water diﬀusivity in
+very dry material is consistent with the product structure, nearly crumbly /
+brittle, after six hours of drying. Water content values as predicted by the
+numerical model agree fairly well with observations.
+The presented model predictions were obtained for a time step of 0.01s
+and a mesh of 150 elements (I = 30, J = 5). As shown in Figures 2b and 2c,
+using diﬀerent time steps or higher numbers of mesh elements did not change
+sensibly the results in terms of t1/2 and t1/8.
+Table 3 and Figure 3 summarizes sensitivity tests considering changes on
+selected physical parameters. Case A represents the model predictions under
+the reference drying conditions. Cases [A1,... A4] , [A5,... A8] and [A9,... A12]
+consider variations on parameters Dw,dry,ref, Dw,wet,ref, Edry = Ewet of the
+model proposed by Maroulis et al. (2001). Values for the water diﬀusivity in
+very dry and very wet material correspond to the reference temperature of 60
+oC. Cases [A13,... A18] consider variations on the heat transfer coeﬃcient h,
+which values depend on the drying conditions (see Table 2).
+Variations in the range −50 to +50 % on the value of water diﬀusivity in
+very dry material Dw,dry,ref lead to negligible inﬂuence on drying times t1/2
+and t1/8. Such a ﬁnding can be explained by the huge diﬀerence of magnitude
+(two orders of magnitude) between Dw,dry,ref and Dw,wet,ref, the latter being
+dominant in equation 9. Variations in the range −50 to +50 % on the values
+assumed for Dw,wet,ref or Edry = Ewet signiﬁcantly degrade the reliability of
+model predictions. It must be noted that these two parameters inﬂuence in
+opposite way the model predictions. On one hand, increasing the water diﬀu-
+sivity in very wet material provides a decreasing tendency for drying times t1/2
+and t1/8 (Figure 3b). Lower (higher) values than the identiﬁed value 1.6 10−10
+m2/s reduce (increase) water migration relatively to model predictions; this is
+particularly evident for drying time t1/8, which is out of the constant drying
+rate period. On the other hand, increasing the energy of activation allows a
+stronger inﬂuence of temperature on water diﬀusion inside the product matrix.
+Increasing the energy of activation provides an increasing tendency for t1/2 and
+t1/8, since the product temperature is always lower than the air temperature
+(60 oC) which was chosen as the reference one; increasing Edry = Ewet thus
+lowers, in the average, the equivalent water diﬀusivity in the product. Such a
+tendency is weaker in the case of t1/2, whose values are primarily driven by
+ambient conditions under which the product is submitted to drying (Figure
+3c).
+
+===== [page 13] =====
+Springer Nature 2021 LATEX template
+12
+Drying of yac´on
+4.2 Reference Drying Condition: Evolution of the
+Product
+Figure 4 displays the temperature, water content, water activity and water
+diﬀusivity ﬁelds throughout the food slice at selected times. A remarkable
+result is the thermal homogeneity of the product slice, during the whole dry-
+ing period. An explanation is provided by the low values of the Biot number
+h(H/2)/λ; its decreasing tendency (0.2 down to 0.06) is due to a decrease in
+height (0.007 down to 0.001 m) which is stronger than in thermal conductivity
+(0.6 down to 0.3 W/m/K). As expected, evaporation at the surface drives the
+water migration across the food slice. The lateral surface of the slice experi-
+ences faster drying than its upper surface. After six hours under the convective
+drying conditions here considered, the slice volume decreased to about 7 %
+of its initial value. Water diﬀusivity varies with time and space following a
+complex pattern. At the slice surface, its decreasing tendency is driven by the
+moisture reduction. The inﬂuence of temperature decreases along the drying
+period, as the slice approaches the ambient temperature 60 oC. Water activity
+remained high after four hours, over 0.9 throughout large portions of the prod-
+uct slice, suggesting favorable conditions to selected micro-organisms. These
+results indicate the importance of the latest hours of drying in eﬀectively reduc-
+ing the water activity at the the slice core. The time and spatial distributions
+displayed in Figure 4 put in evidence i) the strong coupling between heat and
+water mass transfer phenomena during the convective drying of a food slice
+and ii) how the water diﬀusivity and water activity evolve throughout a food
+matrix exposed to convective drying under large deformation.
+Beyond the two-dimensional ﬁelds displayed at selected drying times, the
+approach allows studying the time evolution at given positions. Figure 5
+presents selected properties at two positions along the axis of symmetry of the
+food slice: at the surface (1) and the core (2). Position 1 moves along with
+the shrinkage history, being always located at the slice surface; it is exposed
+to moisture gradients that are stronger than those at position 2. Figure 5a
+reveals that these positions follow almost the same temperature history; such
+a ﬁnding comes from a combination of the small distance separating these
+positions and high thermal conductivity in the product. Beginning at T0 = 20
+oC, the temperature quickly reaches the wet-bulb temperature (about 34 oC),
+allowing favorable conditions to evaporation at the surface. Figure 5b presents
+the water content history at these positions. Convective drying is eﬀective:
+after 1.5h, there remains about 2.5 % of the initial water content at the sur-
+face. At this time, drying really starts at the core, following a slow-fast-slow
+decreasing tendency. After six hours of drying there remains about 3 % of the
+initial water content at the core. The evolution of water activity (Figure 5c) is
+delayed with respect to that of water content. The water activity is not homo-
+geneous throughout the product slice, even after six hours of convective drying.
+The activity at the surface remains near to 1 (> 0.9) only during a period of
+about 30min. During this period, the temperature remains near the wet-bulb
+one (34 oC), and the drying rate is nearly constant. From 30 min to 1h15min,
+
+===== [page 14] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+13
+the water activity at surface decrease to 0.7 and the temperature rises to 40
+oC. This indicates that diﬀusion from core to surface is no more suﬃcient to
+ensure free water evaporation at surface. However, the temperature diﬀerence
+between the surrounding air and the product surface — which drives the con-
+vective heat transfer to the product — decreases only from Tair −Twb = 26 oC
+to Tair −40 oC = 20 oC. This makes that drying rate seems almost constant
+up to 1h15min, which corresponds very closely to t1/2 (when X
+⋆
+w = 1/2).
+Water diﬀusivity in the product is assumed to depend on both temperature
+and moisture, whose relative importance evolves as heating and drying progress
+with time. Figure 5d shows that, at the surface (position 1), water diﬀusivity
+sharply increases when drying starts because temperature increases from T0 =
+20 oC to Twb = 34 oC, and then decreases from 4 10−11 to 7 10−12 m2/s
+because water content decreases from 11 to 0.04 kg-w/kg-dm. At the core
+(position 2), the water diﬀusivity follows an increasing tendency until drying
+signiﬁcantly occurs therein (after about three hours of drying), corresponding
+to temperatures about 48 oC; later on, the inﬂuence of moisture reduction
+becomes dominant.
+Previous results have discussed the evolution of key variables along the
+drying time as predicted by the numerical model, either throughout the 2D
+computational domain (Figure 4) or at selected positions (Figure 5). Addi-
+tional insight can be attained studying model results as function of the total
+water content present in the matrix. Figures 6a and 6b compare model pre-
+dictions with the measurements of dimensions of yac´on slices as obtained by
+Marques et al. (2022) under the reference drying conditions [air ﬂow 4 m/s,
+Tair = 60 oC, RHair = 20 %] . The numerical model captures the decreasing
+tendency of slice diameter, which is very weak during a considerable period
+(i.e. down to about X
+⋆
+w ∼0.3). The decreasing tendency of slice height is
+almost linear during such a period. The comparison of model predictions with
+measurements of slice height is diﬃcult: the initial ﬂat character of the upper
+and lower surfaces of the samples progressively disappears along the drying
+(see Figure 1 of Marques et al., 2022), turning somewhat ambiguous the notion
+of slice height. Figure 6c presents the total surface reduction along the dry-
+ing. A ﬁrst decreasing tendency can be recognized from the beginning down to
+X
+⋆
+w ∼0.3 when the diameter reduction becomes progressively more signiﬁcant
+(Figure 6a); towards the end of the drying period, the total surface decreases to
+about 35 % of its initial value. Figures 6d and 6e show the dimensionless drying
+kinetics dX
+⋆
+w/dt and dX
+⋆
+w/dt.S⋆. Both sharply increase when drying starts,
+while the food product leaves its initial temperature (20 oC) and reaches the
+wet-bulb temperature (about 34 oC) (Figure 5a). Later on, both drying kinet-
+ics decrease. On one hand, the dimensionless evaporative ﬂow dX
+⋆
+w/dt follows
+a decreasing tendency along drying, following the water activity decrease at
+the surface (Figure 5c) as well as the total surface decrease (Figure 6c). On the
+other hand, the dimensionless evaporative ﬂux dX
+⋆
+w/dt.S⋆follows a more com-
+plex decreasing tendency. Firstly, there is a period (X
+⋆
+w > 0.7), along which
+dX
+⋆
+w/dt.S⋆is quite constant: this would be the constant drying rate period
+
+===== [page 15] =====
+Springer Nature 2021 LATEX template
+14
+Drying of yac´on
+according to model predictions, roughly the ﬁrst hour of drying (Figure 6a).
+In a second period (0.7 > X
+⋆
+w > 0.2), dX
+⋆
+w/dt.S⋆decreases quite uniformly,
+while the water content remains high at the matrix core (Figure 5b). A ﬁnal
+period starts when water content at core decreases signiﬁcantly, at about three
+hours of drying (i.e. at about t1/8).
+4.3 Inﬂuence of Drying Conditions
+Cases [B, C, D] of Tables 1, 2 and 3 correspond to the three other drying con-
+ditions considered by Marques et al. (2022) in studying the evolution of yac´on
+samples with a convective drying pilot unit. The heat transfer coeﬃcient value
+was in each case adapted to the ambient conditions but the other parameters
+(including the water diﬀusivity in very dry and in very wet material) remain
+unchanged.
+The reliability of model predictions for these three cases is smaller than
+in case A but remains still acceptable, as put in evidence by the departures
+∆t1/2 and ∆t1/8 between model predictions and observations under same dry-
+ing conditions (see Table 3). The numerical model captures the inﬂuence of
+ambient conditions on the drying times t1/2 and t1/8 : for a given air temper-
+ature, they are slightly shorter under RHair = 20 % than under RHair = 30
+% as a consequence of more favorable conditions to evaporation at the food
+matrix surface at lower air relative humidity (see Table 1).
+Figure 7 compares observations and model predictions of water content
+under the four drying conditions. The diﬃculty of such comparison is evident
+under the drying conditions [air ﬂow 4 m/s, Tair = 60 oC, RHair = 30 %] (case
+B), which were particularly diﬃcult to conduct from the experimental point
+of view (see Figure 7b). Drying experiments under Tair = 50 oC were more
+successfully repeated (Figures 7c and 7d), allowing more robust conditions to
+assess the reliability of model predictions for cases C and D. In both cases,
+the numerical model underestimates the drying rate almost systematically,
+suggesting that additional eﬀorts are welcome e.g. in the identiﬁcation of the
+equivalent water diﬀusivity.
+5 Conclusions
+Drying phenomena (water migration inside the matrix, evaporation at its
+boundaries) cannot be dissociated from the geometrical evolution of the food
+matrix. A simple approach which does not require a complex mechanical model
+was proposed for shrinkage. The goal was to estimate how the local volume
+reduction (due to dehydration) is distributed between axial and radial shrink-
+age. Our approach assumes that the radial reduction is primarily driven by the
+decreasing water content of the product situated at the core (near the plane
+of symmetry of the slice volume). The assessment of such a tendency became
+possible from careful measurements of the slice diameter.
+We demonstrated that convective drying of food slices can be studied with a
+simple model including shrinkage. In its present implementation, the approach
+
+===== [page 16] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+15
+was successfully applied for a case where the volume was divided by about
+10 during drying. The algorithm can be adapted, for instance, for including
+simple reaction kinetics, as a way to predict the inﬂuence of drying on chemical
+properties at diﬀerent positions of the food matrix.
+The model proposed by Maroulis et al. (2001) was assumed for approximat-
+ing the water diﬀusivity in yac´on samples as function of temperature and water
+content. The values Dw,dry,ref = 1.0 10−12 m2/s and Dw,wet,ref = 1.6 10−10
+m2/s at 60 oC for very dry and very wet material were identiﬁed while account-
+ing for sample shrinkage; however they are not directly comparable with most
+results available in the literature for yac´on samples which were identiﬁed after
+neglecting sample shrinkage (e.g. Perussello et al., 2013, 2014; Shi et al., 2013;
+Mendon¸ca et al., 2017; Lisboa et al., 2018).
+In addition to the water diﬀusivity in yac´on samples, the implementation
+of the numerical model required a number of other parameters, most of them
+associated with the drying operating conditions, the thermo-physical proper-
+ties of the product, and the geometry of the food slice. The inﬂuence of selected
+parameters on the model predictions was analyzed. Variations on the heat
+transfer coeﬃcient and on the water diﬀusivity in very wet material were the
+most important, which was somewhat expected because the major role played
+by these parameters in heat and water mass transfer phenomena.
+Future work should assess the reliability of this approach under other con-
+vective drying conditions. Testing this approach should consider wider ranges
+of ambient conditions (air ﬂow, temperature and relative humidity) and other
+raw food products. Much work remains to be done in order to clarify the
+relationship between shrinkage and moisture loss.
+Acknowledgments.
+We warmly acknowledge AgroParistech and UMR Say-
+Food for kindly receiving the ﬁrst named author for a one-year research
+internship.
+Declarations
+• Funding
+Authors Bianca Cristine Marques and Carmen Cecilia Tadini received grants
+from Brazilian agencies: grants 2018 / 21327-1, 2019 / 21832-0, and 2013 /
+07914-8 from the S˜ao Paulo Research Foundation (FAPESP); ﬁnance code
+001 from the Coordination for the Improvement of Higher Education Per-
+sonnel (CAPES); and grant 309548 / 2021 from the National Council for
+Scientiﬁc and Technological Development (CNPq).
+• Conﬂict of interest/Competing interests
+All authors certify that they have no aﬃliations with or involvement in any
+organization or entity with any ﬁnancial interest or non-ﬁnancial interest in
+the subject matter or materials discussed in this manuscript.
+• Ethics approval
+Not applicable.
+• Consent to participate
+
+===== [page 17] =====
+Springer Nature 2021 LATEX template
+16
+Drying of yac´on
+Not applicable.
+• Consent for publication
+Not applicable.
+• Availability of data and materials
+Not applicable.
+• Code availability
+Not applicable.
+• Authors’ contributions
+B.C. Marques: Methodology, Experimental work, Model improvement,
+Writing.
+D. Flick: Conceptualization, Methodology, Original coding, Manuscript
+review.
+C.C. Tadini: Supervision, Project administration, Funding acquisition,
+Manuscript review.
+A. Plana-Fattori: Methodology, Model improvement, Writing including ﬁnal
+review and edition.
+References
+Bernstein, A., Norena, C. P. Z. (2014). Study of thermodynamic, structural,
+and quality properties of yac´on (Smallanthus sonchifolius) during drying.
+Food and Bioprocess Technology, 7, 148-160.
+https://doi.org/10.1007/s11947-012-1027-y
+Brasiello, A., Venditti, C., Adrover, A. (2021). Non-isothermal moving-
+boundary model for food drying. Chemical Engineering Transactions, 87,
+193-198.
+https://doi.org/10.3303/CET2187033
+Caetano, B. F. R., Moura, N. A., Almeida, A. P. S., Dias, M. C., Sivieri, K.,
+Barbisan, L. F. (2016). Yac´on (Smallanthus sonchifolius) as a food supple-
+ment : Health-promoting beneﬁts of frutooligosaccharides. Nutrients, 8, 436.
+https://doi.org/10.3390/nu8070436
+Campos, D., Aguilar-Galvez, A., Pedreschi, R. (2016). Stability of fruc-
+tooligosaccharides, sugars and colour of yac´on (Smallanthus sonchifolius)
+roots during blanching and drying. International Journal of Food Science and
+Technology, 51, 1177-1185.
+https://doi.org/10.1111/ijfs.13074
+Castro, A. M., Mayorga, E. Y., Moreno, F. L. (2018). Mathematical modelling
+of convective drying of fruits: A review. Journal of Food Engineering, 223,
+152-167.
+https://doi.org/10.1016/j.jfoodeng.2017.12.012
+
+===== [page 18] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+17
+Chandramohan, V. P. (2020). Convective drying of food materials: An
+overview with fundamental aspect, recent developments, and summary. Heat
+Transfer, 49, 1281–1313.
+https://doi.org/10.1002/htj.21662
+Choi, Y., Okos, M. R. (1986). Eﬀects of temperature and composition on the
+thermal properties of foods. In M. Le Mageur, P. Jelen (Eds.), Food Engineer-
+ing and Process Applications, pp. 93-101. Elsevier Applied Science.
+Curcio, S., Aversa, M., Chakraborty, S., Calabro, V., Iorio, G. (2016). For-
+mulation of a 3D conjugated multiphase transport model to predict drying
+process behavior of irregular-shaped vegetables. Journal of Food Engineering,
+176, 36-55.
+https://doi.org/10.1016/j.jfoodeng.2015.11.020
+Datta, A. K. (2008). Status of physics-based models in the design of food
+products, processes, and equipment. Comprehensive Reviews in Food Science
+and Food Safety, 7, 121-129.
+https://doi.org/10.1111/j.1541-4337.2007.00030.x
+Defraeye, T., Radu, A. (2018). Insights in convective drying of fruit by cou-
+pled modeling of fruit drying, deformation, quality evolution and convective
+exchange with air airﬂow. Applied Thermal Engineering, 129, 1026-1038.
+https://doi.org/10.1016/j.applthermaleng.2017.10.082
+Golestani, R., Raisi, A., Aroujalian, A. (2013). Mathematical modeling on
+air drying of apples considering shrinkage and variable diﬀusion coeﬃcient.
+Drying Technology, 31, 40-51.
+https://doi.org/10.1080/07373937.2012.714826
+Graefe, S., Hermann, M., Manrique, I., Golombek, S., Buerkert, A. (2004).
+Eﬀects of post-harvest treatments on the carbohydrate composition of yacon
+roots in the Peruvian Andes. Field Crops Research, 86, 157-165.
+https://doi.org/10.1016/j.fcr.2003.08.003
+Hermann, M., Freire, I., Pazos, C. (1999). Compositional diversity of the
+yacon storage root. In Andean Roots and Tuber Crops, pp.425-432. Interna-
+tional Potato Center Program Report 1997-1998, Lima (Peru).
+Incropera, F. P., DeWitt, D. P., Bergman, T. L., Lavine, A. S. (2003). Fun-
+damentals of Heat and Mass Transfer, 7th Edition. John Wiley & Sons.
+Katekawa, M. E., Silva, M. A. (2006). A review of drying models including
+shrinkage eﬀects. Drying Technology, 24, 5-20.
+https://doi.org/10.1080/07373930500538519
+
+===== [page 19] =====
+Springer Nature 2021 LATEX template
+18
+Drying of yac´on
+Khajehei, F., Hartung, J., Graeﬀ-Honninger, S. (2018). Total phenolic content
+and antioxidant activity of yac´on (Smallanthus sonchifolius, Poepp. et Endl.)
+chips : Eﬀect of cultivar, pre-treatment and drying. Agriculture, 8, 183.
+https://doi.org/10.3390/agriculture8120183
+Lachman, J., Fernandez, E. C., Orsak, M. (2003). Yac´on [Smallanthus sonchi-
+folius (Poepp. et Endl.) H. Robinson] chemical composition and use– A
+review. Plant Soil and Environment, 49, 283-290.
+https://doi.org/10.17221/4126-PSE
+Lebeda, A., Dolezalova, I., Fernandez, E., Viehamannova, I. (2012). Yac´on
+(Asteraceae;
+Smallanthus sonchifolius).
+In
+R.
+J.
+Singh
+(Ed.),
+Genetic
+Resources, Chromosome Engineering, and Crop Improvement, Volume 6 :
+Medicinal Plants, pp.641-702. CRC Press.
+Lisboa, C. G. C., Gomes, J. P., Figueiredo, R. M. F., Queiroz, A. J. M.,
+Diogenes, A. M. G., Melo, J. C. S. (2018). Eﬀective diﬀusivity in yac´on
+potato cylinders during drying. Revista Brasileira de Engenharia Agricola e
+Ambiental, 22, 564-569.
+http://dx.doi.org/10.1590/1807-1929/agriambi.v22n8p564-569.
+Mahiuddin, M., Khan, M. I. H., Kumar, C., Rahman, M. M., Karim, M.
+A. (2018). Shrinkage of food materials during drying: Current status and
+challenges. Comprehensive Reviews in Food Science and Food Safety, 17,
+1113-1126.
+https://doi.org/10.1111/1541-4337.12375
+Maroulis, Z. B., Saravacos, G. D., Panagiotou, N. M., Krokida, M. K. (2001).
+Moisture diﬀusivity data compilation for foodstuﬀs: Eﬀect of material mois-
+ture content and temperature. International Journal of Food Properties, 4,
+225-237.
+https://doi.org/10.1081/JFP-100105189
+Marques, B. C., Plana-Fattori, A., Flick, D., Tadini, C. C. (2022). Convective
+drying of yac´on (Smallanthus sonchifolius) slices: A simple physical model
+including shrinkage. LWT – Food Science and Technology, 159, 113151.
+https://doi.org/10.1016/j.lwt.2022.113151
+Marques, B. C., Perr´e, P., Casalinho, J., Tadini, C. C., Plana-Fattori, A.,
+Almeida, G. (2023). Evidence of iso-volume deformation during convective
+drying of yac´on: An extended van Meel model adapted to large volume reduc-
+tion. Journal of Food Engineering, 341, 111311.
+https://doi.org/10.1016/j.jfoodeng.2022.111311
+
+===== [page 20] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+19
+Martins, A. F. L., Vieira, E. N. R., Leite, B. R. C., Jr., Ramos, A. M. (2022).
+Use of ultrasound and ethanol to improve the drying of yac´on potato (Small-
+anthus sonchifolius) : Eﬀect of chemical and thermal bleaching. LWT – Food
+Science and Technology, 62, 113448.
+https://doi.org/10.1016/j.lwt.2022.113448
+Mayor, L., Sereno, A. M. (2004). Modelling shrinkage during convective dry-
+ing of food materials: A review. Journal of Food Engineering, 61, 373-386.
+https://doi.org/10.1016/S0260-8774(03)00144-4
+McCabe, W. L., Smith, J. C., Harriott, P. (2014). Unit Operations of Chemi-
+cal Engineering, 7th Edition. McGraw-Hill.
+Mendon¸ca, K., Correa, J., Junqueira, J., Angelis-Pereira, M., Cirillo, M.
+(2017). Mass transfer kinetics of the osmotic dehydration of yac´on slices with
+polyols. Journal of Food Processing and Preservation, 41, e12983.
+https://doi.org/10.1111/jfpp.12983.
+Mujumbar, A. S. (2006). Principles, classiﬁcation, and selection of dryers. In
+A. S. Mujumbar (Es.), Handbook of Industrial Drying, 3rd Edition, pp. 4–32.
+CRC Press.
+Perr´e, P., R´emond, R., Almeida, G., Augusto, P., Turner, I. (2023). State-of-
+the-art in the mechanistic modeling of the drying of solids: A review of 40
+years of progress and perspectives. Drying Technology,
+doi.org/10.1080/07373937.2022.2159974.
+Perussello, C. A., Mariani, V. C., Masson, M. L., Castilhos, F. (2013). Deter-
+mination of thermophysical properties of yac´on (Smallanthus sonchifolius)
+to be used in a ﬁnite element simulation. International Journal of Heat and
+Mass Transfer, 67, 1163-1169.
+http://dx.doi.org/10.1016/j.ijheatmasstransfer.2013.09.004
+Perussello, C. A., Kumar, C., Castilhos, F., Karim, M. A. (2014). Heat and
+mass transfer modeling of the osmo-convective drying of yac´on roots (Small-
+anthus sonchifolius). Applied Thermal Engineering, 63, 23-32.
+http://dx.doi.org/10.1016/j.applthermaleng.2013.10.020.
+Raghavan, G. S. V., Tulasidas, T. N., Sablani, S. S., Ramaswamy, H. S.
+(1995). A method of determination of concentration dependent eﬀective mois-
+ture diﬀusivity. Drying Technology, 13, 1477-1488.
+https://doi.org/10.1080/07373939508917034.
+Ramachandran, R. P., Akbarzadeh, M., Paliwal, J., Cenkowski, S. (2018).
+Computational Fluid Dynamics in drying process modelling– A technical
+
+===== [page 21] =====
+Springer Nature 2021 LATEX template
+20
+Drying of yac´on
+review. Food and Bioprocess Technology, 11, 271-292.
+https://doi.org/10.1007/s11947-017-2040-y.
+Sabarez, H. T. (2012). Computational modelling of the transport phenomena
+occurring during convective drying of prunes. Journal of Food Engineering,
+111, 279-288.
+https://doi.org/10.1016/j.jfoodeng.2012.02.021.
+Salinas, J. G., Alvarado, J. A., Bergenstahl, B., Tornberg, E. (2018). The
+inﬂuence of convection drying on the physicochemical properties of yac´on
+(Smallanthus sonchifolius). Heat and Mass Transfer, 54, 2951-2961.
+https://doi.org/10.1007/s00231-018-2334-2
+Scher, C. F., Rios, A. O., Norena, C. P. Z. (2009). Hot air drying of yac´on
+(Smallanthus sonchifolius) and its eﬀect on sugar concentrations. Interna-
+tional Journal of Food Science and Technology, 44, 2169-2175.
+https://doi.org/10.1111/j.1365-2621.2009.02056
+Sokhansanj, S., Jayas, D. S. (2006). Drying of foodstuﬀs. In A. S. Mujumbar
+(Ed.), Handbook of Industrial Drying, 3rd Edition, pp. 522–546. CRC Press.
+Shi, Q., Zheng, Y., Zhao, Y. (2013). Mathematical modeling on thin-layer
+heat pump drying of yac´on (Smallanthus sonchifolius) slices. Energy Conver-
+sion and Management, 71, 208-216.
+https://doi.org/10.1016/j.enconman.2013.03.032
+Welsh, Z., Simpson, M. J., Khan, M. I. H., Karim, M. A. (2018). Multiscale
+modeling for food drying: State of the art. Comprehensive Reviews in Food
+Science and Food Safety, 17, 1293-1308.
+https://doi.org/10.1111/1541-4337.12380
+Welsh, Z. G., Khan, M. I. H., Karim, M. A. (2021). Multiscale modeling for
+food drying: A homogenized diﬀusion approach. Journal of Food Engineering,
+292, 110252.
+https://doi.org/10.1016/j.jfoodeng.2020.110252
+Yuan, Y., Tan, L., Xu, Y., Yuan, Y., Dong, J. (2019). Numerical and experi-
+mental study on drying shrinkage-deformation of apple slices during process of
+heat-mass transfer. International Journal of Thermal Sciences, 136, 539-548.
+https://doi.org/10.1016/j.ijthermalsci.2018.10.042
+
+===== [page 22] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+21
+Appendix: Numerical Solving
+The food matrix is represented by a two-dimensional (2D) axis-symmetrical
+computational domain with total radius R0 and total height Z0 = H0/2 before
+drying starts; H0 is the (physical) actual height of the food matrix submitted to
+experimental conditions. The ﬁnite volume method is applied, with an explicit
+scheme, and the domain is subdivided into a number of control volumes (cells).
+The cells deform following the dry matter: the mass of dry matter remains
+constant in each cell along drying.
+Before drying starts (t = 0) all the cells are rectangular. In the present
+study, the mesh is built considering I and J cells along the radial and the
+axial directions, respectively; coordinates have the origin at the slice center.
+The computational domain has an initial aspect ratio R0/Z0 ∼6; meshes are
+chosen in taking I = 6 × J. The (i,j)-th cell is characterized by:
+• its initial position [r0(i), z0(i, j)], required in the evaluation of heat and water
+mass ﬂows; the position of inner cells is deﬁned as their center, the position of
+the outer cells is deﬁned at the interface of the domain with surrounding air;
+• four vertices, being that [R0(i), Z0(i, j)] is the position of the left-
+bottom corner of the (i,j)-th cell; hence r0(i) = (R0(i) + R0(i+1))/2 and
+z0(i, j) = (Z0(i, j) + Z0(i, j+1))/2;
+• its height ∆Z0(i, j) = Z0(i, j+1) −Z0(i, j);
+• its width ∆R0(i) = R0(i+1) −R0(i);
+• its surface S0(i) = π (R0(i+1)2 −R0(i)2) between two successive radial
+ordinates; and
+• its volume V0(i, j).
+Each cell is associated with a single value for the product temperature and
+for the water content. In the beginning, initial values T0 and Xw,0 are assigned
+to all the cells. The initial volume V0(i, j) of each cell is known, hence it is
+possible to calculate the mass of dry matter mdm(i, j) contained in each cell,
+which remains constant along drying.
+During the drying period (t > 0), the food matrix is submitted to con-
+vective heating and evaporation at its surface and to heat conduction and
+water diﬀusion inside it. Independently on the drying state of the food matrix,
+all the cells are assumed to be trapezoids, being that their vertical sides are
+imposed to be parallel to the axis of symmetry; such a condition translates the
+assumption of a same radial shrinkage to all the cells either near the plane of
+symmetry or outside it (see Section 3). Figure 8 displays key elements of the
+2D axi-symmetric representation of an elementary volume of the food matrix.
+Temperature and water content values are assumed to be representative of the
+whole cell, and hence follow indexing of positions [r(i), z(i, j)].
+After a time step (∆t), the total variation in the water content in the (i,j)-
+th cell and that in the temperature associated with this cell are calculated
+
+===== [page 23] =====
+Springer Nature 2021 LATEX template
+22
+Drying of yac´on
+as:
+∆Xw(i, j) = ( ( ( ϕZ(i, j) – ϕZ(i, j+1) )
++ ( ϕR(i, j) – ϕR(i+1, j) ) ) ∆t / mdm(i, j)
+(18)
+∆T(i, j) = ( ( ( ΦZ(i, j) – ΦZ(i, j+1) )
++ ( ΦR(i, j) – ΦR(i+1, j) ) ) ∆t / ( mdm(i, j) CP (i, j) )
+(19)
+wherein CP = C#
+dm + XwC#
+w . These equations involve water mass and heat
+ﬂows (ϕ [kg-w/s] and Φ [J/s]) along the axial z- and radial r- directions. In
+the case of inner cells, the water and energy rates are calculated as:
+ϕZ(i, j) = S(i, j) Dw(i, j) ρdm(i, j)
+× ( Xw(i, j−1) – Xw(i, j) )/( z(i, j) – z(i, j−1) )
+(20)
+ϕR(i) = 2 π ∆Z(i, j) Dw(i, j) ρdm(i, j)
+× ( Xw(i−1, j) – Xw(i, j) )/( ln( r(i)/r(i−1) ) )
+(21)
+ΦZ(i, j) = S(i, j) λ(i, j)
+× ( T(i, j−1) – T(i, j) )/( z(i, j) – z(i, j−1) )
+(22)
+ΦR(i, j) = 2 π ∆Z(i, j) λ(i, j)
+× ( T(i−1, j) – T(i, j) )/( ln( r(i)/r(i−1) ) ) .
+(23)
+Convective drying conditions are assumed to be steady and deﬁned by the
+air temperature (Tair) and relative humidity (RHair). Water and energy rates
+are calculated at surface cells while respecting the boundary conditions of the
+problem (equations 4 and 8). For instance, in the case of the lateral surface:
+ϕR(I+1, j) = k × 2 π r(I, j) ∆Z(I+1, j)
+× ( aw(I, j) Cw,sat{T(I, j)} – RHair Cw,sat{Tair} )
+(24)
+ΦR(I+1, j) = h × 2 π r(I, j) ∆Z(I+1, j)
+× ( T(I, j) – Tair ) + Lv ϕR(I+1, j) .
+(25)
+Thus, heat ﬂows Φ at the surface are computed by adding two contributions:
+the ﬁrst is proportional to the diﬀerence between the temperatures in the
+product and in the ambient air, the second is proportional to the water mass
+ﬂow ϕ. This latter requires the water activity, which is estimated at each
+position of the air-product interface by solving equation 12 while employing
+the water content available in the previous time step.
+The calculation of total variations ∆Xw(i, j) and ∆T(i, j) (equations 18
+and 19) allows updating the temperature and water content values for each
+cell. The following sequence of steps allows updating the volume and position
+of the (i,j)-th cell of the food matrix.
+
+===== [page 24] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+23
+(a) The cell volume comes from equation 1, considering the updated water
+content value Xw:
+V (i, j) = mdm(i, j)
+ 
+1
+ρ#
+dm
++ Xw(i, j)
+ρ#
+w
+!
+,
+1 ≤i ≤I ,
+1 ≤j ≤J . (26)
+(b) The horizontal surface of all the cells in the plane of symmetry comes from
+equation 15:
+∆S(i) = ∆S0(i)
+ V (i, 1)
+V0(i, 1)
+2β
+,
+1 ≤i ≤I .
+(27)
+(c) The radial ordinate R(i+1) for all the cells situated in a given column
+(same distance from the axis of symmetry) is obtained as:
+S(i) = π
+ R(i+1)2 −R(i)2 
+,
+1 ≤i ≤I ,
+(28)
+wherein R(1) = 0 (axis of symmetry).
+(d) The heights at R(1) and R(2) of all the cells in the vicinity of the axis of
+symmetry are computed by assuming that these cells have rectangular cross-
+section:
+∆Z(1, j) = V (1, j) / S(1, j) ,
+1 ≤j ≤J ,
+(29)
+∆Z(2, j) = ∆Z(1, j) ,
+1 ≤j ≤J .
+(30)
+(e) In the general case, the heights ∆Z at R(i) and R(i + 1) for a given cell
+can depend on its distance from the axis of symmetry. The elementary volume
+of a trapezoidal ring can be expressed as:
+V (i, j) = C1 ∆Z(i, j) + C2 ∆Z(i+1, j) ,
+1 ≤i ≤I ,
+1 ≤j ≤J
+(31)
+C1 =
+
+2 π
+R(i+1) −R(i)
+
+×
+ 1
+6 R(i+1)3 + 1
+3 R(i)3 −1
+2 R(i+1) R(i)2
+
+(32)
+C2 =
+
+2 π
+R(i+1) −R(i)
+
+×
+ 1
+3 R(i+1)3 + 1
+6 R(i)3 −1
+2 R(i) R(i+1)2
+
+;
+(33)
+hence, the height at R(i + 1) is obtained from that at R(i):
+∆Z(i+1, j) = ( V (i, j) −C1 ∆Z(i, j) ) / C2 ,
+1 ≤i ≤I ,
+1 ≤j ≤J .
+(34)
+
+===== [page 25] =====
+Springer Nature 2021 LATEX template
+24
+Drying of yac´on
+(f) Axial coordinates of the cell vertices can be computed straightforwardly:
+Z(i, j + 1) = Z(i, j) + ∆Z(i, j) ,
+1 ≤i ≤I ,
+1 ≤j < J ,
+(35)
+wherein Z(i, 1) = 0 (plane of symmetry).
+(g) Finally, the cell’s position [r(i), z(i, j)] is updated from the vertices
+coordinates:
+r(i) = ( R(i) + R(i + 1) ) / 2 ,
+1 ≤i ≤I ,
+(36)
+z(i, j) = ( Z(i, j) + Z(i + 1, j)
++ Z(i, j + 1) + Z(i + 1, j + 1) ) / 4 ,
+1 ≤i ≤I ,
+1 ≤j ≤J .
+(37)
+The algorithm was written in Python language, and no attempts were
+conducted in optimizing it.
+
+===== [page 26] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+25
+NOMENCLATURE
+aw
+water activity in the product
+C
+Guggenheim constant (GAB model)
+CP, air
+air heat capacity [J/kg/K]
+C#
+P, dm
+intrinsic heat capacity of dry matter [J/kg-dm/K]
+C#
+P, w
+intrinsic heat capacity of water [J/kg-w/K]
+D
+diameter of the product slice [m]
+D⋆= D/D0
+dimensionless diameter
+D0
+initial diameter of the product slice [m]
+Dw
+water diﬀusivity in the product [m2/s]
+Dw,dry,ref
+water diﬀusivity in very dry material at temperature Tref [m2/s]
+Dw,wet,ref
+water diﬀusivity in very wet material at temperature Tref [m2/s]
+Edry
+activation energy value for diﬀusion in very dry material [J/mol]
+Ewet
+activation energy value for diﬀusion in very wet material [J/mol]
+h
+heat transfer coeﬃcient at air-product interfaces [W/m2/K]
+H
+height of the product slice [m]
+H0
+initial height of the product slice [m]
+i
+column index of cell position
+I
+number of columns assumed in meshing the domain
+j
+line index of cell position
+J
+number of lines assumed in meshing the domain
+⃗jq
+energy ﬂux relative to the dry matter [W/m2]
+⃗jw/dm
+water ﬂux relative to the dry matter [kg-w/m2/s]
+k
+mass transfer coeﬃcient at the air-product interfaces [m/s]
+K
+correction factor (GAB model)
+Le
+Lewis number
+Lv
+latent heat of water vaporization [J/kg]
+⃗n
+surface normal unit vector
+r(i)
+bulk position of the cell along the radial direction [m]
+R(i)
+(i)-th position of the cell along the radial direction [m]
+R0 = D0/2
+initial width (”radius”) of the computational domain [m]
+RHair
+air relative humidity [%]
+S
+surface of the product slice [m2]
+S⋆= S/S0
+dimensionless surface of the product slice
+S0
+initial surface of the product slice [m2]
+t
+time [s]
+T
+temperature [K]
+T0
+initial temperature [K]
+Tair
+air temperature [K]
+Tref
+reference temperature [K]
+Twb
+wet-bulb temperature [K]
+u
+internal energy of the product per kg of dry matter (J/kg-dm)
+udm
+internal energy of dry matter in the product (J/kg-dm)
+uw
+internal energy of water in the product (J/kg-w)
+⃗vdm
+dry matter velocity in the product [m/s]
+
+===== [page 27] =====
+Springer Nature 2021 LATEX template
+26
+Drying of yac´on
+Continuation of NOMENCLATURE
+V
+volume of the product slice [m3]
+V ⋆= V/V0
+dimensionless volume of the product
+V0
+initial volume of the product slice [m3]
+Xw
+local water content [kg-w/kg-dm]
+Xw
+average water content in the food matrix [kg-w/kg-dm]
+X
+⋆
+w = Xw/Xw,0
+dimensionless water content
+Xw,0
+initial water content in the product [kg-w/kg-dm]
+Xw,mono
+mono-layer water content [kg-w/kg-dm] (GAB model)
+z(i, j)
+bulk position of the cell along the axial direction [m]
+Z(i, j)
+(i,j)-th position of the cell along the axial direction [m]
+Z0 = H0/2
+initial height of the computational domain [m]
+α
+volume fraction occupied by dry matter in the product
+β
+exponent, power-law relying dimensionless diameter and volume
+∆R(i)
+distance between the radial ordinates of two corners of a cell [m]
+∆S(i)
+surface between two successive radial ordinates of a cell [m2]
+∆t
+time step [s]
+∆T(i, j)
+variation in the temperature in a given cell [K]
+∆Xw(i, j)
+variation in the water content in a given cell [kg-w/kg-dm]
+∆Z(i, j)
+distance between the axial ordinates of two corners of a cell [m]
+λ
+product thermal conductivity [W/m/K]
+λdm
+dry matter thermal conductivity [W/m/K]
+λw
+liquid water thermal conductivity [W/m/K]
+ρair
+air mass density [kg/m3]
+ρdm
+mass density of dry matter
+(mass of dry matter per total volume) [kg-dm/m3]
+ρdm,0
+initial mass density of dry matter [kg-dm/m3]
+ρ#
+dm
+intrinsic mass density of dry matter
+(mass of dry matter per volume of dry matter) [kg-dm/m3-dm]
+ρv,sat
+mass density of saturated water vapor [kg-w/m3]
+ρ#
+w
+intrinsic mass density of liquid water
+(mass of water per volume of water) [kg-w/m3-w]
+ϕR
+water mass ﬂow along the radial direction [kg-w/s]
+ϕZ
+water mass ﬂow along the axial direction [kg-w/s]
+ΦR
+heat ﬂow along the radial direction [J/s]
+ΦZ
+heat ﬂow along the axial direction [J/s]
+
+===== [page 28] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+27
+Table 1 Experimental drying operating conditions and key model parameters considered in numerical simulations (I).
+case A
+case B
+case C
+case D
+• pilot unit operating conditions:
+air temperature Tair [oC]
+60
+60
+50
+50
+(1)
+air relative humidity RHair [%]
+20
+30
+20
+30
+(1)
+wet-bulb temperature Twb [oC]
+35.3
+40.0
+28.7
+32.6
+dew-point temperature Td [oC]
+28.9
+36.1
+20.9
+27.7
+• typical values before experiments:
+slice temperature T0 [oC]
+20
+(1)
+slice water content
+Xw,0 [kg-w/kg-dm]
+11
+(1)
+slice height H0 [m]
+0.007
+(1)
+slice radius R0 [m]
+0.02
+(1)
+• typical values after experiments:
+characteristic drying time 1/
+ dXw/dt
+
+t=0 [s]
+1.42 10−4
+1.30 10−4
+1.15 10−4
+1.05 10−4
+(1)
+drying time t1/2 (when X
+⋆
+w = 1/2) [min]
+76
+80
+88
+94
+drying time t1/8 (when X
+⋆
+w = 1/8) [min]
+190
+183
+227
+231
+• estimates from laboratory experiments:
+GAB parameter C
+1.45
+1.17
+(1)
+GAB parameter K
+0.984
+0.970
+(1)
+GAB parameter Xw,mono [kg-w/kg-dm]
+0.116
+0.137
+(1)
+1 As reported by Marques et al. (2022).
+
+===== [page 29] =====
+Springer Nature 2021 LATEX template
+28
+Drying of yac´on
+Table 2 Experimental drying operating conditions and key model parameters considered in numerical simulations (II).
+case A
+case B
+case C
+case D
+• heat and mass transfer parameters:
+heat transfer coeﬃcient h [W/m2/K]
+33
+37
+31
+35
+(2)
+ratio of transfer coeﬃcients k/h for mass and heat
+1.02 10−3
+(2)
+latent heat of vaporization Lv [J/kg] at 60 oC
+2.36 106
+• pure water properties:
+density ρ#
+w [kg/m3]
+991
+heat capacity C#
+P, w [J/kg/K]
+4180
+thermal conductivity λ#
+w [W/m/K]
+0.631
+• dry matter properties:
+density ρ#
+dm [kg/m3]
+1590
+(3)
+heat capacity C#
+P, dm [J/kg/K]
+1620
+(3)
+thermal conductivity λ#
+dm [W/m/K]
+0.250
+(3)
+• mesh and time step:
+mesh (number of lines, number of columns)
+J = 5,
+I = 6 × J = 30
+(4)
+time step
+∆t = 0.01 s
+(4)
+2 See Section 2.
+3 Data provided by Hermann et al. (1999) about nine accessions of fresh yac´on allowed us to estimate the averaged composition:
+0.37g/100g for proteins, 0.024g/100g for fat, 11g/100g for carbohydrates, 0.36g/100g for ﬁbers, and 0.51g/100g for ash. These
+values were considered in applying Choi and Oikos’ (1986) approach for estimating yac´on thermal properties at the temperature
+of 40 oC. The latter represents the average between the slice initial temperature 20 oC and the reference temperature 60 oC.
+4 ‘Ad hoc’ compromise between reliability of model predictions and computational cost (typically, 4 hours on a 11 Gen Intel
+Core i7-1165G7 at 2.8 GHz, 16 Gb-RAM laptop).
+
+===== [page 30] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+29
+Table 3 Inﬂuence of key physical parameters. Percentage changes refer to the values
+assumed in case A. Last columns indicate departures ∆tf between drying times tf
+identiﬁed in model predictions and in observations (see Table 1).
+Tair
+RHair
+Dw,dry,ref
+Dw,wet,ref
+Edry = Ewet
+h
+∆t1/2
+∆t1/8
+case
+[oC]
+[%]
+[m2/s]
+[m2/s]
+[kJ/mol]
+[W/m2/K]
+[min]
+[min]
+A
+60
+20
+1 10−12
+1.6 10−10
+30
+33
++4
+−3
+A1
+60
+20
+−50%
+1.6 10−10
+30
+33
++4
+−3
+A2
+60
+20
+−10%
+1.6 10−10
+30
+33
++4
+−3
+A3
+60
+20
++10%
+1.6 10−10
+30
+33
++4
+−3
+A4
+60
+20
++50%
+1.6 10−10
+30
+33
++4
+−3
+A5
+60
+20
+1 10−12
+−50%
+30
+33
++25
++96
+A6
+60
+20
+1 10−12
+−10%
+30
+33
++4
++6
+A7
+60
+20
+1 10−12
++10%
+30
+33
++3
+−10
+A8
+60
+20
+1 10−12
++50%
+30
+33
+−1
+−28
+A9
+60
+20
+1 10−12
+1.6 10−10
+−50%
+33
+−1
+−24
+A10
+60
+20
+1 10−12
+1.6 10−10
+−10%
+33
++3
+−7
+A11
+60
+20
+1 10−12
+1.6 10−10
++10%
+33
++6
++2
+A12
+60
+20
+1 10−12
+1.6 10−10
++50%
+33
++12
++21
+A13
+60
+20
+1 10−12
+1.6 10−10
+30
+−50%
++70
++111
+A14
+60
+20
+1 10−12
+1.6 10−10
+30
+−20%
++20
++24
+A15
+60
+20
+1 10−12
+1.6 10−10
+30
+−10%
++11
++9
+A16
+60
+20
+1 10−12
+1.6 10−10
+30
++10%
+−2
+−13
+A17
+60
+20
+1 10−12
+1.6 10−10
+30
++20%
+−6
+−20
+A18
+60
+20
+1 10−12
+1.6 10−10
+30
++50%
+−16
+−35
+B
+60
+30
+1 10−12
+1.6 10−10
+30
+37
++6
++10
+C
+50
+20
+1 10−12
+1.6 10−10
+30
+31
++11
++10
+D
+50
+30
+1 10−12
+1.6 10−10
+30
+35
++10
++12
+Figure Captions
+Figure 1. Schematic view of a cylindrical food slice, before any drying (left)
+and later on (right), according to a 2D axis-symmetrical representation. Axial
+distances (z) are measured from the plane of symmetry that subdivides the
+cylinder into two identical halves; radial distances (r) are measured from the
+the cylinder axis. A elementary volume of this cylinder is put in evidence,
+characterized by its height δz and width δr; its horizontal surface δS equals
+2 π r δr.
+Figure 2. (a) Dimensionless water content evolution under the reference
+drying operating condition [air ﬂow 4 m/s, Tair = 60 oC, RHair = 20 %] , as
+provided by observations (Marques et al., 2022) and model predictions. Two
+selected drying times are identiﬁed, corresponding respectively to 1/2 and
+1/8 of the initial water content as resulting from observations. (b) Inﬂuence
+
+===== [page 31] =====
+Springer Nature 2021 LATEX template
+30
+Drying of yac´on
+of the time step ∆t assumed in model simulations on selected drying times;
+the grey line indicate values from observations. (c) Inﬂuence of the number of
+mesh elements I × J assumed in model simulations on selected drying times.
+Stars indicate results corresponding to case A simulations (time step = 0.01
+s, number of mesh elements = 150).
+Figure 3. Inﬂuence of selected model parameters on predictions of drying
+times t1/2 and t1/8: (a) water diﬀusivity in very dry material, (b) water dif-
+fusivity in very wet material, (c) energy of activation, and (d) heat transfer
+coeﬃcient. Values of t1/2 and t1/8 from observations are indicated. Stars indi-
+cate results corresponding to case A simulations (Dw,dry,ref = 10−12 m2/s,
+Dw,wet,ref = 1.6 10−10 m2/s, Edry = Ewet = 30 kJ/mol, h = 33 W/m2/K).
+Figure 4. Temperature, water content, water diﬀusivity and water activity
+ﬁelds in the food slice at selected times. Dimensions of the food slice are
+expressed in meters. Positions 1 and 2 considered in Figure 5 are also dis-
+played.
+Figure 5. Evolution of selected variables according to model predictions under
+the reference drying operating conditions (air ﬂow 4 m/s, Tair = 60 oC, RHair
+= 20 %): at the surface (1) and at the core (2).
+Figure 6. Evolution of selected variables according to model predictions (black
+lines) and to observations of mass loss (colored lines and black symbols),
+under the reference drying operating conditions (air ﬂow 4 m/s, Tair = 60 oC,
+RHair = 20 %). Arrows recall the decrease of selected variables as the drying
+progresses.
+Figure 7. Dimensionless water content evolution under the four drying con-
+ditions studied by Marques et al. (2022), as provided by observations and
+model predictions.
+Figure 8. Schematic view of a elementary volume of the food matrix, in its
+2D axi-symmetric representation.
+
+===== [page 32] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+31
+Fig. 1 Schematic view of a cylindrical food slice, before any drying (left) and later on
+(right), according to a 2D axi-symmetrical representation. Axial distances (z) are measured
+from the plane of symmetry that subdivides the cylinder into two identical halves; radial
+distances (r) are measured from the the cylinder axis. An elementary volume of this cylinder
+is put in evidence, characterized by its height δz and width δr; its horizontal surface δS
+equals 2 π r δr.
+
+===== [page 33] =====
+Springer Nature 2021 LATEX template
+32
+Drying of yac´on
+
+===== [page 34] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+33
+Fig. 2 (a) Dimensionless water content evolution under the reference drying operating
+condition [air ﬂow 4 m/s, Tair = 60 oC, RHair = 20 %] , as provided by observations
+(Marques et al., 2022) and model predictions. Two selected drying times are identiﬁed,
+corresponding respectively to 1/2 and 1/8 of the initial water content as resulting from
+observations. (b) Inﬂuence of the time step ∆t assumed in model simulations on selected
+drying times; the grey line indicate values from observations. (c) Inﬂuence of the number of
+mesh elements I × J assumed in model simulations on selected drying times. Stars indicate
+results corresponding to case A simulations (time step = 0.01 s, number of mesh elements
+= 150).
+
+===== [page 35] =====
+Springer Nature 2021 LATEX template
+34
+Drying of yac´on
+
+===== [page 36] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+35
+Fig. 3 Inﬂuence of selected model parameters on predictions of drying times t1/2 and
+t1/8: (a) water diﬀusivity in very dry material, (b) water diﬀusivity in very wet mate-
+rial, (c) energy of activation, and (d) heat transfer coeﬃcient. Values of t1/2 and t1/8
+from observations are indicated. Stars indicate results corresponding to case A simulations
+(Dw,dry,ref = 10−12 m2/s, Dw,wet,ref = 1.6 10−10 m2/s, Edry = Ewet = 30 kJ/mol, h =
+33 W/m2/K).
+
+===== [page 37] =====
+Springer Nature 2021 LATEX template
+36
+Drying of yac´on
+
+===== [page 38] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+37
+Fig. 4 Temperature, water content, water diﬀusivity and water activity ﬁelds in the food
+slice at selected times. Dimensions of the food slice are expressed in meters. Positions 1 and
+2 considered in Figure 5 are also displayed.
+
+===== [page 39] =====
+Springer Nature 2021 LATEX template
+38
+Drying of yac´on
+
+===== [page 40] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+39
+Fig. 5 Evolution of selected variables according to model predictions under the reference
+drying operating conditions (air ﬂow 4 m/s, Tair = 60 oC, RHair = 20 %): at the surface
+(1) and at the core (2).
+
+===== [page 41] =====
+Springer Nature 2021 LATEX template
+40
+Drying of yac´on
+
+===== [page 42] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+41
+
+===== [page 43] =====
+Springer Nature 2021 LATEX template
+42
+Drying of yac´on
+Fig. 6 Evolution of selected variables according to model predictions (black lines) and
+to observations of mass loss (colored lines and black symbols), under the reference drying
+operating conditions (air ﬂow 4 m/s, Tair = 60 oC, RHair = 20 %). Arrows recall the
+decrease of selected variables as the drying progresses.
+
+===== [page 44] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+43
+
+===== [page 45] =====
+Springer Nature 2021 LATEX template
+44
+Drying of yac´on
+Fig. 7 Dimensionless water content evolution under the four drying conditions studied by
+Marques et al. (2022), as provided by observations and model predictions.
+
+===== [page 46] =====
+Springer Nature 2021 LATEX template
+Drying of yac´on
+45
+Fig. 8 Schematic view of an elementary volume of the food matrix, in its 2D axi-symmetric
+representation.

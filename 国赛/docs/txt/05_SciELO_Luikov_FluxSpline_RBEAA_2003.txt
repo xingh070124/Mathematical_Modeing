@@ -1,0 +1,1651 @@
+
+===== [page 1] =====
+135
+Esquema de discretização Flux-Spline
+aplicado à secagem, em meio poroso capilar
+Revista Brasileira de Engenharia Agrícola e Ambiental, v.7, n.1, p.135-140, 2003
+Campina Grande, PB, DEAg/UFCG - http://www.agriambi.com.br
+Paulo C. Oliveira1 & José L. Lima2
+1 CCA/UFES. CP 16, CEP 29500-000, Alegre, ES. E-mail: pacol@npd.ufes.br (Foto)
+2 Bolsista de PIBIC - Agronomia, CCA/UFES. E-mail: lima-l@bol.com.br
+Resumo: Este trabalho foi desenvolvido com o objetivo de se apresentar a aplicação de um
+esquema de discretização mais eficiente para volumes finitos, denominado Flux-Spline utilizando-
+se, para tal, de dois casos de transporte difusivo de umidade e calor, através de um meio poroso
+capilar. Os resultados da solução numérica do sistema de equações formado pelas equações de
+Luikov mostram desempenho adequado do esquema para este tipo de problema, quando comparado
+ao tradicional esquema de diferença central e ao método da transformada integral.
+Palavras-chave: difusão, equações de Luikov, volumes finitos
+Flux-Spline discretization scheme applied
+to drying in capillary porous media
+Abstract: This study was conducted with the objective to present a more efficient discretization
+scheme to finite volumes method called Flux-Spline, utilizing for the purpose, two cases of pure
+diffusion in capillary porous media. The results of numerical simulation of the system of equations
+formed by Luikov equations showed a good performance of the scheme in comparison to the
+Central Difference Scheme and Generalized Integral Transform Technique method.
+Key words: diffusion, Luikov equations, finite volumes
+Protocolo 118 - 21/8/2002   -   Aprovado em 20/2/2003
+INTRODUÇÃO
+Problemas práticos envolvendo transporte de calor e massa
+aparecem em processos como fusão e solidificação de materiais,
+secagem de madeira, armazenamento e beneficiamento de grãos,
+movimentação de água, poluentes ou adubos em solos, conforto
+ambiental em edificações, escoamentos atmosféricos e previsão
+de tempo. O método de volumes finitos é utilizado por grande
+parte da literatura dos problemas citados acima.
+Dentre os esquemas de discretização usados em volumes
+finitos para difusão pura, o esquema de Diferença Central,
+descrito em Patankar (1980), gerado a partir da hipótese de que
+o fluxo difusivo da variável dependente é constante entre dois
+pontos da discretização, ocupa lugar de destaque na comuni-
+dade de simulação numérica, devido à sua simplicidade e aos
+bons resultados para este tipo de fenômeno. A fim de reduzir
+esforço computacional, Varejão (1979) demonstrou que, admitir
+uma variação linear do fluxo total da variável dependente
+transportada dentro de cada volume de controle, gera um perfil
+interpolante denominado Flux-Spline, que produz, para todos
+os problemas teste usados ao longo do seu trabalho, erros
+expressivamente menores que o esquema de Diferença Central.
+Nieckele (1985) confirmou o bom desempenho do esquema Flux-
+Spline, comparando-o aos demais esquemas utilizados na
+literatura de métodos numéricos da época. Oliveira (1997) utilizou
+este esquema para simular convecção natural em cavidades
+abertas, também com bons resultados. A única modificação
+presente no esquema Flux-Spline, com relação ao tradicional
+esquema de diferença central, reside no aparecimento de mais
+um termo-fonte, cujo cálculo não possui qualquer dificuldade.
+O presente trabalho teve como objetivo apresentar um
+esquema de discretização mais elaborado em relação aos
+atualmente utilizados pelos usuários deste método, para tratar
+problemas difusivos governados pelo sistema de equações
+descritas em Luikov & Mikhailov (1965), Luikov (1966) e Luikov
+(1975). Tais equações, denominadas equações de Luikov,
+governam a transferência simultânea de calor e massa em
+problemas como a secagem de madeira, solos, cerâmicas e
+produtos agrícolas e farmacêuticos.
+MATERIAL E MÉTODOS
+Discretização de difusão em regime permanente por volumes
+finitos
+A equação diferencial que rege o transporte de um escalar,
+φ, em regime permanente, é:
+
+===== [page 2] =====
+136
+R. Bras. Eng. Agríc. Ambiental, Campina Grande, v.7, n.1, p.135-140, 2003
+P.C. Oliveira & J.L. Lima
+φ
+φ =
+∇
+S
+J
+r
+em que o fluxo difusivo da variável dependente φ é Jφ = -Γφ ∇φ
+e Sφ = Scφ + Spφφ representa o termo fonte linearizado como
+em Patankar (1980). A Eq. 1 pode ser colocada em coordenadas
+cartesianas na forma:
+φ
+φ
+φ
+φ
+=
+∂
+∂
++
+∂
+∂
++
+∂
+∂
+S
+Z
+Jz
+Y
+Jy
+X
+Jx
+O fluxo difusivo na direção X da variável dependente φ é:
+X
+   
+Jx
+∂
+φ
+∂
+Γ
+−
+=
+φ
+φ
+em que Γφ é o coeficiente de difusão, propriedade que expressa
+a capacidade do meio de transportar a variável dependente φ.
+Num caso unidimensional, admite-se que o fluxo total e suas
+derivadas sejam posicionados nas faces dos volumes de
+controle, como mostrado na Figura 1. Assume-se que o fluxo
+total Jxφ possa variar na direção Xi, de forma linear, ao longo de
+cada volume de controle. Desta hipótese obtém-se a seguinte
+expressão para o volume de controle i:
+φ
+φ
+φ
++
+η
+=
+i
+i
+i
+Dx
+x
+ 
+Cx
+Jx
+i
+i
+i
+X
+X
+x
+∆
+=
+η
+φ
+φ =
+i
+i
+Jx
+Dx
+(
+)
+φ
+φ
++
+φ
+−
+=
+i
+1
+i
+i
+Jx
+Jx
+Cx
+φ
+−
+=
+i
+i
+Jx
+Dxm
+φ
+−
+φ
+φ
+−
+=
+1
+i
+i
+i
+Jx
+Jx
+Cxm
+Obtém-se, da igualdade entre as Eqs. (3) e (4) para um
+volume de controle i:
+φ
+φ
+φ
++
+η
+=
+φ
+Γ
+−
+i
+i
+i
+i
+i
+Dx
+  
+x
+ 
+Cx
+ 
+dX
+d
+A solução da equação diferencial acima, assumindo-se o
+coeficiente Γi
+φ constante dentro deste volume de controle,
+fornece o perfil interpolante do esquema de discretização para
+difusão pura:
+φ
+φ
+φ
+φ
++
+
+
+
+
+
+
+
+
++
+∆
+Γ
+=
+φ
+vci
+i
+i
+i
+2
+i
+i
+i
+C
+   
+   
+X
+ 
+Dx
+  
+ 
+X
+X
+Cx
+2
+1
+ 
+1.0
+- 
+Com a condição φ(Xi = ∆Xi) = φi, obtém-se o valor da
+constante de integração para o volume de controle i:
+i
+i
+i
+i
+i
+i
+i
+i
+vci
+   
+  
+X
+Dx
+  
+  
+Cx
+2
+1
+ 
+mx
+X
+C
+φ
++
+Γ
+∆
++
+
+
+
+
+
+
+η
+Γ
+∆
+=
+φ
+−
+φ
+φ
+φ
+−
+φ
+em que:
+i
+i
+i
+X
+X
+mx
+∆
+∆
+=
+η
+−
+Para o volume de controle (i - 1) usando-se o sistema de
+coordenadas Xmi mostrado na Figura 1, com a condição φ(Xmi
+= ∆Xi - 1) = φi - 1, tem-se uma equação similar a Eq. 14:
+1
+i
+1
+i
+1
+i
+i
+i
+1
+i
+1
+i
+1
+i
+1
+vci
+   
+    
+X
+Dxm
+    
+    
+Cxm
+2
+1
+px
+X
+C
+−
+φ
+−
++
+−
+φ
+φ
+−
+φ
+−
++
+−
+φ
+−
+φ
++
+Γ
+∆
++
+
+
+
+
+
+
+η
+Γ
+∆
+=
+em que:
+1
+i
+1
+i
+1
+i
+X
+X
+px
+−
++
+−
+−
+∆
+∆
+=
+η
+Condição de continuidade para a variável dependente φ
+Na interface entre os volumes de controle i e (i - 1) a variável
+dependente possui um valor único, ou seja:
+(
+)
+(
+)
+0
+Xm
+0
+X
+i
+i
+=
+φ
+=
+=
+φ
+O que equivale a:
+ 
+φ
++1
+i
+Jx
+iφ
+•
+1
+i−
+φ
+•
+i
+X  
+i
+Xm
++
+−
+∆
+1
+iX  
+iX
+∆
+φ
+−1
+i
+Jx
+φ
+i
+Jx
+−
+∆
+i
+X
+1
+i
+X −
+∆
+Figura 1. Discretização unidimensional para volumes finitos
+Para o volume de controle (i-1) mostrado na Figura 1 sob a
+coordenada Xmi:
+φ
+φ
+φ
++
+η
+=
+i
+i
+i
+Dxm
+  
+xm
+ 
+Cxm
+ 
+Jxm
+em que:
+1
+i
+i
+i
+X
+Xm
+xm
+−
+∆
+=
+η
+(1)
+(2)
+(3)
+(4)
+(5)
+(6)
+(7)
+(8)
+(9)
+(10)
+(11)
+(12)
+(13)
+(14)
+(15)
+(16)
+(17)
+(18)
+
+===== [page 3] =====
+137
+R. Bras. Eng. Agríc. Ambiental, Campina Grande, v.7, n.1, p.135-140, 2003
+Esquema de discretização Flux-Spline aplicado à secagem, em meio poroso capilar
+φ
+−
+φ
+=
+1
+vci
+vci
+C
+C
+Equação para os fluxos na direção Xi
+Após a substituição em (19) das Eqs. (14) e (16) obtém-se a
+expressão para os fluxos difusivos Jxiφ, ao longo do domínio
+em x:
+(
+)
+φ
+−
+φ
+φ
++
+φ
+−
+φ
+=
+i
+i
+1
+i
+i
+i
+Jhatx
+ 
+ 
+DJx
+ 
+ 
+Jx
+em que:
+
+
+
+
+
+
+Γ
+∆
++
+Γ
+∆
+=
+φ
+−
++
+−
+φ
+−
+φ
+1
+i
+1
+i
+i
+i
+i
+X
+X
+0.1
+DJx
+(
+)
+(
+)
+φ
+φ
+−
+φ
+φ
++
+φ
+φ
+φ
+−
+−
+=
+i
+1
+i
+i
+1
+i
+i
+i
+i
+Jx
+Jx
+CJx
+  -
+  
+Jx
+Jx
+BJx
+   
+Jhatx
+i
+i
+i
+i
+i
+mx
+ 
+X
+DJx
+ 
+2
+1
+BJx
+η
+Γ
+∆
+=
+φ
+−
+φ
+φ
+1
+i
+1
+i
+1
+i
+i
+i
+px
+ 
+X
+DJx
+ 
+2
+1
+CJx
+−
+φ
+−
++
+−
+φ
+φ
+η
+Γ
+∆
+=
+Equação de discretização para a variável dependente φ
+A discretização da equação de governo (2) para um caso
+tridimensional em regime permanente fornece, de acordo com
+o método de volumes finitos:
+(
+)
+(
+)
+(
+)
+(
+)(
+)
+k
+j
+i
+k
+,j,i
+k
+,j,i
+k
+,j,i
+k
+,j,i
+j
+i
+k
+,j,i
+1
+k
+,j,i
+k
+i
+k
+,j,i
+k
+,1
+j,i
+k
+j
+k
+,j,i
+k
+,j,1
+i
+Z
+Y
+X
+V
+Sp
+Sc
+Y
+X
+Jz
+Jz
+Z
+X
+Jy
+Jy
+Z
+Y
+Jx
+Jx
+∆
+∆
+∆
+=
+∆
+φ
++
+=
+∆
+∆
+−
++
+∆
+∆
+−
++
+∆
+∆
+−
+φ
+φ
+φ
+φ
++
+φ
+φ
++
+φ
+φ
++
+Substituindo-se na expressão acima as equações para os
+fluxos, obter-se-á, a equação de discretização para a variável
+dependente φ:
+φ
++
+φ
+−
+φ
++
+φ
+−
+φ
++
+φ
+−
+φ
+φ
++
+φ
++
+φ
++
+φ
++
+φ
++
+φ
++
+φ
+=
+φ
+k,j,i
+1
+k,j,i
+k,j,i
+1
+k,j,1
+k,j,i
+k,1
+j,i
+k,j,i
+k,1
+j,i
+k,j,i
+k,j,1
+i
+k,j,i
+k,j,1
+i
+k,j,i
+k,j,i
+k,j,i
+CON
+AKP
+AKM
+  
+          
+          
+AJP
+AJM
+  
+          
+          
+AIP
+AIM
+AP
+em que:
+k
+j
+k
+,j,i
+k
+,j,i
+Z
+Y
+DJx
+AIM
+∆
+∆
+=
+φ
+φ
+k
+j
+k
+,j,1
+i
+k
+,j,i
+Z
+Y
+DJx
+AIP
+∆
+∆
+=
+φ
++
+φ
+k
+i
+k
+,j,i
+k
+,j,i
+Z
+X
+DJy
+AJM
+∆
+∆
+=
+φ
+φ
+k
+i
+k
+,1
+j,i
+k
+,j,i
+Z
+X
+DJy
+AJP
+∆
+∆
+=
+φ
++
+φ
+j
+i
+k
+,j,i
+k
+,j,i
+Y
+X
+DJz
+AKM
+∆
+∆
+=
+φ
+φ
+j
+i
+1
+k
+,j,i
+k
+,j,i
+Y
+X
+DJz
+AKP
+∆
+∆
+=
+φ
++
+φ
+k
+j
+i
+k,j,i
+k,j,i
+k,j,i
+k,j,i
+k,j,i
+k,j,i
+k,j,i
+k,j,i
+Z
+Y
+X
+Sp
+    
+          
+AKP
+AKM
+AJP
+    
+          
+ 
+AJM
+AIP
+AIM
+AP
+∆
+∆
+∆
+−
++
++
++
++
++
+=
+φ
+φ
+φ
+φ
+φ
+φ
+φ
+φ
+φ
+φ
+φ
+−
+∆
+=
+k
+,j,i
+k
+,j,i
+k
+,j,i
+k
+,j,i
+DIVhat
+ 
+  
+V
+Sc
+   
+CON
+(
+)
+(
+)
+(
+)
+j
+i
+k,j,i
+1
+k,j,i
+k
+i
+k,j,i
+k,1
+j,i
+k
+j
+k,j,i
+k,j,1
+i
+k,j,i
+Y
+X
+Jhatz
+Jhatz
+  
+          
+          
+Z
+X
+Jhaty
+Jhaty
+  
+          
+          
+Z
+Y
+Jhatx
+Jhatx
+DIVhat
+∆
+∆
+−
++
+∆
+∆
+−
++
+∆
+∆
+−
+=
+φ
+φ
++
+φ
+φ
++
+φ
+φ
++
+φ
+Discretização de problema difusivo transiente por volumes
+finitos
+A discretização proposta por Patankar (1980) para casos
+transientes, é totalmente implícita no tempo, o que faz com que
+se modifiquem as seguintes expressões:
+τ
+∆
+∆
++
+∆
+−
+=
+φ
+φ
+∑
+k,j,i
+k,j,i
+k,j,i
+nb
+k,j,i
+V
+V
+Sp
+A
+AP
+φ
+φ
+φ
++
+τ
+∆
+∆
+φ
++
+∆
++
+φ
+=
+φ
+∑
+k,j,i
+k,j,i
+old
+k,j,i
+k,j,i
+k,j,i
+nb
+nb
+k,j,i
+k,j,i
+Ssp
+V
+  
+          
+          
+V
+Sc
+A
+AP
+em que ΣAnb é a somatória dos coeficientes vizinhos ao ponto
+de coordenadas (i, j, k), φi, j, k é o valor da variável dependente
+no tempo atual, φi, j, k é o valor da variável dependente no
+tempo anterior e ∆τ é o intervalo de tempo adimensional. O
+método de solução do sistema de equações algébricas é
+descrito em detalhes por Oliveira (1999).
+RESULTADOS E DISCUSSÃO
+O esquema anteriormente descrito será aplicado a problemas
+transientes uni e bidimensionais. As expressões para a
+discretização unidimensional são obtidas suprimindo-se as
+direções Y e Z. As equações de Luikov (1965) adimensiona-
+lizadas, para problemas de secagem em corpos porosos
+(19)
+(21)
+(20)
+(22)
+(23)
+(24)
+(25)
+(26)
+(27)
+(28)
+(29)
+(30)
+(31)
+(32)
+(33)
+(34)
+(35)
+(36)
+(37)
+
+===== [page 4] =====
+138
+R. Bras. Eng. Agríc. Ambiental, Campina Grande, v.7, n.1, p.135-140, 2003
+P.C. Oliveira & J.L. Lima
+capilares, sob condições de pressão constante, de acordo com
+Ribeiro et al. (1993) são:
+2
+2
+1
+2
+1
+ 
+ 
+θ
+∇
+β
+−
+=
+θ
+∇
+α
+−
+τ
+∂
+θ
+∂
+1
+2
+2
+2
+2
+ 
+LuPn
+ 
+Lu
+θ
+∇
+−
+=
+θ
+∇
+−
+τ
+∂
+θ
+∂
+em que: θ1 = [T(x, y, z, t) – T0]/Ts – T0, θ2 = [Uo – U(x, y, z, t)]/Uo – U*,
+α = 1 + εKoLuPn e β = εKoLu.
+T0 e U0 são a temperatura e umidade iniciais do corpo poroso,
+TS é a temperatura do ar de secagem e U* é a umidade de
+equilíbrio do corpo poroso com o ar.
+Os parâmetros adimensionais restantes envolvidos, α, β, ε,
+Lu, Ko e Pn, são definidos em Ribeiro et al. (1993). X = X/Lc é a
+coordenada espacial adimensional e τ = at/Lc
+2 o tempo
+adimensional. A discretização do termo transiente é feita
+usando-se diferença finita de primeira ordem e as equações
+geradas são totalmente implícitas no tempo, como proposto
+por Patankar (1980). A malha espacial utilizada nos dois casos
+será acompanhada por uma malha de 50 passos, ao longo do
+tempo.
+Problema Teste 1
+Foi retirado de Ribeiro et al. (1993) e consiste numa placa
+porosa úmida de espessura unitária exposta ao ar seco, que
+sofre a ação de secagem devido a um fluxo de calor em sua face
+inferior, como mostrado na Figura 2. Os coeficientes das
+equações de transporte são constantes. O objetivo é obter-se
+a distribuição de temperatura e umidade para vários tempos,
+ao longo de X.
+[
+]
+1
+X
+   
+para
+     
+0
+1
+Bi
+X
+Pn
+X
+2
+m
+1
+2
+=
+=
+θ
+−
++
+∂
+θ
+∂
++
+∂
+θ
+∂
+−
+Biq é o coeficiente de transferência de calor adimensional, Bim o
+coeficiente de transferência de massa adimensional e Q o fluxo
+de calor adimensional em X igual a zero. Os valores dos
+parâmetros adimensionais usados, foram Lu = 0,4, Ko = 5,0, Pn
+= 0,6, Biq = Bim, ε = 0,2 e Q = 0,9.
+Os resultados da simulação numérica para temperatura
+e umidade, utilizando-se o esquema Flux-Spline com vinte
+volumes de controle, como funções da posição ao longo de X,
+para os tempos τ igual a 0,1, 0,4 e 0,8, estão plotados na Figura 3,
+Transporte de calor e massa por convecção 
+Fluxo de ar seco 
+Fluxo de calor em X=0 
+X
+Figura 2. Secagem em placa porosa úmida aquecida em X = 0
+A condição inicial para a temperatura e umidade é descrita
+por:
+0
+)
+0
+,
+X
+(
+)
+0
+,
+X
+(
+2
+1
+=
+=
+τ
+θ
+=
+=
+τ
+θ
+(
+)
+Q
+X
+,0
+1
+−
+=
+∂
+τ
+θ
+∂
+(
+)
+(
+)
+      
+0
+X
+,0
+Pn
+X
+,0
+1
+2
+=
+∂
+τ
+θ
+∂
+−
+∂
+τ
+θ
+∂
+[
+] (
+)
+[
+]
+1
+X
+ 
+para
+ 0
+1
+KoLuBi
+1
+1
+Bi
+X
+2
+m
+1
+q
+1
+=
+=
+θ
+−
+ε
+−
++
+θ
+−
+−
+∂
+θ
+∂
+Figura 3. Perfis de temperatura (A) e umidade (B) adimensionais
+obtidos por Flux-Spline (linha cheia) com 20 vcs, comparadas
+com os resultados pontuais de Ribeiro et al. (1993)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.1
+0.3
+0.5
+0.7
+0.0
+0.2
+0.4
+0.6
+Tempo = 0,1
+Tempo = 0,4
+Tempo = 0,8
+Posição ao Longo de X
+Umidade Adimensional
+B.
+-0.1
+0.1
+0.3
+0.5
+0.7
+-0.2
+0.0
+0.2
+0.4
+0.6
+0.8
+Tempo = 0,1
+Tempo = 0,4
+Umidade Adimensional
+A.
+(38)
+(39)
+(40)
+(41)
+(42)
+(43)
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+
+===== [page 5] =====
+139
+R. Bras. Eng. Agríc. Ambiental, Campina Grande, v.7, n.1, p.135-140, 2003
+Esquema de discretização Flux-Spline aplicado à secagem, em meio poroso capilar
+em termos de fluxo de calor e umidade, de forma que calor e
+umidade fluem apenas pelas faces Oeste e Norte. Os valores
+dos parâmetros adimensionais são Lu = 0,4, Ko = 3,0, Pn = 1,0
+e ε = 0,2. As condições iniciais são as mesmas do caso anterior.
+Para τ > 0, as condições de contorno são:
+(
+)
+(
+)
+0
+Y
+,0,
+X
+X
+,
+Y
+,0
+1
+1
+=
+∂
+τ
+θ
+∂
+=
+∂
+τ
+θ
+∂
+(
+)
+(
+)
+      
+0
+X
+,
+Y
+,0
+Pn
+X
+,
+Y
+,0
+1
+2
+=
+∂
+τ
+θ
+∂
+−
+∂
+τ
+θ
+∂
+(
+)
+(
+)
+      
+0
+Y
+,0,
+X
+Pn
+Y
+,0,
+X
+1
+2
+=
+∂
+τ
+θ
+∂
+−
+∂
+τ
+θ
+∂
+(
+)
+(
+)
+0,1
+,
+Y
+,1
+,
+Y
+,1
+2
+1
+=
+τ
+θ
+=
+τ
+θ
+(
+)
+(
+)
+0,1
+,1,
+X
+,1,
+X
+2
+1
+=
+τ
+θ
+=
+τ
+θ
+As Figuras 4A e 4B exibem os resultados do esquema Flux-
+Spline (linha cheia) para temperatura e umidade para Y=0, ao
+longo da coordenada X, para três tempos adimensionais τ (0,08,
+0,4 e 0,8) em comparação com uma solução de referência (linha
+tracejada) obtida usando-se o tradicional esquema de Diferença
+Central com uma malha de 80x80 volumes de controle. Note
+que a aproximação dos resultados tomados como referência é
+expressiva no sentido de demonstrar a eficiência do esquema
+Flux-Spline operando com apenas 10x10 volumes de controle.
+CONCLUSÕES
+1. O esquema Flux-Spline aqui descrito mostrou, com malhas
+relativamente grosseiras e através dos gráficos apresentados,
+resultados adequados de precisão para o caso de difusão pura
+em meio poroso capilar governado pelas equações de Luikov,
+tanto no caso unidimensional como no bidimensional, tendo
+em vista as comparações com o método da transformada
+integral no primeiro problema teste e o esquema de diferença
+central no segundo.
+2. Sistemas de equações diferenciais parciais difusivas,
+acopladas por termos fonte constituídos por fluxos, como as
+de Luikov, podem ser adequadamente tratadas pelo esquema
+Flux-Spline, uma vez que o mesmo se baseia na hipótese de
+que os fluxos variam de forma linear ao longo dos volumes de
+controle. Devido ao seu desempenho, pode-se utilizar malhas
+constituídas por um número menor de volumes de controle
+que aquelas necessárias ao esquema de diferença central,
+configurando-se dessa forma, menor esforço computacional
+para problemas multidimensionais transientes.
+LITERATURA CITADA
+Luikov, A.V. Heat and mass transfer in capillary porous bodies,
+Oxford: Pergamon Press, 1966. 253p.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Temperatura adimensional
+Spline(10 vcs) - Tal = 0,08
+DC(80vcs) - Tal=0,08
+DC(80vcs) - Tal=0,4
+Spline(10vcs) - Tal=0,4
+DC(80vcs) - Tal=0,8
+Spline(10vcs) - Tal=0,8
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+-0.2
+0.2
+0.6
+1.0
+0.0
+0.4
+0.8
+A.
+Temperatura Adimensional
+B.
+Umidade Adimensional
+Posição ao Longo de X
+Figura 4. Perfis de temperatura (A) e umidade (B) adimensionais
+obtidos por Flux-Spline (10x10) comparados com solução
+usando-se Dif. Central com 80x80 vcs
+com linhas cheias. Os seis resultados pontuais de Ribeiro et al.
+(1993) obtidos por meio do método da transformada integral
+(usado como referência) são aqui representados pelos símbolos
+para cada tempo τ. Nota-se excelente concordância com a
+solução de referência, devido ao fato do resultado com o método
+de volumes finitos passar pelos seis pontos, utilizando-se
+reduzido número de volumes de controle.
+Problema Teste 2
+Retirado de Ribeiro & Lobo (1998), consiste numa placa
+porosa bidimensional de dimensões unitárias com coeficientes
+constantes. A face Oeste (X=0) e a face Sul (Y=0) são isoladas
+(44)
+(45)
+(46)
+(47)
+(48)
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+
+===== [page 6] =====
+140
+R. Bras. Eng. Agríc. Ambiental, Campina Grande, v.7, n.1, p.135-140, 2003
+P.C. Oliveira & J.L. Lima
+Luikov, A.V. Systems of differential equations of heat and mass
+transfer in capillary porous bodies (Review). International
+Journal of Heat and Mass Transfer, v.18, p.1-14, 1975.
+Luikov, A.V.; Mikhailov, A.Y. Theory of energy and mass
+transfer. Oxford: Pergamon Press, 1965. 245p.
+Nieckele, A.O. Development and evaluation of numerical schemes
+for the solution of convection-diffusion equations.. Minnesota:
+University of Minnesota, 1985, 296p. PhD Thesis
+Oliveira, P.C. Esquema FLUX-SPLINE aplicado em cavidades
+abertas com convecção natural. Campinas: UNICAMP, 1997.
+196p. Tese Doutorado
+Oliveira, P.C. Esquema FLUX-SPLINE aplicado a problemas
+difusivos tridimensionais em regime permanente. Revista
+Brasileira de Engenharia Agrícola e Ambiental, Campina
+Grande, v.3, n.3, p.327-330, 1999.
+Patankar, S.V. Numerical heat transfer and fluid flow. New York:
+Hemisphere Publishing Corporation, 1980. 197p.
+Ribeiro, J.W.; Cotta, R. M.; Mikhailov, M. D. Integral transform
+solution of Luikov’s equations for heat and mass transfer in
+capillary porous media. International Journal of Heat and
+Mass transfer, v.36, n.18, p.4467-4475, 1993.
+Ribeiro, J.W.; Lobo, P.D.C. Drying in capillary porous media.
+The integral transform method in thermal and fluids science
+and engineering. New York: Begell House, Inc., cap.7, 1998,
+430p.
+Varejão, L.M.C. FLUX-SPLINE method for heat, mass and
+momentum transfer. Minnesota: University of Minnesota,
+1979, 235p. Ph. D. Thesis

@@ -1,0 +1,8 @@
+﻿id,quantity,value,unit,uncertainty,source,command,note
+D10_M200,节点D vs 面平均D: 水分最大差 (M=200),0.06353777914,kg/kg,解析,run D3,python src/q1_diagnostics.py,网格无关
+D11_M200,节点D vs 面平均D: 温度最大差 (M=200),0,K,解析,run D3,python src/q1_diagnostics.py,"温度方程 k 为常数, 应为 0"
+D10_M400,节点D vs 面平均D: 水分最大差 (M=400),0.06356336452,kg/kg,解析,run D3,python src/q1_diagnostics.py,网格无关
+D11_M400,节点D vs 面平均D: 温度最大差 (M=400),0,K,解析,run D3,python src/q1_diagnostics.py,"温度方程 k 为常数, 应为 0"
+D10_M800,节点D vs 面平均D: 水分最大差 (M=800),0.06356975991,kg/kg,解析,run D3,python src/q1_diagnostics.py,网格无关
+D11_M800,节点D vs 面平均D: 温度最大差 (M=800),0,K,解析,run D3,python src/q1_diagnostics.py,"温度方程 k 为常数, 应为 0"
+D12,节点D vs 面平均D: 水分最大差 (t=3h),0.6816271261,kg/kg,解析,run D3,python src/q1_diagnostics.py,"3 小时含水率下降更多, 差异显著放大"

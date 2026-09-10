@@ -1,0 +1,50 @@
+======================================================================
+FONT xref 49 : DY2+ZBUIIt-2  (carries U+E065)
+======================================================================
+  FontDescriptor 71:
+    <<
+      /Ascent 709
+      /CapHeight 674
+      /Descent -241
+      /Flags 4
+      /FontBBox [ 0 0 0 0 ]
+      /FontFile 73 0 R
+      /FontName /DY2+ZBUIIt-2
+      /ItalicAngle 0
+      /StemV 91
+      /Type /FontDescriptor
+    >>
+  FontFile xref 73
+  raw length = 5607 bytes
+  Type1 cleartext header found, 1101 bytes before eexec.
+  --- /CharStrings block (cleartext glyph names) ---
+  (/CharStrings marker not found in cleartext)
+
+  --- search for meaningful names anywhere in cleartext ---
+
+======================================================================
+FONT xref 138 : DY27+ZBUIIv-27 (carries U+E785)
+======================================================================
+  FontDescriptor 159:
+    <<
+      /Ascent 709
+      /CapHeight 674
+      /Descent -241
+      /Flags 4
+      /FontBBox [ 0 0 0 0 ]
+      /FontFile 161 0 R
+      /FontName /DY27+ZBUIIv-27
+      /ItalicAngle 0
+      /StemV 91
+      /Type /FontDescriptor
+    >>
+  FontFile xref 161
+  raw length = 5353 bytes
+  Type1 cleartext header found, 792 bytes before eexec.
+  --- /CharStrings block (cleartext glyph names) ---
+  (/CharStrings marker not found in cleartext)
+
+  --- search for meaningful names anywhere in cleartext ---
+
+NOTE: if the glyph names are sequential placeholders (/A /B /C ...), this route
+is also inconclusive and the identity must be settled from the rendered page.

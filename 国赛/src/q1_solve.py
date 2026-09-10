@@ -110,6 +110,12 @@ class Env:
     def C(self, tt):
         return float(self._fC(np.atleast_1d(float(tt)))[0])
 
+    def T_arr(self, tt):
+        return np.asarray(self._fT(np.asarray(tt, dtype=float)), dtype=float)
+
+    def C_arr(self, tt):
+        return np.asarray(self._fC(np.asarray(tt, dtype=float)), dtype=float)
+
 
 def solve_tri(a, b, c, d):
     """三对角求解, 用 LAPACK 带状求解器 (a[0], c[-1] 忽略)."""
@@ -366,6 +372,8 @@ def main():
     add("P05", "D(C=0.0331)", float(D_of_C(0.0331)), "m^2/s", "解析精确", "附录2", "1800s C_inf")
     add("P06", "D 在 C0..0.0331 上的量级跨度", float(D_of_C(C0) / D_of_C(0.0331)), "-", "解析精确",
         "附录2", "12 个数量级")
+    add("P06b", "D(C0)/D(0.15) (初始 vs 问题3阈值)", float(D_of_C(C0) / D_of_C(0.15)), "-",
+        "解析精确", "附录2", "干壳效应的量级")
     add("P07", "热 Biot 数 Bi = hR/k", H_CONV * R0 / K_COND, "-", "解析精确", "附录2", ">0.1 内部温度不均匀")
     add("P08", "传质 Biot 数 Bi_m = hm R/D(C0)", HM * R0 / float(D_of_C(C0)), "-", "解析精确", "附录2", "")
     add("P09", "导热特征时间 R^2/alpha", R0 ** 2 / ALPHA, "s", "解析精确", "附录2", "与 1800 s 比较")
@@ -593,21 +601,36 @@ def main():
     hr("S9. 水分场非线性与物理诊断")
     diag = []
     for tt in (1.0, 10.0, 60.0, 300.0, 900.0, 1800.0):
-        r_, T_, C_, _, _ = solve_q1(400, 0.25, tt, env, corr=True)
-        Vw = np.pi * ((np.arange(M := 400) + 0.5) * (R0 / M)) ** 2
-        Vw = np.pi * (((np.arange(M + 1) + 0.5) * (R0 / M)) ** 2 - ((np.arange(M + 1) - 0.5) * (R0 / M)) ** 2)
-        Vw = np.maximum(Vw, 1e-30)
+        M_ = 400
+        r_, T_, C_, _, _ = solve_q1(M_, 0.25, tt, env, corr=True)
+        dV = R0 / M_
+        Vw = np.pi * (((np.arange(M_ + 1) + 0.5) * dV) ** 2 - ((np.arange(M_ + 1) - 0.5) * dV) ** 2)
+        Vw[0] = np.pi * (dV / 2) ** 2
         Cavg = float(np.sum(C_ * Vw) / np.sum(Vw))
-        diag.append((tt, Cavg, float(C_.min()), float(C_.max()), env.C(tt)))
-        print(f"  t={tt:>6}s <C>={Cavg:.6f}  C_min={C_.min():.6f}  C_max={C_.max():.6f}  "
-              f"C_inf={env.C(tt):.5f}  C_max/C_inf={C_.max()/env.C(tt):.4f}")
-        add(f"S23_{int(tt)}", f"体积平均含水率 <C>(t={int(tt)}s)", Cavg, "kg/kg", "网格不确定度见 S11",
-            "run solve_q1", "体积加权")
+        # 节点式网格: node 0 是 r=0 (中心), node M 是 r=R (表面)
+        diag.append((tt, Cavg, float(C_[0]), float(C_[M_]), env.C(tt)))
+        print(f"  t={tt:>6}s <C>={Cavg:.6f}  C(0)={C_[0]:.6f}  C(R)={C_[M_]:.6f}  "
+              f"C_inf={env.C(tt):.5f}  C(R)/C_inf={C_[M_]/env.C(tt):.4f}  "
+              f"C(0)/C_inf={C_[0]/env.C(tt):.4f}")
+        add(f"S23_{int(tt)}", f"体积平均含水率 <C>(t={int(tt)}s)", Cavg, "kg/kg",
+            "网格不确定度见 S11", "run solve_q1", "体积加权")
+        add(f"S23c_{int(tt)}", f"中心含水率 C(r=0,t={int(tt)}s)", float(C_[0]), "kg/kg",
+            "网格不确定度见 S11", "run solve_q1", "")
+        add(f"S23s_{int(tt)}", f"表面含水率 C(r=R,t={int(tt)}s)", float(C_[M_]), "kg/kg",
+            "网格不确定度见 S11", "run solve_q1", "")
+        add(f"S23r_{int(tt)}", f"C(r=R)/C_inf (t={int(tt)}s)", float(C_[M_] / env.C(tt)), "-",
+            "解析比值", "run solve_q1", "表面仍远未与热风平衡")
+        add(f"S23q_{int(tt)}", f"C(r=0)/C_inf (t={int(tt)}s)", float(C_[0] / env.C(tt)), "-",
+            "解析比值", "run solve_q1", "中心")
     add("S24", "<C> 从 0 到 1800 s 的相对下降", float(1 - diag[-1][1] / diag[0][1]), "-", "解析比值",
-        "run solve_q1", "预热平衡阶段的干燥比例")
-    add("S25", "C(r=R) 与 C_inf 的比值 (t=1800s)", float(diag[-1][3] / diag[-1][4]), "-", "解析比值",
-        "run solve_q1", ">1 表示仍在干燥")
-    add("S26", "中心含水率 C(r=0) 相对初始值的下降 (t=1800s)", float(1 - diag[-1][1] / C0), "-",
+        "run solve_q1", "预热平衡阶段的整体干燥比例")
+    add("S25", "C(r=R) 与 C_inf 的比值 (t=1800s)", float(diag[-1][3] / diag[-1][4]), "-",
+        "解析比值", "run solve_q1", "表面: >>1 表示表面仍远未与热风平衡")
+    add("S25b", "C(r=0) 与 C_inf 的比值 (t=1800s)", float(diag[-1][2] / diag[-1][4]), "-",
+        "解析比值", "run solve_q1", "中心")
+    add("S26", "中心含水率 C(r=0) 相对初始值的下降 (t=1800s)", float(1 - diag[-1][2] / C0), "-",
+        "解析比值", "run solve_q1", "预热平衡阶段中心几乎不失水")
+    add("S26b", "体积平均含水率相对初始值的下降 (t=1800s)", float(1 - diag[-1][1] / diag[0][1]), "-",
         "解析比值", "run solve_q1", "")
 
     _write_registry(reg, os.path.join(OUTDIR, "registry_q1.csv"))

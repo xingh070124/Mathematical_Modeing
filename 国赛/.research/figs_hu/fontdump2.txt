@@ -1,0 +1,31 @@
+===== xref 70 =====
+<<
+  /Differences [ 33 /exclam 34 /quotedbl 35 /numbersign 36 /dollar
+      37 /percent 38 /ampersand 39 /quoteright 40 /parenleft 41
+      /parenright 42 /asterisk 43 /plus 44 /comma 45 /hyphen 46
+      /period 47 /slash 48 /zero 49 /one 50 /two 51 /three 52
+      /four 53 /five 54 /six 55 /seven 56 /eight 57 /nine 58 /colon
+      59 /semicolon 60 /less 61 /equal 62 /greater 63 /question
+      64 /at 65 /A 66 /B 67 /C 68 /D 69 /E 70 /F 71 /G 72 /H 73
+      /I 74 /J 75 /K 76 /L 77 /M ]
+  /Type /Encoding
+>>
+===== xref 158 =====
+<<
+  /Differences [ 33 /exclam 34 /quotedbl 35 /numbersign 36 /dollar
+      37 /percent 38 /ampersand 39 /quoteright 40 /parenleft 41
+      /parenright 42 /asterisk 43 /plus 44 /comma 45 /hyphen 46
+      /period 47 /slash 48 /zero 49 /one 50 /two 51 /three 52
+      /four 53 /five 54 /six 55 /seven 56 /eight 57 /nine ]
+  /Type /Encoding
+>>
+===== xref 72 =====
+<<
+  /Filter /FlateDecode
+  /Length 524
+>>
+===== xref 160 =====
+<<
+  /Filter /FlateDecode
+  /Length 392
+>>

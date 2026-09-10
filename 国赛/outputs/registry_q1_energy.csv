@@ -1,0 +1,161 @@
+﻿id,quantity,value,unit,uncertainty,source,command,note
+E01,正确算子 max Re(lambda),3.930525605e-16,1/s,解析,run E1,python src/q1_energy_check.py,应 <= 0 (耗散)
+E02,用户算子 max Re(lambda),16.81615165,1/s,解析,run E1,python src/q1_energy_check.py,>0 => 反耗散
+E03,用户算子行和 max (应恒为 0),16.84312746,1/s,解析,run E1,python src/q1_energy_check.py,
+E04,正确算子行和 max |.|,7.105427358e-15,1/s,解析,run E1,python src/q1_energy_check.py,机器精度零
+E05,理论放大型失稳阈值 2/lambda_max,0.1189332757,s,解析,run E1,python src/q1_energy_check.py,dt < 该值时扰动被放大
+E06_dt0.0005,用户格式 dt=0.0005s 在 t=5s 的放大倍数,5.099337131e+36,-,解析,run E1,python src/q1_energy_check.py,>1 即发散
+E07_dt0.0005,用户格式 dt=0.0005s 在 t=5s 的温度最大值,1.535665377e+39,K,解析,run E1,python src/q1_energy_check.py,物理上界约 301 K
+E08_dt0.0005,用户格式 dt=0.0005s 在 t=5s 的温度最小值,9.506854551e+36,K,解析,run E1,python src/q1_energy_check.py,
+E06_dt0.001,用户格式 dt=0.001s 在 t=5s 的放大倍数,7.309375919e+36,-,解析,run E1,python src/q1_energy_check.py,>1 即发散
+E07_dt0.001,用户格式 dt=0.001s 在 t=5s 的温度最大值,2.201218558e+39,K,解析,run E1,python src/q1_energy_check.py,物理上界约 301 K
+E08_dt0.001,用户格式 dt=0.001s 在 t=5s 的温度最小值,1.340898007e+37,K,解析,run E1,python src/q1_energy_check.py,
+E06_dt0.002,用户格式 dt=0.002s 在 t=5s 的放大倍数,1.520621953e+37,-,解析,run E1,python src/q1_energy_check.py,>1 即发散
+E07_dt0.002,用户格式 dt=0.002s 在 t=5s 的温度最大值,4.579353011e+39,K,解析,run E1,python src/q1_energy_check.py,物理上界约 301 K
+E08_dt0.002,用户格式 dt=0.002s 在 t=5s 的温度最小值,2.699572346e+37,K,解析,run E1,python src/q1_energy_check.py,
+E06_dt0.005,用户格式 dt=0.005s 在 t=5s 的放大倍数,1.521926919e+38,-,解析,run E1,python src/q1_energy_check.py,>1 即发散
+E07_dt0.005,用户格式 dt=0.005s 在 t=5s 的温度最大值,4.583282916e+40,K,解析,run E1,python src/q1_energy_check.py,物理上界约 301 K
+E08_dt0.005,用户格式 dt=0.005s 在 t=5s 的温度最小值,2.437695282e+38,K,解析,run E1,python src/q1_energy_check.py,
+E06_dt0.01,用户格式 dt=0.01s 在 t=5s 的放大倍数,1.054203641e+40,-,解析,run E1,python src/q1_energy_check.py,>1 即发散
+E07_dt0.01,用户格式 dt=0.01s 在 t=5s 的温度最大值,3.174734265e+42,K,解析,run E1,python src/q1_energy_check.py,物理上界约 301 K
+E08_dt0.01,用户格式 dt=0.01s 在 t=5s 的温度最小值,1.399083855e+40,K,解析,run E1,python src/q1_energy_check.py,
+E06_dt0.02,用户格式 dt=0.02s 在 t=5s 的放大倍数,3.634426737e+44,-,解析,run E1,python src/q1_energy_check.py,>1 即发散
+E07_dt0.02,用户格式 dt=0.02s 在 t=5s 的温度最大值,1.094507612e+47,K,解析,run E1,python src/q1_energy_check.py,物理上界约 301 K
+E08_dt0.02,用户格式 dt=0.02s 在 t=5s 的温度最小值,3.053825545e+44,K,解析,run E1,python src/q1_energy_check.py,
+E06_dt0.05,用户格式 dt=0.05s 在 t=5s 的放大倍数,8.082949785e+79,-,解析,run E1,python src/q1_energy_check.py,>1 即发散
+E07_dt0.05,用户格式 dt=0.05s 在 t=5s 的温度最大值,2.434180328e+82,K,解析,run E1,python src/q1_energy_check.py,物理上界约 301 K
+E08_dt0.05,用户格式 dt=0.05s 在 t=5s 的温度最小值,2.925361001e+78,K,解析,run E1,python src/q1_energy_check.py,
+E06_dt0.1,用户格式 dt=0.1s 在 t=5s 的放大倍数,1.625511945e+172,-,解析,run E1,python src/q1_energy_check.py,>1 即发散
+E07_dt0.1,用户格式 dt=0.1s 在 t=5s 的温度最大值,4.895229224e+174,K,解析,run E1,python src/q1_energy_check.py,物理上界约 301 K
+E08_dt0.1,用户格式 dt=0.1s 在 t=5s 的温度最小值,-2.555398676e+174,K,解析,run E1,python src/q1_energy_check.py,
+E09,用户算子正特征值个数 (M=200),66,个,解析,run E1,python src/q1_energy_check.py,
+E10,用户算子最小正特征值,0.2677983653,1/s,解析,run E1,python src/q1_energy_check.py,控制幅值增长
+E11,溢出停止阈值 2/lambda_min^+,7.468305484,s,解析,run E1,python src/q1_energy_check.py,dt >= 此值才不再溢出(但仍为符号振荡)
+E15_dt0.0005_correct,"放大规律 (1-l*dt)^-n (dt=0.0005,t=5s)",4.679389033e+36,-,解析,run E1,python src/q1_energy_check.py,隐式 Euler 正确形式
+E16_dt0.0005_wrong,"放大规律 (1+l*dt)^n (dt=0.0005,t=5s)",2.307547268e+36,-,解析,run E1,python src/q1_energy_check.py,"错误形式, 仅作对照"
+E15_dt0.005_correct,"放大规律 (1-l*dt)^-n (dt=0.005,t=5s)",1.389367602e+38,-,解析,run E1,python src/q1_energy_check.py,隐式 Euler 正确形式
+E16_dt0.005_wrong,"放大规律 (1+l*dt)^n (dt=0.005,t=5s)",1.152486994e+35,-,解析,run E1,python src/q1_energy_check.py,"错误形式, 仅作对照"
+E15_dt0.05_correct,"放大规律 (1-l*dt)^-n (dt=0.05,t=5s)",6.423358756e+79,-,解析,run E1,python src/q1_energy_check.py,隐式 Euler 正确形式
+E16_dt0.05_wrong,"放大规律 (1+l*dt)^n (dt=0.05,t=5s)",3.168395994e+26,-,解析,run E1,python src/q1_energy_check.py,"错误形式, 仅作对照"
+E12_dt0.5_fin,用户格式 dt=0.5s 在 1800 s 是否有限,False,-,解析,run E1,python src/q1_energy_check.py,抛出 ValueError
+E12_dt1_fin,用户格式 dt=1s 在 1800 s 是否有限,False,-,解析,run E1,python src/q1_energy_check.py,抛出 ValueError
+E12_dt2_fin,用户格式 dt=2s 在 1800 s 是否有限,False,-,解析,run E1,python src/q1_energy_check.py,抛出 ValueError
+E12_dt3_fin,用户格式 dt=3s 在 1800 s 是否有限,False,-,解析,run E1,python src/q1_energy_check.py,抛出 ValueError
+E12_dt5_fin,用户格式 dt=5s 在 1800 s 是否有限,True,-,解析,run E1,python src/q1_energy_check.py,
+E13_dt5_min,用户格式 dt=5s 的 T 最小值,-4.399330962e+172,K,解析,run E1,python src/q1_energy_check.py,物理值应为 301.15 K 附近
+E14_dt5_max,用户格式 dt=5s 的 T 最大值,2.066320575e+172,K,解析,run E1,python src/q1_energy_check.py,
+E12_dt6_fin,用户格式 dt=6s 在 1800 s 是否有限,True,-,解析,run E1,python src/q1_energy_check.py,
+E13_dt6_min,用户格式 dt=6s 的 T 最小值,-5.069939774e+67,K,解析,run E1,python src/q1_energy_check.py,物理值应为 301.15 K 附近
+E14_dt6_max,用户格式 dt=6s 的 T 最大值,2.381298647e+67,K,解析,run E1,python src/q1_energy_check.py,
+E12_dt7_fin,用户格式 dt=7s 在 1800 s 是否有限,True,-,解析,run E1,python src/q1_energy_check.py,
+E13_dt7_min,用户格式 dt=7s 的 T 最小值,-7.916226735e+16,K,解析,run E1,python src/q1_energy_check.py,物理值应为 301.15 K 附近
+E14_dt7_max,用户格式 dt=7s 的 T 最大值,1.685416184e+17,K,解析,run E1,python src/q1_energy_check.py,
+E12_dt7.4_fin,用户格式 dt=7.4s 在 1800 s 是否有限,True,-,解析,run E1,python src/q1_energy_check.py,
+E13_dt7.4_min,用户格式 dt=7.4s 的 T 最小值,-6392.393583,K,解析,run E1,python src/q1_energy_check.py,物理值应为 301.15 K 附近
+E14_dt7.4_max,用户格式 dt=7.4s 的 T 最大值,13610.35767,K,解析,run E1,python src/q1_energy_check.py,
+E12_dt7.4683_fin,用户格式 dt=7.4683s 在 1800 s 是否有限,True,-,解析,run E1,python src/q1_energy_check.py,
+E13_dt7.4683_min,用户格式 dt=7.4683s 的 T 最小值,-83.86156824,K,解析,run E1,python src/q1_energy_check.py,物理值应为 301.15 K 附近
+E14_dt7.4683_max,用户格式 dt=7.4683s 的 T 最大值,179.0825214,K,解析,run E1,python src/q1_energy_check.py,
+E12_dt7.5_fin,用户格式 dt=7.5s 在 1800 s 是否有限,True,-,解析,run E1,python src/q1_energy_check.py,
+E13_dt7.5_min,用户格式 dt=7.5s 的 T 最小值,-4.895449456,K,解析,run E1,python src/q1_energy_check.py,物理值应为 301.15 K 附近
+E14_dt7.5_max,用户格式 dt=7.5s 的 T 最大值,11.03453032,K,解析,run E1,python src/q1_energy_check.py,
+E12_dt10_fin,用户格式 dt=10s 在 1800 s 是否有限,True,-,解析,run E1,python src/q1_energy_check.py,
+E13_dt10_min,用户格式 dt=10s 的 T 最小值,-13.96617492,K,解析,run E1,python src/q1_energy_check.py,物理值应为 301.15 K 附近
+E14_dt10_max,用户格式 dt=10s 的 T 最大值,30.27068252,K,解析,run E1,python src/q1_energy_check.py,
+E12_dt20_fin,用户格式 dt=20s 在 1800 s 是否有限,True,-,解析,run E1,python src/q1_energy_check.py,
+E13_dt20_min,用户格式 dt=20s 的 T 最小值,-13.96615747,K,解析,run E1,python src/q1_energy_check.py,物理值应为 301.15 K 附近
+E14_dt20_max,用户格式 dt=20s 的 T 最大值,30.27064584,K,解析,run E1,python src/q1_energy_check.py,
+E10_face_M100,"水量收支残差 (face, M=100)",2.114194236e-17,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E11_face_M100,"水量收支相对残差 (face, M=100)",6.559207337e-14,-,解析,run E2,python src/q1_energy_check.py,节点值取法应不随网格收敛到 0
+E12_face_M100,"内部水量变化 (face, M=100)",-0.0003223246541,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E10_node_M100,"水量收支残差 (node, M=100)",-3.195656844e-05,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E11_node_M100,"水量收支相对残差 (node, M=100)",0.1009811807,-,解析,run E2,python src/q1_energy_check.py,节点值取法应不随网格收敛到 0
+E12_node_M100,"内部水量变化 (node, M=100)",-0.0003484172022,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E10_face_M200,"水量收支残差 (face, M=200)",2.114194236e-18,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E11_face_M200,"水量收支相对残差 (face, M=200)",6.560318415e-15,-,解析,run E2,python src/q1_energy_check.py,节点值取法应不随网格收敛到 0
+E12_face_M200,"内部水量变化 (face, M=200)",-0.0003222700641,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E10_node_M200,"水量收支残差 (node, M=200)",-3.200366933e-05,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E11_node_M200,"水量收支相对残差 (node, M=200)",0.1011533847,-,解析,run E2,python src/q1_energy_check.py,节点值取法应不随网格收敛到 0
+E12_node_M200,"内部水量变化 (node, M=200)",-0.0003483911973,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E10_face_M400,"水量收支残差 (face, M=400)",5.637851297e-18,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E11_face_M400,"水量收支相对残差 (face, M=400)",1.749492321e-14,-,解析,run E2,python src/q1_energy_check.py,节点值取法应不随网格收敛到 0
+E12_face_M400,"内部水量变化 (face, M=400)",-0.0003222564185,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E10_node_M400,"水量收支残差 (node, M=400)",-3.201544614e-05,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E11_node_M400,"水量收支相对残差 (node, M=400)",0.1011964549,-,解析,run E2,python src/q1_energy_check.py,节点值取法应不随网格收敛到 0
+E12_node_M400,"内部水量变化 (node, M=400)",-0.0003483846922,kg/kg*m^2,解析,run E2,python src/q1_energy_check.py,
+E20_M200_dt0.05,"FV vs 解析级数 max|dT| (M=200, dt=0.05s)",0.0002696205508,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E20_M200_dt0.01,"FV vs 解析级数 max|dT| (M=200, dt=0.01s)",8.111633343e-05,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E20_M200_dt0.002,"FV vs 解析级数 max|dT| (M=200, dt=0.002s)",4.341000937e-05,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E20_M200_dt0.0005,"FV vs 解析级数 max|dT| (M=200, dt=0.0005s)",3.633701232e-05,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E20_M400_dt0.05,"FV vs 解析级数 max|dT| (M=400, dt=0.05s)",0.0002441338801,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E20_M400_dt0.01,"FV vs 解析级数 max|dT| (M=400, dt=0.01s)",5.562906495e-05,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E20_M400_dt0.002,"FV vs 解析级数 max|dT| (M=400, dt=0.002s)",1.7922469e-05,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E20_M400_dt0.0005,"FV vs 解析级数 max|dT| (M=400, dt=0.0005s)",1.085062854e-05,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E20_M800_dt0.05,"FV vs 解析级数 max|dT| (M=800, dt=0.05s)",0.000237761853,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E20_M800_dt0.01,"FV vs 解析级数 max|dT| (M=800, dt=0.01s)",4.925690888e-05,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E20_M800_dt0.002,"FV vs 解析级数 max|dT| (M=800, dt=0.002s)",1.155027053e-05,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E20_M800_dt0.0005,"FV vs 解析级数 max|dT| (M=800, dt=0.0005s)",4.477272739e-06,K,解析级数 200 项,run E3,python src/q1_energy_check.py,Fo=0.126642
+E30_M400_dt0.02_flux,"表面取法=通量(本文) vs 解析 (M=400,dt=0.02)",0.0001027594004,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E31_M400_dt0.02_cell,"表面取法=整格(原方案) vs 解析 (M=400,dt=0.02)",0.08067147025,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E32_M400_dt0.02_ratio,"表面取法误差比 cell/flux (M=400,dt=0.02)",785.051975,-,解析比值,run E4,python src/q1_energy_check.py,
+E30_M400_dt0.002_flux,"表面取法=通量(本文) vs 解析 (M=400,dt=0.002)",1.7922469e-05,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E31_M400_dt0.002_cell,"表面取法=整格(原方案) vs 解析 (M=400,dt=0.002)",0.08074854056,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E32_M400_dt0.002_ratio,"表面取法误差比 cell/flux (M=400,dt=0.002)",4505.436197,-,解析比值,run E4,python src/q1_energy_check.py,
+E30_M400_dt0.0005_flux,"表面取法=通量(本文) vs 解析 (M=400,dt=0.0005)",1.085062854e-05,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E31_M400_dt0.0005_cell,"表面取法=整格(原方案) vs 解析 (M=400,dt=0.0005)",0.08075496194,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E32_M400_dt0.0005_ratio,"表面取法误差比 cell/flux (M=400,dt=0.0005)",7442.422495,-,解析比值,run E4,python src/q1_energy_check.py,
+E30_M800_dt0.02_flux,"表面取法=通量(本文) vs 解析 (M=800,dt=0.02)",9.638719695e-05,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E31_M800_dt0.02_cell,"表面取法=整格(原方案) vs 解析 (M=800,dt=0.02)",0.04029476042,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E32_M800_dt0.02_ratio,"表面取法误差比 cell/flux (M=800,dt=0.02)",418.0509621,-,解析比值,run E4,python src/q1_energy_check.py,
+E30_M800_dt0.002_flux,"表面取法=通量(本文) vs 解析 (M=800,dt=0.002)",1.155027212e-05,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E31_M800_dt0.002_cell,"表面取法=整格(原方案) vs 解析 (M=800,dt=0.002)",0.04037151386,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E32_M800_dt0.002_ratio,"表面取法误差比 cell/flux (M=800,dt=0.002)",3495.286816,-,解析比值,run E4,python src/q1_energy_check.py,
+E30_M800_dt0.0005_flux,"表面取法=通量(本文) vs 解析 (M=800,dt=0.0005)",4.477269727e-06,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E31_M800_dt0.0005_cell,"表面取法=整格(原方案) vs 解析 (M=800,dt=0.0005)",0.04037790745,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E32_M800_dt0.0005_ratio,"表面取法误差比 cell/flux (M=800,dt=0.0005)",9018.421922,-,解析比值,run E4,python src/q1_energy_check.py,
+E30_M1600_dt0.02_flux,"表面取法=通量(本文) vs 解析 (M=1600,dt=0.02)",9.47953626e-05,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E31_M1600_dt0.02_cell,"表面取法=整格(原方案) vs 解析 (M=1600,dt=0.02)",0.02010529243,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E32_M1600_dt0.02_ratio,"表面取法误差比 cell/flux (M=1600,dt=0.02)",212.0915188,-,解析比值,run E4,python src/q1_energy_check.py,
+E30_M1600_dt0.002_flux,"表面取法=通量(本文) vs 解析 (M=1600,dt=0.002)",9.957701707e-06,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E31_M1600_dt0.002_cell,"表面取法=整格(原方案) vs 解析 (M=1600,dt=0.002)",0.02018188788,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E32_M1600_dt0.002_ratio,"表面取法误差比 cell/flux (M=1600,dt=0.002)",2026.761644,-,解析比值,run E4,python src/q1_energy_check.py,
+E30_M1600_dt0.0005_flux,"表面取法=通量(本文) vs 解析 (M=1600,dt=0.0005)",2.885633421e-06,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E31_M1600_dt0.0005_cell,"表面取法=整格(原方案) vs 解析 (M=1600,dt=0.0005)",0.02018827,K,解析级数 400 项,run E4,python src/q1_energy_check.py,
+E32_M1600_dt0.0005_ratio,"表面取法误差比 cell/flux (M=1600,dt=0.0005)",6996.131198,-,解析比值,run E4,python src/q1_energy_check.py,
+E40_dt0.1,水分方程采用原方案对角元时的失稳时刻 (dt=0.1s),787.8,s,解析,run E5,python src/q1_energy_check.py,随网格/时间步均不改善
+E41_dt0.1,失稳时 C_min (dt=0.1s),inf,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E42_dt0.1,失稳时 C_max (dt=0.1s),inf,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E43_dt0.1,修正格式的水分最小值 (dt=0.1s),1.510262662,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E44_dt0.1,修正格式的水分最大值 (dt=0.1s),2.549992295,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E40_dt0.05,水分方程采用原方案对角元时的失稳时刻 (dt=0.05s),805,s,解析,run E5,python src/q1_energy_check.py,随网格/时间步均不改善
+E41_dt0.05,失稳时 C_min (dt=0.05s),inf,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E42_dt0.05,失稳时 C_max (dt=0.05s),inf,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E43_dt0.05,修正格式的水分最小值 (dt=0.05s),1.510257339,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E44_dt0.05,修正格式的水分最大值 (dt=0.05s),2.549992308,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E40_dt0.01,水分方程采用原方案对角元时的失稳时刻 (dt=0.01s),817.34,s,解析,run E5,python src/q1_energy_check.py,随网格/时间步均不改善
+E41_dt0.01,失稳时 C_min (dt=0.01s),inf,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E42_dt0.01,失稳时 C_max (dt=0.01s),inf,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E43_dt0.01,修正格式的水分最小值 (dt=0.01s),1.51025308,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E44_dt0.01,修正格式的水分最大值 (dt=0.01s),2.549992319,kg/kg,解析,run E5,python src/q1_energy_check.py,
+E50_M200_a_ex,精确半控制体 a_M (M=200),-33.72884022,1/s,解析精确,run E6,python src/q1_energy_check.py,V_M = pi*dr*(R-dr/4) 半环
+E51_M200_a_us,用户写法 a_M=-2a/dr^2 (M=200),-33.77110694,1/s,解析精确,run E6,python src/q1_energy_check.py,
+E52_M200_a_ratio,a_M 比值 exact/user (M=200),0.9987484355,-,解析比值,run E6,python src/q1_energy_check.py,= 1-1/(4M)
+E53_M200_g_ex,精确半控制体 g_h (M=200),0.2348150949,1/s,解析精确,run E6,python src/q1_energy_check.py,
+E54_M200_g_us,用户写法 g_h=2ah/(k dr) (M=200),0.234521576,1/s,解析精确,run E6,python src/q1_energy_check.py,
+E55_M200_g_ratio,g_h 比值 exact/user (M=200),1.001251564,-,解析比值,run E6,python src/q1_energy_check.py,= 1/(1-1/(4M))
+E56_M200_rel,用户写法相对精确系数的偏差 (M=200),0.001253132832,-,解析,run E6,python src/q1_energy_check.py,= 1/(4M)
+E50_M800_a_ex,精确半控制体 a_M (M=800),-540.1688028,1/s,解析精确,run E6,python src/q1_energy_check.py,V_M = pi*dr*(R-dr/4) 半环
+E51_M800_a_us,用户写法 a_M=-2a/dr^2 (M=800),-540.3377111,1/s,解析精确,run E6,python src/q1_energy_check.py,
+E52_M800_a_ratio,a_M 比值 exact/user (M=800),0.9996874023,-,解析比值,run E6,python src/q1_energy_check.py,= 1-1/(4M)
+E53_M800_g_ex,精确半控制体 g_h (M=800),0.9383795475,1/s,解析精确,run E6,python src/q1_energy_check.py,
+E54_M800_g_us,用户写法 g_h=2ah/(k dr) (M=800),0.9380863039,1/s,解析精确,run E6,python src/q1_energy_check.py,
+E55_M800_g_ratio,g_h 比值 exact/user (M=800),1.000312598,-,解析比值,run E6,python src/q1_energy_check.py,= 1/(1-1/(4M))
+E56_M800_rel,用户写法相对精确系数的偏差 (M=800),0.0003126954345,-,解析,run E6,python src/q1_energy_check.py,= 1/(4M)
+E50_M3200_a_ex,精确半控制体 a_M (M=3200),-8644.727902,1/s,解析精确,run E6,python src/q1_energy_check.py,V_M = pi*dr*(R-dr/4) 半环
+E51_M3200_a_us,用户写法 a_M=-2a/dr^2 (M=3200),-8645.403377,1/s,解析精确,run E6,python src/q1_energy_check.py,
+E52_M3200_a_ratio,a_M 比值 exact/user (M=3200),0.9999218689,-,解析比值,run E6,python src/q1_energy_check.py,= 1-1/(4M)
+E53_M3200_g_ex,精确半控制体 g_h (M=3200),3.752638391,1/s,解析精确,run E6,python src/q1_energy_check.py,
+E54_M3200_g_us,用户写法 g_h=2ah/(k dr) (M=3200),3.752345216,1/s,解析精确,run E6,python src/q1_energy_check.py,
+E55_M3200_g_ratio,g_h 比值 exact/user (M=3200),1.000078131,-,解析比值,run E6,python src/q1_energy_check.py,= 1/(1-1/(4M))
+E56_M3200_rel,用户写法相对精确系数的偏差 (M=3200),7.813720868e-05,-,解析,run E6,python src/q1_energy_check.py,= 1/(4M)
+E57,用户表面系数偏差公式,1/(4M),-,解析,run E6,python src/q1_energy_check.py,

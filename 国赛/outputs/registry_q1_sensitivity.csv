@@ -1,0 +1,59 @@
+﻿id,quantity,value,unit,uncertainty,source,command,note
+OAT_h_T中心,灵敏度 S(中心差分) T中心(1800s) <- h(±10%),0.008573056082806303,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_h_T表面,灵敏度 S(中心差分) T表面(1800s) <- h(±10%),0.011402484104588747,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_h_C表面,灵敏度 S(中心差分) C表面(1800s) <- h(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_h_C体积,灵敏度 S(中心差分) C体积平均(1800s) <- h(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_hm_T中心,灵敏度 S(中心差分) T中心(1800s) <- hm(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_hm_T表面,灵敏度 S(中心差分) T表面(1800s) <- hm(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_hm_C表面,灵敏度 S(中心差分) C表面(1800s) <- hm(±10%),-0.4749164281944022,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_hm_C体积,灵敏度 S(中心差分) C体积平均(1800s) <- hm(±10%),-0.07635039504245016,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_D0_T中心,灵敏度 S(中心差分) T中心(1800s) <- D0(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_D0_T表面,灵敏度 S(中心差分) T表面(1800s) <- D0(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_D0_C表面,灵敏度 S(中心差分) C表面(1800s) <- D0(±10%),0.2189038817387092,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_D0_C体积,灵敏度 S(中心差分) C体积平均(1800s) <- D0(±10%),-0.016845239223998772,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_k_T中心,灵敏度 S(中心差分) T中心(1800s) <- k(±10%),0.007669455961478502,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_k_T表面,灵敏度 S(中心差分) T表面(1800s) <- k(±10%),-0.0015124362310989124,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_k_C表面,灵敏度 S(中心差分) C表面(1800s) <- k(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_k_C体积,灵敏度 S(中心差分) C体积平均(1800s) <- k(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_rho_T中心,灵敏度 S(中心差分) T中心(1800s) <- rho(±10%),-0.016207893052777797,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_rho_T表面,灵敏度 S(中心差分) T表面(1800s) <- rho(±10%),-0.00988103587489079,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_rho_C表面,灵敏度 S(中心差分) C表面(1800s) <- rho(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_rho_C体积,灵敏度 S(中心差分) C体积平均(1800s) <- rho(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_cp_T中心,灵敏度 S(中心差分) T中心(1800s) <- cp(±10%),-0.016207893052777797,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_cp_T表面,灵敏度 S(中心差分) T表面(1800s) <- cp(±10%),-0.00988103587489079,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_cp_C表面,灵敏度 S(中心差分) C表面(1800s) <- cp(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_cp_C体积,灵敏度 S(中心差分) C体积平均(1800s) <- cp(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_T0_T中心,灵敏度 S(中心差分) T中心(1800s) <- T0(±10%),0.26946090505501685,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_T0_T表面,灵敏度 S(中心差分) T表面(1800s) <- T0(±10%),0.14848616671764428,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_T0_C表面,灵敏度 S(中心差分) C表面(1800s) <- T0(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_T0_C体积,灵敏度 S(中心差分) C体积平均(1800s) <- T0(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_C0_T中心,灵敏度 S(中心差分) T中心(1800s) <- C0(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_C0_T表面,灵敏度 S(中心差分) T表面(1800s) <- C0(±10%),0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_C0_C表面,灵敏度 S(中心差分) C表面(1800s) <- C0(±10%),1.0972424561156282,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_C0_C体积,灵敏度 S(中心差分) C体积平均(1800s) <- C0(±10%),0.9913917625083316,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+OAT_note,温度QoI对hm/D0/C0灵敏度最大绝对值,0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,严格为0: 热湿解耦数值证据
+OAT_note2,水分QoI对h/k/rho/cp/T0灵敏度最大绝对值,0.0,-,OAT ±10%,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,严格为0: 热湿解耦数值证据
+E3_T中心_std,噪声MC T中心(1800s) 标准差,2.488e-02,K,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,均值 306.726236
+E3_T中心_max,噪声MC T中心(1800s) 最大绝对偏差,7.134e-02,K,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E3_T表面_std,噪声MC T表面(1800s) 标准差,3.759e-02,K,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,均值 309.939134
+E3_T表面_max,噪声MC T表面(1800s) 最大绝对偏差,1.046e-01,K,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E3_C表面_std,噪声MC C表面(1800s) 标准差,1.569e-05,kg/kg,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,均值 1.510265
+E3_C表面_max,噪声MC C表面(1800s) 最大绝对偏差,4.708e-05,kg/kg,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E3_C平均_std,噪声MC C平均(1800s) 标准差,2.302e-06,kg/kg,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,均值 2.293556
+E3_C平均_max,噪声MC C平均(1800s) 最大绝对偏差,6.576e-06,kg/kg,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E4_T中心_std,参数MC T中心(1800s) 标准差,4.742e-01,K,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,均值 306.708935
+E4_T中心_max,参数MC T中心(1800s) 最大绝对偏差,1.125e+00,K,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E4_T表面_std,参数MC T表面(1800s) 标准差,3.102e-01,K,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,均值 309.971612
+E4_T表面_max,参数MC T表面(1800s) 最大绝对偏差,6.845e-01,K,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E4_C表面_std,参数MC C表面(1800s) 标准差,4.371e-02,kg/kg,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,均值 1.510932
+E4_C表面_max,参数MC C表面(1800s) 最大绝对偏差,9.427e-02,kg/kg,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E4_C平均_std,参数MC C平均(1800s) 标准差,1.031e-02,kg/kg,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,均值 2.294448
+E4_C平均_max,参数MC C平均(1800s) 最大绝对偏差,1.997e-02,kg/kg,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E4_rel_max,参数MC QoI 最大相对偏差,0.0624,-,N=100,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,参数物理不确定性的传导
+E3_sigT,附件1 T_inf 噪声标准差(二阶差分MAD估计),0.152528,degC,稳健估计,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E3_sigC,附件1 C_inf 噪声标准差(二阶差分MAD估计),0.0001271,kg/kg,稳健估计,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E5_M100,网格收敛 M=100 vs M=800 四QoI最大偏差,6.817e-05,-,vs M=800,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E5_M200,网格收敛 M=200 vs M=800 四QoI最大偏差,1.622e-05,-,vs M=800,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E5_M400,网格收敛 M=400 vs M=800 四QoI最大偏差,3.243e-06,-,vs M=800,outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E5_interp_linear,插值方法 linear vs pchip 四QoI最大偏差,4.837e-04,-,"M=400, dt=0.5s",outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,
+E5_interp_cubic,插值方法 cubic vs pchip 四QoI最大偏差,3.308e-04,-,"M=400, dt=0.5s",outputs/q1_sensitivity_*.csv,python src/q1_sensitivity.py,

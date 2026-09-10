@@ -1,0 +1,68 @@
+REFERENCE GLYPHS (matplotlib mathtext / DejaVu)
+glyph                  r(width) mirrorIoU        h        w
+nabla  $\nabla$          -1.000    0.994      240      225
+partial $\partial$        0.445    0.347      225      141
+Delta  $\Delta$           1.000    0.998      244      222
+delta  $\delta$           0.414    0.383      252      176
+
+GLYPHS MEASURED FROM THE PDF (600 dpi, ink = grey < 160)
+code       page font               r(width) mirrorIoU        h        w
+U+E065        3 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        3 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        3 DY2+ZBUIIt-2         -0.995    0.140       68       79
+U+E065        3 DY2+ZBUIIt-2         -0.976    0.140       58       79
+U+E065        3 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        3 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        3 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        3 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        3 DY2+ZBUIIt-2         -0.996    0.140       67       79
+U+E065        3 DY2+ZBUIIt-2         -0.955    0.133       58       80
+U+E065        3 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        3 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        3 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        3 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        3 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        4 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        4 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        4 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        4 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        4 DY2+ZBUIIt-2         -0.646    0.131       58       80
+U+E065        4 DY2+ZBUIIt-2         -0.646    0.131       58       80
+U+E065        4 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        4 DY2+ZBUIIt-2         -0.658    0.137       58       79
+U+E065        4 DY2+ZBUIIt-2         -0.658    0.137       58       79
+U+E065        4 DY2+ZBUIIt-2         -0.658    0.137       58       79
+U+E065        5 DY2+ZBUIIt-2         -0.646    0.131       58       80
+U+E065        5 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        5 DY2+ZBUIIt-2         -0.673    0.137       58       79
+U+E065        5 DY2+ZBUIIt-2         -1.000    0.869       58       59
+U+E065        5 DY2+ZBUIIt-2         -0.995    0.140       68       79
+U+E065   n=30  r(width): mean -0.917  min -1.000  max -0.646   mirrorIoU mean 0.576
+
+U+E785        3 DY27+ZBUIIv-27       -0.121    0.173       88      110
+U+E785        3 DY27+ZBUIIv-27        0.470    0.099       56       71
+U+E785        3 DY27+ZBUIIv-27       -0.251    0.279       88       75
+U+E785        3 DY27+ZBUIIv-27        0.470    0.099       56       71
+U+E785        3 DY27+ZBUIIv-27       -0.303    0.289       88       76
+U+E785        3 DY27+ZBUIIv-27        0.470    0.099       56       71
+U+E785        3 DY27+ZBUIIv-27       -0.305    0.286       88       75
+U+E785        3 DY27+ZBUIIv-27        0.471    0.098       56       70
+U+E785        3 DY27+ZBUIIv-27       -0.186    0.265       87       75
+U+E785        3 DY27+ZBUIIv-27        0.470    0.099       56       71
+U+E785        4 DY27+ZBUIIv-27       -0.178    0.299       88       75
+U+E785        4 DY27+ZBUIIv-27        0.470    0.099       56       71
+U+E785        4 DY27+ZBUIIv-27       -0.271    0.205       88       76
+U+E785        4 DY27+ZBUIIv-27        0.470    0.099       56       71
+U+E785        4 DY27+ZBUIIv-27       -0.262    0.202       87       76
+U+E785        4 DY27+ZBUIIv-27        0.471    0.098       56       70
+U+E785        5 DY27+ZBUIIv-27       -0.273    0.202       88       76
+U+E785        5 DY27+ZBUIIv-27        0.471    0.098       56       70
+U+E785   n=18  r(width): mean 0.116  min -0.305  max 0.471   mirrorIoU mean 0.172
+
+
+DECISION RULE (fixed before running):
+  r(width) > 0 and mirrorIoU high  => triangle-shaped  => nabla  => U+E065 is the
+                                     gradient/divergence operator.
+  r(width) <= 0                    => loop-high, tail-down => partial => U+E785
+                                     is the partial-derivative operator.
+  Both codes giving the same sign falsifies this discriminator.

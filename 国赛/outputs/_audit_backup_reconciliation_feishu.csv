@@ -1,0 +1,569 @@
+literal,status,registry_id,quantity
+2026,ALLOW,,
+09,ALLOW,,
+10,ALLOW,,
+6,ALLOW,,
+5,ALLOW,,
+0,ALLOW,,
+6.1,ALLOW,,
+2.0,ALLOW,,
+5.0,ALLOW,,
+8.0,ALLOW,,
+11.0,ALLOW,,
+1.4184725188,MATCH,F10,本征值 lambda_1 R
+4.1664696010,MATCH,F11,本征值 lambda_2 R
+7.2084784644,MATCH,F10_3,本征值 lambda_3 R
+10.3082731535,ROUNDED,F10_4,本征值 lambda_4 R
+6.1,ALLOW,,
+2,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+11.52,MATCH,F1D_100,"用 feishu A_k 重构常数1 (8项, r/R=1.00)"
+5.3,ALLOW,,
+1,ALLOW,,
+2,ALLOW,,
+1,ALLOW,,
+200,ALLOW,,
+127,MATCH,F30_M200,feishu 原始格式 M=200 dt=0.5 发散时刻
+5.3,ALLOW,,
+70.78,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+3.49e-6,ROUNDED,F40,max|T_数值 - T_半解析| (0-1800s)
+4.19e-2,ROUNDED,F50,max|C_线性化 - C_非线性| (0-1800s)
+400,ALLOW,,
+6.66e-6,ROUNDED,F22_M400_exact,"CN尺度+精确半CV 表面 vs 解析 max|dT| (M=400,dt=0.500)"
+0,ALLOW,,
+1800,ALLOW,,
+1.8,ALLOW,,
+6.3,ALLOW,,
+1,ALLOW,,
+4,ALLOW,,
+4,ALLOW,,
+1800,ALLOW,,
+1.4019,ROUNDED,F0A,热 Biot 数 Bi = hR/k
+0.1383,ROUNDED,F61,max|C_附录3 - C_附录2| (0-1800s)
+2,ALLOW,,
+4,ALLOW,,
+7.55e-2,ROUNDED,F70,附录3 内 T->D 反馈效应 max|dC| (0-1800s)
+48.2,ROUNDED,F71_pct,附录3 alpha(C=0.15)/alpha(C=2.55) 的相对变化
+3,ALLOW,,
+2020,ALLOW,,
+13.3,ALLOW,,
+0.016,ALLOW,,
+1,ALLOW,,
+1.1,ALLOW,,
+5,ALLOW,,
+5.1,ALLOW,,
+200,ALLOW,,
+0.25,ALLOW,,
+5.2,ALLOW,,
+0,ALLOW,,
+5.3,ALLOW,,
+5.4,ALLOW,,
+5.5,ALLOW,,
+6,ALLOW,,
+6.1,ALLOW,,
+6.2,ALLOW,,
+6.3,ALLOW,,
+6.3,ALLOW,,
+10,ALLOW,,
+2.00,ALLOW,,
+4,ALLOW,,
+6,ALLOW,,
+1.2,ALLOW,,
+6.1,ALLOW,,
+1.388889,ROUNDED,F0A,热 Biot 数 Bi = hR/k
+6.1,ALLOW,,
+2,ALLOW,,
+10,ALLOW,,
+1.265822137,ROUNDED,F12,正确展开系数 c_1
+1.265822137,ROUNDED,F12,正确展开系数 c_1
+10,ALLOW,,
+3.49e-6,ROUNDED,F40,max|T_数值 - T_半解析| (0-1800s)
+1,ALLOW,,
+1,ALLOW,,
+3.6e-15,ROUNDED,X01,两独立求根器的最大本征值差 (k=1..8)
+1,ALLOW,,
+50,ALLOW,,
+60,ALLOW,,
+300,ALLOW,,
+900,ALLOW,,
+1800,ALLOW,,
+0,ALLOW,,
+1,ALLOW,,
+5.684e-14,ROUNDED,X04_t60,两独立级数实现在 t=60 s 时的最大差
+1,ALLOW,,
+1.9e-15,ROUNDED,X04_t300,两独立级数实现在 t=300 s 时的最大差
+8,ALLOW,,
+100,ALLOW,,
+3.49e-6,ROUNDED,F40,max|T_数值 - T_半解析| (0-1800s)
+1.3,ALLOW,,
+6.1,ALLOW,,
+6.1,ALLOW,,
+1,ALLOW,,
+2.0,ALLOW,,
+5.0,ALLOW,,
+8.0,ALLOW,,
+11.0,ALLOW,,
+6.1,ALLOW,,
+1,ALLOW,,
+2.0,ALLOW,,
+1.4184725188,MATCH,F10,本征值 lambda_1 R
+-4.4408920985e-16,MATCH,F17_1,根 lambda_1 R 处 x J1 - Bi J0 残差
+2,ALLOW,,
+5.0,ALLOW,,
+4.1664696010,MATCH,F11,本征值 lambda_2 R
+2.2204460493e-16,MATCH,F17_2,根 lambda_2 R 处 x J1 - Bi J0 残差
+3,ALLOW,,
+8.0,ALLOW,,
+7.2084784644,MATCH,F10_3,本征值 lambda_3 R
+7.7715611724e-16,MATCH,F17_3,根 lambda_3 R 处 x J1 - Bi J0 残差
+4,ALLOW,,
+11.0,ALLOW,,
+10.3082731535,ROUNDED,F10_4,本征值 lambda_4 R
+9.9920072216e-16,MATCH,F17_4,根 lambda_4 R 处 x J1 - Bi J0 残差
+8,ALLOW,,
+40,ALLOW,,
+8,ALLOW,,
+4.94e-15,ROUNDED,F17,max|x J1 - Bi J0| (前8个根)
+1,ALLOW,,
+6.1,ALLOW,,
+1.4,ALLOW,,
+6.1,ALLOW,,
+6.1,ALLOW,,
+2,ALLOW,,
+2,ALLOW,,
+1.2,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+6,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+1.418473,ROUNDED,F10,本征值 lambda_1 R
+1.2658221367,MATCH,F12,正确展开系数 c_1
+2.5861431395,MATCH,F13,feishu A_1/(T0-Tinf)
+0.489463,ROUNDED,F14,c_1 / A_1(feishu)
+0.489463,ROUNDED,F14,c_1 / A_1(feishu)
+2,ALLOW,,
+4.166470,ROUNDED,F11,本征值 lambda_2 R
+-0.3779735278,ROUNDED,F18_2,正确展开系数 c_2
+-3.7794135076,MATCH,F19_2,feishu A_2/(T0-Tinf)
+0.100009,ROUNDED,F1A_2,c_2 / A_2(feishu)
+0.100009,ROUNDED,F1A_2,c_2 / A_2(feishu)
+3,ALLOW,,
+7.208478,ROUNDED,F10_3,本征值 lambda_3 R
+0.1749635067,MATCH,F18_3,正确展开系数 c_3
+4.8879877959,MATCH,F19_3,feishu A_3/(T0-Tinf)
+0.035795,ROUNDED,F1A_3,c_3 / A_3(feishu)
+0.035795,ROUNDED,F1A_3,c_3 / A_3(feishu)
+4,ALLOW,,
+10.308273,ROUNDED,F10_4,本征值 lambda_4 R
+-0.1037590628,ROUNDED,F18_4,正确展开系数 c_4
+-5.8193727782,MATCH,F19_4,feishu A_4/(T0-Tinf)
+0.017830,ROUNDED,F1A_4,c_4 / A_4(feishu)
+0.017830,ROUNDED,F1A_4,c_4 / A_4(feishu)
+5,ALLOW,,
+13.427161,ROUNDED,F10_5,本征值 lambda_5 R
+0.0701872141,ROUNDED,F18_5,正确展开系数 c_5
+6.6299995535,MATCH,F19_5,feishu A_5/(T0-Tinf)
+0.010586,ROUNDED,F1A_5,c_5 / A_5(feishu)
+0.010586,ROUNDED,F1A_5,c_5 / A_5(feishu)
+6,ALLOW,,
+16.554544,ROUNDED,F10_6,本征值 lambda_6 R
+-0.0514113586,ROUNDED,F18_6,正确展开系数 c_6
+-7.3553735523,MATCH,F19_6,feishu A_6/(T0-Tinf)
+0.006990,ROUNDED,F1A_6,c_6 / A_6(feishu)
+0.006990,ROUNDED,F1A_6,c_6 / A_6(feishu)
+0.489,ALLOW,,
+0.00699,ROUNDED,F1A_6,c_6 / A_6(feishu)
+8,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+0.00,ALLOW,,
+0.98569120,ROUNDED,F1C_0,"用正确 c_k 重构常数1 (8项, r/R=0.00)"
+-3.46211833,ROUNDED,F1D_0,"用 feishu A_k 重构常数1 (8项, r/R=0.00)"
+0.25,ALLOW,,
+0.99707317,ROUNDED,F1C_0,"用正确 c_k 重构常数1 (8项, r/R=0.00)"
+0.14736226,ROUNDED,F1D_25,"用 feishu A_k 重构常数1 (8项, r/R=0.25)"
+0.50,ALLOW,,
+0.99772822,ROUNDED,F1C_0,"用正确 c_k 重构常数1 (8项, r/R=0.00)"
+0.43520130,ROUNDED,F1D_50,"用 feishu A_k 重构常数1 (8项, r/R=0.50)"
+0.75,ALLOW,,
+0.99696024,ROUNDED,F1C_0,"用正确 c_k 重构常数1 (8项, r/R=0.00)"
+0.52760459,ROUNDED,F1D_75,"用 feishu A_k 重构常数1 (8项, r/R=0.75)"
+1.00,ALLOW,,
+0.96381405,ROUNDED,F1C_100,"用正确 c_k 重构常数1 (8项, r/R=1.00)"
+11.52000000,MATCH,F1D_100,"用 feishu A_k 重构常数1 (8项, r/R=1.00)"
+8,ALLOW,,
+0.036186,ROUNDED,F1A_3,c_3 / A_3(feishu)
+11.52,MATCH,F1D_100,"用 feishu A_k 重构常数1 (8项, r/R=1.00)"
+10.52,MATCH,F16,"重构常数1误差(8项,r=R), feishu A_k"
+10,ALLOW,,
+1.5,ALLOW,,
+5.3,ALLOW,,
+5.3,ALLOW,,
+1,ALLOW,,
+0.5,ALLOW,,
+1,ALLOW,,
+0.5,ALLOW,,
+1,ALLOW,,
+2,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+2,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+2,ALLOW,,
+1,ALLOW,,
+2,ALLOW,,
+0,ALLOW,,
+1,ALLOW,,
+-1,ALLOW,,
+0,ALLOW,,
+4,ALLOW,,
+2,ALLOW,,
+4,ALLOW,,
+0,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+200,ALLOW,,
+127.00,MATCH,F30_M200,feishu 原始格式 M=200 dt=0.5 发散时刻
+800,ALLOW,,
+62.50,MATCH,F30_M800,feishu 原始格式 M=800 dt=0.5 发散时刻
+1,ALLOW,,
+2,ALLOW,,
+1,ALLOW,,
+2,ALLOW,,
+2,ALLOW,,
+2,ALLOW,,
+1,ALLOW,,
+0,ALLOW,,
+0.5,ALLOW,,
+300,ALLOW,,
+50,ALLOW,,
+50,ALLOW,,
+70.8475,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+2.99399e-2,ROUNDED,F21_M50_leadcn,"CN尺度+leading几何 表面 vs 解析 max|dT| (M=50,dt=0.500)"
+5.41512e-4,ROUNDED,F22_M50_exact,"CN尺度+精确半CV 表面 vs 解析 max|dT| (M=50,dt=0.500)"
+100,ALLOW,,
+70.7814,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+1.001,ROUNDED,F1C_0,"用正确 c_k 重构常数1 (8项, r/R=0.00)"
+1.51143e-2,ROUNDED,F21_M100_leadcn,"CN尺度+leading几何 表面 vs 解析 max|dT| (M=100,dt=0.500)"
+1.981,ROUNDED,F24_M100_leadcn,"leading几何 误差比 (M=100, 相对上一档 M=50)"
+1.34076e-4,ROUNDED,F22_M100_exact,"CN尺度+精确半CV 表面 vs 解析 max|dT| (M=100,dt=0.500)"
+4.039,ROUNDED,F24_M100_exact,"精确半CV 误差比 (M=100, 相对上一档 M=50)"
+200,ALLOW,,
+70.7483,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+1.000,ALLOW,,
+7.59311e-3,ROUNDED,F21_M200_leadcn,"CN尺度+leading几何 表面 vs 解析 max|dT| (M=200,dt=0.500)"
+1.991,ROUNDED,F24_M100_leadcn,"leading几何 误差比 (M=100, 相对上一档 M=50)"
+3.21471e-5,ROUNDED,F22_M200_exact,"CN尺度+精确半CV 表面 vs 解析 max|dT| (M=200,dt=0.500)"
+4.171,ROUNDED,F11,本征值 lambda_2 R
+400,ALLOW,,
+70.7317,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+1.000,ALLOW,,
+3.80520e-3,ROUNDED,F21_M400_leadcn,"CN尺度+leading几何 表面 vs 解析 max|dT| (M=400,dt=0.500)"
+1.995,ROUNDED,F24_M100_leadcn,"leading几何 误差比 (M=100, 相对上一档 M=50)"
+6.65961e-6,ROUNDED,F22_M400_exact,"CN尺度+精确半CV 表面 vs 解析 max|dT| (M=400,dt=0.500)"
+4.827,ROUNDED,F19_3,feishu A_3/(T0-Tinf)
+100,ALLOW,,
+1,ALLOW,,
+70.781414,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+1.511125e-2,ROUNDED,F21_M100_leadcn,"CN尺度+leading几何 表面 vs 解析 max|dT| (M=100,dt=0.500)"
+1.285678e-4,ROUNDED,F25_M100_dt1_exact_cn,时间步细化 M=100 dt=1 exact_cn
+0.25,ALLOW,,
+70.781390,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+1.511505e-2,ROUNDED,F21_M100_leadcn,"CN尺度+leading几何 表面 vs 解析 max|dT| (M=100,dt=0.500)"
+1.354535e-4,ROUNDED,F22_M100_exact,"CN尺度+精确半CV 表面 vs 解析 max|dT| (M=100,dt=0.500)"
+0.0625,ALLOW,,
+70.781389,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+1.511529e-2,ROUNDED,F21_M100_leadcn,"CN尺度+leading几何 表面 vs 解析 max|dT| (M=100,dt=0.500)"
+1.358839e-4,ROUNDED,F22_M100_exact,"CN尺度+精确半CV 表面 vs 解析 max|dT| (M=100,dt=0.500)"
+0.015625,ALLOW,,
+70.781388,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+1.511530e-2,ROUNDED,F21_M100_leadcn,"CN尺度+leading几何 表面 vs 解析 max|dT| (M=100,dt=0.500)"
+1.359108e-4,ROUNDED,F22_M100_exact,"CN尺度+精确半CV 表面 vs 解析 max|dT| (M=100,dt=0.500)"
+1,ALLOW,,
+70.78,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+1,ALLOW,,
+7.0781413981e+01,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+1,ALLOW,,
+64,ALLOW,,
+7.0781388436e+01,ROUNDED,F20_M50_leaddoc,"feishu 表面(逐字,θ尺度不一致) vs 解析 max|dT| (M=50,dt=0.500)"
+2,ALLOW,,
+2,ALLOW,,
+400,ALLOW,,
+3.81e-3,ROUNDED,F21_M400_leadcn,"CN尺度+leading几何 表面 vs 解析 max|dT| (M=400,dt=0.500)"
+6.3,ALLOW,,
+1e-5,ALLOW,,
+3,ALLOW,,
+1,ALLOW,,
+2,ALLOW,,
+2,ALLOW,,
+0.5,ALLOW,,
+0.25,ALLOW,,
+4,ALLOW,,
+400,ALLOW,,
+6.66e-6,ROUNDED,F22_M400_exact,"CN尺度+精确半CV 表面 vs 解析 max|dT| (M=400,dt=0.500)"
+6.3,ALLOW,,
+1e-5,ALLOW,,
+2.00,ALLOW,,
+5e-5,ALLOW,,
+150,ALLOW,,
+3,ALLOW,,
+1.6,ALLOW,,
+0,ALLOW,,
+1800,ALLOW,,
+1600,ALLOW,,
+2,ALLOW,,
+400,ALLOW,,
+3.4936501265e-6,MATCH,F40,max|T_数值 - T_半解析| (0-1800s)
+1800,ALLOW,,
+0,ALLOW,,
+306.72583087,MATCH,F43,"T(1800s,r=0) 数值"
+1800,ALLOW,,
+309.93578369,ROUNDED,F43,"T(1800s,r=0) 数值"
+1800,ALLOW,,
+314.6630,ROUNDED,F44,"T(1800s,r=R) 数值"
+3.5e-6,ROUNDED,F40,max|T_数值 - T_半解析| (0-1800s)
+5e-5,ALLOW,,
+1.7,ALLOW,,
+7e-9,ALLOW,,
+-0.89,ALLOW,,
+2.55,ALLOW,,
+4.9377e-9,ROUNDED,F05,D(C0=2.55)
+0.15,ALLOW,,
+1.85e-11,ROUNDED,F09,D(C=0.15) (问题3 判据处)
+3.2404045432,MATCH,F53,Bi_m = hm R / D(C0)
+1800,ALLOW,,
+0,ALLOW,,
+2.5499922528,ROUNDED,F13,feishu A_1/(T0-Tinf)
+1800,ALLOW,,
+1.5102912463,MATCH,F52,"C(1800s,r=R) 非线性"
+4.1861810290e-2,MATCH,F50,max|C_线性化 - C_非线性| (0-1800s)
+4.19e-2,ROUNDED,F50,max|C_线性化 - C_非线性| (0-1800s)
+5e-5,ALLOW,,
+800,ALLOW,,
+1.8,ALLOW,,
+2,ALLOW,,
+1,ALLOW,,
+2,ALLOW,,
+400,ALLOW,,
+6.65961e-6,ROUNDED,F22_M400_exact,"CN尺度+精确半CV 表面 vs 解析 max|dT| (M=400,dt=0.500)"
+1.9,ALLOW,,
+6.3,ALLOW,,
+1e-5,ALLOW,,
+4.19e-2,ROUNDED,F50,max|C_线性化 - C_非线性| (0-1800s)
+6.1,ALLOW,,
+6,ALLOW,,
+2,ALLOW,,
+2.1,ALLOW,,
+3,ALLOW,,
+4,ALLOW,,
+3,ALLOW,,
+820,ALLOW,,
+650,ALLOW,,
+760,ALLOW,,
+2600,ALLOW,,
+1450,ALLOW,,
+1,ALLOW,,
+1850,ALLOW,,
+1,ALLOW,,
+0.36,ALLOW,,
+0.21,ALLOW,,
+0,ALLOW,,
+1,ALLOW,,
+0.12,ALLOW,,
+0,ALLOW,,
+1,ALLOW,,
+7e-9,ALLOW,,
+-0.89,ALLOW,,
+2.4e-3,ALLOW,,
+-0.45,ALLOW,,
+-3850,ALLOW,,
+4.2e-4,ALLOW,,
+-0.30,ALLOW,,
+-3850,ALLOW,,
+1.2,ALLOW,,
+4,ALLOW,,
+1.2,ALLOW,,
+2.2,ALLOW,,
+0,ALLOW,,
+1800,ALLOW,,
+400,ALLOW,,
+0.5,ALLOW,,
+1.4019076018,ROUNDED,F0A,热 Biot 数 Bi = hR/k
+0.0138,MATCH,F60_r,max|T_附录3-T_附录2| 出现位置 r
+1800,ALLOW,,
+0.13834689131,MATCH,F61,max|C_附录3 - C_附录2| (0-1800s)
+1800,ALLOW,,
+0,ALLOW,,
+306.72642796,ROUNDED,F43,"T(1800s,r=0) 数值"
+305.34033311,ROUNDED,F43,"T(1800s,r=0) 数值"
+-1.386095,ROUNDED,F65_diff,"T(1800s,r=0) 附录3 - 附录2"
+0.85770461016,MATCH,F62,alpha 比 附录3/附录2 (初态)
+-14.23,ROUNDED,F62_pct,alpha 比 附录3/附录2 的相对变化
+1.1425829195,MATCH,F63,D 比 附录3/附录2 (初态)
+14.26,ROUNDED,F63_pct,D 比 附录3/附录2 的相对变化
+820.0,ALLOW,,
+2600.0,ALLOW,,
+0.3600,ALLOW,,
+4.9377e-9,ROUNDED,F05,D(C0=2.55)
+1.6886e-7,ROUNDED,F01,alpha (精确)
+976.4,MATCH,F80_app3_rho,附录3 初态 rho
+3415.3,ROUNDED,F80_app3_cp,附录3 初态 cp
+0.4830,ROUNDED,F14,c_1 / A_1(feishu)
+5.6417e-9,ROUNDED,F80_app3_D,附录3 初态 D
+1.4483e-7,ROUNDED,F80_app3_alpha,附录3 初态 alpha
+1.4,ALLOW,,
+0.138,ROUNDED,F61,max|C_附录3 - C_附录2| (0-1800s)
+2.3,ALLOW,,
+-3850,ALLOW,,
+7.5472916081e-2,MATCH,F70,附录3 内 T->D 反馈效应 max|dC| (0-1800s)
+2.55,ALLOW,,
+0.15,ALLOW,,
+2.55,ALLOW,,
+976.4,MATCH,F80_app3_rho,附录3 初态 rho
+3415.3,ROUNDED,F80_app3_cp,附录3 初态 cp
+0.4830,ROUNDED,F14,c_1 / A_1(feishu)
+1.4483e-7,ROUNDED,F80_app3_alpha,附录3 初态 alpha
+5.6417e-9,ROUNDED,F80_app3_D,附录3 初态 D
+1.00,ALLOW,,
+778.0,MATCH,F81_C1_rho,附录3 C=1 时 rho
+2818.0,MATCH,F81_C1_cp,附录3 C=1 时 cp
+0.4000,ALLOW,,
+1.8245e-7,ROUNDED,F81_C1_alpha,附录3 C=1 时 alpha
+4.2916e-9,ROUNDED,F81_C1_D,附录3 C=1 时 D
+0.50,ALLOW,,
+714.0,MATCH,F81_C0p5_rho,附录3 C=0.5 时 rho
+2362.0,ROUNDED,F03,tau_T (精确 alpha)
+0.3367,ROUNDED,F81_C0p5_k,附录3 C=0.5 时 k
+1.9963e-7,ROUNDED,F81_C0p5_alpha,附录3 C=0.5 时 alpha
+2.7364e-9,ROUNDED,F81_C0p5_D,附录3 C=0.5 时 D
+0.15,ALLOW,,
+669.2,MATCH,F81_C0p15_rho,附录3 C=0.15 时 rho
+1806.9,ROUNDED,F60_t,max|T_附录3-T_附录2| 出现时刻 t
+0.2596,ROUNDED,F81_C0p15_k,附录3 C=0.15 时 k
+2.1467e-7,ROUNDED,F81_C0p15_alpha,附录3 C=0.15 时 alpha
+3.3509e-10,ROUNDED,F81_C0p15_D,附录3 C=0.15 时 D
+0.15,ALLOW,,
+2.55,ALLOW,,
+1.4822133320,ROUNDED,F52,"C(1800s,r=R) 非线性"
+48.2,ROUNDED,F71_pct,附录3 alpha(C=0.15)/alpha(C=2.55) 的相对变化
+4,ALLOW,,
+7.55e-2,ROUNDED,F70,附录3 内 T->D 反馈效应 max|dC| (0-1800s)
+48.2,ROUNDED,F71_pct,附录3 alpha(C=0.15)/alpha(C=2.55) 的相对变化
+1.4,ALLOW,,
+0.138,ROUNDED,F61,max|C_附录3 - C_附录2| (0-1800s)
+2.4,ALLOW,,
+2020,ALLOW,,
+42,ALLOW,,
+2,ALLOW,,
+118,ALLOW,,
+128,ALLOW,,
+10.13718,ROUNDED,F10_4,本征值 lambda_4 R
+404,ALLOW,,
+404,ALLOW,,
+1,ALLOW,,
+5,ALLOW,,
+16,ALLOW,,
+0,ALLOW,,
+2.2,ALLOW,,
+13.3,ALLOW,,
+3.1,ALLOW,,
+13.3,ALLOW,,
+0.016,ALLOW,,
+1,ALLOW,,
+3.1,ALLOW,,
+1,ALLOW,,
+22,ALLOW,,
+0.4,ALLOW,,
+0.18,ALLOW,,
+0.18,ALLOW,,
+0.011,ALLOW,,
+25,ALLOW,,
+2,ALLOW,,
+5,ALLOW,,
+6,ALLOW,,
+22,ALLOW,,
+16,ALLOW,,
+13.3,ALLOW,,
+0.016,ALLOW,,
+1,ALLOW,,
+2,ALLOW,,
+10,ALLOW,,
+20,ALLOW,,
+17,ALLOW,,
+18,ALLOW,,
+19,ALLOW,,
+2.5,ALLOW,,
+2020,ALLOW,,
+25,ALLOW,,
+2,ALLOW,,
+4,ALLOW,,
+0.4,ALLOW,,
+3.49e-6,ROUNDED,F40,max|T_数值 - T_半解析| (0-1800s)
+2,ALLOW,,
+13.3,ALLOW,,
+0.016,ALLOW,,
+4.80,ROUNDED,F19_3,feishu A_3/(T0-Tinf)
+4,ALLOW,,
+4,ALLOW,,
+4,ALLOW,,
+3,ALLOW,,
+60,ALLOW,,
+1,ALLOW,,
+60,ALLOW,,
+160,ALLOW,,
+2,ALLOW,,
+1.8,ALLOW,,
+3,ALLOW,,
+50,ALLOW,,
+100,ALLOW,,
+200,ALLOW,,
+400,ALLOW,,
+4.827,ROUNDED,F19_3,feishu A_3/(T0-Tinf)
+2,ALLOW,,
+4,ALLOW,,
+4,ALLOW,,
+5,ALLOW,,
+6,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+1,ALLOW,,
+800,ALLOW,,
+0.0005,ALLOW,,
+4.477269727e-6,ROUNDED,E20_M800_dt0.0005,"FV vs 解析级数 max|dT| (M=800, dt=0.0005s)"
+0.04037790745,ROUNDED,E31_M800_dt0.02_cell,"表面取法=整格(原方案) vs 解析 (M=800,dt=0.02)"
+9018.421922,MATCH,E32_M800_dt0.0005_ratio,"表面取法误差比 cell/flux (M=800,dt=0.0005)"
+1.5,ALLOW,,
+1,ALLOW,,
+2,ALLOW,,
+0.5,ALLOW,,
+400,ALLOW,,
+6.65961e-6,ROUNDED,F22_M400_exact,"CN尺度+精确半CV 表面 vs 解析 max|dT| (M=400,dt=0.500)"
+1,ALLOW,,
+0.02,ALLOW,,
+4.0295e-2,ROUNDED,E31_M800_dt0.02_cell,"表面取法=整格(原方案) vs 解析 (M=800,dt=0.02)"
+0.0005,ALLOW,,
+4.477e-6,ROUNDED,E20_M800_dt0.0005,"FV vs 解析级数 max|dT| (M=800, dt=0.0005s)"
+0.0005,ALLOW,,
+0.04037790745,ROUNDED,E31_M800_dt0.02_cell,"表面取法=整格(原方案) vs 解析 (M=800,dt=0.02)"
+4.477269727e-6,ROUNDED,E20_M800_dt0.0005,"FV vs 解析级数 max|dT| (M=800, dt=0.0005s)"
+9018.421922,MATCH,E32_M800_dt0.0005_ratio,"表面取法误差比 cell/flux (M=800,dt=0.0005)"
+4,ALLOW,,
+1,ALLOW,,
+2026,ALLOW,,
+2,ALLOW,,
+3,ALLOW,,
+2020,ALLOW,,
+42,ALLOW,,
+2,ALLOW,,
+118,ALLOW,,
+128,ALLOW,,
+4,ALLOW,,
+1959,ALLOW,,
+1.2,ALLOW,,
