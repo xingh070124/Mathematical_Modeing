@@ -164,7 +164,8 @@ $\dot\Phi_v$为体积内热源。
 水分总是表面的先蒸发，而内部的水分蒸发是通过扩散现象扩散至表面进行蒸发，所以需要建立扩散方程。
 Fick第二定律为：
 \begin{equation}
-    \frac{\partial C}{\partial t}=D[\frac{1}{r}\frac{\partial}{}]
+    \frac{\partial C}{\partial t}=D[\frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial C}{\partial r})+\frac{1}{r^2}\frac{\partial^2 C}{\partial \phi^2}+\frac{\partial^2C}{\partial z^2}]
+    
 
 四个问题共享同一物理过程：含湿圆柱药材在时变烘房环境下的径向导热与水分扩散。
 取柱坐标系 $(r,\theta,z)$，$z$ 轴与药材轴线重合、原点在中截面圆心，由假设~2 只需
