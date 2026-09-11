@@ -1,0 +1,45 @@
+﻿id,quantity,value,unit,uncertainty,source,command,note
+W03_r0,"线性环境: T(r=0.0cm,1800s) 单段递推",28.975725779363,degC,解析精确,run W1,python src/q1_piecewise_exact.py,
+W04_r0,"线性环境: T(r=0.0cm,1800s) 独立ODE",28.975725779363,degC,DOP853 rtol=1e-13,run W1,python src/q1_piecewise_exact.py,
+W03_r5,"线性环境: T(r=0.5cm,1800s) 单段递推",29.176618496249,degC,解析精确,run W1,python src/q1_piecewise_exact.py,
+W04_r5,"线性环境: T(r=0.5cm,1800s) 独立ODE",29.176618496249,degC,DOP853 rtol=1e-13,run W1,python src/q1_piecewise_exact.py,
+W03_r10,"线性环境: T(r=1.0cm,1800s) 单段递推",29.795105406588,degC,解析精确,run W1,python src/q1_piecewise_exact.py,
+W04_r10,"线性环境: T(r=1.0cm,1800s) 独立ODE",29.795105406587,degC,DOP853 rtol=1e-13,run W1,python src/q1_piecewise_exact.py,
+W03_r15,"线性环境: T(r=1.5cm,1800s) 单段递推",30.87697357971,degC,解析精确,run W1,python src/q1_piecewise_exact.py,
+W04_r15,"线性环境: T(r=1.5cm,1800s) 独立ODE",30.87697357971,degC,DOP853 rtol=1e-13,run W1,python src/q1_piecewise_exact.py,
+W03_r20,"线性环境: T(r=2.0cm,1800s) 单段递推",32.493248533471,degC,解析精确,run W1,python src/q1_piecewise_exact.py,
+W04_r20,"线性环境: T(r=2.0cm,1800s) 独立ODE",32.493248533471,degC,DOP853 rtol=1e-13,run W1,python src/q1_piecewise_exact.py,
+W01,单段递推 vs 解析闭式 max|dT|,0,K,解析精确,run W1,python src/q1_piecewise_exact.py,"线性环境, 整段一步"
+W02,解析闭式 vs 独立ODE max|dT|,1.1368683772162e-13,K,DOP853 rtol=1e-13,run W1,python src/q1_piecewise_exact.py,
+W10,"原始折点 PL: T(r=R,1800s)",36.785560349617,degC,解析精确,run W2,python src/q1_piecewise_exact.py,31 个折点
+W11_sub2,"PL 每段细分 2 份: T(r=R,1800s)",36.785560349617,degC,解析精确,run W2,python src/q1_piecewise_exact.py,
+W11d_sub2,PL 每段细分 2 份 与原始折点之差,0,K,解析差值,run W2,python src/q1_piecewise_exact.py,应为 0
+W11_sub4,"PL 每段细分 4 份: T(r=R,1800s)",36.785560349617,degC,解析精确,run W2,python src/q1_piecewise_exact.py,
+W11d_sub4,PL 每段细分 4 份 与原始折点之差,0,K,解析差值,run W2,python src/q1_piecewise_exact.py,应为 0
+W11_sub8,"PL 每段细分 8 份: T(r=R,1800s)",36.785560349617,degC,解析精确,run W2,python src/q1_piecewise_exact.py,
+W11d_sub8,PL 每段细分 8 份 与原始折点之差,0,K,解析差值,run W2,python src/q1_piecewise_exact.py,应为 0
+W11_sub16,"PL 每段细分 16 份: T(r=R,1800s)",36.785560349617,degC,解析精确,run W2,python src/q1_piecewise_exact.py,
+W11d_sub16,PL 每段细分 16 份 与原始折点之差,0,K,解析差值,run W2,python src/q1_piecewise_exact.py,应为 0
+W12_r0,"原始折点 PL: T(r=0.0cm,1800s)",33.575344826111,degC,解析精确,run W2,python src/q1_piecewise_exact.py,31 个折点
+W12_r5,"原始折点 PL: T(r=0.5cm,1800s)",33.77200191541,degC,解析精确,run W2,python src/q1_piecewise_exact.py,31 个折点
+W12_r10,"原始折点 PL: T(r=1.0cm,1800s)",34.364160796309,degC,解析精确,run W2,python src/q1_piecewise_exact.py,31 个折点
+W12_r15,"原始折点 PL: T(r=1.5cm,1800s)",35.362124590716,degC,解析精确,run W2,python src/q1_piecewise_exact.py,31 个折点
+W12_r20,"原始折点 PL: T(r=2.0cm,1800s)",36.785560349617,degC,解析精确,run W2,python src/q1_piecewise_exact.py,31 个折点
+W20_tau8.0,"PCHIP 逐段递推 Δτ=8.0s: T(r=R,1800s)",36.787819223162,degC,解析(逐段),run W3,python src/q1_piecewise_exact.py,
+W20_tau4.0,"PCHIP 逐段递推 Δτ=4.0s: T(r=R,1800s)",36.787864366405,degC,解析(逐段),run W3,python src/q1_piecewise_exact.py,
+W21_tau4.0,PCHIP Δτ=4.0s 的相邻半步之差,4.5143243085022e-05,K,解析差值,run W3,python src/q1_piecewise_exact.py,一阶收敛
+W20_tau2.0,"PCHIP 逐段递推 Δτ=2.0s: T(r=R,1800s)",36.787876109472,degC,解析(逐段),run W3,python src/q1_piecewise_exact.py,
+W21_tau2.0,PCHIP Δτ=2.0s 的相邻半步之差,1.174306652274e-05,K,解析差值,run W3,python src/q1_piecewise_exact.py,一阶收敛
+W20_tau1.0,"PCHIP 逐段递推 Δτ=1.0s: T(r=R,1800s)",36.787879119285,degC,解析(逐段),run W3,python src/q1_piecewise_exact.py,
+W21_tau1.0,PCHIP Δτ=1.0s 的相邻半步之差,3.0098130991973e-06,K,解析差值,run W3,python src/q1_piecewise_exact.py,一阶收敛
+W20_tau0.5,"PCHIP 逐段递推 Δτ=0.5s: T(r=R,1800s)",36.787879884522,degC,解析(逐段),run W3,python src/q1_piecewise_exact.py,
+W21_tau0.5,PCHIP Δτ=0.5s 的相邻半步之差,7.6523718917088e-07,K,解析差值,run W3,python src/q1_piecewise_exact.py,一阶收敛
+W20_tau0.25,"PCHIP 逐段递推 Δτ=0.25s: T(r=R,1800s)",36.787880078066,degC,解析(逐段),run W3,python src/q1_piecewise_exact.py,
+W21_tau0.25,PCHIP Δτ=0.25s 的相邻半步之差,1.9354405367267e-07,K,解析差值,run W3,python src/q1_piecewise_exact.py,一阶收敛
+W30,输入侧: PL vs PCHIP 环境温度最大差,0.035000648499931,K,两种插值,run W4,python src/q1_piecewise_exact.py,
+W31,输出侧: PL vs PCHIP 最终温度之差,0.0023197284494927,K,两种插值,run W4,python src/q1_piecewise_exact.py,认识论不确定度
+W32,输入侧差异 / 附件1 记录精度 1e-3 K,35.000648499931,倍,解析比值,run W4,python src/q1_piecewise_exact.py,
+W40,附件1 在 0-1800 s 内数据点数,31,个,附件1,run W5,python src/q1_piecewise_exact.py,60 s 间隔
+W41_三次,三次拟合参数个数 (降维比 31:4),4,个,结构,run W5,python src/q1_piecewise_exact.py,
+W41_饱和指数,饱和指数拟合参数个数 (降维比 31:3),3,个,结构,run W5,python src/q1_piecewise_exact.py,
+W41_线性,线性拟合参数个数 (降维比 31:2),2,个,结构,run W5,python src/q1_piecewise_exact.py,

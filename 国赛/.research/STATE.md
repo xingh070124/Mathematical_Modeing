@@ -1,6 +1,113 @@
 # Research State — 2026 国赛 A 题 · 药材烘干
 
-Last updated: 2026-09-10 (session 2)
+Last updated: 2026-09-10 (session 3)
+
+## Session 3 — objective and findings
+
+**User question**: 问题一能否"用附件数据拟合出一个函数，先利用热传导方程求出解析解"？
+
+**Answer: 温度可以，水分不行；而且"拟合"这一步不该做——它比不拟合差 10–40 倍。**
+
+Deliverable: new §10 in `model/problem_slove1.md`; experiment `src/q1_analytic_fit.py`;
+registry `outputs/registry_q1_analytic_fit.csv` (39 rows).
+
+### Session-3 claims ledger
+
+| # | claim | status | evidence |
+|---|-------|--------|----------|
+| G1 | The semi-analytic route (Bessel eigenfunction + Duhamel) is valid for the temperature field in Q1: α is constant (附录2) and the Robin BC is linear | VERIFIED | derivation + G01 |
+| G2 | Analytic implementation validated against the FV production solution: max\|ΔT\| = **1.503e-05 K** at t=1800 s over the 5 output radii (two independent implementations) | VERIFIED | G01 |
+| G3 | **Duhamel has a per-segment closed form for piecewise-linear T∞** ⇒ fitting is unnecessary; the raw attachment points can be substituted directly | VERIFIED | G20/G21 |
+| G4 | **Fitting is WORSE than not fitting**, by 10–40×: raw piecewise-linear 4.199e-3 K vs cubic fit 4.211e-2, quadratic 4.936e-2, saturating-exponential 5.617e-2, linear 1.630e-1 K | VERIFIED | §10.2 table |
+| G5 | Fit residuals propagate at ~10× attenuation through thermal inertia: T∞ fit residual 0.19–0.57 K → solution error 0.02–0.16 K | VERIFIED | G02/G03 pairs |
+| G6 | **Fitting over the whole 0–14400 s is a trap**: Q1-window error rises to 0.312 K (exp) / 0.673 K (cubic) / 2.333 K (quad) / 5.410 K (linear), because the fit is dominated by later data. If fitting at all, fit only on 0–1800 s | VERIFIED | §10.3 table |
+| G7 | **Moisture CANNOT use the analytic route**: freezing D at D(C₀)=4.937655e-9 gives max\|ΔC\| = **4.1913e-2 kg/kg** = **838×** the 5e-5 four-decimal threshold | VERIFIED | G10/G11 |
+| G8 | The linearisation error is concentrated at the surface: 2.55e-7 (r=0) / 1.20e-5 (0.5 cm) / 6.67e-4 (1 cm) / 1.01e-2 (1.5 cm) / 4.19e-2 kg/kg (2 cm) — i.e. exactly the column 表2 cares about | VERIFIED | G12/G13 pairs |
+| G9 | A mere **21 %** variation of D across the domain (ratio 0.7864 at t=1800 s) is already enough to break linearisation; D spans far more later (D(0.15)/D(2.55) = 1/266) | VERIFIED | G14 + P06b |
+| G10 | **Precision caveat**: 附件1 records temperature only to 1e-3 °C, while the problem asks for 4 decimals (needs 5e-5 °C). Upstream treatment choice alone moves the answer by 1e-3 to 1e-1 K. The 4th decimal is a **reporting convention, not an attainable accuracy** — it should be read as non-significant | VERIFIED | G22 + §10.2/§10.5 |
+
+### Session-3 bug caught and fixed
+
+Three defects, all found by running things rather than reading them:
+
+1. **Unit bug**: `q1_analytic_fit.py` fed 附件1's **°C** values into `series_T`,
+   which expects **K**. Produced an impossible 231 K error (the whole range is only
+   22 K) and — the tell — an *identical* error across all five fit forms. Fixed.
+   Lesson: an error invariant across variants that should differ is a bug.
+2. **False reading of a plateau**: the first version of the analytic-vs-numeric
+   script refined M at fixed Δt=2⁻⁹ and got a plateau
+   (4.38e-6 → 3.90e-6 → 3.78e-6, ratios 1.12/1.03/1.01). I wrote "空间二阶收敛".
+   **Wrong** — the plateau 3.75e-6 K equals exactly the temporal error at that Δt,
+   so it was the *time* error floor. Fixed by adding a fixed-Δt M-vs-2M comparison,
+   which gives clean ratios 4.001/3.989/4.014 (genuine 2nd order).
+   Lesson: to measure spatial order you must cancel the temporal error, not just
+   shrink it.
+3. **Second writer clobbering the deliverable tables**: `src/q1_solve.py` (a
+   diagnostic) was writing its own coarse M=800/Δt=0.125 solution to
+   `outputs/table*.csv`. This is the *root cause* of the stale-CSV defect the
+   session-1 auditor found — I had only fixed the symptom in `q1_produce.py`.
+   Now `q1_produce.py` is the sole writer of deliverable tables; `q1_solve.py`
+   writes `diag_table*_M800.csv` instead. Verified by an order-robustness test.
+
+Also hardened `src/q1_reconcile.py`: its `find_match` used a 3 % tolerance with
+x/100 and x/1000 variants, which **falsely matched large integers** — step counts
+230400/460800/921600 were silently "passed" by matching P09 (2368.9) and others
+after ÷100. Percent-variant matching is now restricted to |x| ≤ 1000 with a 1 %
+tolerance. Hardening immediately exposed 3 genuinely unsourced numbers (the 5th
+Bessel root, air c_p = 1005, and a "39×" ratio), all now registered or explicitly
+allow-listed as unretrieved.
+
+### Session-3 outputs
+
+| path | what |
+|------|------|
+| `model/problem_slove1.md` §10 | 拟合 + 解析解可行性 |
+| `model/problem_slove1.md` §11 | 解析 vs 数值逐点对照 + 误差拆解 |
+| `model/problem_slove1.md` §12 | **误差最低路线的机理**: 逐段闭式解, 不构造连续函数 |
+| `src/q1_analytic_fit.py` | §10 实验 |
+| `src/q1_analytic_vs_numeric.py` | §11 实验 |
+| `src/q1_piecewise_exact.py` | §12 精确性验证 |
+| `outputs/registry_q1_{analytic_fit,ana_vs_num,piecewise}.csv` | 三个注册表 |
+
+### Session-3 addendum: how the lowest-error route handles 附件1
+
+User asked: 温度误差最低的是怎么把附件1变成连续函数的?
+
+**It never builds a continuous function.** Verified by `src/q1_piecewise_exact.py`:
+
+| # | claim | status | evidence |
+|---|-------|--------|----------|
+| W1 | The per-segment Duhamel formula is **exact**, not approximate: for a strictly linear ambient, one-step recursion vs the analytic closed form differ by **0.000e+00 K**, and the closed form vs an independent DOP853 integration (rtol 1e-13) by **1.137e-13 K** | VERIFIED | W01/W02 |
+| W2 | **Using 附件1's raw 31 points as breakpoints, subdividing each segment 2/4/8/16× changes the answer by exactly 0.000e+00 K** — proof there is no quadrature error at all, because each 60 s segment is exactly linear | VERIFIED | W11_sub* |
+| W3 | PCHIP, by contrast, IS a quadrature approximation in this implementation: its answer drifts with Δτ (4.514e-5 → 1.935e-7 K as Δτ goes 8 → 0.25 s); 3.010e-6 K at Δτ=1 s | VERIFIED | W20_tau* |
+| W4 | The PL-vs-PCHIP final-answer difference (2.320e-3 K) is **epistemic, not numerical**. Input-side they differ by 3.500e-2 K, which is **35× 附件1's own 1e-3 recording precision** | VERIFIED | W30/W31/W32 |
+| W5 | Fitting is worse because it is **dimensionality reduction**: 31 points → 4 (cubic) / 3 (exp) / 2 (linear) parameters, hence systematic bias; piecewise interpolation only connects points and preserves the data's shape | VERIFIED + reasoning | W40/W41_* |
+
+The recursion used is
+`b_k(t+Δ) = E_k b_k(t) − c_k s (1−E_k)/μ_k`, `E_k = exp(−μ_k Δ)` — the exact
+antiderivative of the Duhamel convolution on a segment of constant slope `s`.
+No interpolation evaluation, no quadrature, no fitting.
+
+Note recorded honestly: **PCHIP could also be integrated exactly** (polynomial ×
+exponential has a closed-form antiderivative). This implementation samples it at
+Δτ and reuses the linear recursion, which is why it carries the ~1e-6 K
+quadrature error; extending the recursion to the quadratic slope term would
+remove it for a few lines of code.
+
+### Session-3 parser fix (self-inflicted, found by the gate)
+
+`src/q1_reconcile.py`'s `latex_to_plain` mapped a standalone `10^{-13}` to `e-13`,
+leaving a bare `e-13` whose `-13` was then scanned as a standalone number and
+reported as unsourced. Fixed to emit `1e-13`, and added the magnitude
+declarations (1e-7 … 1e-15) to the allow-list. This was a parser artifact, not a
+document error — the markdown was correct throughout.
+
+**Both gates pass: 1662 literals, 655 registry-backed, 1007 definitional,
+0 unmatched; 210 table values bit-identical to result1.xlsx.**
+
+---
+
+# Session 2 state (retained)
 
 ## Objective
 

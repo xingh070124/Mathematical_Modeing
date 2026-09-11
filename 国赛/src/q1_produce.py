@@ -14,6 +14,7 @@
 
 from __future__ import annotations
 
+import csv
 import os
 import sys
 import time
@@ -88,14 +89,17 @@ if __name__ == "__main__":
     say("")
     say("  分时段 (为说明早时段表面水分的启动瞬态被充分解析):")
     say(f"  {'时间窗':>14} {'max|dT| [K]':>16} {'max|dC| [kg/kg]':>20}")
+    win_rows = []
     for lo, hi, lbl in ((1, 10, "t=1..9 s"), (10, 100, "t=10..99 s"),
                         (100, 600, "t=100..599 s"), (600, 1800, "t=600..1800 s"),
                         (1, 1800, "t=1..1800 s")):
         st, sc = lo - 1, hi - 1
         if lo == 1 and hi == 1800:
             st, sc = 0, 1799
-        say(f"  {lbl:>14} {np.max(np.abs((Tp-Tc)[st:sc+1])):>16.3e} "
-            f"{np.max(np.abs((Cp-Cc)[st:sc+1])):>20.3e}")
+        wT = float(np.max(np.abs((Tp - Tc)[st:sc + 1])))
+        wC = float(np.max(np.abs((Cp - Cc)[st:sc + 1])))
+        win_rows.append((lbl, wT, wC))
+        say(f"  {lbl:>14} {wT:>16.3e} {wC:>20.3e}")
     say("")
     say(f"  最大不确定度: 温度 {max(dTt,dTh):.1e} K, 水分浓度 {max(dCt,dCh):.1e} kg/kg")
     say("  四位小数 = 半 ulp 5e-5; 上述不确定度均低于该阈值 -> 四位小数报告是安全的")
@@ -169,6 +173,34 @@ if __name__ == "__main__":
     say("\n附: 表面水分浓度与环境水分浓度 (t=1800 s)")
     say(f"  C(r=R,1800s) = {Cp[-1, -1]:.4f} kg/kg ;  C_inf(1800s) = {env.C(1800.0):.5f} kg/kg ; "
         f"比值 = {Cp[-1,-1]/env.C(1800.0):.1f}")
+
+    # ---------------- 生产设置的不确定度注册表 ----------------
+    reg = []
+
+    def radd(id_, q, v, u, unc, note=""):
+        vs = v if isinstance(v, str) else (f"{v:.14g}" if isinstance(v, (int, float, np.floating)) else str(v))
+        reg.append([id_, q, vs, u, unc, "outputs/q1_production.log",
+                    "python src/q1_produce.py", note])
+
+    radd("U01", "时间步加密 (dt/2): 温度最大偏差", dTt, "K", "dt/2 校核")
+    radd("U02", "时间步加密 (dt/2): 水分最大偏差", dCt, "kg/kg", "dt/2 校核")
+    radd("U03", "网格加密 (M x2): 温度最大偏差", dTh, "K", "M 加倍校核")
+    radd("U04", "网格加密 (M x2): 水分最大偏差", dCh, "kg/kg", "M 加倍校核")
+    for lbl, wT, wC in win_rows:
+        tag = lbl.replace(" ", "").replace("=", "").replace("..", "_")
+        radd(f"U10_{tag}_T", f"分时段网格加密最大偏差 (温度, {lbl})", wT, "K", "M 加倍校核")
+        radd(f"U11_{tag}_C", f"分时段网格加密最大偏差 (水分, {lbl})", wC, "kg/kg",
+             "M 加倍校核")
+    radd("U20", "t=1800s 表面含水率 C(r=R)", float(Cp[-1, -1]), "kg/kg", "生产解")
+    radd("U21", "t=1800s 环境含水率 C_inf", float(env.C(1800.0)), "kg/kg", "附件1")
+    radd("U22", "t=1800s C(r=R)/C_inf", float(Cp[-1, -1] / env.C(1800.0)), "-", "解析比值")
+
+    reg_path = os.path.join(OUT, "registry_q1_uncertainty.csv")
+    with open(reg_path, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["id", "quantity", "value", "unit", "uncertainty", "source", "command", "note"])
+        w.writerows(reg)
+    say(f"\n不确定度注册表: {reg_path} ({len(reg)} 行)")
 
     with open(log_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")

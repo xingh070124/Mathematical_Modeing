@@ -32,6 +32,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "outputs")
 DOCS = [os.path.join(ROOT, "model", "problem1.md"),
         os.path.join(ROOT, "model", "problem_slove1.md"),
+        os.path.join(ROOT, "model", "温度场两种解法.md"),
         # 输出表格也必须对账: 与 result1.xlsx 同源, 曾因粗网格残留而在第 4 位小数冲突
         os.path.join(OUT, "table1_temperature.md"),
         os.path.join(OUT, "table2_moisture.md")]
@@ -39,7 +40,12 @@ REGISTRIES = [os.path.join(OUT, "registry_q1_production.csv"),
               os.path.join(OUT, "registry_q1.csv"),
               os.path.join(OUT, "registry_q1_diagnostics.csv"),
               os.path.join(OUT, "registry_q1_energy.csv"),
-              os.path.join(OUT, "registry_q1_sensitivity.csv")]
+              os.path.join(OUT, "registry_q1_sensitivity.csv"),
+              os.path.join(OUT, "registry_q1_analytic_fit.csv"),
+              os.path.join(OUT, "registry_q1_ana_vs_num.csv"),
+              os.path.join(OUT, "registry_q1_piecewise.csv"),
+              os.path.join(OUT, "registry_q1_uncertainty.csv"),
+              os.path.join(OUT, "registry_feishu.csv")]
 REPORT = os.path.join(OUT, "reconciliation_q1.csv")
 
 # result1.xlsx 的直接逐位核对: 表1/表2 的每个值必须与 xlsx 在 4 位小数上完全相同.
@@ -169,11 +175,53 @@ ALLOW_RAW = [
     # 明确标注来源为"独立核验日志"的引用值 (非本文脚本产出)
     (381, "引用独立核验日志 outputs/audit_moist_stab.log 的水分失稳时刻"),
     (394, "同上, 引用独立核验日志的水分失稳时刻"),
+    # 时间步实验的步数 = 1800/Δt, 属实验网格设置 (结构性, 非测算值)
+    (28800, "步数 = 1800/0.0625 s, §11.3 时间收敛实验设置"),
+    (57600, "步数 = 1800/0.03125 s, §11.3 时间收敛实验设置"),
+    (115200, "步数 = 1800/0.015625 s, §11.3 时间收敛实验设置"),
+    (230400, "步数 = 1800/0.0078125 s, §11.3 时间收敛实验设置"),
+    (460800, "步数 = 1800/0.00390625 s, §11.3 时间收敛实验设置"),
+    (921600, "步数 = 1800/0.001953125 s, §11.3 时间收敛实验设置"),
+    # 空气物性: 来自教科书常识/记忆, 未检索原始文献. 仅用于 §7.2 的量级论证,
+    # 不进入任何计算结果. 与 claims ledger 的 C17 一致标注为 INFERENCE.
+    (1005, "[未检索] 空气定压比热 c_p,a ≈ 1005 J/(kg·K), 凭记忆的教科书值, 仅作量级论证"),
     (0.05, "时间步/通用"), (0.25, "时间步/通用"), (2.5, "时间步/通用"),
     (40, "量级"), (46, "量级"), (45, "量级"), (128, "量级"), (129, "量级"),
     (124, "量级"), (116, "量级"), (94, "量级"), (66, "量级"), (46.0, "量级"),
     (20, "量级"), (35, "量级"), (205, "量级"), (230, "量级"), (296, "量级"),
     (134, "量级"), (400, "网格"), (105, "量级"), (33, "量级"),
+    # 数值量级/容差 (以 1eN 形式书写的数量级声明, 非测算值)
+    (1e-7, "数值量级"), (1e-8, "数值量级"), (1e-11, "数值量级"),
+    (1e-12, "数值量级/收敛判据"), (1e-13, "数值量级/ODE 容差"),
+    (1e-15, "数值量级/机器精度"), (1e-10, "数值量级/积分容差"),
+    # 结构性数字: 年份 / 模态数 / 时间窗标签 / 网格标签
+    (2026, "年份: 2026 高教社杯"), (120, "模态数 / 级数项数"),
+    (99, "时间窗标签 t=10..99 s"), (599, "时间窗标签 t=100..599 s"),
+    (9, "时间窗标签 t=1..9 s"),
+    (0.03125, "时间步 Δt = 2^-5 s"), (0.015625, "时间步 Δt = 2^-6 s"),
+    (0.02500, "网格尺寸 Δr = 0.0250 mm (表格标签)"),
+    (0.01250, "网格尺寸 Δr = 0.0125 mm (表格标签)"),
+    (0.0125, "网格尺寸 Δt = 0.0125 s / Δr = 0.0125 mm"),
+    (0.125, "时间步 Δt = 0.125 s (诊断设置)"),
+    (853, "[已由 G11=838.25 推出] '超过 838 倍' 附近的口头表述, 见 G11"),
+    # --- 被对照的"原方案/用户原文"数值: 不是本文产出, 仅用于指出差异 ---
+    (1.679e-7, "原始建模思路中写出的 alpha 值, 用于对照 (实为 1.6886e-7)"),
+    # --- 附录2 公式中的常数 (带符号形式) ---
+    (-0.89, "附录2 D 公式中的指数常数 -0.89"),
+    # --- 纯结构/编号: 章节号、软件版本号、注册表 ID 区间、公式系数常数 ---
+    (9.3, "章节号 §9.2—9.3"), (3.12, "软件版本 Python 3.12.3"),
+    (1.18, "软件版本 scipy 1.18.1"), (3.1, "软件版本 openpyxl 3.1.2"),
+    (44, "注册表 ID 区间 E40–E44"),
+    (-4, "离散系数中的常数 -4 (中心节点 b0/c0 的因子)"),
+    (0.001953125, "时间步 Δt = 2^-9 s (实验设置)"),
+    # --- 已撤销实验的历史记录值: 保留在 §11.3 的更正中, 用于说明误读陷阱 ---
+    #     这些数字来自当时的实际运行, 该实验已从代码中移除; 标注为历史记录.
+    (4.38e-6, "已撤销实验的历史记录 (M-加密平台, 见 §11.3 更正)"),
+    (3.90e-6, "已撤销实验的历史记录 (同上)"),
+    (3.78e-6, "已撤销实验的历史记录 (同上)"),
+    (1.03, "已撤销实验的历史记录 (收敛比值 1.12/1.03/1.01)"),
+    (1.01, "已撤销实验的历史记录 (同上)"),
+    (1.12, "已撤销实验的历史记录 (同上)"),
 ]
 
 ALLOW = {}
@@ -186,9 +234,11 @@ HEADING_RE = re.compile(r"^\s*#{1,6}\s*\d")
 
 def latex_to_plain(s: str) -> str:
     """LaTeX -> 纯文本, 并消掉作为下标/指数的结构性数字与章节号."""
-    # A\times10^{B} 和 10^{B} -> AeB
+    # A\times10^{B} 和 10^{B} -> AeB / 1eB
     s = re.sub(r"\\times\s*10\^\{?(-?\d+)\}?", r"e\1", s)
-    s = re.sub(r"(?<![0-9])10\^\{?(-?\d+)\}?", r"e\1", s)
+    # 独立的 10^{B} 必须补上前导 1, 否则会留下裸的 "e-13",
+    # 其 "-13" 会被 NUM_RE 当成一个独立数字而误报 (已实测发生过).
+    s = re.sub(r"(?<![0-9])10\^\{?(-?\d+)\}?", r"1e\1", s)
     s = re.sub(r"\\times", "x", s)
     s = s.replace("\\%", "%").replace("\\ ", " ").replace("\\,", "")
     s = re.sub(r"\\(dfrac|tfrac|frac)\{([^{}]*)\}\{([^{}]*)\}", r"(\2)/(\3)", s)
@@ -233,18 +283,61 @@ def load_registry():
     return vals
 
 
-def find_match(x, reg):
-    """返回 (id, 相对偏差). 允许百分比/千分比表示."""
-    best, bdev = None, None
-    for cand in (x, x / 100.0, x * 100.0, x / 1000.0):
+def _written_tol(tok: str) -> float:
+    """由 token 的书写精度推出允许的绝对偏差.
+
+    原理: 文稿中写出的数字是对注册值的**四舍五入**. 若 token 写了 k 位小数,
+    则舍入误差不超过最后一位的半个单位, 即 0.5*10^-k. 取 1.5 倍余量以容纳
+    注册值本身也被舍入的情形.
+
+    这比"固定百分比容差"严格得多, 且能挡住大数误配: 例如 token '70.9236'
+    只允许 |偏差| <= 7.5e-5, 不会误配到相差 0.41 的无关注册值.
+    """
+    s = tok.strip().lower()
+    if "e" in s:
+        mant, _, exp = s.partition("e")
+        try:
+            e = int(exp)
+        except ValueError:
+            return 0.0
+        dec = len(mant.split(".")[1]) if "." in mant else 0
+        return 0.5 * (10.0 ** (-dec)) * (10.0 ** e) * 1.5
+    dec = len(s.split(".")[1]) if "." in s else 0
+    return 0.5 * (10.0 ** (-dec)) * 1.5
+
+
+def find_match(x, reg, tok=None, pct=False):
+    """返回 (id, 偏差), 或 (None, None).
+
+    匹配规则 (经多次误配事故后加固):
+      1. 精确命中;
+      2. 按 token 书写精度限定的绝对容差匹配 (见 _written_tol);
+      3. 仅当 pct=True (即该数字在原文中紧邻 '%') 时, 才尝试 x/100 —— 
+         注册表存的是小数, 文稿可能写成百分数.
+
+    绝不做无条件的 /100、/1000 变体匹配: 那会把大整数与小量误配到无关注册值
+    (实测两次: 步数 230400↔P09, 70.9236↔E3_T中心_max).
+    """
+    if x in reg:
+        return reg[x], 0.0
+    if pct:
+        cand = x / 100.0
         if cand in reg:
             return reg[cand], 0.0
-    for cand in (x, x / 100.0, x * 100.0, x / 1000.0):
+        tol = _written_tol(tok) / 100.0 if tok else 5e-7
+        best, bdev = None, None
         for rv, rid in reg.items():
-            dev = abs(cand - rv) / abs(rv) if rv != 0 else abs(cand)
-            tol = 3e-2
-            if dev <= tol and (bdev is None or dev < bdev):
-                best, bdev = rid, dev
+            d = abs(cand - rv)
+            if d <= tol and (bdev is None or d < bdev):
+                best, bdev = rid, d
+        if best is not None:
+            return best, bdev
+    tol = _written_tol(tok) if tok else 5e-5
+    best, bdev = None, None
+    for rv, rid in reg.items():
+        d = abs(x - rv)
+        if d <= tol and (bdev is None or d < bdev):
+            best, bdev = rid, d
     return best, bdev
 
 
@@ -273,10 +366,13 @@ def main():
                 except ValueError:
                     continue
                 ctx = line.strip()[:90]
+                # 百分数判定: 数字之后 (允许空格) 紧跟 '%'
+                tail = line[m.end():m.end() + 3]
+                pct = tail.lstrip().startswith("%")
                 if x in ALLOW:
                     rows.append([name, ln, tok, x, "ALLOW", ALLOW[x], 0.0, ctx])
                     continue
-                rid, dev = find_match(x, reg)
+                rid, dev = find_match(x, reg, tok, pct)
                 if rid is not None:
                     rows.append([name, ln, tok, x, "REGISTRY", rid, f"{dev:.3e}", ctx])
                 else:

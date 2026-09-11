@@ -163,6 +163,40 @@ def panel_b(ax, M=8):
                  fontsize=8.5, pad=6)
 
 
+def panel_fick(ax):
+    """Fick 扩散示意: 浓度梯度驱动水分向表面输运并蒸发."""
+    R = 2.0
+    ax.add_patch(Rectangle((0, 0), R, 1.0, facecolor="#e8f1fa",
+                           edgecolor=GREY["ink"], lw=1.0, zorder=1))
+    r = np.linspace(0, R, 300)
+    Cc = 2.55 - 1.05 / (1 + np.exp(-(r - 1.62) / 0.09))
+    y = (Cc - 1.45) / 1.15
+    ax.plot(r, y, color=C["teal"], lw=1.8, zorder=3)
+    ax.text(0.42, 0.82, "$C(r)$", color=C["teal"], fontsize=9)
+    ax.text(0.10, 0.22, "内部：$C\\approx C_0$", fontsize=7.5, color=GREY["dark"])
+    for x in (1.15, 1.38, 1.61):
+        ax.annotate("", xy=(x + 0.17, 0.60), xytext=(x, 0.60),
+                    arrowprops=dict(arrowstyle="-|>", color=C["blue"], lw=1.0))
+    ax.text(0.62, 0.70, "浓度梯度驱动扩散 $-D(C)\\,\\partial_rC$", fontsize=7.3,
+            color=C["blue"])
+    ax.plot([R, R], [0, 1], color=C["orange"], lw=1.0, ls=(0, (4, 2)), zorder=2)
+    for x in (1.82, 2.02):
+        ax.annotate("", xy=(x, 1.46), xytext=(x, 1.06),
+                    arrowprops=dict(arrowstyle="-|>", color=C["orange"], lw=1.2,
+                                    linestyle=(0, (3, 2))))
+    ax.text(1.30, 1.60, "表面蒸发 $j=h_m\\,[C-C_\\infty]$", fontsize=7.3,
+            color=C["orange"])
+    ax.annotate("", xy=(R, -0.30), xytext=(0, -0.30),
+                arrowprops=dict(arrowstyle="->", color=GREY["dark"], lw=0.8))
+    ax.text(-0.06, -0.52, "$r=0$（中心）", fontsize=7.5)
+    ax.text(R, -0.52, "$r=R$（表面）", fontsize=7.5, ha="center")
+    ax.text(2.10, 0.42, "烘房\n$C_\\infty$", fontsize=7.5, color=GREY["dark"])
+    ax.set_xlim(-0.40, 2.80)
+    ax.set_ylim(-0.62, 1.92)
+    ax.axis("off")
+    ax.set_title("水分径向扩散示意", fontsize=8.5, pad=4)
+
+
 def main():
     setup()
     fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.1), width_ratios=[1.12, 1.0])
@@ -170,6 +204,25 @@ def main():
     panel_b(axes[1])
     fig.subplots_adjust(wspace=0.10)
     save(fig, "fig_q1_schematic")
+
+    # 单面板版本 (论文 5.1.2 / 5.1.3 / 5.1.4 分别引用)
+    fig_a, ax_a = plt.subplots(figsize=(4.8, 3.0))
+    panel_a(ax_a)
+    fig_a.subplots_adjust(left=0.02, right=0.98, top=0.90, bottom=0.02)
+    save(fig_a, "fig_q1_model")
+    plt.close(fig_a)
+
+    fig_c, ax_c = plt.subplots(figsize=(4.8, 2.7))
+    panel_fick(ax_c)
+    fig_c.subplots_adjust(left=0.02, right=0.98, top=0.88, bottom=0.04)
+    save(fig_c, "fig_q1_fick")
+    plt.close(fig_c)
+
+    fig_b, ax_b = plt.subplots(figsize=(4.8, 3.0))
+    panel_b(ax_b)
+    fig_b.subplots_adjust(left=0.02, right=0.98, top=0.90, bottom=0.02)
+    save(fig_b, "fig_q1_fvm")
+    plt.close(fig_b)
 
 
 if __name__ == "__main__":

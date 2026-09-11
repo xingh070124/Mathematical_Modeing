@@ -1,0 +1,67 @@
+﻿id,quantity,value,unit,uncertainty,source,command,note
+G01,半解析 vs 有限体积 max|dT| (t=1800s),1.5034888690479e-05,K,两条独立实现,run q1_analytic_fit,python src/q1_analytic_fit.py,确认解析链路可信
+G02_线性_fitres,"拟合残差 max|fit-data| (线性, 0-1800s)",0.57261895326201,K,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,参数个数 2
+G03_线性_dT,"解析解偏差 max|dT| (线性, 0-1800s)",0.16304784896539,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,全时段全半径
+G04_线性_dTtab,解析解偏差 7时刻x5半径 (线性),0.16298924360217,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,题面要求的输出点
+G02_二次_fitres,"拟合残差 max|fit-data| (二次, 0-1800s)",0.19150560971267,K,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,参数个数 3
+G03_二次_dT,"解析解偏差 max|dT| (二次, 0-1800s)",0.04936362608845,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,全时段全半径
+G04_二次_dTtab,解析解偏差 7时刻x5半径 (二次),0.028739300544885,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,题面要求的输出点
+G02_三次_fitres,"拟合残差 max|fit-data| (三次, 0-1800s)",0.19141614681439,K,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,参数个数 4
+G03_三次_dT,"解析解偏差 max|dT| (三次, 0-1800s)",0.042107741084578,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,全时段全半径
+G04_三次_dTtab,解析解偏差 7时刻x5半径 (三次),0.019651872364591,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,题面要求的输出点
+G02_饱和指数_fitres,"拟合残差 max|fit-data| (饱和指数, 0-1800s)",0.20418339494447,K,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,参数个数 3
+G03_饱和指数_dT,"解析解偏差 max|dT| (饱和指数, 0-1800s)",0.056166321745707,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,全时段全半径
+G04_饱和指数_dTtab,解析解偏差 7时刻x5半径 (饱和指数),0.034686503585078,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,题面要求的输出点
+G02_双指数_fitres,"拟合残差 max|fit-data| (双指数, 0-1800s)",0.20418319450336,K,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,参数个数 5
+G03_双指数_dT,"解析解偏差 max|dT| (双指数, 0-1800s)",0.056166192958585,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,全时段全半径
+G04_双指数_dTtab,解析解偏差 7时刻x5半径 (双指数),0.034686554922587,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,题面要求的输出点
+G07_二次_p0,二次拟合参数 p0,27.96775732535,-,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G07_二次_p1,二次拟合参数 p1,0.0095695940143857,-,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G07_二次_p2,二次拟合参数 p2,-1.1587387665531e-06,-,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G07_饱和指数_p0,饱和指数拟合参数 p0,59.830841673135,-,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G07_饱和指数_p1,饱和指数拟合参数 p1,31.888321440173,-,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G07_饱和指数_p2,饱和指数拟合参数 p2,3258.9770609055,-,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G07_双指数_p0,双指数拟合参数 p0,59.830845927213,-,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G07_双指数_p1,双指数拟合参数 p1,9.9445643039278,-,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G07_双指数_p2,双指数拟合参数 p2,3259.786933145,-,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G07_双指数_p3,双指数拟合参数 p3,21.943761279948,-,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G07_双指数_p4,双指数拟合参数 p4,3258.6108543964,-,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G05_线性_win,整段拟合的 0-1800s 残差 (线性),12.787505431266,K,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,拟合被后段数据主导
+G06_线性_dT,整段拟合导致的问题一偏差 (线性),5.4099736831602,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G05_二次_win,整段拟合的 0-1800s 残差 (二次),6.2433651959632,K,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,拟合被后段数据主导
+G06_二次_dT,整段拟合导致的问题一偏差 (二次),2.3332893378489,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G05_三次_win,整段拟合的 0-1800s 残差 (三次),1.9461222669934,K,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,拟合被后段数据主导
+G06_三次_dT,整段拟合导致的问题一偏差 (三次),0.67285073581536,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G05_饱和指数_win,整段拟合的 0-1800s 残差 (饱和指数),1.131888453677,K,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,拟合被后段数据主导
+G06_饱和指数_dT,整段拟合导致的问题一偏差 (饱和指数),0.31250446371854,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G05_双指数_win,整段拟合的 0-1800s 残差 (双指数),1.1318894232135,K,最小二乘,run q1_analytic_fit,python src/q1_analytic_fit.py,拟合被后段数据主导
+G06_双指数_dT,整段拟合导致的问题一偏差 (双指数),0.31250473509084,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G20,原始31点分段线性 vs PCHIP: 全时段 max|dT|,0.0041992801611173,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,不拟合的基线
+G21,原始31点分段线性 vs PCHIP: 7时刻x5半径,0.0018234861602195,K,vs PCHIP 半解析,run q1_analytic_fit,python src/q1_analytic_fit.py,题面输出点
+G22,附件1 温度的记录精度,0.001,degC,附件1,run q1_analytic_fit,python src/q1_analytic_fit.py,数据只到 3 位小数
+G30_线性_ratio,光滑拟合·线性 偏差相对不拟合基线的倍数,38.8275710859,倍,解析比值,run q1_analytic_fit,python src/q1_analytic_fit.py,基线 = 原始31点分段线性 4.1993e-03 K
+G30_二次_ratio,光滑拟合·二次 偏差相对不拟合基线的倍数,11.755259043092,倍,解析比值,run q1_analytic_fit,python src/q1_analytic_fit.py,基线 = 原始31点分段线性 4.1993e-03 K
+G30_三次_ratio,光滑拟合·三次 偏差相对不拟合基线的倍数,10.027371232448,倍,解析比值,run q1_analytic_fit,python src/q1_analytic_fit.py,基线 = 原始31点分段线性 4.1993e-03 K
+G30_饱和指数_ratio,光滑拟合·饱和指数 偏差相对不拟合基线的倍数,13.375226131796,倍,解析比值,run q1_analytic_fit,python src/q1_analytic_fit.py,基线 = 原始31点分段线性 4.1993e-03 K
+G30_双指数_ratio,光滑拟合·双指数 偏差相对不拟合基线的倍数,13.375195462939,倍,解析比值,run q1_analytic_fit,python src/q1_analytic_fit.py,基线 = 原始31点分段线性 4.1993e-03 K
+G08,传质 Biot 数 Bi_m = hm R/D(C0),3.240404543217,-,解析精确,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G09,D(C0=2.55),4.9376550941739e-09,m^2/s,解析精确,附录2,python src/q1_analytic_fit.py,线性化取此常数
+G10,线性化 D 解析解 vs 非线性数值 max|dC| (t=1800s),0.041912741835282,kg/kg,vs 有限体积,run q1_analytic_fit,python src/q1_analytic_fit.py,结论: 水分不能用解析解
+G11,该偏差相对四位小数阈值的倍数,838.25483670563,倍,解析比值,run q1_analytic_fit,python src/q1_analytic_fit.py,阈值 = 5e-5 kg/kg
+G12_r0,"线性化含水率 C(r=0.0cm,t=1800s)",2.5499921346051,kg/kg,线性化解析,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G13_r0,"非线性含水率 C(r=0.0cm,t=1800s)",2.5499923898456,kg/kg,有限体积,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G15_r0,"线性化误差 C_lin-C_nonlin (r=0.0cm,t=1800s)",-2.5524049585002e-07,kg/kg,解析差值,run q1_analytic_fit,python src/q1_analytic_fit.py,定义: 线性化减非线性
+G12_r5,"线性化含水率 C(r=0.5cm,t=1800s)",2.5497117744956,kg/kg,线性化解析,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G13_r5,"非线性含水率 C(r=0.5cm,t=1800s)",2.5497237502513,kg/kg,有限体积,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G15_r5,"线性化误差 C_lin-C_nonlin (r=0.5cm,t=1800s)",-1.1975755688454e-05,kg/kg,解析差值,run q1_analytic_fit,python src/q1_analytic_fit.py,定义: 线性化减非线性
+G12_r10,"线性化含水率 C(r=1.0cm,t=1800s)",2.5376319767887,kg/kg,线性化解析,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G13_r10,"非线性含水率 C(r=1.0cm,t=1800s)",2.5382989973296,kg/kg,有限体积,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G15_r10,"线性化误差 C_lin-C_nonlin (r=1.0cm,t=1800s)",-0.00066702054087031,kg/kg,解析差值,run q1_analytic_fit,python src/q1_analytic_fit.py,定义: 线性化减非线性
+G12_r15,"线性化含水率 C(r=1.5cm,t=1800s)",2.3653279822793,kg/kg,线性化解析,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G13_r15,"非线性含水率 C(r=1.5cm,t=1800s)",2.3754695068898,kg/kg,有限体积,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G15_r15,"线性化误差 C_lin-C_nonlin (r=1.5cm,t=1800s)",-0.01014152461055,kg/kg,解析差值,run q1_analytic_fit,python src/q1_analytic_fit.py,定义: 线性化减非线性
+G12_r20,"线性化含水率 C(r=2.0cm,t=1800s)",1.5521530565819,kg/kg,线性化解析,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G13_r20,"非线性含水率 C(r=2.0cm,t=1800s)",1.5102403147466,kg/kg,有限体积,run q1_analytic_fit,python src/q1_analytic_fit.py,
+G15_r20,"线性化误差 C_lin-C_nonlin (r=2.0cm,t=1800s)",0.041912741835282,kg/kg,解析差值,run q1_analytic_fit,python src/q1_analytic_fit.py,定义: 线性化减非线性
+G14,D 在 t=1800s 计算域内的最大/最小之比,0.78640792142301,-,解析比值,run q1_analytic_fit,python src/q1_analytic_fit.py,>1 即 D 不是常数
+G16,D(C0)/D(0.15),266.2175217353,倍,解析比值,run q1_analytic_fit,python src/q1_analytic_fit.py,干壳效应量级

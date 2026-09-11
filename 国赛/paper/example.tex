@@ -4,6 +4,7 @@
 
 \usepackage{url}        % 网页链接
 \usepackage{subcaption} % 子标题
+\usepackage{pifont}     % ➢ 箭头符号 (\ding{228})
 \usepackage{tikz}       % 后续问题分析流程图使用
 
 \title{药材热风干燥过程的传热传质耦合建模与动边界数值模拟} % 工作标题，定稿前可再调整
@@ -139,7 +140,8 @@ $h$、$h_m$、$C_\infty$ 均按题面给定值建模。
 水分的扩散和温度变化只需要考虑径向的变化。
 将模型简化代入Fourier导热定律的能量守恒形式以及Fick扩散方程得到其一维形式后，
 可以知道其中的热扩散系数$\alpha$ 和水分扩散系数$D(C)$都时含水率$C$的函数，而$C$又是时间和空间的函数，
-所以求解过程中将两个方程联立求解。
+但是由于题目要求和问题假设，可以将两个方程进行解耦
+所以求解过程中将两个方程独立求解。
 
 \subsubsection{一维Fourier导热定律的能量守恒形式}
 
@@ -150,336 +152,162 @@ Fourier导热定律的能量守恒形式为:
 \begin{equation}
 \rho c \frac{\partial T}{\partial t}=\nabla \cdot (k\nabla T)+\dot\Phi_v
 \end{equation}
-其中$\alpha=\frac{k}{\rho c}$为热扩散系数，$k$为热传导系数，则热扩散系数为$1.6886\times 10^{-7} W/(m\cdot K)$,
-$\dot\Phi_v$为体积内热源。
+其中$\alpha=\frac{k}{\rho c}$为热扩散系数，$k$为热传导系数，
 又因为轴径比过大且不考虑体积内热源，
 所以可以将其简化为在圆柱坐标系下的一维Fourier导热定律的能量守恒形式，
 即
 \begin{equation}
 \frac{\partial T}{\partial t}=\frac{\alpha}{r}\frac{\partial}{\partial r}(r\frac{\partial T}{\partial r})
 \end{equation}
+物理模型与边界条件如图~\ref{fig:model} 所示：热量自药材表面进入内部，表面以第三类边界
+$hA_s\,(T_\infty-T)$ 与烘房换热，中心由对称性温度梯度为零。
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.72\textwidth]{figures/fig_q1_model.pdf}
+    \caption{圆柱药材物理模型与第三类边界条件}
+    \label{fig:model}
+\end{figure}
 
 \subsubsection{一维Fick扩散方程}
 
 水分总是表面的先蒸发，而内部的水分蒸发是通过扩散现象扩散至表面进行蒸发，所以需要建立扩散方程。
-Fick第二定律为：
+圆柱坐标下的Fick第二定律为：
 \begin{equation}
-    \frac{\partial C}{\partial t}=D[\frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial C}{\partial r})+\frac{1}{r^2}\frac{\partial^2 C}{\partial \phi^2}+\frac{\partial^2C}{\partial z^2}]
+    \frac{\partial C}{\partial t}=D(C)\bigl[\frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial C}{\partial r})+\frac{1}{r^2}\frac{\partial^2 C}{\partial \phi^2}+\frac{\partial^2C}{\partial z^2}\bigr]
 \end{equation}
-
-
-四个问题共享同一物理过程：含湿圆柱药材在时变烘房环境下的径向导热与水分扩散。
-取柱坐标系 $(r,\theta,z)$，$z$ 轴与药材轴线重合、原点在中截面圆心，由假设~2 只需
-求解径向一维问题。由能量守恒与水分质量守恒（假设~3、假设~5），得到统一控制方程——
-\textbf{能量方程}（Fourier 导热）与\textbf{水分方程}（Fick 扩散）：
-\begin{gather}
-    \rho(C)\,c_p(C)\,\frac{\partial T}{\partial t}
-    =\frac{1}{r}\frac{\partial}{\partial r}\!\left(r\,k(C)\,\frac{\partial T}{\partial r}\right),\quad\text{（能量方程）}\\[2pt]
-    \frac{\partial C}{\partial t}
-    =\frac{1}{r}\frac{\partial}{\partial r}\!\left(r\,D\,\frac{\partial C}{\partial r}\right),\quad\text{（水分方程）}
-\end{gather}
-其中水分扩散系数可统一写成 Arrhenius 型经验公式，覆盖附录~2$\sim$4：
+由于在轴径比过大，所以将圆柱体视为无限长的圆柱体，那么就只需要考虑径向扩散，
+原模型可以简化为
 \begin{equation}
-    D=D_0\,\exp\!\left(-\frac{E_C}{C}\right)\exp\!\left(-\frac{E_T}{T}\right).
+    \frac{\partial C}{\partial t}=\frac{1}{r}\frac{\partial}{\partial r}(rD(C)\frac{\partial C}{\partial r})
 \end{equation}
-三套经验公式的参数如下表所示（附录~2 无温度项，即 $E_T=0$，且物性为常数）。方程的
-定解条件为
-\begin{equation}
-\left\{
-\begin{aligned}
-    &T(r,0)=T_0,\qquad C(r,0)=C_0, &&\text{（初始条件）}\\[1pt]
-    &\partial_r T\big|_{r=0}=\partial_r C\big|_{r=0}=0, &&\text{（对称条件）}\\[1pt]
-    &-k\,\partial_r T\big|_{r=R}=h\,\bigl[T(R,t)-T_\infty(t)\bigr], &&\text{（第三类边界）}\\[1pt]
-    &-D\,\partial_r C\big|_{r=R}=h_m\,\bigl[C(R,t)-C_\infty(t)\bigr], &&
-\end{aligned}
-\right.
-\end{equation}
-其中环境激励 $T_\infty(t)$、$C_\infty(t)$ 由附件~1 经保形分段三次插值（PCHIP）
-连续化：PCHIP 在采样节点处一阶连续、区间内保形单调，光滑性满足与隐式格式联立
-求解的要求，图~\ref{fig:env} 显示其与全部采样点吻合，不同插值方法对结果的影响
-在~\S\ref{sec:sens} 中量化。这一``导热--扩散''型建模思路与文献中的多物理场干燥
-模型一致\upcite{hu2020}。问题四将固定边界换为动边界：令 $\xi=r/R(t)$ 把求解域归一化到 $\xi\in[0,1]$，
-方程中出现网格对流（速度）项，例如变换后的温度方程变为
-\begin{equation}
-    \frac{\partial T}{\partial t}
-    -\frac{\xi\,\dot R(t)}{R(t)}\,\frac{\partial T}{\partial \xi}
-    =\frac{\alpha}{R^2(t)}\,\frac{1}{\xi}
-    \frac{\partial}{\partial \xi}\!\left(\xi\,\frac{\partial T}{\partial \xi}\right),
-\end{equation}
-$R(t)$ 由附件~2 插值给出，水分方程同理。
-
-\begin{center}
-\small
-\textbf{附录~2$\sim$4 的统一扩散系数与物性参数}\\[2pt]
-\begin{tabular}{lcccccc}
-\toprule
-附录 & $D_0$ & $E_C$ & $E_T$ & $\rho$ (kg/m$^3$) & $c_p$ (J/(kg$\cdot$K)) & $k$ (W/(m$\cdot$K)) \\
-\midrule
-附录~2（问题一） & $7\times10^{-9}$ & 0.89 & --- & $820$ & $2600$ & $0.36$ \\
-附录~3（问题二、三） & $2.4\times10^{-3}$ & 0.45 & 3850 & $650+128C$ & $1450+2736\frac{C}{C+1}$ & $0.21+0.38\frac{C}{C+1}$ \\
-附录~4（问题四） & $4.2\times10^{-4}$ & 0.30 & 3850 & $760+90C$ & $1850+2150\frac{C}{C+1}$ & $0.12+0.20\frac{C}{C+1}$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-数值上，统一采用\textbf{节点式有限体积}离散（保证界面通量守恒）、\textbf{全隐式
-Euler}时间推进（对长时间模拟无条件稳定）、界面扩散系数取相邻节点算术平均，每步
-归结为严格对角占优的三对角方程组用追赶法以 $O(M)$ 求解；问题二$\sim$四中 $D$ 依赖
-$T$、物性依赖 $C$ 时，对 $(T,C)$ 交替迭代至收敛。验证与检验体系对所有问题统一：
-解析解对照、独立数值方法（线条法+BDF）交叉验证、极值原理与离散守恒检验、
-网格与时间步收敛外推，以及灵敏度与鲁棒性实验（\S\ref{sec:sens}）。
-
-\subsection{问题一模型的建立与求解}
-
-\subsubsection{问题一模型的建立}
-
-问题一中 $\rho=820\,\mathrm{kg/m^3}$、$c_p=2600\,\mathrm{J/(kg\cdot K)}$、
-$k=0.36\,\mathrm{W/(m\cdot K)}$ 均为常数（假设~4），$D(C)=7\times10^{-9}\exp(-0.89/C)$
-不含温度项（假设~5），且温度方程无蒸发潜热项，故两个方程\textbf{单向解耦}，可独立求解：温度方程为常物性\textbf{导热方程}，水分方程为非线性 \textbf{Fick 扩散方程}，分别为
-\begin{gather}
-    \frac{\partial T}{\partial t}
-    =\frac{\alpha}{r}\frac{\partial}{\partial r}\!\left(r\,\frac{\partial T}{\partial r}\right),\quad\text{（导热方程）}\\[2pt]
-    \frac{\partial C}{\partial t}
-    =\frac{1}{r}\frac{\partial}{\partial r}\!\left(r\,D(C)\,\frac{\partial C}{\partial r}\right),\quad\text{（扩散方程）}
-\end{gather}
-其中 $\alpha=k/(\rho c_p)=1.6886\times10^{-7}\,\mathrm{m^2/s}$。定解条件为
-\begin{equation}
-\left\{
-\begin{aligned}
-    &T(r,0)=T_0=301.15\,\mathrm{K},\qquad C(r,0)=C_0=2.55\,\mathrm{kg/kg}, &&\text{（初始条件）}\\[1pt]
-    &\partial_r T\big|_{r=0}=\partial_r C\big|_{r=0}=0, &&\text{（对称条件）}\\[1pt]
-    &-k\,\partial_r T\big|_{r=R}=h\,[T(R,t)-T_\infty(t)], &&\text{（第三类边界）}\\[1pt]
-    &-D\,\partial_r C\big|_{r=R}=h_m\,[C(R,t)-C_\infty(t)], &&
-\end{aligned}
-\right.
-\end{equation}
-其中 $R=0.02\,\mathrm{m}$ 在阶段内固定（假设~7），$h=25\,\mathrm{W/(m^2\cdot K)}$、
-$h_m=8\times10^{-7}\,\mathrm{m/s}$ 与 $C_\infty$ 按题面给定值建模（假设~6）。
-物理模型与求解域见图~\ref{fig:schematic}。
-
+水分扩散的物理图景如图~\ref{fig:fick} 所示：预热阶段内部含水率几乎保持初值
+$C_0$，水分在浓度梯度驱动下向表面输运，并经对流传质边界蒸发进入烘房。
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.94\textwidth]{figures/fig_q1_schematic.pdf}
-    \caption{物理模型与一维径向求解域。(a) 圆柱药材与第三类边界条件，热流进入
-    药材、水分自表面流出；(b) 节点式有限体积网格：控制体
-    $V_i=\pi(r_{i+1/2}^2-r_{i-1/2}^2)$（单位轴长），通量 $G$ 在界面上守恒。}
-    \label{fig:schematic}
+    \includegraphics[width=0.72\textwidth]{figures/fig_q1_fick.pdf}
+    \caption{水分扩散示意图：浓度梯度驱动水分向表面输运并蒸发}
+    \label{fig:fick}
 \end{figure}
 
-模型的两个关键特性决定了求解与检验的设计。其一为\textbf{分布参数效应与尺度
-分离}：热 Biot 数 $\mathrm{Bi}=hR/k=1.389>0.1$，传质 Biot 数
-$\mathrm{Bi}_m=h_mR/D(C_0)=3.24$，内部导热/扩散阻力与表面对流阻力同量级，
-\textbf{集总参数法不适用}——若强行集总，其时间常数 $\rho c_pR/(2h)=852.8\,
-\mathrm{s}$ 所预示的快速趋同，与后文解出的 $1800\,\mathrm{s}$ 时 $3.21\,^\circ
-\mathrm{C}$ 的径向温差相矛盾；同时导热特征时间 $R^2/\alpha=2368.9\,\mathrm{s}$
-与湿分扩散特征时间 $R^2/D(C_0)=81010\,\mathrm{s}$ 相差约 $34$ 倍，可预判
-$30\,\mathrm{min}$ 内温度快速响应而水分仅在表层松弛。
-其二为\textbf{强非线性}：$D$ 随 $C$ 指数变化，在 $C_0=2.55$ 处
-$D=4.9377\times10^{-9}\,\mathrm{m^2/s}$，而 $C_\infty(1800\,\mathrm{s})=0.0331$
-处仅 $1.4713\times10^{-20}\,\mathrm{m^2/s}$，比值达 $3.36\times10^{11}$，离散格式
-必须守恒。
 
-\subsubsection{问题一模型的求解}
+\subsubsection{初始条件与边界条件}
 
-\textbf{网格。}取节点式网格 $r_i=i\,\Delta r$，$\Delta r=R/M$，$i=0,1,\dots,M$，
-$r=0$ 与 $r=R$ 均为节点，使输出位置 $0,0.1,\dots,2.0\,\mathrm{cm}$ 在 $M$ 为
-$10$ 的整数倍时恰好落在节点上。节点 $i$ 的控制体体积与界面面积（单位轴长）为
-$V_i=\pi(r_{i+1/2}^2-r_{i-1/2}^2)$、$A_{i\pm1/2}=2\pi r_{i\pm1/2}$，几何比
-$f_i^{\pm}=A_{i\pm1/2}/V_i=(2i\pm1)/(2i\,\Delta r)$。
-
-\textbf{温度方程的全隐式离散。}对内部节点 $i=1,\dots,M-1$，控制体能量平衡
-$\rho c_p V_i\,\mathrm{d}T_i/\mathrm{d}t=k[A_{i+1/2}(T_{i+1}-T_i)-A_{i-1/2}(T_i-T_{i-1})]/\Delta r$
-后取后向 Euler，得三对角系统 $a_iT_{i-1}^{n+1}+b_iT_i^{n+1}+c_iT_{i+1}^{n+1}=T_i^n/\Delta t$，
-其三对角系数为
+方程（2）与（4）配以定解条件即构成完整的初边值问题。初始时刻药材温度与含水率
+均匀；中心$r=0$处由轴对称性给出零梯度；表面$r=R$处与烘房通过对流换热、对流传质
+耦合（第三类边界，见图~\ref{fig:model}），即
 \begin{equation}
-    a_i=-\frac{\alpha(i-\tfrac12)}{i\,\Delta r^2},\qquad
-    b_i=\frac{1}{\Delta t}+\frac{2\alpha}{\Delta r^2},\qquad
-    c_i=-\frac{\alpha(i+\tfrac12)}{i\,\Delta r^2},
+\left\{
+\begin{aligned}
+    &T(r,0)=28\,^\circ\mathrm{C},\qquad C(r,0)=2.55\,\mathrm{kg/kg}, &&\text{（初始条件）}\\[1pt]
+    &\partial_r T\big|_{r=0}=\partial_r C\big|_{r=0}=0, &&\text{（中心对称）}\\[1pt]
+    &-k\,\partial_r T\big|_{r=R}=h\,\bigl[T(R,t)-T_\infty(t)\bigr], &&\text{（表面换热）}\\[1pt]
+    &-D\,\partial_r C\big|_{r=R}=h_m\,\bigl[C(R,t)-C_\infty(t)\bigr], &&\text{（表面传质）}
+\end{aligned}
+\right.
 \end{equation}
-行和 $a_i+b_i+c_i=0$ 恒成立（离散算子湮灭常数场），这是守恒性与极值原理在离散
-层面的基础。中心 $r=0$ 为方程的可去奇点：由 L'H\^opital 法则
-$(1/r)\,\partial_r(r\,\partial_rT)\to 2\,\partial_r^2T$，结合对称条件离散得
-$4(T_1-T_0)/\Delta r^2$，与半控制体 $V_0=\pi(\Delta r/2)^2$ 的通量平衡结果完全
-一致（两种推导互为校核），即中心节点为 $b_0=1/\Delta t+4\alpha/\Delta r^2$、
-$c_0=-4\alpha/\Delta r^2$；表面节点为半控制体
-$[R-\Delta r/2,R]$，外侧界面直接代入第三类边界的实际热流，得表面节点的三对角
-系数与右端项：
-\begin{gather}
-    a_M=-\frac{\alpha f_M^-}{\Delta r},\qquad
-    b_M=\frac{1}{\Delta t}+\frac{\alpha f_M^-}{\Delta r}+g_h,\\[2pt]
-    d_M=\frac{T_M^n}{\Delta t}+g_h\,T_\infty^{n+1},
-    \qquad g_h=\frac{A_s h}{\rho c_p V_M},
-\end{gather}
-$A_s=2\pi R$。
+其中对流换热系数$h=25\,\mathrm{W/(m^2\cdot K)}$、对流传质系数
+$h_m=8\times10^{-7}\,\mathrm{m/s}$ 均按附录~2 给定；烘房环境$T_\infty(t)$、
+$C_\infty(t)$ 由附件~1 数据经保形分段三次插值（PCHIP）连续化——PCHIP 在采样节点
+处一阶连续、区间内保形单调，对附件~1 中$C_\infty$序列的测量噪声不会产生虚假极值，
+其光滑性满足与隐式格式联立求解的要求。计算中温度以热力学温度 K 为状态变量，
+输出时再折算回$^\circ$C。
 
-\textbf{水分方程的守恒离散。}空间结构与温度完全平行，仅以 $\alpha\to D$ 替换。
-由于 $D$ 随 $C$ 变化，守恒型格式要求\textbf{同一条界面的通量取单一扩散系数}，
-本文取相邻节点算术平均 $D_{i+1/2}=\tfrac12[D(C_i)+D(C_{i+1})]$。若改用节点值
-$D(C_i)$ 于两侧界面，则离散水量收支残差达表面总通量的 $10.1\%$，且网格加密
-（$M=100,200,400$）时不减小（$10.10\%,10.12\%,10.12\%$），属相容性错误；界面
-平均后残差降至 $10^{-14}$ 量级（机器精度）。上述对比即\textbf{全局水量守恒校验}：
-以离散水量增量 $\sum_i V_i\,(C_i^{n+1}-C_i^n)$ 对表面累计通量
-$2\pi Rh_m\int_0^t\,[C_\infty-C_M(\tau)]\,\mathrm{d}\tau$ 的闭合差为指标。时间上
-$D(C)$ 用上一时刻的 $C^n$ 计算（半隐式），每步仍只需解一个线性三对角系统，无需
-Newton 迭代，引入的误差为 $O(\Delta t)$。该近似的误差随 $D$ 的变化幅度增长：
-问题一时段内 $D$ 仅由 $4.9377\times10^{-9}$ 降至 $3.88\times10^{-9}\,\mathrm{m^2/s}$
-（约 $21\%$），与全非线性解的实测偏差 $5.32\times10^{-6}\,\mathrm{kg/kg}$
-（见独立验证）一致；干燥后期（问题二$\sim$四）$C$ 逼近 $0.15$ 时 $D$ 变化约
-$266$ 倍，届时改用预测--校正（以 $C^n$ 外推 $C^{n+1}$ 计算 $D$ 后隐式回代）或
-全隐式 Newton 迭代。表面节点的对流传质项 $g_m=A_s h_m/V_M$ 不含 $D$：
-$d_M^C=C_M^n/\Delta t+g_m C_\infty^{n+1}$。
+\subsubsection{求解某一时刻下药材各个位置的温度}
+\label{sec:tempsolve}
 
-\textbf{算法流程。}问题一的数值求解流程如算法~1 所示，每个时间步执行一次
-Step~2--6 的循环体。
+由于在一维Fourier导热定律的能量守恒形式中，热扩散系数$\alpha$为常数、与含水量无关，
+方程对$T$线性；但边界条件随烘房环境变化，且题目要求四位小数的结果精度，
+所以将方程中的微分形式离散，用数值方法逐层递推求解。总体思路是：空间上作守恒型
+有限体积离散，时间上作全隐式差分，把偏微分方程化为每个时间步的一个三对角线性
+方程组。求解分为以下三步。
+
+\noindent\ding{228}\ \textbf{空间离散：节点式网格与控制体}
+
+将半径$[0,R]$均分为$M$段，取节点$r_i=i\Delta r$（$i=0,1,\dots,M$，$\Delta r=R/M$），
+$r=0$与$r=R$均为节点，使题目要求的输出位置$0,0.1,\dots,2.0\,\mathrm{cm}$恰好落在
+节点上（图~\ref{fig:fvm}）。节点$i$的控制体为$[r_{i-1/2},r_{i+1/2}]$，其体积与
+两个界面的面积（单位轴长）为
+\begin{equation}
+V_i=\pi\bigl(r_{i+1/2}^2-r_{i-1/2}^2\bigr),\qquad A_{i\pm1/2}=2\pi r_{i\pm1/2},
+\end{equation}
+对每个控制体作能量平衡（净流入热量$=$内能增量），得到半离散方程
+\begin{equation}
+\frac{dT_i}{dt}=\frac{\alpha}{\Delta r}\Bigl[f_i^{+}\bigl(T_{i+1}-T_i\bigr)
+-f_i^{-}\bigl(T_i-T_{i-1}\bigr)\Bigr],
+\qquad f_i^{\pm}=\frac{A_{i\pm1/2}}{V_i}=\frac{2i\pm1}{2i\,\Delta r}.
+\end{equation}
+
+\noindent \ding{228}\ \textbf{时间离散：全隐式Euler与三对角方程组}
+
+时间导数取$\frac{dT_i}{dt}\approx\frac{T_i^{n+1}-T_i^n}{\Delta t}$，右端同样取
+$n+1$时刻（全隐式），整理后每个内部节点给出三对角方程
+\begin{equation}
+a_iT_{i-1}^{n+1}+b_iT_i^{n+1}+c_iT_{i+1}^{n+1}=\frac{T_i^n}{\Delta t},
+\end{equation}
+其中
+\begin{equation}
+a_i=-\frac{\alpha(i-\tfrac12)}{i\Delta r^2},\qquad
+b_i=\frac{1}{\Delta t}+\frac{2\alpha}{\Delta r^2},\qquad
+c_i=-\frac{\alpha(i+\tfrac12)}{i\Delta r^2}.
+\end{equation}
+三系数行和$a_i+b_i+c_i=0$恒成立，保证离散能量守恒且解满足极值原理。两个边界行
+单独处理：中心$r=0$由对称性用半控制体，得$b_0=1/\Delta t+4\alpha/\Delta r^2$、
+$c_0=-4\alpha/\Delta r^2$；表面$r=R$为半控制体，外侧界面直接代入第三类边界的真实
+热流$hA_s(T_\infty-T_M)$，得右端多出$g_hT_\infty^{n+1}$，其中
+$g_h=A_sh/(\rho c_pV_M)$，$A_s=2\pi R$，$T_\infty^{n+1}$由附件~1的PCHIP插值取值
+——烘房激励由此进入递推。
+
+\noindent\ding{228}\ \textbf{追赶法逐层递推}
+
+每个时间步的方程组是严格对角占优的三对角系统
+（$b_i-(|a_i|+|c_i|)=1/\Delta t>0$），用追赶法以$O(M)$直接求解，以伪代码形式呈现如下：
 
 \begin{center}
 \begin{minipage}{0.92\textwidth}
 \centering\small
-\textbf{算法~1\quad 问题一的数值求解流程（每个时间步）}\\[3pt]
-\begin{tabular}{cp{0.82\textwidth}}
+\textbf{表~1\quad 温度场的数值求解伪代码 }\\[3pt]
+\begin{tabular}{cp{0.80\textwidth}}
 \toprule
-Step & 操作 \\
+温度场求解伪代码 \\
 \midrule
-1 & \textbf{输入}：网格数 $M$、时间步长 $\Delta t$、初值 $T_i^0=T_0$、$C_i^0=C_0$；由附件~1 的 PCHIP 插值得到 $T_\infty(t)$、$C_\infty(t)$ \\
-2 & \textbf{for} $n=0,1,\dots,1800/\Delta t-1$：取 $T_\infty^{n+1}$、$C_\infty^{n+1}$ \\
-3 & \qquad 组装温度三对角系数 $(a_i,b_i,c_i,d_i)$，追赶法求解得 $T^{n+1}$ \\
-4 & \qquad 由 $C^n$ 计算界面扩散系数 $D_{i+1/2}=\frac{1}{2}\bigl[D(C_i)+D(C_{i+1})\bigr]$ \\
-5 & \qquad 组装水分三对角系数，追赶法求解得 $C^{n+1}$ \\
-6 & $n\leftarrow n+1$；若 $t<1800\,\mathrm{s}$ 转入 \textbf{Step 2}，否则 \textbf{输出} $T(r_i,t)$、$C(r_i,t)$，$t=1,2,\dots,1800\,\mathrm{s}$ \\
+1 & \textbf{输入}：网格数$M$、时间步长$\Delta t$、初值$T_i^0=28\,^\circ\mathrm{C}$；由附件~1的PCHIP插值得到$T_\infty(t)$ \\
+2 & \textbf{for} $n=0,1,\dots,1800/\Delta t-1$：取$T_\infty^{n+1}$ \\
+3 & \qquad 组装三对角系数$(a_i,b_i,c_i)$与右端$d_i=T_i^n/\Delta t$（表面行加$g_hT_\infty^{n+1}$） \\
+4 & \qquad 追赶法求解得$T^{n+1}$ \\
+5 & $n\leftarrow n+1$；若$t<1800\,\mathrm{s}$转入\textbf{Step 2}，否则\textbf{输出}$T(r_i,t)$，$t=1,2,\dots,1800\,\mathrm{s}$ \\
 \bottomrule
 \end{tabular}
 \end{minipage}
 \end{center}
 
-\textbf{时间格式的选择。}时间方向采用全隐式 Euler 而非精度高一阶的
-Crank--Nicolson（CN），理由有二：其一，启动瞬态刚性强（最初 $1\,\mathrm{s}$ 内
-表面温度与表面水分迅速变化），CN 仅 A-稳定而非 L-稳定，对刚性分量会产生符号
-振荡，全隐式 Euler 为 L-稳定，无此风险；其二，生产步长下时间离散误差已比报告
-精度低一个数量级以上（见下），CN 的二阶精度无实际收益。若后续问题需要更大
-步长，可在不改离散骨架的前提下换用 CN 或 BDF2。
+算法中的系数$(a_i,b_i,c_i)$只依赖$\alpha$、网格与$\Delta t$，整个计算只组装一次，
+每个时间步仅更新右端；全隐式Euler对任意步长无条件稳定，故$\Delta t$只由精度决定。
 
-\textbf{数值实现与精度控制。}全部中间计算采用双精度浮点（约 $16$ 位有效数字），
-$\alpha$ 以未舍入值 $0.36/(820\times2600)=1.6885553\times10^{-7}\,\mathrm{m^2/s}$
-参与运算，仅在输出时舍入到四位小数；状态变量以 K 计算，输出按
-$T(^\circ\mathrm{C})=T(\mathrm{K})-273.15$ 转换，转换正确性由全场最小温度
-$28.0000\,^\circ\mathrm{C}$（即 $T_0$，出现于 $t=1\,\mathrm{s}$ 的中心节点）自检。
-
-\textbf{网格无关性与时间步敏感性。}空间离散的经验收敛阶为二阶（$M$ 加密时
-$2.0\to2.3$），时间为一阶（$\Delta t$ 减半误差减半）。生产设置取
-$M=3200$（$\Delta r=6.25\times10^{-6}\,\mathrm{m}$）、$\Delta t=2^{-8}=0.00390625\,
-\mathrm{s}$（$1\,\mathrm{s}$ 恰为第 $256$ 步，输出时刻不需插值）；与两组独立加密解
-（$\Delta t$ 减半、$M$ 加倍）比较，输出场最大偏差温度 $<3.8\times10^{-6}\,\mathrm{K}$、
-水分 $<1.2\times10^{-5}\,\mathrm{kg/kg}$，低于四位小数的半 ulp（$5\times10^{-5}$），
-故四位小数报告是安全的。
-
-\textbf{独立验证。}数值解与四个独立基准的对比汇总如下表：
-
-\begin{center}
-\begin{minipage}{0.94\textwidth}
-\centering\small
-\textbf{问题一数值解的独立验证汇总}\\[3pt]
-\begin{tabular}{p{0.30\textwidth}p{0.28\textwidth}p{0.26\textwidth}}
-\toprule
-验证手段 & 设置 & 结果 \\
-\midrule
-Robin 圆柱解析级数解（Carslaw--Jaeger 形式） & 常数 $T_\infty=50\,^\circ\mathrm{C}$，$M=800$，$\Delta t=5\times10^{-4}\,\mathrm{s}$ & 最大偏差 $4.5\times10^{-6}\,\mathrm{K}$ \\
-全非线性线条法（BDF） & $M=200$，$D$ 每步取当前值 & $\max|\Delta T|=5.95\times10^{-5}\,\mathrm{K}$，$\max|\Delta C|=5.32\times10^{-6}\,\mathrm{kg/kg}$ \\
-极值原理 & 全部 $1800\times21$ 个输出值 & 落于 $[28.0000,\ 36.7858]\,^\circ\mathrm{C}$ 内，无越界振荡 \\
-全局水量守恒 & 界面平均格式，$0\sim1800\,\mathrm{s}$ & 收支残差 $\sim10^{-14}$（机器精度） \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\end{center}
-
-其中级数解 $\theta=\sum_n C_nJ_0(\lambda_n r/R)\exp(-\lambda_n^2\mathrm{Fo})$
-取 $120$ 项截断，$\lambda_n$ 为 $\lambda J_1(\lambda)=\mathrm{Bi}\,J_0(\lambda)$
-的正根；作为对照，节点值 $D$ 取法的守恒残差为 $10.1\%$ 且不随网格加密消失
-（\S5.2.2），进一步说明界面平均格式的必要性。此外，本文的全部解析推导——控制体
-几何比、三对角系数及其行和恒等式、中心节点的两种独立推导（半控制体与
-L'H\^opital 极限）、表面节点的渐近系数、严格对角占优、时间格式增长因子
-（全隐式 Euler 的 L-稳定性与 Crank--Nicolson 的刚性符号振荡）、级数解特征根，以及
-节点值 $D$ 取法的伸缩恒等式与空间算子谱——均已用符号计算逐项复核，$12$ 项检查
-全部通过（脚本 \texttt{src/verify\_derivation.py}，日志
-\texttt{outputs/derivation\_check.log}）。
-
-\subsubsection{灵敏度与鲁棒性检验}
-\label{sec:sens}
-
-\textbf{单参数扰动灵敏度（OAT）。}对 $h,h_m,D_0,k,\rho,c_p,T_0,C_0$ 各作
-$\pm10\%$ 扰动，以中心差分计算归一化灵敏度系数
-$S=(\Delta y/y)/(\Delta p/p)$，响应量取 $t_e=1800\,\mathrm{s}$ 时的
-$T(0,t_e)$、$T(R,t_e)$、$C(R,t_e)$ 与体积平均 $\langle C\rangle(t_e)$，
-各参数的灵敏度系数汇总如下表（图~\ref{fig:sens} 为可视化）：
-
-\begin{center}
-\begin{minipage}{0.9\textwidth}
-\centering\small
-\textbf{OAT 灵敏度系数 $S$（$\pm10\%$ 扰动，中心差分；$0$ 表示响应严格为零）}\\[3pt]
-\begin{tabular}{lcccc}
-\toprule
-参数 & $T(0,t_e)$ & $T(R,t_e)$ & $C(R,t_e)$ & $\langle C\rangle(t_e)$ \\
-\midrule
-$T_0$ & 0.270 & 0.148 & 0 & 0 \\
-$C_0$ & 0 & 0 & 1.097 & 0.991 \\
-$h_m$ & 0 & 0 & $-0.475$ & $-0.076$ \\
-$D_0$ & 0 & 0 & 0.219 & $-0.017$ \\
-$h$ & 0.009 & 0.011 & 0 & 0 \\
-$k$ & 0.008 & $-0.002$ & 0 & 0 \\
-$\rho$ & $-0.016$ & $-0.010$ & 0 & 0 \\
-$c_p$ & $-0.016$ & $-0.010$ & 0 & 0 \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\end{center}
-
-温度输出对 $h_m,D_0,C_0$、水分输出对 $h,k,\rho,c_p,T_0$ 的响应严格为零，是
-问题一热湿单向解耦的直接数值证据；表面水分浓度主要由 $C_0$、$h_m$ 与 $D_0$ 控制，
-其中 $T_0$ 对中心温度的影响最强（$S=0.270$）。
+从初始温度场$T_0\equiv28\,^\circ\mathrm{C}$出发，按算法逐层推进至
+$1800\,\mathrm{s}$，即可求得任意时刻药材各位置的温度。每步计算量为$O(M)$，生产
+设置取$M=3200$、$\Delta t=2^{-8}\,\mathrm{s}$（$1\,\mathrm{s}$恰为第$256$步），
+论文表~1、表~2与\texttt{result1.xlsx}即按此流程计算得到。水分浓度场
+的求解与上述流程完全同构，只需把$\alpha$换成界面平均后的$D(C)$、把表面热流换成
+对流传质项，此处不再赘述。
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.94\textwidth]{figures/fig_q1_sensitivity.pdf}
-    \caption{单参数扰动（$\pm10\%$）灵敏度龙卷风图。热参数只影响温度输出、湿参数
-    只影响水分输出（其余响应严格为 $0$），是问题一热湿单向解耦的直接数值证据。}
-    \label{fig:sens}
+    \includegraphics[width=0.72\textwidth]{figures/fig_q1_fvm.pdf}
+    \caption{一维径向求解域与节点式有限体积网格（图示$M=8$）}
+    \label{fig:fvm}
 \end{figure}
 
-\textbf{边界数据噪声鲁棒性。}按问题分析中估计的噪声水平
-（$\sigma_T\approx0.153\,^\circ\mathrm{C}$、
-$\sigma_C\approx1.27\times10^{-4}\,\mathrm{kg/kg}$）对附件~1 采样值加高斯噪声，
-重拟合 PCHIP 并全程重解，重复 $100$ 次（图~\ref{fig:robust}a）。水分输出的波动
-远低于报告精度（表面水分标准差 $1.6\times10^{-5}$、最大偏差
-$4.7\times10^{-5}\,\mathrm{kg/kg}<$ 半 ulp；体积平均标准差 $2.3\times10^{-6}$），
-即水分浓度的四位小数对边界噪声稳健；温度输出的波动（标准差
-$2.5\times10^{-2}\sim3.8\times10^{-2}\,\mathrm{K}$，最大 $0.105\,\mathrm{K}$）由
-数据噪声主导——这是输入数据精度（$\sigma_T\approx0.15\,^\circ\mathrm{C}$）的
-传导，而非数值方法误差。
+\subsubsection{某时刻下药材各位置的温度结果呈现}
 
-\textbf{参数联合不确定性。}将 $h,h_m,D_0,k,\rho,c_p$ 同时在标称值 $\pm10\%$ 内
-均匀扰动，重复 $100$ 次（图~\ref{fig:robust}b）："中心不失水、温度内低外高、
-水分内高外低"三项定性结论在全部 realisation 中保持（$100\%$）；输出量最大相对
-偏差 $6.2\%$（表面水分），由 $C_0$ 与 $h_m$ 主导——属于物理输入不确定性的传导。
+按\S\ref{sec:tempsolve} 的算法与生产设置（$M=3200$、$\Delta t=2^{-8}\,\mathrm{s}$）从
+$T^0\equiv28\,^\circ\mathrm{C}$ 逐层推进至 $1800\,\mathrm{s}$，得到每隔 $1\,\mathrm{s}$、
+每隔 $0.1\,\mathrm{cm}$ 的温度场，共 $1800\times21$ 个值。结果按题面要求以表~1 的格式
+呈现，并配以时空演化可视化（图~\ref{fig:tempresults}）。
 
-\textbf{数值参数鲁棒性。}网格 $M=100,200,400$ 与参考解（$M=800$）的最大偏差分别
-为 $6.8\times10^{-5}$、$1.6\times10^{-5}$、$3.2\times10^{-6}$（温度为 K、水分为
-kg/kg）；环境插值方法取线性/三次样条与 PCHIP 的输出差异不超过
-$4.9\times10^{-4}\,\mathrm{K}$ 与 $2.6\times10^{-7}\,\mathrm{kg/kg}$
-（图~\ref{fig:robust}c）。离散与插值选择的影响远小于数据噪声。
+\noindent\ding{228}\ \textbf{表1：30分钟内药材的温度}
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.98\textwidth]{figures/fig_q1_robustness.pdf}
-    \caption{鲁棒性检验。(a) 边界数据噪声 Monte Carlo（$N=100$）；(b) 参数联合
-    $\pm10\%$ Monte Carlo（$N=100$）；(c) 网格收敛。纵轴为输出量偏差与四位小数
-    报告精度（半 ulp $5\times10^{-5}$）之比；虚线为报告精度基准。}
-    \label{fig:robust}
-\end{figure}
-
-\subsubsection{求解结果与分析}
-
-按上述模型与生产设置求解，表~1、表~2 给出题面要求的温度与水分浓度，完整结果
-（每隔 $1\,\mathrm{s}$、每隔 $0.1\,\mathrm{cm}$，共 $1800\times21$ 个值）保存于
-\texttt{result1.xlsx} 的``温度''与``水分浓度''两个工作表，全部数值保留四位小数。
+按题面表1的格式，给出 $100,300,600,900,1200,1500,1800\,\mathrm{s}$ 时刻、到药材中心
+距离 $0,0.5,1,1.5,2\,\mathrm{cm}$ 处的温度，全部保留四位小数：
 
 \begin{table}[htbp]
     \centering
@@ -500,6 +328,110 @@ $4.9\times10^{-4}\,\mathrm{K}$ 与 $2.6\times10^{-7}\,\mathrm{kg/kg}$
     \end{tabular}
 \end{table}
 
+\noindent\ding{228}\ \textbf{时空演化可视化}
+
+图~\ref{fig:tempresults} 给出温度场的三种视图。(a) 时空热图直观展示热量自表面向
+中心渗透的过程：等温线随时间由表面向内部推移，越靠近中心响应越滞后；(b) 径向剖面
+显示径向梯度随时间增大——$t=100\,\mathrm{s}$ 时仅表面薄层升温，$t=1800\,\mathrm{s}$
+时径向温差已达 $3.21\,^\circ\mathrm{C}$；(c) 演化曲线呈现三级滞后：
+$T_\infty(1800\,\mathrm{s})=41.51\,^\circ\mathrm{C}$ 高于表面
+$36.7858\,^\circ\mathrm{C}$（差 $4.7\,^\circ\mathrm{C}$），表面又高于中心
+$33.5758\,^\circ\mathrm{C}$（差 $3.21\,^\circ\mathrm{C}$）。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.96\textwidth]{figures/fig_q1_temp_results.pdf}
+    \caption{问题一温度场结果。(a) 温度场时空热图；(b) 表1 时刻的径向剖面；
+    (c) 中心/表面温度演化与烘房环境对比。}
+    \label{fig:tempresults}
+\end{figure}
+
+\noindent\ding{228}\ \textbf{完整结果文件 result1.xlsx}
+
+按附件~3 模板将完整结果写入 \texttt{result1.xlsx}``温度''工作表：A 列为时间
+（$1,2,\dots,1800\,\mathrm{s}$），第 1 行为到药材中心的距离
+（$0,0.1,\dots,2.0\,\mathrm{cm}$），共 $1800\times21$ 个值，全部保留四位小数；
+``水分浓度''工作表结构相同（其求解与结果见后文）。
+
+上述结果与问题分析的预判一致：热 Biot 数 $\mathrm{Bi}=1.389>0.1$ 使径向温差显著、
+不可按集总参数处理；导热特征时间 $R^2/\alpha=2368.9\,\mathrm{s}$ 大于 $1800\,
+\mathrm{s}$，故预热平衡阶段结束时热平衡尚未完成。数值上，本节结果与独立加密解的
+偏差小于 $3.8\times10^{-6}\,\mathrm{K}$、与 Robin 圆柱解析级数解的偏差小于
+$4.5\times10^{-6}\,\mathrm{K}$，远低于四位小数的分辨率（半 ulp $5\times10^{-5}$），
+四位小数报告是安全的。
+
+\subsubsection{求解某一时刻下药材各个位置的水分浓度}
+
+水分方程的离散框架与温度场完全同构：同一节点式网格、同一全隐式 Euler、同一追赶法。
+但有两点不同，需要专门处理：其一，扩散系数$D(C)$依赖未知量$C$本身，是非线性项；
+其二，表面边界是对流传质而非热流。求解同样分为三步。
+
+\noindent\ding{228}\ \textbf{界面扩散系数的守恒取法}
+
+守恒型格式要求\textbf{同一条界面上的通量取单一的扩散系数}。若直接用节点值
+$D(C_i)$ 充当节点$i$两侧界面的系数，则界面$r_{i+1/2}$从左侧控制体看是$D(C_i)$、
+从右侧控制体看是$D(C_{i+1})$，两者不等，离散水量不再守恒：以全局水量收支
+$\sum_iV_i\,(C_i^{n+1}-C_i^n)$ 对表面累计通量的闭合差为指标，节点值取法的残差达
+表面总通量的$10.1\%$，且网格加密（$M=100,200,400$）时不减小
+（$10.10\%,10.12\%,10.12\%$），属相容性错误。因此本文取相邻节点的算术平均
+\begin{equation}
+D_{i+1/2}=\frac{D(C_i)+D(C_{i+1})}{2},
+\end{equation}
+使同一条界面在两侧控制体中取值相同；此时全局水量收支残差降至$10^{-14}$量级
+（机器精度），离散水量守恒。
+
+\noindent\ding{228}\ \textbf{半隐式线性化与三对角方程组}
+
+$D(C)$依赖未知量，严格处理需每步Newton迭代。考虑到问题一时段内$D$的变化幅度
+有限（由$D(C_0)=4.9377\times10^{-9}$降至$D(1.51)=3.88\times10^{-9}\,
+\mathrm{m^2/s}$，约$21\%$），本文将$D$用上一时刻的$C^n$计算（半隐式），
+每步仍只解一个线性三对角系统：
+\begin{equation}
+a_i^CC_{i-1}^{n+1}+b_i^CC_i^{n+1}+c_i^CC_{i+1}^{n+1}=\frac{C_i^n}{\Delta t},
+\end{equation}
+系数与温度方程完全同构，只需把$\alpha$换成界面值$D_{i\pm1/2}$（$f_i^\pm$不变），
+故严格对角占优依然成立。表面行的对流传质项$g_m=A_sh_m/V_M$不含$D$，右端多出
+$g_mC_\infty^{n+1}$，$C_\infty^{n+1}$由附件~1的PCHIP插值取值。该半隐式近似的误差
+用全非线性方法（线条法+BDF，$D$每步取当前值）校核：$\max|\Delta C|=
+5.32\times10^{-6}\,\mathrm{kg/kg}$，远低于四位小数的分辨率。干燥后期
+（问题二$\sim$四）$C$逼近$0.15\,\mathrm{kg/kg}$时$D$变化约$266$倍，届时改用
+预测--校正或全隐式Newton迭代。
+
+\noindent\ding{228}\ \textbf{追赶法逐层递推}
+
+水分场的完整递推流程如算法~2所示，与算法~1在同一时间循环内先后执行。
+
+\begin{center}
+\begin{minipage}{0.92\textwidth}
+\centering\small
+\textbf{算法~2\quad 水分浓度场的数值求解流程（每个时间步）}\\[3pt]
+\begin{tabular}{cp{0.80\textwidth}}
+\toprule
+Step & 操作 \\
+\midrule
+1 & \textbf{输入}：网格数$M$、时间步长$\Delta t$、初值$C_i^0=2.55\,\mathrm{kg/kg}$；由附件~1的PCHIP插值得到$C_\infty(t)$ \\
+2 & \textbf{for} $n=0,1,\dots,1800/\Delta t-1$：取$C_\infty^{n+1}$ \\
+3 & \qquad 由$C^n$计算界面扩散系数$D_{i+1/2}=\frac{1}{2}\bigl[D(C_i)+D(C_{i+1})\bigr]$ \\
+4 & \qquad 组装三对角系数（$\alpha\to D_{i\pm1/2}$，表面行加$g_mC_\infty^{n+1}$）与右端$d_i=C_i^n/\Delta t$ \\
+5 & \qquad 追赶法求解得$C^{n+1}$ \\
+6 & $n\leftarrow n+1$；若$t<1800\,\mathrm{s}$转入\textbf{Step 2}，否则\textbf{输出}$C(r_i,t)$，$t=1,2,\dots,1800\,\mathrm{s}$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+从初始浓度场$C^0\equiv2.55\,\mathrm{kg/kg}$出发，按算法~2逐层推进至
+$1800\,\mathrm{s}$，即得水分浓度场；界面平均格式保证全程离散水量守恒。
+
+\subsubsection{某时刻下各位置的水分浓度结果呈现}
+
+按算法~2与生产设置（$M=3200$、$\Delta t=2^{-8}\,\mathrm{s}$）推得水分浓度场，
+按题面表2的格式呈现，并配以时空演化可视化（图~\ref{fig:moistresults}）。
+
+\ding{228}\ \textbf{表2：30分钟内药材的水分浓度}
+
+按题面表2的格式，给出与表1相同时刻、相同位置的水分浓度，全部保留四位小数：
+
 \begin{table}[htbp]
     \centering
     \caption{30 分钟内药材的水分浓度（单位：kg/kg）}
@@ -519,45 +451,30 @@ $4.9\times10^{-4}\,\mathrm{K}$ 与 $2.6\times10^{-7}\,\mathrm{kg/kg}$
     \end{tabular}
 \end{table}
 
+\ding{228}\ \textbf{时空演化可视化}
+
+图~\ref{fig:moistresults} 给出水分场的三种视图。(a) 时空热图与温度场形成鲜明
+对照：全场几乎同为初值色，仅表面薄层随时间变深——水分只在表层变化；(b) 径向剖面
+呈``干壳''形态：内部平坦、表层骤降，且$t=100\,\mathrm{s}$时表层即已明显脱水；
+(c) 各层浓度曲线显示：中心含水率几乎不动，相对下降仅$3.01\times10^{-6}$，体积
+平均含水率下降$10.1\%$，表面降至$1.5102\,\mathrm{kg/kg}$较初值下降$40.8\%$，
+而$C_\infty(1800\,\mathrm{s})=0.0331\,\mathrm{kg/kg}$，$C(R)/C_\infty\approx45.7$
+——表面远未与热风平衡，干燥驱动力依然充足。
+
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.94\textwidth]{figures/fig_q1_fields.pdf}
-    \caption{问题一求解结果。(a)(b) 温度场与水分浓度场（数据取自
-    \texttt{result1.xlsx}）；(c)(d) 表~1、表~2 对应时刻的径向剖面，线色随时间
-    变化。}
-    \label{fig:fields}
+    \includegraphics[width=0.96\textwidth]{figures/fig_q1_moist_results.pdf}
+    \caption{问题一水分浓度场结果。(a) 水分浓度场时空热图；(b) 表2 时刻的径向剖面；
+    (c) 各层浓度演化与烘房环境对比。}
+    \label{fig:moistresults}
 \end{figure}
 
-结果的物理分析与问题分析中的预判一致：
-\begin{enumerate}
-    \item \textbf{温度快速响应且存在径向梯度}：$t=1800\,\mathrm{s}$ 时中心与表面
-    分别为 $33.5758\,^\circ\mathrm{C}$ 与 $36.7858\,^\circ\mathrm{C}$，径向温差
-    $3.21\,^\circ\mathrm{C}$，印证 $\mathrm{Bi}>0.1$ 的分布参数特征；由于导热
-    特征时间 $R^2/\alpha=2368.9\,\mathrm{s}$ 大于 $1800\,\mathrm{s}$，预热平衡
-    阶段结束时热平衡尚未完成。
-    \item \textbf{水分只在表层松弛}：中心含水率在 $30\,\mathrm{min}$ 内几乎不变
-    （相对下降仅 $3.01\times10^{-6}$），体积平均含水率下降 $10.1\%$，全部来自
-    表面薄层；$t=1800\,\mathrm{s}$ 时表面含水率 $C(R)=1.5102\,\mathrm{kg/kg}$
-    （较初值下降 $40.8\%$），仍是环境值 $C_\infty$ 的 $45.7$ 倍
-    （整个烘干期内 $C_0/C_\infty\approx51\sim130$），干燥驱动力依然充足。
-    \item \textbf{对后续问题的提示}：$D(C)$ 随 $C$ 下降而骤减（$C=0.15$ 处比
-    初值小约 $266$ 倍），干燥前沿将形成``干壳''，水分向 $0.15\,\mathrm{kg/kg}$
-    目标收敛的过程会显著减慢，这是问题三确定烘干时间时需要专门处理的时间尺度问题。
-\end{enumerate}
-
-\textbf{不确定度小结。}
-\begin{enumerate}
-    \item \textbf{数值不确定度}：温度 $<3.8\times10^{-6}\,\mathrm{K}$、水分
-    $<1.2\times10^{-5}\,\mathrm{kg/kg}$（与独立加密解比较），与解析级数解偏差
-    $<4.5\times10^{-6}\,\mathrm{K}$；
-    \item \textbf{数据不确定度}：附件~1 噪声 $\sigma_T\approx0.153\,^\circ\mathrm{C}$
-    使温度的第四位小数由数据精度主导，而水分浓度的四位小数对噪声稳健
-    （\S\ref{sec:sens}）；
-    \item \textbf{模型形式不确定度}：$h_m$ 按题面给定值
-    （$8\times10^{-7}\,\mathrm{m/s}$）建模，与热质传递类比估算值相差约 $4$ 个
-    数量级，且模型把 $C_\infty$ 直接作为表面平衡浓度——水分浓度的\textbf{绝对
-    数值}因此带有模型形式不确定度，但其时间趋势与径向分布形态对该假设不敏感。
-\end{enumerate}
+上述形态由时间尺度分离决定：湿分扩散特征时间$R^2/D(C_0)=81010\,\mathrm{s}$远大于
+$1800\,\mathrm{s}$，约为导热特征时间的$34$倍，水分来不及扩散到中心。数值上，
+半隐式$D$的偏差为$5.32\times10^{-6}\,\mathrm{kg/kg}$、与独立加密解的偏差小于
+$1.2\times10^{-5}\,\mathrm{kg/kg}$，低于四位小数的分辨率，报告是安全的。此外，
+$D(C)$随$C$下降而骤减，$C=0.15$处比初值小约$266$倍，干燥前沿的``干壳''将使
+后期干燥显著减慢，这是问题三确定烘干时间时需要专门处理的时间尺度问题。
 
 \subsection{问题二模型的建立与求解}
 % TODO：附录3 变物性与 D(C,T) 双向耦合模型的建立、交替迭代求解，表3/表4 与 result2.xlsx

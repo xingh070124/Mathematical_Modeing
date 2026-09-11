@@ -40,7 +40,7 @@ CMD = "python src/q1_energy_check.py"
 
 
 def add(id_, q, v, u, unc="run", src="run q1_energy_check", note=""):
-    vs = v if isinstance(v, str) else (f"{v:.10g}" if isinstance(v, (int, float, np.floating)) else str(v))
+    vs = v if isinstance(v, str) else (f"{v:.14g}" if isinstance(v, (int, float, np.floating)) else str(v))
     REG.append([id_, q, vs, u, unc, src, CMD, note])
     print(f"    [reg] {id_:12s} {q[:56]:56s} = {vs} {u}")
 
@@ -165,7 +165,7 @@ def e1():
             add(f"E16_dt{dt}_wrong", f"放大规律 (1+l*dt)^n (dt={dt},t=5s)",
                 float(wrong), "-", "解析", "run E1", "错误形式, 仅作对照")
     print("  dt 扫描 (t_end=1800 s, 用户格式):")
-    for dt in (0.5, 1, 2, 3, 5, 6, 7, 7.4, 7.4683, 7.5, 10, 20):
+    for dt in (0.5, 1, 2, 3, 5, 6, 7, 7.4, 7.4683, 7.47, 7.5, 10, 20):
         try:
             r_, T_, _, _, _ = solve_q1(M, dt, 1800.0, env, corr=False, no_moisture=True)
             fin = bool(np.all(np.isfinite(T_)))
@@ -314,6 +314,16 @@ def e4():
     t_chk = 300.0
     Fo = ALPHA * t_chk / R0 ** 2
     print(f"  Bi={Bi:.6f}, Fo={Fo:.6f}, t={t_chk}s")
+    add("E19", "Fourier 数 Fo = alpha*t/R^2 (t=300s)", float(Fo), "-", "解析精确",
+        "run E4", "解析解对比用的 Fo")
+    for nm in (120, 300, 600, 1200):
+        xs_t, cs_t = robin_cylinder_eigen(Bi, n_modes=nm)
+        rr_t = np.linspace(0, 1, 41)
+        rec_t = np.array([robin_cylinder_theta(np.array([v]), 1e-14, xs_t, cs_t)[0]
+                          for v in rr_t])
+        e_t = float(np.max(np.abs(rec_t - 1.0)))
+        add(f"E18_nm{nm}", f"级数初始条件重构误差 ({nm} 项)", e_t, "-", "解析自检",
+            "run E4", "随项数下降, 收敛到平台")
     print(f"  {'M':>6} {'dt[s]':>10} {'flux(本文) [K]':>18} {'cell(原方案) [K]':>20} {'比值':>10}")
     for M in (400, 800, 1600):
         for dt in (0.02, 0.002, 0.0005):
@@ -332,8 +342,12 @@ def e4():
                 e["cell"] / e["flux"], "-", "解析比值", "run E4", "")
 
 
-def solve_q1_user_diag_moist(M, dt, t_end, env):
+def solve_q1_user_diag_moist(M, dt, t_end, env, Dface=True):
     """温度用修正格式, 水分用原方案的对角元 (b_i = 1/dt + c_i), 检验水分是否失稳.
+
+    Dface=True  : 界面扩散系数取相邻节点算术平均 (守恒)
+    Dface=False : 界面扩散系数取节点值 (原方案写法)
+    两种取法都应失稳, 且失稳时刻几乎相同 -> 决定失稳的是对角元, 不是面值取法.
 
     返回 (t_blow, C_min, C_max).  t_blow = 首次出现非有限值的时刻 (s), 未失稳则为 None.
     """
@@ -357,17 +371,20 @@ def solve_q1_user_diag_moist(M, dt, t_end, env):
         a[M] = -ALPHA * A_m[M] / (dr * V[M]); b[M] = 1 / dt + ALPHA * A_m[M] / (dr * V[M]) + g_h
         d = T / dt; d[M] += g_h * Ti
         T = solve_tri(a, b, c, d)
-        # 水分: 原方案对角元 (缺 |a_i| 项), 面值用界面平均以隔离对角元错误的影响
+        # 水分: 原方案对角元 (缺 |a_i| 项); 面值按 Dface 选择
         Dn = 7e-9 * np.exp(-0.89 / np.maximum(C, 1e-12))
-        Df = 0.5 * (Dn[:-1] + Dn[1:])
+        if Dface:
+            Df_ = 0.5 * (Dn[:-1] + Dn[1:])          # 界面平均 (守恒)
+        else:
+            Df_ = Dn.copy()                          # 节点值 (原方案)
         g_ip = A_p / (dr * V); g_im = A_m / (dr * V)
         a = np.zeros(M + 1); b = np.zeros(M + 1); c = np.zeros(M + 1)
-        b[0] = 1 / dt + Df[0] * g_ip[0]; c[0] = -Df[0] * g_ip[0]
-        a[ii] = -Df[ii - 1] * g_im[ii]
-        b[ii] = 1 / dt + Df[ii] * g_ip[ii]          # <-- 原方案: 缺 Df[ii-1]*g_im[ii]
-        c[ii] = -Df[ii] * g_ip[ii]
-        a[M] = -Df[M - 1] * g_im[M]
-        b[M] = 1 / dt + g_hm                        # <-- 原方案: 缺 Df[M-1]*g_im[M]
+        b[0] = 1 / dt + Df_[0] * g_ip[0]; c[0] = -Df_[0] * g_ip[0]
+        a[ii] = -Df_[ii - 1] * g_im[ii]
+        b[ii] = 1 / dt + Df_[ii] * g_ip[ii]         # <-- 原方案: 缺 Df_[ii-1]*g_im[ii]
+        c[ii] = -Df_[ii] * g_ip[ii]
+        a[M] = -Df_[M - 1] * g_im[M]
+        b[M] = 1 / dt + g_hm                        # <-- 原方案: 缺 Df_[M-1]*g_im[M]
         dC = C / dt; dC[M] += g_hm * Ci
         C = solve_tri(a, b, c, dC)
         if t_blow is None and not np.all(np.isfinite(C)):
@@ -382,22 +399,36 @@ def e5():
     env = Env(t1, T1, C1, method="pchip")
     M = 200
     print(f"  M={M}, t_end=1800 s")
-    print(f"  {'dt[s]':>7} {'水分对角元':>10} {'失稳时刻[s]':>13} {'C_min':>16} {'C_max':>16}")
-    for dt in (0.1, 0.05, 0.01):
-        tb, cmin, cmax = solve_q1_user_diag_moist(M, dt, 1800.0, env)
-        tbs = "未失稳" if tb is None else f"{tb:.1f}"
-        print(f"  {dt:>7} {'原方案':>10} {tbs:>13} {cmin:>16.6e} {cmax:>16.6e}")
-        if tb is not None:
-            add(f"E40_dt{dt}", f"水分方程采用原方案对角元时的失稳时刻 (dt={dt}s)", tb, "s",
-                "解析", "run E5", "随网格/时间步均不改善")
-            add(f"E41_dt{dt}", f"失稳时 C_min (dt={dt}s)", cmin, "kg/kg", "解析", "run E5", "")
-            add(f"E42_dt{dt}", f"失稳时 C_max (dt={dt}s)", cmax, "kg/kg", "解析", "run E5", "")
-        r_, T_, C_, _, _ = solve_q1(M, dt, 1800.0, env, corr=True)
-        print(f"  {dt:>7} {'修正':>10} {'未失稳':>13} {C_.min():>16.6e} {C_.max():>16.6e}")
-        add(f"E43_dt{dt}", f"修正格式的水分最小值 (dt={dt}s)", float(C_.min()), "kg/kg",
+    print("  两种水分界面扩散系数取法都测 (失稳只取决于对角元, 与面值取法无关):")
+    for Dface in (True, False):
+        lbl = "面平均D" if Dface else "节点值D"
+        print(f"\n  -- 面值取法: {lbl} --")
+        print(f"  {'dt[s]':>7} {'水分对角元':>10} {'失稳时刻[s]':>13} {'C_min':>16} {'C_max':>16}")
+        for dt in (0.1, 0.05, 0.01):
+            tb, cmin, cmax = solve_q1_user_diag_moist(M, dt, 1800.0, env, Dface=Dface)
+            tbs = "未失稳" if tb is None else f"{tb:.2f}"
+            print(f"  {dt:>7} {'原方案':>10} {tbs:>13} {cmin:>16.6e} {cmax:>16.6e}")
+            key = "face" if Dface else "node"
+            if tb is not None:
+                add(f"E40_{key}_dt{dt}", f"水分失稳时刻 ({lbl}, dt={dt}s)", tb, "s",
+                    "解析", "run E5", "随时间步几乎不变 => 与 dt 无关")
+                add(f"E41_{key}_dt{dt}", f"失稳时 C_min ({lbl}, dt={dt}s)", cmin, "kg/kg",
+                    "解析", "run E5", "")
+                add(f"E42_{key}_dt{dt}", f"失稳时 C_max ({lbl}, dt={dt}s)", cmax, "kg/kg",
+                    "解析", "run E5", "")
+        r_, T_, C_, _, _ = solve_q1(M, 0.1, 1800.0, env, corr=True)
+        print(f"  {0.1:>7} {'修正':>10} {'未失稳':>13} {C_.min():>16.6e} {C_.max():>16.6e}")
+        add(f"E43_{key}", f"修正格式的水分最小值", float(C_.min()), "kg/kg",
             "解析", "run E5", "")
-        add(f"E44_dt{dt}", f"修正格式的水分最大值 (dt={dt}s)", float(C_.max()), "kg/kg",
+        add(f"E44_{key}", f"修正格式的水分最大值", float(C_.max()), "kg/kg",
             "解析", "run E5", "")
+        # 修正格式在多个 dt 下的水分极值 (文稿 §2.4 表格用到 dt=0.01 一行)
+        for dt2 in (0.1, 0.05, 0.01):
+            _, _, C2, _, _ = solve_q1(M, dt2, 1800.0, env, corr=True)
+            add(f"E45_{key}_dt{dt2}", f"修正格式水分最小值 (dt={dt2}s)", float(C2.min()),
+                "kg/kg", "解析", "run E5", "")
+            add(f"E46_{key}_dt{dt2}", f"修正格式水分最大值 (dt={dt2}s)", float(C2.max()),
+                "kg/kg", "解析", "run E5", "")
 
 
 def e6():

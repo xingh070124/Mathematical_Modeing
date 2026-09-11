@@ -355,7 +355,7 @@ def main():
     R_CMD = "python src/q1_solve.py"
 
     def add(id_, q, v, u, unc, src, note=""):
-        vs = v if isinstance(v, str) else (f"{v:.10g}" if isinstance(v, (int, float, np.floating)) else str(v))
+        vs = v if isinstance(v, str) else (f"{v:.14g}" if isinstance(v, (int, float, np.floating)) else str(v))
         reg.append([id_, q, vs, u, unc, src, R_CMD, note])
         print(f"  {id_:12s} {q:56s} = {vs} {u}")
 
@@ -363,8 +363,12 @@ def main():
 
     hr("S0. 参数自检")
     add("P01", "热扩散系数 alpha = k/(rho cp)", ALPHA, "m^2/s", "解析精确", "附录2", "")
-    add("P02", "用户文中 alpha 数值 1.679e-7 的相对偏差", ALPHA / 1.679e-7 - 1.0, "-", "解析精确",
-        "用户方案 2.1", "用户写 1.679e-7, 实为 1.6886e-7")
+    add("P02", "用户文中 alpha 数值 1.679e-7 的相对偏差 (正确减用户)", ALPHA / 1.679e-7 - 1.0,
+        "-", "解析精确", "用户方案 2.1", "用户写 1.679e-7, 实为 1.6886e-7")
+    add("P02b", "同一偏差的百分数形式 (正确减用户)", (ALPHA / 1.679e-7 - 1.0) * 100, "%",
+        "解析精确", "用户方案 2.1", "+0.5691 %")
+    add("P02c", "同一偏差的带符号百分数 (用户减正确)", (1.679e-7 / ALPHA - 1.0) * 100, "%",
+        "解析精确", "用户方案 2.1", "-0.5659 %")
     for Cv in (C0, 1.0, 0.5, 0.15, 0.0331):
         print(f"  D(C={Cv:<7}) = {float(D_of_C(Cv)):.6e} m^2/s")
     add("P03", "D(C0=2.55)", float(D_of_C(C0)), "m^2/s", "解析精确", "附录2", "")
@@ -377,6 +381,19 @@ def main():
     add("P07", "热 Biot 数 Bi = hR/k", H_CONV * R0 / K_COND, "-", "解析精确", "附录2", ">0.1 内部温度不均匀")
     add("P08", "传质 Biot 数 Bi_m = hm R/D(C0)", HM * R0 / float(D_of_C(C0)), "-", "解析精确", "附录2", "")
     add("P09", "导热特征时间 R^2/alpha", R0 ** 2 / ALPHA, "s", "解析精确", "附录2", "与 1800 s 比较")
+    add("P09b", "导热穿透深度 sqrt(alpha*t) (t=1800s)", math.sqrt(ALPHA * 1800.0) * 100, "cm",
+        "解析精确", "附录2", "轴向影响深度估计")
+    add("P09c", "湿分特征时间 / 导热特征时间",
+        (R0 ** 2 / float(D_of_C(C0))) / (R0 ** 2 / ALPHA), "-", "解析比值", "附录2",
+        "时间尺度分离度")
+    for _t in (100.0, 1800.0):
+        add(f"P24_T{int(_t)}", f"附件1 T_inf(t={int(_t)}s)",
+            float(np.interp(_t, t1, T1)), "degC", "附件1 原始点", "附件1", "")
+    add("P25", "T_inf(1800s) - T_surface(1800s)",
+        float(np.interp(1800.0, t1, T1)) - 36.785783757101, "degC", "解析差值", "附件1",
+        "表面滞后于烘房的温差")
+    add("P26", "附件1 C_inf(1800s)", float(np.interp(1800.0, t1, C1)), "kg/kg",
+        "附件1 原始点", "附件1", "")
     add("P10", "含水率扩散特征时间 R^2/D(C0)", R0 ** 2 / float(D_of_C(C0)), "s", "解析精确", "附录2", "")
     add("P11", "长径比 L/R", L_AXIS / R0, "-", "解析精确", "题面", "")
     add("P12", "端面面积/侧面面积", math.pi * R0 ** 2 / (2 * math.pi * R0 * L_AXIS), "-", "解析精确",
@@ -442,6 +459,20 @@ def main():
         except Exception as e:
             print(f"  [{tag:5s}] 异常: {e}")
 
+    # 用户格式在推荐 dt=0.1 s 下的首次溢出时刻
+    M_ov, dt_ov = 200, 0.1
+    t_blow = None
+    for _n in range(int(round(1800.0 / dt_ov))):
+        _, T_ov, _, _, _ = solve_q1(M_ov, dt_ov, (_n + 1) * dt_ov, env,
+                                    corr=False, no_moisture=True)
+        if not np.all(np.isfinite(T_ov)):
+            t_blow = (_n + 1) * dt_ov
+            break
+    print(f"  用户格式 dt=0.1 s: 首次溢出时刻 = {t_blow} s")
+    if t_blow is not None:
+        add("S07b", "用户格式 dt=0.1 s 首次溢出时刻", float(t_blow), "s", "run",
+            "run solve_q1(corr=False)", "推荐时间步下即溢出")
+
     # ------------------------------------------------------------------ S3
     hr("S3. 独立验证 1 — Robin 边界无限长圆柱解析级数解 (常数 T_inf)")
     Bi = H_CONV * R0 / K_COND
@@ -455,6 +486,16 @@ def main():
     print(f"  初始条件重构 max|sum C_n J0(lam_n rho) - 1| = {err_recon:.3e}")
     add("S08", "解析级数初始条件重构误差 max", float(err_recon), "-", "级数截断=120项",
         "run robin_cylinder", "<1e-6 说明特征值与系数正确")
+    # 特征根与系数逐个入库 (此前只打印未登记, 导致文稿中的第 5 个根无来源)
+    for k in range(5):
+        add(f"S3x_{k+1}", f"Bessel 特征根 x_{k+1} (x J1(x)=Bi J0(x))", float(lams[k]), "-",
+            "残差 <1e-15", "run robin_cylinder", f"Bi={Bi:.6f}")
+        add(f"S3L_{k+1}", f"特征值 lambda_{k+1}=x_{k+1}/R", float(lams[k]) / R0, "1/m",
+            "残差 <1e-15", "run robin_cylinder", f"R={R0} m")
+        add(f"S3c_{k+1}", f"级数系数 C_{k+1}", float(Cn[k]), "-", "解析公式",
+            "run robin_cylinder", "")
+        add(f"S3m_{k+1}", f"衰减率 mu_{k+1}=alpha*lambda^2", float(ALPHA * (lams[k] / R0) ** 2),
+            "1/s", "解析精确", "run robin_cylinder", "")
 
     T_const = 323.15  # 50 degC
     env_c = Env(np.array([0.0, 1e6]), np.array([50.0, 50.0]), np.array([C0, C0]), method="linear")
@@ -495,6 +536,17 @@ def main():
         prev = (eT, eC)
         conv.append((M_, R0 / M_ * 1000, eT, oT, eC, oC))
         print(f"  {M_:>6} {R0/M_*1000:>9.4f} {eT:>13.5e} {oT:>7.3f} {eC:>13.5e} {oC:>7.3f}")
+        add(f"S4e_M{M_}", f"网格收敛误差 (M={M_} vs M=1600) 温度", float(eT), "K",
+            "vs M=1600", "run solve_q1", "")
+        add(f"S4m_M{M_}", f"网格收敛误差 (M={M_} vs M=1600) 水分", float(eC), "kg/kg",
+            "vs M=1600", "run solve_q1", "")
+        add(f"S4dr_M{M_}", f"M={M_} 的网格尺寸 dr", R0 / M_ * 1000, "mm", "结构",
+            "run solve_q1", "")
+        if not math.isnan(oT):
+            add(f"S4ot_M{M_}", f"网格收敛经验阶 (温度, M={M_//2}->{M_})", float(oT), "-",
+                "对数斜率", "run solve_q1", "")
+            add(f"S4oc_M{M_}", f"网格收敛经验阶 (水分, M={M_//2}->{M_})", float(oC), "-",
+                "对数斜率", "run solve_q1", "")
     add("S10", "网格收敛: M=800 vs M=1600 温度最大偏差", float(conv[-1][2]), "K", "vs M=1600",
         "run solve_q1", "")
     add("S11", "网格收敛: M=800 vs M=1600 水分最大偏差", float(conv[-1][4]), "kg/kg", "vs M=1600",
@@ -511,6 +563,10 @@ def main():
         print(f"  dt={dt_:>6}s: max|dT|={eT:.5e} K   max|dC|={eC:.5e} kg/kg")
         add(f"S14_dt{dt_}", f"时间步误差 dt={dt_}s (vs M=1600,dt=0.05)", float(max(eT, eC)), "-",
             "vs 参考", "run solve_q1", f"dT={eT:.3e} K; dC={eC:.3e}")
+        add(f"S14T_dt{dt_}", f"时间步误差(温度) dt={dt_}s", float(eT), "K", "vs 参考",
+            "run solve_q1", "")
+        add(f"S14C_dt{dt_}", f"时间步误差(水分) dt={dt_}s", float(eC), "kg/kg", "vs 参考",
+            "run solve_q1", "")
 
     # ------------------------------------------------------------------ S6
     hr("S6. 独立验证 2 — method of lines + BDF (非线性 D 不回滞), M=200")
@@ -576,12 +632,16 @@ def main():
     add("S22", "生产解 vs 高分辨率解 水分最大偏差", float(eC_prod), "kg/kg", "vs M=1600",
         "run solve_q1", "生产设置 M=800, dt=0.125 s")
 
-    with open(os.path.join(OUTDIR, "table1_temperature.csv"), "w", newline="", encoding="utf-8-sig") as f:
+    # 注意: 交付用的 table*.csv / table*.md 由 src/q1_produce.py 独占写入
+    # (生产设置 M=3200, dt=2^-8). 本诊断脚本内部的解是 M=800/dt=0.125 的粗网格,
+    # 曾在此覆盖交付表格, 造成 result1.xlsx 与 table*.csv 在第 4 位小数冲突.
+    # 故这里只写带 diag 前缀的诊断副本, 不碰交付文件名.
+    with open(os.path.join(OUTDIR, "diag_table1_M800.csv"), "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
         w.writerow(["时间/s", "0", "0.5", "1", "1.5", "2"])
         for k, tt in enumerate(times_tab):
             w.writerow([int(tt)] + [f"{v-273.15:.4f}" for v in np.interp(probes_r, r_p, sT[k])])
-    with open(os.path.join(OUTDIR, "table2_moisture.csv"), "w", newline="", encoding="utf-8-sig") as f:
+    with open(os.path.join(OUTDIR, "diag_table2_M800.csv"), "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
         w.writerow(["时间/s", "0", "0.5", "1", "1.5", "2"])
         for k, tt in enumerate(times_tab):
@@ -636,8 +696,9 @@ def main():
     _write_registry(reg, os.path.join(OUTDIR, "registry_q1.csv"))
     print()
     print(f"输出: {os.path.join(OUTDIR, 'registry_q1.csv')} ({len(reg)} 行)")
-    print(f"      {os.path.join(OUTDIR, 'table1_temperature.csv')}")
-    print(f"      {os.path.join(OUTDIR, 'table2_moisture.csv')}")
+    print(f"      {os.path.join(OUTDIR, 'diag_table1_M800.csv')}  (诊断副本, 非交付表格)")
+    print(f"      {os.path.join(OUTDIR, 'diag_table2_M800.csv')}  (诊断副本, 非交付表格)")
+    print("      交付表格 table*.csv/md 由 src/q1_produce.py 写入")
 
 
 def _write_registry(rows, path):
