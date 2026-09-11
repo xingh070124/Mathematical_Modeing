@@ -128,6 +128,90 @@ def exact_table_check():
 
     return checked, issues
 
+
+TEX = os.path.join(ROOT, "paper", "example.tex")
+
+
+def tex_xval_check():
+    """第三关: paper/example.tex 交叉验证节的三个表 与注册表逐位一致.
+
+    与第二关同理, 这是"同源一致性"检查而非数值近似检查, 故容差按各表在文稿中
+    书写的有意义位数给定 (不套用宽松的百分比容差):
+      表 B 特征根 x_k : 书写 10 位有效数字 -> 相对容差 1e-9
+      表 B 展开系数 c_k: 书写  6~7 位有效数字 -> 相对容差 1e-5
+      表 B 衰减率 mu_k: 书写  5 位有效数字 -> 相对容差 1e-4
+      表 D 偏差       : 书写  3 位有效数字 -> 相对容差 6e-3
+    """
+    if not os.path.exists(TEX):
+        return 0, [], "tex 不存在"
+
+    lines = open(TEX, encoding="utf-8").read().splitlines()
+    i0 = next((i for i, l in enumerate(lines) if "交叉验证：Bessel特征函数展开解析解" in l), None)
+    i1 = next((i for i, l in enumerate(lines)
+               if i0 is not None and i > i0
+               and l.startswith(r"\subsubsection{求解某一时刻下药材各个位置的水分浓度")), None)
+    if i0 is None or i1 is None:
+        return 0, [], "未定位到交叉验证节"
+    reg = {}
+    for path in REGISTRIES:
+        if not os.path.exists(path):
+            continue
+        for r in csv.DictReader(open(path, encoding="utf-8-sig")):
+            reg.setdefault(r["id"], r["value"])
+
+    def fields(line):
+        """把 tex 表行按 & 拆开, 每段取第一个数值."""
+        out = []
+        for part in line.split("&"):
+            p = latex_to_plain(part)
+            m = NUM_RE.search(p)
+            if m:
+                try:
+                    out.append(float(m.group(0)))
+                except ValueError:
+                    pass
+        return out
+
+    issues = []
+    checked = 0
+    seg = list(enumerate(lines[i0:i1], i0 + 1))
+
+    for ln, raw in seg:
+        s = raw.strip()
+        if not s or s.startswith("\\") or "toprule" in s or "midrule" in s or "bottomrule" in s:
+            continue
+        if "&" not in s:
+            continue
+        if "\\\\" not in s:
+            continue
+        vals = fields(s)
+
+        # --- 表 A: 4 个字段, 首列为阶数 1..5 ---
+        if len(vals) == 4 and vals[0] == int(vals[0]) and 1 <= vals[0] <= 5:
+            k = int(vals[0])
+            # 容差按文稿实际书写位数: x_k 10 位有效数字; c_k 6~7 位; mu_k 5 位.
+            for col, tol, pref in ((1, 1e-9, "S3x_"), (2, 1e-5, "S3c_"), (3, 1e-4, "S3m_")):
+                rv = float(reg.get(f"{pref}{k}", "nan"))
+                tv = vals[col]
+                checked += 1
+                rel = abs(tv - rv) / abs(rv) if rv else abs(tv)
+                if not (rel <= tol):
+                    issues.append((f"表B k={k} {pref}", tv, rv, f"rel={rel:.2e}"))
+            continue
+
+        # --- 表 D: 6 个字段, 首列为时间 (键名沿用注册表的半径标签) ---
+        if len(vals) == 6 and vals[0] in (100, 300, 600, 900, 1200, 1500, 1800):
+            t_ = int(vals[0])
+            for j, rc in enumerate(["0", "0.5", "1.0", "1.5", "2.0"]):
+                rv = float(reg.get(f"HD_T{t_}_r{rc}", "nan")) * 1e6   # K -> 1e-6 K
+                tv = vals[1 + j]
+                checked += 1
+                rel = abs(tv - rv) / abs(rv) if rv else abs(tv)
+                if not (rel <= 6e-3):
+                    issues.append((f"表D t={t_} r={rc}", tv, rv, f"rel={rel:.2e}"))
+    return checked, issues, ""
+
+
 # ---------------------------------------------------------------------------
 # 允许清单: 直接在题面/附录中给定, 或纯结构/数学常数
 # 每项: (值, 说明)
@@ -233,7 +317,25 @@ HEADING_RE = re.compile(r"^\s*#{1,6}\s*\d")
 
 
 def latex_to_plain(s: str) -> str:
-    """LaTeX -> 纯文本, 并消掉作为下标/指数的结构性数字与章节号."""
+    """LaTeX -> 纯文本, 并消掉作为下标/指数的结构性数字与章节号.
+
+    同时清理 LaTeX 命令中**不表示测量值**的数字 (环境名、标签、间距、
+    占位符、列宽), 否则 \ding{228} 的 228、\hspace*{1em} 的 1、
+    p{0.72\textwidth} 的 0.72 都会被当成待核对数值而误报.
+    这些命令在 Markdown 中不出现, 故对本函数原有的 .md 使用者无影响.
+    """
+    # --- LaTeX 命令清理 (对 .md 无副作用) ---
+    s = re.sub(r"\\(ding|phantom)\{[^{}]*\}", "", s)          # \ding{228}, \phantom{-}
+    s = re.sub(r"\\(hspace|vspace|hskip|vskip)\*?\{[^{}]*\}", "", s)
+    s = re.sub(r"\\(begin|end)\{[^{}]*\}", "", s)             # 环境名
+    s = re.sub(r"\\(label|ref|eqref|cite|cref)\{[^{}]*\}", "", s)  # 标签/引用
+    s = re.sub(r"\\(textwidth|linewidth|columnwidth|textheight)", "", s)
+    # tabular 列定义: 去掉 @{} 与 p{宽度}, 否则列宽数字 (如 p{0.72\textwidth} 的 0.72)
+    # 会被当成待核对数值 (已实测发生).
+    s = re.sub(r"@\{\}", "", s)
+    s = re.sub(r"p\{[^{}]*\}", "", s)
+    s = re.sub(r"\\quad|\\qquad", " ", s)
+    s = re.sub(r"\\(left|right|bigl|bigr|Bigl|Bigr)\b", "", s)
     # A\times10^{B} 和 10^{B} -> AeB / 1eB
     s = re.sub(r"\\times\s*10\^\{?(-?\d+)\}?", r"e\1", s)
     # 独立的 10^{B} 必须补上前导 1, 否则会留下裸的 "e-13",
@@ -348,10 +450,25 @@ def main():
 
     rows = []
     unmatched = []
-    for doc in DOCS:
-        name = os.path.basename(doc)
+
+    # 文档清单 = md 文档 (全文) + tex 的交叉验证节 (仅该节, 避免把全文历史数字卷入)
+    scan_targets = [(d, None, None) for d in DOCS]
+    tex_path = os.path.join(ROOT, "paper", "example.tex")
+    if os.path.exists(tex_path):
+        tl = open(tex_path, encoding="utf-8").read().splitlines()
+        i0 = next((i for i, l in enumerate(tl) if "交叉验证：Bessel特征函数展开解析解" in l), None)
+        i1 = next((i for i, l in enumerate(tl)
+                   if i0 is not None and i > i0
+                   and l.startswith(r"\subsubsection{求解某一时刻下药材各个位置的水分浓度")), None)
+        if i0 is not None and i1 is not None:
+            scan_targets.append((tex_path, i0, i1))
+
+    for doc, lo, hi in scan_targets:
+        name = os.path.basename(doc) + ("(交叉验证节)" if lo is not None else "")
         with open(doc, encoding="utf-8") as f:
             lines = f.readlines()
+        if lo is not None:
+            lines = [("\n" if i < lo or i >= hi else ln) for i, ln in enumerate(lines)]
         for ln, raw in enumerate(lines, 1):
             line = latex_to_plain(raw)
             # 跳过纯表格分隔行
@@ -431,6 +548,27 @@ def main():
         print(f"\n第二关失败: {len(issues)} 处表格值与 result1.xlsx 不一致。")
         raise SystemExit(2)
     print("第二关通过: 所有输出表格与 result1.xlsx 逐位一致。")
+
+    # ---- 第三关: tex 交叉验证节的表格与注册表逐位一致 ----
+    print()
+    print("=" * 100)
+    print("第三关: paper/example.tex 交叉验证节的表 B / 表 D  vs  注册表")
+    print("=" * 100)
+    t_checked, t_issues, t_note = tex_xval_check()
+    if t_note:
+        print(f"  [skip] {t_note}")
+    else:
+        print(f"  比对 {t_checked} 个表格数值（表 B 特征根/系数/衰减率，表 D 偏差）")
+        if t_issues:
+            print(f"  !! 不一致 {len(t_issues)} 处:")
+            for tag, got, exp, extra in t_issues[:20]:
+                print(f"     {tag}: tex={got} registry={exp}  {extra}")
+        else:
+            print("  全部与注册表一致。")
+    if t_issues:
+        print(f"\n第三关失败: {len(t_issues)} 处 tex 表格值与注册表不一致。")
+        raise SystemExit(3)
+    print("第三关通过: tex 交叉验证节表格与注册表一致。")
 
 
 if __name__ == "__main__":

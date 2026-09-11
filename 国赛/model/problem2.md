@@ -89,16 +89,53 @@ $S_h$ 以表面热流（第二类边界）形式进入模型——详见 §4.4�
 
 **注意**：$\rho c_p$ 随 $C$ 变化，**不能移到时间导数之内或之外**——即写成
 $\partial(\rho c_pT)/\partial t$ 与 $\rho c_p\,\partial T/\partial t$ 在本题中不等价。
-本文采用式 (1) 的形式（以 $T$ 为状态量、$\rho c_p$ 作为系数），理由是题面附录 3 的
-物性经验式以 $C$ 为自变量，属于"以温度 $T$ 为基本未知量、物性为已知场系数"的表述习惯。
+本文采用式 (1) 的形式（以 $T$ 为状态量、$\rho c_p$ 作为系数），**理由不是表述习惯，而是
+严格推导的结果**：
+
+附录 3 的两式可以**精确**写成混合物形式（`src/q2_energy_algebra.py` §A 用 sympy 解出，
+数值核验相对差 $1.93\times10^{-16}$）：
+
+$$\rho_{\rm bulk}=\rho_s(1+C),\qquad \rho_{\rm bulk}c_p=\rho_s(c_s+Cc_l),\qquad
+c_s=1450,\quad c_l=4186\ \mathrm{J/(kg\cdot K)}$$
+
+$c_l=4186\ \mathrm{J/(kg\cdot K)}$ 正是液态水的教科书比热——说明附录 3 的 $\rho(C)$ 与
+$c_p(C)$ **不是两个独立经验式，而是同一条混合物关系的两种写法**。
+
+在此结构下，对薄环控制体写严格能量平衡（水以扩散离开时*带走*显焓
+$\bar h_w=c_l(T-T_{\rm ref})$）：
+
+$$\frac{\partial}{\partial t}\big[\rho c_p(T-T_{\rm ref})\big]
+=\nabla\!\cdot\!(k\nabla T)-\nabla\!\cdot\!\big(\bar h_w\mathbf J_w\big)$$
+
+配合水量守恒 $\nabla\!\cdot\!\mathbf J_w=-\rho_s\,\partial_tC$，右端末项展开为
+$+c_l(T-T_{\rm ref})\rho_s\partial_tC-c_l\mathbf J_w\!\cdot\!\nabla T$，左端展开为
+$\rho_s(c_s+c_lC)\partial_tT+c_l(T-T_{\rm ref})\rho_s\partial_tC$——**含
+$(T-T_{\rm ref})\partial_tC$ 的两项精确相消**，得
+
+$$\rho(C)c_p(C)\frac{\partial T}{\partial t}
+=\nabla\!\cdot\!(k\nabla T)-c_l\,\mathbf J_w\!\cdot\!\nabla T$$
+
+即式 (1) 的非保守形式**才是正确的**。而守恒形式
+$\partial(\rho c_pT)/\partial t=\nabla\!\cdot\!(k\nabla T)$ 会多出伪源项
+
+$$S_{\rm false}=+c_l(T-T_{\rm ref})\,\rho_s\,\frac{\partial C}{\partial t}$$
+
+取 $T-T_{\rm ref}\sim7\ \mathrm K$、$\rho_s=275.04\ \mathrm{kg/m^3}$、
+体积平均 $\partial_tC=-8.3\times10^{-5}\ \mathrm{kg/(kg\cdot s)}$，得
+$|S_{\rm false}|=6.56\times10^{2}\ \mathrm{W/m^3}$，为主项
+$\rho c_p\partial_tT\sim2.60\times10^{3}\ \mathrm{W/m^3}$ 的 **25.2%**——同量级，不可忽略。
+保留的 $-c_l\mathbf J_w\!\cdot\!\nabla T$ 仅为主项的 $3.3\times10^{-4}$，可略。
+
+数值验证（`q2_verify.py` V11）：$M=200$、$\Delta t=0.25\ \mathrm s$ 下两种形式的中心温度
+在 $t=10800\ \mathrm s$ 相差 **9.87 K**。问题一中 $\rho c_p$ 为常数，两种形式恒等
+（sympy 验证差为 0），故这一分歧**只在问题二出现**。
 
 ### 4.2 水分场
 
 对同一薄环作干基水分质量守恒：
 
 $$\frac{\partial C}{\partial t}
-=\frac{1}{r}\frac{\partial}{\partial r}\left(r\,D(C,T)\frac{\partial C}{\partial r}\right)
-\label{eq:C}\tag{2}$$
+=\frac{1}{r}\frac{\partial}{\partial r}\left(r\,D(C,T)\frac{\partial C}{\partial r}\right)$$
 
 ### 4.3 附录 3 物性经验式
 
@@ -136,8 +173,7 @@ $$q_{\rm cond}+q_{\rm conv}=q_{\rm evap}$$
 
 $$\boxed{\ -k\left.\frac{\partial T}{\partial r}\right|_{r=R}
 =h\left[T(R,t)-T_\infty(t)\right]+q_{\rm evap}\ },\qquad
-q_{\rm evap}=H_{\rm evap}\,\phi_w\big|_R
-\label{eq:bcT_evap}\tag{3'}$$
+q_{\rm evap}=H_{\rm evap}\,\phi_w\big|_R$$
 
 其中 $\phi_w|_R$ 为表面水分通量。与题面给定的传质边界（式 4）联立，在表面上恒有
 
@@ -145,8 +181,7 @@ $$\phi_w\big|_R=h_m\left[C(R,t)-C_\infty(t)\right]$$
 
 （蒸发质量通量 = 对流带走的量），故最终
 
-$$\boxed{\ q_{\rm evap}=H_{\rm evap}\,h_m\left[C(R,t)-C_\infty(t)\right]\ }
-\label{eq:qevap}\tag{3''}$$
+$$\boxed{\ q_{\rm evap}=H_{\rm evap}\,h_m\left[C(R,t)-C_\infty(t)\right]\ }$$
 
 **符号约定的一致性**：式 (3'') 采用与题面边界条件（式 3、4）**相同的通量口径**——
 传质边界 $-D\,\partial_rC=h_m(C-C_\infty)$ 中两侧同为"以浓度梯度表示的通量"，
@@ -628,6 +663,18 @@ M^{L,C}_{00}=\frac{\Delta r^2}{6},\qquad M^{L,C}_{MM}=\frac{\Delta r^2(3M-1)}{6}
 > **代价**：集中质量使空间精度由 $O(\Delta r^2)$ 降至 $O(\Delta r)$（超收敛点消失）。
 > 对本题四位小数的报告精度，需通过网格收敛性验证确认（见 §12）。
 
+> **$r=0$ 节点的已知弱点（必须交代）**：行和集中使 $M^L_{00}=\rho c_p\Delta r^2/6$，
+> 而节点 $r_0=0$ 处的精确半控制体热容是 $\rho c_p\Delta r^2/8$；刚度项在两种口径下
+> 都是 $k\Delta r/2/\Delta r=k/2$，故 $r=0$ 的等效方程为
+> $$\text{集中质量：}\ \dot T_0=\frac{3\alpha}{\Delta r^2}(T_1-T_0),\qquad
+> \text{精确（柱坐标 }r\to0\text{）：}\ \dot T_0=\frac{4\alpha}{\Delta r^2}(T_1-T_0)$$
+> 即集中质量在 $r=0$ 的系数恰为精确值的 $3/4$，**与 $M$ 无关**，属局部不一致。
+> 内部节点（$1\le i\le M-1$）两种口径**逐项完全相同**（均为 $\rho c_p\Delta r\,r_i$），
+> 故该不一致只影响中心附近的一层网格。其定量影响见 `src/q2_center_node.py` 与
+> `model/problem2_slove.md` §5.3、§7.3：生产网格上该项误差低于四位小数阈值。
+> 若要求 $r=0$ 也严格一致，把 $M^L_{00}$ 换成 $\rho c_p\Delta r^2/8$ 即可
+> （求解器中 `Par(boundary="halfcv")`），本文以其作为对照口径。
+
 ---
 
 ## 10 时间离散（后向 Euler）
@@ -844,6 +891,16 @@ for n = 0, 1, 2, ... (直到 t = 10800 s):
 2. **稳定性**：后向 Euler 无条件稳定；集中质量矩阵使离散算子的正性更易保持；
 3. **极值原理**：温度应始终位于 $\left[\min(T_0,\min_tT_\infty),\ \max(T_0,\max_tT_\infty)\right]$
    包络内，含水率单调不增（在 $C_\infty<C$ 时）——作为**硬性检验标准**；
+
+   > **更正（由数值验证发现）**：含蒸发吸热时**经典极值原理的下界不再成立**。
+   > 蒸发从表面取热，可使表面温度**低于初温与环境温度**。实测
+   > （$M=400$、$\Delta t=1/16\ \mathrm s$）：计算温度下界 $27.9905\ ^\circ\mathrm C$，
+   > 低于包络下界 $28.0000\ ^\circ\mathrm C$ 达 $0.0095\ \mathrm K$；而关闭蒸发项
+   > （$H_{\rm evap}=0$）后下界回到 $28.0000\ ^\circ\mathrm C$，越界 $0.000000\ \mathrm K$。
+   > 故问题二的极值原理应表述为
+   > $$T(r,t)\le\max\big(T_0,\max_tT_\infty\big),\qquad
+   > T(r,t)\ge\min\big(T_0,\min_tT_\infty\big)-q_{\rm evap}^{\max}/h$$
+   > **上界**仍然成立（实测 $\max T=49.8888\ ^\circ\mathrm C<50.2460\ ^\circ\mathrm C$）。
 4. **收敛性**：空间 $O(\Delta r)$（线性单元 + 集中质量）、时间 $O(\Delta t)$
    （后向 Euler），需通过收敛性验证确认四位小数精度。
 

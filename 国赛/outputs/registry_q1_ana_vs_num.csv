@@ -20,108 +20,143 @@ H03,该差值 / 四位小数阈值 5e-5,0.14991419448052,倍,解析比值,run S2
 HA_T100_r0,"T 解析解 (t=100s, r=0cm)",28.000048849858,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T100_r0,"T 数值解 (t=100s, r=0cm)",28.000048906517,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T100_r0,"T 差 数值-解析 (t=100s, r=0cm)",5.6659303027118e-08,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T100_r0,"tex表C 偏差书写值 (t=100s, r=0cm, 单位 1e-6 K)",0.0567,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T100_r0.5,"T 解析解 (t=100s, r=0.5cm)",28.000323073697,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T100_r0.5,"T 数值解 (t=100s, r=0.5cm)",28.000323258983,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T100_r0.5,"T 差 数值-解析 (t=100s, r=0.5cm)",1.852862396845e-07,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T100_r0.5,"tex表C 偏差书写值 (t=100s, r=0.5cm, 单位 1e-6 K)",0.185,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T100_r1.0,"T 解析解 (t=100s, r=1.0cm)",28.003849211337,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T100_r1.0,"T 数值解 (t=100s, r=1.0cm)",28.003850024595,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T100_r1.0,"T 差 数值-解析 (t=100s, r=1.0cm)",8.1325782730346e-07,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T100_r1.0,"tex表C 偏差书写值 (t=100s, r=1.0cm, 单位 1e-6 K)",0.813,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T100_r1.5,"T 解析解 (t=100s, r=1.5cm)",28.031876340474,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T100_r1.5,"T 数值解 (t=100s, r=1.5cm)",28.031878406996,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T100_r1.5,"T 差 数值-解析 (t=100s, r=1.5cm)",2.066522313271e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T100_r1.5,"tex表C 偏差书写值 (t=100s, r=1.5cm, 单位 1e-6 K)",2.07,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T100_r2.0,"T 解析解 (t=100s, r=2.0cm)",28.179527245258,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T100_r2.0,"T 数值解 (t=100s, r=2.0cm)",28.179529659162,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T100_r2.0,"T 差 数值-解析 (t=100s, r=2.0cm)",2.4139039283e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T100_r2.0,"tex表C 偏差书写值 (t=100s, r=2.0cm, 单位 1e-6 K)",2.41,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T300_r0,"T 解析解 (t=300s, r=0cm)",28.040629512058,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T300_r0,"T 数值解 (t=300s, r=0cm)",28.040632423745,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T300_r0,"T 差 数值-解析 (t=300s, r=0cm)",2.9116872610757e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T300_r0,"tex表C 偏差书写值 (t=300s, r=0cm, 单位 1e-6 K)",2.91,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T300_r0.5,"T 解析解 (t=300s, r=0.5cm)",28.063370041501,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T300_r0.5,"T 数值解 (t=300s, r=0.5cm)",28.063373121769,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T300_r0.5,"T 差 数值-解析 (t=300s, r=0.5cm)",3.0802674473307e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T300_r0.5,"tex表C 偏差书写值 (t=300s, r=0.5cm, 单位 1e-6 K)",3.08,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T300_r1.0,"T 解析解 (t=300s, r=1.0cm)",28.151285426648,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T300_r1.0,"T 数值解 (t=300s, r=1.0cm)",28.15128885148,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T300_r1.0,"T 差 数值-解析 (t=300s, r=1.0cm)",3.4248316751473e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T300_r1.0,"tex表C 偏差书写值 (t=300s, r=1.0cm, 单位 1e-6 K)",3.42,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T300_r1.5,"T 解析解 (t=300s, r=1.5cm)",28.367251523861,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T300_r1.5,"T 数值解 (t=300s, r=1.5cm)",28.367255544385,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T300_r1.5,"T 差 数值-解析 (t=300s, r=1.5cm)",4.0205242157754e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T300_r1.5,"tex表C 偏差书写值 (t=300s, r=1.5cm, 单位 1e-6 K)",4.02,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T300_r2.0,"T 解析解 (t=300s, r=2.0cm)",28.848593899398,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T300_r2.0,"T 数值解 (t=300s, r=2.0cm)",28.848597567789,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T300_r2.0,"T 差 数值-解析 (t=300s, r=2.0cm)",3.6683904340862e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T300_r2.0,"tex表C 偏差书写值 (t=300s, r=2.0cm, 单位 1e-6 K)",3.67,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T600_r0,"T 解析解 (t=600s, r=0cm)",28.453346781049,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T600_r0,"T 数值解 (t=600s, r=0cm)",28.453353034773,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T600_r0,"T 差 数值-解析 (t=600s, r=0cm)",6.2537236544813e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T600_r0,"tex表C 偏差书写值 (t=600s, r=0cm, 单位 1e-6 K)",6.25,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T600_r0.5,"T 解析解 (t=600s, r=0.5cm)",28.536058117571,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T600_r0.5,"T 数值解 (t=600s, r=0.5cm)",28.536064196039,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T600_r0.5,"T 差 数值-解析 (t=600s, r=0.5cm)",6.0784672655245e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T600_r0.5,"tex表C 偏差书写值 (t=600s, r=0.5cm, 单位 1e-6 K)",6.08,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T600_r1.0,"T 解析解 (t=600s, r=1.0cm)",28.803882291411,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T600_r1.0,"T 数值解 (t=600s, r=1.0cm)",28.803887916528,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T600_r1.0,"T 差 数值-解析 (t=600s, r=1.0cm)",5.6251174669342e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T600_r1.0,"tex表C 偏差书写值 (t=600s, r=1.0cm, 单位 1e-6 K)",5.63,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T600_r1.5,"T 解析解 (t=600s, r=1.5cm)",29.315546925028,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T600_r1.5,"T 数值解 (t=600s, r=1.5cm)",29.315551714799,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T600_r1.5,"T 差 数值-解析 (t=600s, r=1.5cm)",4.7897709691824e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T600_r1.5,"tex表C 偏差书写值 (t=600s, r=1.5cm, 单位 1e-6 K)",4.79,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T600_r2.0,"T 解析解 (t=600s, r=2.0cm)",30.164077216547,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T600_r2.0,"T 数值解 (t=600s, r=2.0cm)",30.1640808211,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T600_r2.0,"T 差 数值-解析 (t=600s, r=2.0cm)",3.6045529441253e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T600_r2.0,"tex表C 偏差书写值 (t=600s, r=2.0cm, 单位 1e-6 K)",3.6,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T900_r0,"T 解析解 (t=900s, r=0cm)",29.324295061932,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T900_r0,"T 数值解 (t=900s, r=0cm)",29.324302557642,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T900_r0,"T 差 数值-解析 (t=900s, r=0cm)",7.4957097240258e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T900_r0,"tex表C 偏差书写值 (t=900s, r=0cm, 单位 1e-6 K)",7.5,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T900_r0.5,"T 解析解 (t=900s, r=0.5cm)",29.458321983675,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T900_r0.5,"T 数值解 (t=900s, r=0.5cm)",29.458329179385,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T900_r0.5,"T 差 数值-解析 (t=900s, r=0.5cm)",7.1957096565711e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T900_r0.5,"tex表C 偏差书写值 (t=900s, r=0.5cm, 单位 1e-6 K)",7.2,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T900_r1.0,"T 解析解 (t=900s, r=1.0cm)",29.875748274442,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T900_r1.0,"T 数值解 (t=900s, r=1.0cm)",29.875754548043,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T900_r1.0,"T 差 数值-解析 (t=900s, r=1.0cm)",6.2736005475017e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T900_r1.0,"tex表C 偏差书写值 (t=900s, r=1.0cm, 单位 1e-6 K)",6.27,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T900_r1.5,"T 解析解 (t=900s, r=1.5cm)",30.616420210353,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T900_r1.5,"T 数值解 (t=900s, r=1.5cm)",30.616425141829,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T900_r1.5,"T 差 数值-解析 (t=900s, r=1.5cm)",4.9314755301566e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T900_r1.5,"tex表C 偏差书写值 (t=900s, r=1.5cm, 单位 1e-6 K)",4.93,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T900_r2.0,"T 解析解 (t=900s, r=2.0cm)",31.72952977783,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T900_r2.0,"T 数值解 (t=900s, r=2.0cm)",31.729533436104,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T900_r2.0,"T 差 数值-解析 (t=900s, r=2.0cm)",3.6582737266144e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T900_r2.0,"tex表C 偏差书写值 (t=900s, r=2.0cm, 单位 1e-6 K)",3.66,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1200_r0,"T 解析解 (t=1200s, r=0cm)",30.542892869855,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1200_r0,"T 数值解 (t=1200s, r=0cm)",30.542899990967,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1200_r0,"T 差 数值-解析 (t=1200s, r=0cm)",7.1211114232028e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1200_r0,"tex表C 偏差书写值 (t=1200s, r=0cm, 单位 1e-6 K)",7.12,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1200_r0.5,"T 解析解 (t=1200s, r=0.5cm)",30.709928544883,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1200_r0.5,"T 数值解 (t=1200s, r=0.5cm)",30.709935469219,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1200_r0.5,"T 差 数值-解析 (t=1200s, r=0.5cm)",6.9243357643245e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1200_r0.5,"tex表C 偏差书写值 (t=1200s, r=0.5cm, 单位 1e-6 K)",6.92,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1200_r1.0,"T 解析解 (t=1200s, r=1.0cm)",31.222524383994,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1200_r1.0,"T 数值解 (t=1200s, r=1.0cm)",31.222530644046,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1200_r1.0,"T 差 数值-解析 (t=1200s, r=1.0cm)",6.2600527712675e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1200_r1.0,"tex表C 偏差书写值 (t=1200s, r=1.0cm, 单位 1e-6 K)",6.26,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1200_r1.5,"T 解析解 (t=1200s, r=1.5cm)",32.113002719808,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1200_r1.5,"T 数值解 (t=1200s, r=1.5cm)",32.113007946875,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1200_r1.5,"T 差 数值-解析 (t=1200s, r=1.5cm)",5.2270672199484e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1200_r1.5,"tex表C 偏差书写值 (t=1200s, r=1.5cm, 单位 1e-6 K)",5.23,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1200_r2.0,"T 解析解 (t=1200s, r=2.0cm)",33.429460743595,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1200_r2.0,"T 数值解 (t=1200s, r=2.0cm)",33.429464630066,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1200_r2.0,"T 差 数值-解析 (t=1200s, r=2.0cm)",3.8864703810759e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1200_r2.0,"tex表C 偏差书写值 (t=1200s, r=2.0cm, 单位 1e-6 K)",3.89,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1500_r0,"T 解析解 (t=1500s, r=0cm)",31.995971184837,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1500_r0,"T 数值解 (t=1500s, r=0cm)",31.995977686923,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1500_r0,"T 差 数值-解析 (t=1500s, r=0cm)",6.502085966531e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1500_r0,"tex表C 偏差书写值 (t=1500s, r=0cm, 单位 1e-6 K)",6.5,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1500_r0.5,"T 解析解 (t=1500s, r=0.5cm)",32.187050239795,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1500_r0.5,"T 数值解 (t=1500s, r=0.5cm)",32.187056480969,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1500_r0.5,"T 差 数值-解析 (t=1500s, r=0.5cm)",6.2411747876467e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1500_r0.5,"tex表C 偏差书写值 (t=1500s, r=0.5cm, 单位 1e-6 K)",6.24,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1500_r1.0,"T 解析解 (t=1500s, r=1.0cm)",32.766680476029,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1500_r1.0,"T 数值解 (t=1500s, r=1.0cm)",32.766685855356,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1500_r1.0,"T 差 数值-解析 (t=1500s, r=1.0cm)",5.37932652378e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1500_r1.0,"tex表C 偏差书写值 (t=1500s, r=1.0cm, 单位 1e-6 K)",5.38,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1500_r1.5,"T 解析解 (t=1500s, r=1.5cm)",33.74760915605,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1500_r1.5,"T 数值解 (t=1500s, r=1.5cm)",33.747613017124,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1500_r1.5,"T 差 数值-解析 (t=1500s, r=1.5cm)",3.8610734804934e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1500_r1.5,"tex表C 偏差书写值 (t=1500s, r=1.5cm, 单位 1e-6 K)",3.86,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1500_r2.0,"T 解析解 (t=1500s, r=2.0cm)",35.121128705966,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1500_r2.0,"T 数值解 (t=1500s, r=2.0cm)",35.121131270907,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1500_r2.0,"T 差 数值-解析 (t=1500s, r=2.0cm)",2.564940530192e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1500_r2.0,"tex表C 偏差书写值 (t=1500s, r=2.0cm, 单位 1e-6 K)",2.56,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1800_r0,"T 解析解 (t=1800s, r=0cm)",33.575830890354,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1800_r0,"T 数值解 (t=1800s, r=0cm)",33.575835573654,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1800_r0,"T 差 数值-解析 (t=1800s, r=0cm)",4.6833000624247e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1800_r0,"tex表C 偏差书写值 (t=1800s, r=0cm, 单位 1e-6 K)",4.68,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1800_r0.5,"T 解析解 (t=1800s, r=0.5cm)",33.772371011495,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1800_r0.5,"T 数值解 (t=1800s, r=0.5cm)",33.772375619031,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1800_r0.5,"T 差 数值-解析 (t=1800s, r=0.5cm)",4.6075364821263e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1800_r0.5,"tex表C 偏差书写值 (t=1800s, r=0.5cm, 单位 1e-6 K)",4.61,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1800_r1.0,"T 解析解 (t=1800s, r=1.0cm)",34.364230040376,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1800_r1.0,"T 数值解 (t=1800s, r=1.0cm)",34.36423443552,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1800_r1.0,"T 差 数值-解析 (t=1800s, r=1.0cm)",4.395143776037e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1800_r1.0,"tex表C 偏差书写值 (t=1800s, r=1.0cm, 单位 1e-6 K)",4.4,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1800_r1.5,"T 解析解 (t=1800s, r=1.5cm)",35.362161981208,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1800_r1.5,"T 数值解 (t=1800s, r=1.5cm)",35.362165744317,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1800_r1.5,"T 差 数值-解析 (t=1800s, r=1.5cm)",3.7631091913681e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1800_r1.5,"tex表C 偏差书写值 (t=1800s, r=1.5cm, 单位 1e-6 K)",3.76,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 HA_T1800_r2.0,"T 解析解 (t=1800s, r=2.0cm)",36.785783757101,degC,解析精确,run S2,python src/q1_analytic_vs_numeric.py,
 HN_T1800_r2.0,"T 数值解 (t=1800s, r=2.0cm)",36.785786509038,degC,vs 解析 <1e-5 K,run S2,python src/q1_analytic_vs_numeric.py,
 HD_T1800_r2.0,"T 差 数值-解析 (t=1800s, r=2.0cm)",2.7519372451934e-06,K,解析差值,run S2,python src/q1_analytic_vs_numeric.py,
+HT_T1800_r2.0,"tex表C 偏差书写值 (t=1800s, r=2.0cm, 单位 1e-6 K)",2.75,1e-6 K,tex 表C 书写值,run S2,python src/q1_analytic_vs_numeric.py,3 位有效数字
 H04,21半径 x 7时刻 max|数值-解析|,7.4957097240258e-06,K,vs 解析解,run S2,python src/q1_analytic_vs_numeric.py,
 H05_r0,r=0.0cm max|数值-解析|,7.4957097240258e-06,K,vs 解析解,run S2,python src/q1_analytic_vs_numeric.py,
 H05_r0,r=0.1cm max|数值-解析|,7.4843273409897e-06,K,vs 解析解,run S2,python src/q1_analytic_vs_numeric.py,
@@ -171,6 +206,7 @@ H11_M1600_space,空间误差指标 max|T(M)-T(2M)| (dt=2^-8),2.1683348450097e-07
 H11r_M1600,空间收敛比值 (M=1600),4.0141575404862,-,解析比值,run S3b,python src/q1_analytic_vs_numeric.py,→4 即二阶
 H11o_M1600,空间收敛经验阶 (M=1600),2.00509723813,-,解析,run S3b,python src/q1_analytic_vs_numeric.py,
 H12,空间误差估计 max|T(1600)-T(3200)| (dt=2^-8),2.1683348450097e-07,K,M对2M,run S3b,python src/q1_analytic_vs_numeric.py,生产设置下的空间误差上界
+H12b,Richardson 外推的空间误差估计 (M=3200),7.2277828166989e-08,K,"Richardson, p=2",run S3b,python src/q1_analytic_vs_numeric.py,e ~ d/(2^p - 1)
 H13,时间误差/空间误差 之比 (生产设置),34.568967709378,倍,解析比值,run S3b,python src/q1_analytic_vs_numeric.py,>1 说明时间误差主导
 H20_PCHIP_PCHIP,环境 PCHIP(数值) vs PCHIP(解析) max|dT|,2.3965512639279e-05,K,含环境处理差异,run S4,python src/q1_analytic_vs_numeric.py,
 H20_PCHIP_三次拟合,环境 PCHIP(数值) vs 三次拟合(解析) max|dT|,0.019641111832868,K,含环境处理差异,run S4,python src/q1_analytic_vs_numeric.py,

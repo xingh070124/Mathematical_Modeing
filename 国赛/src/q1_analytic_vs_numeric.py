@@ -184,6 +184,12 @@ def main():
                 "degC", "vs 解析 <1e-5 K", "run S2", "")
             add(f"HD_T{tt}_r{lab}", f"T 差 数值-解析 (t={tt}s, r={lab}cm)",
                 float(diff5[i, j]), "K", "解析差值", "run S2", "")
+            # tex 交叉验证节表 C 以 1e-6 K 为单位书写; 此处登记其"书写值",
+            # 使源码中的每个数字都有唯一来源 (3 位有效数字, 与文稿完全一致)
+            add(f"HT_T{tt}_r{lab}",
+                f"tex表C 偏差书写值 (t={tt}s, r={lab}cm, 单位 1e-6 K)",
+                float(f"{float(diff5[i, j]) * 1e6:.3g}"), "1e-6 K",
+                "tex 表C 书写值", "run S2", "3 位有效数字")
 
     mx_all = float(np.max(np.abs(diff)))
     say(f"\n  (d) 全部 21 输出半径 x 7 时刻 (覆盖 result1.xlsx 全部列)")

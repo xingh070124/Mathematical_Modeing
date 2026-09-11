@@ -84,14 +84,14 @@ problem1.md,56,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,输出位置�
 problem1.md,58,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"> 说明：本文未对完整二维轴对称模型作数值对比，因此 A2 的""远端截面""部分属于"
 problem1.md,66,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,长度 $1 \mathrm{m}$ 分析。
 problem1.md,70,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,- 侧面积（半径 $r$ 的侧面）：$A(r)=2\pi r$
-problem1.md,75,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$(1)/(r)(\partial)/(\partial r)\left(r(\partial \phi)/(\partial r)\right)
-problem1.md,90,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,= (1)/(r)(\partial)/(\partial r)\left(kr(\partial T)/(\partial r)\right)$$
+problem1.md,75,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$(1)/(r)(\partial)/(\partial r)(r(\partial \phi)/(\partial r))
+problem1.md,90,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,= (1)/(r)(\partial)/(\partial r)(kr(\partial T)/(\partial r))$$
 problem1.md,92,4,4.0,ALLOW,结构/常数,0.0,$k$ 为常数（假设 A4），可移至微分号外；两边除以 $\rho c_p$：
 problem1.md,100,5,5.0,ALLOW,结构/常数,0.0,对同一薄环作干基水分的质量守恒（忽略对流携带项，假设 A5）：
-problem1.md,103,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,=(1)/(r)(\partial)/(\partial r)\left(rD(C)(\partial C)/(\partial r)\right) }$$
+problem1.md,103,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,=(1)/(r)(\partial)/(\partial r)(rD(C)(\partial C)/(\partial r)) }$$
 problem1.md,105,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,其中（附录 2）
-problem1.md,107,7e-9,7e-09,ALLOW,附录2: 扩散系数系数,0.0,$$D(C)=7e-9\exp\!\left(-(0.89)/(C)\right)\quad (\mathrm{m/s}).$$
-problem1.md,107,0.89,0.89,ALLOW,附录2: 扩散系数指数常数,0.0,$$D(C)=7e-9\exp\!\left(-(0.89)/(C)\right)\quad (\mathrm{m/s}).$$
+problem1.md,107,7e-9,7e-09,ALLOW,附录2: 扩散系数系数,0.0,$$D(C)=7e-9\exp\!(-(0.89)/(C))  (\mathrm{m/s}).$$
+problem1.md,107,0.89,0.89,ALLOW,附录2: 扩散系数指数常数,0.0,$$D(C)=7e-9\exp\!(-(0.89)/(C))  (\mathrm{m/s}).$$
 problem1.md,109,2.55,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,**非线性来源**：$D$ 随 $C$ 呈指数变化。在 $C=2.55$ 处 $D=4.9377e-9 \mathrm{m/s}$；
 problem1.md,109,4.9377e-9,4.9377e-09,REGISTRY,F05,4.491e-14,**非线性来源**：$D$ 随 $C$ 呈指数变化。在 $C=2.55$ 处 $D=4.9377e-9 \mathrm{m/s}$；
 problem1.md,110,3,3.0,ALLOW,3 小时,0.0,在问题 3 的干燥目标 $C=0.15$ 处 $D=1.8547e-11 \mathrm{m/s}$；
@@ -135,14 +135,14 @@ problem1.md,142,3,3.0,ALLOW,3 小时,0.0,但为与问题 2 ~ 4（附录 3、4 �
 problem1.md,142,4,4.0,ALLOW,结构/常数,0.0,但为与问题 2 ~ 4（附录 3、4 的 $D$ 含 Arrhenius 温度项）保持一致，本文统一使用
 problem1.md,149,0,0.0,ALLOW,零,0.0,### 6.1 初始条件（$t=0$，$0\le r\le R$）
 problem1.md,149,0,0.0,ALLOW,零,0.0,### 6.1 初始条件（$t=0$，$0\le r\le R$）
-problem1.md,151,0,0.0,ALLOW,零,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad C(r,0)=C=2.55 \mathrm{kg/kg}$$"
-problem1.md,151,28,28.0,ALLOW,题面: 初始温度 28 degC,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad C(r,0)=C=2.55 \mathrm{kg/kg}$$"
-problem1.md,151,301.15,301.15,ALLOW,题面: T0 = 28 degC = 301.15 K,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad C(r,0)=C=2.55 \mathrm{kg/kg}$$"
-problem1.md,151,0,0.0,ALLOW,零,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad C(r,0)=C=2.55 \mathrm{kg/kg}$$"
-problem1.md,151,2.55,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad C(r,0)=C=2.55 \mathrm{kg/kg}$$"
+problem1.md,151,0,0.0,ALLOW,零,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},  C(r,0)=C=2.55 \mathrm{kg/kg}$$"
+problem1.md,151,28,28.0,ALLOW,题面: 初始温度 28 degC,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},  C(r,0)=C=2.55 \mathrm{kg/kg}$$"
+problem1.md,151,301.15,301.15,ALLOW,题面: T0 = 28 degC = 301.15 K,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},  C(r,0)=C=2.55 \mathrm{kg/kg}$$"
+problem1.md,151,0,0.0,ALLOW,零,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},  C(r,0)=C=2.55 \mathrm{kg/kg}$$"
+problem1.md,151,2.55,2.55,ALLOW,题面: 初始含水率 2.55 kg/kg,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},  C(r,0)=C=2.55 \mathrm{kg/kg}$$"
 problem1.md,153,0,0.0,ALLOW,零,0.0,### 6.2 中心对称条件（$r=0$）
-problem1.md,157,0,0.0,ALLOW,零,0.0,"$$\left.(\partial T)/(\partial r)\right|=0,\qquad"
-problem1.md,158,0,0.0,ALLOW,零,0.0,\left.(\partial C)/(\partial r)\right|=0.$$
+problem1.md,157,0,0.0,ALLOW,零,0.0,"$$.(\partial T)/(\partial r)|=0,"
+problem1.md,158,0,0.0,ALLOW,零,0.0,.(\partial C)/(\partial r)|=0.$$
 problem1.md,175,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,附件 1 给出离散值（$\Delta t=60 \mathrm{s}$），需插值为连续函数。本文采用**保形分段三
 problem1.md,175,60,60.0,ALLOW,附件1 采样间隔 60 s,0.0,附件 1 给出离散值（$\Delta t=60 \mathrm{s}$），需插值为连续函数。本文采用**保形分段三
 problem1.md,176,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,次插值（PCHIP）**，理由：附件 1 的水分浓度序列含明显测量噪声——240 个时间步中有
@@ -207,14 +207,14 @@ problem1.md,244,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,但问题 2 ~
 problem1.md,244,4,4.0,ALLOW,结构/常数,0.0,但问题 2 ~ 4 的附录 3、4 给出的扩散系数为
 problem1.md,244,3,3.0,ALLOW,3 小时,0.0,但问题 2 ~ 4 的附录 3、4 给出的扩散系数为
 problem1.md,244,4,4.0,ALLOW,结构/常数,0.0,但问题 2 ~ 4 的附录 3、4 给出的扩散系数为
-problem1.md,246,2.4e-3,0.0024,ALLOW,附录3: D 的系数,0.0,$$D=2.4e-3\exp\!\left(-(0.45)/(C)\right)\exp\!\left(-(3850)/(T)\right)
-problem1.md,246,0.45,0.45,ALLOW,附录3: D 的指数常数,0.0,$$D=2.4e-3\exp\!\left(-(0.45)/(C)\right)\exp\!\left(-(3850)/(T)\right)
-problem1.md,246,3850,3850.0,ALLOW,附录3/4: D 的 Arrhenius 常数,0.0,$$D=2.4e-3\exp\!\left(-(0.45)/(C)\right)\exp\!\left(-(3850)/(T)\right)
-problem1.md,247,3,3.0,ALLOW,3 小时,0.0,"\quad(\text{附录 3}),\qquad"
-problem1.md,248,4.2e-4,0.00042,ALLOW,附录4: D 的系数,0.0,D=4.2e-4\exp\!\left(-(0.30)/(C)\right)\exp\!\left(-(3850)/(T)\right)
-problem1.md,248,0.30,0.3,ALLOW,附录4: D 的指数常数,0.0,D=4.2e-4\exp\!\left(-(0.30)/(C)\right)\exp\!\left(-(3850)/(T)\right)
-problem1.md,248,3850,3850.0,ALLOW,附录3/4: D 的 Arrhenius 常数,0.0,D=4.2e-4\exp\!\left(-(0.30)/(C)\right)\exp\!\left(-(3850)/(T)\right)
-problem1.md,249,4,4.0,ALLOW,结构/常数,0.0,"\quad(\text{附录 4}),$$"
+problem1.md,246,2.4e-3,0.0024,ALLOW,附录3: D 的系数,0.0,$$D=2.4e-3\exp\!(-(0.45)/(C))\exp\!(-(3850)/(T))
+problem1.md,246,0.45,0.45,ALLOW,附录3: D 的指数常数,0.0,$$D=2.4e-3\exp\!(-(0.45)/(C))\exp\!(-(3850)/(T))
+problem1.md,246,3850,3850.0,ALLOW,附录3/4: D 的 Arrhenius 常数,0.0,$$D=2.4e-3\exp\!(-(0.45)/(C))\exp\!(-(3850)/(T))
+problem1.md,247,3,3.0,ALLOW,3 小时,0.0,"(\text{附录 3}),"
+problem1.md,248,4.2e-4,0.00042,ALLOW,附录4: D 的系数,0.0,D=4.2e-4\exp\!(-(0.30)/(C))\exp\!(-(3850)/(T))
+problem1.md,248,0.30,0.3,ALLOW,附录4: D 的指数常数,0.0,D=4.2e-4\exp\!(-(0.30)/(C))\exp\!(-(3850)/(T))
+problem1.md,248,3850,3850.0,ALLOW,附录3/4: D 的 Arrhenius 常数,0.0,D=4.2e-4\exp\!(-(0.30)/(C))\exp\!(-(3850)/(T))
+problem1.md,249,4,4.0,ALLOW,结构/常数,0.0,"(\text{附录 4}),$$"
 problem1.md,251,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,**含温度**。因此从问题 2 起温度场与水分场是**双向耦合**的，不能再当作独立过程处理。
 problem1.md,259,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,1. **适定性**：$\alpha>0$ 常数、$D(C)>0$，两个方程均为一致抛物型；初值有界且
 problem1.md,259,0,0.0,ALLOW,零,0.0,1. **适定性**：$\alpha>0$ 常数、$D(C)>0$，两个方程均为一致抛物型；初值有界且
@@ -230,17 +230,17 @@ problem1.md,275,0,0.0,ALLOW,零,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ �
 problem1.md,275,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ 为 10 的整数倍时恰好落在节点上，可直接取值而"
 problem1.md,275,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ 为 10 的整数倍时恰好落在节点上，可直接取值而"
 problem1.md,275,10,10.0,ALLOW,结构/常数,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ 为 10 的整数倍时恰好落在节点上，可直接取值而"
-problem1.md,280,12,12.0,ALLOW,结构,0.0,"$$r=\left(i\pm\tfrac12\right)\Delta r,\qquad"
-problem1.md,281,0,0.0,ALLOW,零,0.0,"r=0,\quad r=R .$$"
-problem1.md,283,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,控制体体积（单位轴向长度已约去 $2\pi$）：$V_i=\pi\left(r-r\right)$；
+problem1.md,280,12,12.0,ALLOW,结构,0.0,"$$r=(i\pm\tfrac12)\Delta r,"
+problem1.md,281,0,0.0,ALLOW,零,0.0,"r=0,  r=R .$$"
+problem1.md,283,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,控制体体积（单位轴向长度已约去 $2\pi$）：$V_i=\pi(r-r)$；
 problem1.md,284,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,界面面积：$A=2\pi r$。
-problem1.md,288,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r\left[(i+\frac12)-(i-\frac12)\right]
-problem1.md,288,12,12.0,ALLOW,结构,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r\left[(i+\frac12)-(i-\frac12)\right]
-problem1.md,288,12,12.0,ALLOW,结构,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r\left[(i+\frac12)-(i-\frac12)\right]
-problem1.md,288,12,12.0,ALLOW,结构,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r\left[(i+\frac12)-(i-\frac12)\right]
-problem1.md,289,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"=(2i+1)/(2i\Delta r)=:f_i,\qquad"
-problem1.md,289,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"=(2i+1)/(2i\Delta r)=:f_i,\qquad"
-problem1.md,289,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"=(2i+1)/(2i\Delta r)=:f_i,\qquad"
+problem1.md,288,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r[(i+\frac12)-(i-\frac12)])
+problem1.md,288,12,12.0,ALLOW,结构,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r[(i+\frac12)-(i-\frac12)])
+problem1.md,288,12,12.0,ALLOW,结构,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r[(i+\frac12)-(i-\frac12)])
+problem1.md,288,12,12.0,ALLOW,结构,0.0,$$\frac{A}{V_i}=(2\pi(i+\frac12)\Delta r)/(\pi\Delta r[(i+\frac12)-(i-\frac12)])
+problem1.md,289,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"=(2i+1)/(2i\Delta r)=:f_i,"
+problem1.md,289,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"=(2i+1)/(2i\Delta r)=:f_i,"
+problem1.md,289,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"=(2i+1)/(2i\Delta r)=:f_i,"
 problem1.md,290,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,\frac{A}{V_i}=(2i-1)/(2i\Delta r)=:f_i.$$
 problem1.md,290,-1,-1.0,REGISTRY,F65_diff,3.861e-01,\frac{A}{V_i}=(2i-1)/(2i\Delta r)=:f_i.$$
 problem1.md,290,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,\frac{A}{V_i}=(2i-1)/(2i\Delta r)=:f_i.$$
@@ -252,24 +252,24 @@ problem1.md,313,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_i+f_i=((
 problem1.md,313,4,4.0,ALLOW,结构/常数,0.0,"$$f_i+f_i=((2i+1)+(2i-1))/(2i\Delta r)=(4i)/(2i\Delta r)=(2)/(\Delta r),$$"
 problem1.md,313,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_i+f_i=((2i+1)+(2i-1))/(2i\Delta r)=(4i)/(2i\Delta r)=(2)/(\Delta r),$$"
 problem1.md,313,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_i+f_i=((2i+1)+(2i-1))/(2i\Delta r)=(4i)/(2i\Delta r)=(2)/(\Delta r),$$"
-problem1.md,317,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),\qquad"
-problem1.md,317,-1,-1.0,REGISTRY,F65_diff,3.861e-01,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),\qquad"
-problem1.md,317,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),\qquad"
-problem1.md,317,12,12.0,ALLOW,结构,0.0,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),\qquad"
-problem1.md,318,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"\boxed{b_i=-(2\alpha)/(\Delta r)},\qquad"
+problem1.md,317,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),"
+problem1.md,317,-1,-1.0,REGISTRY,F65_diff,3.861e-01,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),"
+problem1.md,317,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),"
+problem1.md,317,12,12.0,ALLOW,结构,0.0,"$$a_i=(\alpha(2i-1))/(2i\Delta r)=(\alpha(i-\frac12))/(i\Delta r),"
+problem1.md,318,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"\boxed{b_i=-(2\alpha)/(\Delta r)},"
 problem1.md,319,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,c_i=(\alpha(2i+1))/(2i\Delta r)=(\alpha(i+\frac12))/(i\Delta r).$$
 problem1.md,319,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,c_i=(\alpha(2i+1))/(2i\Delta r)=(\alpha(i+\frac12))/(i\Delta r).$$
 problem1.md,319,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,c_i=(\alpha(2i+1))/(2i\Delta r)=(\alpha(i+\frac12))/(i\Delta r).$$
 problem1.md,319,12,12.0,ALLOW,结构,0.0,c_i=(\alpha(2i+1))/(2i\Delta r)=(\alpha(i+\frac12))/(i\Delta r).$$
 problem1.md,322,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$(dT_i)/(dt)\approx\dfrac{T_i-T_i}{\Delta t}$，并要求右端在 $n+1$ 时刻取值：
-problem1.md,324,12,12.0,ALLOW,结构,0.0,$$\left(-(\alpha(i-\frac12))/(i\Delta r)\right)T
-problem1.md,325,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,+\left((2\alpha)/(\Delta r)+(1)/(\Delta t)\right)T_i
-problem1.md,325,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,+\left((2\alpha)/(\Delta r)+(1)/(\Delta t)\right)T_i
-problem1.md,326,12,12.0,ALLOW,结构,0.0,+\left(-(\alpha(i+\frac12))/(i\Delta r)\right)T
-problem1.md,331,12,12.0,ALLOW,结构,0.0,"$$\boxed{ a_i=-(\alpha(i-\frac12))/(i\Delta r),\quad"
-problem1.md,332,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),\quad"
-problem1.md,332,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),\quad"
-problem1.md,333,12,12.0,ALLOW,结构,0.0,"c_i=-(\alpha(i+\frac12))/(i\Delta r),\quad"
+problem1.md,324,12,12.0,ALLOW,结构,0.0,$$(-(\alpha(i-\frac12))/(i\Delta r))T
+problem1.md,325,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,+((2\alpha)/(\Delta r)+(1)/(\Delta t))T_i
+problem1.md,325,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,+((2\alpha)/(\Delta r)+(1)/(\Delta t))T_i
+problem1.md,326,12,12.0,ALLOW,结构,0.0,+(-(\alpha(i+\frac12))/(i\Delta r))T
+problem1.md,331,12,12.0,ALLOW,结构,0.0,"$$\boxed{ a_i=-(\alpha(i-\frac12))/(i\Delta r),"
+problem1.md,332,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),"
+problem1.md,332,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),"
+problem1.md,333,12,12.0,ALLOW,结构,0.0,"c_i=-(\alpha(i+\frac12))/(i\Delta r),"
 problem1.md,337,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> $$b_i^{\text{(原)}}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)
 problem1.md,337,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> $$b_i^{\text{(原)}}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)
 problem1.md,337,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> $$b_i^{\text{(原)}}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)
@@ -297,33 +297,33 @@ problem1.md,352,0,0.0,ALLOW,零,0.0,### 9.4 中心节点 $i=0$
 problem1.md,354,0,0.0,ALLOW,零,0.0,"控制体为 $[0,\Delta r/2]$，内侧界面 $r=0$，面积为零，无热流："
 problem1.md,354,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"控制体为 $[0,\Delta r/2]$，内侧界面 $r=0$，面积为零，无热流："
 problem1.md,354,0,0.0,ALLOW,零,0.0,"控制体为 $[0,\Delta r/2]$，内侧界面 $r=0$，面积为零，无热流："
-problem1.md,357,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"V=\pi\left((\Delta r)/(2)\right),\quad A=2\pi(\Delta r)/(2)=\pi\Delta r .$$"
-problem1.md,357,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"V=\pi\left((\Delta r)/(2)\right),\quad A=2\pi(\Delta r)/(2)=\pi\Delta r .$$"
-problem1.md,357,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"V=\pi\left((\Delta r)/(2)\right),\quad A=2\pi(\Delta r)/(2)=\pi\Delta r .$$"
+problem1.md,357,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"V=\pi((\Delta r)/(2)),  A=2\pi(\Delta r)/(2)=\pi\Delta r .$$"
+problem1.md,357,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"V=\pi((\Delta r)/(2)),  A=2\pi(\Delta r)/(2)=\pi\Delta r .$$"
+problem1.md,357,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"V=\pi((\Delta r)/(2)),  A=2\pi(\Delta r)/(2)=\pi\Delta r .$$"
 problem1.md,359,4,4.0,ALLOW,结构/常数,0.0,$$\frac{A}{V}=(\pi\Delta r)/(\pi\Delta r/4)=(4)/(\Delta r)$$
 problem1.md,359,4,4.0,ALLOW,结构/常数,0.0,$$\frac{A}{V}=(\pi\Delta r)/(\pi\Delta r/4)=(4)/(\Delta r)$$
-problem1.md,363,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"$$\boxed{ b=(1)/(\Delta t)+(4\alpha)/(\Delta r),\qquad"
-problem1.md,363,4,4.0,ALLOW,结构/常数,0.0,"$$\boxed{ b=(1)/(\Delta t)+(4\alpha)/(\Delta r),\qquad"
-problem1.md,364,4,4.0,ALLOW,结构/常数,0.0,"c=-(4\alpha)/(\Delta r),\qquad d=\frac{T}{\Delta t} }$$"
+problem1.md,363,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"$$\boxed{ b=(1)/(\Delta t)+(4\alpha)/(\Delta r),"
+problem1.md,363,4,4.0,ALLOW,结构/常数,0.0,"$$\boxed{ b=(1)/(\Delta t)+(4\alpha)/(\Delta r),"
+problem1.md,364,4,4.0,ALLOW,结构/常数,0.0,"c=-(4\alpha)/(\Delta r),  d=\frac{T}{\Delta t} }$$"
 problem1.md,366,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 该式与原始思路一致（原始思路由 L'Hôpital 法则得到 $\partial_tT|=2\alpha\partialT|$
 problem1.md,371,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"表面节点控制体为半控制体 $[R-\Delta r/2, R]$，内侧面 $A=2\pi(R-\Delta r/2)$，"
 problem1.md,371,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"表面节点控制体为半控制体 $[R-\Delta r/2, R]$，内侧面 $A=2\pi(R-\Delta r/2)$，"
 problem1.md,371,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"表面节点控制体为半控制体 $[R-\Delta r/2, R]$，内侧面 $A=2\pi(R-\Delta r/2)$，"
 problem1.md,372,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,外表面即 $r=R$，$A_s=2\pi R$。能量平衡中，外侧界面**不再用差分近似**，而是直接代入
-problem1.md,382,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_M=(1)/(\Delta t)+\frac{\alpha f_M}{\Delta r}+g_h,\qquad"
+problem1.md,382,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_M=(1)/(\Delta t)+\frac{\alpha f_M}{\Delta r}+g_h,"
 problem1.md,385,0,0.0,ALLOW,零,0.0,**渐近形式**：当 $M\to\infty$（$\Delta r\to0$）时，
-problem1.md,386,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$V_M=\pi\!\left(R-(R-(\Delta r)/(2))\right)=\pi\Delta r\left(R-(\Delta r)/(4)\right)\to\pi
-problem1.md,386,4,4.0,ALLOW,结构/常数,0.0,$V_M=\pi\!\left(R-(R-(\Delta r)/(2))\right)=\pi\Delta r\left(R-(\Delta r)/(4)\right)\to\pi
+problem1.md,386,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$V_M=\pi\!(R-(R-(\Delta r)/(2)))=\pi\Delta r(R-(\Delta r)/(4))\to\pi R\Delta r$
+problem1.md,386,4,4.0,ALLOW,结构/常数,0.0,$V_M=\pi\!(R-(R-(\Delta r)/(2)))=\pi\Delta r(R-(\Delta r)/(4))\to\pi R\Delta r$
 problem1.md,387,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,（**半环**体积，不是整环 $2\pi R\Delta r$）、$A=2\pi(R-(\Delta r)/(2))\to2\pi R$，故
 problem1.md,387,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,（**半环**体积，不是整环 $2\pi R\Delta r$）、$A=2\pi(R-(\Delta r)/(2))\to2\pi R$，故
 problem1.md,387,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,（**半环**体积，不是整环 $2\pi R\Delta r$）、$A=2\pi(R-(\Delta r)/(2))\to2\pi R$，故
 problem1.md,387,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,（**半环**体积，不是整环 $2\pi R\Delta r$）、$A=2\pi(R-(\Delta r)/(2))\to2\pi R$，故
 problem1.md,389,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_M=\frac{A}{V_M}\to(2\pi R)/(\pi R\Delta r)=(2)/(\Delta r),$$"
 problem1.md,389,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$f_M=\frac{A}{V_M}\to(2\pi R)/(\pi R\Delta r)=(2)/(\Delta r),$$"
-problem1.md,393,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_M\to-(2\alpha)/(\Delta r),\qquad"
-problem1.md,394,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_M\to(1)/(\Delta t)+(2\alpha)/(\Delta r)+(2h\alpha)/(k\Delta r),\qquad"
-problem1.md,394,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_M\to(1)/(\Delta t)+(2\alpha)/(\Delta r)+(2h\alpha)/(k\Delta r),\qquad"
-problem1.md,394,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_M\to(1)/(\Delta t)+(2\alpha)/(\Delta r)+(2h\alpha)/(k\Delta r),\qquad"
+problem1.md,393,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_M\to-(2\alpha)/(\Delta r),"
+problem1.md,394,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_M\to(1)/(\Delta t)+(2\alpha)/(\Delta r)+(2h\alpha)/(k\Delta r),"
+problem1.md,394,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_M\to(1)/(\Delta t)+(2\alpha)/(\Delta r)+(2h\alpha)/(k\Delta r),"
+problem1.md,394,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_M\to(1)/(\Delta t)+(2\alpha)/(\Delta r)+(2h\alpha)/(k\Delta r),"
 problem1.md,395,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,d_M\to\frac{T_M}{\Delta t}+(2h\alpha)/(k\Delta r)T_\infty.$$
 problem1.md,399,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 误取为整环 $2\pi R\Delta r$（正确为半环 $\pi R\Delta r$）所致。取错后 $f_M^-\to1/\Delta r$，
 problem1.md,399,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 误取为整环 $2\pi R\Delta r$（正确为半环 $\pi R\Delta r$）所致。取错后 $f_M^-\to1/\Delta r$，
@@ -351,7 +351,7 @@ problem1.md,413,0.01,0.01,ALLOW,百分比换算,0.0,> $0.01 \mathrm{K}$ 的误�
 problem1.md,417,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> $M\to\infty$ 时趋于 $2h_m/\Delta r$，与原始思路写法一致；同样保留几何因子。
 problem1.md,429,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,看是 $D(C_i)$、从节点 $i+1$ 看是 $D(C)$，**两者不等，离散水量不再守恒**。
 problem1.md,433,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$D=\frac{D(C_i)+D(C)}{2}$$
-problem1.md,438,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i=(1)/(\Delta t)+\frac{Df_i+Df_i}{\Delta r},\qquad"
+problem1.md,438,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i=(1)/(\Delta t)+\frac{Df_i+Df_i}{\Delta r},"
 problem1.md,444,10.1,10.1,REGISTRY,E11_node_M100,1.882e-05,> 数值上其离散水量收支残差达**表面总通量的 10.1 %**，且**不随网格加密减小**
 problem1.md,445,100,100.0,ALLOW,题面表1/2 时间点,0.0,> （$M=100/200/400$ 时分别为 10.10 %/10.12 %/10.12 %）——即这是一个
 problem1.md,445,200,200.0,ALLOW,网格/常数,0.0,> （$M=100/200/400$ 时分别为 10.10 %/10.12 %/10.12 %）——即这是一个
@@ -367,7 +367,7 @@ problem1.md,449,0.68,0.68,REGISTRY,D12,1.627e-03,> （含水率更低、$D$ 变�
 problem1.md,458,5.9e-5,5.9e-05,REGISTRY,S15,4.881e-07,$\max|\Delta T|=5.9e-5 \mathrm{K}$、$\max|\Delta C|=5.3e-6 \mathrm{kg/kg}$
 problem1.md,458,5.3e-6,5.3e-06,REGISTRY,S16,2.326e-08,$\max|\Delta T|=5.9e-5 \mathrm{K}$、$\max|\Delta C|=5.3e-6 \mathrm{kg/kg}$
 problem1.md,459,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（见 `problem_slove1.md` §6），远低于四位小数的报告精度。
-problem1.md,469,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_M=(1)/(\Delta t)+\frac{Df_M}{\Delta r}+g_m,\qquad"
+problem1.md,469,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_M=(1)/(\Delta t)+\frac{Df_M}{\Delta r}+g_m,"
 problem1.md,478,0,0.0,ALLOW,零,0.0,"未知量为 $T_i$、$C_i$（$i=0,\dots,M$），各 $M+1$ 个；方程为："
 problem1.md,478,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"未知量为 $T_i$、$C_i$（$i=0,\dots,M$），各 $M+1$ 个；方程为："
 problem1.md,482,0,0.0,ALLOW,零,0.0,| $i=0$ | 对称（二对角） | 对称（二对角） |
@@ -412,7 +412,7 @@ problem1.md,512,21,21.0,ALLOW,结构: 表格列数,0.0,"$0,0.1,0.2,\dots,2.0 \ma
 problem1.md,515,4,4.0,ALLOW,结构/常数,0.0,所有数值**保留 4 位小数**（$^\circ\mathrm{C}$ 与 $\mathrm{kg/kg}$ 均按此精度报告）。
 problem1.md,523,1.679e-7,1.679e-07,ALLOW,"原始建模思路中写出的 alpha 值, 用于对照 (实为 1.6886e-7)",0.0,| ① | $\alpha$ 数值 | $1.679e-7$ | $1.6885553e-7 \mathrm{m/s}$ | 数值误差（$-0.569%$） |
 problem1.md,523,1.6885553e-7,1.6885553e-07,REGISTRY,P01,4.709e-15,| ① | $\alpha$ 数值 | $1.679e-7$ | $1.6885553e-7 \mathrm{m/s}$ | 数值误差（$-0.569%$） |
-problem1.md,523,-0.569,-0.569,UNMATCHED,,,| ① | $\alpha$ 数值 | $1.679e-7$ | $1.6885553e-7 \mathrm{m/s}$ | 数值误差（$-0.569%$） |
+problem1.md,523,-0.569,-0.569,REGISTRY,P02d,1.094e-04,| ① | $\alpha$ 数值 | $1.679e-7$ | $1.6885553e-7 \mathrm{m/s}$ | 数值误差（$-0.569%$） |
 problem1.md,524,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| ② | 内部对角元 $b_i$ | $(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)$ | $(1)/(\Delta t)+(2\alph
 problem1.md,524,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| ② | 内部对角元 $b_i$ | $(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)$ | $(1)/(\Delta t)+(2\alph
 problem1.md,524,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| ② | 内部对角元 $b_i$ | $(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r)$ | $(1)/(\Delta t)+(2\alph
@@ -474,23 +474,23 @@ problem_slove1.md,15,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 环境
 problem_slove1.md,23,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（Thomas 算法）以 $O(M)$ 直接求解。因问题一中温度与水分解耦（`problem1.md` §7.4），
 problem_slove1.md,26,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"离散系统（以温度为例，$i=1,\dots,M-1$）："
 problem_slove1.md,26,-1,-1.0,REGISTRY,F65_diff,3.861e-01,"离散系统（以温度为例，$i=1,\dots,M-1$）："
-problem_slove1.md,30,12,12.0,ALLOW,结构,0.0,"$$a_i=-(\alpha(i-\frac12))/(i\Delta r),\quad"
-problem_slove1.md,31,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),\quad"
-problem_slove1.md,31,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),\quad"
-problem_slove1.md,32,12,12.0,ALLOW,结构,0.0,"c_i=-(\alpha(i+\frac12))/(i\Delta r),\quad"
+problem_slove1.md,30,12,12.0,ALLOW,结构,0.0,"$$a_i=-(\alpha(i-\frac12))/(i\Delta r),"
+problem_slove1.md,31,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),"
+problem_slove1.md,31,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i=(1)/(\Delta t)+(2\alpha)/(\Delta r),"
+problem_slove1.md,32,12,12.0,ALLOW,结构,0.0,"c_i=-(\alpha(i+\frac12))/(i\Delta r),"
 problem_slove1.md,35,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,边界行按 `problem1.md` §9.4、§9.5 处理；水分方程按 §9.6 处理，界面扩散系数取相邻节点
 problem_slove1.md,36,12,12.0,ALLOW,结构,0.0,算术平均 $D=\tfrac12[D(C_i)+D(C)]$，$D$ 用上一时间步的值（半隐式）。
-problem_slove1.md,46,12,12.0,ALLOW,结构,0.0,"$$a_i=-(\alpha(i-\frac12))/(i\Delta r),\quad"
-problem_slove1.md,47,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),\quad"
-problem_slove1.md,47,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),\quad"
-problem_slove1.md,47,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),\quad"
-problem_slove1.md,47,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),\quad"
+problem_slove1.md,46,12,12.0,ALLOW,结构,0.0,"$$a_i=-(\alpha(i-\frac12))/(i\Delta r),"
+problem_slove1.md,47,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),"
+problem_slove1.md,47,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),"
+problem_slove1.md,47,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),"
+problem_slove1.md,47,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i^{(\text{原})}=(1)/(\Delta t)+(\alpha(2i+1))/(2i\Delta r),"
 problem_slove1.md,48,12,12.0,ALLOW,结构,0.0,c_i=-(\alpha(i+\frac12))/(i\Delta r).$$
 problem_slove1.md,50,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,用 sympy 对**原方案自己给出的**守恒型差分表达式重新整理系数（`src/q1_solve.py` §S1），
-problem_slove1.md,53,12,12.0,ALLOW,结构,0.0,"$$a_i=(\alpha(i-\frac12))/(i\Delta r),\qquad"
-problem_slove1.md,54,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i=-(2\alpha)/(\Delta r),\qquad"
-problem_slove1.md,55,12,12.0,ALLOW,结构,0.0,"c_i=(\alpha(i+\frac12))/(i\Delta r),\qquad a_i+b_i+c_i=0 .$$"
-problem_slove1.md,55,0,0.0,ALLOW,零,0.0,"c_i=(\alpha(i+\frac12))/(i\Delta r),\qquad a_i+b_i+c_i=0 .$$"
+problem_slove1.md,53,12,12.0,ALLOW,结构,0.0,"$$a_i=(\alpha(i-\frac12))/(i\Delta r),"
+problem_slove1.md,54,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_i=-(2\alpha)/(\Delta r),"
+problem_slove1.md,55,12,12.0,ALLOW,结构,0.0,"c_i=(\alpha(i+\frac12))/(i\Delta r),  a_i+b_i+c_i=0 .$$"
+problem_slove1.md,55,0,0.0,ALLOW,零,0.0,"c_i=(\alpha(i+\frac12))/(i\Delta r),  a_i+b_i+c_i=0 .$$"
 problem_slove1.md,57,-2,-2.0,REGISTRY,S01,0.000e+00,即守恒型差分本身给出的对角元是 $-2\alpha/\Delta r$，而原方案写成
 problem_slove1.md,58,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$+\alpha(2i+1)/(2i\Delta r)$，恰好等于 $T$ 的系数 $c_i$ 的反号。两者之差
 problem_slove1.md,58,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$+\alpha(2i+1)/(2i\Delta r)$，恰好等于 $T$ 的系数 $c_i$ 的反号。两者之差
@@ -513,18 +513,18 @@ problem_slove1.md,79,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,全隐式 Eul
 problem_slove1.md,80,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$|1-\lambda\Delta t|<1$，放大因子的模长大于 1，即扰动按
 problem_slove1.md,80,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$|1-\lambda\Delta t|<1$，放大因子的模长大于 1，即扰动按
 problem_slove1.md,80,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$|1-\lambda\Delta t|<1$，放大因子的模长大于 1，即扰动按
-problem_slove1.md,82,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$\left((1)/(1-\lambda\Delta t)\right)=\left(1-\lambda\Delta t\right)$$
-problem_slove1.md,82,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$\left((1)/(1-\lambda\Delta t)\right)=\left(1-\lambda\Delta t\right)$$
-problem_slove1.md,82,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$\left((1)/(1-\lambda\Delta t)\right)=\left(1-\lambda\Delta t\right)$$
-problem_slove1.md,86,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> **更正**：此前文中写作 $\left(1+\lambda\Delta t\right)$，**这是错的**。两者量级
+problem_slove1.md,82,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$((1)/(1-\lambda\Delta t))=(1-\lambda\Delta t)$$
+problem_slove1.md,82,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$((1)/(1-\lambda\Delta t))=(1-\lambda\Delta t)$$
+problem_slove1.md,82,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$((1)/(1-\lambda\Delta t))=(1-\lambda\Delta t)$$
+problem_slove1.md,86,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> **更正**：此前文中写作 $(1+\lambda\Delta t)$，**这是错的**。两者量级
 problem_slove1.md,87,16.816152,16.816152,REGISTRY,E02,3.516e-07,> 相差极大：取 $\lambda=\lambda=16.816152 \mathrm{s}$、$\Delta t=0.05 \mathrm{s}$、
 problem_slove1.md,87,0.05,0.05,ALLOW,时间步/通用,0.0,> 相差极大：取 $\lambda=\lambda=16.816152 \mathrm{s}$、$\Delta t=0.05 \mathrm{s}$、
 problem_slove1.md,88,100,100.0,ALLOW,题面表1/2 时间点,0.0,> $n=100$（$t=5 \mathrm{s}$），则
 problem_slove1.md,88,5,5.0,ALLOW,结构/常数,0.0,> $n=100$（$t=5 \mathrm{s}$），则
-problem_slove1.md,89,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> $$(1-\lambda\Delta t)=6.4234e79\quad(\text{正确}),\qquad"
-problem_slove1.md,89,6.4234e79,6.4234e+79,REGISTRY,E15_dt0.05_correct,4.124e+74,"> $$(1-\lambda\Delta t)=6.4234e79\quad(\text{正确}),\qquad"
-problem_slove1.md,90,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> (1+\lambda\Delta t)=3.1684e26\quad(\text{错误}),$$"
-problem_slove1.md,90,3.1684e26,3.1684e+26,REGISTRY,E16_dt0.05_wrong,4.006e+20,"> (1+\lambda\Delta t)=3.1684e26\quad(\text{错误}),$$"
+problem_slove1.md,89,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> $$(1-\lambda\Delta t)=6.4234e79 (\text{正确}),"
+problem_slove1.md,89,6.4234e79,6.4234e+79,REGISTRY,E15_dt0.05_correct,4.124e+74,"> $$(1-\lambda\Delta t)=6.4234e79 (\text{正确}),"
+problem_slove1.md,90,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"> (1+\lambda\Delta t)=3.1684e26 (\text{错误}),$$"
+problem_slove1.md,90,3.1684e26,3.1684e+26,REGISTRY,E16_dt0.05_wrong,4.006e+20,"> (1+\lambda\Delta t)=3.1684e26 (\text{错误}),$$"
 problem_slove1.md,91,8.08e79,8.08e+79,REGISTRY,E06_dt0.05,2.950e+76,> 而实测放大为 $8.08e79$——只有前者与之相符。
 problem_slove1.md,95,5,5.0,ALLOW,结构/常数,0.0,对原方案（`corr=False`）作纯导热试算（$t_{\text{end}}=5 \mathrm{s}$，$M=200$）：
 problem_slove1.md,95,200,200.0,ALLOW,网格/常数,0.0,对原方案（`corr=False`）作纯导热试算（$t_{\text{end}}=5 \mathrm{s}$，$M=200$）：
@@ -548,8 +548,8 @@ problem_slove1.md,105,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,在 
 problem_slove1.md,106,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,NaN/Inf（`src/q1_solve.py` §S2）。
 problem_slove1.md,108,5e-4,0.0005,REGISTRY,S19_linear,1.626e-05,"**这不是""时间步过大""的问题**：把 $\Delta t$ 减小到 $5e-4 \mathrm{s}$"
 problem_slove1.md,109,200,200.0,ALLOW,网格/常数,0.0,（比推荐值小 200 倍）仍然发散。原因是算子本身具有正特征值，**不存在任何稳定的
-problem_slove1.md,110,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,时间步**；减小 $\Delta t$ 只是把溢出的时间推迟（$\Delta t=0.1 \mathrm{s}$ 时约 8.7 s，
-problem_slove1.md,110,8.7,8.7,UNMATCHED,,,时间步**；减小 $\Delta t$ 只是把溢出的时间推迟（$\Delta t=0.1 \mathrm{s}$ 时约 8.7 s，
+problem_slove1.md,110,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,时间步**；减小 $\Delta t$ 只是把溢出的时间推迟（$\Delta t=0.1 \mathrm{s}$ 时 $t=8.9 \mathrm{s}$，
+problem_slove1.md,110,8.9,8.9,REGISTRY,S07b,0.000e+00,时间步**；减小 $\Delta t$ 只是把溢出的时间推迟（$\Delta t=0.1 \mathrm{s}$ 时 $t=8.9 \mathrm{s}$，
 problem_slove1.md,111,5e-4,0.0005,REGISTRY,S19_linear,1.626e-05,$\Delta t=5e-4 \mathrm{s}$ 时约 40 s），并不能消除失稳。
 problem_slove1.md,111,40,40.0,ALLOW,量级,0.0,$\Delta t=5e-4 \mathrm{s}$ 时约 40 s），并不能消除失稳。
 problem_slove1.md,113,66,66.0,ALLOW,量级,0.0,> **阈值说明（更正）**：$A_{\text{user}}$ 共有 **66 个正特征值**，
@@ -580,7 +580,7 @@ problem_slove1.md,127,1.4e4,14000.0,REGISTRY,E14_dt7.4_max,3.896e+02,"> | 7.4 | 
 problem_slove1.md,128,7.47,7.47,REGISTRY,E11,1.695e-03,"> | 7.47 | 未溢出 | $[-76.6, 163.6]$ |"
 problem_slove1.md,128,-76.6,-76.6,REGISTRY,E13_dt7.47_min,2.231e-02,"> | 7.47 | 未溢出 | $[-76.6, 163.6]$ |"
 problem_slove1.md,128,163.6,163.6,REGISTRY,E14_dt7.47_max,2.533e-02,"> | 7.47 | 未溢出 | $[-76.6, 163.6]$ |"
-problem_slove1.md,129,7.5,7.5,REGISTRY,E11,3.169e-02,"> | 7.5 | 未溢出 | $[-4.90, 11.0]$ |"
+problem_slove1.md,129,7.5,7.5,REGISTRY,HT_T900_r0,0.000e+00,"> | 7.5 | 未溢出 | $[-4.90, 11.0]$ |"
 problem_slove1.md,129,-4.90,-4.9,REGISTRY,E13_dt7.5_min,4.551e-03,"> | 7.5 | 未溢出 | $[-4.90, 11.0]$ |"
 problem_slove1.md,129,11.0,11.0,ALLOW,结构,0.0,"> | 7.5 | 未溢出 | $[-4.90, 11.0]$ |"
 problem_slove1.md,130,10,10.0,ALLOW,结构/常数,0.0,"> | 10, 20 | 未溢出 | $[-13.97, 30.27]$ |"
@@ -701,7 +701,7 @@ problem_slove1.md,232,0.00390625,0.00390625,ALLOW,生产时间步 dt = 2^-8 s,0.
 problem_slove1.md,232,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$\Delta t=2=0.00390625 \mathrm{s}$（$t=1 \mathrm{s}$ 恰为第 256 步，
 problem_slove1.md,232,256,256.0,ALLOW,步数,0.0,$\Delta t=2=0.00390625 \mathrm{s}$（$t=1 \mathrm{s}$ 恰为第 256 步，
 problem_slove1.md,241,50,50.0,ALLOW,解析解校核用的常 T_inf = 50 degC,0.0,对**常环境温度** $T_\infty=50 ^\circ\mathrm{C}$ 的情形，无限长圆柱在 Robin 边界
-problem_slove1.md,250,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$C_n=(2J(\lambda_n))/(\lambda_n\left[J(\lambda_n)+J(\lambda_n)\right])$。
+problem_slove1.md,250,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$C_n=(2J(\lambda_n))/(\lambda_n[J(\lambda_n)+J(\lambda_n)])$。
 problem_slove1.md,252,1.388889,1.388889,REGISTRY,F0A,1.111e-07,本文取 $\mathrm{Bi}=hR/k=1.388889$，前 5 个特征根为
 problem_slove1.md,252,5,5.0,ALLOW,结构/常数,0.0,本文取 $\mathrm{Bi}=hR/k=1.388889$，前 5 个特征根为
 problem_slove1.md,253,1.418473,1.418473,REGISTRY,S3x_1,4.812e-07,"$\lambda=1.418473, 4.166470, 7.208478, 10.308273, 13.427161$，"
@@ -761,7 +761,7 @@ problem_slove1.md,294,28.0,28.0,ALLOW,题面: 初始温度 28 degC,0.0,满足 $2
 problem_slove1.md,294,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,满足 $28.0\le T\le T_\infty$。全部 $1800x21$ 个输出值均通过该检验，
 problem_slove1.md,294,21,21.0,ALLOW,结构: 表格列数,0.0,满足 $28.0\le T\le T_\infty$。全部 $1800x21$ 个输出值均通过该检验，
 problem_slove1.md,303,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"此前本文曾判断原方案的表面扩散项""偏大 2 倍""。**该判断是错的，在此更正。**"
-problem_slove1.md,304,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"重新逐项比较节点式**半控制体** $\left[R-(\Delta r)/(2),R\right]$ 的精确系数与用户写法："
+problem_slove1.md,304,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"重新逐项比较节点式**半控制体** $[R-(\Delta r)/(2),R]$ 的精确系数与用户写法："
 problem_slove1.md,306,-2,-2.0,REGISTRY,S01,0.000e+00,| $M$ | $a_M^{\text{exact}}$ | $-2\alpha/\Delta r$（用户） | 比值 | $g_h^{\text{exact}}$ | $2\al
 problem_slove1.md,306,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| $M$ | $a_M^{\text{exact}}$ | $-2\alpha/\Delta r$（用户） | 比值 | $g_h^{\text{exact}}$ | $2\al
 problem_slove1.md,308,200,200.0,ALLOW,网格/常数,0.0,| 200 | $-3.372884e1$ | $-3.377111e1$ | 0.998748 | $2.348151e-1$ | $2.345216e-1$ | 1.00125
@@ -1125,7 +1125,7 @@ problem_slove1.md,558,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,**拟合反�
 problem_slove1.md,559,240,240.0,ALLOW,附件1 步数,0.0,（240 步中 95 步下降），光滑拟合把这些起伏抹掉的同时也引入了系统偏差；
 problem_slove1.md,559,95,95.0,REGISTRY,P18,0.000e+00,（240 步中 95 步下降），光滑拟合把这些起伏抹掉的同时也引入了系统偏差；
 problem_slove1.md,560,0.19,0.19,ALLOW,近似值,0.0,而分段线性/保形插值保留了数据本身的形状。拟合残差本身在 $0.19\sim0.57 \mathrm{K}$，
-problem_slove1.md,560,0.57,0.57,REGISTRY,G02_线性_fitres,2.619e-03,而分段线性/保形插值保留了数据本身的形状。拟合残差本身在 $0.19\sim0.57 \mathrm{K}$，
+problem_slove1.md,560,0.57,0.57,REGISTRY,P02b,8.906e-04,而分段线性/保形插值保留了数据本身的形状。拟合残差本身在 $0.19\sim0.57 \mathrm{K}$，
 problem_slove1.md,561,0.02,0.02,ALLOW,LTE 判据阈值 / 长度换算,0.0,经热惯性衰减后仍有 $0.02\sim0.16 \mathrm{K}$ 传到解里。
 problem_slove1.md,561,0.16,0.16,REGISTRY,G04_线性_dTtab,2.989e-03,经热惯性衰减后仍有 $0.02\sim0.16 \mathrm{K}$ 传到解里。
 problem_slove1.md,565,0,0.0,ALLOW,零,0.0,"如果为""函数好看""而在**整段 $0\sim14400 \mathrm{s}$** 上拟合，问题一窗口会被后段"
@@ -1430,7 +1430,7 @@ problem_slove1.md,719,2.005,2.005,REGISTRY,H11o_M1600,9.724e-05,| 1600 | 0.01250
 problem_slove1.md,721,4,4.0,ALLOW,结构/常数,0.0,比值 $\to4$，**空间二阶收敛**。
 problem_slove1.md,722,2.168e-7,2.168e-07,REGISTRY,H11_M1600_space,3.348e-11,以 $|T-T|=2.168e-7 \mathrm{K}$ 作指标，
 problem_slove1.md,723,3200,3200.0,ALLOW,网格: 生产设置 M=3200,0.0,按 Richardson 估计 $M=3200$ 解的空间误差约 $7e-8 \mathrm{K}$。
-problem_slove1.md,723,7e-8,7e-08,UNMATCHED,,,按 Richardson 估计 $M=3200$ 解的空间误差约 $7e-8 \mathrm{K}$。
+problem_slove1.md,723,7e-8,7e-08,REGISTRY,H12b,2.278e-09,按 Richardson 估计 $M=3200$ 解的空间误差约 $7e-8 \mathrm{K}$。
 problem_slove1.md,725,7.496e-6,7.496e-06,REGISTRY,H02,2.903e-10,**归因**：时间误差 $7.496e-6 \mathrm{K}$ 比空间误差大**约 35 倍**
 problem_slove1.md,725,35,35.0,ALLOW,量级,0.0,**归因**：时间误差 $7.496e-6 \mathrm{K}$ 比空间误差大**约 35 倍**
 problem_slove1.md,726,100,100.0,ALLOW,题面表1/2 时间点,0.0,（按 Richardson 估计则约 100 倍）。即生产设置下两解的差异
@@ -1456,8 +1456,8 @@ problem_slove1.md,758,7.5e-6,7.5e-06,REGISTRY,H02,4.290e-09,§11 给出的解析
 problem_slove1.md,759,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"怎么把附件 1 变成""连续函数""的**——答案是：**它不构造连续函数，也不做任何数值积分。**"
 problem_slove1.md,767,0,0.0,ALLOW,零,0.0,把它写成卷积形式（$b_k(0)=c_k[T-T_\infty(0)]$）：
 problem_slove1.md,767,0,0.0,ALLOW,零,0.0,把它写成卷积形式（$b_k(0)=c_k[T-T_\infty(0)]$）：
-problem_slove1.md,769,0,0.0,ALLOW,零,0.0,$$b_k(t)=c_k\left[T-T_\infty(0)\right]e
-problem_slove1.md,775,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"$$\boxed{\;b_k(t+\Delta)=E_kb_k(t)-c_ks(1-E_k)/(\mu_k)\;},\qquad E_k=e.$$"
+problem_slove1.md,769,0,0.0,ALLOW,零,0.0,$$b_k(t)=c_k[T-T_\infty(0)]e
+problem_slove1.md,775,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"$$\boxed{\;b_k(t+\Delta)=E_kb_k(t)-c_ks(1-E_k)/(\mu_k)\;},  E_k=e.$$"
 problem_slove1.md,779,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,### 12.2 因此：直接用附件 1 的原始 31 个点，不需要拟合
 problem_slove1.md,779,31,31.0,ALLOW,附件1 前 31 点,0.0,### 12.2 因此：直接用附件 1 的原始 31 个点，不需要拟合
 problem_slove1.md,781,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,把附件 1 在 $0\sim1800 \mathrm{s}$ 内的 **31 个原始点**直接当作分段线性函数的折点
@@ -1587,12 +1587,12 @@ problem_slove1.md,918,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q
 温度场两种解法.md,25,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,预热平衡阶段只考虑径向一维传递（见 `problem1.md` §2.1：中截面 $z=0$ 上
 温度场两种解法.md,25,0,0.0,ALLOW,零,0.0,预热平衡阶段只考虑径向一维传递（见 `problem1.md` §2.1：中截面 $z=0$ 上
 温度场两种解法.md,26,0,0.0,ALLOW,零,0.0,$\partial_z T\equiv0$ 由上下对称性**精确**成立）。温度场满足
-温度场两种解法.md,33,0,0.0,ALLOW,零,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad 0\le r\le R .$$"
-温度场两种解法.md,33,28,28.0,ALLOW,题面: 初始温度 28 degC,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad 0\le r\le R .$$"
-温度场两种解法.md,33,301.15,301.15,ALLOW,题面: T0 = 28 degC = 301.15 K,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad 0\le r\le R .$$"
-温度场两种解法.md,33,0,0.0,ALLOW,零,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},\qquad 0\le r\le R .$$"
-温度场两种解法.md,37,0,0.0,ALLOW,零,0.0,$$\left.(\partial T)/(\partial r)\right|=0 .$$
-温度场两种解法.md,43,0,0.0,ALLOW,零,0.0,"\left.(\partial T)/(\partial r)\right|+(h)/(k)\left[T(R,t)-T_\infty(t)\right]=0 .$$"
+温度场两种解法.md,33,0,0.0,ALLOW,零,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},  0\le r\le R .$$"
+温度场两种解法.md,33,28,28.0,ALLOW,题面: 初始温度 28 degC,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},  0\le r\le R .$$"
+温度场两种解法.md,33,301.15,301.15,ALLOW,题面: T0 = 28 degC = 301.15 K,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},  0\le r\le R .$$"
+温度场两种解法.md,33,0,0.0,ALLOW,零,0.0,"$$T(r,0)=T=28 ^\circ\mathrm{C}=301.15 \mathrm{K},  0\le r\le R .$$"
+温度场两种解法.md,37,0,0.0,ALLOW,零,0.0,$$.(\partial T)/(\partial r)|=0 .$$
+温度场两种解法.md,43,0,0.0,ALLOW,零,0.0,".(\partial T)/(\partial r)|+(h)/(k)[T(R,t)-T_\infty(t)]=0 .$$"
 温度场两种解法.md,45,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,**环境激励**：$T_\infty(t)$ 由附件 1 给出（采样间隔 60 s，覆盖 $0\sim14400 \mathrm{s}$）。
 温度场两种解法.md,45,60,60.0,ALLOW,附件1 采样间隔 60 s,0.0,**环境激励**：$T_\infty(t)$ 由附件 1 给出（采样间隔 60 s，覆盖 $0\sim14400 \mathrm{s}$）。
 温度场两种解法.md,45,0,0.0,ALLOW,零,0.0,**环境激励**：$T_\infty(t)$ 由附件 1 给出（采样间隔 60 s，覆盖 $0\sim14400 \mathrm{s}$）。
@@ -1612,33 +1612,33 @@ problem_slove1.md,918,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q
 温度场两种解法.md,60,820,820.0,ALLOW,附录2: 密度,0.0,"$$\alpha=(k)/(\rho c_p)=(0.36)/(820x2600)=1.688555347e-7 \mathrm{m/s},$$"
 温度场两种解法.md,60,2600,2600.0,ALLOW,附录2: 比热容,0.0,"$$\alpha=(k)/(\rho c_p)=(0.36)/(820x2600)=1.688555347e-7 \mathrm{m/s},$$"
 温度场两种解法.md,60,1.688555347e-7,1.688555347e-07,REGISTRY,P01,9.190e-18,"$$\alpha=(k)/(\rho c_p)=(0.36)/(820x2600)=1.688555347e-7 \mathrm{m/s},$$"
-温度场两种解法.md,62,25,25.0,ALLOW,题面: 长度 25 cm,0.0,"$$\mathrm{Bi}=(hR)/(k)=(25x0.02)/(0.36)=1.388888889\quad(>0.1),$$"
-温度场两种解法.md,62,0.02,0.02,ALLOW,LTE 判据阈值 / 长度换算,0.0,"$$\mathrm{Bi}=(hR)/(k)=(25x0.02)/(0.36)=1.388888889\quad(>0.1),$$"
-温度场两种解法.md,62,0.36,0.36,ALLOW,附录2: 热传导系数,0.0,"$$\mathrm{Bi}=(hR)/(k)=(25x0.02)/(0.36)=1.388888889\quad(>0.1),$$"
-温度场两种解法.md,62,1.388888889,1.388888889,REGISTRY,F0A,1.000e-10,"$$\mathrm{Bi}=(hR)/(k)=(25x0.02)/(0.36)=1.388888889\quad(>0.1),$$"
-温度场两种解法.md,62,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,"$$\mathrm{Bi}=(hR)/(k)=(25x0.02)/(0.36)=1.388888889\quad(>0.1),$$"
+温度场两种解法.md,62,25,25.0,ALLOW,题面: 长度 25 cm,0.0,"$$\mathrm{Bi}=(hR)/(k)=(25x0.02)/(0.36)=1.388888889 (>0.1),$$"
+温度场两种解法.md,62,0.02,0.02,ALLOW,LTE 判据阈值 / 长度换算,0.0,"$$\mathrm{Bi}=(hR)/(k)=(25x0.02)/(0.36)=1.388888889 (>0.1),$$"
+温度场两种解法.md,62,0.36,0.36,ALLOW,附录2: 热传导系数,0.0,"$$\mathrm{Bi}=(hR)/(k)=(25x0.02)/(0.36)=1.388888889 (>0.1),$$"
+温度场两种解法.md,62,1.388888889,1.388888889,REGISTRY,F0A,1.000e-10,"$$\mathrm{Bi}=(hR)/(k)=(25x0.02)/(0.36)=1.388888889 (>0.1),$$"
+温度场两种解法.md,62,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,"$$\mathrm{Bi}=(hR)/(k)=(25x0.02)/(0.36)=1.388888889 (>0.1),$$"
 温度场两种解法.md,64,2368.888889,2368.888889,REGISTRY,F03,1.000e-07,$$\tau_T=(R)/(\alpha)=2368.888889 \mathrm{s}.$$
 温度场两种解法.md,68,1.39,1.39,REGISTRY,F0A,1.111e-03,- $\mathrm{Bi}=1.39>0.1$ 说明内部温度梯度**不可忽略**，必须解分布参数模型，
 温度场两种解法.md,68,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,- $\mathrm{Bi}=1.39>0.1$ 说明内部温度梯度**不可忽略**，必须解分布参数模型，
 温度场两种解法.md,70,2368.9,2368.9,REGISTRY,F03,1.111e-02,- $\tau_T=2368.9 \mathrm{s}$ 与 $1800 \mathrm{s}$ **同量级**且更大，
 温度场两种解法.md,70,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,- $\tau_T=2368.9 \mathrm{s}$ 与 $1800 \mathrm{s}$ **同量级**且更大，
 温度场两种解法.md,71,30,30.0,ALLOW,题面: 30 分钟,0.0,"说明 30 min 内热平衡尚未完成——这正是""预热平衡阶段""的物理含义，"
-温度场两种解法.md,86,0,0.0,ALLOW,零,0.0,"$$r_i=i\Delta r,\qquad \Delta r=(R)/(M),\qquad i=0,1,\dots,M .$$"
-温度场两种解法.md,86,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"$$r_i=i\Delta r,\qquad \Delta r=(R)/(M),\qquad i=0,1,\dots,M .$$"
+温度场两种解法.md,86,0,0.0,ALLOW,零,0.0,"$$r_i=i\Delta r,  \Delta r=(R)/(M),  i=0,1,\dots,M .$$"
+温度场两种解法.md,86,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"$$r_i=i\Delta r,  \Delta r=(R)/(M),  i=0,1,\dots,M .$$"
 温度场两种解法.md,88,0,0.0,ALLOW,零,0.0,即 $r=0$（中心）与 $r_M=R$（表面）**都是节点**。这样选择的理由：题面要求的输出位置
 温度场两种解法.md,89,0,0.0,ALLOW,零,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ 为 10 的整数倍时恰好落在节点上，可直接取值而不必插值。"
 温度场两种解法.md,89,0.1,0.1,ALLOW,题面: result1 半径步长 0.1 cm,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ 为 10 的整数倍时恰好落在节点上，可直接取值而不必插值。"
 温度场两种解法.md,89,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ 为 10 的整数倍时恰好落在节点上，可直接取值而不必插值。"
 温度场两种解法.md,89,10,10.0,ALLOW,结构/常数,0.0,"（$0,0.1,\dots,2 \mathrm{cm}$）在 $M$ 为 10 的整数倍时恰好落在节点上，可直接取值而不必插值。"
-温度场两种解法.md,93,12,12.0,ALLOW,结构,0.0,"$$r=\left(i\pm\tfrac12\right)\Delta r,\qquad r=0,\quad r=R .$$"
-温度场两种解法.md,93,0,0.0,ALLOW,零,0.0,"$$r=\left(i\pm\tfrac12\right)\Delta r,\qquad r=0,\quad r=R .$$"
+温度场两种解法.md,93,12,12.0,ALLOW,结构,0.0,"$$r=(i\pm\tfrac12)\Delta r,  r=0,  r=R .$$"
+温度场两种解法.md,93,0,0.0,ALLOW,零,0.0,"$$r=(i\pm\tfrac12)\Delta r,  r=0,  r=R .$$"
 温度场两种解法.md,95,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,控制体体积与界面面积（单位轴向长度已约去 $2\pi$）：
-温度场两种解法.md,97,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$V_i=\pi\left(r-r\right),\qquad A=2\pi r .$$"
-温度场两种解法.md,113,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,=\frac{2\pi\left[(i+\frac12)+(i-\frac12)\right]\Delta r}
-温度场两种解法.md,113,12,12.0,ALLOW,结构,0.0,=\frac{2\pi\left[(i+\frac12)+(i-\frac12)\right]\Delta r}
-温度场两种解法.md,113,12,12.0,ALLOW,结构,0.0,=\frac{2\pi\left[(i+\frac12)+(i-\frac12)\right]\Delta r}
-温度场两种解法.md,114,12,12.0,ALLOW,结构,0.0,{\pi\Delta r\left[(i+\frac12)-(i-\frac12)\right]}
-温度场两种解法.md,114,12,12.0,ALLOW,结构,0.0,{\pi\Delta r\left[(i+\frac12)-(i-\frac12)\right]}
+温度场两种解法.md,97,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$V_i=\pi(r-r),  A=2\pi r .$$"
+温度场两种解法.md,113,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,=\frac{2\pi[(i+\frac12)+(i-\frac12)]\Delta r}
+温度场两种解法.md,113,12,12.0,ALLOW,结构,0.0,=\frac{2\pi[(i+\frac12)+(i-\frac12)]\Delta r}
+温度场两种解法.md,113,12,12.0,ALLOW,结构,0.0,=\frac{2\pi[(i+\frac12)+(i-\frac12)]\Delta r}
+温度场两种解法.md,114,12,12.0,ALLOW,结构,0.0,{\pi\Delta r[(i+\frac12)-(i-\frac12)]}
+温度场两种解法.md,114,12,12.0,ALLOW,结构,0.0,{\pi\Delta r[(i+\frac12)-(i-\frac12)]}
 温度场两种解法.md,115,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,=(2\pi\cdot2i\Delta r)/(\pi\Delta r\cdot2i)
 温度场两种解法.md,115,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,=(2\pi\cdot2i\Delta r)/(\pi\Delta r\cdot2i)
 温度场两种解法.md,115,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,=(2\pi\cdot2i\Delta r)/(\pi\Delta r\cdot2i)
@@ -1651,9 +1651,9 @@ problem_slove1.md,918,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q
 温度场两种解法.md,129,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$a_i=\frac{\alpha f_i}{\Delta r}=(\alpha(2i-1))/(2i\Delta r)
 温度场两种解法.md,129,-1,-1.0,REGISTRY,F65_diff,3.861e-01,$$a_i=\frac{\alpha f_i}{\Delta r}=(\alpha(2i-1))/(2i\Delta r)
 温度场两种解法.md,129,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$a_i=\frac{\alpha f_i}{\Delta r}=(\alpha(2i-1))/(2i\Delta r)
-温度场两种解法.md,130,12,12.0,ALLOW,结构,0.0,"=(\alpha\left(i-\frac12\right))/(i\Delta r),\qquad"
-温度场两种解法.md,132,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"=-(2\alpha)/(\Delta r)},\qquad"
-温度场两种解法.md,133,12,12.0,ALLOW,结构,0.0,c_i=(\alpha\left(i+\frac12\right))/(i\Delta r).$$
+温度场两种解法.md,130,12,12.0,ALLOW,结构,0.0,"=(\alpha(i-\frac12))/(i\Delta r),"
+温度场两种解法.md,132,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"=-(2\alpha)/(\Delta r)},"
+温度场两种解法.md,133,12,12.0,ALLOW,结构,0.0,c_i=(\alpha(i+\frac12))/(i\Delta r).$$
 温度场两种解法.md,135,0,0.0,ALLOW,零,0.0,> **验证（守恒性）**：$a_i+b_i+c_i=0$ 恒成立——这是离散算子湮灭常数的必要条件。
 温度场两种解法.md,137,12,12.0,ALLOW,结构,0.0,> $\alpha(i-\frac12)/(i\Delta r)$、$-2\alpha/\Delta r$、$\alpha(i+\frac12)/(i\Delta r)$，
 温度场两种解法.md,137,-2,-2.0,REGISTRY,S01,0.000e+00,> $\alpha(i-\frac12)/(i\Delta r)$、$-2\alpha/\Delta r$、$\alpha(i+\frac12)/(i\Delta r)$，
@@ -1663,33 +1663,33 @@ problem_slove1.md,918,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q
 温度场两种解法.md,142,0,0.0,ALLOW,零,0.0,"控制体为 $[0,\Delta r/2]$，内侧界面 $r=0$ 面积为零、无热流："
 温度场两种解法.md,142,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"控制体为 $[0,\Delta r/2]$，内侧界面 $r=0$ 面积为零、无热流："
 温度场两种解法.md,142,0,0.0,ALLOW,零,0.0,"控制体为 $[0,\Delta r/2]$，内侧界面 $r=0$ 面积为零、无热流："
-温度场两种解法.md,144,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$V=\pi\left((\Delta r)/(2)\right),\qquad A=2\pi\cdot(\Delta r)/(2)=\pi\Delta r,"
-温度场两种解法.md,144,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$V=\pi\left((\Delta r)/(2)\right),\qquad A=2\pi\cdot(\Delta r)/(2)=\pi\Delta r,"
-温度场两种解法.md,144,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$V=\pi\left((\Delta r)/(2)\right),\qquad A=2\pi\cdot(\Delta r)/(2)=\pi\Delta r,"
-温度场两种解法.md,145,4,4.0,ALLOW,结构/常数,0.0,\qquad \frac{A}{V}=(4)/(\Delta r).$$
-温度场两种解法.md,147,4,4.0,ALLOW,结构/常数,0.0,"$$\boxed{ b=(4\alpha)/(\Delta r),\qquad c=-(4\alpha)/(\Delta r) }$$"
-温度场两种解法.md,147,4,4.0,ALLOW,结构/常数,0.0,"$$\boxed{ b=(4\alpha)/(\Delta r),\qquad c=-(4\alpha)/(\Delta r) }$$"
+温度场两种解法.md,144,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$V=\pi((\Delta r)/(2)),  A=2\pi\cdot(\Delta r)/(2)=\pi\Delta r,"
+温度场两种解法.md,144,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$V=\pi((\Delta r)/(2)),  A=2\pi\cdot(\Delta r)/(2)=\pi\Delta r,"
+温度场两种解法.md,144,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$V=\pi((\Delta r)/(2)),  A=2\pi\cdot(\Delta r)/(2)=\pi\Delta r,"
+温度场两种解法.md,145,4,4.0,ALLOW,结构/常数,0.0,\frac{A}{V}=(4)/(\Delta r).$$
+温度场两种解法.md,147,4,4.0,ALLOW,结构/常数,0.0,"$$\boxed{ b=(4\alpha)/(\Delta r),  c=-(4\alpha)/(\Delta r) }$$"
+温度场两种解法.md,147,4,4.0,ALLOW,结构/常数,0.0,"$$\boxed{ b=(4\alpha)/(\Delta r),  c=-(4\alpha)/(\Delta r) }$$"
 温度场两种解法.md,149,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（离散时再加上时间项 $1/\Delta t$，见 §1.7。）
-温度场两种解法.md,151,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 该式也可由 L'Hôpital 法则得到：$\left.\partial_tT\right|=2\alpha\left.\partialT\right|$，
+温度场两种解法.md,151,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 该式也可由 L'Hôpital 法则得到：$.\partial_tT|=2\alpha.\partialT|$，
 温度场两种解法.md,152,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,> 离散后为 $\dfrac{T-T^n}{\Delta t}=2\alpha\dfrac{T-2T+T}{\Delta r}$，
 温度场两种解法.md,152,-2,-2.0,REGISTRY,S01,0.000e+00,> 离散后为 $\dfrac{T-T^n}{\Delta t}=2\alpha\dfrac{T-2T+T}{\Delta r}$，
 温度场两种解法.md,153,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,> 由对称性 $T=T$，得 $b=1/\Delta t+4\alpha/\Delta r$、$c=-4\alpha/\Delta r$，与上式一致。
 温度场两种解法.md,153,4,4.0,ALLOW,结构/常数,0.0,> 由对称性 $T=T$，得 $b=1/\Delta t+4\alpha/\Delta r$、$c=-4\alpha/\Delta r$，与上式一致。
 温度场两种解法.md,153,-4,-4.0,ALLOW,离散系数中的常数 -4 (中心节点 b0/c0 的因子),0.0,> 由对称性 $T=T$，得 $b=1/\Delta t+4\alpha/\Delta r$、$c=-4\alpha/\Delta r$，与上式一致。
 温度场两种解法.md,157,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"表面节点控制体是**半控制体** $[R-\Delta r/2,R]$。关键处理：外侧界面**不用差分近似**，"
-温度场两种解法.md,160,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$V_M=\pi\left[R-\left(R-(\Delta r)/(2)\right)\right]
-温度场两种解法.md,161,4,4.0,ALLOW,结构/常数,0.0,"=\pi\Delta r\left(R-(\Delta r)/(4)\right),$$"
-温度场两种解法.md,163,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$A=2\pi\left(R-(\Delta r)/(2)\right),\qquad A_s=2\pi R .$$"
-温度场两种解法.md,163,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$A=2\pi\left(R-(\Delta r)/(2)\right),\qquad A_s=2\pi R .$$"
-温度场两种解法.md,163,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$A=2\pi\left(R-(\Delta r)/(2)\right),\qquad A_s=2\pi R .$$"
+温度场两种解法.md,160,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$V_M=\pi[R-(R-(\Delta r)/(2))]
+温度场两种解法.md,161,4,4.0,ALLOW,结构/常数,0.0,"=\pi\Delta r(R-(\Delta r)/(4)),$$"
+温度场两种解法.md,163,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$A=2\pi(R-(\Delta r)/(2)),  A_s=2\pi R .$$"
+温度场两种解法.md,163,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$A=2\pi(R-(\Delta r)/(2)),  A_s=2\pi R .$$"
+温度场两种解法.md,163,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$A=2\pi(R-(\Delta r)/(2)),  A_s=2\pi R .$$"
 温度场两种解法.md,180,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,（同理，离散时 $b_M$ 再加 $1/\Delta t$、$d_M$ 再加 $T_M^n/\Delta t$。）
 温度场两种解法.md,182,4,4.0,ALLOW,结构/常数,0.0,**渐近行为**：$V_M=\pi\Delta r(R-\Delta r/4)\to\pi R\Delta r$（**半环**体积，不是整环
 温度场两种解法.md,183,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$2\pi R\Delta r$）、$A\to2\pi R$，故 $f_M\to2/\Delta r$，于是
 温度场两种解法.md,183,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$2\pi R\Delta r$）、$A\to2\pi R$，故 $f_M\to2/\Delta r$，于是
 温度场两种解法.md,183,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$2\pi R\Delta r$）、$A\to2\pi R$，故 $f_M\to2/\Delta r$，于是
-温度场两种解法.md,185,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_M\to-(2\alpha)/(\Delta r),\qquad"
-温度场两种解法.md,186,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_M\to(2\alpha)/(\Delta r)+(2\alpha h)/(k\Delta r),\qquad"
-温度场两种解法.md,186,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_M\to(2\alpha)/(\Delta r)+(2\alpha h)/(k\Delta r),\qquad"
+温度场两种解法.md,185,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$a_M\to-(2\alpha)/(\Delta r),"
+温度场两种解法.md,186,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_M\to(2\alpha)/(\Delta r)+(2\alpha h)/(k\Delta r),"
+温度场两种解法.md,186,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"b_M\to(2\alpha)/(\Delta r)+(2\alpha h)/(k\Delta r),"
 温度场两种解法.md,187,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,d_M\to(2\alpha h)/(k\Delta r)T_\infty.$$
 温度场两种解法.md,189,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,精确半控制体系数与之相差相对量 $1/(4M)$（$M=200$ 时 $1.25e-3$，
 温度场两种解法.md,189,4,4.0,ALLOW,结构/常数,0.0,精确半控制体系数与之相差相对量 $1/(4M)$（$M=200$ 时 $1.25e-3$，
@@ -1712,7 +1712,7 @@ problem_slove1.md,918,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q
 温度场两种解法.md,207,12,12.0,ALLOW,结构,0.0,| $T$ | $(i+\frac12)/(i\Delta r)$ |
 温度场两种解法.md,208,0,0.0,ALLOW,零,0.0,| 行和 | $0$ ✓ |
 温度场两种解法.md,216,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,\text{右端取 }n+1\text{ 时刻值}.$$
-温度场两种解法.md,220,0,0.0,ALLOW,零,0.0,"$$a_iT+b_iT_i+c_iT=d_i,\qquad i=0,\dots,M,$$"
+温度场两种解法.md,220,0,0.0,ALLOW,零,0.0,"$$a_iT+b_iT_i+c_iT=d_i,  i=0,\dots,M,$$"
 温度场两种解法.md,222,1.5,1.5,ALLOW,题面: 半径网格,0.0,其中（汇总 §1.3–1.5，已含时间项）
 温度场两种解法.md,226,0,0.0,ALLOW,零,0.0,| $i=0$ | $0$ | $(1)/(\Delta t)+(4\alpha)/(\Delta r)$ | $-(4\alpha)/(\Delta r)$ | $\dfrac{
 温度场两种解法.md,226,0,0.0,ALLOW,零,0.0,| $i=0$ | $0$ | $(1)/(\Delta t)+(4\alpha)/(\Delta r)$ | $-(4\alpha)/(\Delta r)$ | $\dfrac{
@@ -1797,12 +1797,12 @@ problem_slove1.md,918,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q
 温度场两种解法.md,300,7.50e-6,7.5e-06,REGISTRY,H02,4.290e-09,时间误差 $7.50e-6 \mathrm{K}$ 比空间误差 $2.17e-7 \mathrm{K}$
 温度场两种解法.md,300,2.17e-7,2.17e-07,REGISTRY,H11_M1600_space,1.665e-10,时间误差 $7.50e-6 \mathrm{K}$ 比空间误差 $2.17e-7 \mathrm{K}$
 温度场两种解法.md,301,34.57,34.57,REGISTRY,H13,1.032e-03,大 **34.57 倍**——即生产设置下误差**几乎全部来自时间离散**。
-温度场两种解法.md,334,0,0.0,ALLOW,零,0.0,"\left.(\partial u)/(\partial r)\right|+(h)/(k)u(R,t)=0 ;$$"
-温度场两种解法.md,336,0,0.0,ALLOW,零,0.0,$$\left.(\partial u)/(\partial r)\right|=0 .$$
-温度场两种解法.md,340,0,0.0,ALLOW,零,0.0,"$$u(r,0)=T-T_\infty(0)\quad(\text{与 }r\text{ 无关的常数}).$$"
-温度场两种解法.md,340,0,0.0,ALLOW,零,0.0,"$$u(r,0)=T-T_\infty(0)\quad(\text{与 }r\text{ 无关的常数}).$$"
-温度场两种解法.md,350,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$(1)/(r)(d)/(dr)\left(r(dR)/(dr)\right)+\lambdaR=0
-温度场两种解法.md,350,0,0.0,ALLOW,零,0.0,$$(1)/(r)(d)/(dr)\left(r(dR)/(dr)\right)+\lambdaR=0
+温度场两种解法.md,334,0,0.0,ALLOW,零,0.0,".(\partial u)/(\partial r)|+(h)/(k)u(R,t)=0 ;$$"
+温度场两种解法.md,336,0,0.0,ALLOW,零,0.0,$$.(\partial u)/(\partial r)|=0 .$$
+温度场两种解法.md,340,0,0.0,ALLOW,零,0.0,"$$u(r,0)=T-T_\infty(0) (\text{与 }r\text{ 无关的常数}).$$"
+温度场两种解法.md,340,0,0.0,ALLOW,零,0.0,"$$u(r,0)=T-T_\infty(0) (\text{与 }r\text{ 无关的常数}).$$"
+温度场两种解法.md,350,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$(1)/(r)(d)/(dr)(r(dR)/(dr))+\lambdaR=0
+温度场两种解法.md,350,0,0.0,ALLOW,零,0.0,$$(1)/(r)(d)/(dr)(r(dR)/(dr))+\lambdaR=0
 温度场两种解法.md,354,0,0.0,ALLOW,零,0.0,（$Y$ 在 $r=0$ 发散，舍去）。由表面齐次 Robin 条件
 温度场两种解法.md,356,0,0.0,ALLOW,零,0.0,"$$\lambda J'(\lambda R)+(h)/(k)J(\lambda R)=0,"
 温度场两种解法.md,363,1.388888889,1.388888889,REGISTRY,F0A,1.000e-10,其正根 $x<x<\cdots\to\infty$。取 $\mathrm{Bi}=1.388888889$，前五个根为
@@ -1824,8 +1824,8 @@ problem_slove1.md,918,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q
 温度场两种解法.md,373,1e-16,1e-16,ALLOW,机器精度量级,0.0,（用 brentq 在符号变化区间上求根，残差 $|x J(x)-\mathrm{Bi}J(x)|\sim1e-16$。）
 温度场两种解法.md,381,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,把常数 1 在这组基下展开：
 温度场两种解法.md,383,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"$$1=\sumc_kJ(\lambda_k r),"
-温度场两种解法.md,392,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$\int^RJ(\lambda_k r)rdr=(R)/(2)\left[J(x_k)+J(x_k)\right],$$"
-温度场两种解法.md,396,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$\boxed{ c_k=(2J(x_k))/(x_k\left[J(x_k)+J(x_k)\right]) }$$
+温度场两种解法.md,392,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$$\int^RJ(\lambda_k r)rdr=(R)/(2)[J(x_k)+J(x_k)],$$"
+温度场两种解法.md,396,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,$$\boxed{ c_k=(2J(x_k))/(x_k[J(x_k)+J(x_k)]) }$$
 温度场两种解法.md,402,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| 1 | 1.265822137 |
 温度场两种解法.md,402,1.265822137,1.265822137,REGISTRY,S3c_1,2.583e-10,| 1 | 1.265822137 |
 温度场两种解法.md,403,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,| 2 | $-0.3779735278$ |
@@ -1844,13 +1844,13 @@ problem_slove1.md,918,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,| `outputs/q
 温度场两种解法.md,423,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,源项用 §2.4 的展开 $1=\sum_k c_kJ(\lambda_k r)$ 写成
 温度场两种解法.md,429,0,0.0,ALLOW,零,0.0,"其初始条件由 $u(r,0)=T-T_\infty(0)$ 与同一展开给出："
 温度场两种解法.md,429,0,0.0,ALLOW,零,0.0,"其初始条件由 $u(r,0)=T-T_\infty(0)$ 与同一展开给出："
-温度场两种解法.md,431,0,0.0,ALLOW,零,0.0,$$b_k(0)=c_k\left[T-T_\infty(0)\right] .$$
-温度场两种解法.md,431,0,0.0,ALLOW,零,0.0,$$b_k(0)=c_k\left[T-T_\infty(0)\right] .$$
-温度场两种解法.md,440,0,0.0,ALLOW,零,0.0,$$b_k(t)=c_k\left[T-T_\infty(0)\right]e
+温度场两种解法.md,431,0,0.0,ALLOW,零,0.0,$$b_k(0)=c_k[T-T_\infty(0)] .$$
+温度场两种解法.md,431,0,0.0,ALLOW,零,0.0,$$b_k(0)=c_k[T-T_\infty(0)] .$$
+温度场两种解法.md,440,0,0.0,ALLOW,零,0.0,$$b_k(t)=c_k[T-T_\infty(0)]e
 温度场两种解法.md,443,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,**关键观察**：附件 1 给出的是**离散点**。若把 $T_\infty$ 取为以这些点为折点的
 温度场两种解法.md,444,60,60.0,ALLOW,附件1 采样间隔 60 s,0.0,**分段线性**函数，则在每个 60 s 段内 $dT_\infty/dt\equiv s$（常数），
 温度场两种解法.md,448,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,=s\frac{1-e}{\mu_k}
-温度场两种解法.md,449,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"=s(1-E_k)/(\mu_k),\qquad E_k:=e .$$"
+温度场两种解法.md,449,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"=s(1-E_k)/(\mu_k),  E_k:=e .$$"
 温度场两种解法.md,453,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$$\boxed{ b_k(t+\Delta)=E_kb_k(t)-c_ks(1-E_k)/(\mu_k) }\tag{$\star$}$$
 温度场两种解法.md,464,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"输入: 附件1 的 N 个点 (t_j, T_inf_j), 折点即数据点 (Δ_j = t - t_j)"
 温度场两种解法.md,465,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"特征值 x_k, 系数 c_k (k=1..K),  mu_k = alpha*(x_k/R)"
@@ -2154,3 +2154,163 @@ table2_moisture.md,9,2.5497,2.5497,REGISTRY,C2_900_1p0,0.000e+00,| 1800 | 2.5500
 table2_moisture.md,9,2.5383,2.5383,REGISTRY,C2_1800_1p0,0.000e+00,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
 table2_moisture.md,9,2.3755,2.3755,REGISTRY,C2_1800_1p5,0.000e+00,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
 table2_moisture.md,9,1.5102,1.5102,REGISTRY,C2_1800_2p0,0.000e+00,| 1800 | 2.5500 | 2.5497 | 2.5383 | 2.3755 | 1.5102 |
+example.tex(交叉验证节),408,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,边界条件对$T$线性，故导热方程（2）存在解析解。本小节改用\textbf{Bessel 特征函数
+example.tex(交叉验证节),420,0,0.0,ALLOW,零,0.0,边界条件随之齐次化：$\partial_r u|=0$，
+example.tex(交叉验证节),421,0,0.0,ALLOW,零,0.0,"$\partial_r u|+(h)/(k)u(R,t)=0$；初始条件$u(r,0)=T-T_\infty(0)$与$r$无关。"
+example.tex(交叉验证节),421,0,0.0,ALLOW,零,0.0,"$\partial_r u|+(h)/(k)u(R,t)=0$；初始条件$u(r,0)=T-T_\infty(0)$与$r$无关。"
+example.tex(交叉验证节),421,0,0.0,ALLOW,零,0.0,"$\partial_r u|+(h)/(k)u(R,t)=0$；初始条件$u(r,0)=T-T_\infty(0)$与$r$无关。"
+example.tex(交叉验证节),423,0,0.0,ALLOW,零,0.0,$u=\Theta(t)R(r)$得零阶Bessel方程，其$r=0$处有界的解为$J(\lambda r)$；代入齐次边界
+example.tex(交叉验证节),428,1.3889,1.3889,REGISTRY,F0A,1.111e-05,"\mathrm{Bi}=(hR)/(k)=1.3889,"
+example.tex(交叉验证节),434,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,将常数$1$在该正交基下展开，由Bessel函数的正交性可得
+example.tex(交叉验证节),437,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"1=\sumc_kJ(\lambda_kr),"
+example.tex(交叉验证节),438,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,c_k=(2J(x_k))/(x_k[J(x_k)+J(x_k)]) .
+example.tex(交叉验证节),445,0,0.0,ALLOW,零,0.0,b_k(0)=c_k[T-T_\infty(0)].
+example.tex(交叉验证节),445,0,0.0,ALLOW,零,0.0,b_k(0)=c_k[T-T_\infty(0)].
+example.tex(交叉验证节),447,120,120.0,ALLOW,模态数 / 级数项数,0.0,前五阶特征根与展开系数见表~B。作为自检，用$120$项重构恒等式
+example.tex(交叉验证节),448,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$\sum_kc_kJ(\lambda_kr)\equiv1$的最大误差为$2.35e-3$，并随项数增加单调
+example.tex(交叉验证节),448,2.35e-3,0.00235,REGISTRY,E18_nm120,2.587e-07,$\sum_kc_kJ(\lambda_kr)\equiv1$的最大误差为$2.35e-3$，并随项数增加单调
+example.tex(交叉验证节),452,0.86,0.86,REGISTRY,F62,2.295e-03,{0.86}
+example.tex(交叉验证节),455,1.3889,1.3889,REGISTRY,F0A,1.111e-05,展开系数与衰减率（$\mathrm{Bi}=1.3889$，$\mu_k=\alpha\lambda_k$）}\\[3pt]
+example.tex(交叉验证节),455,3,3.0,ALLOW,3 小时,0.0,展开系数与衰减率（$\mathrm{Bi}=1.3889$，$\mu_k=\alpha\lambda_k$）}\\[3pt]
+example.tex(交叉验证节),460,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,1 & 1.418472519 & $1.2658221$ & $8.4937e-4$ \\
+example.tex(交叉验证节),460,1.418472519,1.418472519,REGISTRY,S3x_1,1.729e-10,1 & 1.418472519 & $1.2658221$ & $8.4937e-4$ \\
+example.tex(交叉验证节),460,1.2658221,1.2658221,REGISTRY,F12,3.670e-08,1 & 1.418472519 & $1.2658221$ & $8.4937e-4$ \\
+example.tex(交叉验证节),460,8.4937e-4,0.00084937,REGISTRY,S3m_1,4.775e-10,1 & 1.418472519 & $1.2658221$ & $8.4937e-4$ \\
+example.tex(交叉验证节),461,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,2 & 4.166469601 & $-0.3779735$ & $7.3281e-3$ \\
+example.tex(交叉验证节),461,4.166469601,4.166469601,REGISTRY,F11,0.000e+00,2 & 4.166469601 & $-0.3779735$ & $7.3281e-3$ \\
+example.tex(交叉验证节),461,-0.3779735,-0.3779735,REGISTRY,F18_2,2.777e-08,2 & 4.166469601 & $-0.3779735$ & $7.3281e-3$ \\
+example.tex(交叉验证节),461,7.3281e-3,0.0073281,REGISTRY,S3m_2,6.024e-09,2 & 4.166469601 & $-0.3779735$ & $7.3281e-3$ \\
+example.tex(交叉验证节),462,3,3.0,ALLOW,3 小时,0.0,3 & 7.208478464 & $0.1749635$ & $2.1935e-2$ \\
+example.tex(交叉验证节),462,7.208478464,7.208478464,REGISTRY,S3x_3,3.809e-10,3 & 7.208478464 & $0.1749635$ & $2.1935e-2$ \\
+example.tex(交叉验证节),462,0.1749635,0.1749635,REGISTRY,F18_3,6.700e-09,3 & 7.208478464 & $0.1749635$ & $2.1935e-2$ \\
+example.tex(交叉验证节),462,2.1935e-2,0.021935,REGISTRY,S3m_3,2.465e-07,3 & 7.208478464 & $0.1749635$ & $2.1935e-2$ \\
+example.tex(交叉验证节),463,4,4.0,ALLOW,结构/常数,0.0,4 & 10.30827315 & $-0.1037591$ & $4.4857e-2$ \\
+example.tex(交叉验证节),463,10.30827315,10.30827315,REGISTRY,S3x_4,3.518e-09,4 & 10.30827315 & $-0.1037591$ & $4.4857e-2$ \\
+example.tex(交叉验证节),463,-0.1037591,-0.1037591,REGISTRY,F18_4,3.716e-08,4 & 10.30827315 & $-0.1037591$ & $4.4857e-2$ \\
+example.tex(交叉验证节),463,4.4857e-2,0.044857,REGISTRY,S3m_4,3.181e-07,4 & 10.30827315 & $-0.1037591$ & $4.4857e-2$ \\
+example.tex(交叉验证节),464,5,5.0,ALLOW,结构/常数,0.0,5 & 13.42716139 & $0.0701872$ & $7.6107e-2$ \\
+example.tex(交叉验证节),464,13.42716139,13.42716139,REGISTRY,S3x_5,3.674e-09,5 & 13.42716139 & $0.0701872$ & $7.6107e-2$ \\
+example.tex(交叉验证节),464,0.0701872,0.0701872,REGISTRY,F18_5,1.413e-08,5 & 13.42716139 & $0.0701872$ & $7.6107e-2$ \\
+example.tex(交叉验证节),464,7.6107e-2,0.076107,REGISTRY,S3m_5,1.536e-07,5 & 13.42716139 & $0.0701872$ & $7.6107e-2$ \\
+example.tex(交叉验证节),475,0,0.0,ALLOW,零,0.0,b_k(t)=c_k[T-T_\infty(0)]e
+example.tex(交叉验证节),478,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,关键在于：附件~1给出的是离散采样点，若把$T_\infty$取为以这些采样点为折点的
+example.tex(交叉验证节),484,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"b_k(t+\Delta)=E_kb_k(t)-c_ks(1-E_k)/(\mu_k),"
+example.tex(交叉验证节),494,0,0.0,ALLOW,零,0.0,完全相等（偏差为$0$），与独立常微分方程积分（DOP853，相对容差$1e-13$）相差
+example.tex(交叉验证节),494,853,853.0,ALLOW,"[已由 G11=838.25 推出] '超过 838 倍' 附近的口头表述, 见 G11",0.0,完全相等（偏差为$0$），与独立常微分方程积分（DOP853，相对容差$1e-13$）相差
+example.tex(交叉验证节),494,1e-13,1e-13,ALLOW,数值量级/ODE 容差,0.0,完全相等（偏差为$0$），与独立常微分方程积分（DOP853，相对容差$1e-13$）相差
+example.tex(交叉验证节),495,1.14e-13,1.14e-13,REGISTRY,W02,3.132e-16,$1.14e-13\mathrm{K}$；又以附件~1的$31$个原始采样点为折点，把每段再细分
+example.tex(交叉验证节),495,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$1.14e-13\mathrm{K}$；又以附件~1的$31$个原始采样点为折点，把每段再细分
+example.tex(交叉验证节),495,31,31.0,ALLOW,附件1 前 31 点,0.0,$1.14e-13\mathrm{K}$；又以附件~1的$31$个原始采样点为折点，把每段再细分
+example.tex(交叉验证节),496,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$2,4,8,16$份，结果一位不变（偏差为$0$），说明该式不含求积误差。算法以伪代码形式"
+example.tex(交叉验证节),496,4,4.0,ALLOW,结构/常数,0.0,"$2,4,8,16$份，结果一位不变（偏差为$0$），说明该式不含求积误差。算法以伪代码形式"
+example.tex(交叉验证节),496,8,8.0,ALLOW,结构,0.0,"$2,4,8,16$份，结果一位不变（偏差为$0$），说明该式不含求积误差。算法以伪代码形式"
+example.tex(交叉验证节),496,16,16.0,ALLOW,结构,0.0,"$2,4,8,16$份，结果一位不变（偏差为$0$），说明该式不含求积误差。算法以伪代码形式"
+example.tex(交叉验证节),496,0,0.0,ALLOW,零,0.0,"$2,4,8,16$份，结果一位不变（偏差为$0$），说明该式不含求积误差。算法以伪代码形式"
+example.tex(交叉验证节),500,0.98,0.98,REGISTRY,F1C_0,5.691e-03,{0.98}
+example.tex(交叉验证节),502,3,3.0,ALLOW,3 小时,0.0,\textbf{表~C  Bessel--Duhamel 半解析解的逐段递推算法}\\[3pt]
+example.tex(交叉验证节),507,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"1 & \textbf{输入}：附件~1采样点$(t_j,T_\infty^j)$；特征根$x_k$、系数$c_k$，"
+example.tex(交叉验证节),507,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"1 & \textbf{输入}：附件~1采样点$(t_j,T_\infty^j)$；特征根$x_k$、系数$c_k$，"
+example.tex(交叉验证节),508,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"衰减率$\mu_k=\alpha(x_k/R)$，$k=1,\dots,K$ \\"
+example.tex(交叉验证节),509,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"2 & \textbf{初始化}：$b_k\leftarrow c_k[T-T_\infty(0)]$，$k=1,\dots,K$ \\"
+example.tex(交叉验证节),509,0,0.0,ALLOW,零,0.0,"2 & \textbf{初始化}：$b_k\leftarrow c_k[T-T_\infty(0)]$，$k=1,\dots,K$ \\"
+example.tex(交叉验证节),509,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"2 & \textbf{初始化}：$b_k\leftarrow c_k[T-T_\infty(0)]$，$k=1,\dots,K$ \\"
+example.tex(交叉验证节),510,3,3.0,ALLOW,3 小时,0.0,"3 & \textbf{for} $j=0,\dots,N-1$：$\Delta=t-t_j$，"
+example.tex(交叉验证节),510,0,0.0,ALLOW,零,0.0,"3 & \textbf{for} $j=0,\dots,N-1$：$\Delta=t-t_j$，"
+example.tex(交叉验证节),510,-1,-1.0,REGISTRY,F65_diff,3.861e-01,"3 & \textbf{for} $j=0,\dots,N-1$：$\Delta=t-t_j$，"
+example.tex(交叉验证节),512,4,4.0,ALLOW,结构/常数,0.0,"4 & \textbf{for} $k=1,\dots,K$：$E_k\leftarrow e$，"
+example.tex(交叉验证节),512,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,"4 & \textbf{for} $k=1,\dots,K$：$E_k\leftarrow e$，"
+example.tex(交叉验证节),513,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,$b_k\leftarrow E_kb_k-c_ks(1-E_k)/\mu_k$ \\
+example.tex(交叉验证节),514,5,5.0,ALLOW,结构/常数,0.0,"5 & 输出 $T(r,t)=T_\infty+\sum_kb_kJ(\lambda_kr)$ \\"
+example.tex(交叉验证节),522,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,为隔离格式差异，对照时两侧采用\textbf{同一}环境函数（由附件~1全部数据点构造的
+example.tex(交叉验证节),523,3200,3200.0,ALLOW,网格: 生产设置 M=3200,0.0,PCHIP插值）。数值侧取生产设置$M=3200$、$\Delta t=2\mathrm{s}$；解析侧按
+example.tex(交叉验证节),523,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,PCHIP插值）。数值侧取生产设置$M=3200$、$\Delta t=2\mathrm{s}$；解析侧按
+example.tex(交叉验证节),524,0.25,0.25,ALLOW,时间步/通用,0.0,$\Delta\tau=0.25\mathrm{s}$对PCHIP采样后作分段线性处理，其求积误差为
+example.tex(交叉验证节),525,1.9e-7,1.9e-07,REGISTRY,W21_tau0.25,3.544e-09,$1.9e-7\mathrm{K}$，级数取$400$项（截断误差$<1e-6\mathrm{K}$），
+example.tex(交叉验证节),525,400,400.0,ALLOW,网格/常数,0.0,$1.9e-7\mathrm{K}$，级数取$400$项（截断误差$<1e-6\mathrm{K}$），
+example.tex(交叉验证节),525,1e-6,1e-06,ALLOW,容差量级,0.0,$1.9e-7\mathrm{K}$，级数取$400$项（截断误差$<1e-6\mathrm{K}$），
+example.tex(交叉验证节),526,1e-6,1e-06,ALLOW,容差量级,0.0,故基准自身的不确定度小于$1e-6\mathrm{K}$，比待测偏差小约一个数量级。
+example.tex(交叉验证节),528,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,两法在题面表~1的$7$个时刻$x5$个半径上的偏差见表~D：最大绝对偏差为
+example.tex(交叉验证节),528,7,7.0,ALLOW,结构,0.0,两法在题面表~1的$7$个时刻$x5$个半径上的偏差见表~D：最大绝对偏差为
+example.tex(交叉验证节),528,5,5.0,ALLOW,结构/常数,0.0,两法在题面表~1的$7$个时刻$x5$个半径上的偏差见表~D：最大绝对偏差为
+example.tex(交叉验证节),529,7.50e-6,7.5e-06,REGISTRY,H02,4.290e-09,$7.50e-6\mathrm{K}$，出现在$t=900\mathrm{s}$、$r=0$处，
+example.tex(交叉验证节),529,900,900.0,ALLOW,题面表1/2 时间点,0.0,$7.50e-6\mathrm{K}$，出现在$t=900\mathrm{s}$、$r=0$处，
+example.tex(交叉验证节),529,0,0.0,ALLOW,零,0.0,$7.50e-6\mathrm{K}$，出现在$t=900\mathrm{s}$、$r=0$处，
+example.tex(交叉验证节),530,5e-5,5e-05,ALLOW,四位小数的半 ulp,0.0,仅为四位小数分辨率（半 ulp $5e-5\mathrm{K}$）的$0.150$倍。就四位小数而言，
+example.tex(交叉验证节),530,0.150,0.15,ALLOW,题面问题3: 含水率目标 0.15 kg/kg,0.0,仅为四位小数分辨率（半 ulp $5e-5\mathrm{K}$）的$0.150$倍。就四位小数而言，
+example.tex(交叉验证节),531,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,\textbf{两法给出完全相同的表~1}——$35$个位置中仅$4$处相差$1$个末位单位
+example.tex(交叉验证节),531,35,35.0,ALLOW,量级,0.0,\textbf{两法给出完全相同的表~1}——$35$个位置中仅$4$处相差$1$个末位单位
+example.tex(交叉验证节),531,4,4.0,ALLOW,结构/常数,0.0,\textbf{两法给出完全相同的表~1}——$35$个位置中仅$4$处相差$1$个末位单位
+example.tex(交叉验证节),531,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,\textbf{两法给出完全相同的表~1}——$35$个位置中仅$4$处相差$1$个末位单位
+example.tex(交叉验证节),532,1e-4,0.0001,REGISTRY,S14C_dt1.0,1.934e-06,（$1e-4^\circ\mathrm{C}$），其余逐位相同。
+example.tex(交叉验证节),535,0.86,0.86,REGISTRY,F62,2.295e-03,{0.86}
+example.tex(交叉验证节),538,1e-6,1e-06,ALLOW,容差量级,0.0,（单位：$1e-6\mathrm{K}$，正值表示数值解偏高）}\\[3pt]
+example.tex(交叉验证节),538,3,3.0,ALLOW,3 小时,0.0,（单位：$1e-6\mathrm{K}$，正值表示数值解偏高）}\\[3pt]
+example.tex(交叉验证节),541,0,0.0,ALLOW,零,0.0,时间/s & 0 cm & 0.5 cm & 1 cm & 1.5 cm & 2 cm \\
+example.tex(交叉验证节),541,0.5,0.5,ALLOW,题面: 半径网格 / 通用,0.0,时间/s & 0 cm & 0.5 cm & 1 cm & 1.5 cm & 2 cm \\
+example.tex(交叉验证节),541,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,时间/s & 0 cm & 0.5 cm & 1 cm & 1.5 cm & 2 cm \\
+example.tex(交叉验证节),541,1.5,1.5,ALLOW,题面: 半径网格,0.0,时间/s & 0 cm & 0.5 cm & 1 cm & 1.5 cm & 2 cm \\
+example.tex(交叉验证节),541,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,时间/s & 0 cm & 0.5 cm & 1 cm & 1.5 cm & 2 cm \\
+example.tex(交叉验证节),543,100,100.0,ALLOW,题面表1/2 时间点,0.0,100  & 0.0567 & 0.185 & 0.813 & 2.07 & 2.41 \\
+example.tex(交叉验证节),543,0.0567,0.0567,REGISTRY,HT_T100_r0,0.000e+00,100  & 0.0567 & 0.185 & 0.813 & 2.07 & 2.41 \\
+example.tex(交叉验证节),543,0.185,0.185,REGISTRY,HT_T100_r0.5,0.000e+00,100  & 0.0567 & 0.185 & 0.813 & 2.07 & 2.41 \\
+example.tex(交叉验证节),543,0.813,0.813,REGISTRY,HT_T100_r1.0,0.000e+00,100  & 0.0567 & 0.185 & 0.813 & 2.07 & 2.41 \\
+example.tex(交叉验证节),543,2.07,2.07,REGISTRY,HT_T100_r1.5,0.000e+00,100  & 0.0567 & 0.185 & 0.813 & 2.07 & 2.41 \\
+example.tex(交叉验证节),543,2.41,2.41,REGISTRY,HT_T100_r2.0,0.000e+00,100  & 0.0567 & 0.185 & 0.813 & 2.07 & 2.41 \\
+example.tex(交叉验证节),544,300,300.0,ALLOW,题面表1/2 时间点,0.0,300  & 2.91 & 3.08 & 3.42 & 4.02 & 3.67 \\
+example.tex(交叉验证节),544,2.91,2.91,REGISTRY,HT_T300_r0,0.000e+00,300  & 2.91 & 3.08 & 3.42 & 4.02 & 3.67 \\
+example.tex(交叉验证节),544,3.08,3.08,REGISTRY,HT_T300_r0.5,0.000e+00,300  & 2.91 & 3.08 & 3.42 & 4.02 & 3.67 \\
+example.tex(交叉验证节),544,3.42,3.42,REGISTRY,HT_T300_r1.0,0.000e+00,300  & 2.91 & 3.08 & 3.42 & 4.02 & 3.67 \\
+example.tex(交叉验证节),544,4.02,4.02,REGISTRY,HT_T300_r1.5,0.000e+00,300  & 2.91 & 3.08 & 3.42 & 4.02 & 3.67 \\
+example.tex(交叉验证节),544,3.67,3.67,REGISTRY,HT_T300_r2.0,0.000e+00,300  & 2.91 & 3.08 & 3.42 & 4.02 & 3.67 \\
+example.tex(交叉验证节),545,600,600.0,ALLOW,题面表1/2 时间点,0.0,600  & 6.25 & 6.08 & 5.63 & 4.79 & 3.60 \\
+example.tex(交叉验证节),545,6.25,6.25,REGISTRY,HT_T600_r0,0.000e+00,600  & 6.25 & 6.08 & 5.63 & 4.79 & 3.60 \\
+example.tex(交叉验证节),545,6.08,6.08,REGISTRY,HT_T600_r0.5,0.000e+00,600  & 6.25 & 6.08 & 5.63 & 4.79 & 3.60 \\
+example.tex(交叉验证节),545,5.63,5.63,REGISTRY,HT_T600_r1.0,0.000e+00,600  & 6.25 & 6.08 & 5.63 & 4.79 & 3.60 \\
+example.tex(交叉验证节),545,4.79,4.79,REGISTRY,HT_T600_r1.5,0.000e+00,600  & 6.25 & 6.08 & 5.63 & 4.79 & 3.60 \\
+example.tex(交叉验证节),545,3.60,3.6,REGISTRY,HT_T600_r2.0,0.000e+00,600  & 6.25 & 6.08 & 5.63 & 4.79 & 3.60 \\
+example.tex(交叉验证节),546,900,900.0,ALLOW,题面表1/2 时间点,0.0,900  & 7.50 & 7.20 & 6.27 & 4.93 & 3.66 \\
+example.tex(交叉验证节),546,7.50,7.5,REGISTRY,HT_T900_r0,0.000e+00,900  & 7.50 & 7.20 & 6.27 & 4.93 & 3.66 \\
+example.tex(交叉验证节),546,7.20,7.2,REGISTRY,HT_T900_r0.5,0.000e+00,900  & 7.50 & 7.20 & 6.27 & 4.93 & 3.66 \\
+example.tex(交叉验证节),546,6.27,6.27,REGISTRY,HT_T900_r1.0,0.000e+00,900  & 7.50 & 7.20 & 6.27 & 4.93 & 3.66 \\
+example.tex(交叉验证节),546,4.93,4.93,REGISTRY,HT_T900_r1.5,0.000e+00,900  & 7.50 & 7.20 & 6.27 & 4.93 & 3.66 \\
+example.tex(交叉验证节),546,3.66,3.66,REGISTRY,HT_T900_r2.0,0.000e+00,900  & 7.50 & 7.20 & 6.27 & 4.93 & 3.66 \\
+example.tex(交叉验证节),547,1200,1200.0,ALLOW,题面表1/2 时间点,0.0,1200 & 7.12 & 6.92 & 6.26 & 5.23 & 3.89 \\
+example.tex(交叉验证节),547,7.12,7.12,REGISTRY,HT_T1200_r0,0.000e+00,1200 & 7.12 & 6.92 & 6.26 & 5.23 & 3.89 \\
+example.tex(交叉验证节),547,6.92,6.92,REGISTRY,HT_T1200_r0.5,0.000e+00,1200 & 7.12 & 6.92 & 6.26 & 5.23 & 3.89 \\
+example.tex(交叉验证节),547,6.26,6.26,REGISTRY,HT_T1200_r1.0,0.000e+00,1200 & 7.12 & 6.92 & 6.26 & 5.23 & 3.89 \\
+example.tex(交叉验证节),547,5.23,5.23,REGISTRY,HT_T1200_r1.5,0.000e+00,1200 & 7.12 & 6.92 & 6.26 & 5.23 & 3.89 \\
+example.tex(交叉验证节),547,3.89,3.89,REGISTRY,HT_T1200_r2.0,0.000e+00,1200 & 7.12 & 6.92 & 6.26 & 5.23 & 3.89 \\
+example.tex(交叉验证节),548,1500,1500.0,ALLOW,题面表1/2 时间点,0.0,1500 & 6.50 & 6.24 & 5.38 & 3.86 & 2.56 \\
+example.tex(交叉验证节),548,6.50,6.5,REGISTRY,HT_T1500_r0,0.000e+00,1500 & 6.50 & 6.24 & 5.38 & 3.86 & 2.56 \\
+example.tex(交叉验证节),548,6.24,6.24,REGISTRY,HT_T1500_r0.5,0.000e+00,1500 & 6.50 & 6.24 & 5.38 & 3.86 & 2.56 \\
+example.tex(交叉验证节),548,5.38,5.38,REGISTRY,HT_T1500_r1.0,0.000e+00,1500 & 6.50 & 6.24 & 5.38 & 3.86 & 2.56 \\
+example.tex(交叉验证节),548,3.86,3.86,REGISTRY,HT_T1500_r1.5,0.000e+00,1500 & 6.50 & 6.24 & 5.38 & 3.86 & 2.56 \\
+example.tex(交叉验证节),548,2.56,2.56,REGISTRY,HT_T1500_r2.0,0.000e+00,1500 & 6.50 & 6.24 & 5.38 & 3.86 & 2.56 \\
+example.tex(交叉验证节),549,1800,1800.0,ALLOW,题面表1/2 时间点 / 阶段时长,0.0,1800 & 4.68 & 4.61 & 4.40 & 3.76 & 2.75 \\
+example.tex(交叉验证节),549,4.68,4.68,REGISTRY,HT_T1800_r0,0.000e+00,1800 & 4.68 & 4.61 & 4.40 & 3.76 & 2.75 \\
+example.tex(交叉验证节),549,4.61,4.61,REGISTRY,HT_T1800_r0.5,0.000e+00,1800 & 4.68 & 4.61 & 4.40 & 3.76 & 2.75 \\
+example.tex(交叉验证节),549,4.40,4.4,REGISTRY,HT_T1800_r1.0,0.000e+00,1800 & 4.68 & 4.61 & 4.40 & 3.76 & 2.75 \\
+example.tex(交叉验证节),549,3.76,3.76,REGISTRY,HT_T1800_r1.5,0.000e+00,1800 & 4.68 & 4.61 & 4.40 & 3.76 & 2.75 \\
+example.tex(交叉验证节),549,2.75,2.75,REGISTRY,HT_T1800_r2.0,0.000e+00,1800 & 4.68 & 4.61 & 4.40 & 3.76 & 2.75 \\
+example.tex(交叉验证节),558,3200,3200.0,ALLOW,网格: 生产设置 M=3200,0.0,固定$M=3200$加密$\Delta t$：偏差随$\Delta t$减半而减半（相邻比值
+example.tex(交叉验证节),559,2.000,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,"$2.000,1.999,1.999$），呈严格\textbf{一阶}，与全隐式Euler的$O(\Delta t)$相符。"
+example.tex(交叉验证节),559,1.999,1.999,REGISTRY,H10r_dt0.007812,1.580e-04,"$2.000,1.999,1.999$），呈严格\textbf{一阶}，与全隐式Euler的$O(\Delta t)$相符。"
+example.tex(交叉验证节),559,1.999,1.999,REGISTRY,H10r_dt0.007812,1.580e-04,"$2.000,1.999,1.999$），呈严格\textbf{一阶}，与全隐式Euler的$O(\Delta t)$相符。"
+example.tex(交叉验证节),560,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,固定$\Delta t=2\mathrm{s}$比较$M$与$2M$的解：偏差随网格加密而缩小$4$倍
+example.tex(交叉验证节),560,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,固定$\Delta t=2\mathrm{s}$比较$M$与$2M$的解：偏差随网格加密而缩小$4$倍
+example.tex(交叉验证节),560,4,4.0,ALLOW,结构/常数,0.0,固定$\Delta t=2\mathrm{s}$比较$M$与$2M$的解：偏差随网格加密而缩小$4$倍
+example.tex(交叉验证节),561,4.001,4.001,REGISTRY,H11r_M400,7.408e-05,"（相邻比值$4.001,3.989,4.014$），呈\textbf{二阶}。在同一设置下，时间离散误差为"
+example.tex(交叉验证节),561,3.989,3.989,REGISTRY,H11r_M800,4.955e-04,"（相邻比值$4.001,3.989,4.014$），呈\textbf{二阶}。在同一设置下，时间离散误差为"
+example.tex(交叉验证节),561,4.014,4.014,REGISTRY,H11r_M1600,1.575e-04,"（相邻比值$4.001,3.989,4.014$），呈\textbf{二阶}。在同一设置下，时间离散误差为"
+example.tex(交叉验证节),562,7.50e-6,7.5e-06,REGISTRY,H02,4.290e-09,$7.50e-6\mathrm{K}$，空间离散误差仅$2.17e-7\mathrm{K}$
+example.tex(交叉验证节),562,2.17e-7,2.17e-07,REGISTRY,H11_M1600_space,1.665e-10,$7.50e-6\mathrm{K}$，空间离散误差仅$2.17e-7\mathrm{K}$
+example.tex(交叉验证节),563,7.23e-8,7.23e-08,REGISTRY,H12b,2.217e-11,（Richardson外推约$7.23e-8\mathrm{K}$），前者为后者的$34.6$倍。可见
+example.tex(交叉验证节),563,34.6,34.6,REGISTRY,H13,3.103e-02,（Richardson外推约$7.23e-8\mathrm{K}$），前者为后者的$34.6$倍。可见
+example.tex(交叉验证节),564,7.50e-6,7.5e-06,REGISTRY,H02,4.290e-09,$7.50e-6\mathrm{K}$几乎全部来自时间离散；若需进一步提高精度，只需减小
+example.tex(交叉验证节),567,50,50.0,ALLOW,解析解校核用的常 T_inf = 50 degC,0.0,补充常环境校核：令$T_\infty\equiv50^\circ\mathrm{C}$（该情形存在经典级数解可精确
+example.tex(交叉验证节),568,800,800.0,ALLOW,网格/常数,0.0,对照）时，取$M=800$、$\Delta t=2\mathrm{s}$，数值解与解析级数解的偏差为
+example.tex(交叉验证节),568,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,对照）时，取$M=800$、$\Delta t=2\mathrm{s}$，数值解与解析级数解的偏差为
+example.tex(交叉验证节),569,4.48e-6,4.48e-06,REGISTRY,E20_M800_dt0.0005,2.727e-09,$4.48e-6\mathrm{K}$，与本节的变环境结论量级一致。
+example.tex(交叉验证节),572,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,四位小数精度下可信；本文表~1、表~2与\texttt{result1.xlsx}即以此为准。
+example.tex(交叉验证节),572,2,2.0,ALLOW,题面: 半径 2 cm / 通用整数,0.0,四位小数精度下可信；本文表~1、表~2与\texttt{result1.xlsx}即以此为准。
+example.tex(交叉验证节),572,1,1.0,ALLOW,题面: 半径网格 / 通用,0.0,四位小数精度下可信；本文表~1、表~2与\texttt{result1.xlsx}即以此为准。

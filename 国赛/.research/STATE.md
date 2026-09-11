@@ -1,6 +1,164 @@
 # Research State — 2026 国赛 A 题 · 药材烘干
 
-Last updated: 2026-09-10 (session 3)
+Last updated: 2026-09-11 (session 5)
+
+## Session 5 — objective and findings
+
+**User request**: 给 tex 文件中问题一部分添加一个交叉验证部分；论文写了路线 A，
+就补充路线 B；格式模仿上文。
+
+**Done.** `paper/example.tex` gained a new subsubsection
+`温度场的交叉验证：Bessel特征函数展开解析解` (label `sec:tempverify`),
+placed between the temperature-results and moisture-sections. The paper solves
+Q1 by route A (node-centred finite volume + fully implicit Euler), so the added
+section derives **route B** — Bessel eigenfunction expansion + per-segment
+closed-form Duhamel — as an independent benchmark, then compares the two.
+
+Section contents, mirroring the paper's existing style
+(`\noindent\ding{228}` bullets, `equation` environments, centre+minipage tables
+with `booktabs`, full-width punctuation):
+
+1. 齐次化与特征值问题 — $u=T-T_\infty$; $xJ_1(x)=\mathrm{Bi}J_0(x)$, Bi=1.3889
+2. 展开系数与模态方程 — $c_k=2J_1(x_k)/[x_k(J_0^2+J_1^2)]$;
+   $\dot b_k=-\mu_kb_k-c_k\dot T_\infty$
+3. Duhamel 逐段闭式积分 — $b_k(t+\Delta)=E_kb_k(t)-c_ks(1-E_k)/\mu_k$,
+   with the exactness checks (0 K vs closed form; 1.14e-13 K vs DOP853;
+   invariant under 16× subdivision) and a pseudocode table
+4. 交叉验证结果 — deviation table (unit $10^{-6}$ K), max 7.50e-6 K = 0.150 ×
+   the four-decimal threshold; the two routes agree **bit-for-bit at four
+   decimals** except 4 of 35 positions differing by one last digit
+5. 偏差归因 — time error first order (2.000/1.999/1.999), space second order
+   (4.001/3.989/4.014); time:space = 34.6×; Richardson ≈7.23e-8 K; plus the
+   constant-ambient check 4.48e-6 K
+
+### Session-5 findings and fixes
+
+| # | finding | action |
+|---|---------|--------|
+| S5-1 | The paper **already used `表~A`** for the temperature pseudocode. My first draft also used 表~A ⇒ collision | Renumbered my three tables to **表~B / 表~C / 表~D** (表~E was already the moisture pseudocode). Verified no duplicate label remains and all in-text references match |
+| S5-2 | My tables initially used `\begin{table}` + `\caption`, which auto-numbered them 2/3/4 — colliding with the problem's own 表1/表2 | Replaced with the paper's existing centre+minipage style and letter numbering |
+| S5-3 | A 78 pt Overfull hbox from my pseudocode table | Widened minipage to 0.98, narrowed the `p{}` column to 0.72, shortened the `\qquad` indents, dropped `@{}` padding padding → **0 pt**; only the paper's pre-existing overfulls remain (89–103, 160–169, 268–279) |
+| S5-4 | **Real transcription error**: table D row t=100, r=0 written `0.057` (2 sig figs) where the value is 0.0567 (3 sig figs) | Corrected to `0.0567`. This is exactly the class of error gate 3 exists to catch |
+| S5-5 | Gate-3 itself had two defects: looked up keys `HD_T*_r5/r10/...` while the registry uses `_r0.5/_r1.0/...`; and set the $c_k$ tolerance to 1e-7 although the values are written to 6–7 significant digits | Fixed key labels to the registry's radius tags; $c_k$ tolerance relaxed to 1e-5. Also taught `latex_to_plain` to strip `\ding{}`, `\phantom{}`, `\hspace*{}`, `\begin/\end{}`, `\label/\ref/\eqref{}`, `@{}` and `p{...}` (otherwise 228, 1, 0.72 were reported as unsourced numbers) |
+
+### Session-5 verification (three gates, all pass)
+
+`python src/q1_reconcile.py` → exit 0:
+- **Gate 1**: 2315 literals — 846 registry-backed, 1469 definitional, **0 unmatched**
+  (now also scanning the tex cross-validation section, line-ranged so the rest
+  of the paper's historical numbers are not dragged in)
+- **Gate 2**: 210 table values vs `result1.xlsx` — bit-identical at 4 decimals
+- **Gate 3 (new)**: 50 values in tex 表B/表D vs registry — all consistent
+
+LaTeX: `latexmk -xelatex` compiles clean (18 pages, no errors, no undefined
+references); `paper/example.pdf` regenerated. PDF text extraction confirms
+tables B/D and all key figures render correctly.
+
+### Session-5 artefacts
+
+| path | what |
+|------|------|
+| `paper/example.tex` | + cross-validation subsubsection (~120 lines, §5.1.6) |
+| `paper/example.pdf` | recompiled, 18 pages |
+| `src/q1_reconcile.py` | + gate 3 (tex tables vs registry), LaTeX-aware cleaner, tex section in gate 1 |
+| `src/q1_analytic_vs_numeric.py` | + `HT_*` rows registering the as-written 1e-6 K values |
+| `outputs/reconcile_run.log` | three-gate log |
+
+Note: `paper/example.tex` was concurrently modified by another process during
+this session (line count 531 → 743; the renumbering to 表~B/C/D appeared).
+I verified my section survived intact and re-checked consistency afterwards.
+
+---
+
+# Session 4 state (retained)
+
+## Session 4 — objective and findings
+
+**User request**: 总结问题一温度场的两种求解方式，详细写出求解过程。
+
+Deliverable: **`model/温度场两种解法.md`** — a standalone document deriving both
+routes in full (§0 共同设定 → §1 路线A → §2 路线B → §3 对照 → §4 结论).
+
+| route | method | role |
+|---|---|---|
+| A | 节点式有限体积 + 全隐式 Euler + 追赶法 | production solver (`result1.xlsx`) |
+| B | Bessel 特征函数展开 + Duhamel 逐段闭式 | independent exact benchmark |
+
+Key numbers (all registry-backed): two routes agree to **7.4957e-6 K**
+(0.1499 × the 5e-5 four-decimal threshold) on all 21 radii × 7 times; that
+difference is **34.57×** the spatial error, i.e. almost entirely A's
+first-order time discretisation.
+
+### Session-4 defects found by the reconciliation gate (and fixed)
+
+Expanding the gate to a third document exposed 146 unsourced literals, then 97,
+65, 43, 3, 0:
+
+1. **Reconciliation tolerance was unsound twice.** First a fixed 3 % tolerance
+   with ÷100/÷1000 variants let large integers match unrelated values
+   (step count 230400 ÷100 → matched P09 = 2368.9). Fixed by deriving tolerance
+   from the token's *written precision* (0.5·10⁻ᵏ). That hardening then
+   over-corrected: it dropped percentage forms, so `10.12` (meaning 10.12 %)
+   stopped matching. Final rule: percent-variant matching only when the token is
+   literally followed by `%`.
+2. **`add()` precision varied per script** — several had `.10g`, one `.14g`, one
+   still `.10g` after I thought all were fixed. Values like 36.785783808431 were
+   stored truncated to 36.78578381 and could not match. All registry writers now
+   emit `.14g`.
+3. **Two real document errors caught**, not just bookkeeping:
+   - `T∞(100 s)` written as **28.55 °C**; it is **28.9707 °C** (28.55 is the
+     t=60 s value). Affected §4.3 极值原理检验.
+   - Overflow time for the user's scheme at Δt=0.1 s written as **8.7 s**;
+     measured it is **8.9 s** (8.8 s still finite, 8.9 s overflows).
+4. **A Δt label mismatch**: the text row was labelled Δt=7.47 while the registry
+   held 7.4683. The scan now includes 7.47 as its own setting.
+
+### Session-4 self-inflicted damage, and the recovery (recorded in full)
+
+I used `Get-Content ... -replace ... | Set-Content -Encoding UTF8` to change
+`.10g` → `.14g` across three scripts. **`Get-Content` on this Windows host
+decoded the UTF-8 files as CP936**, destroying every Chinese character, and the
+loss is **irreversible** (CP936 replacement points appear as U+E1C0, so
+`s.encode('gbk')` cannot round-trip). Corrupted: `q1_analytic_fit.py` (105
+replacement chars), `q1_diagnostics.py` (35), `q1_produce.py` (29).
+
+Recovery: `git checkout HEAD -- src/q1_diagnostics.py src/q1_produce.py`
+restored both cleanly (tracked; verified they still contained this session's
+CSV-ownership fix and registry code). `q1_analytic_fit.py` was **untracked**, so
+I rewrote it from scratch. All pipeline scripts now verify as clean UTF-8 with
+zero PUA characters.
+
+**Rule for this environment (do not repeat):** never edit UTF-8 source with
+PowerShell `Get-Content`/`Set-Content`. Use the `edit`/`write` tools, or Python
+with an explicit `encoding='utf-8'`.
+
+### Session-4 verification status (final)
+
+`python src/q1_reconcile.py`:
+- **Gate 1**: 2155 literals — 774 registry-backed, 1381 definitional,
+  **0 unmatched**.
+- **Gate 2**: 210 table values across `model/problem_slove1.md`,
+  `outputs/table*.md`, `outputs/table*.csv` all match `outputs/result1.xlsx`
+  **bit-for-bit at 4 decimals**.
+
+New registry: `outputs/registry_q1_uncertainty.csv` (production uncertainty +
+per-window discretisation errors), emitted by `q1_produce.py`.
+
+### Session-4 artefacts
+
+| path | what |
+|------|------|
+| `model/温度场两种解法.md` | **the deliverable**: both routes derived in full |
+| `src/q1_produce.py` | + uncertainty registry, + per-window error table |
+| `src/q1_solve.py` | + S07b overflow time, + per-M/per-dt convergence rows, + P02b/c/d, P09b/c, P24–P26 |
+| `src/q1_energy_check.py` | + E5 both face variants, + E18/E19 plateau & Fo |
+| `src/q1_analytic_vs_numeric.py` | + H00/H02 rows, + H12b Richardson, + `.14g` |
+| `src/q1_analytic_fit.py` | rewritten after encoding loss; + G07/G08/G09/G15/G16 |
+| `src/q1_reconcile.py` | precision-derived tolerance, %-aware, third document, uncertainty registry |
+
+---
+
+# Session 3 state (retained)
 
 ## Session 3 — objective and findings
 
