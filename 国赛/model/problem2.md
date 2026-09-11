@@ -62,7 +62,7 @@ $T_0=28\ ^\circ\mathrm{C}$、初始干基含水率 $C_0=2.55\ \mathrm{kg/kg}$，
 | **B6** | 表面为第三类（Robin）边界，平衡值取环境值 $T_\infty(t)$、$C_\infty(t)$ | 与附录 2 的 $h$、$h_m$ 配套；适用性边界讨论见问题一 §7.2 |
 | **B7** | 前 3 h 内体积不收缩，$R$ 取常数 | 附件 2 显示 3 h 内 $R$ 由 2.000 降至约 1.75 cm（收缩约 12 %），收缩的显式处理属问题 4 |
 | **B8** | 预热平衡与恒温干燥两阶段的差异**由环境激励 $T_\infty(t),C_\infty(t)$ 的时间历程体现**，控制方程形式统一 | 题面"相关经验公式统一采用附录 3"即指方程不变、参数统一 |
-| **B9** | **计入水分蒸发吸热**：表面相变潜热 $q_{\rm evap}=H_{\rm evap}h_m(C_R-C_\infty)$，取 $H_{\rm evap}\approx2.44\times10^6\ \mathrm{J/kg}$ | 题面**未给出** $H_{\rm evap}$，按文献取值（水在 $28\sim50\ ^\circ\mathrm{C}$ 的汽化潜热）；量级与敏感性见 §4.4(c)。若需与"无相变"模型对比，令 $H_{\rm evap}=0$ 即可退化 |
+| **B9** | **计入水分蒸发吸热**：表面相变潜热 $q_{\rm evap}=H_{\rm evap}h_m(C_R-C_\infty)$，其中 $H_{\rm evap}(T)$ 由 **Clapeyron 方程 + Kirchhoff 定律推导**并按 IAPWS-95 定标，量级 $\sim2.43\times10^6\ \mathrm{J/kg}$ | 题面**未给出** $H_{\rm evap}$，但它可由 $T,p_{\rm sat},c_{p,l},c_{p,v}$ 等基础热力学量**推导得到**，无需引入经验拟合参数；推导、定标与闭合检验见 §4.4(c)。若需与"无相变"模型对比，令 $H_{\rm evap}=0$ 即可退化 |
 
 > **对 B8 的说明**：题目指出"预热平衡与恒温干燥阶段的参数有所不同"，但同时要求
 > "相关经验公式统一采用附录 3"。本文据此理解为：**控制方程与物性经验式在全程统一**，
@@ -79,8 +79,7 @@ $T_0=28\ ^\circ\mathrm{C}$、初始干基含水率 $C_0=2.55\ \mathrm{kg/kg}$，
 
 $$\rho(C)\,c_p(C)\,\frac{\partial T}{\partial t}
 =\frac{1}{r}\frac{\partial}{\partial r}\left(k(C)\,r\frac{\partial T}{\partial r}\right)
-+S_h
-\label{eq:T}\tag{1}$$
++S_h$$
 
 其中 $S_h$ 为**水分蒸发吸热源项**（$\mathrm{W/m^3}$，吸热为负）。本文采用单场 Fick
 扩散描述水分迁移（式 2），水分以液相扩散至表面后蒸发，故**相变吸热发生在表面**，
@@ -175,35 +174,162 @@ $$\boxed{\ q_{\rm evap}=H_{\rm evap}\,h_m\left[C(R,t)-C_\infty(t)\right]\ }
 若要在本模型中加入分布式内部蒸发，需升级为含气相场的多相模型（如胡众欢 2020 的
 气/液双场方程 + 源项 $R=K_{\rm evap}(a_wc_{v,\rm sat}-c_v)$），超出本题范围。
 
-#### (c) 量级估计与敏感性
+#### (c) 汽化潜热 $H_{\rm evap}(T)$ 的热力学推导、定标与量级
 
-**汽化潜热**（题面附录 2/3 **未给出**，按文献取值，见假设 B9）：
+题面附录 2/3 **未给出** $H_{\rm evap}$（假设 B9）。本节不作"直接抄文献常数"的处理，
+而是由**热力学基本关系推导其函数形式与温度系数**，再用国际水物性标准 IAPWS-95 定标，
+并在第 (v) 小节作闭合检验。
 
-$$H_{\rm evap}(T)=2.501\times10^6-2.369\times10^3\,T_{^\circ\mathrm{C}}
+##### (i) 相平衡条件 → Clapeyron 方程
+
+液、气两相在饱和线上共存时，两相的比 Gibbs 自由能（化学势）相等：
+
+$$g_l(T,p_{\rm sat})=g_v(T,p_{\rm sat})$$
+
+沿饱和线微分，并利用 $\mathrm{d}g=-s\,\mathrm{d}T+v\,\mathrm{d}p$：
+
+$$-s_l\,\mathrm{d}T+v_l\,\mathrm{d}p_{\rm sat}=-s_v\,\mathrm{d}T+v_v\,\mathrm{d}p_{\rm sat}$$
+
+整理后代入可逆相变关系 $s_v-s_l=H_{\rm evap}/T$：
+
+$$\boxed{\ \frac{\mathrm{d}p_{\rm sat}}{\mathrm{d}T}
+=\frac{s_v-s_l}{v_v-v_l}=\frac{H_{\rm evap}}{T\,(v_v-v_l)}\ }
+\qquad\Longleftrightarrow\qquad
+H_{\rm evap}=T\,(v_v-v_l)\,\frac{\mathrm{d}p_{\rm sat}}{\mathrm{d}T}
+\label{eq:clapeyron}\tag{3a}$$
+
+式 (3a) 即**精确的 Clapeyron 方程**（$v_l,v_v$ 为液、气两相的比容），它把潜热这一
+"能量量"与可测的饱和蒸气压曲线联系起来，是本节推导的出发点。
+
+##### (ii) Clausius–Clapeyron 近似及其误差的定量解释
+
+对式 (3a) 引入两项近似：
+
+1. **$v_l\ll v_v$**：$20\ ^\circ\mathrm{C}$ 时 $v_v=57.76\ \mathrm{m^3/kg}$、
+   $v_l=1.002\times10^{-3}\ \mathrm{m^3/kg}$，$v_l/v_v=1.7\times10^{-5}$，
+   忽略 $v_l$ 的相对误差为 $O(10^{-5})$；
+2. **气相为理想气体**：$v_v=R_vT/p_{\rm sat}$，其中
+   $R_v=\dfrac{R_u}{M_w}=\dfrac{8.314462618}{0.0180153}=461.5\ \mathrm{J/(kg\cdot K)}$。
+
+代入式 (3a) 即得 **Clausius–Clapeyron（CC）方程**：
+
+$$\boxed{\ \frac{\mathrm{d}p_{\rm sat}}{\mathrm{d}T}
+=\frac{H_{\rm evap}\,p_{\rm sat}}{R_vT^2}
+\qquad\Longleftrightarrow\qquad
+H_{\rm evap}(T)=R_vT^2\,\frac{\mathrm{d}\ln p_{\rm sat}}{\mathrm{d}T}\ }
+\label{eq:cc}\tag{3b}$$
+
+**CC 近似的误差可精确量化**。保留真实气体则 $v_v=ZR_vT/p_{\rm sat}$（$Z$ 为压缩因子），
+代回式 (3a) 得 $H_{\rm evap}=R_vT^2(\mathrm{d}\ln p_{\rm sat}/\mathrm{d}T)/Z$，故
+
+$$\frac{H_{\rm evap}^{\rm CC}}{H_{\rm evap}^{\rm true}}=\frac{1}{Z}$$
+
+数值验证（IAPWS-95）：
+
+| $T$ (°C) | 20 | 30 | 40 | 50 |
+|---|---|---|---|---|
+| 压缩因子 $Z$ | 0.998649 | 0.998027 | 0.997189 | 0.996086 |
+| $1/Z-1$（理论预测） | $0.1352\%$ | $0.1977\%$ | $0.2819\%$ | $0.3930\%$ |
+| 式 (3b) 实测偏差 | $0.1370\%$ | $0.2008\%$ | $0.2871\%$ | $0.4014\%$ |
+
+理论与实测吻合到 $0.002\%\sim0.009\%$——**证实 CC 近似的偏差确实全部来自气相非理想性**，
+且其量级（$<0.5\%$）在本题精度要求下可忽略。
+
+##### (iii) Kirchhoff 定律 → 潜热的温度依赖
+
+由 $H_{\rm evap}(T)=h_v(T)-h_l(T)$，沿饱和线对 $T$ 求导：
+
+$$\boxed{\ \frac{\mathrm{d}H_{\rm evap}}{\mathrm{d}T}=c_{p,v}(T)-c_{p,l}(T)
+\equiv\Delta c_p(T)\ }$$
+
+即 **Kirchhoff 定律**：潜热的温度系数等于气、液两相定压比热之差。若 $\Delta c_p$ 在
+区间内近似为常数，积分即得潜热的**线性温度依赖**：
+
+$$H_{\rm evap}(T)=H_{\rm evap}(T_0)+\Delta c_p\,(T-T_0)$$
+
+数值（IAPWS-95，$20\sim50\ ^\circ\mathrm{C}$）：
+
+| $T$ (°C) | 20 | 25 | 30 | 35 | 40 | 45 | 50 |
+|---|---|---|---|---|---|---|---|
+| $c_{p,l}$ (J/(kg·K)) | 4184.4 | 4181.6 | 4180.1 | 4179.5 | 4179.6 | 4180.4 | 4181.5 |
+| $c^0_{p,v}$（理想气体） | 1863.2 | 1864.4 | 1865.6 | 1867.0 | 1868.4 | 1869.8 | 1871.3 |
+| $\Delta c_p^0=c^0_{p,v}-c_{p,l}$ | $-2321.2$ | $-2317.2$ | $-2314.4$ | $-2312.5$ | $-2311.3$ | $-2310.5$ | $-2310.2$ |
+| $\mathrm{d}H_{\rm evap}/\mathrm{d}T$（数值） | $-2367.2$ | $-2370.5$ | $-2375.9$ | $-2383.1$ | $-2392.1$ | $-2402.8$ | $-2415.0$ |
+
+**两项的差别及其解释**：理想气体项平均为 $\Delta c_p^0=-2.314\times10^3\ \mathrm{J/(kg\cdot K)}$，
+而数值斜率平均为 $-2.387\times10^3\ \mathrm{J/(kg\cdot K)}$，相差 $-73\ \mathrm{J/(kg\cdot K)}$
+（$3.0\%$）。差异来源正是 (ii) 中被略去的**饱和蒸气非理想性**：真实蒸气的焓沿饱和线
+还含压力项
+
+$$\left(\frac{\partial h_v}{\partial p}\right)_T\frac{\mathrm{d}p_{\rm sat}}{\mathrm{d}T}
+=v_v\,(1-T\alpha_v)\,\frac{\mathrm{d}p_{\rm sat}}{\mathrm{d}T}$$
+
+该项随 $T$ 升高而增大（$p_{\rm sat}$ 由 $2.34$ 升至 $12.35\ \mathrm{kPa}$，$v_v$ 由
+$57.8$ 降至 $12.0\ \mathrm{m^3/kg}$），正是表中数值斜率由 $-2367$ 单调变到 $-2415$ 的
+原因。**因此工作区间内应取实测斜率，而非理想气体值。**
+
+##### (iv) 数值定标
+
+以物料初温 $28\ ^\circ\mathrm{C}$ 为物理锚点，取 IAPWS-95 的精确值
+$H_{\rm evap}(28\ ^\circ\mathrm{C})=2.43456\times10^6\ \mathrm{J/kg}$；斜率由
+$28\sim50\ ^\circ\mathrm{C}$（实际工况区间）上的最小二乘定出
+$\Delta c_p=-2.391\times10^3\ \mathrm{J/(kg\cdot K)}$：
+
+$$\boxed{\ H_{\rm evap}(T)=2.4346\times10^6-2.391\times10^3\,(T-28\ ^\circ\mathrm{C})
+\quad(\mathrm{J/kg})\ }$$
+
+等价地以摄氏温度直接展开：
+
+$$H_{\rm evap}(T)\approx2.5015\times10^6-2.391\times10^3\,T_{^\circ\mathrm{C}}
 \quad(\mathrm{J/kg})$$
-
-在本题温度区间：
 
 | $T$ | $20\ ^\circ\mathrm{C}$ | $28\ ^\circ\mathrm{C}$ | $40\ ^\circ\mathrm{C}$ | $50\ ^\circ\mathrm{C}$ |
 |---|---|---|---|---|
-| $H_{\rm evap}$ (J/kg) | $2.454\times10^6$ | $2.435\times10^6$ | $2.406\times10^6$ | $2.383\times10^6$ |
+| 定标式 (J/kg) | $2.4537\times10^6$ | $2.4346\times10^6$ | $2.4059\times10^6$ | $2.3820\times10^6$ |
+| IAPWS-95 参考 | $2.4535\times10^6$ | $2.4346\times10^6$ | $2.4060\times10^6$ | $2.3819\times10^6$ |
+| 相对偏差 | $+0.007\%$ | $0$ | $-0.005\%$ | $+0.001\%$ |
 
-取 $H_{\rm evap}\approx2.44\times10^6\ \mathrm{J/kg}$。
+在 $28\sim50\ ^\circ\mathrm{C}$ 上最大残差 $80\ \mathrm{J/kg}$（$0.0033\%$），
+外推至 $20\ ^\circ\mathrm{C}$ 时偏差仍 $<0.01\%$。
 
-**蒸发吸热热流**：由式 (3'')，
+> **说明**：上式由热力学第一性关系推导、国际水物性标准定标，**不引入额外可调参数**；
+> 题面未给 $H_{\rm evap}$ 的问题至此闭合。若需退化到"无相变"模型，令 $H_{\rm evap}=0$
+> 即可（见 §14 的 V8）。
 
-$$q_{\rm evap}=2.44\times10^6\times8\times10^{-7}\times\left(C_R-C_\infty\right)
-\approx1.95\left(C_R-C_\infty\right)\ \mathrm{J/(m^2\cdot s)}$$
+##### (v) 一致性验证（闭合检验）
+
+将定标式反代回 CC 方程 (3b) 积分，自三相点 $(273.16\ \mathrm{K},\ 0.6117\ \mathrm{kPa})$
+出发反演饱和蒸气压，与 IAPWS-95 独立对比：
+
+| $T$ (°C) | 10 | 20 | 30 | 40 | 50 |
+|---|---|---|---|---|---|
+| $p_{\rm sat}$ IAPWS (kPa) | 1.22820 | 2.33932 | 4.24697 | 7.38494 | 12.35195 |
+| 由定标式反演 (kPa) | 1.22753 | 2.33620 | 4.23666 | 7.35633 | 12.28144 |
+| 相对偏差 | $-0.05\%$ | $-0.13\%$ | $-0.24\%$ | $-0.39\%$ | $-0.57\%$ |
+
+偏差为负且随 $T$ 单调增大，其数值与 (ii) 中已定量的 $1/Z-1$（$0.135\%@20\ ^\circ\mathrm{C}
+\to0.393\%@50\ ^\circ\mathrm{C}$）同向、同量级——说明偏差**完全来源于 CC 近似本身**，
+而非定标式的拟合误差。在 $28\sim50\ ^\circ\mathrm{C}$ 内该偏差 $<0.6\%$，可接受。
+
+##### (vi) 蒸发吸热热流与量级
+
+**蒸发吸热热流**：由式 (3'') 与 (iv) 的定标式，
+
+$$q_{\rm evap}=H_{\rm evap}h_m\left(C_R-C_\infty\right)
+\approx2.4059\times10^6\times8\times10^{-7}\times\left(C_R-C_\infty\right)
+\approx1.925\left(C_R-C_\infty\right)\ \mathrm{J/(m^2\cdot s)}$$
+
+（$H_{\rm evap}$ 取工作区间中部的 $40\ ^\circ\mathrm{C}$ 值。）
 
 | 时刻 | $C_\infty$（附件 1） | 取 $C_R\approx2.5$ 时 $q_{\rm evap}$ | 对流热流 $h(T_\infty-T_R)$ | 比值 |
 |---|---|---|---|---|
-| $t=0$ | 0.0196 | $4.84\ \mathrm{J/(m^2s)}$ | $0$（$T_\infty=T_0$） | — |
-| $t=1800\ \mathrm{s}$ | 0.0331 | $4.81$ | $25\times(41.5-28)=338$ | $1.4\%$ |
-| $t=3600\ \mathrm{s}$ | 0.0427 | $4.79$ | $25\times(47.5-28)=488$ | $1.0\%$ |
+| $t=0$ | 0.0196 | $4.77\ \mathrm{J/(m^2s)}$ | $0$（$T_\infty=T_0$） | — |
+| $t=1800\ \mathrm{s}$ | 0.0331 | $4.75$ | $25\times(41.5-28)=338$ | $1.4\%$ |
+| $t=3600\ \mathrm{s}$ | 0.0427 | $4.73$ | $25\times(47.5-28)=488$ | $1.0\%$ |
 
-**表面温降估计**：若忽略该由内部补充的热量，则蒸发造成的表面温降约为
+**表面温降估计**：若忽略由内部补充的热量，则蒸发造成的表面温降约为
 
-$$\Delta T_R\sim\frac{q_{\rm evap}}{h}=\frac{4.84}{25}\approx0.19\ \mathrm{K}$$
+$$\Delta T_R\sim\frac{q_{\rm evap}}{h}=\frac{4.73}{25}\approx0.19\ \mathrm{K}$$
 
 即**约 $0.2\ \mathrm{K}$ 量级的表面降温**——在四位小数的报告精度（$5\times10^{-5}$）下
 **必须计入**，但不会改变温度场的整体形态。
@@ -234,7 +360,7 @@ $$\text{（新）}\quad C(R,t)\ \xrightarrow{\ q_{\rm evap}=H_{\rm evap}h_m(C-C_
 |---|---|---|---|
 | $h$ | 对流换热系数 | $25\ \mathrm{W/(m^2\cdot K)}$ | 附录 2 |
 | $h_m$ | 对流传质系数 | $8\times10^{-7}\ \mathrm{m/s}$ | 附录 2 |
-| $H_{\rm evap}$ | 水的汽化潜热 | $2.44\times10^6\ \mathrm{J/kg}$ | **题面未给**，按文献取值（假设 B9）；$28\sim50\ ^\circ\mathrm{C}$ 内为 $2.435\sim2.383\times10^6$ |
+| $H_{\rm evap}$ | 水的汽化潜热 | $2.4346\times10^6-2.391\times10^3\,(T-28\ ^\circ\mathrm{C})\ \mathrm{J/kg}$ | **题面未给**，由 Clapeyron 方程 + Kirchhoff 定律推导、按 IAPWS-95 定标（假设 B9，§4.4c）；$28\sim50\ ^\circ\mathrm{C}$ 内为 $2.4346\sim2.3820\times10^6$ |
 | $R$ | 半径 | $2\ \mathrm{cm}=0.02\ \mathrm{m}$ | 题面 |
 | $T_0$ | 初始温度 | $28\ ^\circ\mathrm{C}=301.15\ \mathrm{K}$ | 题面 |
 | $C_0$ | 初始含水率 | $2.55\ \mathrm{kg/kg}$ | 题面 |
@@ -600,10 +726,11 @@ $$\boxed{\ \left[\frac{\partial\mathbf R_T}{\partial\mathbf C}\right]_{MM}
 \mathrel{+}=H_{\rm evap}\,h_m\,R\ }$$
 
 这是三条耦合通路中**唯一显式出现于 Jacobian 的非物性项**；若取 $H_{\rm evap}=0$
-（无相变），该元消失，块 (1,2) 退化为纯物性耦合。注意其量级：
-$H_{\rm evap}h_mR=2.44\times10^6\times8\times10^{-7}\times0.02\approx0.039\
-\mathrm{J/(kg\cdot K\cdot s)}$，与对角元 $1/\Delta t=4\ \mathrm{s^{-1}}$ 相比为
-$10^{-2}$ 量级，属**弱耦合**（与 §4.4(c) 的结论一致）。
+（无相变），该元消失，块 (1,2) 退化为纯物性耦合。注意其量级（$H_{\rm evap}$ 取
+$40\ ^\circ\mathrm{C}$ 值，见 §4.4(c)）：
+$H_{\rm evap}h_mR=2.4059\times10^6\times8\times10^{-7}\times0.02\approx0.0385\
+\mathrm{J/(kg\cdot K\cdot s)}$，与对角元 $1/\Delta t=4\ \mathrm{s^{-1}}$ 相比仅为其
+$0.96\%$，属**弱耦合**（与 §4.4(c) 的结论一致）。
 
 **块 (2,1)**（水分对温度的导数）：仅由 $D(C,T)$ 的 Arrhenius 项产生。界面扩散系数同样取
 算术平均：$D_{i-1/2}=\tfrac12\big[D(C_{i-1},T_{i-1})+D(C_i,T_i)\big]$。完全平行于块 (1,2)：
@@ -749,7 +876,8 @@ $\times$ 距离 $0,0.5,1,1.5,2\ \mathrm{cm}$。
 | V5 | 离散守恒 | 总热量/总水量收支残差 | 相对残差 $<10^{-12}$ |
 | V6 | 与问题一衔接 | $t\le1800\ \mathrm{s}$ 内与问题一解对比 | 差异可由**物性差异（附录 2 vs 附录 3）**定量解释 |
 | V7 | 与简化模型对比 | 冻结系数准 Newton vs 严格 Newton | 最终解一致（差 $<10^{-8}$） |
-| V8 | **蒸发吸热项影响** | 令 $H_{\rm evap}=0$ 与 $H_{\rm evap}=2.44\times10^6$ 各算一次，比较 $T(R,t)$ | 表面温差 $\approx0.2\ \mathrm{K}$（与 §4.4c 的解析估计一致），且差值随 $C_R\to C_\infty$ 单调减小 |
+| V8 | **蒸发吸热项影响** | 令 $H_{\rm evap}=0$ 与 $H_{\rm evap}=H_{\rm evap}(T)$（§4.4c 的定标式，$40\ ^\circ\mathrm{C}$ 时 $2.4059\times10^6$）各算一次，比较 $T(R,t)$ | 表面温差 $\approx0.19\ \mathrm{K}$（与 §4.4c 的解析估计一致），且差值随 $C_R\to C_\infty$ 单调减小 |
+| V10 | **$H_{\rm evap}(T)$ 推导链检验** | `src/q2_latent_heat.py`：三条路线互检（精确 Clapeyron / CC / Kirchhoff 定标），并反演 $p_{\rm sat}$ | 精确 Clapeyron 复现 IAPWS-95 的 $h_{fg}$ 至 $<0.1\ \mathrm{J/kg}$；CC 偏差与 $1/Z-1$ 吻合到 $0.01\%$；定标式在 $28\sim50\ ^\circ\mathrm{C}$ 残差 $<0.0033\%$；反演 $p_{\rm sat}$ 偏差 $<0.6\%$ |
 | V9 | **$H_{\rm evap}$、$h_m$ 敏感性** | 对 $H_{\rm evap}$ 取 $\pm20\%$、$h_m$ 取 $1\times,10\times,100\times$ 重算 | 量化蒸发项对 $h_m$ 口径的依赖（§4.4c 的量纲敏感性提醒）；结果用于论文的局限性讨论 |
 
 **V6 说明**：问题一与问题二在 $0\sim1800\ \mathrm{s}$ 用**不同物性经验式**（附录 2 常数
@@ -763,6 +891,8 @@ vs 附录 3 随 $C$ 变化），因此两问结果**本就不应完全相同**�
 | 文件 | 内容 |
 |---|---|
 | `model/problem2.md` | 本文（模型建立） |
+| `src/q2_latent_heat.py` | $H_{\rm evap}(T)$ 的热力学推导、IAPWS-95 定标与闭合检验（§4.4c） |
+| `outputs/registry_q2_latent_heat.csv` | 潜热定标数字注册表（$p_{\rm sat},v_l,v_g,h_{fg},c_{p,l},c_{p,v},Z$） |
 | `src/q2_solve.py` | FEM（线性单元 + 集中质量 + 后向 Euler + Newton）求解器 |
 | `src/q2_verify.py` | 收敛性、守恒性、极值原理验证（V1 ~ V7） |
 | `src/q2_produce.py` | 生产计算，生成 `outputs/result2.xlsx` 与表 3/表 4 |
