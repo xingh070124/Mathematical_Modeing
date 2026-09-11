@@ -36,12 +36,17 @@ $T_0=28\ ^\circ\mathrm{C}$、初始干基含水率 $C_0=2.55\ \mathrm{kg/kg}$，
 | 密度 | $\rho=820$ 常数 | $\rho=650+128C$，**随 $C$ 变化** |
 | 比热容 | $c_p=2600$ 常数 | $c_p=1450+\dfrac{2736C}{C+1}$，**随 $C$ 变化** |
 | 导热系数 | $k=0.36$ 常数 | $k=0.21+\dfrac{0.38C}{C+1}$，**随 $C$ 变化** |
-| 方程耦合 | 单向解耦，可各自求解 | **双向耦合**：$T\to D\to C$，且 $C\to\rho c_p,k$（回代影响 $T$） |
+| 蒸发吸热 | 无（预热阶段蒸发极弱，忽略） | **有**：表面相变吸热 $q_{\rm evap}=H_{\rm evap}h_m(C_R-C_\infty)$，见 §4.4 |
+| 方程耦合 | 单向解耦，可各自求解 | **双向耦合**（三条通路，见下） |
 | 求解方式 | 两个独立线性三对角系统（追赶法） | **非线性耦合系统 → Newton 迭代** |
 
-**耦合回路**：温度场通过 $D$ 的 Arrhenius 项影响水分迁移速率；水分场通过
-$\rho(C),\ c_p(C),\ k(C)$ 影响热惯性（$\rho c_p$）与导热能力（$k$），从而回过来
-影响温度场。二者构成闭合的反馈回路，这是问题二必须联立求解的根本原因。
+**三条耦合通路**：
+
+1. $T\to D\to C$：温度经 Arrhenius 项 $\exp(-3850/T)$ 影响水分扩散速率（强，$\partial\ln D/\partial T\approx4.25\%/\mathrm{K}$）；
+2. $C\to\rho c_p,k\to T$：含水率经物性影响热惯性与导热能力（强，$\rho c_p$ 全程变化 $63.7\%$）；
+3. **$C(R,t)\to q_{\rm evap}\to T(R,t)$**：表面含水率经相变潜热**直接**影响表面热平衡（弱但不可忽略，见 §4.4(c)）。
+
+三条通路构成闭合反馈回路，这是问题二必须联立求解的根本原因。
 
 ---
 
@@ -57,6 +62,7 @@ $\rho(C),\ c_p(C),\ k(C)$ 影响热惯性（$\rho c_p$）与导热能力（$k$�
 | **B6** | 表面为第三类（Robin）边界，平衡值取环境值 $T_\infty(t)$、$C_\infty(t)$ | 与附录 2 的 $h$、$h_m$ 配套；适用性边界讨论见问题一 §7.2 |
 | **B7** | 前 3 h 内体积不收缩，$R$ 取常数 | 附件 2 显示 3 h 内 $R$ 由 2.000 降至约 1.75 cm（收缩约 12 %），收缩的显式处理属问题 4 |
 | **B8** | 预热平衡与恒温干燥两阶段的差异**由环境激励 $T_\infty(t),C_\infty(t)$ 的时间历程体现**，控制方程形式统一 | 题面"相关经验公式统一采用附录 3"即指方程不变、参数统一 |
+| **B9** | **计入水分蒸发吸热**：表面相变潜热 $q_{\rm evap}=H_{\rm evap}h_m(C_R-C_\infty)$，取 $H_{\rm evap}\approx2.44\times10^6\ \mathrm{J/kg}$ | 题面**未给出** $H_{\rm evap}$，按文献取值（水在 $28\sim50\ ^\circ\mathrm{C}$ 的汽化潜热）；量级与敏感性见 §4.4(c)。若需与"无相变"模型对比，令 $H_{\rm evap}=0$ 即可退化 |
 
 > **对 B8 的说明**：题目指出"预热平衡与恒温干燥阶段的参数有所不同"，但同时要求
 > "相关经验公式统一采用附录 3"。本文据此理解为：**控制方程与物性经验式在全程统一**，
@@ -73,7 +79,14 @@ $\rho(C),\ c_p(C),\ k(C)$ 影响热惯性（$\rho c_p$）与导热能力（$k$�
 
 $$\rho(C)\,c_p(C)\,\frac{\partial T}{\partial t}
 =\frac{1}{r}\frac{\partial}{\partial r}\left(k(C)\,r\frac{\partial T}{\partial r}\right)
++S_h
 \label{eq:T}\tag{1}$$
+
+其中 $S_h$ 为**水分蒸发吸热源项**（$\mathrm{W/m^3}$，吸热为负）。本文采用单场 Fick
+扩散描述水分迁移（式 2），水分以液相扩散至表面后蒸发，故**相变吸热发生在表面**，
+$S_h$ 以表面热流（第二类边界）形式进入模型——详见 §4.4。若需刻画物料内部的分布式
+蒸发（多相模型），可改用体源形式 $S_h=-H_{\rm evap}\dot m_v$（$\dot m_v$ 为体积蒸发
+速率，$\mathrm{kg/(m^3\cdot s)}$），本文不采用，理由见 §4.4(b)。
 
 **注意**：$\rho c_p$ 随 $C$ 变化，**不能移到时间导数之内或之外**——即写成
 $\partial(\rho c_pT)/\partial t$ 与 $\rho c_p\,\partial T/\partial t$ 在本题中不等价。
@@ -105,6 +118,114 @@ $$D(C,T)=2.4\times10^{-3}\exp\!\left(-\frac{0.45}{C}\right)\exp\!\left(-\frac{38
 3. $(\rho c_p)(C)$ 随 $C$ 单调下降（$C:2.55\to0.15$ 时由 $3.335\times10^6$ 降至
    $1.209\times10^6\ \mathrm{J/(m^3\cdot K)}$，降幅 $63.7\%$），使热惯性在干燥过程中显著改变。
 
+### 4.4 水分蒸发吸热项（相变潜热耦合）
+
+#### (a) 物理机制与数学表述
+
+水分从药材表面蒸发进入热风时需吸收**汽化潜热** $H_{\rm evap}$，该热量取自药材本身，
+因而**抑制表面升温、甚至使表面温度低于环境温度**（"蒸发降温"效应）。这是干燥过程
+中传热与传质耦合的**第二条通路**（第一条为 $D$ 的 Arrhenius 温度依赖，见 §7.2）。
+
+**表面能量平衡**。设 $q_{\rm cond}=-k\,\partial T/\partial r\big|_R$ 为物料内部向表面
+传导的热流（向外为正），$q_{\rm conv}=h\left[T_\infty-T(R)\right]$ 为热风对表面的对流
+供热（向物料内为正），$q_{\rm evap}$ 为表面蒸发吸收的热流（取自物料，为耗散项）。
+稳态下表面能量守恒：
+
+$$q_{\rm cond}+q_{\rm conv}=q_{\rm evap}$$
+
+整理得**含蒸发吸热的第三类边界条件**：
+
+$$\boxed{\ -k\left.\frac{\partial T}{\partial r}\right|_{r=R}
+=h\left[T(R,t)-T_\infty(t)\right]+q_{\rm evap}\ },\qquad
+q_{\rm evap}=H_{\rm evap}\,\phi_w\big|_R
+\label{eq:bcT_evap}\tag{3'}$$
+
+其中 $\phi_w|_R$ 为表面水分通量。与题面给定的传质边界（式 4）联立，在表面上恒有
+
+$$\phi_w\big|_R=h_m\left[C(R,t)-C_\infty(t)\right]$$
+
+（蒸发质量通量 = 对流带走的量），故最终
+
+$$\boxed{\ q_{\rm evap}=H_{\rm evap}\,h_m\left[C(R,t)-C_\infty(t)\right]\ }
+\label{eq:qevap}\tag{3''}$$
+
+**符号约定的一致性**：式 (3'') 采用与题面边界条件（式 3、4）**相同的通量口径**——
+传质边界 $-D\,\partial_rC=h_m(C-C_\infty)$ 中两侧同为"以浓度梯度表示的通量"，
+不额外乘以密度因子。本文沿用该口径以保证与题面参数（$h_m=8\times10^{-7}\ \mathrm{m/s}$）
+自洽；由此带来的量纲说明与敏感性见 (c)。
+
+**方向验证**：$C>C_\infty$ 时 $q_{\rm evap}>0$，式 (3') 右端增大，即**向外传导的热流
+增大**，等价于表面温度**降低**——与"蒸发使表面变冷"的物理预期一致。✓
+
+#### (b) 为何用表面热流而非体源
+
+两类建模路线：
+
+| 路线 | 形式 | 适用模型 | 本文取舍 |
+|---|---|---|---|
+| **表面热流**（式 3'） | 进入 Robin 边界，为边界项 | 单场 Fick 扩散（液相迁移为主，相变在表面发生） | **采用** |
+| **体源** | $S_h=-H_{\rm evap}\dot m_v$ 进入控制方程 | 多相/多孔介质模型（含独立气相场、内部蒸发前沿） | 不采用 |
+
+**理由**：本文采用单一含水率场 $C$ 的 Fick 扩散模型（式 2），模型中**不含独立的水
+蒸气相场**，无法定义内部的体积蒸发速率 $\dot m_v$；在此框架下，水分的"迁移"与"相变"
+在空间上是分离的——液相扩散至表面、在表面蒸发。故相变吸热只能且应当以**表面热流**
+形式施加。这与文献做法一致（杨历 2005 的边界含 $r_l\alpha_m(M-M_f)$ 潜热项；
+番石榴模型在表面边界扣除 $\lambda_vD_{\rm eff}\partial_xc_w$）。
+
+若要在本模型中加入分布式内部蒸发，需升级为含气相场的多相模型（如胡众欢 2020 的
+气/液双场方程 + 源项 $R=K_{\rm evap}(a_wc_{v,\rm sat}-c_v)$），超出本题范围。
+
+#### (c) 量级估计与敏感性
+
+**汽化潜热**（题面附录 2/3 **未给出**，按文献取值，见假设 B9）：
+
+$$H_{\rm evap}(T)=2.501\times10^6-2.369\times10^3\,T_{^\circ\mathrm{C}}
+\quad(\mathrm{J/kg})$$
+
+在本题温度区间：
+
+| $T$ | $20\ ^\circ\mathrm{C}$ | $28\ ^\circ\mathrm{C}$ | $40\ ^\circ\mathrm{C}$ | $50\ ^\circ\mathrm{C}$ |
+|---|---|---|---|---|
+| $H_{\rm evap}$ (J/kg) | $2.454\times10^6$ | $2.435\times10^6$ | $2.406\times10^6$ | $2.383\times10^6$ |
+
+取 $H_{\rm evap}\approx2.44\times10^6\ \mathrm{J/kg}$。
+
+**蒸发吸热热流**：由式 (3'')，
+
+$$q_{\rm evap}=2.44\times10^6\times8\times10^{-7}\times\left(C_R-C_\infty\right)
+\approx1.95\left(C_R-C_\infty\right)\ \mathrm{J/(m^2\cdot s)}$$
+
+| 时刻 | $C_\infty$（附件 1） | 取 $C_R\approx2.5$ 时 $q_{\rm evap}$ | 对流热流 $h(T_\infty-T_R)$ | 比值 |
+|---|---|---|---|---|
+| $t=0$ | 0.0196 | $4.84\ \mathrm{J/(m^2s)}$ | $0$（$T_\infty=T_0$） | — |
+| $t=1800\ \mathrm{s}$ | 0.0331 | $4.81$ | $25\times(41.5-28)=338$ | $1.4\%$ |
+| $t=3600\ \mathrm{s}$ | 0.0427 | $4.79$ | $25\times(47.5-28)=488$ | $1.0\%$ |
+
+**表面温降估计**：若忽略该由内部补充的热量，则蒸发造成的表面温降约为
+
+$$\Delta T_R\sim\frac{q_{\rm evap}}{h}=\frac{4.84}{25}\approx0.19\ \mathrm{K}$$
+
+即**约 $0.2\ \mathrm{K}$ 量级的表面降温**——在四位小数的报告精度（$5\times10^{-5}$）下
+**必须计入**，但不会改变温度场的整体形态。
+
+**参数敏感性（重要提醒）**：$q_{\rm evap}$ 与 $h_m$ 成正比。题面给定的
+$h_m=8\times10^{-7}\ \mathrm{m/s}$ 比"热质传递类比"估计值（$\sim0.02\ \mathrm{m/s}$，
+见问题一 §7.2）低约 **4 个数量级**；若改用类比值，$q_{\rm evap}$ 将放大**约 25000 倍**，
+远超对流供热而成为表面热平衡的主导项（此时表面将被强烈冷却）。因此：
+
+- **本文按题面给定 $h_m$ 计算**，$q_{\rm evap}$ 为 $O(1\ \mathrm{W/m^2})$ 的小修正；
+- 该结论**强依赖于 $h_m$ 的口径**，论文中应显式说明；建议在数值验证中给出
+  $h_m$ 的敏感性分析（见 §14 的 V9）。
+
+#### (d) 对模型结构的影响
+
+引入式 (3'') 后，温度方程在**表面节点**上出现对 $C_M$ 的显式依赖，形成第三条耦合通路：
+
+$$\text{（新）}\quad C(R,t)\ \xrightarrow{\ q_{\rm evap}=H_{\rm evap}h_m(C-C_\infty)\ }\ T(R,t)$$
+
+此前只有 $C\to\rho c_p,k\to T$ 的**间接**通路（通过物性），现在是**直接的表面耦合**。
+该通路的 Jacobian 贡献为常数（§11.2 块 (1,2) 的 $(M,M)$ 元），实现简单、不增加带宽。
+
 ---
 
 ## 5 参数确定与量级分析
@@ -113,6 +234,7 @@ $$D(C,T)=2.4\times10^{-3}\exp\!\left(-\frac{0.45}{C}\right)\exp\!\left(-\frac{38
 |---|---|---|---|
 | $h$ | 对流换热系数 | $25\ \mathrm{W/(m^2\cdot K)}$ | 附录 2 |
 | $h_m$ | 对流传质系数 | $8\times10^{-7}\ \mathrm{m/s}$ | 附录 2 |
+| $H_{\rm evap}$ | 水的汽化潜热 | $2.44\times10^6\ \mathrm{J/kg}$ | **题面未给**，按文献取值（假设 B9）；$28\sim50\ ^\circ\mathrm{C}$ 内为 $2.435\sim2.383\times10^6$ |
 | $R$ | 半径 | $2\ \mathrm{cm}=0.02\ \mathrm{m}$ | 题面 |
 | $T_0$ | 初始温度 | $28\ ^\circ\mathrm{C}=301.15\ \mathrm{K}$ | 题面 |
 | $C_0$ | 初始含水率 | $2.55\ \mathrm{kg/kg}$ | 题面 |
@@ -157,11 +279,15 @@ $$\left.\frac{\partial T}{\partial r}\right|_{r=0}=0,\qquad\left.\frac{\partial 
 
 ### 6.3 表面第三类边界（$r=R$）
 
-$$-k(C)\left.\frac{\partial T}{\partial r}\right|_{r=R}=h\left[T(R,t)-T_\infty(t)\right]
+$$-k(C)\left.\frac{\partial T}{\partial r}\right|_{r=R}
+=h\left[T(R,t)-T_\infty(t)\right]+H_{\rm evap}\,h_m\left[C(R,t)-C_\infty(t)\right]
 \label{eq:bcT}\tag{3}$$
 
 $$-D(C,T)\left.\frac{\partial C}{\partial r}\right|_{r=R}=h_m\left[C(R,t)-C_\infty(t)\right]
 \label{eq:bcC}\tag{4}$$
+
+式 (3) 右端第二项即**蒸发吸热热流** $q_{\rm evap}$（式 (3'')），其推导与量级见 §4.4；
+若取 $H_{\rm evap}=0$ 则退化为无相变耦合的纯对流边界。
 
 ### 6.4 环境激励的连续化
 
@@ -207,6 +333,14 @@ $$\frac{\partial \ln D}{\partial T}=\frac{3850}{T^2}\approx4.25\times10^{-2}\ \m
 反向路径：$C$ 由 $2.55$ 降至 $0.15$ 时 $\rho c_p$ 下降 $63.7\%$，等价于**热惯性减小**，
 使物料升温更快——这是"干燥后期升温加速"的机理来源，同样不可忽略。
 
+**第三条通路（蒸发吸热，新增）**：表面含水率经相变潜热直接影响表面热平衡，
+其强度可由"表面温降"衡量（§4.4c）：
+
+$$\Delta T_R\sim\frac{q_{\rm evap}}{h}\approx0.2\ \mathrm{K}$$
+
+与温升总幅度（$28\to50\ ^\circ\mathrm{C}$，约 $22\ \mathrm{K}$）相比为 **$0.9\%$**，
+属**弱耦合**；但因其**直接作用于表面节点**（不经物性缓冲），在四位小数精度下必须保留。
+
 ---
 
 ## 8 弱形式（Galerkin）
@@ -233,13 +367,21 @@ $$\int_0^R \rho c_p\,\frac{\partial T}{\partial t}\,v\,r\,\mathrm{d}r
 $$\int_0^R\! \frac{\partial}{\partial r}\!\left(k r\frac{\partial T}{\partial r}\right)v\,\mathrm{d}r
 =\Big[k\,r\frac{\partial T}{\partial r}v\Big]_0^R-\int_0^R k\,r\frac{\partial T}{\partial r}\frac{\partial v}{\partial r}\,\mathrm{d}r$$
 
-边界项：$r=0$ 处因 $r=0$ 而自动为零；$r=R$ 处代入式 (3)，得
-$\left.k\,r\partial_rT\,v\right|_{R}=-hR\left[T(R)-T_\infty\right]v(R)$。故
+边界项：$r=0$ 处因 $r=0$ 而自动为零；$r=R$ 处代入式 (3)（**含蒸发吸热项**），得
+
+$$\left.k\,r\frac{\partial T}{\partial r}v\right|_{R}
+=-hR\left[T(R)-T_\infty\right]v(R)-H_{\rm evap}h_mR\left[C(R)-C_\infty\right]v(R)$$
+
+故
 
 $$\boxed{\ \int_0^R\! \rho c_p\,\frac{\partial T}{\partial t}\,v\,r\,\mathrm{d}r
 +\int_0^R\! k\,r\,\frac{\partial T}{\partial r}\frac{\partial v}{\partial r}\,\mathrm{d}r
-+hR\left[T(R,t)-T_\infty(t)\right]v(R)=0\ }
++hR\left[T(R,t)-T_\infty(t)\right]v(R)
++\underbrace{H_{\rm evap}h_mR\left[C(R,t)-C_\infty(t)\right]v(R)}_{\text{蒸发吸热}}=0\ }
 \label{eq:weakT}\tag{5}$$
+
+其中末项是**唯一使温度方程显式依赖 $C$ 的项**（其余 $C$ 依赖均通过物性 $\rho c_p,k$
+间接进入），它把温度与水分在**表面节点 $M$** 上直接耦合起来。
 
 ### 8.3 水分方程
 
@@ -380,7 +522,8 @@ $$\mathbf M^{C}\,\dot{\mathbf C}+\mathbf K^{C}(C,T)\,\mathbf C+h_mR\left(C_M-C_\
 
 $$\boxed{\ \mathbf M(\mathbf C^{n+1})\,\frac{\mathbf T^{n+1}-\mathbf T^{n}}{\Delta t}
 +\mathbf K(\mathbf C^{n+1})\,\mathbf T^{n+1}
-+hR\left(T^{n+1}_M-T_\infty^{n+1}\right)\mathbf e_M=\mathbf 0\ }
++hR\left(T^{n+1}_M-T_\infty^{n+1}\right)\mathbf e_M
++H_{\rm evap}h_mR\left(C^{n+1}_M-C_\infty^{n+1}\right)\mathbf e_M=\mathbf 0\ }
 \label{eq:BE_T}\tag{7}$$
 
 $$\boxed{\ \mathbf M^{C}\,\frac{\mathbf C^{n+1}-\mathbf C^{n}}{\Delta t}
@@ -408,7 +551,8 @@ $$\boxed{\ \mathbf M^{C}\,\frac{\mathbf C^{n+1}-\mathbf C^{n}}{\Delta t}
 构成非线性代数方程组 $\mathbf R(\mathbf U^{n+1})=\mathbf 0$，分块写出：
 
 $$\mathbf R_T(\mathbf T,\mathbf C)=\mathbf M(\mathbf C)\frac{\mathbf T-\mathbf T^n}{\Delta t}
-+\mathbf K(\mathbf C)\mathbf T+hR\left(T_M-T_\infty^{n+1}\right)\mathbf e_M=\mathbf 0$$
++\mathbf K(\mathbf C)\mathbf T+hR\left(T_M-T_\infty^{n+1}\right)\mathbf e_M
++H_{\rm evap}h_mR\left(C_M-C_\infty^{n+1}\right)\mathbf e_M=\mathbf 0$$
 
 $$\mathbf R_C(\mathbf T,\mathbf C)=\mathbf M^{C}\frac{\mathbf C-\mathbf C^n}{\Delta t}
 +\mathbf K^{C}(\mathbf C,\mathbf T)\mathbf C+h_mR\left(C_M-C_\infty^{n+1}\right)\mathbf e_M=\mathbf 0$$
@@ -448,6 +592,18 @@ $$\left[\frac{\partial(\mathbf K\mathbf T)}{\partial C_j}\right]_i
 其中 $k'(C_j)=\dfrac{0.38}{(C_j+1)^2}$，$(\pm)$ 按该单元对第 $i$ 个方程的贡献符号取
 （左节点取 $-(T_{k+1}-T_k)$、右节点取 $+(T_{k+1}-T_k)$）。可见 $\partial\mathbf R_T/\partial\mathbf C$
 为**稀疏带状**（带宽与 $\mathbf K$ 相同），不破坏整体稀疏性。
+
+**另需叠加蒸发吸热项的直接贡献**（式 (7) 末项对 $C$ 求导）：该项只作用于表面节点，
+且对 $C$ 是**线性**的，故只贡献一个常数对角元：
+
+$$\boxed{\ \left[\frac{\partial\mathbf R_T}{\partial\mathbf C}\right]_{MM}
+\mathrel{+}=H_{\rm evap}\,h_m\,R\ }$$
+
+这是三条耦合通路中**唯一显式出现于 Jacobian 的非物性项**；若取 $H_{\rm evap}=0$
+（无相变），该元消失，块 (1,2) 退化为纯物性耦合。注意其量级：
+$H_{\rm evap}h_mR=2.44\times10^6\times8\times10^{-7}\times0.02\approx0.039\
+\mathrm{J/(kg\cdot K\cdot s)}$，与对角元 $1/\Delta t=4\ \mathrm{s^{-1}}$ 相比为
+$10^{-2}$ 量级，属**弱耦合**（与 §4.4(c) 的结论一致）。
 
 **块 (2,1)**（水分对温度的导数）：仅由 $D(C,T)$ 的 Arrhenius 项产生。界面扩散系数同样取
 算术平均：$D_{i-1/2}=\tfrac12\big[D(C_{i-1},T_{i-1})+D(C_i,T_i)\big]$。完全平行于块 (1,2)：
@@ -593,6 +749,8 @@ $\times$ 距离 $0,0.5,1,1.5,2\ \mathrm{cm}$。
 | V5 | 离散守恒 | 总热量/总水量收支残差 | 相对残差 $<10^{-12}$ |
 | V6 | 与问题一衔接 | $t\le1800\ \mathrm{s}$ 内与问题一解对比 | 差异可由**物性差异（附录 2 vs 附录 3）**定量解释 |
 | V7 | 与简化模型对比 | 冻结系数准 Newton vs 严格 Newton | 最终解一致（差 $<10^{-8}$） |
+| V8 | **蒸发吸热项影响** | 令 $H_{\rm evap}=0$ 与 $H_{\rm evap}=2.44\times10^6$ 各算一次，比较 $T(R,t)$ | 表面温差 $\approx0.2\ \mathrm{K}$（与 §4.4c 的解析估计一致），且差值随 $C_R\to C_\infty$ 单调减小 |
+| V9 | **$H_{\rm evap}$、$h_m$ 敏感性** | 对 $H_{\rm evap}$ 取 $\pm20\%$、$h_m$ 取 $1\times,10\times,100\times$ 重算 | 量化蒸发项对 $h_m$ 口径的依赖（§4.4c 的量纲敏感性提醒）；结果用于论文的局限性讨论 |
 
 **V6 说明**：问题一与问题二在 $0\sim1800\ \mathrm{s}$ 用**不同物性经验式**（附录 2 常数
 vs 附录 3 随 $C$ 变化），因此两问结果**本就不应完全相同**；验证的目的是确认差异
