@@ -15,7 +15,10 @@ FIG_prof_48.00h_C0,剖面图 t=48.00h 中心含水率,0.15613823510263083,kg/kg,
 FIG_prof_48.00h_R,剖面图 t=48.00h 半径,1.2,cm,附件2
 FIG_prof_51.09h_C0,剖面图 t=51.09h 中心含水率,0.15000344883799982,kg/kg,outputs/q4_production.log
 FIG_prof_51.09h_R,剖面图 t=51.09h 半径,1.2,cm,附件2
-FIG_V1_M100,M=100 t_dry,183827.2099,s,outputs/q4_verify.log
-FIG_V1_M200,M=200 t_dry,183906.7128,s,outputs/q4_verify.log
-FIG_V1_M400,M=400 t_dry,183934.6947,s,outputs/q4_verify.log
+FIG_V1_M100,M=100 t_dry,183827.20992567966,s,outputs/registry_q4_verify.csv V1_M100
+FIG_V1_M200,M=200 t_dry,183906.71282718718,s,outputs/registry_q4_verify.csv V1_M200
+FIG_V1_M400,M=400 t_dry,183934.69473051972,s,outputs/registry_q4_verify.csv V1_M400
+FIG_V1_M800,M=800 t_dry,183943.11020790294,s,outputs/registry_q4_verify.csv V1_M800
+FIG_V1_M1600,M=1600 t_dry,183945.37707122925,s,outputs/registry_q4_verify.csv V1_M1600
+FIG_V1_M3200,M=3200 t_dry,183945.96344573775,s,outputs/registry_q4_verify.csv V1_M3200
 FIG_V2_span,rtol 极差,0.1098000000056345,s,outputs/q4_verify.log

@@ -896,6 +896,7 @@ problem3_slove.md,608,2.28e-5,MATCH,W11_dC_mid_n50,registry_q3_2d.csv
 problem3_slove.md,609,2,MATCH,V4_ratio,registry_q3_verify.csv
 problem3_slove.md,610,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
 problem3_slove.md,610,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+example.tex(§5.3),7,3,MATCH,X_C_600_0,registry_q3.csv
 example.tex(§5.3),8,19,MATCH,MC_std,registry_q3_mc.csv
 example.tex(§5.3),15,0,MATCH,P04_maxC_dry,registry_q3.csv
 example.tex(§5.3),21,0,MATCH,P04_maxC_dry,registry_q3.csv
@@ -1146,120 +1147,120 @@ example.tex(§5.3),194,0.04,MATCH,W11_area_end,registry_q3_2d.csv
 example.tex(§5.3),195,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
 example.tex(§5.3),195,0,MATCH,P04_maxC_dry,registry_q3.csv
 example.tex(§5.3),196,2.3e-7,MATCH,P06_budget,registry_q3.csv
-example.tex(§5.3),198,3,MATCH,X_C_600_0,registry_q3.csv
-example.tex(§5.3),199,1,MATCH,X_C_10800_2,registry_q3.csv
-example.tex(§5.3),199,0,MATCH,P04_maxC_dry,registry_q3.csv
-example.tex(§5.3),199,14400,ALLOW,allow: 附件1 覆盖上界 t_c,
-example.tex(§5.3),200,200,MATCH,P00_M,registry_q3.csv
-example.tex(§5.3),200,0.25,ALLOW,allow: 问题二 dt=0.25 s,
-example.tex(§5.3),201,3.98e-5,MATCH,V4_q2_dt025_dC,registry_q3_verify.csv
-example.tex(§5.3),201,4.3e-4,MATCH,V4_q2_dt025_dT,registry_q3_verify.csv
-example.tex(§5.3),202,5e-5,MATCH,W11_dC_prod_enddir,registry_q3_2d.csv
-example.tex(§5.3),203,2.002,MATCH,V4_ratio,registry_q3_verify.csv
-example.tex(§5.3),206,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
-example.tex(§5.3),209,11.4,MATCH,W11_max_dt_axial,registry_q3_2d.csv
-example.tex(§5.3),209,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
-example.tex(§5.3),209,25,MATCH,V7_dtdC,registry_q3_verify.csv
-example.tex(§5.3),209,50,MATCH,P00_Tbar,registry_q3.csv
-example.tex(§5.3),210,1e4,MATCH,P03_nfev,registry_q3.csv
-example.tex(§5.3),210,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
-example.tex(§5.3),211,2.28e-5,MATCH,W11_dC_mid_n50,registry_q3_2d.csv
-example.tex(§5.3),212,5e-5,MATCH,W11_dC_prod_enddir,registry_q3_2d.csv
-example.tex(§5.3),214,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
-example.tex(§5.3),214,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
-example.tex(§5.3),214,3,MATCH,X_C_600_0,registry_q3.csv
-example.tex(§5.3),217,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
-example.tex(§5.3),218,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
-example.tex(§5.3),219,3.69e-2,ALLOW,allow: 3850/T^2 @323.15K 推导,
-example.tex(§5.3),220,1,MATCH,X_C_10800_2,registry_q3.csv
-example.tex(§5.3),221,1.82,MATCH,V7_dtdT,registry_q3_verify.csv|abs
-example.tex(§5.3),221,1,MATCH,X_C_10800_2,registry_q3.csv
-example.tex(§5.3),221,-2.12,ALLOW,allow: naive 估计 0.0369x57.42 推导,
-example.tex(§5.3),224,5.0e5,ALLOW,allow: problem3.md §5.3 末期湿分特征时间 R^2/D,
-example.tex(§5.3),224,139,ALLOW,allow: R^2/D 末期特征时间 5.0e5/3600 推导,
-example.tex(§5.3),224,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
-example.tex(§5.3),225,2.6,MATCH,X_C_600_0,registry_q3.csv
-example.tex(§5.3),225,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
-example.tex(§5.3),226,0.12,MATCH,P05_C_r1p5,registry_q3.csv
-example.tex(§5.3),230,0.0500,MATCH,P00_Cbar,registry_q3.csv
-example.tex(§5.3),231,0.0500,MATCH,P00_Cbar,registry_q3.csv
-example.tex(§5.3),231,57.42,MATCH,MC_s_kcp_m,registry_q3_mc.csv
-example.tex(§5.3),232,0.0600,ALLOW,allow: 排湿情景 Cbar 设定 0.0600,
-example.tex(§5.3),232,57.70,MATCH,DR_c060_h,registry_q3_drainage.csv
-example.tex(§5.3),232,0.28,MATCH,DR_c060_dh,registry_q3_drainage.csv
-example.tex(§5.3),232,0.0750,ALLOW,allow: 排湿情景 Cbar 设定 0.0750,
-example.tex(§5.3),232,58.39,MATCH,DR_c075_h,registry_q3_drainage.csv
-example.tex(§5.3),233,0.96,MATCH,DR_c075_dh,registry_q3_drainage.csv
-example.tex(§5.3),233,0.1000,ALLOW,allow: 输出半径间隔 (cm),
-example.tex(§5.3),233,61.19,MATCH,DR_c100_h,registry_q3_drainage.csv
-example.tex(§5.3),233,3.77,MATCH,DR_c100_dh,registry_q3_drainage.csv
-example.tex(§5.3),233,0.1200,ALLOW,allow: 排湿情景 Cbar 设定 0.1200,
-example.tex(§5.3),233,67.05,MATCH,DR_c120_h,registry_q3_drainage.csv
-example.tex(§5.3),234,9.63,MATCH,DR_c120_dh,registry_q3_drainage.csv
-example.tex(§5.3),234,0.15,MATCH,P05_C_center,registry_q3.csv
-example.tex(§5.3),235,6,MATCH,P05_Csurf_rel,registry_q3.csv
-example.tex(§5.3),237,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
-example.tex(§5.3),237,50,MATCH,P00_Tbar,registry_q3.csv
-example.tex(§5.3),239,0.0500,MATCH,P00_Cbar,registry_q3.csv
-example.tex(§5.3),239,3,MATCH,X_C_600_0,registry_q3.csv
-example.tex(§5.3),240,0.12,MATCH,P05_C_r1p5,registry_q3.csv
-example.tex(§5.3),240,0.8,MATCH,T5_r1_c4,registry_q3.csv
-example.tex(§5.3),241,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
-example.tex(§5.3),244,0.94,ALLOW,allow: minipage 宽度,
-example.tex(§5.3),246,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
-example.tex(§5.3),246,200,MATCH,P00_M,registry_q3.csv
-example.tex(§5.3),246,1e-9,MATCH,P00_rtol,registry_q3.csv
-example.tex(§5.3),246,3,MATCH,X_C_600_0,registry_q3.csv
-example.tex(§5.3),251,50.00,MATCH,P00_Tbar,registry_q3.csv
-example.tex(§5.3),251,0.0500,MATCH,P00_Cbar,registry_q3.csv
-example.tex(§5.3),251,600,MATCH,P00_tau,registry_q3.csv
-example.tex(§5.3),252,57.4223,MATCH,P01_tdry_h,registry_q3.csv
-example.tex(§5.3),253,49,MATCH,P07_cross_r1,registry_q3.csv
-example.tex(§5.3),253,59.2866,ALLOW,allow: Tbar=49 变体 t_dry(h) = base+dh 推导,
-example.tex(§5.3),253,1.8643,MATCH,V7_s_Tm1_dh,registry_q3_verify.csv
-example.tex(§5.3),254,51,MATCH,MC_s_kD_m,registry_q3_mc.csv
-example.tex(§5.3),254,55.6395,ALLOW,allow: Tbar=51 变体 t_dry(h) = base+dh 推导,
-example.tex(§5.3),254,-1.7828,MATCH,V7_s_Tp1_dh,registry_q3_verify.csv
-example.tex(§5.3),255,0.045,ALLOW,allow: Cbar 敏感性变体 0.045,
-example.tex(§5.3),255,-10,MATCH,DR_c120_dh,registry_q3_drainage.csv|abs
-example.tex(§5.3),255,57.3056,ALLOW,allow: Cbar=0.045 变体 t_dry(h) 推导,
-example.tex(§5.3),255,-0.1167,MATCH,V7_s_Cm10_dh,registry_q3_verify.csv
-example.tex(§5.3),256,0.055,MATCH,T5_r7_c5,registry_q3.csv
-example.tex(§5.3),256,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
-example.tex(§5.3),256,57.5533,ALLOW,allow: Cbar=0.055 变体 t_dry(h) 推导,
-example.tex(§5.3),256,0.1310,MATCH,V7_s_Cp10_dh,registry_q3_verify.csv
-example.tex(§5.3),257,0,MATCH,P04_maxC_dry,registry_q3.csv
-example.tex(§5.3),257,1800,ALLOW,allow: tau 敏感性,
-example.tex(§5.3),257,0.008,ALLOW,allow: tau=0 变体秒换算 (2.16e-6 h) 推导,
-example.tex(§5.3),257,0.070,ALLOW,allow: tau=1800 变体秒换算 (1.93e-5 h) 推导,
-example.tex(§5.3),263,6,MATCH,P05_Csurf_rel,registry_q3.csv
-example.tex(§5.3),263,3,MATCH,X_C_600_0,registry_q3.csv
-example.tex(§5.3),264,3,MATCH,X_C_600_0,registry_q3.csv
-example.tex(§5.3),264,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
-example.tex(§5.3),266,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
-example.tex(§5.3),266,0.01,MATCH,W11_D_over_alpha,registry_q3_2d.csv
-example.tex(§5.3),267,-2.54,MATCH,MC_s_D0_d,registry_q3_mc.csv
-example.tex(§5.3),267,6.86,MATCH,MC_s_kD_d,registry_q3_mc.csv
-example.tex(§5.3),268,3850,ALLOW,allow: 附录3 D 的 Arrhenius 温度,
-example.tex(§5.3),268,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
-example.tex(§5.3),269,35.0,MATCH,MC_s_EA_m,registry_q3_mc.csv
-example.tex(§5.3),269,99.2,MATCH,MC_s_EA_p,registry_q3_mc.csv
-example.tex(§5.3),269,32.1,MATCH,MC_s_EA_d,registry_q3_mc.csv
-example.tex(§5.3),269,56,ALLOW,allow: EA 单因素半程变化百分比 32.12/57.42 推导,
-example.tex(§5.3),270,50,MATCH,P00_Tbar,registry_q3.csv
-example.tex(§5.3),270,0.55,MATCH,W11_dt_axial_consist,registry_q3_2d.csv
-example.tex(§5.3),270,1.8,MATCH,X_C_10800_0,registry_q3.csv
-example.tex(§5.3),271,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),199,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),200,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),200,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),200,14400,ALLOW,allow: 附件1 覆盖上界 t_c,
+example.tex(§5.3),201,200,MATCH,P00_M,registry_q3.csv
+example.tex(§5.3),201,0.25,ALLOW,allow: 问题二 dt=0.25 s,
+example.tex(§5.3),202,3.98e-5,MATCH,V4_q2_dt025_dC,registry_q3_verify.csv
+example.tex(§5.3),202,4.3e-4,MATCH,V4_q2_dt025_dT,registry_q3_verify.csv
+example.tex(§5.3),203,5e-5,MATCH,W11_dC_prod_enddir,registry_q3_2d.csv
+example.tex(§5.3),204,2.002,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),207,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+example.tex(§5.3),210,11.4,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+example.tex(§5.3),210,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+example.tex(§5.3),210,25,MATCH,V7_dtdC,registry_q3_verify.csv
+example.tex(§5.3),210,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(§5.3),211,1e4,MATCH,P03_nfev,registry_q3.csv
+example.tex(§5.3),211,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+example.tex(§5.3),212,2.28e-5,MATCH,W11_dC_mid_n50,registry_q3_2d.csv
+example.tex(§5.3),213,5e-5,MATCH,W11_dC_prod_enddir,registry_q3_2d.csv
+example.tex(§5.3),215,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+example.tex(§5.3),215,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),215,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),218,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),220,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),221,3.69e-2,ALLOW,allow: 3850/T^2 @323.15K 推导,
+example.tex(§5.3),222,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),223,1.82,MATCH,V7_dtdT,registry_q3_verify.csv|abs
+example.tex(§5.3),223,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),223,-2.12,ALLOW,allow: naive 估计 0.0369x57.42 推导,
+example.tex(§5.3),226,5.0e5,ALLOW,allow: problem3.md §5.3 末期湿分特征时间 R^2/D,
+example.tex(§5.3),226,139,ALLOW,allow: R^2/D 末期特征时间 5.0e5/3600 推导,
+example.tex(§5.3),226,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+example.tex(§5.3),227,2.6,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),227,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),228,0.12,MATCH,P05_C_r1p5,registry_q3.csv
+example.tex(§5.3),232,0.0500,MATCH,P00_Cbar,registry_q3.csv
+example.tex(§5.3),233,0.0500,MATCH,P00_Cbar,registry_q3.csv
+example.tex(§5.3),233,57.42,MATCH,MC_s_kcp_m,registry_q3_mc.csv
+example.tex(§5.3),234,0.0600,ALLOW,allow: 排湿情景 Cbar 设定 0.0600,
+example.tex(§5.3),234,57.70,MATCH,DR_c060_h,registry_q3_drainage.csv
+example.tex(§5.3),234,0.28,MATCH,DR_c060_dh,registry_q3_drainage.csv
+example.tex(§5.3),234,0.0750,ALLOW,allow: 排湿情景 Cbar 设定 0.0750,
+example.tex(§5.3),234,58.39,MATCH,DR_c075_h,registry_q3_drainage.csv
+example.tex(§5.3),235,0.96,MATCH,DR_c075_dh,registry_q3_drainage.csv
+example.tex(§5.3),235,0.1000,ALLOW,allow: 输出半径间隔 (cm),
+example.tex(§5.3),235,61.19,MATCH,DR_c100_h,registry_q3_drainage.csv
+example.tex(§5.3),235,3.77,MATCH,DR_c100_dh,registry_q3_drainage.csv
+example.tex(§5.3),235,0.1200,ALLOW,allow: 排湿情景 Cbar 设定 0.1200,
+example.tex(§5.3),235,67.05,MATCH,DR_c120_h,registry_q3_drainage.csv
+example.tex(§5.3),236,9.63,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),236,0.15,MATCH,P05_C_center,registry_q3.csv
+example.tex(§5.3),237,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),239,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+example.tex(§5.3),239,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(§5.3),241,0.0500,MATCH,P00_Cbar,registry_q3.csv
+example.tex(§5.3),241,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),242,0.12,MATCH,P05_C_r1p5,registry_q3.csv
+example.tex(§5.3),242,0.8,MATCH,T5_r1_c4,registry_q3.csv
+example.tex(§5.3),243,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),247,0.94,ALLOW,allow: minipage 宽度,
+example.tex(§5.3),249,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),249,200,MATCH,P00_M,registry_q3.csv
+example.tex(§5.3),249,1e-9,MATCH,P00_rtol,registry_q3.csv
+example.tex(§5.3),249,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),254,50.00,MATCH,P00_Tbar,registry_q3.csv
+example.tex(§5.3),254,0.0500,MATCH,P00_Cbar,registry_q3.csv
+example.tex(§5.3),254,600,MATCH,P00_tau,registry_q3.csv
+example.tex(§5.3),255,57.4223,MATCH,P01_tdry_h,registry_q3.csv
+example.tex(§5.3),256,49,MATCH,P07_cross_r1,registry_q3.csv
+example.tex(§5.3),256,59.2866,ALLOW,allow: Tbar=49 变体 t_dry(h) = base+dh 推导,
+example.tex(§5.3),256,1.8643,MATCH,V7_s_Tm1_dh,registry_q3_verify.csv
+example.tex(§5.3),257,51,MATCH,MC_s_kD_m,registry_q3_mc.csv
+example.tex(§5.3),257,55.6395,ALLOW,allow: Tbar=51 变体 t_dry(h) = base+dh 推导,
+example.tex(§5.3),257,-1.7828,MATCH,V7_s_Tp1_dh,registry_q3_verify.csv
+example.tex(§5.3),258,0.045,ALLOW,allow: Cbar 敏感性变体 0.045,
+example.tex(§5.3),258,-10,MATCH,DR_c120_dh,registry_q3_drainage.csv|abs
+example.tex(§5.3),258,57.3056,ALLOW,allow: Cbar=0.045 变体 t_dry(h) 推导,
+example.tex(§5.3),258,-0.1167,MATCH,V7_s_Cm10_dh,registry_q3_verify.csv
+example.tex(§5.3),259,0.055,MATCH,T5_r7_c5,registry_q3.csv
+example.tex(§5.3),259,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),259,57.5533,ALLOW,allow: Cbar=0.055 变体 t_dry(h) 推导,
+example.tex(§5.3),259,0.1310,MATCH,V7_s_Cp10_dh,registry_q3_verify.csv
+example.tex(§5.3),260,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),260,1800,ALLOW,allow: tau 敏感性,
+example.tex(§5.3),260,0.008,ALLOW,allow: tau=0 变体秒换算 (2.16e-6 h) 推导,
+example.tex(§5.3),260,0.070,ALLOW,allow: tau=1800 变体秒换算 (1.93e-5 h) 推导,
+example.tex(§5.3),266,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),266,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),267,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),267,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),269,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),269,0.01,MATCH,W11_D_over_alpha,registry_q3_2d.csv
+example.tex(§5.3),270,-2.54,MATCH,MC_s_D0_d,registry_q3_mc.csv
+example.tex(§5.3),270,6.86,MATCH,MC_s_kD_d,registry_q3_mc.csv
+example.tex(§5.3),271,3850,ALLOW,allow: 附录3 D 的 Arrhenius 温度,
 example.tex(§5.3),271,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
-example.tex(§5.3),271,100,MATCH,MC_p97.5,registry_q3_mc.csv
-example.tex(§5.3),271,2026,ALLOW,allow: 蒙特卡洛随机种子 (脚本设置),
-example.tex(§5.3),272,62.2,MATCH,MC_mean,registry_q3_mc.csv
-example.tex(§5.3),272,19.7,MATCH,MC_std,registry_q3_mc.csv
-example.tex(§5.3),273,95,MATCH,P06_loss,registry_q3.csv
-example.tex(§5.3),273,35.1,MATCH,MC_p2.5,registry_q3_mc.csv
-example.tex(§5.3),273,99.9,MATCH,MC_p97.5,registry_q3_mc.csv
+example.tex(§5.3),272,35.0,MATCH,MC_s_EA_m,registry_q3_mc.csv
+example.tex(§5.3),272,99.2,MATCH,MC_s_EA_p,registry_q3_mc.csv
+example.tex(§5.3),272,32.1,MATCH,MC_s_EA_d,registry_q3_mc.csv
+example.tex(§5.3),272,56,ALLOW,allow: EA 单因素半程变化百分比 32.12/57.42 推导,
+example.tex(§5.3),273,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(§5.3),273,0.55,MATCH,W11_dt_axial_consist,registry_q3_2d.csv
+example.tex(§5.3),273,1.8,MATCH,X_C_10800_0,registry_q3.csv
+example.tex(§5.3),274,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),274,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),274,100,MATCH,MC_p97.5,registry_q3_mc.csv
+example.tex(§5.3),274,2026,ALLOW,allow: 蒙特卡洛随机种子 (脚本设置),
+example.tex(§5.3),275,62.2,MATCH,MC_mean,registry_q3_mc.csv
+example.tex(§5.3),275,19.7,MATCH,MC_std,registry_q3_mc.csv
+example.tex(§5.3),276,95,MATCH,P06_loss,registry_q3.csv
+example.tex(§5.3),276,35.1,MATCH,MC_p2.5,registry_q3_mc.csv
+example.tex(§5.3),276,99.9,MATCH,MC_p97.5,registry_q3_mc.csv
 example.tex(附录2d),4,0,MATCH,P04_maxC_dry,registry_q3.csv
-example.tex(附录2d),5,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+example.tex(附录2d),5,8,MATCH,FG3_dt_decades,registry_q3_figures.csv
 example.tex(附录2d),5,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
 example.tex(附录2d),7,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
 example.tex(附录2d),8,17.30,MATCH,W11_pen_alpha_cm,registry_q3_2d.csv
@@ -1300,113 +1301,63 @@ example.tex(附录2d),36,1e-4,MATCH,V4_q2_dt0125_dT_w1p8e3_7p2e3 s,registry_q3_v
 example.tex(附录2d),39,3,MATCH,X_C_600_0,registry_q3.csv
 example.tex(附录2d),39,200,MATCH,P00_M,registry_q3.csv
 example.tex(附录2d),39,14,ALLOW,"allow: 表 14 编号 (版面, 附录2d 的 t_dry 对照表)",
-example.tex(附录2d),42,0.94,ALLOW,allow: minipage 宽度,
-example.tex(附录2d),44,14,ALLOW,"allow: 表 14 编号 (版面, 附录2d 的 t_dry 对照表)",
-example.tex(附录2d),44,3,MATCH,X_C_600_0,registry_q3.csv
-example.tex(附录2d),49,1e-8,ALLOW,allow: 量级声明,
-example.tex(附录2d),49,57.4212,MATCH,W11_t_1dfv_h,registry_q3_2d.csv
-example.tex(附录2d),50,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),43,0.94,ALLOW,allow: minipage 宽度,
+example.tex(附录2d),45,14,ALLOW,"allow: 表 14 编号 (版面, 附录2d 的 t_dry 对照表)",
+example.tex(附录2d),45,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(附录2d),50,1e-8,ALLOW,allow: 量级声明,
 example.tex(附录2d),50,57.4212,MATCH,W11_t_1dfv_h,registry_q3_2d.csv
-example.tex(附录2d),50,1.7e-9,MATCH,W11_val_1d,registry_q3_2d.csv
-example.tex(附录2d),51,25,MATCH,V7_dtdC,registry_q3_verify.csv
-example.tex(附录2d),51,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
-example.tex(附录2d),51,57.4189,MATCH,W11_t_2d_n25_h,registry_q3_2d.csv
-example.tex(附录2d),51,-8.232,MATCH,W11_dt_axial_n25,registry_q3_2d.csv
-example.tex(附录2d),52,50,MATCH,P00_Tbar,registry_q3.csv
-example.tex(附录2d),52,2.5,MATCH,X_C_3600_0,registry_q3.csv
-example.tex(附录2d),52,57.4190,MATCH,W11_t_2d_n50_h,registry_q3_2d.csv
-example.tex(附录2d),52,-7.678,MATCH,W11_dt_axial_n50,registry_q3_2d.csv
-example.tex(附录2d),53,57.4180,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
-example.tex(附录2d),53,-11.448,MATCH,W11_dt_axial_enddir,registry_q3_2d.csv
-example.tex(附录2d),59,50,MATCH,P00_Tbar,registry_q3.csv
-example.tex(附录2d),59,25,MATCH,V7_dtdC,registry_q3_verify.csv
-example.tex(附录2d),59,0.554,MATCH,W11_dt_axial_consist,registry_q3_2d.csv
-example.tex(附录2d),60,11.45,MATCH,W11_max_dt_axial,registry_q3_2d.csv
-example.tex(附录2d),60,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
-example.tex(附录2d),60,0.028,MATCH,P08_spatial_unc,registry_q3.csv
-example.tex(附录2d),61,-11.88,MATCH,W11_dt_prod,registry_q3_2d.csv
-example.tex(附录2d),62,-7.678,MATCH,W11_dt_axial_n50,registry_q3_2d.csv
-example.tex(附录2d),63,-4.20,MATCH,W11_dt_scheme,registry_q3_2d.csv
-example.tex(附录2d),65,21,ALLOW,allow: 输出列数,
-example.tex(附录2d),66,206704.76,MATCH,W11_t_2d_enddir,registry_q3_2d.csv
-example.tex(附录2d),66,617,ALLOW,allow: W11 共同比较窗采样点数 (运行观测),
-example.tex(附录2d),67,2.28e-5,MATCH,W11_dC_mid_n50,registry_q3_2d.csv
-example.tex(附录2d),67,1.72e-3,MATCH,W11_dT_mid_n50,registry_q3_2d.csv
-example.tex(附录2d),68,2.67e-5,MATCH,W11_dC_scheme,registry_q3_2d.csv
-example.tex(附录2d),69,1.24e-4,MATCH,W11_dT_scheme,registry_q3_2d.csv
-example.tex(附录2d),69,4.57e-5,MATCH,W11_dC_prod_n50,registry_q3_2d.csv
-example.tex(附录2d),70,1.73e-3,MATCH,W11_dT_prod_n50,registry_q3_2d.csv
-example.tex(附录2d),70,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),51,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),51,57.4212,MATCH,W11_t_1dfv_h,registry_q3_2d.csv
+example.tex(附录2d),51,1.7e-9,MATCH,W11_val_1d,registry_q3_2d.csv
+example.tex(附录2d),52,25,MATCH,V7_dtdC,registry_q3_verify.csv
+example.tex(附录2d),52,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(附录2d),52,57.4189,MATCH,W11_t_2d_n25_h,registry_q3_2d.csv
+example.tex(附录2d),52,-8.232,MATCH,W11_dt_axial_n25,registry_q3_2d.csv
+example.tex(附录2d),53,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(附录2d),53,2.5,MATCH,X_C_3600_0,registry_q3.csv
+example.tex(附录2d),53,57.4190,MATCH,W11_t_2d_n50_h,registry_q3_2d.csv
+example.tex(附录2d),53,-7.678,MATCH,W11_dt_axial_n50,registry_q3_2d.csv
+example.tex(附录2d),54,57.4180,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+example.tex(附录2d),54,-11.448,MATCH,W11_dt_axial_enddir,registry_q3_2d.csv
+example.tex(附录2d),60,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(附录2d),60,25,MATCH,V7_dtdC,registry_q3_verify.csv
+example.tex(附录2d),60,0.554,MATCH,W11_dt_axial_consist,registry_q3_2d.csv
+example.tex(附录2d),61,11.45,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+example.tex(附录2d),61,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+example.tex(附录2d),61,0.028,MATCH,P08_spatial_unc,registry_q3.csv
+example.tex(附录2d),62,-11.88,MATCH,W11_dt_prod,registry_q3_2d.csv
+example.tex(附录2d),63,-7.678,MATCH,W11_dt_axial_n50,registry_q3_2d.csv
+example.tex(附录2d),64,-4.20,MATCH,W11_dt_scheme,registry_q3_2d.csv
+example.tex(附录2d),66,21,ALLOW,allow: 输出列数,
+example.tex(附录2d),67,206704.76,MATCH,W11_t_2d_enddir,registry_q3_2d.csv
+example.tex(附录2d),67,617,ALLOW,allow: W11 共同比较窗采样点数 (运行观测),
+example.tex(附录2d),68,2.28e-5,MATCH,W11_dC_mid_n50,registry_q3_2d.csv
+example.tex(附录2d),68,1.72e-3,MATCH,W11_dT_mid_n50,registry_q3_2d.csv
+example.tex(附录2d),69,2.67e-5,MATCH,W11_dC_scheme,registry_q3_2d.csv
+example.tex(附录2d),70,1.24e-4,MATCH,W11_dT_scheme,registry_q3_2d.csv
+example.tex(附录2d),70,4.57e-5,MATCH,W11_dC_prod_n50,registry_q3_2d.csv
+example.tex(附录2d),71,1.73e-3,MATCH,W11_dT_prod_n50,registry_q3_2d.csv
 example.tex(附录2d),71,0,MATCH,P04_maxC_dry,registry_q3.csv
-example.tex(附录2d),71,1,MATCH,X_C_10800_2,registry_q3.csv
-example.tex(附录2d),71,2,MATCH,V4_ratio,registry_q3_verify.csv
-example.tex(附录2d),71,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
-example.tex(附录2d),71,12.5,MATCH,P07_cross_r2,registry_q3.csv
-example.tex(附录2d),71,0.0525,MATCH,W11_C_end_axis,registry_q3_2d.csv
-example.tex(附录2d),71,0.1321,MATCH,W11_C_ax_1cm,registry_q3_2d.csv
-example.tex(附录2d),71,0.1433,MATCH,W11_C_ax_2cm,registry_q3_2d.csv
-example.tex(附录2d),71,0.1494,MATCH,W11_C_ax_5cm,registry_q3_2d.csv
-example.tex(附录2d),71,0.1500,MATCH,P05_C_center,registry_q3.csv
-example.tex(附录2d),72,-0.005,MATCH,W11_D_over_alpha,registry_q3_2d.csv|abs
-example.tex(附录2d),72,2.25,MATCH,W11_z_dip_cm,registry_q3_2d.csv
-example.tex(附录2d),72,18,MATCH,W11_pen_alpha_cm,registry_q3_2d.csv
-example.tex(附录2d),73,0,MATCH,P04_maxC_dry,registry_q3.csv
-example.tex(附录2d),73,1510.9,MATCH,W11_argmax_last_t_n50,registry_q3_2d.csv
-example.tex(附录2d),74,3.5e-5,MATCH,W11_water_resid,registry_q3_2d.csv
-example.tex(附录2d),74,95.24,ALLOW,allow: W11 二维全程失水率百分比 1-0.95241 推导,
-example.tex(附录2d),74,95.13,MATCH,P06_loss,registry_q3.csv
-example.tex(附录2d),75,8,MATCH,FG3_dt_decades,registry_q3_figures.csv
-example.tex(附录2d),77,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
-example.tex(附录2d),78,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
-example.tex(附录2d),78,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
-example.tex(附录2d),78,3,MATCH,X_C_600_0,registry_q3.csv
-gate2 表5 6.0 h,0,r=0: 1.0181,MATCH,result3.xlsx t=21600 s,
-gate2 表5 6.0 h,0,r=0.5: 0.9892,MATCH,result3.xlsx t=21600 s,
-gate2 表5 6.0 h,0,r=1: 0.9024,MATCH,result3.xlsx t=21600 s,
-gate2 表5 6.0 h,0,r=1.5: 0.7556,MATCH,result3.xlsx t=21600 s,
-gate2 表5 6.0 h,0,r=2: 0.533,MATCH,result3.xlsx t=21600 s,
-gate2 表5 12.0 h,0,r=0: 0.4565,MATCH,result3.xlsx t=43200 s,
-gate2 表5 12.0 h,0,r=0.5: 0.4435,MATCH,result3.xlsx t=43200 s,
-gate2 表5 12.0 h,0,r=1: 0.4034,MATCH,result3.xlsx t=43200 s,
-gate2 表5 12.0 h,0,r=1.5: 0.33,MATCH,result3.xlsx t=43200 s,
-gate2 表5 12.0 h,0,r=2: 0.1644,MATCH,result3.xlsx t=43200 s,
-gate2 表5 18.0 h,0,r=0: 0.299,MATCH,result3.xlsx t=64800 s,
-gate2 表5 18.0 h,0,r=0.5: 0.2917,MATCH,result3.xlsx t=64800 s,
-gate2 表5 18.0 h,0,r=1: 0.2688,MATCH,result3.xlsx t=64800 s,
-gate2 表5 18.0 h,0,r=1.5: 0.2254,MATCH,result3.xlsx t=64800 s,
-gate2 表5 18.0 h,0,r=2: 0.0846,MATCH,result3.xlsx t=64800 s,
-gate2 表5 24.0 h,0,r=0: 0.2378,MATCH,result3.xlsx t=86400 s,
-gate2 表5 24.0 h,0,r=0.5: 0.2328,MATCH,result3.xlsx t=86400 s,
-gate2 表5 24.0 h,0,r=1: 0.2167,MATCH,result3.xlsx t=86400 s,
-gate2 表5 24.0 h,0,r=1.5: 0.1855,MATCH,result3.xlsx t=86400 s,
-gate2 表5 24.0 h,0,r=2: 0.0665,MATCH,result3.xlsx t=86400 s,
-gate2 表5 30.0 h,0,r=0: 0.2058,MATCH,result3.xlsx t=108000 s,
-gate2 表5 30.0 h,0,r=0.5: 0.2018,MATCH,result3.xlsx t=108000 s,
-gate2 表5 30.0 h,0,r=1: 0.1891,MATCH,result3.xlsx t=108000 s,
-gate2 表5 30.0 h,0,r=1.5: 0.164,MATCH,result3.xlsx t=108000 s,
-gate2 表5 30.0 h,0,r=2: 0.0599,MATCH,result3.xlsx t=108000 s,
-gate2 表5 36.0 h,0,r=0: 0.1859,MATCH,result3.xlsx t=129600 s,
-gate2 表5 36.0 h,0,r=0.5: 0.1825,MATCH,result3.xlsx t=129600 s,
-gate2 表5 36.0 h,0,r=1: 0.1718,MATCH,result3.xlsx t=129600 s,
-gate2 表5 36.0 h,0,r=1.5: 0.1503,MATCH,result3.xlsx t=129600 s,
-gate2 表5 36.0 h,0,r=2: 0.0567,MATCH,result3.xlsx t=129600 s,
-gate2 表5 42.0 h,0,r=0: 0.172,MATCH,result3.xlsx t=151200 s,
-gate2 表5 42.0 h,0,r=0.5: 0.1691,MATCH,result3.xlsx t=151200 s,
-gate2 表5 42.0 h,0,r=1: 0.1596,MATCH,result3.xlsx t=151200 s,
-gate2 表5 42.0 h,0,r=1.5: 0.1406,MATCH,result3.xlsx t=151200 s,
-gate2 表5 42.0 h,0,r=2: 0.0549,MATCH,result3.xlsx t=151200 s,
-gate2 表5 48.0 h,0,r=0: 0.1618,MATCH,result3.xlsx t=172800 s,
-gate2 表5 48.0 h,0,r=0.5: 0.1591,MATCH,result3.xlsx t=172800 s,
-gate2 表5 48.0 h,0,r=1: 0.1506,MATCH,result3.xlsx t=172800 s,
-gate2 表5 48.0 h,0,r=1.5: 0.1333,MATCH,result3.xlsx t=172800 s,
-gate2 表5 48.0 h,0,r=2: 0.0537,MATCH,result3.xlsx t=172800 s,
-gate2 表5 54.0 h,0,r=0: 0.1538,MATCH,result3.xlsx t=194400 s,
-gate2 表5 54.0 h,0,r=0.5: 0.1514,MATCH,result3.xlsx t=194400 s,
-gate2 表5 54.0 h,0,r=1: 0.1436,MATCH,result3.xlsx t=194400 s,
-gate2 表5 54.0 h,0,r=1.5: 0.1276,MATCH,result3.xlsx t=194400 s,
-gate2 表5 54.0 h,0,r=2: 0.053,MATCH,result3.xlsx t=194400 s,
-gate2 表5 57.42 h,0,r=0: 0.15,MATCH,registry P05_C (0 cm),
-gate2 表5 57.42 h,0,r=0.5: 0.1477,MATCH,registry P05_C (0.5 cm),
-gate2 表5 57.42 h,0,r=1: 0.1402,MATCH,registry P05_C (1 cm),
-gate2 表5 57.42 h,0,r=1.5: 0.1248,MATCH,registry P05_C (1.5 cm),
-gate2 表5 57.42 h,0,r=2: 0.0527,MATCH,registry P05_C (2 cm),
+example.tex(附录2d),72,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),72,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(附录2d),72,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(附录2d),72,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(附录2d),72,12.5,MATCH,P07_cross_r2,registry_q3.csv
+example.tex(附录2d),72,0.0525,MATCH,W11_C_end_axis,registry_q3_2d.csv
+example.tex(附录2d),72,0.1321,MATCH,W11_C_ax_1cm,registry_q3_2d.csv
+example.tex(附录2d),72,0.1433,MATCH,W11_C_ax_2cm,registry_q3_2d.csv
+example.tex(附录2d),72,0.1494,MATCH,W11_C_ax_5cm,registry_q3_2d.csv
+example.tex(附录2d),72,0.1500,MATCH,P05_C_center,registry_q3.csv
+example.tex(附录2d),73,-0.005,MATCH,W11_D_over_alpha,registry_q3_2d.csv|abs
+example.tex(附录2d),73,2.25,MATCH,W11_z_dip_cm,registry_q3_2d.csv
+example.tex(附录2d),73,18,MATCH,W11_pen_alpha_cm,registry_q3_2d.csv
+example.tex(附录2d),74,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),74,1510.9,MATCH,W11_argmax_last_t_n50,registry_q3_2d.csv
+example.tex(附录2d),75,3.5e-5,MATCH,W11_water_resid,registry_q3_2d.csv
+example.tex(附录2d),75,95.24,ALLOW,allow: W11 二维全程失水率百分比 1-0.95241 推导,
+example.tex(附录2d),75,95.13,MATCH,P06_loss,registry_q3.csv
+example.tex(附录2d),76,8,MATCH,FG3_dt_decades,registry_q3_figures.csv
+example.tex(附录2d),78,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+example.tex(附录2d),79,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+example.tex(附录2d),79,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(附录2d),79,3,MATCH,X_C_600_0,registry_q3.csv

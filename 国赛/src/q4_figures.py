@@ -276,24 +276,35 @@ def fig_results(res):
 def fig_verify():
     """数值验证两面板."""
     FS.setup()
-    Mv = [100, 200, 400]
-    tv = [183827.2099, 183906.7128, 183934.6947]
+    # 六点网格链与相邻三点实测阶, 与 registry_q4_verify.csv 的 V1_M*/V1_p* 一致
+    # (论文图注与表13 的"由 1.51 升到 1.95"即出自这条链)
+    Mv = [100, 200, 400, 800, 1600, 3200]
+    tv = [183827.20992567966, 183906.71282718718, 183934.69473051972,
+          183943.11020790294, 183945.37707122925, 183945.96344573775]
+    pv = [1.51, 1.73, 1.89, 1.95]
     fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.4))
 
     ax = axes[0]
-    ax.plot(Mv, [v / 3600 for v in tv], "o-", ms=4, lw=1.2, color=C["blue"])
+    hv = [v / 3600 for v in tv]
+    ax.plot(Mv, hv, "o-", ms=4, lw=1.2, color=C["blue"])
+    # 三点实测阶标在其三点对数中点 (sqrt(M_k*M_{k+2})), 置于曲线下方空白处
+    for k, p in enumerate(pv):
+        xm = float(np.sqrt(Mv[k] * Mv[k + 2]))
+        ym = float(np.interp(np.log2(xm), np.log2(Mv), hv)) - 0.0095
+        ax.text(xm, ym, "%.2f" % p, fontsize=5.8, ha="center", va="top",
+                color=C["grey"])
     ax.text(0.04, 0.05,
-            "M = 100 : %.4f h\nM = 200 : %.4f h\nM = 400 : %.4f h"
-            % tuple(v / 3600 for v in tv),
+            "M = 100 : %.4f h\nM = 3200 : %.4f h"
+            % (hv[0], hv[-1]),
             transform=ax.transAxes, fontsize=6.2, va="bottom", ha="left",
             color=C["blue"], linespacing=1.35)
     ax.set_xscale("log", base=2)
     ax.set_xticks(Mv)
-    ax.set_xticklabels([str(m) for m in Mv])
+    ax.set_xticklabels([str(m) for m in Mv], fontsize=6.3)
     ax.set_xlabel("网格数 M", fontsize=7.5)
     ax.set_ylabel("t_dry / h", fontsize=7.5)
-    ax.set_ylim(51.050, 51.105)
-    ax.set_title("(a) 空间收敛（相邻差比 2.84）", fontsize=7.5, pad=4)
+    ax.set_ylim(51.048, 51.102)
+    ax.set_title("(a) 空间收敛（实测阶 1.51 升至 1.95）", fontsize=7.5, pad=4)
 
     ax = axes[1]
     rt = [1e-7, 1e-9, 1e-11]
@@ -314,9 +325,12 @@ def fig_verify():
     save_gated(fig, "fig_q4_verify")
     plt.close(fig)
 
-    R("FIG_V1_M100", "M=100 t_dry", tv[0], "s", "outputs/q4_verify.log")
-    R("FIG_V1_M200", "M=200 t_dry", tv[1], "s", "outputs/q4_verify.log")
-    R("FIG_V1_M400", "M=400 t_dry", tv[2], "s", "outputs/q4_verify.log")
+    R("FIG_V1_M100", "M=100 t_dry", tv[0], "s", "outputs/registry_q4_verify.csv V1_M100")
+    R("FIG_V1_M200", "M=200 t_dry", tv[1], "s", "outputs/registry_q4_verify.csv V1_M200")
+    R("FIG_V1_M400", "M=400 t_dry", tv[2], "s", "outputs/registry_q4_verify.csv V1_M400")
+    R("FIG_V1_M800", "M=800 t_dry", tv[3], "s", "outputs/registry_q4_verify.csv V1_M800")
+    R("FIG_V1_M1600", "M=1600 t_dry", tv[4], "s", "outputs/registry_q4_verify.csv V1_M1600")
+    R("FIG_V1_M3200", "M=3200 t_dry", tv[5], "s", "outputs/registry_q4_verify.csv V1_M3200")
     R("FIG_V2_span", "rtol 极差", max(tvr) - min(tvr), "s", "outputs/q4_verify.log")
 
 

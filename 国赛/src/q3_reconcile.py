@@ -286,10 +286,12 @@ def tex_ranges(lines):
     if j0 is not None and j1 is not None:
         targets.append(("example.tex(§5.3)", lines[j0:j1 + 1], j0 + 1))
     k0 = next((i for i, l in enumerate(lines)
-               if "附录：降维合理性" in l and "section" in l), None)
+               if "降维合理性的二维轴对称对照验证" in l and l.startswith("\\section{")), None)
+    # 终点 = 下一个 \section: 曾写到「结果文件与源程序」, 会话 22 在中间插入
+    # 附录 C--F 后把 126 个问题四相容性数字误卷进本关 (registry_q4_compat 不在本关
+    # 注册表里) -> 假警报. 区间只覆盖附录 B 本节.
     k1 = next((i for i, l in enumerate(lines)
-               if "附录：结果文件与源程序" in l and "section" in l
-               and k0 is not None and i > k0), None)
+               if l.startswith("\\section{") and k0 is not None and i > k0), None)
     if k0 is not None and k1 is not None:
         targets.append(("example.tex(附录2d)", lines[k0:k1 + 1], k0 + 1))
     return targets

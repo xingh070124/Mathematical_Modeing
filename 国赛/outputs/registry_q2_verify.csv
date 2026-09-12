@@ -119,3 +119,6 @@ V9b_s_hc08_CR,h ×0.8 时 t=10800 s 表面含水率,1.0091742484327,kg/kg,敏感
 V9b_s_hc08_T0,h ×0.8 时 t=10800 s 中心温度,49.617725567009,degC,敏感性,q2_verify.py,python src/q2_verify.py,
 V9b_base_TR,基准 h=25 时 t=10800 s 表面温度,49.888775052147,degC,敏感性,q2_verify.py,python src/q2_verify.py,
 V9b_base_CR,基准 h=25 时 t=10800 s 表面含水率,1.0077805613645,kg/kg,敏感性,q2_verify.py,python src/q2_verify.py,
+VB_ratio_M100,Bessel 校核 M=50->100 的偏差比值,4.3138223417387,-,收敛比,q2_verify.py,python src/q2_verify.py,
+VB_ratio_M200,Bessel 校核 M=100->200 的偏差比值,4.0501723858146,-,收敛比,q2_verify.py,python src/q2_verify.py,
+VB_ratio_M400,Bessel 校核 M=200->400 的偏差比值,1.695354696345,-,收敛比,q2_verify.py,python src/q2_verify.py,

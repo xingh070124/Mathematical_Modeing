@@ -10,7 +10,7 @@ Q4_Cbar,t_dry 时体积平均含水率,0.11836975563753403,kg/kg,生产解,q4_pr
 Q4_Tsurf,t_dry 时表面温度,49.99979942858312,degC,生产解,q4_production.log
 Q4_Tmax,t_dry 时全场最高温度,49.99979942858312,degC,生产解,q4_production.log
 Q4_nsteps,BDF 步数,4007.0,1,生产解,q4_production.log
-Q4_wall,求解耗时,2.7225987911224365,s,生产解,q4_production.log
+Q4_wall,求解耗时,2.876537322998047,s,生产解,q4_production.log
 Q4_n60,result4.xlsx 数据行数,3065.0,1,生产解,q4_production.log
 Q4_M,空间节点数,200.0,1,设置,q4_production.log
 Q4_rtol,相对容限,1e-09,-,设置,q4_production.log

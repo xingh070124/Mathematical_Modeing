@@ -46,7 +46,10 @@ REGISTRIES = [os.path.join(OUT, "registry_q1_production.csv"),
               os.path.join(OUT, "registry_q1_piecewise.csv"),
               os.path.join(OUT, "registry_q1_uncertainty.csv"),
               os.path.join(OUT, "registry_feishu.csv"),
-              os.path.join(OUT, "registry_q1_smooth.csv")]
+              os.path.join(OUT, "registry_q1_smooth.csv"),
+              # 附录 A 的常环境校核句 (3.29e-5 / 3.37e-5) 出自这份注册表;
+              # 此前漏接, 第一关一直对不上 (会话 22 引入句子时未同步本清单)
+              os.path.join(OUT, "registry_q1_const_env.csv")]
 REPORT = os.path.join(OUT, "reconciliation_q1.csv")
 
 # result1.xlsx 的直接逐位核对: 表1/表2 的每个值必须与 xlsx 在 4 位小数上完全相同.
@@ -138,17 +141,19 @@ def xval_range(lines):
 
     该节原在「问题一模型的建立与求解」之内（以 `\\subsubsection{...}` 开头、以下一个
     `\\subsubsection{求解某一时刻下药材各个位置的水分浓度}` 结尾）。为把问题一的建模
-    部分压到 6 页，它已整体移入附录（以附录 `\\section` 开头、以
-    `\\section{附录：结果文件与源程序}` 结尾）。
+    部分压到 6 页，它已整体移入附录 A。**区间只覆盖附录 A 本节**（到下一个
+    `\\section{` 为止）：曾用「到 `\\section{结果文件与源程序}`」作终点，会话 22 在
+    两者之间插入附录 C--F 后，区间把后续附录的数字误卷进本关扫描 —— 教训：区间终点
+    一律取"下一个 \\section"，不要写死后面的节名。
 
     **两种形态都必须支持**：只认其中一种时，另一种会让本关返回「未定位到交叉验证节」
     而被**静默跳过**（不是报错），于是 50 个表格值悄悄失去校验 —— 这正是本函数存在的
     理由。调用方若拿到 (None, None) 应给出显式提示。
     """
     for i, l in enumerate(lines):
-        if l.startswith(r"\section{附录：温度场解析解的交叉验证"):
+        if l.startswith(r"\section{温度场解析解的交叉验证"):
             for j in range(i + 1, len(lines)):
-                if lines[j].startswith(r"\section{附录：结果文件与源程序}"):
+                if lines[j].startswith(r"\section{"):
                     return i, j
             return i, len(lines)
     # 回退：旧形态（仍在问题一建模部分内）
@@ -185,7 +190,9 @@ def tex_xval_check():
         if not os.path.exists(path):
             continue
         for r in csv.DictReader(open(path, encoding="utf-8-sig")):
-            reg.setdefault(r["id"], r["value"])
+            rid = r.get("id") or r.get("key")
+            if rid is not None:
+                reg.setdefault(rid, r.get("value", ""))
 
     def fields(line):
         """把 tex 表行按 & 拆开, 每段取第一个数值."""
@@ -410,9 +417,10 @@ def load_registry():
             for r in csv.DictReader(f):
                 v = str(r.get("value", ""))
                 m = NUM_RE.findall(latex_to_plain(v))
+                rid = r.get("id") or r.get("key") or "?"
                 for tok in m:
                     try:
-                        vals.setdefault(float(tok), r["id"])
+                        vals.setdefault(float(tok), rid)
                     except ValueError:
                         pass
     return vals

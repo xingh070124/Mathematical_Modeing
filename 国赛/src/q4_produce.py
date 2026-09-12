@@ -65,9 +65,23 @@ def main():
 
     g, rad, sol = res["g"], res["rad"], res["sol"]
     t_dry = res["t_dry"]
-    s = sample_q4(sol, g, rad, t_dry)
+    # 材料坐标口径取全部 21 个初始半径 (0.0~2.0, 步长 0.1) —— 初始位于 r0 处的
+    # 物质点在整个过程中位于 r0*R(t)/R0, 恒在域内, 故该口径全程有定义。
+    R_MAT = tuple(np.round(np.arange(0.0, 2.0 + 1e-9, 0.1), 1))
+    s = sample_q4(sol, g, rad, t_dry, r_out_cm=R_MAT)
     n, M = g["n"], g["M"]
     MLsum = g["MLg"].sum()
+    # t_dry 时刻的状态 (60 s 网格不含 t_dry, 末点为 60*floor(t_dry/60))
+    U_dry = sol.sol(t_dry)
+    C_dry = U_dry[n:]
+    T_dry = U_dry[:n]
+    R_dry = float(rad.R(t_dry))
+
+    def C_at_phys(rcm):
+        """t_dry 时刻、物理半径 rcm [cm] 处的含水率; 超出 R(t_dry) 记 NaN."""
+        if rcm * 1e-2 > R_dry * (1.0 + 1e-12):
+            return float("nan")
+        return float(np.interp((rcm * 1e-2) / R_dry, g["xi"], C_dry))
 
     # ---------------- 表 6 ----------------
     cols5 = [0.0, 0.5, 1.0, 1.5]
@@ -85,7 +99,12 @@ def main():
         say("  " + f"{h:>10.1f}" + "".join(
             f"{(('%.4f' % v) if v is not None and not np.isnan(v) else '--'):>10s}"
             for v in row[1:]))
-    row_dry = [t_dry / 3600.0] + [s["Cg"][-1, j] for j in j5] + [s["Cs"][-1]]
+    # 末行必须取 t = t_dry 处的状态。此前误用 60 s 网格末点 Cg[-1]
+    # (= 60*n60 = 183900 s = 51.0833 h), 而标签写 t_dry, 两者相差 6.71 s;
+    # 该时刻 max C = 0.15000345 > 0.15, 尚未达标。见修订 A2。
+    row_dry = ([t_dry / 3600.0]
+               + [C_at_phys(c) for c in cols5]
+               + [float(C_dry[-1])])
     t6.append(row_dry)
     say("  " + f"{t_dry/3600.0:>10.4f}" + "".join(
         f"{(('%.4f' % v) if v is not None and not np.isnan(v) else '--'):>10s}"
@@ -128,8 +147,28 @@ def main():
                 ws.cell(row=2 + i, column=2 + j, value=round(float(v), 4))
         ws.cell(row=2 + i, column=2 + grid.size, value=round(float(Cs[i]), 4))
     path_x = os.path.join(OUTDIR, "result4.xlsx")
+
+    # ---- 补充工作表: 材料坐标口径 ----
+    # 题面"到药材中心距离"随药材收缩有两种读法: (i) 当刻的物理距离 (Sheet1,
+    # 超出当前表面 R(t) 的位置无定义); (ii) 物质点标签, 即该团干物质在 t=0 时
+    # 的半径 (本题)。初始位于 r0 处的物质点全程位于 r0*R(t)/R0, 故该口径在
+    # 21 列 0~2.0 cm 上**全程有定义、无空格**; 末列即药材表面 (初始 2.0 cm 处
+    # 的物质点就是当前表面)。两表并存, 任一读法下都不缺数据。
+    ws2 = wb.create_sheet("材料坐标")
+    ws2.cell(row=1, column=1, value="时间\\材料点初始半径")
+    for j in range(len(R_MAT)):
+        hdr_j = "药材表面" if j == len(R_MAT) - 1 else float(R_MAT[j])
+        ws2.cell(row=1, column=2 + j, value=hdr_j)
+    matC = s["matC"]                       # (n60, 21) @ 初始半径 0.0,0.1,...,2.0
+    assert matC.shape[1] == len(R_MAT), (matC.shape, len(R_MAT))
+    for i in range(n60):
+        ws2.cell(row=2 + i, column=1, value=int(round(s["t60"][i])))
+        for j in range(len(R_MAT)):
+            ws2.cell(row=2 + i, column=2 + j, value=round(float(matC[i, j]), 4))
     wb.save(path_x)
-    say(f"  写出: outputs/result4.xlsx  ({n60} 行数据 x {grid.size} 列 + 表面列)")
+    say(f"  写出: outputs/result4.xlsx  Sheet1 物理口径 {n60} 行 x {grid.size} 列 + 表面列; "
+        f"「材料坐标」表 {n60} 行 x {len(R_MAT)} 列 (0.0~2.0 cm 步长 0.1, 全程有定义; "
+        f"末列=药材表面)")
 
     # ---------------- 关键读数 ----------------
     r_out = res["rad"].R(t_dry)
@@ -137,14 +176,18 @@ def main():
     say("[关键读数]")
     say(f"  烘干时长 t_dry        = {t_dry:.4f} s = {t_dry/3600.0:.4f} h "
         f"= {t_dry/86400.0:.4f} 天")
-    say(f"  结束半径 R(t_dry)     = {s['Rs'][-1]:.4f} cm  (R0 = {R0*100:.4f} cm, "
-        f"收缩比 {s['Rs'][-1]/(R0*100):.4f})")
-    say(f"  表面含水率 @ t_dry    = {Cs[-1]:.6f} kg/kg  (C* = {CSTAR}, "
-        f"高于环境平台 {CBAR} 的 {Cs[-1]-CBAR:.4f})")
-    say(f"  中心含水率 @ t_dry    = {s['Cg'][-1, 0]:.6f} kg/kg")
-    say(f"  表面温度 @ t_dry      = {s['Ts'][-1]:.4f} degC")
-    say(f"  全场最高温度          = {s['Tmax'][-1]:.4f} degC")
-    say(f"  体积平均含水率 @ t_dry= {s['W60'][-1]/MLsum:.6f} kg/kg")
+    say(f"  结束半径 R(t_dry)     = {R_dry*100:.4f} cm  (R0 = {R0*100:.4f} cm, "
+        f"收缩比 {R_dry*100/(R0*100):.4f})")
+    say(f"  表面含水率 @ t_dry    = {C_dry[-1]:.6f} kg/kg  (C* = {CSTAR}, "
+        f"高于环境平台 {CBAR} 的 {C_dry[-1]-CBAR:.4f})")
+    say(f"  中心含水率 @ t_dry    = {C_dry[0]:.6f} kg/kg")
+    say(f"  全场最大含水率 @ t_dry= {C_dry.max():.8f} kg/kg  (= C*, 事件定义)")
+    say(f"  表面温度 @ t_dry      = {T_dry[-1]-273.15:.4f} degC")
+    say(f"  全场最高温度 @ t_dry  = {T_dry.max()-273.15:.4f} degC")
+    say(f"  体积平均含水率 @ t_dry= {(g['MLg']*C_dry).sum()/MLsum:.6f} kg/kg")
+    say("  注: 以上均为 t = t_dry 处的状态; 60 s 网格末点 (60*floor(t_dry/60))")
+    say(f"      为 {60*int(np.floor(t_dry/60))} s = {60*int(np.floor(t_dry/60))/3600:.4f} h, "
+        f"该时刻 max C = {s['Cg'][-1].max() if not np.isnan(s['Cg'][-1].max()) else float('nan'):.8f}")
 
     # 跨 t_dry 的细网格, 使 r=0 也能定位
     t_grid = np.unique(np.concatenate([np.arange(60.0, t_dry, 60.0), [t_dry]]))
@@ -178,15 +221,25 @@ def main():
     A(("Q4_tdry_s", "烘干所需时间 t_dry", t_dry, "s", "生产解", "q4_production.log"))
     A(("Q4_tdry_h", "烘干所需时间 t_dry", t_dry / 3600.0, "h", "生产解", "q4_production.log"))
     A(("Q4_tdry_d", "烘干所需时间 t_dry", t_dry / 86400.0, "d", "生产解", "q4_production.log"))
-    A(("Q4_Rend_cm", "t_dry 时药材半径", s["Rs"][-1], "cm", "生产解", "q4_production.log"))
-    A(("Q4_Rend_ratio", "t_dry 时半径与初始半径之比", s["Rs"][-1] / (R0 * 100),
+    A(("Q4_Rend_cm", "t_dry 时药材半径", R_dry * 100.0, "cm", "生产解", "q4_production.log"))
+    A(("Q4_Rend_ratio", "t_dry 时半径与初始半径之比", R_dry * 100.0 / (R0 * 100),
        "1", "生产解", "q4_production.log"))
-    A(("Q4_Csurf", "t_dry 时表面含水率", Cs[-1], "kg/kg", "生产解", "q4_production.log"))
-    A(("Q4_Ccenter", "t_dry 时中心含水率", s["Cg"][-1, 0], "kg/kg", "生产解", "q4_production.log"))
-    A(("Q4_Cbar", "t_dry 时体积平均含水率", s["W60"][-1] / MLsum, "kg/kg",
+    A(("Q4_Csurf", "t_dry 时表面含水率", C_dry[-1], "kg/kg", "生产解", "q4_production.log"))
+    A(("Q4_Ccenter", "t_dry 时中心含水率", C_dry[0], "kg/kg", "生产解", "q4_production.log"))
+    A(("Q4_Cmax_dry", "t_dry 时全场最大含水率 (= C*)", C_dry.max(), "kg/kg",
        "生产解", "q4_production.log"))
-    A(("Q4_Tsurf", "t_dry 时表面温度", s["Ts"][-1], "degC", "生产解", "q4_production.log"))
-    A(("Q4_Tmax", "t_dry 时全场最高温度", s["Tmax"][-1], "degC", "生产解", "q4_production.log"))
+    A(("Q4_Cbar_dry", "t_dry 时体积平均含水率", (g["MLg"] * C_dry).sum() / MLsum,
+       "kg/kg", "生产解", "q4_production.log"))
+    A(("Q4_Tsurf", "t_dry 时表面温度", T_dry[-1] - 273.15, "degC", "生产解",
+       "q4_production.log"))
+    A(("Q4_Tmax", "t_dry 时全场最高温度", T_dry.max() - 273.15, "degC", "生产解",
+       "q4_production.log"))
+    # 60 s 网格末点的状态 (与 t_dry 不同, 保留以供追溯; 表 6 末行不用它)
+    _i60 = -1
+    A(("Q4_Ccenter_60s", "60 s 网格末点的中心含水率", s["Cg"][_i60, 0], "kg/kg",
+       "诊断", "q4_production.log"))
+    A(("Q4_t60_last", "60 s 网格末点时刻", s["t60"][_i60], "s", "诊断",
+       "q4_production.log"))
     A(("Q4_nsteps", "BDF 步数", float(res["nsteps"]), "1", "生产解", "q4_production.log"))
     A(("Q4_wall", "求解耗时", res["wall"], "s", "生产解", "q4_production.log"))
     A(("Q4_n60", "result4.xlsx 数据行数", float(n60), "1", "生产解", "q4_production.log"))
@@ -210,12 +263,12 @@ def main():
             j = int(np.argmin(np.abs(s["grid_cm"] - c)))
             A((f"Q4_T6_{h:g}h_r{c:g}", f"表6 t={h:g} h r={c} cm 含水率",
                s["Cg"][i, j], "kg/kg", "表6", "q4_production.log"))
-    A((f"Q4_T6_dry", f"表6 末行 t_dry 时刻", t_dry / 3600.0, "h", "表6", "q4_production.log"))
-    for c in cols5:
-        j = int(np.argmin(np.abs(s["grid_cm"] - c)))
-        A((f"Q4_T6_dry_r{c:g}", f"表6 末行 r={c} cm 含水率", s["Cg"][-1, j],
+    A((f"Q4_T6_dry", "表6 末行 t_dry 时刻", t_dry / 3600.0, "h", "表6", "q4_production.log"))
+    for jj, c in enumerate(cols5):
+        A((f"Q4_T6_dry_r{c:g}", f"表6 末行 r={c} cm 含水率", row_dry[1 + jj],
            "kg/kg", "表6", "q4_production.log"))
-    A(("Q4_T6_dry_surf", "表6 末行 表面含水率", Cs[-1], "kg/kg", "表6", "q4_production.log"))
+    A(("Q4_T6_dry_surf", "表6 末行 表面含水率", row_dry[-1], "kg/kg", "表6",
+       "q4_production.log"))
     for k, v in xt.items():
         if v is not None:
             A((f"Q4_tcross_r{k:g}", f"r={k} cm 首次达标时刻", v, "s", "诊断",
