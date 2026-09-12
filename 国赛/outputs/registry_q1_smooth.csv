@@ -1,0 +1,11 @@
+﻿id,quantity,value,unit,uncertainty,source,command,note
+SM_noise_T_rms,附件1 T_inf 高频分量 rms,0.12082473853554,degC,run,q1_smooth_check.py,python src/q1_smooth_check.py,
+SM_noise_T_max,附件1 T_inf 高频分量最大绝对值,0.27841258741245,degC,run,q1_smooth_check.py,python src/q1_smooth_check.py,
+SM_noise_C_rms,附件1 C_inf 高频分量 rms,0.00011645213139254,kg/kg,run,q1_smooth_check.py,python src/q1_smooth_check.py,
+SM_noise_C_max,附件1 C_inf 高频分量最大绝对值,0.00029114219114233,kg/kg,run,q1_smooth_check.py,python src/q1_smooth_check.py,
+SM_q1_dT_1800,问题一 t=1800 s 全场 max|dT| (原始 vs SG 平滑),0.008286614871281,K,run,q1_smooth_check.py,python src/q1_smooth_check.py,窗 11/3 阶
+SM_q1_dC_1800,问题一 t=1800 s 全场 max|dC| (原始 vs SG 平滑),1.9685413181758e-06,kg/kg,run,q1_smooth_check.py,python src/q1_smooth_check.py,窗 11/3 阶
+SM_q2_dT_10800,问题二 全场全程 max|dT| (原始 vs SG 平滑),0.039401696093535,K,run,q1_smooth_check.py,python src/q1_smooth_check.py,
+SM_q2_dC_10800,问题二 全场全程 max|dC| (原始 vs SG 平滑),9.2112174848502e-05,kg/kg,run,q1_smooth_check.py,python src/q1_smooth_check.py,
+SM_q2_dT_surf,问题二 表面全程 max|dT| (原始 vs SG 平滑),0.039401696093535,K,run,q1_smooth_check.py,python src/q1_smooth_check.py,
+SM_q2_dC_surf,问题二 表面全程 max|dC| (原始 vs SG 平滑),9.2112174848502e-05,kg/kg,run,q1_smooth_check.py,python src/q1_smooth_check.py,

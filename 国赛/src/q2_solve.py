@@ -55,7 +55,7 @@ H_CONV = 25.0           # W/(m^2 K), 附录2
 HM = 8.0e-7             # m/s,       附录2
 
 # 汽化潜热定标式 (problem2.md §4.4c; 由 Clapeyron + Kirchhoff + IAPWS-95 定标)
-HEVAP_28 = 2.4346e6     # J/kg @ 28 degC
+HEVAP_28 = 2.4346e6     # J/kg @ 28 degC (论文正文符号为 L_v: 水的汽化潜热)
 HEVAP_SLOPE = -2.391e3  # J/(kg K)
 HEVAP_TREF = 301.15     # K
 
@@ -238,7 +238,10 @@ def assemble(x, xold, dt, g, par, Tinf, Cinf):
         JTC_diag[:-1] += a_i
         JTC_diag[1:] += -b_i
         JTC_up, JTC_lo = b_i, -a_i
-    JTC_diag += MLg * drcp * (T if par.energy == "conserv" else (T - Told)) / dt
+        # d(rho cp)/dC 项只在未冻结时存在: 冻结模式下 M 由上一时间步的 C 构造,
+        # 对当前未知量 C 的导数为 0. 早先把它无条件加上, 使冻结分支的解析
+        # Jacobian 与残差不相容 (逐元核验的偏差达 9.67e-2, 见 q2_convergence.py).
+        JTC_diag += MLg * drcp * (T if par.energy == "conserv" else (T - Told)) / dt
     JTC_diag[M] += Hev * par.hm * R + dHev * par.hm * R * (C[M] - Cinf)
 
     if par.frozen:

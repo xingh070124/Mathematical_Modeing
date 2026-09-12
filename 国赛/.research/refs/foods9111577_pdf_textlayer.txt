@@ -1,0 +1,1673 @@
+foods
+Article
+A Non-Isothermal Moving-Boundary Model for
+Continuous and Intermittent Drying of Pears
+AlessandraAdrover1,* ,ClaudiaVenditti1 andAntonioBrasiello1,2
+1 DipartimentodiIngegneriaChimica,MaterialieAmbiente,SapienzaUniversitàdiRoma,viaEudossiana18,
+00184Roma,Italy;claudia.venditti@uniroma1.it(C.V.);antonio.brasiello@uniroma1.it(A.B.)
+2 INSTMConsorzioInteruniversitarioNazionaleperlaScienzaeTecnologiadeiMateriali,ViaG.Giusti9,
+50121Firenze,Italy
+* Correspondence:alessandra.adrover@uniroma1.it;Tel.:+39-06-44585608
+(cid:1)(cid:2)(cid:3)(cid:1)(cid:4)(cid:5)(cid:6)(cid:7)(cid:8)(cid:1)
+(cid:1)(cid:2)(cid:3)(cid:4)(cid:5)(cid:6)(cid:7)
+Received:24September2020;Accepted:27October2020;Published:30October2020
+Abstract: Anon-isothermalmoving-boundarymodelforfooddehydration,accountingforshrinkage
+andthermaleffects,isproposedandappliedtotheanalysisofintermittentdehydrationinwhich
+airtemperature,relativehumidity,andvelocityvarycyclicallyintime. Theconvection-diffusion
+heattransportequation,accountingforheattransfer,waterevaporation,andshrinkageatthesample
+surface, is coupled to the convection-diffusion water transport equation. Volume shrinkage is
+notsuperimposedbutpredictedbythemodelthroughtheintroductionofapoint-wiseshrinkage
+velocity. Experimentaldehydrationcurves,incontinuousandintermittentconditions,areaccurately
+predictedbythemodelwithaneffectivewaterdiffusivityD (T)thatdependsexclusivelyonthe
+eff
+localtemperature. Thenon-isothermalmodelissuccessfullyappliedtothelargesetofexperimental
+dataofcontinuousandintermittentdryingofRochapears.
+Keywords: intermittentdehydration;shrinkage;moving-boundarymodel;non-isothermaldrying
+1. Introduction
+Food process engineering represents one of the research fields that could benefit most from
+theoretical/computationalsupport,thatistheaccuratemodelingofallthecomplexheatandmass
+transportphenomenainvolvedinmanyprocessesofinteresttothefoodindustry.
+Naturalandconvectivedrying,forfoodproductionandpreservation,isundoubtedlyoneofthe
+mostinvestigatedprocesses[1]. Itinvolvesheatandmasstransportinashrinkingfoodsample[2].
+Shrinkage is a major phenomenon connected to drying [3] since it influences consumer quality
+perception,costsfortransportationandstorage. Mathematicalmodelingofdryingisausefultoolfor
+optimizingtheprocessanddesigningthedryer.
+Most modeling approaches for the description of convective dehydration neglect thermal
+phenomena and assume that the temperature is uniform within the sample and equal to the
+temperatureoftheairintheclimaticchamber. Foradetailedreviewandclassificationoftheoretical
+modelsfortheconvectivedryingoffruitsseetherecentreviewbyCastroetal. [4].
+Thermal effects cannot be overlooked in the analysis and modeling of intermittent
+dehydration[5–11]inwhichtheairpropertieschangeduringtheprocess. Intermittentdehydration
+has the technical advantage of increasing the dehydration capacity per unit energy consumption,
+improvingproductqualityandreducingcolordegradationduetonon-enzymaticbrowning. Forthis
+reason,intermittentdryingiswidelyappliedfordehydrationofheat-sensitivebioproducts(see[8]
+andreferencestherein).
+AveryinterestingpaperbySilvaetal. [11]recentlyanalyzedanintermittentdryingprocessof
+wholeRochapearsinwhichairtemperature,relativehumidity,andvelocityvarycyclicallyinaclimatic
+Foods2020,9,1577;doi:10.3390/foods9111577 www.mdpi.com/journal/foods
+
+Foods2020,9,1577 2of22
+chamberspecificallydesignedtoreproducethetraditionalsun-dryingofthePortugueseSaoBartolomeu
+pears. Pearsarecharacterizedbyahighinitialmoisturecontentandexhibitalargeidealshrinkage[12],
+meaningthatvolumereductionisequaltothevolumeofwaterremovedduringdrying.
+Thisarticlestemsfromtheideaofverifyingthepredictivecapabilitiesofthemoving-boundary
+dehydration model, recently proposed by Adrover et al. [13,14], by analyzing the large set of
+experimentaldataofintermittentdryingofRochapearsreportedbySilvaetal. [11].
+This isothermal moving-boundary model has been already successfully applied to describe
+thecontinuousdehydrationkineticsandshrinkageofdifferentfoodmaterialsandsampleshapes,
+e.g.,eggplantcylindrical[13]anddiscoidalsamples[15],chayoteslices[16],potatoessticks[14]and
+squareslices[13],ellipsoidalcocoabeans[17].
+Theaimofthisworkistoimprovethemoving-boundarymodeltoaccountforthermaleffects.
+Tothisend,aconvection-diffusionheattransportequation,accountingforsampleshrinkage,heat
+transfer and water evaporation at the sample surface, is added to the convection-diffusion water
+transport equation. Like in the isothermal moving-boundary model, volume shrinkage is not
+superimposedbutpredictedbythemodelviatheintroductionofthepointwiseshrinkagevelocitythat
+dependsonthelocalvolumetricwaterflux. Thepredictivecapabilitiesofthemodelhavebeenchecked
+ontotheexperimentalintermittentdeydrationcurvesofRochapears,performedinaprogrammable
+climaticchamber,andsimulatingthecyclicrepetitionofthethreedifferentstagescharacterizingthe
+traditionalsolardrying. Numericalresultsclearlyshowthat,ifthespatio-temporalevolutionofthe
+temperaturefieldisproperlyaccountedfor,theexperimentaldehydrationcurves,incontinuousand
+intermittentconditions,canbeaccuratelypredictedbythemoving-boundarymodelwithaneffective
+waterdiffusivityD (T)thatdependsexclusivelyonthelocaltemperature.
+eff
+The article is organized as follows. Section 2 reviews the morphological and geometrical
+parametersofsphericalpearssubjectedtodehydrationandbrieflydescribetheoperatingconditions
+forcontinuousandintermittentdrying, asreportedby[11]. Section3reviewsthebasicequations
+andboundaryconditionsoftheisothermalmoving-boundarymodelandpresentsitscorresponding
+non-isothermalformulation. Section4focusesoncontinuousdehydrationexperimentsandshows
+that the isothermal model does not provide satisfactory results. This is because the temperature
+ofthewholepear T(r,t)cannotbeapproximatedwiththeairtemperature T∞,eveninthesimpler
+continuousdehydrationprocess. However,theisothermalapproachallowsestimatingtheeffective
+waterdiffusivityD (T)fromtheasymptoticexponentialbehaviourofthetwocontinuousdehydration
+eff
+curves at T∞ = 40 ◦C and 50 ◦C, as discussed in Section 4.2 and in Appendix B. The water
+diffusivity D (T) is the only unknown parameter that enters the non-isothermal model. All the
+eff
+otherparametershavebeenestimatedfromindependentmeasurements(e.g.,desorptionisotherms)
+or from reliable correlations (e.g., heat and mass transfer coefficients h and h ), as discussed in
+T m
+AppendixA.Thenon-isothermalmodelissuccessfullyapplied,inafullypredictiveway,todescribe
+the continuous dehydration experiments in Section 4.3, and the intermittent dehydration tests in
+Section5. Theinfluenceofairvelocityonthedehydrationtimeandtheeffectivenessofthepause
+stagesonthereductionofmoistureinternalgradientsarealsoaddressedinSection5.
+2. ContinuousandIntermittentDryingofRochaPears
+WeanalyzeexperimentaldataofcontinuousandintermittentdryingofpearsofRochavariety
+reportedin[11]andsummarizedinTable1.
+Continuous and intermittent drying experiments are performed in a programmable climatic
+chambersimulatingthecyclicrepetitionofthethreedifferentstages(seeFigure1)characterizingthe
+traditionalsolardrying,namely
+1. A first stage (10 h) of convective drying (C) with air velocity U∞ max = 1.28 or 2.66 m/s,
+hightemperatureT∞ max =40◦Cor50◦CandlowRelativeHumidityRH =15%.
+2. Asecondpausestage(P ,7h),simulatingthebarrelingstage,characterizedbyahightemperature
+1
+T∞ =40◦C,50◦C,highRelativeHumidityRH =80%andverylowairvelocityU∞ <0.2m/s.
+
+Foods2020,9,1577 3of22
+3. Athirdpausestage(P ,7h),simulatingthenightperiod,characterizedbyalowtemperature
+2
+=17◦C,highRelativeHumidityRH
+| T∞  |     |     |     | =80%andverylowairvelocityU∞ |     |     | <0.2m/s. |
+| --- | --- | --- | --- | --------------------------- | --- | --- | -------- |
+Table1.InitialtotalmoisturecontentX [kgwater/kgdrysolid]andsampledimensiond [cm]for
+|     |     |     | 0   |     |     |     | 0   |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+differentcontinuous(C)andintermittent(I)dryingexperiments. *Dehydrationcurvesshownin
+Figure2.**DehydrationcurveshowninFigure12A.
+|     |            |     |      |        | T ∞ | U∞ X0  | d      |
+| --- | ---------- | --- | ---- | ------ | --- | ------ | ------ |
+|     | Experiment |     | Type | Cycles | ◦C  |        | 0      |
+|     |            |     |      |        | [ ] | [m /s] | [c m ] |
+C-40◦C*
+|     |     |     |     | C   | - 40 | 1.28 5.64 | 5.30 |
+| --- | --- | --- | --- | --- | ---- | --------- | ---- |
+I-40◦C-2Cycles*
+|     |                 |         |     | I   | 2 40 | 1.28 6.48 | 5.36 |
+| --- | --------------- | ------- | --- | --- | ---- | --------- | ---- |
+|     | I-40◦C-5Cycles* |         |     | I   | 5 40 | 1.28 5.37 | 5.30 |
+|     |                 | C-50◦C* |     | C   | - 50 | 1.28 5.55 | 5.24 |
+I-50◦C-2Cycles*
+|     |     |     |     | I   | 2 50 | 1.28 6.21 | 5.32 |
+| --- | --- | --- | --- | --- | ---- | --------- | ---- |
+I-50◦C-3CyclesI*
+|     |     |     |     | I   | 3 50 | 1.28 6.25 | 5.69 |
+| --- | --- | --- | --- | --- | ---- | --------- | ---- |
+I-50◦C-3CyclesII**
+|     |     |     |     | I   | 3 50 | 2.66 7.24 | 5.43 |
+| --- | --- | --- | --- | --- | ---- | --------- | ---- |
+FordetailsregardingtheexperimentalsetupseetheoriginalpaperbySilvaetal. [11].
+ 140
+]s/m[ 001x
+max
+|     |     |  120 U ∞  [0.1m/s-U |     | ∞ ] |     |     |     |
+| --- | --- | ------------------- | --- | --- | --- | --- | --- |
+ 100
+|     |     |     |     |     | RH % [15-80] |     |     |
+| --- | --- | --- | --- | --- | ------------ | --- | --- |
+∞
+ 80
+∞
+U ,%
+ 60
+|     |     | T  [17 | o C-T | max ] |     |     |     |
+| --- | --- | ------ | ----- | ----- | --- | --- | --- |
+|     | ∞   | ∞      | ∞     |       |     |     |     |
+HR ,]C  40
+ 20
+o
+[   0
+|     | ∞   |     |     |     | P  (7 h) | P  (7 h) |     |
+| --- | --- | --- | --- | --- | -------- | -------- | --- |
+C (10 h)
+|     | T   |     |     |     | 1   | 2   |     |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|     |     |  0  |  5  |  10 |  15 |  20 |  25 |
+h [h]
+Figure 1. Temporal evolution of air temperature T∞, Relative Humidity RH∞ and velocity U∞
+duringthethreedistinctstagesofasinglecycleforintermittentdehydration,namelyaconvective
+high-temperaturedryingperiod(C),ahigh-temperaturehumidpause(P 1 )andalow-temperature
+| humidpause(P | ).U∞ max | =1.28or2.66m/s. |     | T∞ max | =40◦Cor50◦C. |     |     |
+| ------------ | -------- | --------------- | --- | ------ | ------------ | --- | --- |
+2
+The collection of experimental data for the temporal evolution of the rescaled total moisture
+contentX(t)/X forcontinuousandintermittentdryingofsphericalpearsatT = 40◦C,50◦Cand
+0
+U∞ =1.28m/sarereportedinFigure2whereverticallineshighlightthedifferentstagesofthefirst
+twocyclesforintermittentdryingexperiments.
+DetailsregardingtheinitialtotalmoisturecontentX 0 andtheinitialsamplediameterd 0 foreach
+experimentarereportedinTable1.
+
+| Foods2020,9,1577 |     |     |     |     |     |     |     |     | 4of22 |
+| ---------------- | --- | --- | --- | --- | --- | --- | --- | --- | ----- |
+1
+C-40oC
+I-40oC-2 Cycles
+
+I-40oC-5 Cycles
+|     |     | 0.8 |     |     |     | C-50oC |     |     |     |
+| --- | --- | --- | --- | --- | --- | ------ | --- | --- | --- |
+I-50oC-2 Cycles
+|     |     |     |     |     | I-50oC-3 Cycles |     |     |     |     |
+| --- | --- | --- | --- | --- | --------------- | --- | --- | --- | --- |
+C-40oC best fit
+|     | 0   | 0.6 |     |     | C-50oC best fit |     |     |     |     |
+| --- | --- | --- | --- | --- | --------------- | --- | --- | --- | --- |
+X/)t(X
+
+0.4
+
+0.2
+|     |     |     |   C P P |     |     |     |     |     |     |
+| --- | --- | --- | ------- | --- | --- | --- | --- | --- | --- |
+1 2
+0
+|     |     |     |  0  20 |  40  60 |  80 |  100 |  120 |  140 |     |
+| --- | --- | --- | ------ | ------- | --- | ---- | ---- | ---- | --- |
+t [h]
+Figure2.Collectionofexperimentaldataforcontinuousandintermittentdryingofsphericalpearsat
+T∞ =40◦C,50◦C,U∞ =1.28m/s.Verticallineshighlightthedifferentstagesofthefirsttwocycles
+forintermittentdryingexperiments.Continuousthick(redandblue)linesrepresentthebest-fitcurves,
+Equation(22),forthetwocontinuousdryingexperimentsC-40◦CandC-50◦C.
+3. IsothermalandNon-IsothermalMoving-BoundaryModels
+This section preliminary reviews the basic idea and the resulting equations of the moving-
+boundary model for food isothermal dehydration, developed in [13,14]. It subsequently extends
+themoving-boundarymodeltothenon-isothermalcaseinwhichthesampletemperaturecannotbe
+assumedconstant(intimeand/orspace)andequaltotheairtemperatureT∞ oftheclimaticchamber.
+3.1. IsothermalMoving-BoundaryModel
+Duringthedehydrationprocess,thesamplevolumeV(t)andsurfaceS(t)evolveintimedueto
+sampleshrinkage. Thesampletemperatureisassumedconstantinspaceandtimeandequaltotheair
+temperatureT∞.
+Thetransportequationdescribingthespace-timeevolutionofthepointwisewaterconcentration
+c (x,t) [g water/m3 product] inside the sample volume V(t) is an advection-diffusion equation
+w
+accountingforthelocalshrinkagethroughthepointwiseshrinkagevelocityv s (x)
+|     | ∂c (x,t) |     | (cid:16) | (cid:17)    | (cid:16) |         | (cid:17) |       |     |
+| --- | -------- | --- | -------- | ----------- | -------- | ------- | -------- | ----- | --- |
+|     | w        | −∇· | +v       | (x)c = = ∇· | ∇c       | −v (x)c |          | ∈V(t) |     |
+|     |          |     | J d      | s w         | D eff w  | s       | w ,      | x     | (1) |
+∂t
+where J = −D ∇c is the diffusive mass flux, controlled by the effective water diffusivity D ,
+| d   | eff | w   |     |     |     |     |     |     | eff |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+and(v )isaconvectivetermarisingfromlocalshrinkage.
+s c w
+By enforcing the analogy between food dehydration and swelling of rubbery polymers
+(both processes are characterized by moving boundaries whose movement is controlled by water
+releaseorabsorption[18–21].),thepointwiseshrinkagevelocityv s (x)isassumedproportional(and
+oppositeinsign)tothediffusivevolumetricfluxJ (x)/ρ [m3water/(sm2)]
+d w
+|     |     |     | v (x) = −α(c | )J (x)/ρ | = α(c )D | ∇c /ρ | ,   |     | (2) |
+| --- | --- | --- | ------------ | -------- | -------- | ----- | --- | --- | --- |
+|     |     |     | s            | w d w    | w eff    | w     | w   |     |     |
+whereα(c )isashrinkageproportionalityfactor,dependingonthepointwisewaterconcentration.
+w
+Theshrinkagefactor α(c ) isthefingerprintofthespecificfoodmaterialunderinvestigation.
+w
+Thesimplestcaseisthatofaconstantshrinkagefactor,i.e.,α(c w ) = α 0 . α 0 =0representsthecaseofa
+rigidsolid(noshrinkage). α =1representsthecaseofidealshrinkage,inwhichvolumereduction
+0
+
+| Foods2020,9,1577 |     |     |     |     |     |     |     |     |     | 5of22 |
+| ---------------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ----- |
+correspondsexactlytothevolumeofwaterflowingoutsidethesample. Valuesofα lessorgreater
+0
+thanunityimplyvolumereductionlessorgreaterthanthecorrespondingwatervolumeflow[14,15].
+The effective water diffusivity D eff can be assumed constant in space or, in a more refined
+approach, it can be expressed as an increasing exponential function of the water volume fraction
+φ[18,19]
+|     |     |     |     |     | (cid:18) |     | (cid:19) |     |     |     |
+| --- | --- | --- | --- | --- | -------- | --- | -------- | --- | --- | --- |
+φ −φ
+|     |     | (φ,T) | =   | (T)exp | −β  | 0   |     | ≥0, | =          |     |
+| --- | --- | ----- | --- | ------ | --- | --- | --- | --- | ---------- | --- |
+|     |     | D eff |     | D φ0   |     |     | ,   | β   | φ c w /ρ w | (3) |
+φ −φ∞
+0
+|                |                                     |     |     |     |     |     |          | =   | exp(−β)aretheeffective |     |
+| -------------- | ----------------------------------- | --- | --- | --- | --- | --- | -------- | --- | ---------------------- | --- |
+| InEquation(3)φ | 0 istheinitialwatervolumefraction,D |     |     |     |     |     | φ0 andD∞ |     | D φ0                   |     |
+diffusivitiesatthebeginningandattheendofthedryingprocess,respectively.
+The shrinkage velocity v (x ), at every point x on the sample boundary S(t), controls the
+|     |     |     | s   | b   |     | b   |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+temporalevolutionofthesampleboundaryS(t)accordingtothefollowingequation
+|     |     |     | d x |              | α( c ) |       |        |         |     |     |
+| --- | --- | --- | --- | ------------ | ------ | ----- | ------ | ------- | --- | --- |
+|     |     |     | b   | = (cid:12) = | w      | ∇c    | |      | ∈ S(t). |     |     |
+|     |     |     |     | v s (cid:12) |        | D eff | w xb , | x b     |     | (4) |
+|     |     |     | d t | xb           | ρ      |       |        |         |     |     |
+w
+The two transport equations Equations (1) and (4) are linked together and must be solved
+simultaneously by further enforcing the following mixed boundary condition, also referred to as
+Robinor“evaporative”orthirdorderboundarycondition[10]
+|     |     |     |          |         |     |         |     | p ( T | )   |     |
+| --- | --- | --- | -------- | ------- | --- | ------- | --- | ----- | --- | --- |
+|     |     |     | (cid:12) | (cid:0) |     | (cid:1) |     | v     | ∞   |     |
+−D ∇c w ·n (cid:12) = h m M w C| xb −C∞ = = h m M w (RH b −RH∞) (5)
+|     | eff |     | xb  |     |     |     |     | R T | ∞   |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+g
+wherenistheoutward-pointingnormalunitvector, M w =18[g/mol]thewatermolecularweight,
+h [m/s]themasstransfercoefficient, p (T∞) thesaturatedvaporpressureattheairtemperature
+| m   |     |     |     |     | v   |     |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+T∞. C [mol/m3] is the water (vapor) concentration in air and can be further expressed in terms
+(cid:12)
+oftheRelativeHumidity RH,attheair/sampleinterface RH(cid:12) andintheclimaticchamber RH∞,
+xb
+byadoptingtheidealgaslaw
+|     |     |     |     | p     | p (T) | p       | p   | (T) |     |     |
+| --- | --- | --- | --- | ----- | ----- | ------- | --- | --- | --- | --- |
+|     |     |     | C   | =     | = v   |         | = v | RH  |     | (6) |
+|     |     |     |     | R g T | R g T | p v (T) | R   | g T |     |     |
+(cid:12)
+The Relative Humidity RH b = RH(cid:12) at the air/sample interface, depends on the local water
+xb
+(x ,t)andonthetemperatureT∞andmustbeevaluatedfromtheDesorptionIsotherm
+| concentrationc | w b |     |     |     |     |     |     |     |     |     |
+| -------------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| (DI)atT = T∞   |     |     |     |     |     |     |     |     |     |     |
+(cid:12)
+|     |     |     |     | RH = | RH(cid:12) | = DI(c | (x ,t),T∞) |     |     | (7) |
+| --- | --- | --- | --- | ---- | ---------- | ------ | ---------- | --- | --- | --- |
+|     |     |     |     | b    | xb         |        | w b        |     |     |     |
+The mass transfer coefficient h can be evaluated from well-known correlation functions for the
+m
+SherwoodnumberSh,specificforthesamplegeometryunderinvestigation(sphere,cylinder,ellipsoid,
+slab)withallthephysicalparametersofthehumidairevaluatedatT∞ (seeAppendixA).
+3.2. Non-IsothermalMoving-BoundaryModel
+In the non-isothermal approach a partial differential equation describing the spatio-temporal
+evolutionofthetemperatureT(x,t)intheshrinkingsampleiscoupledtothemasstransportequations
+Equations(1),(4)and(5). Equations(1),(4)and(5)needtobeslightlymodifiedtotakeintoaccount
+thattheinternaltemperatureT(x,t)andtheboundarytemperatureT = T(x ,t)aredifferentfrom
+|                     |     |                       |     |     |     |     |     |     | b b |     |
+| ------------------- | --- | --------------------- | --- | --- | --- | --- | --- | --- | --- | --- |
+| theairtemperatureT∞ |     | intheclimaticchamber. |     |     |     |     |     |     |     |     |
+
+Foods2020,9,1577 6of22
+Thenon-isothermalapproachrequiresthesimultaneoussolutionofthetwoadvection-diffusion
+partialdifferentialequationsforc (x,t)andT(x,t)
+w
+∂c (x,t) (cid:16) (cid:17)
+w = ∇· D (T)∇c −v (x)c , (8)
+∂t eff w s w
+∂ (cid:0) ρpC p T(x,t) (cid:1) (cid:16) (cid:17)
+p = ∇· kp∇T−v (x)ρpC p T , (9)
+s p
+∂t
+v (x) = α(c )D (T)∇c /ρ (10)
+s w eff w w
+coupledwiththeequationforthetemporalevolutionofsampleboundaryS(t)
+d d x t b = v s (cid:12) (cid:12) xb = α( ρ c
+w
+w ) D eff (T b )∇c w | xb , x b ∈ S(t). (11)
+andwiththeboundaryconditions
+−D eff (T b )∇c w ·n (cid:12) (cid:12) xb = h m (T av )M w (cid:18) p R v ( g T T b b ) RH b − p R v ( g T T ∞ ∞ ) RH∞ (cid:19) (12)
+−kp∇T·n (cid:12) (cid:12) xb = h T (T av ) (cid:0) T b −T∞ (cid:1) −λ v (T b )D eff (T b )∇c w ·n (cid:12) (cid:12) xb (13)
+TheboundaryconditionEquation(13)takesintoaccountboththeheattransferresistanceandthe
+heatsubtractedforwaterevaporationattheair/sampleinterface[22–26],λ beingtheheatofwater
+v
+evaporation,evaluatedatT .
+b
+Inthisnon-isothermalcase,theRelativeHumidityRH attheair/sampleinterfacedependson
+b
+thelocalwaterconcentrationc
+w
+(x
+b
+,t)andontheboundarytemperatureT
+b
+(cid:54)= T∞.
+Theheatandmasstransfercoefficientsh andh canbeevaluatedfromwell-knowncorrelation
+T m
+functions for the Sherwood Sh and Nusselt Nu numbers, specific for the sample geometry under
+investigation, with all the physical parameters of the humid air evaluated at the average film
+temperatureT
+av
+= (T
+b
++T∞)/2(seeAppendixA).
+All the physical parameters of the food product, namely the product density ρp, the specific
+heatcapacityC p andthethermalconductivitykp,arefunctionsofthelocalwaterconcentrationc
+p w
+(seeAppendixA).
+In the present formulation it has been assumed that the effective water diffusivity is solely a
+functionofthetemperatureandindependentofthelocalwaterconcentration,i.e.,β =0inEquation(3).
+TheheattransportequationEquation(9)iscoupledtothemasstransportequationEquation(8)
+notonlythroughtheboundaryconditionEquation(13)butalsothroughtheshrinkage-convective
+term(v (x)ρpC p T)thatcontributestoflattenthetemperatureprofileinsidethesample.
+s p
+IfthethermaldiffusivityD p = kp/(ρpC p)ofthefoodmaterialissignificantlylargerthanwater
+T p
+diffusivity D ,wecanassumethatthetemperatureisuniforminsidethesampleandequaltothe
+eff
+boundarytemperature,i.e.,T(x,t) = T (t). Consequently,thepartialdifferentialequationEquation(9)
+b
+forT(x,t)canbereplacedwiththeordinarydifferentialequationdescribingthetemporalevolutionof
+theboundarytemperatureT (t)
+b
+d d t (cid:16) T b (cid:90) V(t) (ρpC p p)dx (cid:17) = (cid:90) S(t) (cid:0) −h T (T av ) (cid:0) T b −T∞ (cid:1) +λ v (T b )D eff (T b )∇c w ·n (cid:12) (cid:12) xb (cid:1) dS (14)
+whilethewatertransportequationsEquations(8)and(10)remainunchangedexceptforthefactthat
+D (T)mustbereplacedwithD (T ).
+eff eff b
+
+| Foods2020,9,1577 |     |     |     |     |     |     |     |     | 7of22 |
+| ---------------- | --- | --- | --- | --- | --- | --- | --- | --- | ----- |
+3.3. NumericalIssues
+PDEequationsandboundaryconditionsdescribingtheone-dimensionalshrinkagedynamics
+andsampledehydrationhavebeennumericallysolvedusingfiniteelementsmethod(FEM)inComsol
+Multiphysics3.5.Theconvection–diffusionpackagecoupledwithALE(ArbitraryLagrangianEulerian)
+movingmeshhasbeenadoptedwithFreeDisplacementinducedbyboundaryvelocityconditions.
+Lagrangianquadraticelementshavebeenchosen.ThelinearsolveradoptedisUMFPACK,withrelative
+tolerance10−4andabsolutetolerance10−7.
+TheTimeSteppingMethodadoptedisBDFwithaStrict
+policyfortimestepstakenbythesolverinordertohaveagoodresolution(intime)ofstepchangesin
+boundaryconditions(airtemperature,relativehumidityandvelocity). Thenumberoffiniteelements
+setto104withanon-uniformmesh.
+Smallerelementshavebeenlocatedclosetothemovingboundary
+r = R(t) in order to accurately compute concentration and temperature gradients, controlling the
+velocityofthemovingfront.
+4. ModelingofContinuousDryingExperiments
+4.1. TheIsothermalApproach
+Wepreliminaryadopttheisothermalapproachtomodelthetwocontinuousdryingexperiments
+=40◦C,50◦C(experimentaldatashowninFigure2).
+onsphericalpearsatT
+Itisassumedthatthesphericalshapeofthesampleisnotalteredbythedehydrationprocess.
+ThesamplegeometryisuniquelycharacterizedbyitsradiusR(t)evolvingintimefromitsinitialvalue
+R towardsitsasymptoticvalueR∞.
+0
+AccordingtoexperimentalshrinkagedatareportedbySilvaetal. [11](subsequentlyshownin
+Figure7B),itisassumedidealshrinkage,i.e.,thatvolumereductionequals,ateachtimeinstant,the
+volumeofwaterreleasedbythesample
+|     |     |     | (cid:16) | V(t)(cid:17) | (cid:16) | X(t)(cid:17) |     |     |      |
+| --- | --- | --- | -------- | ------------ | -------- | ------------ | --- | --- | ---- |
+|     |     |     | 1−       |              | = φ 1−   |              |     |     | (15) |
+|     |     |     |          | V            | 0        | X            |     |     |      |
+|     |     |     |          | 0            |          | 0            |     |     |      |
+where φ 0 is the initial uniform water volume fraction. This macroscopic observation finds its
+microscopiccounterpartintheassumptionofaconstantandunitaryshrinkagecoefficientα(c ) =
+w
+α = 1. Itmustbepointedoutthattheassumption α(c ) = α doesnotimplythattheshrinkage
+| 0   |     |     |     |     |     | w   | 0   |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+velocityv s (x)isconstant,norintimeorspace,butratherthat,accordingtoEquation(2),theshrinkage
+velocityisdirectlyproportionaltothelocalconcentrationgradient. Therefore,theshrinkagevelocity
+asymptoticallytendstozero,ateachpointinthesample,whenthewaterconcentrationgradientgoes
+tozeroeverywhereinthesystem,i.e.,equilibriumconditionsarereached.
+Thewatertransportequationandboundaryconditions,Equations(1),(2)and(4),rewrittenin
+sphericalcoordinatesandintermsofthewatervolumefractionφ(r,t) = c (r,t)/ρ ,readas
+|     |         |     |          |          |     |          |          | w w |     |
+| --- | ------- | --- | -------- | -------- | --- | -------- | -------- | --- | --- |
+|     |         |     | (cid:32) |          |     |          | (cid:33) |     |     |
+|     | ∂φ(r,t) |     | 1 ∂      | (cid:16) | ∂φ  | (cid:17) |          |     |     |
+r2
+|     |     | =     |       | D     | −v s (r)φ  |     | , r ∈ (0,R(t)) |     | (16) |
+| --- | --- | ----- | ----- | ----- | ---------- | --- | -------------- | --- | ---- |
+|     | ∂t  |       | r2 ∂r | eff   | ∂r         |     |                |     |      |
+|     |     |       |       | dR(t) |            |     | ∂φ(cid:12)     |     |      |
+|     |     |       | ∂φ    |       |            |     | (cid:12)       |     |      |
+|     | v   | (r) = | D     | ,     | = v (R(t)) |     | = D            |     | (17) |
+|     | s   |       | eff∂r | dt    | s          |     | eff∂r(cid:12)  |     |      |
+R(t)
+|                                               | ∂ φ (cid:12) |     |     | ∂ φ (cid:12) | M w | p v ( T    | ∞ )             |                     |      |
+| --------------------------------------------- | ------------ | --- | --- | ------------ | --- | ---------- | --------------- | ------------------- | ---- |
+|                                               | (cid:12)     | =0, | −D  | (cid:12)     | = h |            | (RH −RH∞)       |                     | (18) |
+|                                               | (cid:12)     |     | eff | (cid:12)     | m   |            | b               |                     |      |
+|                                               | ∂ r r=0      |     |     | ∂ r R(t)     | ρ w | R g T      | ∞               |                     |      |
+|                                               |              |     |     |              |     | =          | (cid:12) = RH(φ | ,T∞)isevaluatedfrom |      |
+| TheRelativeHumidityattheair/sampleinterfaceRH |              |     |     |              | b   | RH(cid:12) |                 | b                   |      |
+R(t)
+desorptionisothermsforRochapearsreportedby[27]andbestfittedwiththeHendersonmodel,as
+discussed in detail in Appendix A. The correlation function adopted for the estimate of the mass
+transfercoefficienth m ,evaluatedattheairtemperatureT∞,isalsoreportedinAppendixA.
+
+Foods2020,9,1577 8of22
+Figure3showsthecomparisonbetweenexperimentaldataforX(t)/X
+0
+vs. timeatT∞ =40◦C
+andisothermalmodelpredictionswithD =5×10−11,1×10−10,2×10−10m2/s. Itcanbereadily
+eff
+observedthatanisothermalmodelwithaconstantwaterdiffusivity D isnotabletocapturethe
+eff
+salientfeaturesoftheexperimentaldehydrationcurve. ThelowervalueofD canwellapproximate
+eff
+onlytheinitialbehaviourofthedehydrationcurve,whilehighervaluesof D betterdescribethe
+eff
+asymptoticbehaviour. Evenworseresultswouldbeobtainedbyusingadiffusivitydependentonthe
+volumetricwaterfractionEquation(3).
+1
+0.8
+0.6
+0.4
+0.2
+0
+0 20 40 60 80 100 120
+X/)t(X
+0
+o
+C-40 C
+t [h]
+Figure 3. Continuous dehydration data X(t)/X
+0
+vs. time at T∞ = 40 ◦C. Comparison between
+experimental data (points) and isothermal model predictions (continuous lines) with D =
+eff
+5 × 10−11,1×10−10,2×10−10m2/s.ArrowindicatesincreasingvaluesofD .
+eff
+Inordertounderstandthisresult,someobservationsmustbedone
+1. BydirectcomparisonbetweenexperimentalcontinuousdehydrationcurvesatT∞ =40◦Cand
+T∞ =50◦C(seeFigure2)itcanbeobservedthatD
+eff
+ishighlysensitivetoairtemperatureT∞
+2. TheinitialtemperatureofthesampleinalltheexperimentsisT(r,0) (cid:39) 15◦C,wellbelowthe
+operatingtemperatureT∞ =40◦C,50◦C
+3. The initial moisture content X of Rocha pears is high, order of 5–6 kg water/kg dry solid,
+0
+thatimpliesaninitialwaterweightfractionx (0) (cid:39) 0.84. Tomakearoughcalculation,atthe
+w
+beginningofthedryingprocess,theproductdensityρp,thespecificheatcapacityC p andthe
+p
+thermalconductivitykp canbereasonablyapproximatedwiththatofwater.
+Asphereofnonevaporatingwaterwithdiameterd (cid:39)5.3cmrequiresaboutfivehourstoriseits
+0
+temperaturefrom15◦Cto40◦Cforaheattransfercoefficienth (cid:39)20W/(m2K).
+T
+4. Giventhehighdehydrationrates,especiallyatthebeginningofthedryingprocess,mostpart
+oftheheatfluxsuppliedbyforcedconvectionh
+T
+(T∞−T
+b
+)isusedforwaterevaporationatthe
+air/sampleinterface. Therefore,thetimerequiredtorisethesampletemperaturefrom15◦Cto
+40◦Ccouldreasonablyincreasefrom5tomorethan30h.
+For all these reasons, it has to be expected that the water diffusivity D , at least in the first
+eff
+30–40 h of the drying process, is changing in time due to its sensitivity to the time-dependent
+sampletemperature. D progressivelyincreasesfromlowervalues,correspondingtolowersample
+eff
+temperatures,towardstheasymptoticvalueD
+eff
+(T∞)thatsettleswhenthesampletemperaturereaches
+theairtemperatureT∞. Theadoptionofanon-isothermalmodelisstrictlynecessary. Thenecessityto
+accountforatemperaturedependentdiffusioncoefficient,eveninacontinuousdryingexperiment,
+hasbeenalreadypointedputbySrikiatdenandRoberts[28,29]indealingwithconvectivehotairand
+isothermaldryingofpotatoesandcarrots.
+
+Foods2020,9,1577 9of22
+4.2. TheEstimateofD (T)fromtheAsymptoticBehaviorofDehydration-RateCurves
+eff
+Despitethefactthatanisothermalmodelcannotbeappliedforanaccuratedescriptionofthe
+whole continuous dehydration curve, a simplified isothermal model can be used to estimate the
+effectivediffusivityD (T)fromtheasymptoticbehaviourofthecontinuousdehydrationcurves.
+eff
+Onlongertimescales,correspondingtolowervaluesofthetotalmoisturecontentX(t)/X ≤ 0.2,
+0
+we can reasonably assume that (1) the sample temperature is uniform and equal to T∞ and (2)
+V(t)
+the sample volume has reached its asymptotic value V∞ after almost complete shrinkage
+(seeFigure7B)
+|     |     | V∞   | (cid:16) | X∞(cid:17) |              |     |     |      |
+| --- | --- | ---- | -------- | ---------- | ------------ | --- | --- | ---- |
+|     |     | =1−φ | 1−       |            | (cid:39)0.1. |     |     |      |
+|     |     |      | 0        |            |              |     |     | (19) |
+|     |     | V    |          | X          |              |     |     |      |
+|     |     | 0    |          | 0          |              |     |     |      |
+Onlongertimescales,theconvective-shrinkagecontributiontowatertransportbecomesnegligible
+andthedimensionlessdehydrationrate J(t)
+|     |     |     |     | (cid:16) X−X∞ |     | (cid:17) |     |     |
+| --- | --- | --- | --- | ------------- | --- | -------- | --- | --- |
+dX r d
+|     |     | J(t) = − | = − |      |     |     |     | (20) |
+| --- | --- | -------- | --- | ---- | --- | --- | --- | ---- |
+|     |     |          | dt  | dt X | −X∞ |     |     |      |
+0
+(t)
+becomesalinearfunctionofthemoistureratioX r
+π2(cid:16)V∞(cid:17)−2/3
+|     |     | J(t) = D | (T∞) |     | X r | (t) |     | (21) |
+| --- | --- | -------- | ---- | --- | --- | --- | --- | ---- |
+eff R2 V
+|     |     |     | 0   | 0   |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+ThederivationofEquation(21)isreportedinAppendixB.
+Figure 4A shows the dehydration-rate curves J vs. X r for the two continuous dehydration
+experimentsatT∞ =40◦Cand50◦C.Thesecurvesareobtainedfromthebest-fitofthecorresponding
+dehydrationcurvesX(t)/X withthefollowingfunction
+0
+|     |        |          | −b1t+a −b2t+(1−a |     |     |     | −b3t |      |
+| --- | ------ | -------- | ---------------- | --- | --- | --- | ---- | ---- |
+|     | X(t)/X | = a +a e | e                |     | −a  | −a  | )e   | (22) |
+|     |        | 0 0 1    | 2                |     | 0   | 1   | 2    |      |
+thatsatisfiesthetwoconstrainsX(0)/X =1,X∞/X = a . Thebest-fitcurvesareshowninFigure2
+|     |     | 0   |     | 0   | 0   |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+J(t)canbesubsequentlyevaluatedas
+(redandbluethicklines). Thedehydrationrate
+|      |     | 1 (cid:16)   |               |     |     |     | (cid:17)    |      |
+| ---- | --- | ------------ | ------------- | --- | --- | --- | ----------- | ---- |
+| J(t) | =   | a b e −b1t+a | b e −b2t+(1−a |     | −a  | −a  | )b e −b3t , | (23) |
+|      | 1−a | 1 1          | 2 2           |     | 0   | 1   | 2 3         |      |
+0
+|     |     | (X(t)/X0 | )−a0. |     |     |     |     |     |
+| --- | --- | -------- | ----- | --- | --- | --- | --- | --- |
+andplottedasafunctionofX r =
+1−a0
+Theexperimentaldehydration-ratecurves,showninFigure4A,exhibittheexpectedasymptotic
+linear behaviour, Equation (21), valid for large t or equivalently for small X . From these
+r
+(40◦C)
+dehydration-ratecurvesandEquation(21)thefollowingvaluesofwaterdiffusivity D =
+eff
+1.703×10−10m2/sandD (50◦C) =2.497×10−10m2/shavebeenestimatedandthenplotted,in
+eff
+Figure4B,withthecorrespondingbest-fitArrheniusfunction
+E
+| (T)   | =   | − R gT =4.00012×10 |     | −5m2/s,E/R |     |     | = −3872.63K. |      |
+| ----- | --- | ------------------ | --- | ---------- | --- | --- | ------------ | ---- |
+| D eff | D   | 0 e , D 0          |     |            |     | g   |              | (24) |
+(T),thusestimatedinthewholerangeoftemperatures[10◦C–50◦C],
+ThewaterdiffusivityD eff
+willbeusedtoverifythepredictivecapabilitiesofthenon-isothermalmodelinwhichthereareno
+otherfittingparameters. Alltheotherparametershavebeenpreliminarilyestimatedfromwell-known
+correlations or from independent experimental measurements, like in the case of the desorption
+isotherms(seeAppendixA).
+
+Foods2020,9,1577 10of22
+0.1
+0.08
+0.06
+0.04
+0.02
+A
+0
+0 0.2 0.4 0.6 0.8 1
+1-
+]
+h[
+J
+3
+o
+C-40 C
+o
+C-50 C
+2
+1
+B
+0
+10 20 30 40 50 60
+X=(X-X )/(X -X ) r ∞ 0 ∞
+2
+01
+]s/
+m[
+01
+x
+D
+ffe
+o T [ C]
+Figure4.(A)Dehydration-ratecurvesJvs. XrforcontinuousdehydrationtestsatT∞ =40◦C,50◦C,
+U∞ = 1.28m/s. Continuouslinesrepresentthebest-fitcurvesEquation(23). Blackdashedlines
+highlighttheasymptotic(larget,smallXr)linearbehaviour,Equation(21). (B)Estimatedeffective
+waterdiffusivityD atT = 40◦C,50◦C(filledpoints). ThedashedlinerepresentstheArrhenius
+eff
+behaviour,Equation(24).
+4.3. TheNon-IsothermalApproach
+Thenon-isothermalmodel,Equations(8)–(13),rewrittenforasphericalsampleintermsofthe
+watervolumefractionφ(r,t),readsas
+(cid:32) (cid:33)
+∂φ(r,t) 1 ∂ (cid:16) ∂φ (cid:17)
+= r2 D (T) −v (r)φ , r ∈ (0,R(t)) (25)
+∂t r2 ∂r eff ∂r s
+∂ (cid:0) ρpC p p T(r,t) (cid:1) = 1 ∂ (cid:32) r2 (cid:16) kp ∂φ −v (r)ρpC p T (cid:17) (cid:33) , r ∈ (0,R(t)) (26)
+∂t r2 ∂r ∂r s p
+∂φ dR(t) ∂φ(cid:12)
+v (r) = D (T) , = v (R(t)) = D (T ) (cid:12) (27)
+s eff ∂r dt s eff b ∂r(cid:12) R(t)
+∂φ(cid:12)
+(cid:12) =0,
+∂r(cid:12)
+r=0
+−D
+eff
+(T
+b
+) ∂
+∂
+φ
+r
+(cid:12) (cid:12)
+(cid:12) R(t)
+= h
+m
+(T
+av
+) M
+ρ w
+w (cid:18) p
+R
+v (
+g
+T
+T
+b
+b
+) RH
+b
+− p
+R
+v (
+g
+T
+T
+∞
+∞
+) RH∞ (cid:19) (28)
+∂T(cid:12)
+(cid:12) =0,
+∂r(cid:12)
+r=0
+(29)
+∂T(cid:12) ∂φ(cid:12)
+−kp
+∂r
+(cid:12)
+(cid:12) R(t)
+= h
+T
+(T
+av
+)(T
+b
+−T∞)−λ
+v
+(T
+b
+)ρ
+w
+D
+eff
+(T
+b
+)
+∂r
+(cid:12)
+(cid:12) R(t)
+(cid:12)
+wheretheRelativeHumidityattheair/sampleinterfaceRH
+b
+= RH(cid:12)
+R(t)
+= RH(φ
+b
+,T
+b
+)isevaluated
+fromdesorptionisothermsforRochapearsreportedby[27]andbestfittedwiththeHendersonmodel,
+seeAppendixA.Equations(25)–(29)mustbenumericallyintegratedstartingfromtheuniforminitial
+conditions φ(r,0) = φ (cid:39) 0.9 and T(r,0) = T = 15 ◦C. The value of φ can slightly change for
+0 0 0
+differentexperimentsbecauseofchangesintheinitialtotalmoisturecontentX (seeTable1).
+0
+Figure5showstheexcellentagreementbetweenexperimentaldata,atbothtemperaturesT∞ =40◦C,
+50◦C,andmodelpredictions(continuousredandbluecurves,coefficientofdeterminationR2 >0.99)
+withnoadjustableparameters.Indeed,thereisnoneedtointroduceaconcentration-dependentdiffusion
+coefficient,Equation(3),thatwouldrequiretheestimateoftheβparameter.Forthisreason,wesetβ=0
+alsoforallthesubsequentsimulationsofintermittentdehydration.
+
+Foods2020,9,1577 11of22
+1
+0.8
+0.6
+0.4
+0.2
+0
+0 20 40 60 80 100 120
+X/)t(X
+0
+o
+C-40 C
+o
+C-50 C
+t [h]
+Figure5.ComparisonbetweenexperimentalcontinuousdehydrationcurvesX(t)/X
+0
+vs. tatT∞ =
+40◦C,50◦CandU∞ =1.28m/s(filledpoints)andmodelpredictions(continuousanddashedlines)
+with D(T) givenbyEquation(24). Continuousredandbluecurvesrepresentthenon-isothermal
+modelEquations(25)–(29). Blackdashedlinesrepresentthenon-isothermalsimplifiedmodelwith
+T(r,t)=T (t),Equation(31).
+b
+The reliability of the non-isothermal model allows us to verify some hypotheses made in
+paragraphSection4.1whendiscussingtheintrinsiclimitationsoftheisothermalapproach.
+Figure6AshowsthetemporalevolutionofthetemperatureatthecenterT (t) = T(0,t)andat
+0
+thesampleboundary T
+b
+(t) = T(R(t),t)forthecontinuousdehydrationat T∞ = 50◦C.Duetothe
+high value of the product thermal diffusivity D p = kp/(ρpC p) (cid:39) 9×10−8 m2/s (cid:29) D , the two
+T p eff
+temperatures T and T almost coincide for t > 3 h. This is the only numerical result that differs
+0 b
+fromexperimentalobservationsbySilvaetal. [11]. Theseauthorsobservedanappreciabledifference
+betweenT andT intheconvectivestage,andthisisquitedifficulttoexplainifoneconsidersthehigh
+0 b
+valueofthethermaldiffusivityofthepears.
+As expected, both temperatures T (t) and T (t) require more than 40 h to get close to the
+0 b
+asymptotic value T∞. This is due to the large amount of energy required for water evaporation
+attheair/sampleinterface. Thiseffectisparticularlyevidentintheveryfirsthoursofthedehydration
+process,inwhichbothtemperaturesT andT ,highlightedintheinsetofFigure6,exhibitaslight
+0 b
+decreasebelowtheinitialtemperature.
+Correspondingly,alsotheaverageeffectivewaterdiffusivity< D >,showninFigure6B,
+eff
+1 (cid:90) R(t)
+< D (t) >= D (T(r,t))4πr2dr (30)
+eff (4/3)πR(t)3
+0
+eff
+attainsaverylowvalue,orderof5×10−11m2/satthebeginningofthedryingprocessandrequires
+morethan40htogetclosetothefivetimeslargerasymptoticvalue(cid:39)2.5×10−10m2/s.
+Figure6Balsoshowsthetemporalevolutionoftheheatandmasstransfercoefficientsh and
+T
+h ,evaluatedaccordingtowell-knowncorrelationsEquations(A10)–(A13)reportedinAppendixA.
+m
+Bothh andh exhibitad−1/2dependenceonthesamplediameterd(t)andthereforeareincreasing
+T m
+functionsoftime,mainlybecauseofsampleshrinkage.
+
+| Foods2020,9,1577 |     |     |     |     |     |     |     |     |     |      | 12of22 |
+| ---------------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ------ |
+|                  |     |     |     |     |     |  30 |     |     |     |  2.5 |        |
+ 50
+|     |     |     |     |     | ]s/m[  |     | B   |     |     |     |     |
+| --- | --- | --- | --- | --- | ------ | --- | --- | --- | --- | --- | --- |
+ 45
+|      |     |     | T b |     |        |     |     |     |     |  2.1 |      |
+| ---- | --- | --- | --- | --- | ------ | --- | --- | --- | --- | ---- | ---- |
+|      |     |     | T   |     |        |     |     |     |     |      | ]s/  |
+|      |  40 |     | 0   |     | 3      |     |     |     |     |      |      |
+|      |     |     |     |     | 01x    |     |     |     |     |      | 2    |
+| ]C   |     |     |     |     |        |  25 |     |     |     |      | m[   |
+|      |  35 |  30 |     |     |        |     |     |     |     |      |      |
+| o    |     |     |     |     | m      |     |     |     |     |  1.7 |      |
+| [    |     |     |     |     |        |     |     |     |     |      | 01   |
+| b    |     |  25 |     |     | h ,])K |     |     |     |     |      |      |
+| T ,  |  30 |     |     |     |        |     |     |     |     |      | 01x> |
+|      |     |  20 |     |     |        |     |     |     |     |  1.3 |      |
+| 0    |  25 |     |     |     | 2      |     |     |     |     |      |      |
+| T    |     |     |     |     | m(/W[  |  20 |     |     |     |      | ffe  |
+ 15
+|     |  20 |     |       |     |     |     |     |     |     |      | D<  |
+| --- | --- | --- | ----- | --- | --- | --- | --- | --- | --- | ---- | --- |
+|     |     |  10 |       |     |     |     |     |     | h   |  0.9 |     |
+|     |     |  0  |  1  2 |  3  |     |     |     |     | T   |      |     |
+|     |  15 |     |       |     | A T |     |     |     | h   |      |     |
+|     |     |     |       |     | h   |     |     |     | m   |      |     |
+<D eff >
+|     |  10 |       |       |        |     |  15 |         |       |          |  0.5 |     |
+| --- | --- | ----- | ----- | ------ | --- | --- | ------- | ----- | -------- | ---- | --- |
+|     | 0   | 20 40 | 60    | 80 100 | 120 |     |         |       |          |      |     |
+|     |     |       |       |        |     |  0  |  20  40 |  60   |  80  100 |  120 |     |
+|     |     |       | t [h] |        |     |     |         | t [h] |          |      |     |
+Figure6. Continuousdehydrationat T∞ = 50◦CandU∞ = 1.28m/s. (A)Modelpredictionsfor
+|                                                  |     |     |     |     |     |     | (t)= T(0,t)andatthesampleboundary |     |     |     |     |
+| ------------------------------------------------ | --- | --- | --- | --- | --- | --- | --------------------------------- | --- | --- | --- | --- |
+| thetemporalevolutionofthetemperatureatthecenterT |     |     |     |     |     |     | 0                                 |     |     |     |     |
+T (t) = T(R(t),t). (B)Modelpredictionsforthetemporalevolutionoftheheatandmasstransfer
+b
+coefficientsh T andhm,evaluatedaccordingtoEquations(A10)–(A13),andoftheaveragewatereffective
+| diffusivity<D |     | >,Equations(24)and(30). |     |     |     |     |     |     |     |     |     |
+| ------------- | --- | ----------------------- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+eff
+TherescaledsamplevolumeV(t)/V andradiusR(t)/R areshowninFigure7Basafunction
+|     |     |     |     | 0   |     |     | 0   |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+X(t)/X
+oftherescaledtotalmoisturecontent 0 ,inagreementwithexperimentaldata(opencircles,
+fromSilvaetal. [11]). Indeed,startingfromtheseexperimentalshrinkagedata,thehypothesisofideal
+shrinkageforRochapearshasbeenformulatedandimplementedinthemoving-boundarymodelby
+| settingα(φ) | = =1. |     |     |     |     |     |     |     |     |     |     |
+| ----------- | ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|             | α 0   |     |     |     |     |     |     |     |     |     |     |
+The temporal evolution of the water concentration profile φ(r,t) is represented in Figure 7A,
+togetherwiththeboundaryconcentrationφ (t)thatrapidly(12h)decreasestowardstheverylow
+b
+asymptoticvalue. Figure7Aclearlyshowsthatamixedthirdkindboundarycondition,Equation(28),
+hastobeappliedforacorrectdescriptionofallthedifferentphasesofthedryingprocess.
+|     |  1  |     |     |     |     |     |  1  |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|     |     |     |     | φ   |     |     | B   |     |     |     |     |
+b
+ 0.9
+|     |      |     | 40 20 | 12 8 4 |     |           |      |     |     |     |     |
+| --- | ---- | --- | ----- | ------ | --- | --------- | ---- | --- | --- | --- | --- |
+|     |  0.8 |     |       |        |     |           |  0.8 |     |     |     |     |
+|     |      | 60  |       |        |     | 0         |      |     |     |     |     |
+|     |  0.7 |     |       |        |     | V/)t(V ,  |      |     |     |     |     |
+)t(
+|     |  0.6 |     |     |     |     |     |  0.6 |     |     |     |     |
+| --- | ---- | --- | --- | --- | --- | --- | ---- | --- | --- | --- | --- |
+| b   |      | 80  |     |     |     |     |      |     |     |     |     |
+φ , )t,r(φ
+ 0.5
+|     |  0.4 |     |     |     |     | R/)t(R 0 |  0.4 |     |     |     |     |
+| --- | ---- | --- | --- | --- | --- | -------- | ---- | --- | --- | --- | --- |
+ 0.3
+100
+ 0.2
+|     |      |      |           |      |     |     |  0.2 |      | R(t)/R    |      |     |
+| --- | ---- | ---- | --------- | ---- | --- | --- | ---- | ---- | --------- | ---- | --- |
+|     |      |      |           |      |     |     |      |      | V(t)/V    | 0    |     |
+|     |  0.1 |      |           |      |     |     |      |      |           | 0    |     |
+|     |      | 120  |           |      | A   |     |      |      | exp       |      |     |
+|     |  0   |      |           |      |     |     |  0   |      |           |      |     |
+|     |  0   |  0.2 |  0.4  0.6 |  0.8 |  1  |     |  0   |  0.2 |  0.4  0.6 |  0.8 |  1  |
+r/R
+|     |     |     | 0   |     |     |     |     |     | X(t)/X 0 |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | -------- | --- | --- |
+Figure7.ContinuousdehydrationatT∞ =50◦CandU∞ =1.28m/s.(A)Modelpredictionsforthe
+temporalevolutionofthewatervolumefractionprofilesinsidetheshrinkingsample,φ(r,t)vs.r/R 0 .
+Continuousbluelinehighlightsthewatervolumefractionφ (t)=φ(R(t),t)atthesolid/airinterface.
+b
+Bluedotsindicatesthevaluesofφ (t)atincreasingtimeinstantst =4,8,12,20,40,60,80,100,120h.
+|     |     |     |     | b i |     |     |     | i   |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+Arrowindicatesincreasingvaluesoftime. (B)Modelpredictionsforthetemporalevolutionofthe
+rescaledsampleradiusR(t)/R andoftherescaledsamplevolumeV(t)/V duringthedehydration
+|     |     |     | 0   |     |     |     |     |     | 0   |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+process.Filledpointsrepresentthesamespecifictimeinstants{t}reportedinFigure(A).Opencircles
+i
+representexperimentalvaluesfrom[11].
+
+| Foods2020,9,1577 |     |     |     |     |     |     |     | 13of22 |
+| ---------------- | --- | --- | --- | --- | --- | --- | --- | ------ |
+Alastobservationregardingthetemperatureprofiles.Figure6Aclearlyshowsthatitisreasonable
+toassumethatthetemperatureisuniforminsidethesampleandequaltotheboundarytemperature,
+| i.e.,T(r,t) | =   |     |     |     |     |     |     |     |
+| ----------- | --- | --- | --- | --- | --- | --- | --- | --- |
+T b . ThisobservationallowsreplacingthepartialdifferentialequationEquation(26)for
+T(r,t)withtheordinarydifferentialequationfortheboundarytemperatureT (t)
+b
+|     |     | d (cid:16) | (cid:90) R(t) |               | (cid:17) |     |     |     |
+| --- | --- | ---------- | ------------- | ------------- | -------- | --- | --- | --- |
+|     |     |            | T             | (ρpC p)4πr2dr | =        |     |     |     |
+|     |     |            | b             | p             |          |     |     |     |
+dt 0
+(31)
+|     |     | (cid:16) |      |                 |                  | ∂ φ (cid:12) (cid:17) |         |     |
+| --- | --- | -------- | ---- | --------------- | ---------------- | --------------------- | ------- | --- |
+|     |     | −h       | (T   | ) (cid:0) T −T∞ | (cid:1) +λ (T )ρ | D (T )                | 4πR2(t) |     |
+|     |     |          | T av | b               | v b              | w eff b (cid:12)      |         |     |
+|     |     |          |      |                 |                  | ∂ r R(t)              |         |     |
+whilethewatertransportequationsEquations(25)and(27)remainunchangedexceptforthefact
+|      | D (T)mustbereplacedwith |     |     | D   | (T ). ThethermalinertialtermρpC |     | p                    |     |
+| ---- | ----------------------- | --- | --- | --- | ------------------------------- | --- | -------------------- | --- |
+| that | eff                     |     |     | eff | b                               |     | p appearsinthevolume |     |
+integral, right hand side of Equation (31), because it depends on φ(r,t) and therefore on r and t
+(seeAppendixA).
+Numerical results of the integration of this simplified model are shown in Figure 5 (black
+dashed lines) and are almost indistinguishable from numerical results of the more accurate
+non-isothermalmodel.
+5. ModelingofIntermittentDryingExperiments
+The non-isothermal model Equations (25)–(29) is applied to describe the intermittent drying
+experiments. IntheseexperimentstheairtemperatureT∞,RelativeHumidityRH∞ andvelocityU∞
+changeintimeaccordingtothecyclicrepetitionofthreedifferentstages,asdescribedinSection2and
+exemplifiedinFigure1. Theswitchbetweendifferentairoperatingconditionsisnotinstantaneousbut
+itrequiresabout30min[11]. Thiseffecthasbeenaccountedforbyadoptingasmoothstepfunction
+θ (t)fortheswitch
+δ
+|     |     |     |     |     | (cid:18) (cid:18) | t (cid:19)(cid:19) |     |     |
+| --- | --- | --- | --- | --- | ----------------- | ------------------ | --- | --- |
+1
+|     |     |     | θ (t[h]) | =   | 1−tanh | , δ =0.1h |     | (32) |
+| --- | --- | --- | -------- | --- | ------ | --------- | --- | ---- |
+|     |     |     | δ        |     | 2      | δ         |     |      |
+shown in Figure 1. The introduction of the smooth step function also simplifies the numerical
+integrationofthesystemoftime-dependentpartialdifferentialequations.
+Figure8AshowstheexcellentagreementbetweenexperimentaldataforX(t)/X vs. tandmodel
+0
+predictions(coefficientofdeterminationR2
+>0.99)fortwointermittentdehydrationexperimentsat
+| max | = 40◦CandU∞ | max | =   |     |     |     |     |     |
+| --- | ----------- | --- | --- | --- | --- | --- | --- | --- |
+T∞ 1.28m/s. Thetwoexperimentsdifferinthenumberofcycles,2forthe
+first and 5 for the second experiment, and in the initial moisture content X of samples analyzed
+0
+(seeTable1).
+|        |  1   |     | I-40oC-2 Cycles |     |        |  1   | I-40oC-2 Cycles |     |
+| ------ | ---- | --- | --------------- | --- | ------ | ---- | --------------- | --- |
+|        |      |     | I-40oC-5 Cycles |     |        |      | I-40oC-5 Cycles |     |
+|        |  0.8 |     |                 |     |        |  0.8 |                 |     |
+| 0      |  0.6 |     |                 |     | 0      |  0.6 |                 |     |
+| X/)t(X |      |     |                 |     | V/)t(V |      |                 |     |
+|        |  0.4 |     |                 |     |        |  0.4 |                 |     |
+|        |  0.2 |     |                 |     |        |  0.2 |                 |     |
+A
+|     | CPP 1 2 |     |     |     |     | CP 1 P 2 |     | B   |
+| --- | ------- | --- | --- | --- | --- | -------- | --- | --- |
+|     |  0      |     |     |     |     |  0       |     |     |
+ 0  20  40  60  80  100  120  140  160  0  20  40  60  80  100  120  140  160
+|     |     |     | t [h] |     |     |                 | t [h] |     |
+| --- | --- | --- | ----- | --- | --- | --------------- | ----- | --- |
+|     |     |     |       |     |     | max = 40◦CandU∞ | max = |     |
+Figure8. Intermittentdehydration(2Cyclesand5Cycles)forT∞ 1.28m/s
+(A)ComparisonbetweenexperimentaldehydrationcurvesX(t)/X vs. t(filledpoints)andmodel
+0
+predictions(continuouslines)withD(T)givenbyEquation(24).(B)Modelpredictionofthetemporal
+|     | evolutionfortherescaledsamplevolumeV(t)/V |     |     |     | .   |     |     |     |
+| --- | ----------------------------------------- | --- | --- | --- | --- | --- | --- | --- |
+0
+
+| Foods2020,9,1577 |     |     |     |     |     |     |     | 14of22 |
+| ---------------- | --- | --- | --- | --- | --- | --- | --- | ------ |
+Figure8Aclearlyshowsthatthemodeliscapabletoperfectlydescribetheevolutionofthetotal
+moisturecontentintheconvectivestages(C)andinthepausestages(P andP ). Themodelshows
+|     |     |     |     |     |     | 1   | 2   |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+that,inagreementwithexperimentaldata,alsointhepausestageP 1 (“hot-humid”pause)ofthefirst
+twocycles, thesampleisslightlydehydrating. Therefore, eveniftheairvelocityisextremelylow
+(wesetU∞ =0.1m/s]),thesamplecannotbeconsidered“isolated”neitherforthemasstransfernor
+fortheheattransfer. Thetemporalevolutionoftheheatandmasstransfercoefficientsh T andh m is
+showninFigure9B.
+The corresponding evolution of the rescaled sample volume V(t)/V is shown in Figure 8B.
+0
+Ithighlightshow,inthelastthreecyclesofthe5cyclesexperimentwhenthetotalmoisturecontent
+X(t)islow,thesampleisslightlyre-hydratinginthe“cold-humid”pauseP .
+2
+ThetemporalevolutionoftheboundarytemperatureT (t)isshowninFigure9A.Inqualitative
+b
+agreementwithdatareportedby[11]inFigure4,T (t)exhibitsarapidincreaseatthebeginningof
+b
+the hot-humid pause P 1 due to the sudden increase of the air Relative Humidity that temporarily
+annihilatestheheatconsumptionforwaterevaporation.
+ 30
+|  40 |     |     |     |        | h   |   I - 4 0 o C - 2   C y c |     |     |
+| --- | --- | --- | --- | ------ | --- | ------------------------- | --- | --- |
+|     |     |     |     | ]s/m[  | h m |   I - 4 0 o C - 5   C y c |     |     |
+m o
+|     |     |     |     |     | h T     |   I - 4 0 o C - 2   C y c |     |     |
+| --- | --- | --- | --- | --- | ------- | ------------------------- | --- | --- |
+|  35 |     |     |     |     |  25 h T |   I - 4 0 C - 5   C y c   |     |     |
+3
+01x
+ 30
+| ]C  |     |     |     | m   |  20 |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+h ,])K
+o [   25
+b
+| T   |     |     |     |     |  15 |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+2
+|  20 |     |     |     | m(/W[  |      |     |     |     |
+| --- | --- | --- | --- | ------ | ---- | --- | --- | --- |
+|     |     |     |     |        | CP P |     |     |     |
+1 2
+ 10
+|  15  |                 |     | A   |     |     |     |     |     |
+| ---- | --------------- | --- | --- | --- | --- | --- | --- | --- |
+|      | I-40oC-2 Cycles |     |     | T   |     |     |     | B   |
+| CP P | I-40oC-5 Cycles |     |     | h   |     |     |     |     |
+1 2
+|  10 |     |     |     |     |  5  |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+ 0  20  40  60  80  100  120  140  160  0  20  40  60  80  100  120  140  160
+|     |     | t [h] |     |     |     |     | t [h] |     |
+| --- | --- | ----- | --- | --- | --- | --- | ----- | --- |
+Figure9. Intermittentdehydration(2Cyclesand5Cycles)forT∞ max =40◦CandU∞ max =1.28m/s.
+(t)(A)andoftheheat
+| ModelpredictionsforthetemporalevolutionoftheboundarytemperatureT |     |           |     |     |     |     | b   |     |
+| ---------------------------------------------------------------- | --- | --------- | --- | --- | --- | --- | --- | --- |
+| andmasstransfercoefficientsh                                     |     | andhm(B). |     |     |     |     |     |     |
+T
+Figure 10A shows the comparison between experimental data for X(t)/X 0 vs. t and model
+predictionsfortwointermittentdehydrationexperimentsatthehigherairtemperatureT∞ max =50◦C
+andthesameairvelocityU∞ max =1.28m/s. Thetwoexperimentsdifferinthenumberofcycles,2for
+thefirstand3forthesecondexperiment.
+|  1     |     | I-50oC-2 Cycles |      |        |  1   |                | I-50oC-2 Cycles |           |
+| ------ | --- | --------------- | ---- | ------ | ---- | -------------- | --------------- | --------- |
+|        |     | I-50oC-3 Cycles |      |        |      |                | I-50oC-3 Cycles |           |
+|  0.8   |     |                 |      |        |  0.8 |                |                 |           |
+| 0  0.6 |     |                 |      | 0      |  0.6 |                |                 |           |
+| X/)t(X |     |                 |      | V/)t(V |      |                |                 |           |
+|  0.4   |     |                 |      |        |  0.4 |                |                 |           |
+|  0.2   |     |                 |      |        |  0.2 |                |                 | B         |
+| C P P  |     |                 | A    |        | C    | P P            |                 |           |
+| 1      | 2   |                 |      |        |      | 1 2            |                 |           |
+|  0     |     |                 |      |        |  0   |                |                 |           |
+|  0  20 |  40 |  60  80  100    |  120 |        |  0   |  20  40        |  60  80         |  100  120 |
+|        |     | t [h]           |      |        |      |                | t [h]           |           |
+|        |     |                 |      |        |      | max =50◦CandU∞ | max =1.28m/s    |           |
+Figure10.Intermittentdehydration(2Cyclesand3Cycles)forT∞
+(A)ComparisonbetweenexperimentaldehydrationcurvesX(t)/X vs. t(filledpoints)andmodel
+0
+predictions(continuouslines)withD(T)givenbyEquation(24).(B)Modelpredictionofthetemporal
+| evolutionfortherescaledsamplevolumeV(t)/V |     |     |     | .   |     |     |     |     |
+| ----------------------------------------- | --- | --- | --- | --- | --- | --- | --- | --- |
+0
+
+| Foods2020,9,1577 |     |     |     |     |     |     |     |     | 15of22 |
+| ---------------- | --- | --- | --- | --- | --- | --- | --- | --- | ------ |
+The higher temperature implies a significantly faster dehydration which can be considered
+complete after about 100 h for both experiments and in perfect agreement with experimental
+dehydrationcurves. Model predictions forthetemporal evolutionof therescaled samplevolume
+V(t)/V ,theboundarytemperatureT (t)andtheheatandmasstransfercoefficientsh andh are
+| 0   |     |     | b   |     |     |     |     | T   | m   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+shown in Figures 10B and 11A,B, respectively. A qualitative behavior, similar to that obtained for
+|     |     |     |     |     | max | =40◦C,canbeobserved. |     |     |     |
+| --- | --- | --- | --- | --- | --- | -------------------- | --- | --- | --- |
+intermittentexperimentsatthelowertemperatureT∞
+ 30
+ 50
+]s/m[
+ 45
+ 25
+|  40    |     |     |     |     | 3 01x |     |     |     |     |
+| ------ | --- | --- | --- | --- | ----- | --- | --- | --- | --- |
+| ]C  35 |     |     |     |     | m     |  20 |     |     |     |
+h ,])K
+o
+[   30
+b
+| T   |     |     |     |     |          |  15   |     |     |     |
+| --- | --- | --- | --- | --- | -------- | ----- | --- | --- | --- |
+|  25 |     |     |     |     | 2 m(/W[  | C P P |     |     |     |
+|     |     |     |     |     |          | 1 2   |     |     | B   |
+ 20
+|     |     |     |     |     |     |  10 |     | o   |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+h m   I - 5 0 C - 2
+|  15 |       | I-50oC-2 Cycles |          | A    |     |        |         | h m   I - 5 0 o C - 3 |      |
+| --- | ----- | --------------- | -------- | ---- | --- | ------ | ------- | --------------------- | ---- |
+|     | C P P |                 |          |      | T   |        |         | h   I - 5 0 o C - 3   |      |
+|     | 1 2   | I-50oC-3 Cycles |          |      | h   |        |         | h T   I - 5 0 o C - 3 |      |
+|  10 |       |                 |          |      |     |  5     |         | T                     |      |
+|  0  |  20   |  40  60         |  80  100 |  120 |     |  0  20 |  40  60 |  80  100              |  120 |
+|     |       | t [h]           |          |      |     |        | t [h]   |                       |      |
+Figure11.Intermittentdehydration(2Cyclesand3Cycles)forT∞ max =50◦CandU∞ max =1.28m/s.
+ModelpredictionsforthetemporalevolutionoftheboundarytemperatureT (t)(A)andoftheheat
+b
+| andmasstransfercoefficientsh |     |     | T andhm(B). |     |     |     |     |     |     |
+| ---------------------------- | --- | --- | ----------- | --- | --- | --- | --- | --- | --- |
+The effect of the air velocity U∞ on the dehydration process is also investigated, as a further
+check of the validity of the correlation functions adopted for the estimate of the heat and mass
+transfercoefficientsh T andh m . Figure12Acomparesexperimentalresultsandmodelpredictionsfor
+the3Cyclesintermittentexperimentsat T∞ max = 50◦Ccharacterizedbytwodifferentairvelocities
+U∞ max =1.28m/sand2.66m/s.
+|     |     |     | X(t)/X |     |     |     |     |     | max |
+| --- | --- | --- | ------ | --- | --- | --- | --- | --- | --- |
+Experimental results for 0 , shown in Figure 12A, highlight a slight effect of U∞ on
+the dehydration curves, mainly in the first two cycles of the dehydration process, while the final
+dehydrationtimeissubstantiallyunaffectedbyU∞ max. Modelpredictions,inexcellentagreementwith
+max,
+experimental data, show that, more than doubling the air speed U∞ the heat and mass transfer
+coefficientsincreasebyafactor of about1.5(seeFigure12B),andthisaffectsthedehydrationrate
+mainlywhenthesamplemoisturecontentisstillhigh.
+Modelpredictionsconfirmtheexperimentalfindingsby[11]. Asignificantreductionofthefinal
+dehydrationtimecanbeachievedbyincreasingtheoperatingtemperaturefrom40◦Cto50◦Cwhile
+anincreaseinairspeedhasprovenineffective.
+Afinalremarkmustbemadeontheinfluenceofthepausestagesonmoisturegradientsinside
+the sample. Quite often, intermittent drying has to be preferred to continuous drying because,
+during each tempering period, a redistribution of internal moisture within the drying material
+occurs. A reduction in moisture gradients [8] decreases the probability of concentration-induced
+stressandfissure. Thisoccurs, forexample, forricegrains[30]andotherseeds, i.e. forfoodwith
+verysmalldimensions,orderofmillimeters. Inthepresentcaseofwholepears,theeffectofmoisture
+homogenizationinthepausestagesisextremelysmallasshowninFigure13. Redandbluecurvesin
+Figure13representthetemporalevolutionofthewatervolumefractionprofilesφ(r,t)inthetwopause
+|         |          |                                              |     |     |     |     | max =50◦CandU∞ | max =1.28m/s. |     |
+| ------- | -------- | -------------------------------------------- | --- | --- | --- | --- | -------------- | ------------- | --- |
+| stagesP | 1 andP 2 | intheintermittentexperimentwithtwocyclesatT∞ |     |     |     |     |                |               |     |
+Nosignificantgradientreductionisobservedinthepausestages.. Thiseffectisintrinsicallyduetothe
+largersampledimension,about5cm,andtotheloweffectivediffusivityD .
+eff
+
+| Foods2020,9,1577 |                 |                                         |     |        |     |     | 16of22 |
+| ---------------- | --------------- | --------------------------------------- | --- | ------ | --- | --- | ------ |
+|  1               | o               |                                         |     |  40    |     |     |        |
+|                  | I - 5 0 C - 3   |   C y c l e s ,   U ∞ = 1 . 2 8   m / s |     |        |     |     |        |
+|                  | I - 5 0 o C - 3 |   C y c l e s ,   U = 2 . 6 6   m / s   |     | ]s/m[  |     |     |        |
+|                  |                 | ∞                                       |     |  35    |     |     |        |
+ 0.8
+|     |     |     | 3   |  30 |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+01x
+ 0.6
+| X/)t(X 0 |     |     |     | m  25 |     |     |     |
+| -------- | --- | --- | --- | ----- | --- | --- | --- |
+h ,])K
+ 20
+ 0.4
+2
+|     |     |     |     | m(/W[  |     |     | B   |
+| --- | --- | --- | --- | ------ | --- | --- | --- |
+ 15
+C P P
+|  0.2  |     |     |     |     | 1 2 | hm U∞=2.66 |     |
+| ----- | --- | --- | --- | --- | --- | ---------- | --- |
+|       |     |     |     |  10 |     | hm U∞=1.28 |     |
+|       |     |     |     | T   |     | hT U∞=2.66 |     |
+| C P 1 | P 2 |     | A   | h   |     |            |     |
+hT U∞=1.28
+|  0                                             |         |              |      |  5                                      |             |          |      |
+| ---------------------------------------------- | ------- | ------------ | ---- | --------------------------------------- | ----------- | -------- | ---- |
+|  0                                             |  20  40 |  60  80  100 |  120 |  0                                      |  20  40  60 |  80  100 |  120 |
+|                                                |         | t [h]        |      |                                         | t [h]       |          |      |
+|                                                |         |              |      | max =50◦CandtwodifferentairvelocitiesU∞ |             | max      |      |
+| Figure12.Intermittentdehydration(3Cycles)forT∞ |         |              |      |                                         |             |          | =    |
+1.28m/sand2.66m/s. (A)Comparisonbetweenexperimentaldehydrationcurves X(t)/X vs.t
+0
+(filledpoints)andmodelpredictions(continuouslines)withD(T)givenbyEquation(24).(B)Model
+predictionsforthetemporalevolutionoftheheatandmasstransfercoefficientsh andhm.
+T
+ 1
+ 0.8
+ 0.6
+|     | )t,r(φ | C stage |     |     |     |     |     |
+| --- | ------ | ------- | --- | --- | --- | --- | --- |
+P 1  stage
+P  stage
+2
+ 0.4
+ 0.2
+ 0
+|     |     |  0  0.2 |  0.4 |  0.6 |  0.8  1 |     |     |
+| --- | --- | ------- | ---- | ---- | ------- | --- | --- |
+r/R
+0
+Figure13.Temporalevolutionofwatervolumefractionprofilesφ(r,t)fortheintermittentdehydration
+experiment(2Cycles)atT∞ max =50◦CandU∞ max =1.28m/s.Arrowindicatesincreasingtimeinstants
+= (2,5,8),(12,14,16),(19,21,23), (25,28,31),(36,38,40),(43,45,47),(50,70,90,110,120,130)
+| t i |     |     |     |     |     |     | h.  |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+Green,blueandredcurveshighlightconcentrationprofilesintheConvective(C),hothumid(P )and
+1
+| coldhumid(P | 2 )stages,respectively. |     |     |     |     |     |     |
+| ----------- | ----------------------- | --- | --- | --- | --- | --- | --- |
+6. Conclusions
+Thisarticlepresentsthenon-isothermalformulationofthemoving-boundarymodelforfood
+dehydration, recently proposed by [13,14], in which sample shrinkage is accounted for via the
+introduction of the pointwise shrinkage velocity that depends on the local volumetric water flux.
+A convection-diffusion heat transport equation, affected by sample shrinkage, heat transfer and
+waterevaporationatthesamplesurface,isaddedtotheconvection-diffusiontransportequationfor
+waterconcentration.
+The non-isothermal model is successfully applied to experimental data of continuous and
+intermittentdryingofRochapearsreportedbySilvaandcoworkers.
+No particular analytical/computational efforts were required to estimate the shrinkage
+proportionalityfactorα(φ)becausepearsexhibitanetidealshrinkageandaconstantvalueα(φ) =
+α =1canbeassumedapriori.
+0
+The excellent predictive capability of the non-isothermal model makes it a useful tool for
+optimizingintermittentdehydrationproceduresatalaboratoryandindustriallevel.
+
+Foods2020,9,1577 17of22
+Fromthestrictlytheoreticalpointofview,themodelshowedthatitisnotnecessary,ifnotwrong,
+tointroduceatime-dependentwaterdiffusivity. Onthecontrary,itisnecessary(1)totakeintoaccount
+thedependenceofdiffusivityontemperatureandtherefore(2)tofollowthetemporalevolutionofthe
+temperature,atleastthesurfacetemperature.
+AuthorContributions: Conceptualization,A.A.,C.V.andA.B.;methodology,A.A.;software,A.A.;validation,
+C.VandA.B.;formalanalysis,A.A.;investigation,A.A.,C.V.andA.B.;resources,A.A.;datacuration,A.Aand
+C.V.; writing–originaldraftpreparation,A.A.; writing–reviewandediting,A.B.; visualization,C.VandA.B.;
+supervision,A.A.;projectadministration,A.A.;fundingacquisition,A.A.Allauthorshavereadandagreedtothe
+publishedversionofthemanuscript.
+Funding:Thisresearchreceivednoexternalfunding.
+ConflictsofInterest:Theauthorsdeclarenoconflictofinterest.
+Nomenclature
+Symbols
+aw [-] Wateractivity
+Bi∞ [-] AsymptoticBiotnumber,Equation(A16)
+cw [gwater/m3product] Watermassconcentration
+C p ,Cs,Cw [J/(gK)] Product,solidandwaterspecificheatcapacity
+p p p
+kp,ks,kw [W/(mK)] Product,solidandwaterthermalconductivity
+d [m] Samplediameter
+D [m2/s] Effectivewaterdiffusivity
+eff
+Dair [m2/s] Vaporinairdiffusivity
+v
+Dair [m2/s] Airthermaldiffusivity
+T
+D p [m2/s] Productthermaldiffusivity
+T
+hm [m/s] Masstransfercoefficient
+h [W/(m2K)] Heattransfercoefficient
+T
+J [h−1] Dehydrationrate
+J [gwater/(sm2)] Waterdiffusivemassflux
+d
+kair [W/(mK)] Airthermalconductivity
+Keq [-] Equilibriumconstant,Equation(A3)
+Nu [-] Nusseltnumber
+p [Pa] Vaporpartialpressure
+pv [Pa] Saturatedvaporpressure
+Pr [-] Prandlnumber
+r [m] Radialcoordinate
+R [m] Sampleradius
+Rg [J/(molK)] Gasconstant
+Re [-] Reynoldsnumber
+RH [-] Relativehumidity
+Sc [-] Schmidtnumber
+Sh [-] Sherwood
+t [s] Time
+T [K] Temperature
+Tav [K] Averagefilmtemperature
+V [m3] Samplevolume
+vs [m/s] Shrinkagevelocity
+xw [-] Waterweightfraction
+X [kgwater/kgdrysolid] Totalmoisturecontent
+
+| Foods2020,9,1577 |     |     |     |     |     | 18of22 |
+| ---------------- | --- | --- | --- | --- | --- | ------ |
+GreekSymbols
+α
+|     | [-] |     | Shrinkagefactor                     |     |     |     |
+| --- | --- | --- | ----------------------------------- | --- | --- | --- |
+| γ   | [-] |     | smallestpositiverootofEquation(A18) |     |     |     |
+0
+| λv   | [J/g]                 |     | Heatofwatervaporization |     |     |     |
+| ---- | --------------------- | --- | ----------------------- | --- | --- | --- |
+| νair | [m/s]                 |     | Airkinematicviscosity   |     |     |     |
+| ρp   | [gproduct/cm3product] |     | Productdensity          |     |     |     |
+ρs
+|     | [gsolid/cm3solid] |     | Solid(pulp)density  |     |     |     |
+| --- | ----------------- | --- | ------------------- | --- | --- | --- |
+| ρw  | [gwater/cm3water] |     | Waterdensity        |     |     |     |
+| φ   | [-]               |     | watervolumefraction |     |     |     |
+Subscripts
+| 0   | Initial                        |     |     |     |     |     |
+| --- | ------------------------------ | --- | --- | --- | --- | --- |
+| b   | Samplesurface(boundary)        |     |     |     |     |     |
+| eq  | Equilibrium                    |     |     |     |     |     |
+| ∞   | Asymptoticoratinfinitedistance |     |     |     |     |     |
+AppendixA
+TheRelativeHumidityattheair/sampleinterfaceisevaluatedfromdesorptionisothermsfor
+Rochapearsreportedby[27]andbestfittedwiththeHendersonmodel
+|     |       |            | (cid:0) b(T)(cid:1) |         |                    |      |
+| --- | ----- | ---------- | ------------------- | ------- | ------------------ | ---- |
+|     | RH (X | ,T) =1−exp | −a(T)TX             | , T[K], | X [kgw/kgdrysolid] | (A1) |
+|     | eq eq |            | eq                  |         | eq                 |      |
+TheHendersonmodelexhibitsanexplicitdependenceonthedesorptiontemperatureTandiscapable
+toaccuratelydescribetheinfluenceofthetemperatureondesorptioncurvesintherange[20◦C–40◦C].
+Thevaluesofthetwoparametersa(T)andb(T),enteringthedesorptionisothermmodelEquation(A1)
+are a = 0.0049,0.0062,0.0092and b = 0.5739, 0.5754, 0.6449for T = 20,30,40 ◦C,respectively[27].
+◦C–50 ◦C]
+In order to estimate the desorption isotherm in the whole range of temperature [10 the
+twoparametersa(T)andb(T)havebeenestimated,fromthevalueslistedabove,bypiecewisecubic
+interpolation. Theresultingisotherms,inthewholerange[10◦C–50◦C],areplottedinFigureA1A,B
+asX vs. a (FigureA1A)andasφ vs. a (FigureA1B).Thefollowingequation
+| eq  | w   |     | eq w |     |     |     |
+| --- | --- | --- | ---- | --- | --- | --- |
+ρsX
+eq
+|     |     |     | φ =  |       |     | (A2) |
+| --- | --- | --- | ---- | ----- | --- | ---- |
+|     |     |     | eq X | ρs+ρw |     |      |
+eq
+relatingthewatervolumefractionφ tothemoisturecontentX hasbeenadopted.
+|     |     |     | eq  |     | eq  |     |
+| --- | --- | --- | --- | --- | --- | --- |
+From Figure A1B, it can be observed that the desorption isotherm, for high temperatures
+T ∈ [40◦C–50◦C]andsmallvaluesofa <0.2canbereadilyapproximatedwithalinearfunction
+w
+(dashedline)
+|     |     |     | φ eq = a w /K eq | , K eq (cid:39)8 |     | (A3) |
+| --- | --- | --- | ---------------- | ---------------- | --- | ---- |
+Thedensityofthesolid(pulp)ρs
+=1.73[gsolid/cm3solid]isestimatedfromtheinitialproduct
+|     | p (cid:39) 1.07[gproduct/cm3 |     |     |     |     | (cid:39) |
+| --- | ---------------------------- | --- | --- | --- | --- | -------- |
+(pear)densityρ product]andfromtheinitialmoisturecontent X 0 5.25
+0
+[kgwater/kgdrysolid],reportedby[31]forRochapears,asfollows
+p
+ρ ρw
+|     |     |     | ρs =   | 0     |     |      |
+| --- | --- | --- | ------ | ----- | --- | ---- |
+|     |     |     |        | p     |     | (A4) |
+|     |     |     | ρw(1+X | )−ρ X |     |      |
+0 0 0
+Thepeardensityρp
+isevaluatedastheaverageofthewaterandsolid(pulp)densities,averaged
+withrespecttotheirvolumefractions
+ρp = ρwφ+ρs(1−φ)
+(A5)
+
+| Foods2020,9,1577 |     |     |     |     |      |     |     |     | 19of22 |
+| ---------------- | --- | --- | --- | --- | ---- | --- | --- | --- | ------ |
+|                  | 3   |     |     |     |  0.8 |     |     |     |        |
+|                  | A   |     |     |     |      | B   |     |     |        |
+ 0.7
+
+ 0.6
+]bd gk/gk[
+2
+ 0.5
+|     |     |     |     |     | qe  0.4 |     |     |     |     |
+| --- | --- | --- | --- | --- | ------- | --- | --- | --- | --- |
+φ
+|     | qe  |     |     |     |  0.3 |     |     |     |     |
+| --- | --- | --- | --- | --- | ---- | --- | --- | --- | --- |
+1
+X
+ 0.2
+
+ 0.1
+|     | 0   |             |           |     |     |  0  |           |                 |      |
+| --- | --- | ----------- | --------- | --- | --- | --- | --------- | --------------- | ---- |
+|     | 0   | 0.2   0.4   | 0.6   0.8 |   1 |     | 0   | 0.2   0.4 |   0.6   0.8   1 |      |
+|     |     | a =RH       |           |     |     |     | a =RH     |                 |      |
+|     |     | w           | eq        |     |     |     | w         | eq              |      |
+|     |     |             |           |     |     |     |           | ◦C–50           | ◦C]. |
+Figure A1. Desorption isotherms for different temperatures T∞ in the range [10
+ArrowsindicateincreasingvaluesofthetemperatureT∞.(A)Xeqvs.wateractivityaw.(B)φeqvs.aw.
+ThedashedlineindicatestheapproximatedlinearbehaviourEquation(A3).
+ThepearspecificheatcapacityC p [J/(gK)]isevaluatedastheaverageofthewaterandsolid
+p
+specificheatcapacities,averagedwithrespecttotheirweightfractions
+p
+|     |     | C =Cwx |     | +Cs(1−x | ),  | x = | φ(ρw/ρp) |     | (A6) |
+| --- | --- | ------ | --- | ------- | --- | --- | -------- | --- | ---- |
+|     |     | p      | p w | p       | w   | w   |          |     |      |
+Thepearthermalconductivitykp [W/(mK)]isevaluatedfromaparallelmodel
+|     |     |     |     | 1   | φ 1−φ |     |     |     |      |
+| --- | --- | --- | --- | --- | ----- | --- | --- | --- | ---- |
+|     |     |     |     | =   | +     |     |     |     | (A7) |
+|     |     |     |     | kp  | kw    | ks  |     |     |      |
+wherekw andks arethewaterandsolidthermalconductivities,respectively.
+ks
+Since pears contain mainly water and carbohydrate [32], the thermal conductivity and the
+specificheatcapacityCs ofthesolidphaseareestimatedfromthatofcarbohydrate[33]
+p
+|     | ks[W/(mK)] | =   | 2.01×10          | −1+1.39×10 |     | −3−4.33×10    | −6T2 | T[◦ C] |      |
+| --- | ---------- | --- | ---------------- | ---------- | --- | ------------- | ---- | ------ | ---- |
+|     |            |     |                  |            |     |               |      | ,      | (A8) |
+|     |            |     |                  |            |     | −3T−5.9399×10 | −6T2 | T[◦    |      |
+|     | Cs[J/(gK)] | =   | 1.5488+1.9625×10 |            |     |               |      | , C]   | (A9) |
+p
+| Theheatandmasstransfercoefficientsh |     |     |      | [W/(mK)]andh |           |     | [m/s] |     |     |
+| ----------------------------------- | --- | --- | ---- | ------------ | --------- | --- | ----- | --- | --- |
+|                                     |     |     |      | T            |           |     | m     |     |     |
+|                                     |     |     |      | Nu(T         | ,d)kair(T |     | )     |     |     |
+|                                     |     |     |      |              | av        |     | av    |     |     |
+|                                     |     |     | h (T | ,d) =        |           |     | ,     |     |     |
+|                                     |     |     | T av |              |           | d   |       |     |     |
+(A10)
+|     |     |     |      |       | Sh(T ,d)Dair(T |     | )   |     |     |
+| --- | --- | --- | ---- | ----- | -------------- | --- | --- | --- | --- |
+|     |     |     | h (T | ,d) = | av             | v   | av  |     |     |
+m av
+d
+areevaluatedfromthewellknowncorrelationfunctionsfortheNusseltNuandSherwoodShnumbers
+aroundasphere[34]
+|     |     | Nu(T ,d) | =   | 2+0.6Re1/2Pr1/3 |     | =   |     |     | (A11) |
+| --- | --- | -------- | --- | --------------- | --- | --- | --- | --- | ----- |
+av
+|     |     |     |     | (cid:16) | U∞d         | (cid:17)1/2(cid:16) | ν (T ) (cid:17)1/3 |     |     |
+| --- | --- | --- | --- | -------- | ----------- | ------------------- | ------------------ | --- | --- |
+|     |     |     |     | 2+       |             |                     | air av             |     |     |
+|     |     |     |     | ν        | air (T av ) | D                   | air(T )            |     |     |
+T av
+|     |     | Sh(T ,d) | =   | 2+0.6Re1/2Sc1/3 |     | =   |     |     | (A12) |
+| --- | --- | -------- | --- | --------------- | --- | --- | --- | --- | ----- |
+av
+|     |     |     |     | (cid:16) | U∞d | (cid:17)1/2(cid:16) | ν (T ) (cid:17)1/3 |     |     |
+| --- | --- | --- | --- | -------- | --- | ------------------- | ------------------ | --- | --- |
+|     |     |     |     | 2+       |     |                     | air av             |     |     |
+.
+|     |     |     |     | ν   | (T )   | D   | air(T ) |     |     |
+| --- | --- | --- | --- | --- | ------ | --- | ------- | --- | --- |
+|     |     |     |     |     | air av |     | v av    |     |     |
+
+| Foods2020,9,1577 |     |     |     |     |     |     |     |     | 20of22 |
+| ---------------- | --- | --- | --- | --- | --- | --- | --- | --- | ------ |
+Bothh andh changeintimebecauseallthephysicalpropertiesofthehumidairareevaluatedatthe
+| T   | m   |     |     |     |     |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+filmmeantemperatureT av (t) = (T (t)+T∞)/2whichchangesintime. Moreover,alsothesample
+b
+diameterd(t)andtheReynoldsnumberarechangingduringthecourseofthedehydrationprocess.
+Thethermo-physicalparametersofmoistair(density,viscosity,thermalconductivityandthermal
+◦C,
+diffusivity) are evaluated as that for dry air since, for T ≤ 50 Relative Humidity has a small
+influenceonthermo-physicalpropertiesofmoistair[35–37].
+AppendixB
+LetusfocusonacontinuousdehydrationprocessinwhichtheairpropertiesT∞,RH∞ andU∞
+aresettofixedandconstantvalues. Onlongtimescales,whenthewatervolumefractionφislow
+everywhereinsidethesample,itcanbereasonablyassumedthat
+1. thesampletemperaturehasalreadyreacheditsasymptoticvalueT(r,t) = T∞
+2. thesampleradiuscanbeapproximatedwithitsasymptoticvalueR∞
+(cid:18) (cid:19)1/3
+|     |     |     |     |     | R∞  | V∞  |     |     |       |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | ----- |
+|     |     |     |     |     | =   |     |     |     | (A13) |
+|     |     |     |     |     | R 0 | V 0 |     |     |       |
+∂φ
+3. the convective-shrinkage contribution D φ is negligible compared to the diffusive term
+eff∂r
+∂φ
+| −D  | ,andapurelydiffusivetransportequationcanbeadopted |     |     |     |     |     |     |     |     |
+| --- | ------------------------------------------------- | --- | --- | --- | --- | --- | --- | --- | --- |
+eff∂r
+|     |     |     |     |     |     | (cid:32) | (cid:33) |     |     |
+| --- | --- | --- | --- | --- | --- | -------- | -------- | --- | --- |
+∂φ(r,t)
+1 ∂ r2 ∂φ
+|     |     |     |     | = D (T∞) |     |       | , r ∈ | (0,R∞) | (A14) |
+| --- | --- | --- | --- | -------- | --- | ----- | ----- | ------ | ----- |
+|     |     |     | ∂t  | eff      | r2  | ∂r ∂r |       |        |       |
+=
+4. thenonlineardesorptionisothermatT T∞ canbeapproximatedwithalinearbehaviourvalid
+forsmallRH,Equation(A3),showninFigureA1B(blackdashedline). Therefore,Equation(A14)
+canbesolvedwiththesimplifiedboundaryconditions
+|        |     |          |            | (cid:12)     |         | (cid:12)                              |         |      |       |
+| ------ | --- | -------- | ---------- | ------------ | ------- | ------------------------------------- | ------- | ---- | ----- |
+|        |     |          | ∂φ(cid:12) |              |         | ∂φ(cid:12)                            |         |      |       |
+|        |     |          |            | (cid:12) =0, | −R∞     | (cid:12) =                            | Bi∞(φ   | −φ∞) |       |
+|        |     |          |            | (cid:12)     |         | (cid:12)                              | b       |      | (A15) |
+|        |     |          | ∂r         |              |         | ∂r                                    |         |      |       |
+|        |     |          |            | (cid:12)     |         | (cid:12)                              |         |      |       |
+|        |     |          |            | r=0          |         | R∞                                    |         |      |       |
+|        | =   | RH /K    | = RH∞/K    |              | andBi∞  |                                       |         |      |       |
+| whereφ | b   | b eq ,φ∞ |            | eq           |         | representstheasymptoticmassBiotnumber |         |      |       |
+|        |     |          |            | h (          | T ∞ ) R | ∞ M p                                 | ( T ∞ ) |      |       |
+|        |     |          | Bi∞        | = m          |         | w v                                   | K (T∞)  |      |       |
+|        |     |          |            |              |         |                                       | eq      |      | (A16) |
+|        |     |          |            | D            | ( T ∞ ) | ρ R                                   | T ∞     |      |       |
+|        |     |          |            | ef           | f       | w                                     | g       |      |       |
+TheasymptoticsolutionofEquations(A14)and(A15),writtenintermsofthemoistureratioX (t),
+r
+readsas[22,38]
+|                                                 |     |       | X(t)−X |                  | (cid:104) | tD (T∞)(cid:105) |                |     |       |
+| ----------------------------------------------- | --- | ----- | ------ | ---------------- | --------- | ---------------- | -------------- | --- | ----- |
+|                                                 |     | (t) = |        | eq ∼exp          | −γ2       | eff              |                |     |       |
+|                                                 |     | X r   |        |                  |           | 0                | validforlarget |     | (A17) |
+|                                                 |     |       | X −X   |                  |           | R2 ∞             |                |     |       |
+|                                                 |     |       | 0      | eq               |           |                  |                |     |       |
+| whereγ 0 isthesmallestpositiverootoftheequation |     |       |        |                  |           |                  |                |     |       |
+|                                                 |     |       |        | γcot(γ)+Bi∞−1=0. |           |                  |                |     | (A18) |
+ItisstraightforwardtoverifythattheasymptoticexponentialbehaviourEquations(A17)implies
+| alinearbehaviourforthedehydrationrate |     |     |     | Jvs. | X   | r forsmallvaluesofX |     | r   |     |
+| ------------------------------------- | --- | --- | --- | ---- | --- | ------------------- | --- | --- | --- |
+γ2
+|     |     |     | dX  | r        |     | 0               |     |     |       |
+| --- | --- | --- | --- | -------- | --- | --------------- | --- | --- | ----- |
+|     |     | J   | = − | = D (T∞) |     | X validforsmall |     | X   | (A19) |
+|     |     |     | dt  | eff      | R2  | r               |     | r   |       |
+∞
+
+| Foods2020,9,1577 |     |     |     |     |     | 21of22 |
+| ---------------- | --- | --- | --- | --- | --- | ------ |
+Equation(A19)canbeusedtoestimatetheeffectivewaterdiffusivityD atT = T∞ fromtheinitial
+eff
+linearscalingoftheexperimentaldehydration-ratecurve J = θ(T∞)X r . Thedehydration-ratecurves
+=40◦Cand50◦C.
+areshowninFigure4AforthetwocontinuousdehydrationexperimentsatT∞
+TheestimateofD (T∞)fromEquation(A19)isnotsostraightforwardasitrequiresthesolution
+eff
+ofanonlinearequationfor D (T∞)becauseγ isanonlinearfunctionof Bi∞ and Bi∞ dependson
+|     |     | eff | 0   |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- |
+(T∞),Equation(A16).
+D eff
+ThisestimatestronglysimplifiesinthecaseofhighvaluesoftheBiotnumber Bi∞ becauseγ
+0
+∞.
+isanincreasingfunctionof Bi∞,saturatingtowardsπ for Bi∞ → For Bi∞ > 102,γ canbewell
+0
+(cid:39)10−10m2/s,theBiot
+approximatedasγ 0 (cid:39) π. Inthepresentcase,foraneffectivediffusivityD
+eff
+numberisBi∞ >103 >>102forbothtemperaturesT∞ =40◦Cand50◦C.Consequently,noiterative
+procedureisrequiredandtheeffectivediffusivityD (T∞)canbedirectlyestimatedfromtheinitial
+eff
+slopeθ(T∞)ofthecorrespondingexperimentaldehydration-ratecurvesasfollows
+(cid:18) (cid:19)−2
+|     |            |          | π2         | π2 V∞ | 3   |       |
+| --- | ---------- | -------- | ---------- | ----- | --- | ----- |
+|     | J = θ(T∞)X | = D (T∞) | X = D (T∞) |       | X . | (A20) |
+|     |            | r eff    | r eff      |       | r   |       |
+|     |            |          | R2 ∞       | R2 V  |     |       |
+0 0
+| wheretheonlyunknownquantityisD |     |     | (T∞). |     |     |     |
+| ------------------------------ | --- | --- | ----- | --- | --- | --- |
+eff
+Ifweareassumingaconcentrationdependentwaterdiffusivity,inagreementwithEquation(3),
+Equation (A20) permits us to estimate solely the asymptotic value D∞. No information on the β
+valuecanbeobtainedfromtheasymptoticanalysis. Ifweassumeaconcentrationindependentwater
+| diffusivity,thenD | eff andD∞ | coincide. |     |     |     |     |
+| ----------------- | --------- | --------- | --- | --- | --- | --- |
+References
+1. Sagar,V.;SureshKumar,P. Recentadvancesindryinganddehydrationoffruitsandvegetables:Areview.
+| J.FoodSci.Technol.2010,47,15–26. |     | [CrossRef][PubMed] |     |     |     |     |
+| -------------------------------- | --- | ------------------ | --- | --- | --- | --- |
+2. Mayor,L.;Sereno,A. Modellingshrinkageduringconvectivedryingoffoodmaterials:Areview. J.Food
+Eng.2004,61,373–386.
+[CrossRef]
+3. Mahiuddin,M.;Khan,M.;Kumar,C.;Rahman,M.;Karim,M. ShrinkageofFoodMaterialsDuringDrying:
+CurrentStatusandChallenges. Compr.Rev.FoodSci.FoodSaf.2018,17,1113–1126.[CrossRef]
+4. Castro,A.;Mayorga,E.;Moreno,F. Mathematicalmodellingofconvectivedryingoffruits:Areview. J.Food
+| Eng.2018,223,152–167. | [CrossRef] |     |     |     |     |     |
+| --------------------- | ---------- | --- | --- | --- | --- | --- |
+5. Baini,R.;Langrish,T. Choosinganappropriatedryingmodelforintermittentandcontinuousdryingof
+| bananas. J.FoodEng.2007,79,330–343. |     |     | [CrossRef] |     |     |     |
+| ----------------------------------- | --- | --- | ---------- | --- | --- | --- |
+6. Kowalski,S.;Pawłowski,A. Energyconsumptionandqualityaspectbyintermittentdrying. Chem. Eng.
+| Process.ProcessIntensif.2011,50,384–390. |     |     | [CrossRef] |     |     |     |
+| ---------------------------------------- | --- | --- | ---------- | --- | --- | --- |
+7. Kowalski,S.J.; Szadzin´ska,J.; Łechtan´ska,J. Non-stationarydryingofcarrot: Effectonproductquality.
+| J.FoodEng.2013,118,393–399. |     | [CrossRef] |     |     |     |     |
+| --------------------------- | --- | ---------- | --- | --- | --- | --- |
+8. Yang,Z.;Zhu,E.;Zhu,Z.;Wang,J.;Li,S. Acomparativestudyonintermittentheatpumpdryingprocessof
+Chinesecabbage(BrassicacampestrisL.ssp)seeds. FoodBioprod.Process.2013,91,381–388.
+[CrossRef]
+9. Silva,V.;Figueiredo,A.;Costa,J.;Guiné,R. Experimentalandmathematicalstudyofthediscontinuous
+| dryingkineticsofpears. |     | J.FoodEng.2014,134,30–36. | [CrossRef] |     |     |     |
+| ---------------------- | --- | ------------------------- | ---------- | --- | --- | --- |
+10. daSilva,W.P.;Rodrigues,A.F.;eSilva,C.M.D.;deCastro,D.S.;Gomes,J.P. Comparisonbetweencontinuous
+andintermittentdryingofwholebananasusingempiricalanddiffusionmodelstodescribetheprocesses.
+| J.FoodEng.2015,166,230–236. |     | [CrossRef] |     |     |     |     |
+| --------------------------- | --- | ---------- | --- | --- | --- | --- |
+11. Silva,V.;Costa,J.J.;Figueiredo,A.R.;Nunes,J.;Nunes,C.;Ribeiro,T.I.;Pereira,B. Studyofthree-stage
+intermittentdryingofpearsconsideringshrinkageandvariablediffusioncoefficient. J.FoodEng. 2016,
+| 180,77–86. [CrossRef] |     |     |     |     |     |     |
+| --------------------- | --- | --- | --- | --- | --- | --- |
+12. Lozano,J.E.;Rotstein,E.;Urbicain,M.J. Shrinkage,PorosityandBulkDensityofFoodstuffsatChanging
+| MoistureContents. | J.FoodSci.1983,48,1497–1502. |     | [CrossRef] |     |     |     |
+| ----------------- | ---------------------------- | --- | ---------- | --- | --- | --- |
+13. Adrover,A.;Brasiello,A.;Ponso,G. Amovingboundarymodelforfoodisothermaldryingandshrinkage:
+| Generalsetting. | J.FoodEng.2019,244,178–191. |     | [CrossRef] |     |     |     |
+| --------------- | --------------------------- | --- | ---------- | --- | --- | --- |
+
+Foods2020,9,1577 22of22
+14. Adrover,A.;Brasiello,A.;Ponso,G. Amovingboundarymodelforfoodisothermaldryingandshrinkage:
+Ashortcutnumericalmethodforestimatingtheshrinkagefactor. J.FoodEng.2019,244,212–219. [CrossRef]
+15. Adrover,A.;Brasiello,A. AMovingBoundaryModelforIsothermalDryingandShrinkageofChayote
+DiscoidSamples:ComparisonbetweentheFullyAnalyticalandtheShortcutNumericalApproaches. Int.J.
+Chem.Eng.2019,2019,3926897. [CrossRef]
+16. Adrover, A.; Brasiello, A. A moving boundary model for food isothermal drying and shrinkage:
+One-dimensionalversustwo-dimensionalapproaches.J.FoodProcess.Eng.2019,42,e13178.[CrossRef]
+17. Adrover,A.;Brasiello,A. 3-DModelingofDehydrationKineticsandShrinkageofEllipsoidalFermented
+AmazonianCocoaBeans. Processes2020,8,150. [CrossRef]
+18. Papanu, J.; Soane(Soong), D.; Bell, A.; Hess, D. Transportmodelsforswellinganddissolutionofthin
+polymerfilms. J.Appl.Polym.Sci.1989,38,859–885. [CrossRef]
+19. Tu,Y.O.;Ouano,A.C. Modelforthekinematicsofpolymerdissolution. IBMJ.Res.Dev.1977,21,131–142.
+[CrossRef]
+20. Crank,J. FreeandMovingBoundaryProblems;ClarendonPress:Oxford,UK,1987.
+21. Adrover,A.;Nobili,M. Releasekineticsfromoralthinfilms:Theoryandexperiments. Chem.Eng.Res.Des.
+2015,98,188–201. [CrossRef]
+22. Carslaw,H.;Jaeger,J. ConductionofHeatinSolids,2nded.;OxfordUniversityPress:Oxford,UK,1959.
+23. Hahn,D.W.;Ozisik,M.N. HeatConduction,3rded.;Wiley:Hoboken,NJ,USA,2012.
+24. Herman, C.; Spreutels, L.; Turomzsa, N.; Konagano, E.M.; Haut, B. Convective drying of fermented
+Amazonian cocoa beans (Theobroma cacao var. Forasteiro). Experiments and mathematical modeling.
+FoodBioprod.Process.2018,108,81–94. [CrossRef]
+25. Hii, C.; Law, C.; Law, M. Simulation of heat and mass transfer of cocoa beans under stepwise drying
+conditionsinaheatpumpdryer.Appl.Therm.Eng.2013,54,264–271.[CrossRef]
+26. Golestani, R.; Raisi, A.; Aroujalian, A. Mathematical Modeling on Air Drying of Apples Considering
+ShrinkageandVariableDiffusionCoefficient.Dry.Technol.2013,31,40–51.[CrossRef]
+27. Guiné,R.P.F. SorptionIsothermsofPearsUsingDifferentModels. Int.J.FruitSci.2009,9,11–22.[CrossRef]
+28. Srikiatden,J.;Roberts,J.S. Measuringmoisturediffusivityofpotatoandcarrot(coreandcortex)during
+convectivehotairandisothermaldrying. J.FoodEng.2006,74,143–152. [CrossRef]
+29. Srikiatden,J.;Roberts,J.S. Predictingmoistureprofilesinpotatoandcarrotduringconvectivehotairdrying
+usingisothermallymeasuredeffectivediffusivity. J.FoodEng.2008,84,516–525. [CrossRef]
+30. Dong,R.;Lu,Z.;Liu,Z.;Koide,S.;Cao,W.Effectofdryingandtemperingonricefissuringanalysedby
+integratingintra-kernelmoisturedistribution.J.FoodEng.2010,97,161–167.[CrossRef]
+31. Guiné, R.P.F.; Castro, J.A.A.M. Analysis of Moisture Content and Density of Pears During Drying.
+Dry.Technol.2003,21,581–591. [CrossRef]
+32. Rahman, M.; Chen, X.; Perera, C. An improved thermal conductivity prediction model for fruits and
+vegetablesasafunctionoftemperature,watercontentandporosity. J.FoodEng.1997,31,163–170. [CrossRef]
+33. Becker, B.; Fricke, B. FREEZING | Principles. In Encyclopedia of Food Sciences and Nutrition, 2nd ed.;
+Caballero,B.,Ed.;AcademicPress:Oxford,UK,2003;pp.2706–2711. [CrossRef]
+34. Bird,R.B.;Stewart,W.E.;Lightfoot,E.N. TransportPhenomena,2nded.;Wiley:Hoboken,NJ,USA,2006.
+35. Tsilingiris,P. Thermophysicalandtransportpropertiesofhumidairattemperaturerangebetween0and
+100◦C. EnergyConvers.Manag.2008,49,1098–1110. [CrossRef]
+36. Boukhriss,M.;Zhani,K.;Ghribi,R. Studyofthermophysicalpropertiesofasolardesalinationsystemusing
+solarenergy. Desalin.WaterTreat.2013,51,1290–1295.[CrossRef]
+37. Still,M.;Venzke,H.;Durst,F.;Melling,A. Influenceofhumidityontheconvectiveheattransferfromsmall
+cylinders. Exp.Fluids1998,24,141–150. [CrossRef]
+38. Crank,J. TheMathematicsofDiffusion;ClarendonPress:Oxford,UK,1979.
+Publisher’sNote:MDPIstaysneutralwithregardtojurisdictionalclaimsinpublishedmapsandinstitutional
+affiliations.
+(cid:13)c 2020bytheauthors.LicenseeMDPI,Basel,Switzerland.Thisarticleisanopenaccess
+articledistributedunderthetermsandconditionsoftheCreativeCommonsAttribution
+(CCBY)license(http://creativecommons.org/licenses/by/4.0/).

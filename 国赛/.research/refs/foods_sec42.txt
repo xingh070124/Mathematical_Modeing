@@ -1,0 +1,30 @@
+4.2. The Estimate of Deff(T) from the Asymptotic Behavior of Dehydration-Rate Curves Despite the fact that an isothermal model cannot be applied for an accurate description of the whole continuous dehydration curve, a simpliﬁed isothermal model can be used to estimate the effective diffusivity Deff(T) from the asymptotic behaviour of the continuous dehydration curves. On longer time scales, corresponding to lower values of the total moisture content X(t)/X0 ≤0.2, we can reasonably assume that 
+[1]  the sample temperature is uniform and equal to T∞and 
+[2]  the sample volume V(t) has reached its asymptotic value V∞after almost complete shrinkage (see Figure 7B) V∞ V0 = 1 −φ0   1 −X∞ X0   ≃0.1. 
+[19]  On longer time scales, the convective-shrinkage contribution to water transport becomes negligible and the dimensionless dehydration rate J(t) J(t) = −dXr dt = −d dt   X −X∞ X0 −X∞   
+[20]  becomes a linear function of the moisture ratio Xr(t) J(t) = Deff(T∞)π2 R2 0  V∞ V0  −2/3 Xr(t) 
+[21]  The derivation of Equation 
+[21]  is reported in Appendix B. Figure 4A shows the dehydration-rate curves J vs. Xr for the two continuous dehydration experiments at T∞= 40 ◦C and 50 ◦C. These curves are obtained from the best-ﬁt of the corresponding dehydration curves X(t)/X0 with the following function X(t)/X0 = a0 + a1e−b1t + a2e−b2t + (1 −a0 −a1 −a2)e−b3t 
+[22]  that satisﬁes the two constrains X
+[0] /X0 = 1, X∞/X0 = a0. The best-ﬁt curves are shown in Figure 2 (red and blue thick lines). The dehydration rate J(t) can be subsequently evaluated as J(t) = 1 1 −a0   a1b1e−b1t + a2b2e−b2t + (1 −a0 −a1 −a2) b3e−b3t  , 
+[23]  and plotted as a function of Xr = (X(t)/X0)−a0 1−a0 . The experimental dehydration-rate curves, shown in Figure 4A, exhibit the expected asymptotic linear behaviour, Equation 
+[21] , valid for large t or equivalently for small Xr. From these dehydration-rate curves and Equation 
+[21]  the following values of water diffusivity Deff(40 ◦C) = 1.703 × 10−10 m2/s and Deff(50 ◦C) = 2.497 × 10−10 m2/s have been estimated and then plotted, in Figure 4B, with the corresponding best-ﬁt Arrhenius function Deff(T) = D0e − E RgT , D0 = 4.00012 × 10−5m2/s , E/Rg = −3872.63K. 
+[24]  The water diffusivity Deff(T), thus estimated in the whole range of temperatures [10 ◦C–50 ◦C], will be used to verify the predictive capabilities of the non-isothermal model in which there are no other ﬁtting parameters. All the other parameters have been preliminarily estimated from well-known correlations or from independent experimental measurements, like in the case of the desorption isotherms (see Appendix A). Foods 2020, 9, 1577 10 of 22 0 0.02 0.04 0.06 0.08 0.1 0 0.2 0.4 0.6 0.8 1 A J [h-1] Xr=(X-X∞)/(X0-X∞) C-40oC C-50oC 0 1 2 3 10 20 30 40 50 60 B Deff x 1010 [m2/s] T [oC] Figure 4. (A) Dehydration-rate curves J vs. Xr for continuous dehydration tests at T∞= 40 ◦C, 50 ◦C, U∞= 1.28 m/s. Continuous lines represent the best-ﬁt curves Equation 
+[23] . Black dashed lines highlight the asymptotic (large t, small Xr) linear behaviour, Equation 
+[21] . (B) Estimated effective water diffusivity Deff at T = 40 ◦C, 50 ◦C (ﬁlled points). The dashed line represents the Arrhenius behaviour, Equation 
+[24] . 4.3. The Non-Isothermal Approach The non-isothermal model, Equations 
+[8] –
+[13] , rewritten for a spherical sample in terms of the water volume fraction φ(r, t), reads as ∂φ(r, t) ∂t = 1 r2 ∂ ∂r r2  Deff(T) ∂φ ∂r −vs(r) φ  ! , r ∈(0, R(t)) 
+[25]  ∂  ρpCp pT(r, t)   ∂t = 1 r2 ∂ ∂r r2  kp ∂φ ∂r −vs(r)ρpCp p T  ! , r ∈(0, R(t)) 
+[26]  vs(r) = Deff(T)∂φ ∂r , dR(t) dt = vs(R(t)) = Deff(Tb)∂φ ∂r R(t) 
+[27]  ∂φ ∂r r=0 = 0 , −Deff(Tb)∂φ ∂r R(t) = hm(Tav) Mw ρw   pv(Tb) RgTb RHb −pv(T∞) RgT∞ RH∞   
+[28]  ∂T ∂r r=0 = 0 , −kp ∂T ∂r R(t) = hT(Tav)(Tb −T∞) −λv(Tb)ρwDeff(Tb)∂φ ∂r R(t) 
+[29]  where the Relative Humidity at the air/sample interface RHb = RH R(t) = RH(φb, Tb) is evaluated from desorption isotherms for Rocha pears reported by [27] and best ﬁtted with the Henderson model, see Appendix A. Equations 
+[25] –
+[29]  must be numerically integrated starting from the uniform initial conditions φ(r, 0) = φ0 ≃0.9 and T(r, 0) = T0 = 15 ◦C. The value of φ0 can slightly change for different experiments because of changes in the initial total moisture content X0 (see Table 1). Figure 5 shows the excellent agreement between experimental data, at both temperatures T∞= 40 ◦C, 50 ◦C, and model predictions (continuous red and blue curves, coefficient of determination R2 > 0.99) with no adjustable parameters. Indeed, there is no need to introduce a concentration-dependent diffusion coefficient, Equation 
+[3] , that would require the estimate of the β parameter. For this reason, we set β = 0 also for all the subsequent simulations of intermittent dehydration. Foods 2020, 9, 1577 11 of 22 0 0.2 0.4 0.6 0.8 1 0 20 40 60 80 100 120 X(t)/X0 t [h] C-40oC C-50oC Figure 5. Comparison between experimental continuous dehydration curves X(t)/X0 vs. t at T∞= 40 ◦C, 50 ◦C and U∞= 1.28 m/s (ﬁlled points) and model predictions (continuous and dashed lines) with D(T) given by Equation 
+[24] . Continuous red and blue curves represent the non-isothermal model Equations 
+[25] –
+[29] . Black dashed lines represent the non-isothermal simpliﬁed model with T(r, t) = Tb(t), Equation 
+[31] . The reliability of the non-isothermal model allows us to verify some hypotheses made in paragraph Section 4.1 when discussing the intrinsic limitati

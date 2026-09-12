@@ -1,0 +1,1412 @@
+﻿doc,line,token,kind,source,registry_file
+problem3_slove.md,3,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,4,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,4,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,10,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,11,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,11,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,11,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,11,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,11,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,12,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,12,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,12,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,12,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,12,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,13,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,13,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,14,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,14,11,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+problem3_slove.md,14,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,14,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,16,3.12,ALLOW,allow: python 版本号,
+problem3_slove.md,16,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,16,2.5,MATCH,X_C_3600_0,registry_q3.csv
+problem3_slove.md,16,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,16,1.18,ALLOW,allow: scipy 版本号,
+problem3_slove.md,16,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,16,3.1,ALLOW,allow: openpyxl 版本号,
+problem3_slove.md,16,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,23,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,23,0.15,MATCH,P05_C_center,registry_q3.csv
+problem3_slove.md,25,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,25,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,25,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,25,0.5,MATCH,E04_T_range,registry_q3.csv
+problem3_slove.md,25,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,25,1.5,MATCH,X_C_3600_2,registry_q3.csv
+problem3_slove.md,25,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,26,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,26,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+problem3_slove.md,26,0.1,MATCH,T5_r3_c5,registry_q3.csv
+problem3_slove.md,26,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,30,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,30,0.15,MATCH,P05_C_center,registry_q3.csv
+problem3_slove.md,32,10800,ALLOW,allow: 问题二终止时刻,
+problem3_slove.md,38,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,38,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,38,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,38,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,40,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,42,10800,ALLOW,allow: 问题二终止时刻,
+problem3_slove.md,43,1.08e4,ALLOW,allow: 问题二终止时刻,
+problem3_slove.md,43,2.067e5,MATCH,P00_t_last,registry_q3.csv
+problem3_slove.md,43,19,MATCH,MC_std,registry_q3_mc.csv
+problem3_slove.md,44,2.97e4,ALLOW,allow: problem3.md §5.3 初期湿分特征时间 R^2/D,
+problem3_slove.md,44,5.0e5,ALLOW,allow: problem3.md §5.3 末期湿分特征时间 R^2/D,
+problem3_slove.md,44,16.8,ALLOW,allow: problem3.md §5.3 特征时间放大倍数,
+problem3_slove.md,44,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,45,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,45,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,45,14400,ALLOW,allow: 附件1 覆盖上界 t_c,
+problem3_slove.md,46,0.25,ALLOW,allow: 问题二 dt=0.25 s,
+problem3_slove.md,46,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,46,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,51,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,51,10800,ALLOW,allow: 问题二终止时刻,
+problem3_slove.md,59,-1,MATCH,X_C_10800_2,registry_q3.csv|abs
+problem3_slove.md,60,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,60,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,62,19,MATCH,MC_std,registry_q3_mc.csv
+problem3_slove.md,66,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,66,206720.413,MATCH,DR_base,registry_q3_drainage.csv
+problem3_slove.md,67,0.25,ALLOW,allow: 问题二 dt=0.25 s,
+problem3_slove.md,67,8.3e5,ALLOW,allow: 定步长 BE 全程步数推导 206720/0.25,
+problem3_slove.md,67,206720,MATCH,V6_lsoda,registry_q3_verify.csv
+problem3_slove.md,67,0.25,ALLOW,allow: 问题二 dt=0.25 s,
+problem3_slove.md,68,3299,MATCH,P03_nsteps,registry_q3.csv
+problem3_slove.md,68,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,69,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,69,50,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,70,2.97e4,ALLOW,allow: problem3.md §5.3 初期湿分特征时间 R^2/D,
+problem3_slove.md,70,5.0e5,ALLOW,allow: problem3.md §5.3 末期湿分特征时间 R^2/D,
+problem3_slove.md,70,16.8,ALLOW,allow: problem3.md §5.3 特征时间放大倍数,
+problem3_slove.md,71,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,72,62.7,MATCH,FG3_dt_mean,registry_q3_figures.csv
+problem3_slove.md,72,206720.413,MATCH,DR_base,registry_q3_drainage.csv
+problem3_slove.md,72,3299,MATCH,P03_nsteps,registry_q3.csv
+problem3_slove.md,74,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,74,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,75,0.046,ALLOW,allow: problem3.md §7.3 显式格式稳定步长估计,
+problem3_slove.md,75,4.5e6,ALLOW,allow: problem3.md §7.3 显式格式步数量级估计,
+problem3_slove.md,77,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,79,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,79,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,79,14400,ALLOW,allow: 附件1 覆盖上界 t_c,
+problem3_slove.md,80,2.07e5,MATCH,V1_richardson_p1,registry_q3_verify.csv
+problem3_slove.md,80,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,80,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,80,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,82,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,82,10800,ALLOW,allow: 问题二终止时刻,
+problem3_slove.md,82,14400,ALLOW,allow: 附件1 覆盖上界 t_c,
+problem3_slove.md,82,61,MATCH,E01_n,registry_q3.csv
+problem3_slove.md,83,49.9989,MATCH,E02_T_mean,registry_q3.csv
+problem3_slove.md,83,0.1531,MATCH,E03_T_std,registry_q3.csv
+problem3_slove.md,83,0.479,MATCH,E04_T_range,registry_q3.csv
+problem3_slove.md,84,0.049988,MATCH,E05_C_mean,registry_q3.csv
+problem3_slove.md,84,0.000149,MATCH,E06_C_std,registry_q3.csv
+problem3_slove.md,84,0.00049,MATCH,E07_C_range,registry_q3.csv
+problem3_slove.md,85,01,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,85,07,MATCH,MC_s_kD_d,registry_q3_mc.csv
+problem3_slove.md,87,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,87,50.00,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,87,0.0500,MATCH,P00_Cbar,registry_q3.csv
+problem3_slove.md,88,0.15,MATCH,P05_C_center,registry_q3.csv
+problem3_slove.md,89,-600,MATCH,P00_tau,registry_q3.csv|abs
+problem3_slove.md,89,14400,ALLOW,allow: 附件1 覆盖上界 t_c,
+problem3_slove.md,90,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,90,1800,ALLOW,allow: tau 敏感性,
+problem3_slove.md,91,600,MATCH,P00_tau,registry_q3.csv
+problem3_slove.md,91,0.008,ALLOW,allow: tau=0 变体秒换算 (2.16e-6 h) 推导,
+problem3_slove.md,91,0.070,ALLOW,allow: tau=1800 变体秒换算 (1.93e-5 h) 推导,
+problem3_slove.md,91,7,MATCH,MC_s_kD_d,registry_q3_mc.csv
+problem3_slove.md,92,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,92,1e-3,MATCH,MC_s_krho_d,registry_q3_mc.csv
+problem3_slove.md,98,1.17,ALLOW,allow: problem3.md 原型环境 scipy 版本号,
+problem3_slove.md,98,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,98,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,102,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,109,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,110,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,112,17.27,ALLOW,allow: 问题二 V11 结论: 两种能量形式温度差 (registry_q2_verify),
+problem3_slove.md,115,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,119,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,119,0.01,MATCH,W11_D_over_alpha,registry_q3_2d.csv
+problem3_slove.md,119,0.1,MATCH,T5_r3_c5,registry_q3.csv
+problem3_slove.md,119,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,119,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,120,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,120,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,121,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,122,1e-6,MATCH,P00_atol_T,registry_q3.csv
+problem3_slove.md,122,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,122,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,123,3600,MATCH,P00_max_step,registry_q3.csv
+problem3_slove.md,123,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,124,259200,ALLOW,allow: 积分上界 3 天 (s),
+problem3_slove.md,124,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,124,52480,ALLOW,allow: 积分上界余量 259200-t_dry 推导,
+problem3_slove.md,124,20.2,ALLOW,allow: 余量百分比推导,
+problem3_slove.md,125,50.00,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,125,0.0500,MATCH,P00_Cbar,registry_q3.csv
+problem3_slove.md,125,600,MATCH,P00_tau,registry_q3.csv
+problem3_slove.md,126,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,128,3299,MATCH,P03_nsteps,registry_q3.csv
+problem3_slove.md,128,8477,MATCH,P03_nfev,registry_q3.csv
+problem3_slove.md,128,326,MATCH,P03_njev,registry_q3.csv
+problem3_slove.md,128,1001,MATCH,P03_nlu,registry_q3.csv
+problem3_slove.md,147,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,147,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,147,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,150,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,155,0.14,MATCH,P05_C_r1,registry_q3.csv
+problem3_slove.md,156,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,157,1e-4,MATCH,V4_q2_dt0125_dT_w1p8e3_7p2e3 s,registry_q3_verify.csv
+problem3_slove.md,157,1e-7,ALLOW,allow: W2/W5 对照容限,
+problem3_slove.md,158,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,160,12,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+problem3_slove.md,160,1e-7,ALLOW,allow: W2/W5 对照容限,
+problem3_slove.md,161,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,161,1800,ALLOW,allow: tau 敏感性,
+problem3_slove.md,162,2.239e-7,ALLOW,allow: selftest FD 偏差 (控制台输出),
+problem3_slove.md,162,6.212e-8,ALLOW,allow: selftest FD 偏差 (控制台输出),
+problem3_slove.md,163,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,165,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,169,1e-7,ALLOW,allow: W2/W5 对照容限,
+problem3_slove.md,169,1373,ALLOW,allow: W5 全稠密差分步数 (运行观测),
+problem3_slove.md,169,3368,MATCH,V5_dense_nfev,registry_q3_verify.csv
+problem3_slove.md,169,226,ALLOW,allow: 墙钟耗时,
+problem3_slove.md,169,206720.584,MATCH,V5_dense_tdry,registry_q3_verify.csv
+problem3_slove.md,170,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,170,3299,MATCH,P03_nsteps,registry_q3.csv
+problem3_slove.md,170,8477,MATCH,P03_nfev,registry_q3.csv
+problem3_slove.md,170,23,MATCH,MC_env_lo,registry_q3_mc.csv
+problem3_slove.md,170,206720.413,MATCH,DR_base,registry_q3_drainage.csv
+problem3_slove.md,171,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,171,3299,MATCH,P03_nsteps,registry_q3.csv
+problem3_slove.md,171,8477,MATCH,P03_nfev,registry_q3.csv
+problem3_slove.md,171,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,171,206720.413,MATCH,DR_base,registry_q3_drainage.csv
+problem3_slove.md,173,2.0e-10,MATCH,V5_sparse_diff,registry_q3_verify.csv
+problem3_slove.md,173,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,174,7,MATCH,MC_s_kD_d,registry_q3_mc.csv
+problem3_slove.md,174,7.6,ALLOW,allow: 加速比 (机器相关),
+problem3_slove.md,174,23,MATCH,MC_env_lo,registry_q3_mc.csv
+problem3_slove.md,174,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,175,402,ALLOW,allow: 状态维数 2(M+1),
+problem3_slove.md,175,75,ALLOW,"allow: 加速比 (耗时之比, 机器相关)",
+problem3_slove.md,184,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,185,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,185,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+problem3_slove.md,185,3445,MATCH,P00_n60,registry_q3.csv
+problem3_slove.md,185,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,186,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,191,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,193,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,194,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,194,2.9206e-7,MATCH,V10_slope,registry_q3_verify.csv
+problem3_slove.md,194,3.424e6,MATCH,V10_cond,registry_q3_verify.csv
+problem3_slove.md,196,2.9206e-7,MATCH,V10_slope,registry_q3_verify.csv
+problem3_slove.md,196,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,197,2.92e-7,MATCH,V10_slope,registry_q3_verify.csv
+problem3_slove.md,201,1e-5,MATCH,V4_q2_dt0125_dC_w1p8e3_7p2e3 s,registry_q3_verify.csv
+problem3_slove.md,201,34,MATCH,W11_argmax_off_enddir,registry_q3_2d.csv
+problem3_slove.md,202,1e-7,ALLOW,allow: W2/W5 对照容限,
+problem3_slove.md,202,1e-7,ALLOW,allow: W2/W5 对照容限,
+problem3_slove.md,202,0.34,ALLOW,allow: 条件数 x 1e-7 推导,
+problem3_slove.md,203,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,203,0.003,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+problem3_slove.md,205,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,205,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,205,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,205,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,206,1e-7,ALLOW,allow: W2/W5 对照容限,
+problem3_slove.md,206,0.171,MATCH,V2_M200_diff,registry_q3_verify.csv
+problem3_slove.md,206,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,206,0.177,MATCH,V2_M400_diff,registry_q3_verify.csv
+problem3_slove.md,206,400,ALLOW,allow: 网格 M=400,
+problem3_slove.md,207,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,211,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,211,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,212,206720.413,MATCH,DR_base,registry_q3_drainage.csv
+problem3_slove.md,212,259200,ALLOW,allow: 积分上界 3 天 (s),
+problem3_slove.md,213,52480,ALLOW,allow: 积分上界余量 259200-t_dry 推导,
+problem3_slove.md,213,20.2,ALLOW,allow: 余量百分比推导,
+problem3_slove.md,220,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,220,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,220,1e-6,MATCH,P00_atol_T,registry_q3.csv
+problem3_slove.md,220,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,220,3600,MATCH,P00_max_step,registry_q3.csv
+problem3_slove.md,221,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,221,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,223,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,225,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,226,0.15,MATCH,P05_C_center,registry_q3.csv
+problem3_slove.md,226,-1,MATCH,X_C_10800_2,registry_q3.csv|abs
+problem3_slove.md,228,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,228,259200,ALLOW,allow: 积分上界 3 天 (s),
+problem3_slove.md,228,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,229,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,229,3600,MATCH,P00_max_step,registry_q3.csv
+problem3_slove.md,230,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,230,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,232,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+problem3_slove.md,232,21,ALLOW,allow: 输出列数,
+problem3_slove.md,232,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,232,3445,MATCH,P00_n60,registry_q3.csv
+problem3_slove.md,232,21,ALLOW,allow: 输出列数,
+problem3_slove.md,232,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,233,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,233,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,237,3299,MATCH,P03_nsteps,registry_q3.csv
+problem3_slove.md,237,62.7,MATCH,FG3_dt_mean,registry_q3_figures.csv
+problem3_slove.md,237,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,237,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,237,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,237,400,ALLOW,allow: 网格 M=400,
+problem3_slove.md,238,8.3e5,ALLOW,allow: 定步长 BE 全程步数推导 206720/0.25,
+problem3_slove.md,238,4.5e6,ALLOW,allow: problem3.md §7.3 显式格式步数量级估计,
+problem3_slove.md,239,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,243,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,243,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,245,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,245,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,245,77,ALLOW,allow: registry_q3_verify.csv 行数 (运行观测),
+problem3_slove.md,247,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,251,100,MATCH,MC_p97.5,registry_q3_mc.csv
+problem3_slove.md,251,0.02,MATCH,V3_ms1800_diff,registry_q3_verify.csv|abs
+problem3_slove.md,251,206397.931,MATCH,P02_M100,registry_q3.csv
+problem3_slove.md,251,57.3328,MATCH,V1_M100_h,registry_q3_verify.csv
+problem3_slove.md,251,3324,ALLOW,allow: W1 M=100 步数 (运行观测),
+problem3_slove.md,252,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,252,0.01,MATCH,W11_D_over_alpha,registry_q3_2d.csv
+problem3_slove.md,252,206720.413,MATCH,DR_base,registry_q3_drainage.csv
+problem3_slove.md,252,57.4223,MATCH,P01_tdry_h,registry_q3.csv
+problem3_slove.md,252,322.483,MATCH,P02_d1,registry_q3.csv
+problem3_slove.md,252,3299,MATCH,P03_nsteps,registry_q3.csv
+problem3_slove.md,253,400,ALLOW,allow: 网格 M=400,
+problem3_slove.md,253,0.005,MATCH,W11_D_over_alpha,registry_q3_2d.csv
+problem3_slove.md,253,206857.296,MATCH,P02_M400,registry_q3.csv
+problem3_slove.md,253,57.4604,MATCH,V1_M400_h,registry_q3_verify.csv
+problem3_slove.md,253,136.882,MATCH,P02_d2,registry_q3.csv
+problem3_slove.md,253,3276,ALLOW,allow: W1 M=400 步数 (运行观测),
+problem3_slove.md,255,2.3559,MATCH,V1_ratio,registry_q3_verify.csv
+problem3_slove.md,255,1.2363,MATCH,P02_order,registry_q3.csv
+problem3_slove.md,257,1.24,MATCH,P02_order,registry_q3.csv
+problem3_slove.md,258,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,258,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,258,1.236,MATCH,P02_order,registry_q3.csv
+problem3_slove.md,261,400,ALLOW,allow: 网格 M=400,
+problem3_slove.md,261,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,261,-1,MATCH,X_C_10800_2,registry_q3.csv|abs
+problem3_slove.md,261,206958.2,MATCH,P01_tdry_rich,registry_q3.csv
+problem3_slove.md,261,57.4884,MATCH,P01_tdry_rich_h,registry_q3.csv
+problem3_slove.md,263,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,263,206994.178,MATCH,V1_richardson_p1,registry_q3_verify.csv
+problem3_slove.md,263,57.4984,ALLOW,allow: p=1 保守外推的小时换算 206994.178/3600 推导,
+problem3_slove.md,263,0.01,MATCH,W11_D_over_alpha,registry_q3_2d.csv
+problem3_slove.md,265,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,265,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,265,54,ALLOW,allow: 表5 行时刻,
+problem3_slove.md,265,21,ALLOW,allow: 输出列数,
+problem3_slove.md,265,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,265,400,ALLOW,allow: 网格 M=400,
+problem3_slove.md,266,2.427e-4,MATCH,V1_dC_200_400,registry_q3_verify.csv
+problem3_slove.md,266,3.5377e-6,MATCH,V1_dT_200_400,registry_q3_verify.csv
+problem3_slove.md,267,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,268,1e-4,MATCH,V4_q2_dt0125_dT_w1p8e3_7p2e3 s,registry_q3_verify.csv
+problem3_slove.md,270,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,270,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,274,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,274,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,274,1e-7,ALLOW,allow: W2/W5 对照容限,
+problem3_slove.md,274,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,274,0.171,MATCH,V2_M200_diff,registry_q3_verify.csv
+problem3_slove.md,275,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,275,400,ALLOW,allow: 网格 M=400,
+problem3_slove.md,275,1e-7,ALLOW,allow: W2/W5 对照容限,
+problem3_slove.md,275,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,275,0.177,MATCH,V2_M400_diff,registry_q3_verify.csv
+problem3_slove.md,276,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,276,600,MATCH,P00_tau,registry_q3.csv
+problem3_slove.md,276,3600,MATCH,P00_max_step,registry_q3.csv
+problem3_slove.md,276,-0.032,MATCH,V3_ms600_diff,registry_q3_verify.csv
+problem3_slove.md,276,3456,MATCH,V3_ms600_steps,registry_q3_verify.csv
+problem3_slove.md,277,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,277,1800,ALLOW,allow: tau 敏感性,
+problem3_slove.md,277,3600,MATCH,P00_max_step,registry_q3.csv
+problem3_slove.md,277,-0.017,MATCH,V3_ms1800_diff,registry_q3_verify.csv
+problem3_slove.md,277,3312,MATCH,V3_ms1800_steps,registry_q3_verify.csv
+problem3_slove.md,279,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,279,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,279,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+problem3_slove.md,282,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,284,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,284,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,284,14400,ALLOW,allow: 附件1 覆盖上界 t_c,
+problem3_slove.md,285,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,285,0.25,ALLOW,allow: 问题二 dt=0.25 s,
+problem3_slove.md,285,57600,ALLOW,allow: 问题二 BE 步数 14400/0.25 (运行观测),
+problem3_slove.md,285,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,290,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,290,1800,ALLOW,allow: tau 敏感性,
+problem3_slove.md,290,3.9755e-5,MATCH,V4_q2_dt025_dC,registry_q3_verify.csv
+problem3_slove.md,290,4.2835e-4,MATCH,V4_q2_dt025_dT,registry_q3_verify.csv
+problem3_slove.md,291,1800,ALLOW,allow: tau 敏感性,
+problem3_slove.md,291,7200,ALLOW,allow: W4 时间窗边界 (2 h),
+problem3_slove.md,291,1.8080e-5,MATCH,V4_q2_dt025_dC_w1p8e3_7p2e3 s,registry_q3_verify.csv
+problem3_slove.md,291,2.4692e-4,MATCH,V4_q2_dt025_dT_w1p8e3_7p2e3 s,registry_q3_verify.csv
+problem3_slove.md,292,7200,ALLOW,allow: W4 时间窗边界 (2 h),
+problem3_slove.md,292,14400,ALLOW,allow: 附件1 覆盖上界 t_c,
+problem3_slove.md,292,6.6567e-6,MATCH,V4_q2_dt025_dC_w7p2e3_1p44e4 s,registry_q3_verify.csv
+problem3_slove.md,292,1.3573e-4,MATCH,V4_q2_dt025_dT_w7p2e3_1p44e4 s,registry_q3_verify.csv
+problem3_slove.md,293,3.9755e-5,MATCH,V4_q2_dt025_dC,registry_q3_verify.csv
+problem3_slove.md,293,4.2835e-4,MATCH,V4_q2_dt025_dT,registry_q3_verify.csv
+problem3_slove.md,295,3.98e-5,MATCH,V4_q2_dt025_dC,registry_q3_verify.csv
+problem3_slove.md,295,5e-5,MATCH,W11_dC_prod_enddir,registry_q3_2d.csv
+problem3_slove.md,296,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,296,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,296,600,MATCH,P00_tau,registry_q3.csv
+problem3_slove.md,296,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,299,0.125,MATCH,P05_C_r1p5,registry_q3.csv
+problem3_slove.md,299,115200,ALLOW,allow: 问题二 BE 步数 14400/0.125 (运行观测),
+problem3_slove.md,300,3.9755e-5,MATCH,V4_q2_dt025_dC,registry_q3_verify.csv
+problem3_slove.md,300,1.9855e-5,MATCH,V4_q2_dt0125_dC,registry_q3_verify.csv
+problem3_slove.md,300,2.002,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,303,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,303,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,305,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,305,2.0e-10,MATCH,V5_sparse_diff,registry_q3_verify.csv
+problem3_slove.md,305,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,306,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,306,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,310,206720.413,MATCH,DR_base,registry_q3_drainage.csv
+problem3_slove.md,310,3299,MATCH,P03_nsteps,registry_q3.csv
+problem3_slove.md,311,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,311,206720.382,MATCH,V6_radau,registry_q3_verify.csv
+problem3_slove.md,311,-0.032,MATCH,V3_ms600_diff,registry_q3_verify.csv
+problem3_slove.md,311,1777,ALLOW,allow: W6 Radau 步数 (运行观测),
+problem3_slove.md,312,206720.374,MATCH,V6_lsoda,registry_q3_verify.csv
+problem3_slove.md,312,-0.039,MATCH,V6_lsoda_diff,registry_q3_verify.csv
+problem3_slove.md,312,6358,ALLOW,allow: W6 LSODA 步数 (运行观测),
+problem3_slove.md,314,0.04,MATCH,W11_area_end,registry_q3_2d.csv
+problem3_slove.md,314,2e-7,MATCH,P06_budget,registry_q3.csv
+problem3_slove.md,317,7,MATCH,MC_s_kD_d,registry_q3_mc.csv
+problem3_slove.md,321,50.00,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,321,0.0500,MATCH,P00_Cbar,registry_q3.csv
+problem3_slove.md,321,600,MATCH,P00_tau,registry_q3.csv
+problem3_slove.md,321,206720.413,MATCH,DR_base,registry_q3_drainage.csv
+problem3_slove.md,321,57.4223,MATCH,P01_tdry_h,registry_q3.csv
+problem3_slove.md,322,49,MATCH,P07_cross_r1,registry_q3.csv
+problem3_slove.md,322,213431.732,MATCH,V7_s_Tm1,registry_q3_verify.csv
+problem3_slove.md,322,59.2866,ALLOW,allow: Tbar=49 变体 t_dry(h) = base+dh 推导,
+problem3_slove.md,322,1.8643,MATCH,V7_s_Tm1_dh,registry_q3_verify.csv
+problem3_slove.md,323,51,MATCH,MC_s_kD_m,registry_q3_mc.csv
+problem3_slove.md,323,200302.315,MATCH,V7_s_Tp1,registry_q3_verify.csv
+problem3_slove.md,323,55.6395,ALLOW,allow: Tbar=51 变体 t_dry(h) = base+dh 推导,
+problem3_slove.md,323,-1.7828,MATCH,V7_s_Tp1_dh,registry_q3_verify.csv
+problem3_slove.md,324,0.045,ALLOW,allow: Cbar 敏感性变体 0.045,
+problem3_slove.md,324,-10,MATCH,DR_c120_dh,registry_q3_drainage.csv|abs
+problem3_slove.md,324,206300.257,MATCH,V7_s_Cm10,registry_q3_verify.csv
+problem3_slove.md,324,57.3056,ALLOW,allow: Cbar=0.045 变体 t_dry(h) 推导,
+problem3_slove.md,324,-0.1167,MATCH,V7_s_Cm10_dh,registry_q3_verify.csv
+problem3_slove.md,325,0.055,MATCH,T5_r7_c5,registry_q3.csv
+problem3_slove.md,325,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,325,207191.838,MATCH,V7_s_Cp10,registry_q3_verify.csv
+problem3_slove.md,325,57.5533,ALLOW,allow: Cbar=0.055 变体 t_dry(h) 推导,
+problem3_slove.md,325,0.1310,MATCH,V7_s_Cp10_dh,registry_q3_verify.csv
+problem3_slove.md,326,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,326,206720.421,MATCH,V7_s_tau0,registry_q3_verify.csv
+problem3_slove.md,326,57.4223,MATCH,P01_tdry_h,registry_q3.csv
+problem3_slove.md,326,0.008,ALLOW,allow: tau=0 变体秒换算 (2.16e-6 h) 推导,
+problem3_slove.md,327,1800,ALLOW,allow: tau 敏感性,
+problem3_slove.md,327,206720.483,MATCH,V7_s_tau1800,registry_q3_verify.csv
+problem3_slove.md,327,57.4224,MATCH,DR_base_h,registry_q3_drainage.csv
+problem3_slove.md,327,0.070,ALLOW,allow: tau=1800 变体秒换算 (1.93e-5 h) 推导,
+problem3_slove.md,331,-1.8235,MATCH,V7_dtdT,registry_q3_verify.csv
+problem3_slove.md,332,24.77,MATCH,V7_dtdC,registry_q3_verify.csv
+problem3_slove.md,336,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,337,3850,ALLOW,allow: 附录3 D 的 Arrhenius 温度,
+problem3_slove.md,337,3.69e-2,ALLOW,allow: 3850/T^2 @323.15K 推导,
+problem3_slove.md,337,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,338,-0.0369,ALLOW,allow: 3850/T^2 @323.15K 推导,
+problem3_slove.md,338,57.42,MATCH,MC_s_kcp_m,registry_q3_mc.csv
+problem3_slove.md,338,-2.12,ALLOW,allow: naive 估计 0.0369x57.42 推导,
+problem3_slove.md,338,-1.8235,MATCH,V7_dtdT,registry_q3_verify.csv
+problem3_slove.md,339,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,339,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,340,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,340,38,ALLOW,allow: 先验/实测敏感性之比 推导,
+problem3_slove.md,340,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,341,-1,MATCH,X_C_10800_2,registry_q3.csv|abs
+problem3_slove.md,342,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,344,0.026,ALLOW,allow: dC0/dCbar 反推值 (W7 导出),
+problem3_slove.md,345,50,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,345,8.0e-10,ALLOW,"allow: problem3.md §5.3 D(C*, 50C)",
+problem3_slove.md,346,5.0e5,ALLOW,allow: problem3.md §5.3 末期湿分特征时间 R^2/D,
+problem3_slove.md,346,139,ALLOW,allow: R^2/D 末期特征时间 5.0e5/3600 推导,
+problem3_slove.md,346,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+problem3_slove.md,347,2.6,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,347,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,348,0.12,MATCH,P05_C_r1p5,registry_q3.csv
+problem3_slove.md,348,0.13,MATCH,V7_s_Cp10_dh,registry_q3_verify.csv
+problem3_slove.md,348,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,349,4.8,ALLOW,allow: problem3.md §6.4(d) Cbar 敏感性先验 (h),
+problem3_slove.md,352,8,MATCH,FG3_dt_decades,registry_q3_figures.csv
+problem3_slove.md,352,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,352,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,356,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+problem3_slove.md,356,0.052659,MATCH,V8_C_min,registry_q3_verify.csv
+problem3_slove.md,356,2.550000,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,356,0.019636,ALLOW,allow: 附件1 C_inf 全程最小值 (问题一已核),
+problem3_slove.md,356,2.55,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,357,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,357,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+problem3_slove.md,358,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,359,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,359,2.297e-7,MATCH,P06_budget,registry_q3.csv
+problem3_slove.md,359,1e-6,MATCH,P00_atol_T,registry_q3.csv
+problem3_slove.md,360,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,360,3445,MATCH,P00_n60,registry_q3.csv
+problem3_slove.md,360,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,360,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,361,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,361,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,361,2.919e-7,MATCH,V10_gpre_min,registry_q3_verify.csv
+problem3_slove.md,361,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,361,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,362,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,362,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+problem3_slove.md,362,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,362,206700,MATCH,P00_t_last,registry_q3.csv
+problem3_slove.md,364,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,364,5.1000e-4,MATCH,P06_W0,registry_q3.csv
+problem3_slove.md,364,2.48305e-5,MATCH,P06_W_dry,registry_q3.csv
+problem3_slove.md,364,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,365,95.13,MATCH,P06_loss,registry_q3.csv
+problem3_slove.md,367,11,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+problem3_slove.md,369,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,369,0.5,MATCH,E04_T_range,registry_q3.csv
+problem3_slove.md,369,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,370,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,371,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+problem3_slove.md,371,17.30,MATCH,W11_pen_alpha_cm,registry_q3_2d.csv
+problem3_slove.md,372,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,372,12.5,MATCH,P07_cross_r2,registry_q3.csv
+problem3_slove.md,373,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,374,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,378,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,379,1e-8,ALLOW,allow: 量级声明,
+problem3_slove.md,379,3600,MATCH,P00_max_step,registry_q3.csv
+problem3_slove.md,381,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,381,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,381,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,381,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,382,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,385,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,385,201,ALLOW,allow: W11 二维径向节点数 Nr+1 (设置),
+problem3_slove.md,385,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,386,50,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,386,20502,ALLOW,allow: W11 二维状态维数 2x201x51 推导,
+problem3_slove.md,387,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,388,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,389,1.7e-9,MATCH,W11_val_1d,registry_q3_2d.csv
+problem3_slove.md,390,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,391,1e4,MATCH,P03_nfev,registry_q3.csv
+problem3_slove.md,393,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,402,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,402,0.04,MATCH,W11_area_end,registry_q3_2d.csv
+problem3_slove.md,402,0.08,MATCH,W11_area_both,registry_q3_2d.csv
+problem3_slove.md,403,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,403,50,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,403,1.95e7,MATCH,W11_tscale_ax,registry_q3_2d.csv
+problem3_slove.md,403,5424.5,MATCH,W11_tscale_ax_h,registry_q3_2d.csv
+problem3_slove.md,403,94.5,MATCH,W11_tscale_over_tdry,registry_q3_2d.csv
+problem3_slove.md,404,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,404,39.06,MATCH,W11_tscale_ratio,registry_q3_2d.csv
+problem3_slove.md,404,39,MATCH,W11_tscale_ratio,registry_q3_2d.csv
+problem3_slove.md,405,5.28,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,405,50,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,405,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,405,12.5,MATCH,P07_cross_r2,registry_q3.csv
+problem3_slove.md,405,1.29,MATCH,W11_pen_dstar_cm,registry_q3_2d.csv
+problem3_slove.md,406,17.30,MATCH,W11_pen_alpha_cm,registry_q3_2d.csv
+problem3_slove.md,406,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,410,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,411,0.05,MATCH,P00_Cbar,registry_q3.csv
+problem3_slove.md,412,5.28,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,413,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,414,1e-4,MATCH,V4_q2_dt0125_dT_w1p8e3_7p2e3 s,registry_q3_verify.csv
+problem3_slove.md,415,1.72e-3,MATCH,W11_dT_mid_n50,registry_q3_2d.csv
+problem3_slove.md,416,3.69e-2,ALLOW,allow: 3850/T^2 @323.15K 推导,
+problem3_slove.md,417,1e-4,MATCH,V4_q2_dt0125_dT_w1p8e3_7p2e3 s,registry_q3_verify.csv
+problem3_slove.md,418,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,418,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,418,8,MATCH,FG3_dt_decades,registry_q3_figures.csv
+problem3_slove.md,418,95.24,ALLOW,allow: W11 二维全程失水率百分比 1-0.95241 推导,
+problem3_slove.md,419,95.13,MATCH,P06_loss,registry_q3.csv
+problem3_slove.md,423,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,423,25,MATCH,V7_dtdC,registry_q3_verify.csv
+problem3_slove.md,423,50,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,423,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,423,2.5,MATCH,X_C_3600_0,registry_q3.csv
+problem3_slove.md,425,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,427,1e-8,ALLOW,allow: 量级声明,
+problem3_slove.md,427,206716.210,MATCH,W11_t_2d_nz0,registry_q3_2d.csv
+problem3_slove.md,427,57.4212,MATCH,W11_t_1dfv_h,registry_q3_2d.csv
+problem3_slove.md,428,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,428,206716.210,MATCH,W11_t_2d_nz0,registry_q3_2d.csv
+problem3_slove.md,428,57.4212,MATCH,W11_t_1dfv_h,registry_q3_2d.csv
+problem3_slove.md,428,1.7e-9,MATCH,W11_val_1d,registry_q3_2d.csv
+problem3_slove.md,428,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,429,25,MATCH,V7_dtdC,registry_q3_verify.csv
+problem3_slove.md,429,206707.978,MATCH,W11_t_2d_n25,registry_q3_2d.csv
+problem3_slove.md,429,57.4189,MATCH,W11_t_2d_n25_h,registry_q3_2d.csv
+problem3_slove.md,429,-8.232,MATCH,W11_dt_axial_n25,registry_q3_2d.csv
+problem3_slove.md,430,50,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,430,206708.532,MATCH,W11_t_2d_n50,registry_q3_2d.csv
+problem3_slove.md,430,57.4190,MATCH,W11_t_2d_n50_h,registry_q3_2d.csv
+problem3_slove.md,430,-7.678,MATCH,W11_dt_axial_n50,registry_q3_2d.csv
+problem3_slove.md,431,206704.762,MATCH,W11_t_2d_enddir,registry_q3_2d.csv
+problem3_slove.md,431,57.4180,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+problem3_slove.md,431,-11.448,MATCH,W11_dt_axial_enddir,registry_q3_2d.csv
+problem3_slove.md,433,50,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,433,25,MATCH,V7_dtdC,registry_q3_verify.csv
+problem3_slove.md,433,0.554,MATCH,W11_dt_axial_consist,registry_q3_2d.csv
+problem3_slove.md,434,11.45,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+problem3_slove.md,435,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+problem3_slove.md,435,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+problem3_slove.md,436,-11.88,MATCH,W11_dt_prod,registry_q3_2d.csv
+problem3_slove.md,437,-7.678,MATCH,W11_dt_axial_n50,registry_q3_2d.csv
+problem3_slove.md,437,-4.20,MATCH,W11_dt_scheme,registry_q3_2d.csv
+problem3_slove.md,439,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,439,1e-8,ALLOW,allow: 量级声明,
+problem3_slove.md,439,0.031,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+problem3_slove.md,441,21,ALLOW,allow: 输出列数,
+problem3_slove.md,442,206704.76,MATCH,W11_t_2d_enddir,registry_q3_2d.csv
+problem3_slove.md,442,617,ALLOW,allow: W11 共同比较窗采样点数 (运行观测),
+problem3_slove.md,446,50,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,446,2.28e-5,MATCH,W11_dC_mid_n50,registry_q3_2d.csv
+problem3_slove.md,446,1.72e-3,MATCH,W11_dT_mid_n50,registry_q3_2d.csv
+problem3_slove.md,447,2.67e-5,MATCH,W11_dC_scheme,registry_q3_2d.csv
+problem3_slove.md,447,1.24e-4,MATCH,W11_dT_scheme,registry_q3_2d.csv
+problem3_slove.md,448,50,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,448,4.57e-5,MATCH,W11_dC_prod_n50,registry_q3_2d.csv
+problem3_slove.md,448,1.73e-3,MATCH,W11_dT_prod_n50,registry_q3_2d.csv
+problem3_slove.md,450,2.28e-5,MATCH,W11_dC_mid_n50,registry_q3_2d.csv
+problem3_slove.md,450,5e-5,MATCH,W11_dC_prod_enddir,registry_q3_2d.csv
+problem3_slove.md,451,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,453,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,454,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,454,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,454,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,454,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,454,12.5,MATCH,P07_cross_r2,registry_q3.csv
+problem3_slove.md,454,0.0525,MATCH,W11_C_end_axis,registry_q3_2d.csv
+problem3_slove.md,454,0.1321,MATCH,W11_C_ax_1cm,registry_q3_2d.csv
+problem3_slove.md,454,0.1433,MATCH,W11_C_ax_2cm,registry_q3_2d.csv
+problem3_slove.md,454,0.1494,MATCH,W11_C_ax_5cm,registry_q3_2d.csv
+problem3_slove.md,454,0.1500,MATCH,P05_C_center,registry_q3.csv
+problem3_slove.md,455,-0.005,MATCH,W11_D_over_alpha,registry_q3_2d.csv|abs
+problem3_slove.md,455,2.25,MATCH,W11_z_dip_cm,registry_q3_2d.csv
+problem3_slove.md,455,18,MATCH,W11_pen_alpha_cm,registry_q3_2d.csv
+problem3_slove.md,456,617,ALLOW,allow: W11 共同比较窗采样点数 (运行观测),
+problem3_slove.md,456,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,456,1510.9,MATCH,W11_argmax_last_t_n50,registry_q3_2d.csv
+problem3_slove.md,457,25,MATCH,V7_dtdC,registry_q3_verify.csv
+problem3_slove.md,458,3.5e-5,MATCH,W11_water_resid,registry_q3_2d.csv
+problem3_slove.md,458,600,MATCH,P00_tau,registry_q3.csv
+problem3_slove.md,462,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+problem3_slove.md,463,11.4,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+problem3_slove.md,463,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+problem3_slove.md,463,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+problem3_slove.md,463,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+problem3_slove.md,465,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,474,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,474,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,474,3600,MATCH,P00_max_step,registry_q3.csv
+problem3_slove.md,476,206720.413,MATCH,DR_base,registry_q3_drainage.csv
+problem3_slove.md,476,57.4223,MATCH,P01_tdry_h,registry_q3.csv
+problem3_slove.md,476,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+problem3_slove.md,478,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,478,9.42,ALLOW,allow: t_dry 的'天+小时'表述推导,
+problem3_slove.md,478,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,478,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,479,206958.2,MATCH,P01_tdry_rich,registry_q3.csv
+problem3_slove.md,479,57.4884,MATCH,P01_tdry_rich_h,registry_q3.csv
+problem3_slove.md,480,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+problem3_slove.md,480,400,ALLOW,allow: 网格 M=400,
+problem3_slove.md,480,0.028,MATCH,P08_spatial_unc,registry_q3.csv
+problem3_slove.md,482,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,484,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,484,0.5,MATCH,E04_T_range,registry_q3.csv
+problem3_slove.md,484,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,484,1.5,MATCH,X_C_3600_2,registry_q3.csv
+problem3_slove.md,484,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,486,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,486,1.0181,MATCH,T5_r1_c1,registry_q3.csv
+problem3_slove.md,486,0.9892,MATCH,T5_r1_c2,registry_q3.csv
+problem3_slove.md,486,0.9024,MATCH,T5_r1_c3,registry_q3.csv
+problem3_slove.md,486,0.7556,MATCH,T5_r1_c4,registry_q3.csv
+problem3_slove.md,486,0.5330,MATCH,T5_r1_c5,registry_q3.csv
+problem3_slove.md,487,12,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+problem3_slove.md,487,0.4565,MATCH,T5_r2_c1,registry_q3.csv
+problem3_slove.md,487,0.4435,MATCH,T5_r2_c2,registry_q3.csv
+problem3_slove.md,487,0.4034,MATCH,T5_r2_c3,registry_q3.csv
+problem3_slove.md,487,0.3300,MATCH,T5_r2_c4,registry_q3.csv
+problem3_slove.md,487,0.1644,MATCH,T5_r2_c5,registry_q3.csv
+problem3_slove.md,488,18,MATCH,W11_pen_alpha_cm,registry_q3_2d.csv
+problem3_slove.md,488,0.2990,MATCH,T5_r3_c1,registry_q3.csv
+problem3_slove.md,488,0.2917,MATCH,T5_r3_c2,registry_q3.csv
+problem3_slove.md,488,0.2688,MATCH,T5_r3_c3,registry_q3.csv
+problem3_slove.md,488,0.2254,MATCH,T5_r3_c4,registry_q3.csv
+problem3_slove.md,488,0.0846,MATCH,T5_r3_c5,registry_q3.csv
+problem3_slove.md,489,24,MATCH,MC_env_lo,registry_q3_mc.csv
+problem3_slove.md,489,0.2378,MATCH,X_C_86400_0,registry_q3.csv
+problem3_slove.md,489,0.2328,MATCH,T5_r4_c2,registry_q3.csv
+problem3_slove.md,489,0.2167,MATCH,X_C_86400_1,registry_q3.csv
+problem3_slove.md,489,0.1855,MATCH,T5_r4_c4,registry_q3.csv
+problem3_slove.md,489,0.0665,MATCH,X_C_86400_2,registry_q3.csv
+problem3_slove.md,490,30,ALLOW,allow: 表5 行时刻,
+problem3_slove.md,490,0.2058,MATCH,T5_r5_c1,registry_q3.csv
+problem3_slove.md,490,0.2018,MATCH,T5_r5_c2,registry_q3.csv
+problem3_slove.md,490,0.1891,MATCH,T5_r5_c3,registry_q3.csv
+problem3_slove.md,490,0.1640,MATCH,T5_r5_c4,registry_q3.csv
+problem3_slove.md,490,0.0599,MATCH,T5_r5_c5,registry_q3.csv
+problem3_slove.md,491,36,MATCH,P07_cross_r1.5,registry_q3.csv
+problem3_slove.md,491,0.1859,MATCH,T5_r6_c1,registry_q3.csv
+problem3_slove.md,491,0.1825,MATCH,T5_r6_c2,registry_q3.csv
+problem3_slove.md,491,0.1718,MATCH,T5_r6_c3,registry_q3.csv
+problem3_slove.md,491,0.1503,MATCH,T5_r6_c4,registry_q3.csv
+problem3_slove.md,491,0.0567,MATCH,T5_r6_c5,registry_q3.csv
+problem3_slove.md,492,42,ALLOW,allow: 表5 行时刻,
+problem3_slove.md,492,0.1720,MATCH,T5_r7_c1,registry_q3.csv
+problem3_slove.md,492,0.1691,MATCH,T5_r7_c2,registry_q3.csv
+problem3_slove.md,492,0.1596,MATCH,T5_r7_c3,registry_q3.csv
+problem3_slove.md,492,0.1406,MATCH,T5_r7_c4,registry_q3.csv
+problem3_slove.md,492,0.0549,MATCH,T5_r7_c5,registry_q3.csv
+problem3_slove.md,493,48,MATCH,P07_cross_r1,registry_q3.csv
+problem3_slove.md,493,0.1618,MATCH,X_C_172800_0,registry_q3.csv
+problem3_slove.md,493,0.1591,MATCH,T5_r8_c2,registry_q3.csv
+problem3_slove.md,493,0.1506,MATCH,X_C_172800_1,registry_q3.csv
+problem3_slove.md,493,0.1333,MATCH,T5_r8_c4,registry_q3.csv
+problem3_slove.md,493,0.0537,MATCH,X_C_172800_2,registry_q3.csv
+problem3_slove.md,494,54,ALLOW,allow: 表5 行时刻,
+problem3_slove.md,494,0.1538,MATCH,T5_r9_c1,registry_q3.csv
+problem3_slove.md,494,0.1514,MATCH,T5_r9_c2,registry_q3.csv
+problem3_slove.md,494,0.1436,MATCH,T5_r9_c3,registry_q3.csv
+problem3_slove.md,494,0.1276,MATCH,T5_r9_c4,registry_q3.csv
+problem3_slove.md,494,0.0530,MATCH,T5_r9_c5,registry_q3.csv
+problem3_slove.md,495,57.42,MATCH,MC_s_kcp_m,registry_q3_mc.csv
+problem3_slove.md,495,0.1500,MATCH,P05_C_center,registry_q3.csv
+problem3_slove.md,495,0.1477,MATCH,P05_C_r0p5,registry_q3.csv
+problem3_slove.md,495,0.1402,MATCH,X_C_206700_1,registry_q3.csv
+problem3_slove.md,495,0.1248,MATCH,P05_C_r1p5,registry_q3.csv
+problem3_slove.md,495,0.0527,MATCH,X_C_206700_2,registry_q3.csv
+problem3_slove.md,497,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,501,0.15,MATCH,P05_C_center,registry_q3.csv
+problem3_slove.md,501,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+problem3_slove.md,503,2.0,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,503,1.5,MATCH,X_C_3600_2,registry_q3.csv
+problem3_slove.md,503,1.0,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,503,0.5,MATCH,E04_T_range,registry_q3.csv
+problem3_slove.md,503,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,505,12.559,MATCH,P07_cross_r2,registry_q3.csv
+problem3_slove.md,505,36.145,MATCH,P07_cross_r1.5,registry_q3.csv
+problem3_slove.md,505,48.474,MATCH,P07_cross_r1,registry_q3.csv
+problem3_slove.md,505,55.237,MATCH,P07_cross_r0.5,registry_q3.csv
+problem3_slove.md,505,57.422,MATCH,MC_s_kk_p,registry_q3_mc.csv
+problem3_slove.md,507,12.6,MATCH,P07_cross_r2,registry_q3.csv
+problem3_slove.md,508,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,509,0.0527,MATCH,X_C_206700_2,registry_q3.csv
+problem3_slove.md,509,0.0500,MATCH,P00_Cbar,registry_q3.csv
+problem3_slove.md,510,5.3,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,510,8e-7,ALLOW,allow: 附录2 对流传质系数 h_m,
+problem3_slove.md,512,49.9998,MATCH,P05_T_surface,registry_q3.csv
+problem3_slove.md,513,50.00,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,514,5.0e5,ALLOW,allow: problem3.md §5.3 末期湿分特征时间 R^2/D,
+problem3_slove.md,514,1.9e3,ALLOW,allow: problem3.md §7.1 末期热特征时间 R^2/alpha (取整),
+problem3_slove.md,515,95.13,MATCH,P06_loss,registry_q3.csv
+problem3_slove.md,515,2.3e-7,MATCH,P06_budget,registry_q3.csv
+problem3_slove.md,517,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,519,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,519,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,520,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,520,0.1,MATCH,T5_r3_c5,registry_q3.csv
+problem3_slove.md,520,2.0,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,520,21,ALLOW,allow: 输出列数,
+problem3_slove.md,520,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+problem3_slove.md,520,120,ALLOW,allow: result3 A 列时刻 60x2,
+problem3_slove.md,520,206700,MATCH,P00_t_last,registry_q3.csv
+problem3_slove.md,521,3445,MATCH,P00_n60,registry_q3.csv
+problem3_slove.md,521,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,521,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,522,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,526,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,528,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,528,1.17,ALLOW,allow: problem3.md 原型环境 scipy 版本号,
+problem3_slove.md,528,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,529,1.18,ALLOW,allow: scipy 版本号,
+problem3_slove.md,529,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,531,1.17,ALLOW,allow: problem3.md 原型环境 scipy 版本号,
+problem3_slove.md,531,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,531,1.18,ALLOW,allow: scipy 版本号,
+problem3_slove.md,531,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,533,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,533,206726.278,ALLOW,"allow: problem3.md 原型 t_dry (M=200, scipy 1.17.1)",
+problem3_slove.md,533,206720.413,MATCH,DR_base,registry_q3_drainage.csv
+problem3_slove.md,533,-6,MATCH,P05_Csurf_rel,registry_q3.csv|abs
+problem3_slove.md,534,100,MATCH,MC_p97.5,registry_q3_mc.csv
+problem3_slove.md,534,206403.581,ALLOW,allow: problem3.md 原型 t_dry (M=100),
+problem3_slove.md,534,206397.931,MATCH,P02_M100,registry_q3.csv
+problem3_slove.md,534,-6,MATCH,P05_Csurf_rel,registry_q3.csv|abs
+problem3_slove.md,535,400,ALLOW,allow: 网格 M=400,
+problem3_slove.md,535,206863.279,ALLOW,allow: problem3.md 原型 t_dry (M=400),
+problem3_slove.md,535,206857.296,MATCH,P02_M400,registry_q3.csv
+problem3_slove.md,535,-6,MATCH,P05_Csurf_rel,registry_q3.csv|abs
+problem3_slove.md,536,1.236,MATCH,P02_order,registry_q3.csv
+problem3_slove.md,536,1.2363,MATCH,P02_order,registry_q3.csv
+problem3_slove.md,537,206964.4,ALLOW,allow: problem3.md 原型 Richardson 外推值,
+problem3_slove.md,537,57.4901,ALLOW,allow: problem3.md 原型 Richardson 外推值 (h),
+problem3_slove.md,537,206958.2,MATCH,P01_tdry_rich,registry_q3.csv
+problem3_slove.md,537,57.4884,MATCH,P01_tdry_rich_h,registry_q3.csv
+problem3_slove.md,537,-6,MATCH,P05_Csurf_rel,registry_q3.csv|abs
+problem3_slove.md,538,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,538,6341,ALLOW,allow: problem3.md 原型 BDF 步数 (scipy 1.17.1),
+problem3_slove.md,538,3299,MATCH,P03_nsteps,registry_q3.csv
+problem3_slove.md,539,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,539,50,MATCH,P00_Tbar,registry_q3.csv
+problem3_slove.md,539,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,539,47,ALLOW,allow: 表5 与原型逐格一致的计数,
+problem3_slove.md,539,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,539,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,541,-6,MATCH,P05_Csurf_rel,registry_q3.csv|abs
+problem3_slove.md,541,3e-5,MATCH,W11_dC_scheme,registry_q3_2d.csv
+problem3_slove.md,542,6341,ALLOW,allow: problem3.md 原型 BDF 步数 (scipy 1.17.1),
+problem3_slove.md,542,3299,MATCH,P03_nsteps,registry_q3.csv
+problem3_slove.md,543,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,543,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,544,57.42,MATCH,MC_s_kcp_m,registry_q3_mc.csv
+problem3_slove.md,544,57.49,MATCH,P01_tdry_rich_h,registry_q3.csv
+problem3_slove.md,554,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+problem3_slove.md,554,100,MATCH,MC_p97.5,registry_q3_mc.csv
+problem3_slove.md,554,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,554,400,ALLOW,allow: 网格 M=400,
+problem3_slove.md,555,0.17,MATCH,V2_M200_diff,registry_q3_verify.csv
+problem3_slove.md,555,4.8e-5,MATCH,W11_dC_prod_enddir,registry_q3_2d.csv
+problem3_slove.md,555,1e-9,MATCH,P00_rtol,registry_q3.csv
+problem3_slove.md,555,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,556,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+problem3_slove.md,556,3600,MATCH,P00_max_step,registry_q3.csv
+problem3_slove.md,556,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,557,0.04,MATCH,W11_area_end,registry_q3_2d.csv
+problem3_slove.md,557,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,558,11,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+problem3_slove.md,558,11.4,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+problem3_slove.md,558,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+problem3_slove.md,559,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+problem3_slove.md,561,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,561,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+problem3_slove.md,562,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,562,57.49,MATCH,P01_tdry_rich_h,registry_q3.csv
+problem3_slove.md,562,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,563,1e-5,MATCH,V4_q2_dt0125_dC_w1p8e3_7p2e3 s,registry_q3_verify.csv
+problem3_slove.md,563,34,MATCH,W11_argmax_off_enddir,registry_q3_2d.csv
+problem3_slove.md,570,-1.82,MATCH,V7_dtdT,registry_q3_verify.csv
+problem3_slove.md,570,7,MATCH,MC_s_kD_d,registry_q3_mc.csv
+problem3_slove.md,570,61,MATCH,E01_n,registry_q3.csv
+problem3_slove.md,570,0.02,MATCH,V3_ms1800_diff,registry_q3_verify.csv|abs
+problem3_slove.md,570,0.04,MATCH,W11_area_end,registry_q3_2d.csv
+problem3_slove.md,570,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,571,24.8,MATCH,V7_dtdC,registry_q3_verify.csv
+problem3_slove.md,571,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+problem3_slove.md,571,0.13,MATCH,V7_s_Cp10_dh,registry_q3_verify.csv
+problem3_slove.md,571,-0.12,MATCH,V7_s_Cm10_dh,registry_q3_verify.csv
+problem3_slove.md,571,7,MATCH,MC_s_kD_d,registry_q3_mc.csv
+problem3_slove.md,571,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,571,38,ALLOW,allow: 先验/实测敏感性之比 推导,
+problem3_slove.md,571,139,ALLOW,allow: R^2/D 末期特征时间 5.0e5/3600 推导,
+problem3_slove.md,572,0.1,MATCH,T5_r3_c5,registry_q3.csv
+problem3_slove.md,572,7,MATCH,MC_s_kD_d,registry_q3_mc.csv
+problem3_slove.md,573,8e-7,ALLOW,allow: 附录2 对流传质系数 h_m,
+problem3_slove.md,573,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,574,7,MATCH,MC_s_kD_d,registry_q3_mc.csv
+problem3_slove.md,574,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,574,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,574,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+problem3_slove.md,575,200,MATCH,P00_M,registry_q3.csv
+problem3_slove.md,575,400,ALLOW,allow: 网格 M=400,
+problem3_slove.md,575,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,575,54,ALLOW,allow: 表5 行时刻,
+problem3_slove.md,575,2.4e-4,MATCH,V1_dC_200_400,registry_q3_verify.csv
+problem3_slove.md,581,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,582,0.15,MATCH,P05_C_center,registry_q3.csv
+problem3_slove.md,582,19,MATCH,MC_std,registry_q3_mc.csv
+problem3_slove.md,584,1,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,584,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,586,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,586,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,587,2.24e-7,ALLOW,allow: selftest FD 偏差 (控制台输出),
+problem3_slove.md,587,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,589,3,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,589,1.2363,MATCH,P02_order,registry_q3.csv
+problem3_slove.md,589,57.4884,MATCH,P01_tdry_rich_h,registry_q3.csv
+problem3_slove.md,590,0.18,MATCH,T5_r6_c2,registry_q3.csv
+problem3_slove.md,591,3.98e-5,MATCH,V4_q2_dt025_dC,registry_q3_verify.csv
+problem3_slove.md,591,5e-5,MATCH,W11_dC_prod_enddir,registry_q3_2d.csv
+problem3_slove.md,591,2.002,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,592,0.04,MATCH,W11_area_end,registry_q3_2d.csv
+problem3_slove.md,593,2.3e-7,MATCH,P06_budget,registry_q3.csv
+problem3_slove.md,594,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+problem3_slove.md,594,206720.413,MATCH,DR_base,registry_q3_drainage.csv
+problem3_slove.md,594,57.4223,MATCH,P01_tdry_h,registry_q3.csv
+problem3_slove.md,594,57.4884,MATCH,P01_tdry_rich_h,registry_q3.csv
+problem3_slove.md,595,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,595,9.4,ALLOW,allow: t_dry '天+小时'表述推导,
+problem3_slove.md,595,2.0,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,595,12.56,MATCH,P07_cross_r2,registry_q3.csv
+problem3_slove.md,595,1.5,MATCH,X_C_3600_2,registry_q3.csv
+problem3_slove.md,595,36.14,MATCH,P07_cross_r1.5,registry_q3.csv
+problem3_slove.md,596,1.0,MATCH,X_C_10800_2,registry_q3.csv
+problem3_slove.md,596,48.47,MATCH,P07_cross_r1,registry_q3.csv
+problem3_slove.md,596,0.5,MATCH,E04_T_range,registry_q3.csv
+problem3_slove.md,596,55.24,MATCH,P07_cross_r0.5,registry_q3.csv
+problem3_slove.md,596,57.42,MATCH,MC_s_kcp_m,registry_q3_mc.csv
+problem3_slove.md,597,0.0527,MATCH,X_C_206700_2,registry_q3.csv
+problem3_slove.md,597,5.3,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,598,49.9998,MATCH,P05_T_surface,registry_q3.csv
+problem3_slove.md,599,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+problem3_slove.md,600,-1.82,MATCH,V7_dtdT,registry_q3_verify.csv
+problem3_slove.md,601,24.8,MATCH,V7_dtdC,registry_q3_verify.csv
+problem3_slove.md,601,38,ALLOW,allow: 先验/实测敏感性之比 推导,
+problem3_slove.md,602,139,ALLOW,allow: R^2/D 末期特征时间 5.0e5/3600 推导,
+problem3_slove.md,602,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+problem3_slove.md,602,2.6,MATCH,X_C_600_0,registry_q3.csv
+problem3_slove.md,603,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+problem3_slove.md,603,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+problem3_slove.md,604,57.49,MATCH,P01_tdry_rich_h,registry_q3.csv
+problem3_slove.md,605,6,MATCH,P05_Csurf_rel,registry_q3.csv
+problem3_slove.md,605,11,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+problem3_slove.md,606,0,MATCH,P04_maxC_dry,registry_q3.csv
+problem3_slove.md,606,1.7e-9,MATCH,W11_val_1d,registry_q3_2d.csv
+problem3_slove.md,607,11.4,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+problem3_slove.md,607,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+problem3_slove.md,608,2.28e-5,MATCH,W11_dC_mid_n50,registry_q3_2d.csv
+problem3_slove.md,609,2,MATCH,V4_ratio,registry_q3_verify.csv
+problem3_slove.md,610,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+problem3_slove.md,610,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+example.tex(§5.3),8,19,MATCH,MC_std,registry_q3_mc.csv
+example.tex(§5.3),15,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),21,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),22,-1,MATCH,X_C_10800_2,registry_q3.csv|abs
+example.tex(§5.3),27,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),31,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),33,2.24e-7,ALLOW,allow: selftest FD 偏差 (控制台输出),
+example.tex(§5.3),33,75,ALLOW,"allow: 加速比 (耗时之比, 机器相关)",
+example.tex(§5.3),35,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),36,2.9206e-7,MATCH,V10_slope,registry_q3_verify.csv
+example.tex(§5.3),37,3.424e6,MATCH,V10_cond,registry_q3_verify.csv
+example.tex(§5.3),38,1e-5,MATCH,V4_q2_dt0125_dC_w1p8e3_7p2e3 s,registry_q3_verify.csv
+example.tex(§5.3),38,34,MATCH,W11_argmax_off_enddir,registry_q3_2d.csv
+example.tex(§5.3),39,1e-9,MATCH,P00_rtol,registry_q3.csv
+example.tex(§5.3),39,1e-6,MATCH,P00_atol_T,registry_q3.csv
+example.tex(§5.3),39,1e-9,MATCH,P00_rtol,registry_q3.csv
+example.tex(§5.3),40,1e-7,ALLOW,allow: W2/W5 对照容限,
+example.tex(§5.3),40,0.17,MATCH,V2_M200_diff,registry_q3_verify.csv
+example.tex(§5.3),43,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),44,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),44,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),45,3600,MATCH,P00_max_step,registry_q3.csv
+example.tex(§5.3),45,259200,ALLOW,allow: 积分上界 3 天 (s),
+example.tex(§5.3),45,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),45,20.2,ALLOW,allow: 余量百分比推导,
+example.tex(§5.3),46,200,MATCH,P00_M,registry_q3.csv
+example.tex(§5.3),46,3299,MATCH,P03_nsteps,registry_q3.csv
+example.tex(§5.3),46,62.7,MATCH,FG3_dt_mean,registry_q3_figures.csv
+example.tex(§5.3),47,8.3e5,ALLOW,allow: 定步长 BE 全程步数推导 206720/0.25,
+example.tex(§5.3),53,200,MATCH,P00_M,registry_q3.csv
+example.tex(§5.3),53,1e-9,MATCH,P00_rtol,registry_q3.csv
+example.tex(§5.3),53,1e-6,MATCH,P00_atol_T,registry_q3.csv
+example.tex(§5.3),53,1e-9,MATCH,P00_rtol,registry_q3.csv
+example.tex(§5.3),54,3600,MATCH,P00_max_step,registry_q3.csv
+example.tex(§5.3),54,259200,ALLOW,allow: 积分上界 3 天 (s),
+example.tex(§5.3),54,0.15,MATCH,P05_C_center,registry_q3.csv
+example.tex(§5.3),56,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+example.tex(§5.3),56,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),56,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),57,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),59,-1,MATCH,X_C_10800_2,registry_q3.csv|abs
+example.tex(§5.3),60,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),60,28,MATCH,W11_argmax_off_n25,registry_q3_2d.csv
+example.tex(§5.3),60,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),60,2.55,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),60,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),61,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),61,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),62,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),62,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),64,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),66,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),66,206720.4,MATCH,DR_base,registry_q3_drainage.csv
+example.tex(§5.3),66,57.42,MATCH,MC_s_kcp_m,registry_q3_mc.csv
+example.tex(§5.3),67,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),67,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+example.tex(§5.3),68,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),68,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),69,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),69,0.5,MATCH,E04_T_range,registry_q3.csv
+example.tex(§5.3),69,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),69,1.5,MATCH,X_C_3600_2,registry_q3.csv
+example.tex(§5.3),69,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),70,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+example.tex(§5.3),72,57.49,MATCH,P01_tdry_rich_h,registry_q3.csv
+example.tex(§5.3),80,206720.4,MATCH,DR_base,registry_q3_drainage.csv
+example.tex(§5.3),80,57.42,MATCH,MC_s_kcp_m,registry_q3_mc.csv
+example.tex(§5.3),80,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+example.tex(§5.3),82,2.4,MATCH,X_C_3600_1,registry_q3.csv
+example.tex(§5.3),82,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),82,-3,MATCH,MC_s_D0_d,registry_q3_mc.csv
+example.tex(§5.3),83,57.49,MATCH,P01_tdry_rich_h,registry_q3.csv
+example.tex(§5.3),85,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),87,2.9e-7,MATCH,V10_gpre_min,registry_q3_verify.csv
+example.tex(§5.3),88,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),90,1.2e-4,MATCH,FG3_dt_min,registry_q3_figures.csv
+example.tex(§5.3),90,7.5,MATCH,FG3_dt_decades,registry_q3_figures.csv
+example.tex(§5.3),91,0.25,ALLOW,allow: 问题二 dt=0.25 s,
+example.tex(§5.3),95,0.96,MATCH,DR_c075_dh,registry_q3_drainage.csv
+example.tex(§5.3),95,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),97,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),97,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),99,3600,MATCH,P00_max_step,registry_q3.csv
+example.tex(§5.3),99,0.25,ALLOW,allow: 问题二 dt=0.25 s,
+example.tex(§5.3),103,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),103,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),105,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),105,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+example.tex(§5.3),105,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),106,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),106,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),106,0.5,MATCH,E04_T_range,registry_q3.csv
+example.tex(§5.3),106,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),106,1.5,MATCH,X_C_3600_2,registry_q3.csv
+example.tex(§5.3),106,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),107,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),114,-4,MATCH,W11_dt_scheme,registry_q3_2d.csv
+example.tex(§5.3),117,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),117,0.5,MATCH,E04_T_range,registry_q3.csv
+example.tex(§5.3),117,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),117,1.5,MATCH,X_C_3600_2,registry_q3.csv
+example.tex(§5.3),117,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),119,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),119,1.0181,MATCH,T5_r1_c1,registry_q3.csv
+example.tex(§5.3),119,0.9892,MATCH,T5_r1_c2,registry_q3.csv
+example.tex(§5.3),119,0.9024,MATCH,T5_r1_c3,registry_q3.csv
+example.tex(§5.3),119,0.7556,MATCH,T5_r1_c4,registry_q3.csv
+example.tex(§5.3),119,0.5330,MATCH,T5_r1_c5,registry_q3.csv
+example.tex(§5.3),120,12,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+example.tex(§5.3),120,0.4565,MATCH,T5_r2_c1,registry_q3.csv
+example.tex(§5.3),120,0.4435,MATCH,T5_r2_c2,registry_q3.csv
+example.tex(§5.3),120,0.4034,MATCH,T5_r2_c3,registry_q3.csv
+example.tex(§5.3),120,0.3300,MATCH,T5_r2_c4,registry_q3.csv
+example.tex(§5.3),120,0.1644,MATCH,T5_r2_c5,registry_q3.csv
+example.tex(§5.3),121,18,MATCH,W11_pen_alpha_cm,registry_q3_2d.csv
+example.tex(§5.3),121,0.2990,MATCH,T5_r3_c1,registry_q3.csv
+example.tex(§5.3),121,0.2917,MATCH,T5_r3_c2,registry_q3.csv
+example.tex(§5.3),121,0.2688,MATCH,T5_r3_c3,registry_q3.csv
+example.tex(§5.3),121,0.2254,MATCH,T5_r3_c4,registry_q3.csv
+example.tex(§5.3),121,0.0846,MATCH,T5_r3_c5,registry_q3.csv
+example.tex(§5.3),122,24,MATCH,MC_env_lo,registry_q3_mc.csv
+example.tex(§5.3),122,0.2378,MATCH,X_C_86400_0,registry_q3.csv
+example.tex(§5.3),122,0.2328,MATCH,T5_r4_c2,registry_q3.csv
+example.tex(§5.3),122,0.2167,MATCH,X_C_86400_1,registry_q3.csv
+example.tex(§5.3),122,0.1855,MATCH,T5_r4_c4,registry_q3.csv
+example.tex(§5.3),122,0.0665,MATCH,X_C_86400_2,registry_q3.csv
+example.tex(§5.3),123,30,ALLOW,allow: 表5 行时刻,
+example.tex(§5.3),123,0.2058,MATCH,T5_r5_c1,registry_q3.csv
+example.tex(§5.3),123,0.2018,MATCH,T5_r5_c2,registry_q3.csv
+example.tex(§5.3),123,0.1891,MATCH,T5_r5_c3,registry_q3.csv
+example.tex(§5.3),123,0.1640,MATCH,T5_r5_c4,registry_q3.csv
+example.tex(§5.3),123,0.0599,MATCH,T5_r5_c5,registry_q3.csv
+example.tex(§5.3),124,36,MATCH,P07_cross_r1.5,registry_q3.csv
+example.tex(§5.3),124,0.1859,MATCH,T5_r6_c1,registry_q3.csv
+example.tex(§5.3),124,0.1825,MATCH,T5_r6_c2,registry_q3.csv
+example.tex(§5.3),124,0.1718,MATCH,T5_r6_c3,registry_q3.csv
+example.tex(§5.3),124,0.1503,MATCH,T5_r6_c4,registry_q3.csv
+example.tex(§5.3),124,0.0567,MATCH,T5_r6_c5,registry_q3.csv
+example.tex(§5.3),125,42,ALLOW,allow: 表5 行时刻,
+example.tex(§5.3),125,0.1720,MATCH,T5_r7_c1,registry_q3.csv
+example.tex(§5.3),125,0.1691,MATCH,T5_r7_c2,registry_q3.csv
+example.tex(§5.3),125,0.1596,MATCH,T5_r7_c3,registry_q3.csv
+example.tex(§5.3),125,0.1406,MATCH,T5_r7_c4,registry_q3.csv
+example.tex(§5.3),125,0.0549,MATCH,T5_r7_c5,registry_q3.csv
+example.tex(§5.3),126,48,MATCH,P07_cross_r1,registry_q3.csv
+example.tex(§5.3),126,0.1618,MATCH,X_C_172800_0,registry_q3.csv
+example.tex(§5.3),126,0.1591,MATCH,T5_r8_c2,registry_q3.csv
+example.tex(§5.3),126,0.1506,MATCH,X_C_172800_1,registry_q3.csv
+example.tex(§5.3),126,0.1333,MATCH,T5_r8_c4,registry_q3.csv
+example.tex(§5.3),126,0.0537,MATCH,X_C_172800_2,registry_q3.csv
+example.tex(§5.3),127,54,ALLOW,allow: 表5 行时刻,
+example.tex(§5.3),127,0.1538,MATCH,T5_r9_c1,registry_q3.csv
+example.tex(§5.3),127,0.1514,MATCH,T5_r9_c2,registry_q3.csv
+example.tex(§5.3),127,0.1436,MATCH,T5_r9_c3,registry_q3.csv
+example.tex(§5.3),127,0.1276,MATCH,T5_r9_c4,registry_q3.csv
+example.tex(§5.3),127,0.0530,MATCH,T5_r9_c5,registry_q3.csv
+example.tex(§5.3),128,57.42,MATCH,MC_s_kcp_m,registry_q3_mc.csv
+example.tex(§5.3),128,0.1500,MATCH,P05_C_center,registry_q3.csv
+example.tex(§5.3),128,0.1477,MATCH,P05_C_r0p5,registry_q3.csv
+example.tex(§5.3),128,0.1402,MATCH,X_C_206700_1,registry_q3.csv
+example.tex(§5.3),128,0.1248,MATCH,P05_C_r1p5,registry_q3.csv
+example.tex(§5.3),128,0.0527,MATCH,X_C_206700_2,registry_q3.csv
+example.tex(§5.3),133,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),135,2.0,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),135,12.56,MATCH,P07_cross_r2,registry_q3.csv
+example.tex(§5.3),136,1.5,MATCH,X_C_3600_2,registry_q3.csv
+example.tex(§5.3),136,36.14,MATCH,P07_cross_r1.5,registry_q3.csv
+example.tex(§5.3),136,1.0,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),136,48.47,MATCH,P07_cross_r1,registry_q3.csv
+example.tex(§5.3),137,0.5,MATCH,E04_T_range,registry_q3.csv
+example.tex(§5.3),137,55.24,MATCH,P07_cross_r0.5,registry_q3.csv
+example.tex(§5.3),137,57.42,MATCH,MC_s_kcp_m,registry_q3_mc.csv
+example.tex(§5.3),138,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),139,1.02,MATCH,T5_r1_c1,registry_q3.csv
+example.tex(§5.3),140,0.0527,MATCH,X_C_206700_2,registry_q3.csv
+example.tex(§5.3),141,0.0500,MATCH,P00_Cbar,registry_q3.csv
+example.tex(§5.3),141,5.3,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),141,8e-7,ALLOW,allow: 附录2 对流传质系数 h_m,
+example.tex(§5.3),143,49.9998,MATCH,P05_T_surface,registry_q3.csv
+example.tex(§5.3),144,5.0e5,ALLOW,allow: problem3.md §5.3 末期湿分特征时间 R^2/D,
+example.tex(§5.3),145,1.9e3,ALLOW,allow: problem3.md §7.1 末期热特征时间 R^2/alpha (取整),
+example.tex(§5.3),147,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+example.tex(§5.3),148,2.9e-7,MATCH,V10_gpre_min,registry_q3_verify.csv
+example.tex(§5.3),149,12,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+example.tex(§5.3),149,0.46,MATCH,T5_r2_c1,registry_q3.csv
+example.tex(§5.3),149,0.15,MATCH,P05_C_center,registry_q3.csv
+example.tex(§5.3),149,45,ALLOW,allow: 中心 0.46→0.15 历时 57.42-12 推导,
+example.tex(§5.3),150,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),151,2.55,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),151,0.15,MATCH,P05_C_center,registry_q3.csv
+example.tex(§5.3),151,17,MATCH,W11_pen_alpha_cm,registry_q3_2d.csv
+example.tex(§5.3),153,139,ALLOW,allow: R^2/D 末期特征时间 5.0e5/3600 推导,
+example.tex(§5.3),155,1e-5,MATCH,V4_q2_dt0125_dC_w1p8e3_7p2e3 s,registry_q3_verify.csv
+example.tex(§5.3),155,34,MATCH,W11_argmax_off_enddir,registry_q3_2d.csv
+example.tex(§5.3),159,0.96,MATCH,DR_c075_dh,registry_q3_drainage.csv
+example.tex(§5.3),159,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),161,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),161,24,MATCH,MC_env_lo,registry_q3_mc.csv
+example.tex(§5.3),161,48,MATCH,P07_cross_r1,registry_q3.csv
+example.tex(§5.3),162,0.15,MATCH,P05_C_center,registry_q3.csv
+example.tex(§5.3),162,0.0500,MATCH,P00_Cbar,registry_q3.csv
+example.tex(§5.3),167,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),167,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),168,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),168,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),168,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),169,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),169,0.1,MATCH,T5_r3_c5,registry_q3.csv
+example.tex(§5.3),169,2.0,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),170,21,ALLOW,allow: 输出列数,
+example.tex(§5.3),170,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+example.tex(§5.3),170,120,ALLOW,allow: result3 A 列时刻 60x2,
+example.tex(§5.3),170,206700,MATCH,P00_t_last,registry_q3.csv
+example.tex(§5.3),170,3445,MATCH,P00_n60,registry_q3.csv
+example.tex(§5.3),171,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+example.tex(§5.3),171,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+example.tex(§5.3),172,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),180,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),182,100,MATCH,MC_p97.5,registry_q3_mc.csv
+example.tex(§5.3),182,200,MATCH,P00_M,registry_q3.csv
+example.tex(§5.3),182,400,ALLOW,allow: 网格 M=400,
+example.tex(§5.3),182,206397.9,MATCH,P02_M100,registry_q3.csv
+example.tex(§5.3),183,206720.4,MATCH,DR_base,registry_q3_drainage.csv
+example.tex(§5.3),183,206857.3,MATCH,P02_M400,registry_q3.csv
+example.tex(§5.3),183,2.3559,MATCH,V1_ratio,registry_q3_verify.csv
+example.tex(§5.3),184,2.3559,MATCH,V1_ratio,registry_q3_verify.csv
+example.tex(§5.3),184,1.2363,MATCH,P02_order,registry_q3.csv
+example.tex(§5.3),185,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),185,400,ALLOW,allow: 网格 M=400,
+example.tex(§5.3),185,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),185,-1,MATCH,X_C_10800_2,registry_q3.csv|abs
+example.tex(§5.3),185,206958.2,MATCH,P01_tdry_rich,registry_q3.csv
+example.tex(§5.3),186,57.49,MATCH,P01_tdry_rich_h,registry_q3.csv
+example.tex(§5.3),186,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),186,57.50,ALLOW,allow: p=1 保守外推小时值 206994.178/3600 推导,
+example.tex(§5.3),187,0.01,MATCH,W11_D_over_alpha,registry_q3_2d.csv
+example.tex(§5.3),187,0.028,MATCH,P08_spatial_unc,registry_q3.csv
+example.tex(§5.3),188,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+example.tex(§5.3),188,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),190,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),192,1e-7,ALLOW,allow: W2/W5 对照容限,
+example.tex(§5.3),192,1e-9,MATCH,P00_rtol,registry_q3.csv
+example.tex(§5.3),192,0.17,MATCH,V2_M200_diff,registry_q3_verify.csv
+example.tex(§5.3),192,600,MATCH,P00_tau,registry_q3.csv
+example.tex(§5.3),193,3600,MATCH,P00_max_step,registry_q3.csv
+example.tex(§5.3),193,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+example.tex(§5.3),194,0.04,MATCH,W11_area_end,registry_q3_2d.csv
+example.tex(§5.3),195,60,MATCH,MC_s_D0_m,registry_q3_mc.csv
+example.tex(§5.3),195,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),196,2.3e-7,MATCH,P06_budget,registry_q3.csv
+example.tex(§5.3),198,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),199,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),199,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),199,14400,ALLOW,allow: 附件1 覆盖上界 t_c,
+example.tex(§5.3),200,200,MATCH,P00_M,registry_q3.csv
+example.tex(§5.3),200,0.25,ALLOW,allow: 问题二 dt=0.25 s,
+example.tex(§5.3),201,3.98e-5,MATCH,V4_q2_dt025_dC,registry_q3_verify.csv
+example.tex(§5.3),201,4.3e-4,MATCH,V4_q2_dt025_dT,registry_q3_verify.csv
+example.tex(§5.3),202,5e-5,MATCH,W11_dC_prod_enddir,registry_q3_2d.csv
+example.tex(§5.3),203,2.002,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(§5.3),206,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+example.tex(§5.3),209,11.4,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+example.tex(§5.3),209,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+example.tex(§5.3),209,25,MATCH,V7_dtdC,registry_q3_verify.csv
+example.tex(§5.3),209,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(§5.3),210,1e4,MATCH,P03_nfev,registry_q3.csv
+example.tex(§5.3),210,0.03,MATCH,W11_t_1dfv_tol,registry_q3_2d.csv
+example.tex(§5.3),211,2.28e-5,MATCH,W11_dC_mid_n50,registry_q3_2d.csv
+example.tex(§5.3),212,5e-5,MATCH,W11_dC_prod_enddir,registry_q3_2d.csv
+example.tex(§5.3),214,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+example.tex(§5.3),214,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),214,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),217,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),218,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),219,3.69e-2,ALLOW,allow: 3850/T^2 @323.15K 推导,
+example.tex(§5.3),220,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),221,1.82,MATCH,V7_dtdT,registry_q3_verify.csv|abs
+example.tex(§5.3),221,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(§5.3),221,-2.12,ALLOW,allow: naive 估计 0.0369x57.42 推导,
+example.tex(§5.3),224,5.0e5,ALLOW,allow: problem3.md §5.3 末期湿分特征时间 R^2/D,
+example.tex(§5.3),224,139,ALLOW,allow: R^2/D 末期特征时间 5.0e5/3600 推导,
+example.tex(§5.3),224,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+example.tex(§5.3),225,2.6,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),225,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),226,0.12,MATCH,P05_C_r1p5,registry_q3.csv
+example.tex(§5.3),230,0.0500,MATCH,P00_Cbar,registry_q3.csv
+example.tex(§5.3),231,0.0500,MATCH,P00_Cbar,registry_q3.csv
+example.tex(§5.3),231,57.42,MATCH,MC_s_kcp_m,registry_q3_mc.csv
+example.tex(§5.3),232,0.0600,ALLOW,allow: 排湿情景 Cbar 设定 0.0600,
+example.tex(§5.3),232,57.70,MATCH,DR_c060_h,registry_q3_drainage.csv
+example.tex(§5.3),232,0.28,MATCH,DR_c060_dh,registry_q3_drainage.csv
+example.tex(§5.3),232,0.0750,ALLOW,allow: 排湿情景 Cbar 设定 0.0750,
+example.tex(§5.3),232,58.39,MATCH,DR_c075_h,registry_q3_drainage.csv
+example.tex(§5.3),233,0.96,MATCH,DR_c075_dh,registry_q3_drainage.csv
+example.tex(§5.3),233,0.1000,ALLOW,allow: 输出半径间隔 (cm),
+example.tex(§5.3),233,61.19,MATCH,DR_c100_h,registry_q3_drainage.csv
+example.tex(§5.3),233,3.77,MATCH,DR_c100_dh,registry_q3_drainage.csv
+example.tex(§5.3),233,0.1200,ALLOW,allow: 排湿情景 Cbar 设定 0.1200,
+example.tex(§5.3),233,67.05,MATCH,DR_c120_h,registry_q3_drainage.csv
+example.tex(§5.3),234,9.63,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),234,0.15,MATCH,P05_C_center,registry_q3.csv
+example.tex(§5.3),235,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),237,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+example.tex(§5.3),237,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(§5.3),239,0.0500,MATCH,P00_Cbar,registry_q3.csv
+example.tex(§5.3),239,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),240,0.12,MATCH,P05_C_r1p5,registry_q3.csv
+example.tex(§5.3),240,0.8,MATCH,T5_r1_c4,registry_q3.csv
+example.tex(§5.3),241,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),244,0.94,ALLOW,allow: minipage 宽度,
+example.tex(§5.3),246,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),246,200,MATCH,P00_M,registry_q3.csv
+example.tex(§5.3),246,1e-9,MATCH,P00_rtol,registry_q3.csv
+example.tex(§5.3),246,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),251,50.00,MATCH,P00_Tbar,registry_q3.csv
+example.tex(§5.3),251,0.0500,MATCH,P00_Cbar,registry_q3.csv
+example.tex(§5.3),251,600,MATCH,P00_tau,registry_q3.csv
+example.tex(§5.3),252,57.4223,MATCH,P01_tdry_h,registry_q3.csv
+example.tex(§5.3),253,49,MATCH,P07_cross_r1,registry_q3.csv
+example.tex(§5.3),253,59.2866,ALLOW,allow: Tbar=49 变体 t_dry(h) = base+dh 推导,
+example.tex(§5.3),253,1.8643,MATCH,V7_s_Tm1_dh,registry_q3_verify.csv
+example.tex(§5.3),254,51,MATCH,MC_s_kD_m,registry_q3_mc.csv
+example.tex(§5.3),254,55.6395,ALLOW,allow: Tbar=51 变体 t_dry(h) = base+dh 推导,
+example.tex(§5.3),254,-1.7828,MATCH,V7_s_Tp1_dh,registry_q3_verify.csv
+example.tex(§5.3),255,0.045,ALLOW,allow: Cbar 敏感性变体 0.045,
+example.tex(§5.3),255,-10,MATCH,DR_c120_dh,registry_q3_drainage.csv|abs
+example.tex(§5.3),255,57.3056,ALLOW,allow: Cbar=0.045 变体 t_dry(h) 推导,
+example.tex(§5.3),255,-0.1167,MATCH,V7_s_Cm10_dh,registry_q3_verify.csv
+example.tex(§5.3),256,0.055,MATCH,T5_r7_c5,registry_q3.csv
+example.tex(§5.3),256,10,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),256,57.5533,ALLOW,allow: Cbar=0.055 变体 t_dry(h) 推导,
+example.tex(§5.3),256,0.1310,MATCH,V7_s_Cp10_dh,registry_q3_verify.csv
+example.tex(§5.3),257,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(§5.3),257,1800,ALLOW,allow: tau 敏感性,
+example.tex(§5.3),257,0.008,ALLOW,allow: tau=0 变体秒换算 (2.16e-6 h) 推导,
+example.tex(§5.3),257,0.070,ALLOW,allow: tau=1800 变体秒换算 (1.93e-5 h) 推导,
+example.tex(§5.3),263,6,MATCH,P05_Csurf_rel,registry_q3.csv
+example.tex(§5.3),263,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),264,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(§5.3),264,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),266,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),266,0.01,MATCH,W11_D_over_alpha,registry_q3_2d.csv
+example.tex(§5.3),267,-2.54,MATCH,MC_s_D0_d,registry_q3_mc.csv
+example.tex(§5.3),267,6.86,MATCH,MC_s_kD_d,registry_q3_mc.csv
+example.tex(§5.3),268,3850,ALLOW,allow: 附录3 D 的 Arrhenius 温度,
+example.tex(§5.3),268,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),269,35.0,MATCH,MC_s_EA_m,registry_q3_mc.csv
+example.tex(§5.3),269,99.2,MATCH,MC_s_EA_p,registry_q3_mc.csv
+example.tex(§5.3),269,32.1,MATCH,MC_s_EA_d,registry_q3_mc.csv
+example.tex(§5.3),269,56,ALLOW,allow: EA 单因素半程变化百分比 32.12/57.42 推导,
+example.tex(§5.3),270,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(§5.3),270,0.55,MATCH,W11_dt_axial_consist,registry_q3_2d.csv
+example.tex(§5.3),270,1.8,MATCH,X_C_10800_0,registry_q3.csv
+example.tex(§5.3),271,9,MATCH,DR_c120_dh,registry_q3_drainage.csv
+example.tex(§5.3),271,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(§5.3),271,100,MATCH,MC_p97.5,registry_q3_mc.csv
+example.tex(§5.3),271,2026,ALLOW,allow: 蒙特卡洛随机种子 (脚本设置),
+example.tex(§5.3),272,62.2,MATCH,MC_mean,registry_q3_mc.csv
+example.tex(§5.3),272,19.7,MATCH,MC_std,registry_q3_mc.csv
+example.tex(§5.3),273,95,MATCH,P06_loss,registry_q3.csv
+example.tex(§5.3),273,35.1,MATCH,MC_p2.5,registry_q3_mc.csv
+example.tex(§5.3),273,99.9,MATCH,MC_p97.5,registry_q3_mc.csv
+example.tex(附录2d),4,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),5,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+example.tex(附录2d),5,4,MATCH,DR_c100_dh,registry_q3_drainage.csv
+example.tex(附录2d),7,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+example.tex(附录2d),8,17.30,MATCH,W11_pen_alpha_cm,registry_q3_2d.csv
+example.tex(附录2d),8,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(附录2d),8,12.5,MATCH,P07_cross_r2,registry_q3.csv
+example.tex(附录2d),11,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(附录2d),11,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(附录2d),12,1e-8,ALLOW,allow: 量级声明,
+example.tex(附录2d),12,3600,MATCH,P00_max_step,registry_q3.csv
+example.tex(附录2d),13,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),13,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(附录2d),13,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(附录2d),13,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),14,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),16,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(附录2d),16,201,ALLOW,allow: W11 二维径向节点数 Nr+1 (设置),
+example.tex(附录2d),16,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(附录2d),17,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),18,1.7e-9,MATCH,W11_val_1d,registry_q3_2d.csv
+example.tex(附录2d),19,1e4,MATCH,P03_nfev,registry_q3.csv
+example.tex(附录2d),22,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),26,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(附录2d),26,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(附录2d),27,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(附录2d),27,1.95e7,MATCH,W11_tscale_ax,registry_q3_2d.csv
+example.tex(附录2d),28,5424.5,MATCH,W11_tscale_ax_h,registry_q3_2d.csv
+example.tex(附录2d),28,94.5,MATCH,W11_tscale_over_tdry,registry_q3_2d.csv
+example.tex(附录2d),29,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(附录2d),29,39.06,MATCH,W11_tscale_ratio,registry_q3_2d.csv
+example.tex(附录2d),30,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(附录2d),30,5.28,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(附录2d),31,1.29,MATCH,W11_pen_dstar_cm,registry_q3_2d.csv
+example.tex(附录2d),32,0.05,MATCH,P00_Cbar,registry_q3.csv
+example.tex(附录2d),34,1e-4,MATCH,V4_q2_dt0125_dT_w1p8e3_7p2e3 s,registry_q3_verify.csv
+example.tex(附录2d),35,1.72e-3,MATCH,W11_dT_mid_n50,registry_q3_2d.csv
+example.tex(附录2d),36,3.69e-2,ALLOW,allow: 3850/T^2 @323.15K 推导,
+example.tex(附录2d),36,1e-4,MATCH,V4_q2_dt0125_dT_w1p8e3_7p2e3 s,registry_q3_verify.csv
+example.tex(附录2d),39,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(附录2d),39,200,MATCH,P00_M,registry_q3.csv
+example.tex(附录2d),39,14,ALLOW,"allow: 表 14 编号 (版面, 附录2d 的 t_dry 对照表)",
+example.tex(附录2d),42,0.94,ALLOW,allow: minipage 宽度,
+example.tex(附录2d),44,14,ALLOW,"allow: 表 14 编号 (版面, 附录2d 的 t_dry 对照表)",
+example.tex(附录2d),44,3,MATCH,X_C_600_0,registry_q3.csv
+example.tex(附录2d),49,1e-8,ALLOW,allow: 量级声明,
+example.tex(附录2d),49,57.4212,MATCH,W11_t_1dfv_h,registry_q3_2d.csv
+example.tex(附录2d),50,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),50,57.4212,MATCH,W11_t_1dfv_h,registry_q3_2d.csv
+example.tex(附录2d),50,1.7e-9,MATCH,W11_val_1d,registry_q3_2d.csv
+example.tex(附录2d),51,25,MATCH,V7_dtdC,registry_q3_verify.csv
+example.tex(附录2d),51,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(附录2d),51,57.4189,MATCH,W11_t_2d_n25_h,registry_q3_2d.csv
+example.tex(附录2d),51,-8.232,MATCH,W11_dt_axial_n25,registry_q3_2d.csv
+example.tex(附录2d),52,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(附录2d),52,2.5,MATCH,X_C_3600_0,registry_q3.csv
+example.tex(附录2d),52,57.4190,MATCH,W11_t_2d_n50_h,registry_q3_2d.csv
+example.tex(附录2d),52,-7.678,MATCH,W11_dt_axial_n50,registry_q3_2d.csv
+example.tex(附录2d),53,57.4180,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+example.tex(附录2d),53,-11.448,MATCH,W11_dt_axial_enddir,registry_q3_2d.csv
+example.tex(附录2d),59,50,MATCH,P00_Tbar,registry_q3.csv
+example.tex(附录2d),59,25,MATCH,V7_dtdC,registry_q3_verify.csv
+example.tex(附录2d),59,0.554,MATCH,W11_dt_axial_consist,registry_q3_2d.csv
+example.tex(附录2d),60,11.45,MATCH,W11_max_dt_axial,registry_q3_2d.csv
+example.tex(附录2d),60,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+example.tex(附录2d),60,0.028,MATCH,P08_spatial_unc,registry_q3.csv
+example.tex(附录2d),61,-11.88,MATCH,W11_dt_prod,registry_q3_2d.csv
+example.tex(附录2d),62,-7.678,MATCH,W11_dt_axial_n50,registry_q3_2d.csv
+example.tex(附录2d),63,-4.20,MATCH,W11_dt_scheme,registry_q3_2d.csv
+example.tex(附录2d),65,21,ALLOW,allow: 输出列数,
+example.tex(附录2d),66,206704.76,MATCH,W11_t_2d_enddir,registry_q3_2d.csv
+example.tex(附录2d),66,617,ALLOW,allow: W11 共同比较窗采样点数 (运行观测),
+example.tex(附录2d),67,2.28e-5,MATCH,W11_dC_mid_n50,registry_q3_2d.csv
+example.tex(附录2d),67,1.72e-3,MATCH,W11_dT_mid_n50,registry_q3_2d.csv
+example.tex(附录2d),68,2.67e-5,MATCH,W11_dC_scheme,registry_q3_2d.csv
+example.tex(附录2d),69,1.24e-4,MATCH,W11_dT_scheme,registry_q3_2d.csv
+example.tex(附录2d),69,4.57e-5,MATCH,W11_dC_prod_n50,registry_q3_2d.csv
+example.tex(附录2d),70,1.73e-3,MATCH,W11_dT_prod_n50,registry_q3_2d.csv
+example.tex(附录2d),70,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),71,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),71,1,MATCH,X_C_10800_2,registry_q3.csv
+example.tex(附录2d),71,2,MATCH,V4_ratio,registry_q3_verify.csv
+example.tex(附录2d),71,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(附录2d),71,12.5,MATCH,P07_cross_r2,registry_q3.csv
+example.tex(附录2d),71,0.0525,MATCH,W11_C_end_axis,registry_q3_2d.csv
+example.tex(附录2d),71,0.1321,MATCH,W11_C_ax_1cm,registry_q3_2d.csv
+example.tex(附录2d),71,0.1433,MATCH,W11_C_ax_2cm,registry_q3_2d.csv
+example.tex(附录2d),71,0.1494,MATCH,W11_C_ax_5cm,registry_q3_2d.csv
+example.tex(附录2d),71,0.1500,MATCH,P05_C_center,registry_q3.csv
+example.tex(附录2d),72,-0.005,MATCH,W11_D_over_alpha,registry_q3_2d.csv|abs
+example.tex(附录2d),72,2.25,MATCH,W11_z_dip_cm,registry_q3_2d.csv
+example.tex(附录2d),72,18,MATCH,W11_pen_alpha_cm,registry_q3_2d.csv
+example.tex(附录2d),73,0,MATCH,P04_maxC_dry,registry_q3.csv
+example.tex(附录2d),73,1510.9,MATCH,W11_argmax_last_t_n50,registry_q3_2d.csv
+example.tex(附录2d),74,3.5e-5,MATCH,W11_water_resid,registry_q3_2d.csv
+example.tex(附录2d),74,95.24,ALLOW,allow: W11 二维全程失水率百分比 1-0.95241 推导,
+example.tex(附录2d),74,95.13,MATCH,P06_loss,registry_q3.csv
+example.tex(附录2d),75,8,MATCH,FG3_dt_decades,registry_q3_figures.csv
+example.tex(附录2d),77,57.4,MATCH,W11_t_2d_enddir_h,registry_q3_2d.csv
+example.tex(附录2d),78,0.0032,MATCH,W11_max_dt_axial_h,registry_q3_2d.csv
+example.tex(附录2d),78,5,MATCH,W11_pen_dmax_cm,registry_q3_2d.csv
+example.tex(附录2d),78,3,MATCH,X_C_600_0,registry_q3.csv
+gate2 表5 6.0 h,0,r=0: 1.0181,MATCH,result3.xlsx t=21600 s,
+gate2 表5 6.0 h,0,r=0.5: 0.9892,MATCH,result3.xlsx t=21600 s,
+gate2 表5 6.0 h,0,r=1: 0.9024,MATCH,result3.xlsx t=21600 s,
+gate2 表5 6.0 h,0,r=1.5: 0.7556,MATCH,result3.xlsx t=21600 s,
+gate2 表5 6.0 h,0,r=2: 0.533,MATCH,result3.xlsx t=21600 s,
+gate2 表5 12.0 h,0,r=0: 0.4565,MATCH,result3.xlsx t=43200 s,
+gate2 表5 12.0 h,0,r=0.5: 0.4435,MATCH,result3.xlsx t=43200 s,
+gate2 表5 12.0 h,0,r=1: 0.4034,MATCH,result3.xlsx t=43200 s,
+gate2 表5 12.0 h,0,r=1.5: 0.33,MATCH,result3.xlsx t=43200 s,
+gate2 表5 12.0 h,0,r=2: 0.1644,MATCH,result3.xlsx t=43200 s,
+gate2 表5 18.0 h,0,r=0: 0.299,MATCH,result3.xlsx t=64800 s,
+gate2 表5 18.0 h,0,r=0.5: 0.2917,MATCH,result3.xlsx t=64800 s,
+gate2 表5 18.0 h,0,r=1: 0.2688,MATCH,result3.xlsx t=64800 s,
+gate2 表5 18.0 h,0,r=1.5: 0.2254,MATCH,result3.xlsx t=64800 s,
+gate2 表5 18.0 h,0,r=2: 0.0846,MATCH,result3.xlsx t=64800 s,
+gate2 表5 24.0 h,0,r=0: 0.2378,MATCH,result3.xlsx t=86400 s,
+gate2 表5 24.0 h,0,r=0.5: 0.2328,MATCH,result3.xlsx t=86400 s,
+gate2 表5 24.0 h,0,r=1: 0.2167,MATCH,result3.xlsx t=86400 s,
+gate2 表5 24.0 h,0,r=1.5: 0.1855,MATCH,result3.xlsx t=86400 s,
+gate2 表5 24.0 h,0,r=2: 0.0665,MATCH,result3.xlsx t=86400 s,
+gate2 表5 30.0 h,0,r=0: 0.2058,MATCH,result3.xlsx t=108000 s,
+gate2 表5 30.0 h,0,r=0.5: 0.2018,MATCH,result3.xlsx t=108000 s,
+gate2 表5 30.0 h,0,r=1: 0.1891,MATCH,result3.xlsx t=108000 s,
+gate2 表5 30.0 h,0,r=1.5: 0.164,MATCH,result3.xlsx t=108000 s,
+gate2 表5 30.0 h,0,r=2: 0.0599,MATCH,result3.xlsx t=108000 s,
+gate2 表5 36.0 h,0,r=0: 0.1859,MATCH,result3.xlsx t=129600 s,
+gate2 表5 36.0 h,0,r=0.5: 0.1825,MATCH,result3.xlsx t=129600 s,
+gate2 表5 36.0 h,0,r=1: 0.1718,MATCH,result3.xlsx t=129600 s,
+gate2 表5 36.0 h,0,r=1.5: 0.1503,MATCH,result3.xlsx t=129600 s,
+gate2 表5 36.0 h,0,r=2: 0.0567,MATCH,result3.xlsx t=129600 s,
+gate2 表5 42.0 h,0,r=0: 0.172,MATCH,result3.xlsx t=151200 s,
+gate2 表5 42.0 h,0,r=0.5: 0.1691,MATCH,result3.xlsx t=151200 s,
+gate2 表5 42.0 h,0,r=1: 0.1596,MATCH,result3.xlsx t=151200 s,
+gate2 表5 42.0 h,0,r=1.5: 0.1406,MATCH,result3.xlsx t=151200 s,
+gate2 表5 42.0 h,0,r=2: 0.0549,MATCH,result3.xlsx t=151200 s,
+gate2 表5 48.0 h,0,r=0: 0.1618,MATCH,result3.xlsx t=172800 s,
+gate2 表5 48.0 h,0,r=0.5: 0.1591,MATCH,result3.xlsx t=172800 s,
+gate2 表5 48.0 h,0,r=1: 0.1506,MATCH,result3.xlsx t=172800 s,
+gate2 表5 48.0 h,0,r=1.5: 0.1333,MATCH,result3.xlsx t=172800 s,
+gate2 表5 48.0 h,0,r=2: 0.0537,MATCH,result3.xlsx t=172800 s,
+gate2 表5 54.0 h,0,r=0: 0.1538,MATCH,result3.xlsx t=194400 s,
+gate2 表5 54.0 h,0,r=0.5: 0.1514,MATCH,result3.xlsx t=194400 s,
+gate2 表5 54.0 h,0,r=1: 0.1436,MATCH,result3.xlsx t=194400 s,
+gate2 表5 54.0 h,0,r=1.5: 0.1276,MATCH,result3.xlsx t=194400 s,
+gate2 表5 54.0 h,0,r=2: 0.053,MATCH,result3.xlsx t=194400 s,
+gate2 表5 57.42 h,0,r=0: 0.15,MATCH,registry P05_C (0 cm),
+gate2 表5 57.42 h,0,r=0.5: 0.1477,MATCH,registry P05_C (0.5 cm),
+gate2 表5 57.42 h,0,r=1: 0.1402,MATCH,registry P05_C (1 cm),
+gate2 表5 57.42 h,0,r=1.5: 0.1248,MATCH,registry P05_C (1.5 cm),
+gate2 表5 57.42 h,0,r=2: 0.0527,MATCH,registry P05_C (2 cm),

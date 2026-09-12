@@ -1,0 +1,17 @@
+﻿id,quantity,value,unit,uncertainty,source,command,note
+DR_base,Cbar=0.0500 时的 t_dry,206720.4134562962,s,run,q3_drainage.py,python src/q3_drainage.py,Cbar/C*=0.333
+DR_base_h,Cbar=0.0500 时的 t_dry (h),57.42233707119339,h,run,q3_drainage.py,python src/q3_drainage.py,
+DR_base_dh,Cbar=0.0500 相对基准的 Δt_dry,0.0,h,run,q3_drainage.py,python src/q3_drainage.py,
+DR_c060,Cbar=0.0600 时的 t_dry,207737.3080334053,s,run,q3_drainage.py,python src/q3_drainage.py,Cbar/C*=0.400
+DR_c060_h,Cbar=0.0600 时的 t_dry (h),57.70480778705703,h,run,q3_drainage.py,python src/q3_drainage.py,
+DR_c060_dh,Cbar=0.0600 相对基准的 Δt_dry,0.2824707158636415,h,run,q3_drainage.py,python src/q3_drainage.py,
+DR_c075,Cbar=0.0750 时的 t_dry,210187.47123552454,s,run,q3_drainage.py,python src/q3_drainage.py,Cbar/C*=0.500
+DR_c075_h,Cbar=0.0750 时的 t_dry (h),58.385408676534595,h,run,q3_drainage.py,python src/q3_drainage.py,
+DR_c075_dh,Cbar=0.0750 相对基准的 Δt_dry,0.9630716053412066,h,run,q3_drainage.py,python src/q3_drainage.py,
+DR_c100,Cbar=0.1000 时的 t_dry,220284.78780872017,s,run,q3_drainage.py,python src/q3_drainage.py,Cbar/C*=0.667
+DR_c100_h,Cbar=0.1000 时的 t_dry (h),61.1902188357556,h,run,q3_drainage.py,python src/q3_drainage.py,
+DR_c100_dh,Cbar=0.1000 相对基准的 Δt_dry,3.7678817645622136,h,run,q3_drainage.py,python src/q3_drainage.py,
+DR_c120,Cbar=0.1200 时的 t_dry,241392.94205585905,s,run,q3_drainage.py,python src/q3_drainage.py,Cbar/C*=0.800
+DR_c120_h,Cbar=0.1200 时的 t_dry (h),67.05359501551641,h,run,q3_drainage.py,python src/q3_drainage.py,
+DR_c120_dh,Cbar=0.1200 相对基准的 Δt_dry,9.631257944323014,h,run,q3_drainage.py,python src/q3_drainage.py,
+DR_c150,Cbar=0.1500 时 t_dry (无事件),nan,s,run,q3_drainage.py,python src/q3_drainage.py,NO_EVENT: RuntimeError

@@ -1,0 +1,17 @@
+### 2.01 ###
+y. Since pears contain mainly water and carbohydrate [32], the thermal conductivity ks and the speciﬁc heat capacity Cs p of the solid phase are estimated from that of carbohydrate [33] ks[W/(m K)] = 2.01 × 10−1 + 1.39 × 10−3 −4.33 × 10−6T2 , T[◦C] (A8) Cs p[J/(g K)] = 1.5488 + 1.9625 × 10−3T −5.9399 × 10−6T2 , T[◦C] (A9) The heat and mass transfer coefﬁcients hT [W/(m K)] and hm [m/s] hT(Tav, d) = Nu(Tav, d)kair(Tav) d , hm(Tav, d) = Sh(Tav, d)Dair v (Tav) d (A10) are evaluated from the well known 
+
+### 1.5488 ###
+ conductivity ks and the speciﬁc heat capacity Cs p of the solid phase are estimated from that of carbohydrate [33] ks[W/(m K)] = 2.01 × 10−1 + 1.39 × 10−3 −4.33 × 10−6T2 , T[◦C] (A8) Cs p[J/(g K)] = 1.5488 + 1.9625 × 10−3T −5.9399 × 10−6T2 , T[◦C] (A9) The heat and mass transfer coefﬁcients hT [W/(m K)] and hm [m/s] hT(Tav, d) = Nu(Tav, d)kair(Tav) d , hm(Tav, d) = Sh(Tav, d)Dair v (Tav) d (A10) are evaluated from the well known correlation functions for the Nusselt Nu and Sherwood Sh numbers around 
+
+### Nu(Tav ###
+01 × 10−1 + 1.39 × 10−3 −4.33 × 10−6T2 , T[◦C] (A8) Cs p[J/(g K)] = 1.5488 + 1.9625 × 10−3T −5.9399 × 10−6T2 , T[◦C] (A9) The heat and mass transfer coefﬁcients hT [W/(m K)] and hm [m/s] hT(Tav, d) = Nu(Tav, d)kair(Tav) d , hm(Tav, d) = Sh(Tav, d)Dair v (Tav) d (A10) are evaluated from the well known correlation functions for the Nusselt Nu and Sherwood Sh numbers around a sphere [34] Nu(Tav, d) = 2 + 0.6Re1/2Pr1/3 = (A11) 2 +   U∞d νair(Tav)  1/2  νair(Tav) Dair T (Tav)  1/3 Sh(Tav, d) = 2 + 0.6Re1/2
+
+### Nu(Tav ###
+T(Tav, d) = Nu(Tav, d)kair(Tav) d , hm(Tav, d) = Sh(Tav, d)Dair v (Tav) d (A10) are evaluated from the well known correlation functions for the Nusselt Nu and Sherwood Sh numbers around a sphere [34] Nu(Tav, d) = 2 + 0.6Re1/2Pr1/3 = (A11) 2 +   U∞d νair(Tav)  1/2  νair(Tav) Dair T (Tav)  1/3 Sh(Tav, d) = 2 + 0.6Re1/2Sc1/3 = (A12) 2 +   U∞d νair(Tav)  1/2  νair(Tav) Dair v (Tav)  1/3 . Foods 2020, 9, 1577 20 of 22 Both hT and hm change in time because all the physical properties of the humid air are ev
+
+### Sh(Tav ###
+2 , T[◦C] (A8) Cs p[J/(g K)] = 1.5488 + 1.9625 × 10−3T −5.9399 × 10−6T2 , T[◦C] (A9) The heat and mass transfer coefﬁcients hT [W/(m K)] and hm [m/s] hT(Tav, d) = Nu(Tav, d)kair(Tav) d , hm(Tav, d) = Sh(Tav, d)Dair v (Tav) d (A10) are evaluated from the well known correlation functions for the Nusselt Nu and Sherwood Sh numbers around a sphere [34] Nu(Tav, d) = 2 + 0.6Re1/2Pr1/3 = (A11) 2 +   U∞d νair(Tav)  1/2  νair(Tav) Dair T (Tav)  1/3 Sh(Tav, d) = 2 + 0.6Re1/2Sc1/3 = (A12) 2 +   U∞d νair(Tav)  1/
+
+### Sh(Tav ###
+ from the well known correlation functions for the Nusselt Nu and Sherwood Sh numbers around a sphere [34] Nu(Tav, d) = 2 + 0.6Re1/2Pr1/3 = (A11) 2 +   U∞d νair(Tav)  1/2  νair(Tav) Dair T (Tav)  1/3 Sh(Tav, d) = 2 + 0.6Re1/2Sc1/3 = (A12) 2 +   U∞d νair(Tav)  1/2  νair(Tav) Dair v (Tav)  1/3 . Foods 2020, 9, 1577 20 of 22 Both hT and hm change in time because all the physical properties of the humid air are evaluated at the ﬁlm mean temperature Tav(t) = (Tb(t) + T∞)/2 which changes in time. Moreover, 

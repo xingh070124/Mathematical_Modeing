@@ -1,0 +1,132 @@
+﻿key,quantity,value,unit,group,source
+compat_R_0.5h,t=0.5 h 半径 R,1.873,cm,compat,附件2
+compat_x_0.5h,t=0.5 h (R/R0)^2,0.87703225,1,compat,附件2
+compat_Cb_k1p111_0.5h,kappa=1.111 时反解 Cbar (t=0.5 h),2.09981506725,kg/kg,compat,推导
+compat_Cb_k0p667_0.5h,kappa=0.667 时反解 Cbar (t=0.5 h),2.15441274825,kg/kg,compat,推导
+compat_R_1h,t=1 h 半径 R,1.794,cm,compat,附件2
+compat_x_1h,t=1 h (R/R0)^2,0.804609,1,compat,附件2
+compat_Cb_k1p111_1h,kappa=1.111 时反解 Cbar (t=1 h),1.8346735490000001,kg/kg,compat,推导
+compat_Cb_k0p667_1h,kappa=0.667 时反解 Cbar (t=1 h),1.921427153,kg/kg,compat,推导
+compat_R_2h,t=2 h 半径 R,1.625,cm,compat,附件2
+compat_x_2h,t=2 h (R/R0)^2,0.66015625,1,compat,附件2
+compat_Cb_k1p111_2h,kappa=1.111 时反解 Cbar (t=2 h),1.30583203125,kg/kg,compat,推导
+compat_Cb_k0p667_2h,kappa=0.667 时反解 Cbar (t=2 h),1.45672265625,kg/kg,compat,推导
+compat_R_4h,t=4 h 半径 R,1.477,cm,compat,附件2
+compat_x_4h,t=4 h (R/R0)^2,0.5453822500000001,1,compat,附件2
+compat_Cb_k1p111_4h,kappa=1.111 时反解 Cbar (t=4 h),0.8856444172500001,kg/kg,compat,推导
+compat_Cb_k0p667_4h,kappa=0.667 时反解 Cbar (t=4 h),1.08749469825,kg/kg,compat,推导
+compat_R_6h,t=6 h 半径 R,1.374,cm,compat,附件2
+compat_x_6h,t=6 h (R/R0)^2,0.4719690000000001,1,compat,附件2
+compat_Cb_k1p111_6h,kappa=1.111 时反解 Cbar (t=6 h),0.6168785090000003,kg/kg,compat,推导
+compat_Cb_k0p667_6h,kappa=0.667 时反解 Cbar (t=6 h),0.8513242730000001,kg/kg,compat,推导
+compat_R_12h,t=12 h 半径 R,1.248,cm,compat,附件2
+compat_x_12h,t=12 h (R/R0)^2,0.389376,1,compat,附件2
+compat_Cb_k1p111_12h,kappa=1.111 时反解 Cbar (t=12 h),0.31450553599999986,kg/kg,compat,推导
+compat_Cb_k0p667_12h,kappa=0.667 时反解 Cbar (t=12 h),0.5856225919999999,kg/kg,compat,推导
+compat_R_18h,t=18 h 半径 R,1.214,cm,compat,附件2
+compat_x_18h,t=18 h (R/R0)^2,0.36844899999999997,1,compat,附件2
+compat_Cb_k1p111_18h,kappa=1.111 时反解 Cbar (t=18 h),0.23789178899999985,kg/kg,compat,推导
+compat_Cb_k0p667_18h,kappa=0.667 时反解 Cbar (t=18 h),0.5183004329999998,kg/kg,compat,推导
+compat_R_24h,t=24 h 半径 R,1.204,cm,compat,附件2
+compat_x_24h,t=24 h (R/R0)^2,0.36240399999999995,1,compat,附件2
+compat_Cb_k1p111_24h,kappa=1.111 时反解 Cbar (t=24 h),0.21576104399999974,kg/kg,compat,推导
+compat_Cb_k0p667_24h,kappa=0.667 时反解 Cbar (t=24 h),0.49885366799999975,kg/kg,compat,推导
+compat_R_36h,t=36 h 半径 R,1.2,cm,compat,附件2
+compat_x_36h,t=36 h (R/R0)^2,0.36,1,compat,附件2
+compat_Cb_k1p111_36h,kappa=1.111 时反解 Cbar (t=36 h),0.20695999999999992,kg/kg,compat,推导
+compat_Cb_k0p667_36h,kappa=0.667 时反解 Cbar (t=36 h),0.4911199999999999,kg/kg,compat,推导
+compat_R_48h,t=48 h 半径 R,1.2,cm,compat,附件2
+compat_x_48h,t=48 h (R/R0)^2,0.36,1,compat,附件2
+compat_Cb_k1p111_48h,kappa=1.111 时反解 Cbar (t=48 h),0.20695999999999992,kg/kg,compat,推导
+compat_Cb_k0p667_48h,kappa=0.667 时反解 Cbar (t=48 h),0.4911199999999999,kg/kg,compat,推导
+compat_R_60h,t=60 h 半径 R,1.199,cm,compat,附件2
+compat_x_60h,t=60 h (R/R0)^2,0.35940025000000003,1,compat,附件2
+compat_Cb_k1p111_60h,kappa=1.111 时反解 Cbar (t=60 h),0.20476431525000005,kg/kg,compat,推导
+compat_Cb_k0p667_60h,kappa=0.667 时反解 Cbar (t=60 h),0.48919060425,kg/kg,compat,推导
+compat_R_72h,t=72 h 半径 R,1.198,cm,compat,附件2
+compat_x_72h,t=72 h (R/R0)^2,0.358801,1,compat,附件2
+compat_Cb_k1p111_72h,kappa=1.111 时反解 Cbar (t=72 h),0.20257046099999987,kg/kg,compat,推导
+compat_Cb_k0p667_72h,kappa=0.667 时反解 Cbar (t=72 h),0.48726281699999985,kg/kg,compat,推导
+compat_rC0_k1.111,kappa=1.111 (rho_d=900) 时隐含 C=0 的半径,1.1017604050639236,cm,compat,推导
+compat_rC0_k0.667,kappa=0.667 (rho_d=1500) 时隐含 C=0 的半径,0.910683320050781,cm,compat,推导
+compat_rC0_k1,kappa=1.0 (rho_d=1000) 时隐含 C=0 的半径,1.0614897848685505,cm,compat,推导
+compat_rC0_k0.769,kappa=0.769 (rho_d=1300) 时隐含 C=0 的半径,0.9626968246846507,cm,compat,推导
+compat_kappa_6h,使模型与体积可加一致的 kappa (t=6 h),0.261222668544121,1,compat,outputs/q4_compat.log
+compat_kappa_12h,使模型与体积可加一致的 kappa (t=12 h),0.8460842936790991,1,compat,outputs/q4_compat.log
+compat_kappa_18h,使模型与体积可加一致的 kappa (t=18 h),1.0435492140960911,1,compat,outputs/q4_compat.log
+compat_kappa_24h,使模型与体积可加一致的 kappa (t=24 h),1.1271315477496628,1,compat,outputs/q4_compat.log
+compat_kappa_36h,使模型与体积可加一致的 kappa (t=36 h),1.2048500974929663,1,compat,outputs/q4_compat.log
+compat_kappa_48h,使模型与体积可加一致的 kappa (t=48 h),1.2429272348541462,1,compat,outputs/q4_compat.log
+compat_kappa_51.1h,使模型与体积可加一致的 kappa (t=51.1 h),1.2494222568163529,1,compat,outputs/q4_compat.log
+compat_tab_R_0h,附录C.4 表 t=0.0 h 半径,2.0,cm,compat,附件2
+compat_tab_x_0h,附录C.4 表 t=0.0 h (R/R0)^2,1.0,1,compat,推导
+compat_tab_C_0h_900,附录C.4 表 t=0.0 h rho_d=900 的反解 Cbar,2.55,kg/kg,compat,推导
+compat_rhod_900,附录C.4 表所用代表干密度 900,900.0,kg/m^3,compat,设定值
+compat_tab_C_0h_1000,附录C.4 表 t=0.0 h rho_d=1000 的反解 Cbar,2.55,kg/kg,compat,推导
+compat_rhod_1000,附录C.4 表所用代表干密度 1000,1000.0,kg/m^3,compat,设定值
+compat_tab_C_0h_1300,附录C.4 表 t=0.0 h rho_d=1300 的反解 Cbar,2.55,kg/kg,compat,推导
+compat_rhod_1300,附录C.4 表所用代表干密度 1300,1300.0,kg/m^3,compat,设定值
+compat_tab_C_0h_1500,附录C.4 表 t=0.0 h rho_d=1500 的反解 Cbar,2.55,kg/kg,compat,推导
+compat_rhod_1500,附录C.4 表所用代表干密度 1500,1500.0,kg/m^3,compat,设定值
+compat_tab_R_6h,附录C.4 表 t=6.0 h 半径,1.374,cm,compat,附件2
+compat_tab_x_6h,附录C.4 表 t=6.0 h (R/R0)^2,0.4719690000000001,1,compat,推导
+compat_tab_C_6h_900,附录C.4 表 t=6.0 h rho_d=900 的反解 Cbar,0.6168198388888891,kg/kg,compat,推导
+compat_rhod_900,附录C.4 表所用代表干密度 900,900.0,kg/m^3,compat,设定值
+compat_tab_C_6h_1000,附录C.4 表 t=6.0 h rho_d=1000 的反解 Cbar,0.6754899500000002,kg/kg,compat,推导
+compat_rhod_1000,附录C.4 表所用代表干密度 1000,1000.0,kg/m^3,compat,设定值
+compat_tab_C_6h_1300,附录C.4 表 t=6.0 h rho_d=1300 的反解 Cbar,0.7973432576923078,kg/kg,compat,推导
+compat_rhod_1300,附录C.4 表所用代表干密度 1300,1300.0,kg/m^3,compat,设定值
+compat_tab_C_6h_1500,附录C.4 表 t=6.0 h rho_d=1500 的反解 Cbar,0.8515002833333336,kg/kg,compat,推导
+compat_rhod_1500,附录C.4 表所用代表干密度 1500,1500.0,kg/m^3,compat,设定值
+compat_tab_R_12h,附录C.4 表 t=12.0 h 半径,1.248,cm,compat,附件2
+compat_tab_x_12h,附录C.4 表 t=12.0 h (R/R0)^2,0.389376,1,compat,推导
+compat_tab_C_12h_900,附录C.4 表 t=12.0 h rho_d=900 的反解 Cbar,0.3144376888888887,kg/kg,compat,推导
+compat_rhod_900,附录C.4 表所用代表干密度 900,900.0,kg/m^3,compat,设定值
+compat_tab_C_12h_1000,附录C.4 表 t=12.0 h rho_d=1000 的反解 Cbar,0.38228479999999987,kg/kg,compat,推导
+compat_rhod_1000,附录C.4 表所用代表干密度 1000,1000.0,kg/m^3,compat,设定值
+compat_tab_C_12h_1300,附录C.4 表 t=12.0 h rho_d=1300 的反解 Cbar,0.5231980307692305,kg/kg,compat,推导
+compat_rhod_1300,附录C.4 表所用代表干密度 1300,1300.0,kg/m^3,compat,设定值
+compat_tab_C_12h_1500,附录C.4 表 t=12.0 h rho_d=1500 的反解 Cbar,0.5858261333333332,kg/kg,compat,推导
+compat_rhod_1500,附录C.4 表所用代表干密度 1500,1500.0,kg/m^3,compat,设定值
+compat_tab_R_24h,附录C.4 表 t=24.0 h 半径,1.204,cm,compat,附件2
+compat_tab_x_24h,附录C.4 表 t=24.0 h (R/R0)^2,0.36240399999999995,1,compat,推导
+compat_tab_C_24h_900,附录C.4 表 t=24.0 h rho_d=900 的反解 Cbar,0.21569019999999972,kg/kg,compat,推导
+compat_rhod_900,附录C.4 表所用代表干密度 900,900.0,kg/m^3,compat,设定值
+compat_tab_C_24h_1000,附录C.4 表 t=24.0 h rho_d=1000 的反解 Cbar,0.28653419999999974,kg/kg,compat,推导
+compat_rhod_1000,附录C.4 表所用代表干密度 1000,1000.0,kg/m^3,compat,设定值
+compat_tab_C_24h_1300,附录C.4 表 t=24.0 h rho_d=1300 的反解 Cbar,0.43367173846153817,kg/kg,compat,推导
+compat_rhod_1300,附录C.4 表所用代表干密度 1300,1300.0,kg/m^3,compat,设定值
+compat_tab_C_24h_1500,附录C.4 表 t=24.0 h rho_d=1500 的反解 Cbar,0.4990661999999998,kg/kg,compat,推导
+compat_rhod_1500,附录C.4 表所用代表干密度 1500,1500.0,kg/m^3,compat,设定值
+compat_tab_R_72h,附录C.4 表 t=72.0 h 半径,1.198,cm,compat,附件2
+compat_tab_x_72h,附录C.4 表 t=72.0 h (R/R0)^2,0.358801,1,compat,推导
+compat_tab_C_72h_900,附录C.4 表 t=72.0 h rho_d=900 的反解 Cbar,0.20249921666666648,kg/kg,compat,推导
+compat_rhod_900,附录C.4 表所用代表干密度 900,900.0,kg/m^3,compat,设定值
+compat_tab_C_72h_1000,附录C.4 表 t=72.0 h rho_d=1000 的反解 Cbar,0.27374354999999984,kg/kg,compat,推导
+compat_rhod_1000,附录C.4 表所用代表干密度 1000,1000.0,kg/m^3,compat,设定值
+compat_tab_C_72h_1300,附录C.4 表 t=72.0 h rho_d=1300 的反解 Cbar,0.42171254999999985,kg/kg,compat,推导
+compat_rhod_1300,附录C.4 表所用代表干密度 1300,1300.0,kg/m^3,compat,设定值
+compat_tab_C_72h_1500,附录C.4 表 t=72.0 h rho_d=1500 的反解 Cbar,0.4874765499999999,kg/kg,compat,推导
+compat_rhod_1500,附录C.4 表所用代表干密度 1500,1500.0,kg/m^3,compat,设定值
+compat_req_kappa_6h,使模型与体积可加一致的 kappa (t=6.0 h),0.261222668544121,1,compat,q4_compat.py
+compat_req_rhod_6h,上式换算的干密度 (t=6.0 h),3828.1516897952447,kg/m^3,compat,q4_compat.py
+compat_req_kappa_12h,使模型与体积可加一致的 kappa (t=12.0 h),0.8460842936790991,1,compat,q4_compat.py
+compat_req_rhod_12h,上式换算的干密度 (t=12.0 h),1181.9153333429892,kg/m^3,compat,q4_compat.py
+compat_req_kappa_18h,使模型与体积可加一致的 kappa (t=18.0 h),1.0435492140960911,1,compat,q4_compat.py
+compat_req_rhod_18h,上式换算的干密度 (t=18.0 h),958.2681741236202,kg/m^3,compat,q4_compat.py
+compat_req_kappa_24h,使模型与体积可加一致的 kappa (t=24.0 h),1.1271315477496628,1,compat,q4_compat.py
+compat_req_rhod_24h,上式换算的干密度 (t=24.0 h),887.2078880202731,kg/m^3,compat,q4_compat.py
+compat_req_kappa_36h,使模型与体积可加一致的 kappa (t=36.0 h),1.2048500974929663,1,compat,q4_compat.py
+compat_req_rhod_36h,上式换算的干密度 (t=36.0 h),829.9787683802199,kg/m^3,compat,q4_compat.py
+compat_req_kappa_48h,使模型与体积可加一致的 kappa (t=48.0 h),1.2429272348541462,1,compat,q4_compat.py
+compat_req_rhod_48h,上式换算的干密度 (t=48.0 h),804.5523277292632,kg/m^3,compat,q4_compat.py
+compat_req_kappa_51.1h,使模型与体积可加一致的 kappa (t=51.1 h),1.2494222568163529,1,compat,q4_compat.py
+compat_req_rhod_51.1h,上式换算的干密度 (t=51.1 h),800.3699266155986,kg/m^3,compat,q4_compat.py
+compat_kappa_need,使 r_c >= R_min 所需的最小 kappa,1.4269244805434815,1,compat,推导
+compat_rhod_max,由上一行换算的干密度上界,700.8079359736851,kg/m^3,compat,推导
+compat_Rmin,附件2 全程最小半径,1.198,cm,compat,附件2
+compat_Rmin,附件2 在 0~72 h 的最小半径,1.198,cm,compat,附件2
+compat_kappa_ratio,反解 kappa 的首末比值,4.78297792369931,1,compat,推导
+compat_kappa_star,使 72 h 恰为 0.15 的 kappa,1.192987746393865,1,compat,推导
+compat_rhod_star,上式对应的干密度,838.2315769988219,kg/m^3,compat,推导
+compat_Cb_rho1300_72h,rho_d=1300 时该关系在 72 h 给出的 Cbar,0.42171254999999985,kg/kg,compat,推导

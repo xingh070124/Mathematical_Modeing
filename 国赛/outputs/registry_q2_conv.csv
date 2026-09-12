@@ -1,0 +1,80 @@
+﻿id,quantity,value,unit,uncertainty,source,command,note
+VT_ref_dt8,时间收敛的最粗网格基准解,dt=1/8 s,-,-,q2_convergence.py,python src/q2_convergence.py,作为下一次比较的基准
+VT_dT_16,dt 减半到 1/16 s 时的温度最大偏差,0.00011045401328147,K,时间收敛,q2_convergence.py,python src/q2_convergence.py,
+VT_dC_16,dt 减半到 1/16 s 时的水分最大偏差,0.00026643289742756,kg/kg,时间收敛,q2_convergence.py,python src/q2_convergence.py,
+VT_dT_32,dt 减半到 1/32 s 时的温度最大偏差,5.5229237602816e-05,K,时间收敛,q2_convergence.py,python src/q2_convergence.py,
+VT_dC_32,dt 减半到 1/32 s 时的水分最大偏差,0.00013278342671663,kg/kg,时间收敛,q2_convergence.py,python src/q2_convergence.py,
+VT_ratio_T_32,温度偏差之比 (相邻 dt),1.9999192108319,-,时间收敛,q2_convergence.py,python src/q2_convergence.py,比值 -> 2 为一阶
+VT_ratio_C_32,水分偏差之比 (相邻 dt),2.0065222295863,-,时间收敛,q2_convergence.py,python src/q2_convergence.py,比值 -> 2 为一阶
+VT_order_T_32,温度观测阶 log2(比值),0.99994172175681,-,时间收敛,q2_convergence.py,python src/q2_convergence.py,
+VT_order_C_32,水分观测阶 log2(比值),1.0046971393405,-,时间收敛,q2_convergence.py,python src/q2_convergence.py,
+VS_err_M25,Bessel 基准 M=25 的最大温度偏差,0.0011083939068612,K,空间收敛,q2_convergence.py,python src/q2_convergence.py,来源 registry_q2_center
+VS_ratio_50,Bessel 基准: M 由 25 加密到 50 的误差之比,4.0710564056678,-,空间收敛,q2_convergence.py,python src/q2_convergence.py,比值 -> 4 为二阶
+VS_order_50,Bessel 基准观测阶 (M=50),2.0254032105748,-,空间收敛,q2_convergence.py,python src/q2_convergence.py,
+VS_err_M50,Bessel 基准 M=50 的最大温度偏差,0.00027226198716335,K,空间收敛,q2_convergence.py,python src/q2_convergence.py,来源 registry_q2_center
+VS_ratio_100,Bessel 基准: M 由 50 加密到 100 的误差之比,4.3138223417388,-,空间收敛,q2_convergence.py,python src/q2_convergence.py,比值 -> 4 为二阶
+VS_order_100,Bessel 基准观测阶 (M=100),2.1089667625044,-,空间收敛,q2_convergence.py,python src/q2_convergence.py,
+VS_err_M100,Bessel 基准 M=100 的最大温度偏差,6.3113861813235e-05,K,空间收敛,q2_convergence.py,python src/q2_convergence.py,来源 registry_q2_center
+VS_ratio_200,Bessel 基准: M 由 100 加密到 200 的误差之比,4.0501723858146,-,空间收敛,q2_convergence.py,python src/q2_convergence.py,比值 -> 4 为二阶
+VS_order_200,Bessel 基准观测阶 (M=200),2.0179833141373,-,空间收敛,q2_convergence.py,python src/q2_convergence.py,
+VS_err_M200,Bessel 基准 M=200 的最大温度偏差,1.5583006302222e-05,K,空间收敛,q2_convergence.py,python src/q2_convergence.py,来源 registry_q2_center
+VS_ratio_400,Bessel 基准: M 由 200 加密到 400 的误差之比,1.695354696345,-,空间收敛,q2_convergence.py,python src/q2_convergence.py,比值 -> 4 为二阶
+VS_order_400,Bessel 基准观测阶 (M=400),0.76158714069154,-,空间收敛,q2_convergence.py,python src/q2_convergence.py,
+VS_err_M400,Bessel 基准 M=400 的最大温度偏差,9.1915906068607e-06,K,空间收敛,q2_convergence.py,python src/q2_convergence.py,来源 registry_q2_center
+VS_ratio_800,Bessel 基准: M 由 400 加密到 800 的误差之比,1.1387075516843,-,空间收敛,q2_convergence.py,python src/q2_convergence.py,比值 -> 4 为二阶
+VS_order_800,Bessel 基准观测阶 (M=800),0.18739727478163,-,空间收敛,q2_convergence.py,python src/q2_convergence.py,
+VS_err_M800,Bessel 基准 M=800 的最大温度偏差,8.0719501625026e-06,K,空间收敛,q2_convergence.py,python src/q2_convergence.py,来源 registry_q2_center
+V0_dT,两套独立实现退化解的最大温度差,3.7965719457134e-10,K,求解器一致性,q2_convergence.py,python src/q2_convergence.py,
+V0_dC,两套独立实现退化解的最大水分差,2.5131008385415e-12,kg/kg,求解器一致性,q2_convergence.py,python src/q2_convergence.py,
+VJ_default,解析 Jacobian vs 有限差分 (默认),2.2502539802473e-07,-,Jacobian 核验,q2_convergence.py,python src/q2_convergence.py,
+VJ_hevaoff,解析 Jacobian vs 有限差分 (H_evap = 0),2.2502539802473e-07,-,Jacobian 核验,q2_convergence.py,python src/q2_convergence.py,
+VJ_hevaconst,解析 Jacobian vs 有限差分 (H_evap = 常数),2.2502539802473e-07,-,Jacobian 核验,q2_convergence.py,python src/q2_convergence.py,
+VJ_conserv,解析 Jacobian vs 有限差分 (守恒形式),5.537585564478e-09,-,Jacobian 核验,q2_convergence.py,python src/q2_convergence.py,
+VJ_halfcv,解析 Jacobian vs 有限差分 (halfcv 边界),2.2502539802473e-07,-,Jacobian 核验,q2_convergence.py,python src/q2_convergence.py,
+VJ_app2,解析 Jacobian vs 有限差分 (附录2 物性),2.245443477907e-07,-,Jacobian 核验,q2_convergence.py,python src/q2_convergence.py,
+VJ_frozen,解析 Jacobian vs 有限差分 (系数冻结),2.245962661833e-07,-,Jacobian 核验,q2_convergence.py,python src/q2_convergence.py,
+VJ_max,六种配置的最大相对偏差,2.2502539802473e-07,-,Jacobian 核验,q2_convergence.py,python src/q2_convergence.py,
+VM_Ru,通用气体常数 R_u (CODATA 2018),8.314462618,J/(mol K),定义值,q2_convergence.py,python src/q2_convergence.py,
+VM_Mw,水的摩尔质量 M_w,0.01801528,kg/mol,定义值,q2_convergence.py,python src/q2_convergence.py,
+VM_Rv,水蒸气比气体常数 R_v = R_u/M_w,461.52280830495,J/(kg K),解析,q2_convergence.py,python src/q2_convergence.py,
+VM_zpen_1800,sqrt(alpha(C0)*t) @ t=1800 s (问题一),1.6145919206624,cm,解析,q2_convergence.py,python src/q2_convergence.py,轴向热影响穿透深度
+VM_zpen_10800,sqrt(alpha(C0)*t) @ t=10800 s (问题二),3.954926348443,cm,解析,q2_convergence.py,python src/q2_convergence.py,轴向热影响穿透深度
+VM_alpha_C0,"heat alpha(C0) = k/(rho cp), 附录3",1.4482817057045e-07,m^2/s,解析,q2_convergence.py,python src/q2_convergence.py,与 registry_q2_model 的 A_alpha_2.55 一致
+VM_CR_end,t=10800 s 表面含水率 (result2.xlsx),1.0078,kg/kg,生产解,q2_convergence.py,python src/q2_convergence.py,与 X_C_10800_2 一致
+VM_Cinf_end,t=10800 s 环境含水率,0.04977,kg/kg,附件1,q2_convergence.py,python src/q2_convergence.py,
+VM_CR_over_Cinf,3 h 表面含水率与环境含水率之比,20.249146071931,-,解析,q2_convergence.py,python src/q2_convergence.py,
+VM_drive_1800,t=1800 s 表面对流驱动力 T_inf-T_R,6.1999,K,由 result2 与附件1,q2_convergence.py,python src/q2_convergence.py,
+VM_drive_3600,t=3600 s 表面对流驱动力 T_inf-T_R,4.5931,K,由 result2 与附件1,q2_convergence.py,python src/q2_convergence.py,
+VM_drive_5400,t=5400 s 表面对流驱动力 T_inf-T_R,2.0798,K,由 result2 与附件1,q2_convergence.py,python src/q2_convergence.py,
+VM_drive_7200,t=7200 s 表面对流驱动力 T_inf-T_R,0.94419999999997,K,由 result2 与附件1,q2_convergence.py,python src/q2_convergence.py,
+VM_drive_9000,t=9000 s 表面对流驱动力 T_inf-T_R,0.58790000000001,K,由 result2 与附件1,q2_convergence.py,python src/q2_convergence.py,
+VM_drive_10800,t=10800 s 表面对流驱动力 T_inf-T_R,0.30619999999999,K,由 result2 与附件1,q2_convergence.py,python src/q2_convergence.py,
+VM_qconv_decay,q_conv 由 0.5 h 到 3 h 的衰减倍数,20.247877204442,-,解析,q2_convergence.py,python src/q2_convergence.py,取自 registry_q2_figures 的 FG_qconv_*
+VM_ratio_V1_T_200_400,空间加密温度偏差之比 (200->400 vs 400->800),3.6201705236368,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_ratio_V1_C_200_400,空间加密水分偏差之比 (200->400 vs 400->800),4.8930866200201,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_ratio_V2_T_0.0625_0.03125,时间加密温度偏差之比 (1/16 vs 1/32 s),1.9999600708363,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_ratio_V2_C_0.0625_0.03125,时间加密水分偏差之比 (1/16 vs 1/32 s),1.9951377359219,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_dT0_conserv,"守恒与非保守形式的中心温度之差 (t=10800 s, M=200)",14.796077118538,K,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_V0_nodes,求解器一致性比较所用节点数 (M=100),101,-,结构,q2_convergence.py,python src/q2_convergence.py,
+VM_lump_ratio_M25,集中质量/半控制体 的 Bessel 偏差之比 (M=25),8.8796375716926,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_lump_ratio_M50,集中质量/半控制体 的 Bessel 偏差之比 (M=50),10.408924822553,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_lump_ratio_M100,集中质量/半控制体 的 Bessel 偏差之比 (M=100),12.744471231609,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_lump_ratio_M200,集中质量/半控制体 的 Bessel 偏差之比 (M=200),14.619167424561,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_lump_ratio_M400,集中质量/半控制体 的 Bessel 偏差之比 (M=400),7.2245448199028,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_lump_ratio_M800,集中质量/半控制体 的 Bessel 偏差之比 (M=800),2.692922906292,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_lump_range_lo,集中质量/半控制体 误差比的下界 (M=200),14.619167424561,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_lump_range_hi,集中质量/半控制体 误差比的上界 (M=25),8.8796375716926,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_frac_tauC,"3 h 占湿分特征时间 R^2/D(C0,T0) 的比例",0.15232537007169,-,由注册表复算,q2_convergence.py,python src/q2_convergence.py,
+VM_Cfront,干燥前沿判别值 C = 0.9*C0,2.295,kg/kg,解析,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k0,"M=3200, t=1 s, 自表面向内第 0 号节点的 C",2.5198751182185,kg/kg,剖面复算,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k1,"M=3200, t=1 s, 自表面向内第 1 号节点的 C",2.5220438748366,kg/kg,剖面复算,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k2,"M=3200, t=1 s, 自表面向内第 2 号节点的 C",2.5241083865284,kg/kg,剖面复算,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k3,"M=3200, t=1 s, 自表面向内第 3 号节点的 C",2.5260691555118,kg/kg,剖面复算,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k4,"M=3200, t=1 s, 自表面向内第 4 号节点的 C",2.5279270503461,kg/kg,剖面复算,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k5,"M=3200, t=1 s, 自表面向内第 5 号节点的 C",2.529683296108,kg/kg,剖面复算,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k6,"M=3200, t=1 s, 自表面向内第 6 号节点的 C",2.5313394608731,kg/kg,剖面复算,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k7,"M=3200, t=1 s, 自表面向内第 7 号节点的 C",2.5328974387471,kg/kg,剖面复算,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k8,"M=3200, t=1 s, 自表面向内第 8 号节点的 C",2.5343594297507,kg/kg,剖面复算,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k0_vs_diag,k=0 与 q2_moist_diag 之差 (时间步口径不同),4.459020657599e-05,kg/kg,口径对照,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k8_vs_diag,k=8 与 q2_moist_diag 之差 (时间步口径不同),3.1137996769903e-05,kg/kg,口径对照,q2_convergence.py,python src/q2_convergence.py,
+VP_M3200_k0_k8_gap,"M=3200, t=1 s: 表面到第 8 号节点的 C 落差",-0.014484311532194,kg/kg,剖面复算,q2_convergence.py,python src/q2_convergence.py,

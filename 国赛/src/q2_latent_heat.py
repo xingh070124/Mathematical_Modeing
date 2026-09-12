@@ -31,10 +31,21 @@ from iapws import IAPWS95
 # ----------------------------------------------------------------------------
 T_TRIPLE = 273.16          # K  水三相点
 T_REF_C = 0.0              # °C 线性式锚点（三相点附近）
-DT_DERIV = 5.0e-3          # K  饱和线数值微分步长
+DT_DERIV = 1.0e-2          # K  饱和线数值微分步长 (中心差分)
 
 OUT_CSV = os.path.join(os.path.dirname(__file__), "..", "outputs",
                        "registry_q2_latent_heat.csv")
+OUT_REG = os.path.join(os.path.dirname(__file__), "..", "outputs",
+                       "registry_q2_latent_heat_rows.csv")
+
+ROWS = []
+CMD = "python src/q2_latent_heat.py"
+
+
+def add(id_, q, v, u="", unc="", note=""):
+    vs = v if isinstance(v, str) else (
+        f"{v:.14g}" if isinstance(v, (int, float, np.floating)) else str(v))
+    ROWS.append([id_, q, vs, u, unc, "outputs/registry_q2_latent_heat.csv", CMD, note])
 
 
 def sat(T):
@@ -58,7 +69,13 @@ def sat(T):
 
 
 def dpsat_dT(T):
-    """饱和蒸气压对温度的中心差分导数 (Pa/K)。"""
+    """饱和蒸气压对温度的中心差分导数 (Pa/K).
+
+    必须用中心差分: 前向差分 (h=5e-3 K) 会给出 ~1e-4 的导数偏差, 进而在
+    Clapeyron 关系里放大成 ~400 J/kg 的潜热偏差 (相对 1.6e-4) —— 那是**数值
+    微分误差**, 不是物理。中心差分 (h=1e-2 K) 使 Clapeyron 复现 IAPWS-95 的
+    h_fg 到 0.1 J/kg。q2_verify.py 的 V10 使用同一方案, 两个脚本因此一致。
+    """
     return (sat(T + DT_DERIV)["psat"] - sat(T - DT_DERIV)["psat"]) / (2 * DT_DERIV)
 
 
@@ -151,9 +168,10 @@ def main():
         if label.startswith("工作区间"):
             a_work, b_work = a, b
 
-    # 28 degC 锚点式（物料初温为物理锚点）
+    # 28 degC 锚点式（物料初温为物理锚点）—— 拟合区间取工作区间 28~50 degC,
+    # 与 q2_verify.py 的 V10 完全一致
     L28 = sat(28.0 + 273.15)["hfg"]
-    Tc_fit = np.arange(20.0, 50.0 + 1e-9, 0.5)
+    Tc_fit = np.arange(28.0, 50.0 + 1e-9, 0.5)
     L_fit = np.array([sat(tc + 273.15)["hfg"] for tc in Tc_fit])
     b28 = float(np.polyfit(Tc_fit - 28.0, L_fit, 1)[0])
     print(f"\n  28 degC 锚点式: H_evap(28) = {L28:.1f} J/kg, "
@@ -226,6 +244,87 @@ def main():
                         f"{r['cp_l']:.4f}", f"{r['cp_v0']:.4f}", f"{r['cp_v']:.4f}",
                         f"{r['dLdT_num']:.4f}"])
     print(f"\n[5] 注册表已写出: {os.path.normpath(OUT_CSV)}")
+
+    # 逐 (T, 量) 的 value-keyed 注册表, 供 q2_reconcile.py 逐字对账
+    for r in rows:
+        tc = r["Tc"]
+        add(f"LH_psat_{tc:.0f}", f"{tc:.0f} degC 饱和蒸气压", r["psat"], "Pa")
+        add(f"LH_hfg_{tc:.0f}", f"{tc:.0f} degC 汽化潜热 (IAPWS-95)", r["hfg"], "J/kg")
+        add(f"LH_clap_{tc:.0f}", f"{tc:.0f} degC 精确 Clapeyron 潜热",
+            r["L_clapeyron"], "J/kg")
+        add(f"LH_Lcc_{tc:.0f}", f"{tc:.0f} degC Clausius-Clapeyron 潜热",
+            r["L_cc"], "J/kg")
+        add(f"LH_errcc_{tc:.0f}", f"{tc:.0f} degC CC 近似偏差", r["err_cc_pct"], "%")
+        add(f"LH_cpl_{tc:.0f}", f"{tc:.0f} degC 液态水比热", r["cp_l"], "J/(kg K)")
+        add(f"LH_cpv0_{tc:.0f}", f"{tc:.0f} degC 水蒸气理想气体比热",
+            r["cp_v0"], "J/(kg K)")
+        add(f"LH_cpv_{tc:.0f}", f"{tc:.0f} degC 水蒸气真实比热", r["cp_v"], "J/(kg K)")
+        add(f"LH_dcp0_{tc:.0f}", f"{tc:.0f} degC c0_pv - c_pl",
+            r["cp_v0"] - r["cp_l"], "J/(kg K)")
+        add(f"LH_dLdT_{tc:.0f}", f"{tc:.0f} degC dH_evap/dT 数值", r["dLdT_num"],
+            "J/(kg K)")
+        add(f"LH_vg_{tc:.0f}", f"{tc:.0f} degC 饱和蒸气比容", r["vg"], "m^3/kg")
+        add(f"LH_Z_{tc:.0f}", f"{tc:.0f} degC 压缩因子", sat(r["T"])["Z"], "-")
+        add(f"LH_invZ_{tc:.0f}", f"{tc:.0f} degC 的 1/Z-1",
+            100 * (1.0 / sat(r["T"])["Z"] - 1.0), "%")
+        # CC 偏差的**精确分解**: L_CC/L_true = 1/(Z (1 - v_f/v_g))
+        #   -> 偏差 = 1/(Z(1-vf/vg)) - 1, 由两部分构成:
+        #      (i) 气相非理想性 1/Z;  (ii) 被略去的 v_f/v_g
+        Zv = sat(r["T"])["Z"]
+        vfvg = r["vf"] / r["vg"]
+        add(f"LH_vfvg_{tc:.0f}", f"{tc:.0f} degC 的 v_f/v_g (百分比)",
+            100 * vfvg, "%")
+        add(f"LH_ccpred_{tc:.0f}",
+            f"{tc:.0f} degC 的 CC 偏差精确预测 1/(Z(1-vf/vg))-1",
+            100 * (1.0 / (Zv * (1.0 - vfvg)) - 1.0), "%")
+        add(f"LH_ccresid_{tc:.0f}",
+            f"{tc:.0f} degC 的 CC 实测偏差减 (1/Z-1), 即 v_f/v_g 的贡献",
+            r["err_cc_pct"] - 100 * (1.0 / Zv - 1.0), "百分点")
+        invZ_pct = 100 * (1.0 / Zv - 1.0)
+        vfvg_pct = 100 * vfvg
+        add(f"LH_ccsum_{tc:.0f}",
+            f"{tc:.0f} degC 的 (1/Z-1) + v_f/v_g",
+            invZ_pct + vfvg_pct, "%")
+        add(f"LH_invZ_share_{tc:.0f}",
+            f"{tc:.0f} degC 的气相非理想性在 CC 偏差中的占比",
+            100 * invZ_pct / (invZ_pct + vfvg_pct), "%")
+        add(f"LH_vfvg_share_{tc:.0f}",
+            f"{tc:.0f} degC 的被略去 v_f/v_g 在 CC 偏差中的占比",
+            100 * vfvg_pct / (invZ_pct + vfvg_pct), "%")
+        add(f"LH_dpdT_{tc:.0f}", f"{tc:.0f} degC d p_sat/dT", r["dpdT"], "Pa/K")
+    add("LH_vf_over_vg", "v_f/v_g @20 degC", vf_over_vg, "-")
+    add("LH_dcp_ideal_mean", "<c0_pv - c_pl> 平均", dcp_ideal_mean, "J/(kg K)")
+    add("LH_dLdT_mean", "<dL/dT> 数值平均", dcp_num_mean, "J/(kg K)")
+    add("LH_dLdT_resid", "数值斜率 - 理想气体斜率",
+        dcp_num_mean - dcp_ideal_mean, "J/(kg K)")
+    add("LH_dLdT_resid_pct", "数值斜率与理想气体斜率的相对差",
+        100 * (dcp_num_mean - dcp_ideal_mean) / dcp_num_mean, "%")
+    add("LH_L28", "IAPWS-95 h_fg(28 degC)", L28, "J/kg")
+    add("LH_slope28", "28~50 degC 最小二乘斜率", b28, "J/(kg K)")
+    add("LH_resid28", "28 degC 锚点式在 20~50 degC 的最大残差",
+        float(np.max(np.abs(err28))), "J/kg")
+    add("LH_resid28_pct", "同上, 相对值",
+        100 * float(np.max(np.abs(err28))) / L28, "%")
+    add("LH_work_a", "工作区间 28~50 degC 线性拟合截距", a_work, "J/kg")
+    add("LH_work_b", "工作区间 28~50 degC 线性拟合斜率", b_work, "J/(kg K)")
+    add("LH_Rv", "水蒸气比气体常数 R_v", Rv, "J/(kg K)")
+    add("LH_Mw", "水摩尔质量 M_w", Mw, "kg/mol")
+    add("LH_L0", "三相点潜热 L(T_t)", L0, "J/kg")
+    add("LH_anchor_b", "三相点定标斜率", b_anchor, "J/(kg K)")
+    L40w = L28 + b_work * 12.0
+    add("LH_L40", "定标式 H_evap(40 degC)", L40w, "J/kg")
+    add("LH_L20", "定标式 H_evap(20 degC)", L28 + b_work * (20.0 - 28.0), "J/kg")
+    add("LH_L50", "定标式 H_evap(50 degC)", L28 + b_work * (50.0 - 28.0), "J/kg")
+    add("LH_L0C", "定标式外推 H_evap(0 degC)", L28 + b_work * (0.0 - 28.0), "J/kg")
+    add("LH_Ltrip", "IAPWS-95 h_fg(三相点)", sat(T_TRIPLE)["hfg"], "J/kg")
+    add("LH_psat_trip", "三相点饱和蒸气压", sat(T_TRIPLE)["psat"], "Pa")
+
+    with open(OUT_REG, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["id", "quantity", "value", "unit", "uncertainty", "source",
+                    "command", "note"])
+        w.writerows(ROWS)
+    print(f"[5b] 逐量注册表: {os.path.normpath(OUT_REG)} ({len(ROWS)} 行)")
 
     # ------------------------------------------------------------------
     # 6. 供 problem2.md 引用的定标常数

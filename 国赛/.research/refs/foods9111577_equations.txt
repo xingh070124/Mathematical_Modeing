@@ -1,0 +1,161 @@
+# Equations extracted verbatim from Europe PMC full-text XML
+# source file : .research/refs/foods9111577_europepmc.xml
+# record      : PMC7692062 / PMID 33143274 / DOI 10.3390/foods9111577
+# title       : A Non-Isothermal Moving-Boundary Model for Continuous
+#               and Intermittent Drying of Pears (Adrover, Venditti, Brasiello, Foods 2020)
+
+--- (1)
+\frac{∂c_w(\mathbf{x},t)}{∂t}−∇·\left(\mathbf{J}_d+\mathbf{v}_s(\mathbf{x}) c_w\right)==∇·\left(D_{eff} ∇c_w−\mathbf{v}_s(\mathbf{x}) c_w\right), \mathbf{x}∈V(t)
+
+--- (2)
+\mathbf{v}_s(\mathbf{x})=−α(c_w) \mathbf{J}_d(\mathbf{x})/ρ_w=α(c_w) D_{eff} ∇c_w/ρ_w,
+
+--- (3)
+D_{eff}(ϕ,T)=D_{ϕ_0}(T)exp\left(−β \frac{ϕ_0−ϕ}{ϕ_0−ϕ_∞}\right), β≥0, ϕ=c_w/ρ_w
+
+--- (4)
+\frac{d\mathbf{x}_b}{dt}=\mathbf{v}_s|_{\mathbf{x}_b}=\frac{α(c_w)}{ρ_w}D_{eff} ∇c_w|_{\mathbf{x}_b}, \mathbf{x}_b∈S(t) .
+
+--- (5)
+−D_{eff} ∇c_w·\mathbf{n}|_{\mathbf{x}_b}=h_m M_w\left(C|_{\mathbf{x}_b}−C_∞\right)==h_m M_w\frac{p_v(T_∞)}{R_gT_∞}\left(RH_b−RH_∞\right)
+
+--- (6)
+C=\frac{p}{R_gT}=\frac{p_v(T)}{R_gT}\frac{p}{p_v(T)}=\frac{p_v(T)}{R_gT} RH
+
+--- (7)
+RH_b=RH|_{\mathbf{x}_b}=DI(c_w(\mathbf{x}_b,t),T_∞)
+
+--- (8)
+\begin{array}{l}\frac{∂c_w(\mathbf{x},t)}{∂t} & = & ∇·\left(D_{eff}(T) ∇c_w−\mathbf{v}_s(\mathbf{x}) c_w\right), \end{array}
+
+--- (9)
+\begin{array}{l}\frac{∂\left(ρ^pC_p^pT(\mathbf{x},t)\right)}{∂t} & = & ∇·\left(k^p ∇T−\mathbf{v}_s(\mathbf{x}) ρ^pC_p^pT\right), \end{array}
+
+--- (10)
+\begin{array}{l}\mathbf{v}_s(\mathbf{x}) & = & α(c_w)D_{eff}(T)∇c_w/ρ_w\end{array}
+
+--- (11)
+\frac{d\mathbf{x}_b}{dt}=\mathbf{v}_s|_{\mathbf{x}_b}=\frac{α(c_w)}{ρ_w}D_{eff}(T_b) ∇c_w|_{\mathbf{x}_b}, \mathbf{x}_b∈S(t) .
+
+--- (12)
+−D_{eff}(T_b) ∇c_w·\mathbf{n}|_{\mathbf{x}_b}=h_m(T_{av}) M_w\left(\frac{p_v(T_b)}{R_gT_b}RH_b−\frac{p_v(T_∞)}{R_gT_∞}RH_∞\right)
+
+--- (13)
+−k^p ∇T·\mathbf{n}|_{\mathbf{x}_b}=h_T(T_{av})\left(T_b−T_∞\right)−λ_v(T_b)D_{eff}(T_b)∇c_w·\mathbf{n}|_{\mathbf{x}_b}
+
+--- (14)
+\frac{d}{dt}\left(T_b∫_{V(t)}(ρ^pC_p^p) d\mathbf{x}\right)=∫_{S(t)}\left(−h_T(T_{av})\left(T_b−T_∞\right)+λ_v(T_b)D_{eff}(T_b)∇c_w·\mathbf{n}|_{\mathbf{x}_b}\right)dS
+
+--- (15)
+\left(1−\frac{V(t)}{V_0}\right)=ϕ_0 \left(1−\frac{X(t)}{X_0}\right)
+
+--- (16)
+\frac{∂ϕ(r,t)}{∂t}=\frac{1}{r^2}\frac{∂}{∂r}\left(r^2\left(D_{eff} \frac{∂ϕ}{∂r}−v_s(r) ϕ\right)\right), r∈(0,R(t))
+
+--- (17)
+v_s(r)=D_{eff}\frac{∂ϕ}{∂r}, \frac{dR(t)}{dt}=v_s(R(t))=D_{eff}\frac{∂ϕ}{∂r}|_{R(t)}
+
+--- (18)
+\frac{∂ϕ}{∂r}|_{r=0}=0, −D_{eff}\frac{∂ϕ}{∂r}|_{R(t)}=h_m\frac{M_w}{ρ_w}\frac{p_v(T_∞)}{R_gT_∞}\left(RH_b−RH_∞\right)
+
+--- (19)
+\frac{V_∞}{V_0}=1−ϕ_0\left(1−\frac{X_∞}{X_0}\right)≃0.1.
+
+--- (20)
+J(t)=−\frac{dX_r}{dt}=−\frac{d}{dt}\left(\frac{X−X_∞}{X_0−X_∞}\right)
+
+--- (21)
+J(t)=D_{eff}(T_∞)\frac{π^2}{R_0^2}\left(\frac{V_∞}{V_0}\right)^{−2/3}X_r(t)
+
+--- (22)
+X(t)/X_0=a_0+a_1e^{−b_1t}+a_2e^{−b_2t}+(1−a_0−a_1−a_2)e^{−b_3t}
+
+--- (23)
+J(t)=\frac{1}{1−a_0}\left(a_1b_1e^{−b_1t}+a_2b_2e^{−b_2t}+(1−a_0−a_1−a_2) b_3e^{−b_3t}\right),
+
+--- (24)
+D_{eff}(T)=D_0e^{−\frac{E}{R_gT}}, D_0=4.00012×10^{−5}m^2/s,E/R_g=−3872.63K.
+
+--- (25)
+\frac{∂ϕ(r,t)}{∂t}=\frac{1}{r^2}\frac{∂}{∂r}\left(r^2\left(D_{eff}(T) \frac{∂ϕ}{∂r}−v_s(r) ϕ\right)\right), r∈(0,R(t))
+
+--- (26)
+\frac{∂\left(ρ^pC_p^pT(r,t)\right)}{∂t}=\frac{1}{r^2}\frac{∂}{∂r}\left(r^2\left(k^p \frac{∂ϕ}{∂r}−v_s(r)ρ^pC_p^p T\right)\right), r∈(0,R(t))
+
+--- (27)
+v_s(r)=D_{eff}(T)\frac{∂ϕ}{∂r}, \frac{dR(t)}{dt}=v_s(R(t))=D_{eff}(T_b)\frac{∂ϕ}{∂r}|_{R(t)}
+
+--- (28)
+\begin{array}{l} & \frac{∂ϕ}{∂r}|_{r=0}=0, \\ & −D_{eff}(T_b)\frac{∂ϕ}{∂r}|_{R(t)}=h_m(T_{av})\frac{M_w}{ρ_w}\left(\frac{p_v(T_b)}{R_gT_b}RH_b−\frac{p_v(T_∞)}{R_gT_∞}RH_∞\right)\end{array}
+
+--- (29)
+\begin{array}{l} & \frac{∂T}{∂r}|_{r=0}=0, \\ & −k^p\frac{∂T}{∂r}|_{R(t)}=h_T(T_{av})(T_b−T_∞)−λ_v(T_b)ρ_wD_{eff}(T_b)\frac{∂ϕ}{∂r}|_{R(t)}\end{array}
+
+--- (30)
+<D_{eff}(t)>=\frac{1}{(4/3)πR(t)^3}∫_0^{R(t)}D_{eff}(T(r,t)) 4πr^2dr
+
+--- (31)
+\begin{array}{l} & \frac{d}{dt}\left(T_b∫_0^{R(t)}(ρ^pC_p^p)4πr^2dr\right)= \\ & \left(−h_T(T_{av})\left(T_b−T_∞\right)+λ_v(T_b)ρ_wD_{eff}(T_b)\frac{∂ϕ}{∂r}|_{R(t)}\right)4πR^2(t)\end{array}
+
+--- (32)
+θ_δ(t[h])=\frac{1}{2}\left(1−tanh\left(\frac{t}{δ}\right)\right), δ=0.1 h
+
+--- (A1)
+RH_{eq}(X_{eq},T)=1−exp\left(−a(T) TX_{eq}^{b(T)}\right), T[K], X_{eq}[kg\text{w}/kgdrysolid]
+
+--- (A2)
+ϕ_{eq}=\frac{ρ^sX_{eq}}{X_{eq}ρ^s+ρ^w}
+
+--- (A3)
+ϕ_{eq}=a_w/K_{eq}, K_{eq}≃8
+
+--- (A4)
+ρ^s=\frac{ρ_0^pρ^w}{ρ^w(1+X_0)−ρ_0^pX_0}
+
+--- (A5)
+ρ^p=ρ^wϕ+ρ^s(1−ϕ)
+
+--- (A6)
+C_p^p=C_p^wx_w+C_p^s(1−x_w), x_w=ϕ (ρ^w/ρ^p)
+
+--- (A7)
+\frac{1}{k^p}=\frac{ϕ}{k^w}+\frac{1−ϕ}{k^s}
+
+--- (A8)
+\begin{array}{l}k^s[\mathrm{W}/(\mathrm{m}\mathrm{K})] & = & 2.01×10^{−1}+1.39×10^{−3}−4.33×10^{−6}T^2, T[^{\circ}\mathrm{C}]\end{array}
+
+--- (A9)
+\begin{array}{l}C_p^s[\mathrm{J}/(\mathrm{g}\mathrm{K})] & = & 1.5488+1.9625×10^{−3}T−5.9399×10^{−6}T^2, T[^{\circ}\mathrm{C}]\end{array}
+
+--- (A10)
+\begin{array}{l}h_T(T_{av},d)=\frac{Nu(T_{av},d)k^{air}(T_{av})}{d}, \\ h_m(T_{av},d)=\frac{Sh(T_{av},d)D_v^{air}(T_{av})}{d}\end{array}
+
+--- (A11)
+\begin{array}{l}Nu(T_{av},d) & = & 2+0.6Re^{1/2}Pr^{1/3}= \\ & & 2+\left(\frac{U_∞d}{ν_{air}(T_{av})}\right)^{1/2}\left(\frac{ν_{air}(T_{av})}{D_T^{air}(T_{av})}\right)^{1/3}\end{array}
+
+--- (A12)
+\begin{array}{l}Sh(T_{av},d) & = & 2+0.6Re^{1/2}Sc^{1/3}= \\ & & 2+\left(\frac{U_∞d}{ν_{air}(T_{av})}\right)^{1/2}\left(\frac{ν_{air}(T_{av})}{D_v^{air}(T_{av})}\right)^{1/3} .\end{array}
+
+--- (A13)
+\frac{R_∞}{R_0}=\left(\frac{V_∞}{V_0}\right)^{1/3}
+
+--- (A14)
+\frac{∂ϕ(r,t)}{∂t}=D_{eff}(T_∞)\frac{1}{r^2}\frac{∂}{∂r}\left(r^2\frac{∂ϕ}{∂r}\right), r∈(0,R_∞)
+
+--- (A15)
+\frac{∂ϕ}{∂r}|_{r=0}=0, −R_∞\frac{∂ϕ}{∂r}|_{R_∞}=Bi_∞\left(ϕ_b−ϕ_∞\right)
+
+--- (A16)
+Bi_∞=\frac{h_m(T_∞)R_∞}{D_{eff}(T_∞)}\frac{M_w}{ρ_w}\frac{p_v(T_∞)}{R_gT_∞}K_{eq}(T_∞)
+
+--- (A17)
+X_r(t)=\frac{X(t)−X_{eq}}{X_0−X_{eq}}∼exp\left[−γ_0^2\frac{tD_{eff}(T_∞)}{R_∞^2}\right] valid for large t
+
+--- (A18)
+γcot(γ)+Bi_∞−1=0.
+
+--- (A19)
+J=−\frac{dX_r}{dt}=D_{eff}(T_∞) \frac{γ_0^2}{R_∞^2}X_r valid for small X_r
+
+--- (A20)
+J=θ(T_∞)X_r=D_{eff}(T_∞) \frac{π^2}{R_∞^2}X_r=D_{eff}(T_∞) \frac{π^2}{R_0^2}\left(\frac{V_∞}{V_0}\right)^{−\frac{2}{3}}X_r.

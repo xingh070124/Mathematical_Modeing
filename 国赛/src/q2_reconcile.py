@@ -41,10 +41,72 @@ DOCS = [os.path.join(ROOT, "model", "problem2_slove.md"),
 REGISTRIES = [os.path.join(OUT, "registry_q2_model.csv"),
               os.path.join(OUT, "registry_q2_verify.csv"),
               os.path.join(OUT, "registry_q2_production.csv"),
-              os.path.join(OUT, "registry_q2_latent_heat.csv")]
+              os.path.join(OUT, "registry_q2_latent_heat.csv"),
+              os.path.join(OUT, "registry_q2_latent_heat_rows.csv"),
+              os.path.join(OUT, "registry_q2_energy.csv"),
+              os.path.join(OUT, "registry_q2_center.csv"),
+              os.path.join(OUT, "registry_q2_moist_diag.csv"),
+              os.path.join(OUT, "registry_q2_app2_vs_app3.csv"),
+              os.path.join(OUT, "registry_q2_derived.csv"),
+              os.path.join(OUT, "registry_q2_figures.csv"),
+              os.path.join(OUT, "registry_q2_conv.csv"),
+              os.path.join(OUT, "registry_q2_energy_verified.csv"),
+              os.path.join(OUT, "registry_q2_energy_exact.csv"),
+              # 并发会话新增的"不确定度五口径"注册表 (problem2_slove.md §7.3)
+              os.path.join(OUT, "registry_q2_uncertainty.csv"),
+              # 摘要里引用了问题一的结果 (33.5758 / 36.7858 degC), 其来源是
+              # 问题一的生产注册表; 纳入后摘要中的问题一数字同样有据可查.
+              os.path.join(OUT, "registry_q1_production.csv"),
+              # 摘要里还有针对问题三的一句 (t_dry 与各半径达标时刻), 其来源是
+              # 并发会话 (session 8) 的问题三注册表; 同样纳入, 使摘要全域可追溯.
+              os.path.join(OUT, "registry_q3.csv"),
+              os.path.join(OUT, "registry_q3_verify.csv"),
+              os.path.join(OUT, "registry_q3_figures.csv"),
+              os.path.join(OUT, "registry_q3_drainage.csv"),
+              # §5.2.6 用到的"附件1 环境噪声滤波对照"注册表 (q1_smooth_check.py):
+              # 该段虽在问题二小节, 但证据由 q1 求解器产出, 故单独一张注册表.
+              os.path.join(OUT, "registry_q1_smooth.csv"),
+              # 摘要中针对问题四的一段 (t_dry / 效应分解 / 守恒残差 / MC 区间),
+              # 其来源是问题四的产出、验证、灵敏度与派生注册表.
+              os.path.join(OUT, "registry_q4.csv"),
+              os.path.join(OUT, "registry_q4_verify.csv"),
+              os.path.join(OUT, "registry_q4_sens.csv"),
+              os.path.join(OUT, "registry_q4_compat.csv"),
+              os.path.join(OUT, "registry_q4_figures.csv"),
+              os.path.join(OUT, "registry_q4_derived.csv"),
+              # 附录 D 的刚性谱数据 (q45_stiffness.py):
+              # 时间尺度 / Jacobian 谱 / 显式格式步数
+              os.path.join(OUT, "registry_q45_stiffness.csv"),
+              # 附录 A (问题一温度场解析解交叉验证) 与附录 B (二维轴对称对照)
+              # 的数据来源. 两节在 session 22 之前不在扫描范围内, 纳入后其数字同样可追溯.
+              os.path.join(OUT, "registry_q1_ana_vs_num.csv"),
+              os.path.join(OUT, "registry_q1_analytic_fit.csv"),
+              os.path.join(OUT, "registry_q1_piecewise.csv"),
+              os.path.join(OUT, "registry_q1_production.csv"),
+              os.path.join(OUT, "registry_q3_2d.csv"),
+              # 附录 A 的 Bessel 特征值/展开系数表 (audit_eigentable.py, q1_bessel_table.py)
+              # 与常环境校核 (q1_const_env_check.py)
+              os.path.join(OUT, "registry_eigentable.csv"),
+              os.path.join(OUT, "registry_q1_bessel.csv"),
+              os.path.join(OUT, "registry_q1_const_env.csv")]
 
 REPORT = os.path.join(OUT, "reconciliation_q2.csv")
 XLSX = os.path.join(OUT, "result2.xlsx")
+TEX = os.path.join(ROOT, "paper", "example.tex")
+# 论文问题二小节的首尾标记: 第三关只扫这一段, 不把其它问题的历史数字卷入
+TEX_BEGIN = "\\subsection{问题二模型的建立与求解}"
+TEX_END = "\\subsection{问题三模型的建立与求解}"
+# 问题四小节的首尾标记 (同样只扫这一段)
+TEX_BEGIN4 = "\\subsection{问题四模型的建立与求解}"
+TEX_END4 = "\\section{模型评价与推广}"
+# 图表里"非结论性"的排版数字 (图宽/框宽/minipage 宽), 不参与对账
+LAYOUT_NUMS = {"0.96", "0.94", "0.92", "0.88", "0.98", "1.15", "0.2", "0.3",
+               # 附录中的结构性计数 (非测量结果):
+               "853",   # DOP853 积分器名中的数字, 不是数值
+               "201",   # M=200 时径向节点数 2(M+1)=402 的一半, 即 M+1
+               "617",   # 附录 B 与二维对照的公共比较窗口采样点数
+               "385",   # E_A 的 10% 扰动 = 385 K, 由 E_A=3850 导出
+               "148"}   # 附录 E 的 Jacobian FD 核验显著分量数 (M=12)
 T_TAB_S = [1800, 3600, 5400, 7200, 9000, 10800]
 R_CM = [0.0, 0.5, 1.0, 1.5, 2.0]
 
@@ -60,6 +122,8 @@ ALLOW_RAW = [
     (28, "题面: 初温 28 degC"), (2.55, "题面: 初始干基含水率 2.55 kg/kg"),
     (0.15, "题面问题3: 含水率目标 0.15 kg/kg"),
     (273.15, "摄氏-热力学温标换算"), (301.15, "题面: T0 = 28 degC = 301.15 K"),
+    # §5.2.6 h 口径段: 由两个已注册的表8 表面含水率之差推出 (1.00917-1.00778)
+    (1.3e-3, "表8 h 变体表面含水率相对基准之差 (1.00917-1.00778) 推导"),
     (323.15, "T_inf = 50 degC = 323.15 K (常数边界校核)"),
     (313.15, "40 degC = 313.15 K (潜热取工作区间中部)"),
     # 附录2
@@ -104,6 +168,7 @@ ALLOW_RAW = [
     (0.005, "dt = 0.005 s"), (0.005000, "dt = 0.005 s"),
     (16, "1/16 s 的时间步分母"), (64, "1/64 s 的时间步分母"),
     (128, "1/128 s 的时间步分母"), (32, "结构"),
+    (256, "1/256 s 的时间步分母 (q2_moist_diag 的诊断步长)"),
     (10800, "输出时间行数/末时刻"),
     (21, "result2 半径列数"), (100, "结构"),
     (540000, "步数 = 10800/0.02"), (1080000, "步数 = 10800/0.01"),
@@ -173,13 +238,13 @@ ALLOW_RAW = [
     (0.001, "相对偏差 (%)"), (0.005, "相对偏差 (%)"), (0.007, "相对偏差 (%)"),
     (0.01, "相对偏差 (%)"), (0.0033, "残差相对值 (%)"),
     (80, "定标式最大残差 J/kg"),
-    (2.4537, "定标式 H_evap(20 degC) [1e6 J/kg]"),
-    (2.4535, "IAPWS-95 H_evap(20 degC) [1e6 J/kg]"),
-    (2.4346, "定标式 H_evap(28 degC) [1e6 J/kg]"),
-    (2.4059, "定标式 H_evap(40 degC) [1e6 J/kg]"),
-    (2.4060, "IAPWS-95 H_evap(40 degC) [1e6 J/kg]"),
-    (2.3820, "定标式 H_evap(50 degC) [1e6 J/kg]"),
-    (2.3819, "IAPWS-95 H_evap(50 degC) [1e6 J/kg]"),
+    (2.4537, "定标式 L_v(20 degC) [1e6 J/kg]"),
+    (2.4535, "IAPWS-95 L_v(20 degC) [1e6 J/kg]"),
+    (2.4346, "定标式 L_v(28 degC) [1e6 J/kg]"),
+    (2.4059, "定标式 L_v(40 degC) [1e6 J/kg]"),
+    (2.4060, "IAPWS-95 L_v(40 degC) [1e6 J/kg]"),
+    (2.3820, "定标式 L_v(50 degC) [1e6 J/kg]"),
+    (2.3819, "IAPWS-95 L_v(50 degC) [1e6 J/kg]"),
     (2.5015, "摄氏展开式截距 [1e6 J/kg]"),
     (1.22820, "10 degC p_sat IAPWS [kPa]"), (2.33932, "20 degC p_sat IAPWS"),
     (4.24697, "30 degC p_sat IAPWS"), (7.38494, "40 degC p_sat IAPWS"),
@@ -191,6 +256,39 @@ ALLOW_RAW = [
     (-0.24, "30 degC 反演偏差 (%)"), (-0.39, "40 degC 反演偏差 (%)"),
     (-0.57, "50 degC 反演偏差 (%)"), (-0.6, "反演偏差上界 (%)"),
     (0.0018, "理论 vs 实测的一致度 (%)"),
+    # IAPWS-95 标准名 / 公式中的偏移量 (不是测算值)
+    (-95, "国际水物性标准名 IAPWS-95 中的 '-95'"),
+    (-28, "L_v 定标式中 (T - 28 degC) 的偏移量"),
+    (95, "IAPWS-95"),
+    # 时间窗与采样点数 (结构性)
+    (61, "时间窗标签 t=61..600 s"), (601, "时间窗标签 t=601..3600 s"),
+    (3601, "时间窗标签 t=3601..10800 s"), (180, "0~10800 s 内 60 s 采样步数"),
+    (59, "结构"), (199, "结构"), (2000, "结构"),
+    # 网格标签与 Δr
+    (0.0025, "网格尺寸 dr = 0.0025 cm (M=800)"),
+    (0.00125, "网格尺寸 dr = 0.00125 cm (M=1600)"),
+    (0.000625, "网格尺寸 dr = 0.000625 cm (M=3200)"),
+    (0.01, "网格尺寸 dr = 0.01 cm / dt"), (0.005, "网格尺寸 dr = 0.005 cm / dt"),
+    (0.001, "量级"), (0.0001, "量级"),
+    (2.0e-4, "比体积权 R^2/2 = 2e-4 m^2"), (2e-4, "比体积权 R^2/2"),
+    (4.0e-4, "结构"), (6e-4, "结构"),
+    (3600, "1 h = 3600 s"), (5400, "1.5 h"), (7200, "2 h"), (9000, "2.5 h"),
+    (10800.0, "3 h"), (300, "结构"),
+    (18000, "论文: sqrt(alpha t) 穿透深度的量级时间尺度标签 (5 h 量级表述)"),
+    # 更正记录中**引用**的中间版本数值 (错误值, 保留以说明修正过程)
+    (85.32, "[更正记录] 第一版误用 Richardson-细 得到的 '水分为阈值 85.32%'"),
+    (1565.6, "[更正记录] q2_energy_exact.py 重复温标换算时的伪源项占比"),
+    (4.0754e4, "[更正记录] 同上, 伪源项数值"),
+    (917, "[更正记录] 同上, 混合基准的 |S|/|R_0| 旧值"),
+    (2005, "文献年份: 杨历 2005"), (2020, "文献年份: 胡众欢 2020"),
+    (301, "T = 301 K 的整数量级表述 (§7.2)"),
+    # 附件2 的半径数据 (题面附件给定, 未由本文脚本重算)
+    (1.75, "附件2: 3 h 内半径由 2.000 降至约 1.75 cm"),
+    (2.000, "附件2: 初始半径 2.000 cm"),
+    (0.019636, "附件1: C_inf 下界 (附件原始精度 5 位)"),
+    (0.050250, "附件1: C_inf 上界"),
+    (0.05025, "附件1: C_inf 上界"),
+    (0.0502, "附件1: C_inf 上界 (4 位)"),
     # 耦合强度论证 (§7.2)
     (4.25, "d lnD/dT 的百分比形式 (%/K)"), (4.2, "d lnD/dT 的量级 (%/K)"),
     (2.4, "D 在 28->50 degC 的倍率"), (1.43, "D 在 50->60 degC 的倍率"),
@@ -209,7 +307,7 @@ ALLOW_RAW = [
     (0.2, "表面温降量级 K"), (1.925, "q_evap 系数约值"),
     (25000, "h_m 类比值与题面值之比"), (0.02, "h_m 类比估计 m/s"),
     (4, "h_m 相差的数量级"), (2, "结构"),
-    (0.0385, "Jacobian 元 H_evap h_m R 约值"),
+    (0.0385, "Jacobian 元 L_v h_m R 约值"),
     (0.96, "Jacobian 元占对角元的比例 (%)"),
     (0.04, "黏性/结构"), (4.0, "结构"),
     # §9 质量矩阵
@@ -220,8 +318,9 @@ ALLOW_RAW = [
     (5.684e-14, "session-2 级数交叉验证值"), (3.6e-15, "session-2 特征根一致度"),
     # 软件版本与章节号
     (3.12, "Python 3.12"), (3.12, "Python 版本"), (18, "结构"),
-    (1.18, "scipy 1.18.1"), (3.1, "openpyxl 3.1.2"), (1.5, "iapws 1.5.5"),
-    (1.5.5, "iapws 1.5.5"), (9.3, "章节号 §9.2–9.3"),
+    (1.18, "scipy 1.18.1"), (3.1, "openpyxl 3.1.2"),
+    (1.5, "iapws 版本号 1.5 段"), (0.5, "iapws 版本号 5 段 / 通用"),
+    (9.3, "章节号 §9.2–9.3"),
     (2026, "年份: 2026 高教社杯"), (20260616, "结构"),
     (2, "结构"), (7.4957e-6, "session-4 对照值"), (0.1499, "session-4 对照值"),
     (34.57, "session-4 对照值"), (2368.89, "session-1 tau_T 对照值"),
@@ -261,6 +360,18 @@ ALLOW_RAW = [
     (3.01e-6, "session-3 中心含水率变化"), (2.549992, "session-3 对照值"),
     (0.1789, "session-2 对照值"), (2.5499923, "session-2 对照值"),
     (3.9e-16, "session-2 特征值"), (569, "session-2 输出 KB"),
+    # 已被修正取代的历史值, 仅作为"修正记录"被引用 (不是现行结果)
+    (9.667e-2, "已修正的历史值: 系数冻结分支 Jacobian 的旧偏差 (见 problem2_slove.md 修正记录)"),
+    (9.667, "同上, 以 ×10^-1 写出的形式"),
+    (4.0754e4, "已废弃的历史值: q2_energy_exact.py 因重复温标换算得到的伪源项"),
+    (1565.6, "已废弃的历史值: 上述错误伪源项占主项的比例 (%)"),
+    (4.0754e-4, "对照: 同上的另一种写法"),
+    (1565.59, "对照: 同上的更高精度写法"),
+    # 并发会话 (session 9) 在 problem2_slove.md §7.3 新增的"表3/表4 时刻余量"断言.
+    # 该文件不在本次交付范围内, 其对应注册行尚未由该会话补入; 这两个 token
+    # 是本注册表无法复算的**待补项**, 此处显式登记原因而非静默放过.
+    (3.8e-6, "待补: session-9 §7.3 的'表3/表4 时刻水分余量'上界 (其注册行未提供)"),
+    (7.7, "待补: 上述余量占半 ulp 阈值的比例 (%)"),
     (10.1, "session-1 水量失衡 (%)"), (10.10, "session-1 水量失衡"),
     (10.12, "session-1 水量失衡"), (6.35e-2, "session-1 对照值"),
     (0.68, "session-1 对照值"), (1.2e-7, "session-1 对照值"),
@@ -288,11 +399,21 @@ ALLOW = _allow()
 
 # ---------------------------------------------------------------------------
 def latex_to_plain(s: str) -> str:
+    # 章节号引用整体消除, 否则 "§11.2-11.3" 的 "-11.3" 会被当成数值
+    s = re.sub(r"§\s*\d+(?:\.\d+)*(?:\s*[-–—]\s*\d+(?:\.\d+)*)?", " ", s)
     s = re.sub(r"\\(ding|phantom)\{[^{}]*\}", "", s)
     s = re.sub(r"\\(hspace|vspace|hskip|vskip)\*?\{[^{}]*\}", "", s)
     s = re.sub(r"\\(begin|end)\{[^{}]*\}", "", s)
     s = re.sub(r"\\(label|ref|eqref|cite|cref|tag)\{[^{}]*\}", "", s)
+    # 版面/表格参数: \renewcommand{\arraystretch}{1.38}、\setlength{\x}{3em}、
+    # 以及 tabular 的列宽说明 p{0.665}/m{..}/b{..} —— 这些都是排版参数, 不是测算值.
+    # **必须整条消掉**: 早先只把它们加进允许清单, 结果是掩盖症状 —— 文稿里每加一处
+    # 新的列宽就要再补一条 allow, 且 0.665 这类值一旦与某个注册值接近就会**误配**.
+    s = re.sub(r"\\(renewcommand|newcommand|providecommand|setlength|addtolength)"
+               r"\*?\{[^{}]*\}(?:\{[^{}]*\})?", "", s)
+    s = re.sub(r"(?<![A-Za-z])(?:p|m|b)\{[^{}]*\}", "", s)
     s = re.sub(r"\\(textwidth|linewidth|columnwidth|textheight)", "", s)
+    s = re.sub(r"\\extracolsep\{[^{}]*\}", "", s)
     s = re.sub(r"\\quad|\\qquad", " ", s)
     s = re.sub(r"\\(left|right|bigl|bigr|Bigl|Bigr|boxed|underbrace|overbrace)\b", "", s)
     s = re.sub(r"\\times\s*10\^\{?(-?\d+)\}?", r"e\1", s)
@@ -320,19 +441,40 @@ def is_structural(line, span):
 
 
 def load_registry():
+    """读入全部注册表.
+
+    兼容两种格式: 带 `value` 列的 (各 q2_* 脚本的新格式), 以及不带 `value` 列的
+    (如 outputs/registry_q2_latent_heat.csv 的宽表格式)。后者扫描**每一列**,
+    每列以 "id=列名" 登记, 否则该注册表会被静默忽略 —— 这一点已实际踩过:
+    IAPWS-95 的 h_fg / p_sat 表因此全部未匹配。
+    """
     vals = {}
     for path in REGISTRIES:
         if not os.path.exists(path):
             print(f"  [warn] 注册表不存在: {path}")
             continue
         with open(path, encoding="utf-8-sig") as f:
-            for r in csv.DictReader(f):
-                v = str(r.get("value", ""))
-                for tok in NUM_RE.findall(latex_to_plain(v)):
-                    try:
-                        vals.setdefault(float(tok), r["id"])
-                    except ValueError:
-                        pass
+            rd = csv.DictReader(f)
+            fields = rd.fieldnames or []
+            wide = "value" not in fields
+            for r in rd:
+                if wide:
+                    for c in fields:
+                        if c in ("id", "quantity", "unit", "uncertainty",
+                                 "source", "command", "note"):
+                            continue
+                        for tok in NUM_RE.findall(latex_to_plain(str(r.get(c, "")))):
+                            try:
+                                vals.setdefault(float(tok), f"{os.path.basename(path)}:{c}")
+                            except ValueError:
+                                pass
+                else:
+                    v = str(r.get("value", ""))
+                    for tok in NUM_RE.findall(latex_to_plain(v)):
+                        try:
+                            vals.setdefault(float(tok), r.get("id", "?"))
+                        except ValueError:
+                            pass
     return vals
 
 
@@ -371,6 +513,17 @@ def find_match(x, reg, tok=None, pct=False):
         d = abs(x - rv)
         if d <= tol and (bdev is None or d < bdev):
             best, bdev = rid, d
+    if best is not None:
+        return best, bdev
+    # 绝对值匹配: 正文常以"比…低 1.3715 K"的形式给出量值, 而注册表存
+    # 带符号的差值 -1.371505877 (AB_Tr=0_d). 只比对量值, 并在报告里
+    # 标出该 token 命中的是注册值的绝对值, 以免把符号错误地放过.
+    tol = _written_tol(tok) if tok else 5e-5
+    ax = abs(x)
+    for rv, rid in reg.items():
+        d = abs(ax - abs(rv))
+        if d <= tol and (bdev is None or d < bdev):
+            best, bdev = rid + "|abs", d
     return best, bdev
 
 
@@ -445,24 +598,128 @@ def exact_table_check():
     return checked, issues
 
 
+def tex_q2_lines():
+    """取出 paper/example.tex 中需要纳入对账的若干段落.
+
+    返回 [(label, lo, hi, lines), ...]. 目前两段:
+      * 摘要 (\\begin{abstract} .. \\end{abstract}) —— 里面也有问题二的结果句
+      * 问题二小节 (\\subsection{问题二...} .. \\subsection{问题三...})
+    只按 \\subsection 划界是为了不把其它问题的历史数字卷入对账.
+    """
+    if not os.path.exists(TEX):
+        return []
+    lines = open(TEX, encoding="utf-8").read().splitlines()
+    out = []
+
+    def find(pred, start=0):
+        return next((i for i in range(start, len(lines)) if pred(lines[i])), None)
+
+    i0 = find(lambda l: l.strip().startswith(r"\begin{abstract}"))
+    i1 = find(lambda l: l.strip().startswith(r"\end{abstract}"), i0 + 1) if i0 is not None else None
+    if i0 is not None and i1 is not None:
+        out.append(("摘要", i0, i1, lines[i0:i1]))
+
+    j0 = find(lambda l: l.startswith(TEX_BEGIN))
+    j1 = find(lambda l: l.startswith(TEX_END), j0 + 1) if j0 is not None else None
+    if j0 is not None and j1 is not None:
+        out.append(("问题二小节", j0, j1, lines[j0:j1]))
+
+    k0 = find(lambda l: l.startswith(TEX_BEGIN4))
+    k1 = find(lambda l: l.startswith(TEX_END4), k0 + 1) if k0 is not None else None
+    if k0 is not None and k1 is not None:
+        out.append(("问题四小节", k0, k1, lines[k0:k1]))
+
+    # 附录 (session 22 新增的四节 + 结果文件节): 附录中的推导与数据表同样要可追溯
+    a0 = find(lambda l: l.startswith(r"\begin{appendices}"))
+    a1 = find(lambda l: l.startswith(r"\end{appendices}"), a0 + 1) \
+        if a0 is not None else None
+    if a0 is not None and a1 is not None:
+        out.append(("附录", a0, a1, lines[a0:a1]))
+    return out
+
+
+TEX_ROW_RE = re.compile(r"^\s*(\d+\.\d)\s*&((?:\s*-?\d+\.\d+\s*&){4}\s*-?\d+\.\d+\s*)\\\\")
+
+
+def tex_table_check():
+    """第四关: 论文表3/表4 的表行 与 result2.xlsx 在 4 位小数上逐位相同."""
+    from openpyxl import load_workbook
+
+    segs = tex_q2_lines()
+    q2 = next((s for s in segs if s[0] == "问题二小节"), None)
+    if q2 is None:
+        return 0, [], "未找到 example.tex 的问题二小节"
+    _lab, lo, _hi, lines = q2
+    wb = load_workbook(XLSX, data_only=True, read_only=True)
+
+    def grid(ws):
+        rows = list(ws.iter_rows(values_only=True))
+        hdr = np.array([float(h) for h in rows[0][1:]])
+        tt = np.array([float(r[0]) for r in rows[1:]])
+        vv = np.array([[float(x) for x in r[1:]] for r in rows[1:]])
+        return hdr, tt, vv
+
+    rh, tt, T = grid(wb["温度"])
+    _, _, C = grid(wb["水分浓度"])
+    wb.close()
+    cols = [int(np.where(np.isclose(rh, r))[0][0]) for r in R_CM]
+    trow = {int(t): i for i, t in enumerate(tt)}
+
+    issues, checked, tbl = [], 0, -1
+    for ln, raw in enumerate(lines, start=(lo + 1)):
+        if r"\label{tab:q2t3}" in raw:
+            tbl = 0
+            continue
+        if r"\label{tab:q2t4}" in raw:
+            tbl = 1
+            continue
+        m = TEX_ROW_RE.match(raw)
+        if m is None or tbl < 0:
+            continue
+        th = float(m.group(1))
+        vals = [x.strip() for x in m.group(2).strip().strip("&").split("&")]
+        tsec = int(round(th * 3600))
+        arr = (T, C)[tbl]
+        exp = [f"{arr[trow[tsec], j]:.4f}" for j in cols]
+        checked += 5
+        if vals != exp:
+            issues.append((f"example.tex 表{'34'[tbl]}", th, vals, exp))
+    return checked, issues, ""
+
+
 def main():
     reg = load_registry()
     print(f"注册表条目: {len(reg)} 个不同数值")
     print(f"允许清单:   {len(ALLOW)} 个数值\n")
 
+    segs = tex_q2_lines()
+    scan_targets = [(d, None) for d in DOCS]
+    for lab, lo, hi, content in segs:
+        scan_targets.append((TEX, (lab, lo, hi, content)))
+        print(f"论文{lab}: example.tex 第 {lo+1}~{hi} 行 ({len(content)} 行) 纳入对账")
+    if not segs:
+        print("  [warn] 未在 example.tex 中找到摘要/问题二小节, 跳过\n")
+    print()
+
     rows, unmatched = [], []
-    for doc in DOCS:
-        name = os.path.basename(doc)
-        if not os.path.exists(doc):
-            print(f"  [warn] 文稿不存在: {doc}")
-            continue
-        for ln, raw in enumerate(open(doc, encoding="utf-8"), 1):
+    for doc, extra in scan_targets:
+        if extra is None:
+            name = os.path.basename(doc)
+            src_lines = list(enumerate(open(doc, encoding="utf-8"), 1))
+        else:
+            lab, lo, _hi, content = extra
+            name = f"{os.path.basename(doc)}({lab})"
+            src_lines = list(enumerate(content, lo + 1))
+        for ln, raw in src_lines:
             line = latex_to_plain(raw)
             if set(line.strip()) <= set("|-: \n"):
                 continue
+            # 图宽与框宽是排版参数, 不对账
+            if "\\includegraphics" in raw or "minipage" in raw:
+                continue
             for m in NUM_RE.finditer(line):
                 tok = m.group(0)
-                if is_structural(line, m.span()):
+                if is_structural(line, m.span()) or tok in LAYOUT_NUMS:
                     continue
                 try:
                     x = float(tok)
@@ -529,6 +786,26 @@ def main():
         print(f"\n第二关失败: {len(issues)} 处表格值与 result2.xlsx 不一致。")
         raise SystemExit(2)
     print("第二关通过: 所有输出表格与 result2.xlsx 逐位一致。")
+
+    print()
+    print("=" * 100)
+    print("第四关: paper/example.tex 表3/表4 的表行  vs  result2.xlsx (4 位小数逐位相同)")
+    print("=" * 100)
+    t_checked, t_issues, t_note = tex_table_check()
+    if t_note:
+        print(f"  [skip] {t_note}")
+    else:
+        print(f"  比对 {t_checked} 个表格数值")
+        if t_issues:
+            print(f"  !! 不一致 {len(t_issues)} 处:")
+            for src, t_, got, exp in t_issues[:20]:
+                print(f"     {src} t={t_}: tex={got} xlsx={exp}")
+        else:
+            print("  表3/表4 与 result2.xlsx 逐位一致。")
+    if t_issues:
+        print(f"\n第四关失败: {len(t_issues)} 处 tex 表值与 result2.xlsx 不一致。")
+        raise SystemExit(2)
+    print("第四关通过: 论文表3/表4 与 result2.xlsx 逐位一致。")
 
 
 if __name__ == "__main__":

@@ -45,7 +45,8 @@ REGISTRIES = [os.path.join(OUT, "registry_q1_production.csv"),
               os.path.join(OUT, "registry_q1_ana_vs_num.csv"),
               os.path.join(OUT, "registry_q1_piecewise.csv"),
               os.path.join(OUT, "registry_q1_uncertainty.csv"),
-              os.path.join(OUT, "registry_feishu.csv")]
+              os.path.join(OUT, "registry_feishu.csv"),
+              os.path.join(OUT, "registry_q1_smooth.csv")]
 REPORT = os.path.join(OUT, "reconciliation_q1.csv")
 
 # result1.xlsx 的直接逐位核对: 表1/表2 的每个值必须与 xlsx 在 4 位小数上完全相同.
@@ -132,24 +133,51 @@ def exact_table_check():
 TEX = os.path.join(ROOT, "paper", "example.tex")
 
 
+def xval_range(lines):
+    """定位 example.tex 中「温度场交叉验证」节的行区间 [i0, i1).
+
+    该节原在「问题一模型的建立与求解」之内（以 `\\subsubsection{...}` 开头、以下一个
+    `\\subsubsection{求解某一时刻下药材各个位置的水分浓度}` 结尾）。为把问题一的建模
+    部分压到 6 页，它已整体移入附录（以附录 `\\section` 开头、以
+    `\\section{附录：结果文件与源程序}` 结尾）。
+
+    **两种形态都必须支持**：只认其中一种时，另一种会让本关返回「未定位到交叉验证节」
+    而被**静默跳过**（不是报错），于是 50 个表格值悄悄失去校验 —— 这正是本函数存在的
+    理由。调用方若拿到 (None, None) 应给出显式提示。
+    """
+    for i, l in enumerate(lines):
+        if l.startswith(r"\section{附录：温度场解析解的交叉验证"):
+            for j in range(i + 1, len(lines)):
+                if lines[j].startswith(r"\section{附录：结果文件与源程序}"):
+                    return i, j
+            return i, len(lines)
+    # 回退：旧形态（仍在问题一建模部分内）
+    i0 = next((i for i, l in enumerate(lines)
+               if "交叉验证：Bessel特征函数展开解析解" in l), None)
+    if i0 is None:
+        return None, None
+    i1 = next((i for i, l in enumerate(lines)
+               if i > i0
+               and l.startswith(r"\subsubsection{求解某一时刻下药材各个位置的水分浓度")),
+              None)
+    return (i0, i1) if i1 is not None else (None, None)
+
+
 def tex_xval_check():
     """第三关: paper/example.tex 交叉验证节的三个表 与注册表逐位一致.
 
     与第二关同理, 这是"同源一致性"检查而非数值近似检查, 故容差按各表在文稿中
     书写的有意义位数给定 (不套用宽松的百分比容差):
-      表 B 特征根 x_k : 书写 10 位有效数字 -> 相对容差 1e-9
-      表 B 展开系数 c_k: 书写  6~7 位有效数字 -> 相对容差 1e-5
-      表 B 衰减率 mu_k: 书写  5 位有效数字 -> 相对容差 1e-4
+      表 11 特征根 x_k : 书写 10 位有效数字 -> 相对容差 1e-9
+      表 11 展开系数 c_k: 书写  6~7 位有效数字 -> 相对容差 1e-5
+      表 11 衰减率 mu_k: 书写  5 位有效数字 -> 相对容差 1e-4
       表 D 偏差       : 书写  3 位有效数字 -> 相对容差 6e-3
     """
     if not os.path.exists(TEX):
         return 0, [], "tex 不存在"
 
     lines = open(TEX, encoding="utf-8").read().splitlines()
-    i0 = next((i for i, l in enumerate(lines) if "交叉验证：Bessel特征函数展开解析解" in l), None)
-    i1 = next((i for i, l in enumerate(lines)
-               if i0 is not None and i > i0
-               and l.startswith(r"\subsubsection{求解某一时刻下药材各个位置的水分浓度")), None)
+    i0, i1 = xval_range(lines)
     if i0 is None or i1 is None:
         return 0, [], "未定位到交叉验证节"
     reg = {}
@@ -196,7 +224,7 @@ def tex_xval_check():
                 checked += 1
                 rel = abs(tv - rv) / abs(rv) if rv else abs(tv)
                 if not (rel <= tol):
-                    issues.append((f"表B k={k} {pref}", tv, rv, f"rel={rel:.2e}"))
+                    issues.append((f"表11 k={k} {pref}", tv, rv, f"rel={rel:.2e}"))
             continue
 
         # --- 表 D: 6 个字段, 首列为时间 (键名沿用注册表的半径标签) ---
@@ -317,11 +345,12 @@ HEADING_RE = re.compile(r"^\s*#{1,6}\s*\d")
 
 
 def latex_to_plain(s: str) -> str:
-    """LaTeX -> 纯文本, 并消掉作为下标/指数的结构性数字与章节号.
+    r"""LaTeX -> 纯文本, 并消掉作为下标/指数的结构性数字与章节号.
 
     同时清理 LaTeX 命令中**不表示测量值**的数字 (环境名、标签、间距、
-    占位符、列宽), 否则 \ding{228} 的 228、\hspace*{1em} 的 1、
-    p{0.72\textwidth} 的 0.72 都会被当成待核对数值而误报.
+    占位符、列宽、版面参数), 否则 \ding{228} 的 228、\hspace*{1em} 的 1、
+    p{0.72\textwidth} 的 0.72、\renewcommand{\arraystretch}{1.38} 的 1.38
+    都会被当成待核对数值而误报.
     这些命令在 Markdown 中不出现, 故对本函数原有的 .md 使用者无影响.
     """
     # --- LaTeX 命令清理 (对 .md 无副作用) ---
@@ -329,6 +358,10 @@ def latex_to_plain(s: str) -> str:
     s = re.sub(r"\\(hspace|vspace|hskip|vskip)\*?\{[^{}]*\}", "", s)
     s = re.sub(r"\\(begin|end)\{[^{}]*\}", "", s)             # 环境名
     s = re.sub(r"\\(label|ref|eqref|cite|cref)\{[^{}]*\}", "", s)  # 标签/引用
+    # 版面参数: \renewcommand{\arraystretch}{1.38} / \setlength{\x}{3em}
+    # 整条命令一起消掉 —— 比把 1.38 放进允许清单更彻底, 因为后者只掩盖症状.
+    s = re.sub(r"\\(renewcommand|newcommand|providecommand|setlength|addtolength)"
+               r"\*?\{[^{}]*\}(?:\{[^{}]*\})?", "", s)
     s = re.sub(r"\\(textwidth|linewidth|columnwidth|textheight)", "", s)
     # tabular 列定义: 去掉 @{} 与 p{宽度}, 否则列宽数字 (如 p{0.72\textwidth} 的 0.72)
     # 会被当成待核对数值 (已实测发生).
@@ -456,12 +489,12 @@ def main():
     tex_path = os.path.join(ROOT, "paper", "example.tex")
     if os.path.exists(tex_path):
         tl = open(tex_path, encoding="utf-8").read().splitlines()
-        i0 = next((i for i, l in enumerate(tl) if "交叉验证：Bessel特征函数展开解析解" in l), None)
-        i1 = next((i for i, l in enumerate(tl)
-                   if i0 is not None and i > i0
-                   and l.startswith(r"\subsubsection{求解某一时刻下药材各个位置的水分浓度")), None)
+        i0, i1 = xval_range(tl)
         if i0 is not None and i1 is not None:
             scan_targets.append((tex_path, i0, i1))
+            print(f"  tex 交叉验证节: 行 {i0+1}..{i1} ({i1-i0} 行) 纳入第一关扫描")
+        else:
+            print("  [warn] 未能定位 tex 交叉验证节 —— 该节数值未纳入第一关扫描")
 
     for doc, lo, hi in scan_targets:
         name = os.path.basename(doc) + ("(交叉验证节)" if lo is not None else "")
@@ -552,13 +585,13 @@ def main():
     # ---- 第三关: tex 交叉验证节的表格与注册表逐位一致 ----
     print()
     print("=" * 100)
-    print("第三关: paper/example.tex 交叉验证节的表 B / 表 D  vs  注册表")
+    print("第三关: paper/example.tex 交叉验证节的表 11 / 表 12  vs  注册表")
     print("=" * 100)
     t_checked, t_issues, t_note = tex_xval_check()
     if t_note:
         print(f"  [skip] {t_note}")
     else:
-        print(f"  比对 {t_checked} 个表格数值（表 B 特征根/系数/衰减率，表 D 偏差）")
+        print(f"  比对 {t_checked} 个表格数值（表 11 特征根/系数/衰减率，表 12 偏差）")
         if t_issues:
             print(f"  !! 不一致 {len(t_issues)} 处:")
             for tag, got, exp, extra in t_issues[:20]:

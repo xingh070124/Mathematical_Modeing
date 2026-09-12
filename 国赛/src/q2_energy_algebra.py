@@ -175,6 +175,12 @@ def main():
     add("EC_Sfalse", "守恒形式的伪源项 c_l(T-Tref)rho_s dC/dt", float(S_false),
         "W/m^3", "量级估计")
     add("EC_ratio", "伪源项 / 主项", float(abs(S_false) / main_term), "-", "量级估计")
+    add("EC_Sfalse_abs", "守恒形式伪源项的绝对值", float(abs(S_false)), "W/m^3",
+        "量级估计")
+    add("EC_main", "主项 rho cp dT/dt 的量级 (取 dT/dt=1e-3 K/s)",
+        float(main_term), "W/m^3", "量级估计")
+    add("EC_dCdt_avg", "3 h 内体积平均含水率的平均变化率", float(dCdt_avg),
+        "kg/(kg s)", "由生产解的平均降幅")
 
     # 被忽略的 -c_l J_w . grad T
     cl_j = cl
@@ -193,7 +199,48 @@ def main():
     add("EC_cJgradT_rel", "-c_l J_w.grad T 与主项之比", float(rel2), "-", "量级估计")
 
     # ------------------------------------------------------------------
-    # D. 问题一的对照: 常数 rho cp 时两式恒等
+    # E. t=0 的表面初始降温速率 (蒸发吸热在最初时刻的强度)
+    # ------------------------------------------------------------------
+    print()
+    print("=" * 96)
+    print("E t=0 表面节点的初始降温速率 (解释极值原理下界失效的机理)")
+    print("=" * 96)
+    Rr = 0.02
+    hmm = 8.0e-7
+    Hev0 = 2.4346e6
+    Cinf0 = 0.01963
+    C_R0 = 2.55
+    T_inf0 = 28.0
+    q_ev0 = Hev0 * hmm * (C_R0 - Cinf0)
+    q_cv0 = 25.0 * (T_inf0 - 28.0)
+    print(f"  t=0: T_R = T_inf = 28 degC  ->  对流项 q_conv = {q_cv0:.6f} W/m^2")
+    print(f"       C_R = 2.55, C_inf = {Cinf0}  ->  蒸发项 q_evap = "
+          f"{q_ev0:.6f} W/m^2")
+    print(f"  => 初始时刻表面只有蒸发失热, 必然降温")
+    for M in (400, 1600):
+        dr = Rr / M
+        r_ = np.arange(M + 1) * dr
+        MLgM = dr * (r_[M - 1] + 2 * r_[M]) / 6.0     # per 2 pi, 已约 rho cp
+        rcp0 = float(rho(2.55) * cp(2.55))
+        rate = -q_ev0 / (rcp0 * MLgM)
+        print(f"  M={M:5d}: MLg_M = {MLgM:.6e} m^2, rho cp = {rcp0:.1f} "
+              f"->  dT_R/dt|_0 = {rate:.4f} K/s")
+        add(f"EE_rate_M{M}", f"M={M}: t=0 表面初始降温速率", float(rate), "K/s",
+            "解析 (集中质量表面节点)")
+    dr = Rr / 1600
+    r_ = np.arange(1601) * dr
+    MLgM = dr * (r_[1599] + 2 * r_[1600]) / 6.0
+    rcp0 = float(rho(2.55) * cp(2.55))
+    add("EE_qev0", "t=0 表面蒸发吸热热流", float(q_ev0), "W/m^2", "解析")
+    add("EE_qconv0", "t=0 表面对流供热热流", float(q_cv0), "W/m^2", "解析")
+    add("EE_MLgM_1600", "M=1600 的表面集中质量几何因子", float(MLgM), "m^2", "解析")
+    add("EE_rate_prod", "M=1600: t=0 表面初始降温速率",
+        float(-q_ev0 / (rcp0 * MLgM)), "K/s", "解析")
+    print("  该速率与 result2.xlsx 中表面温度在最初 ~10 s 下降到 27.9905 degC")
+    print("  的形态一致 (q2_derive.py)。")
+
+    # ------------------------------------------------------------------
+    # F. 问题一的对照: 常数 rho cp 时两式恒等
     # ------------------------------------------------------------------
     print()
     print("=" * 96)

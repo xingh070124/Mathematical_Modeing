@@ -1,0 +1,8 @@
+﻿key,quantity,value,unit,source
+CE_Tinf,常环境校核使用的环境温度,50.0,degC,设定值
+CE_Bi,热 Biot 数,0.2777777777777778,1,附录2
+CE_htau,解析侧分段线性子步长,0.25,s,设置
+CE_nmodes,解析侧模态数,400.0,1,设置
+CE_maxdT_M3200,常环境校核 M=3200 全场最大温度差,3.370214989217857e-05,K,q1_const_env_check.py
+CE_maxdT_tab_M3200,常环境校核 M=3200 表1 位形最大温度差,3.28503691662263e-05,K,q1_const_env_check.py
+CE_dt_M3200,常环境校核 M=3200 的时间步长,0.00390625,s,q1_const_env_check.py

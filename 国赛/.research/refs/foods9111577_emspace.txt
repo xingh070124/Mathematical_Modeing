@@ -1,0 +1,14 @@
+display formulas in XML: 52
+
+EQ (1)    {'EM SPACE': 1, 'NO-BREAK SPACE': 5}
+      .../mml:mo>|x||)|||||c||w|||| ||=|| ||=||∇|| ||·|| ||||D||eff||<mml:mspace wi
+
+EQ (5)    {'THIN SPACE': 1, 'NO-BREAK SPACE': 1}
+EQ (8)    {'NO-BREAK SPACE': 2}
+EQ (9)    {'NO-BREAK SPACE': 2}
+EQ (A1)   {'NO-BREAK SPACE': 3}
+EQ (A8)   {'NO-BREAK SPACE': 1}
+EQ (A9)   {'NO-BREAK SPACE': 1}
+
+total <mo> </mo> (em space, U+2003): 1
+total double equals '==': 0

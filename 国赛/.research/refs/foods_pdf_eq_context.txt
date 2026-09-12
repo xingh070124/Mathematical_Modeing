@@ -1,0 +1,87 @@
+=== (23) ===
+tion X(t)/X0 = a0 + a1e−b1t + a2e−b2t + (1 −a0 −a1 −a2)e−b3t (22) that satisﬁes the two constrains X(0)/X0 = 1, X∞/X0 = a0. The best-ﬁt curves are shown in Figure 2 (red and blue thick lines). The dehydration rate J(t) can be subsequently evaluated as J(t) = 1 1 −a0 a1b1e−b1t + a2b2e−b2t + (1 −a0 −a1 −a2) b3e−b3t , (23) and plotted as a function of Xr = (X(t)/X0)−a0 1−a0 . The experimental dehydration-rate curves, shown in Figure 4A, exhibit the expected asymptotic linear beha
+
+=== (24) ===
+dration-rate curves and Equation (21) the following values of water diffusivity Deff(40 ◦C) = 1.703 × 10−10 m2/s and Deff(50 ◦C) = 2.497 × 10−10 m2/s have been estimated and then plotted, in Figure 4B, with the corresponding best-ﬁt Arrhenius function Deff(T) = D0e − E RgT , D0 = 4.00012 × 10−5m2/s , E/Rg = −3872.63K. (24) The water diffusivity Deff(T), thus estimated in the whole range of temperatures [10 ◦C–50 ◦C], will be used to verify the predictive capabilities of the non-i
+
+=== (23) ===
+0.06 0.08 0.1 0 0.2 0.4 0.6 0.8 1 A J [h-1] Xr=(X-X∞)/(X0-X∞) C-40oC C-50oC 0 1 2 3 10 20 30 40 50 60 B Deff x 1010 [m2/s] T [oC] Figure 4. (A) Dehydration-rate curves J vs. Xr for continuous dehydration tests at T∞= 40 ◦C, 50 ◦C, U∞= 1.28 m/s. Continuous lines represent the best-ﬁt curves Equation (23). Black dashed lines highlight the asymptotic (large t, small Xr) linear behaviour, Equation (21). (B) Estimated effective water diffusivity Deff at T = 40 ◦C,
+
+=== (24) ===
+◦C, U∞= 1.28 m/s. Continuous lines represent the best-ﬁt curves Equation (23). Black dashed lines highlight the asymptotic (large t, small Xr) linear behaviour, Equation (21). (B) Estimated effective water diffusivity Deff at T = 40 ◦C, 50 ◦C (ﬁlled points). The dashed line represents the Arrhenius behaviour, Equation (24). 4.3. The Non-Isothermal Approach The non-isothermal model, Equations (8)–(13), rewritten for a spherical sample in terms of the water volume fraction φ(r, t),
+
+=== (25) ===
+lled points). The dashed line represents the Arrhenius behaviour, Equation (24). 4.3. The Non-Isothermal Approach The non-isothermal model, Equations (8)–(13), rewritten for a spherical sample in terms of the water volume fraction φ(r, t), reads as ∂φ(r, t) ∂t = 1 r2 ∂ ∂r r2 Deff(T) ∂φ ∂r −vs(r) φ ! , r ∈(0, R(t)) (25) ∂ ρpCp pT(r, t) ∂t = 1 r2 ∂ ∂r r2 kp ∂φ ∂r −vs(r)ρpCp p T ! , r ∈(0, R(t)) (26) vs(r) = Deff(T)∂φ ∂r , dR(t) dt = vs(R(t)) = Deff(Tb)∂φ ∂r R(t) (27)
+
+=== (26) ===
+he Non-Isothermal Approach The non-isothermal model, Equations (8)–(13), rewritten for a spherical sample in terms of the water volume fraction φ(r, t), reads as ∂φ(r, t) ∂t = 1 r2 ∂ ∂r r2 Deff(T) ∂φ ∂r −vs(r) φ ! , r ∈(0, R(t)) (25) ∂ ρpCp pT(r, t) ∂t = 1 r2 ∂ ∂r r2 kp ∂φ ∂r −vs(r)ρpCp p T ! , r ∈(0, R(t)) (26) vs(r) = Deff(T)∂φ ∂r , dR(t) dt = vs(R(t)) = Deff(Tb)∂φ ∂r R(t) (27) ∂φ ∂r r=0 = 0 , −Deff(Tb)∂φ ∂r R(t) = hm(Tav) Mw ρw pv(Tb) RgTb RHb −pv(T∞)
+
+=== (27) ===
+rewritten for a spherical sample in terms of the water volume fraction φ(r, t), reads as ∂φ(r, t) ∂t = 1 r2 ∂ ∂r r2 Deff(T) ∂φ ∂r −vs(r) φ ! , r ∈(0, R(t)) (25) ∂ ρpCp pT(r, t) ∂t = 1 r2 ∂ ∂r r2 kp ∂φ ∂r −vs(r)ρpCp p T ! , r ∈(0, R(t)) (26) vs(r) = Deff(T)∂φ ∂r , dR(t) dt = vs(R(t)) = Deff(Tb)∂φ ∂r R(t) (27) ∂φ ∂r r=0 = 0 , −Deff(Tb)∂φ ∂r R(t) = hm(Tav) Mw ρw pv(Tb) RgTb RHb −pv(T∞) RgT∞ RH∞ (28) ∂T ∂r r=0 = 0 , −kp ∂T ∂r R(t) = hT(Tav)(Tb −T∞)
+
+=== (28) ===
+1 r2 ∂ ∂r r2 Deff(T) ∂φ ∂r −vs(r) φ ! , r ∈(0, R(t)) (25) ∂ ρpCp pT(r, t) ∂t = 1 r2 ∂ ∂r r2 kp ∂φ ∂r −vs(r)ρpCp p T ! , r ∈(0, R(t)) (26) vs(r) = Deff(T)∂φ ∂r , dR(t) dt = vs(R(t)) = Deff(Tb)∂φ ∂r R(t) (27) ∂φ ∂r r=0 = 0 , −Deff(Tb)∂φ ∂r R(t) = hm(Tav) Mw ρw pv(Tb) RgTb RHb −pv(T∞) RgT∞ RH∞ (28) ∂T ∂r r=0 = 0 , −kp ∂T ∂r R(t) = hT(Tav)(Tb −T∞) −λv(Tb)ρwDeff(Tb)∂φ ∂r R(t) (29) where the Relative Humidity at the air/sample interface RHb = RH
+
+=== (29) ===
+∂r r2 kp ∂φ ∂r −vs(r)ρpCp p T ! , r ∈(0, R(t)) (26) vs(r) = Deff(T)∂φ ∂r , dR(t) dt = vs(R(t)) = Deff(Tb)∂φ ∂r R(t) (27) ∂φ ∂r r=0 = 0 , −Deff(Tb)∂φ ∂r R(t) = hm(Tav) Mw ρw pv(Tb) RgTb RHb −pv(T∞) RgT∞ RH∞ (28) ∂T ∂r r=0 = 0 , −kp ∂T ∂r R(t) = hT(Tav)(Tb −T∞) −λv(Tb)ρwDeff(Tb)∂φ ∂r R(t) (29) where the Relative Humidity at the air/sample interface RHb = RH R(t) = RH(φb, Tb) is evaluated from desorption isotherms for Rocha pears reported by [27] a
+
+=== (25) ===
+∂T ∂r r=0 = 0 , −kp ∂T ∂r R(t) = hT(Tav)(Tb −T∞) −λv(Tb)ρwDeff(Tb)∂φ ∂r R(t) (29) where the Relative Humidity at the air/sample interface RHb = RH R(t) = RH(φb, Tb) is evaluated from desorption isotherms for Rocha pears reported by [27] and best ﬁtted with the Henderson model, see Appendix A. Equations (25)–(29) must be numerically integrated starting from the uniform initial conditions φ(r, 0) = φ0 ≃0.9 and T(r, 0) = T0 = 15 ◦C. The value of φ0 can slightly chang
+
+=== (29) ===
+r r=0 = 0 , −kp ∂T ∂r R(t) = hT(Tav)(Tb −T∞) −λv(Tb)ρwDeff(Tb)∂φ ∂r R(t) (29) where the Relative Humidity at the air/sample interface RHb = RH R(t) = RH(φb, Tb) is evaluated from desorption isotherms for Rocha pears reported by [27] and best ﬁtted with the Henderson model, see Appendix A. Equations (25)–(29) must be numerically integrated starting from the uniform initial conditions φ(r, 0) = φ0 ≃0.9 and T(r, 0) = T0 = 15 ◦C. The value of φ0 can slightly change for
+
+=== (24) ===
+1577 11 of 22 0 0.2 0.4 0.6 0.8 1 0 20 40 60 80 100 120 X(t)/X0 t [h] C-40oC C-50oC Figure 5. Comparison between experimental continuous dehydration curves X(t)/X0 vs. t at T∞= 40 ◦C, 50 ◦C and U∞= 1.28 m/s (ﬁlled points) and model predictions (continuous and dashed lines) with D(T) given by Equation (24). Continuous red and blue curves represent the non-isothermal model Equations (25)–(29). Black dashed lines represent the non-isothermal simpliﬁed model with T(
+
+=== (25) ===
+t [h] C-40oC C-50oC Figure 5. Comparison between experimental continuous dehydration curves X(t)/X0 vs. t at T∞= 40 ◦C, 50 ◦C and U∞= 1.28 m/s (ﬁlled points) and model predictions (continuous and dashed lines) with D(T) given by Equation (24). Continuous red and blue curves represent the non-isothermal model Equations (25)–(29). Black dashed lines represent the non-isothermal simpliﬁed model with T(r, t) = Tb(t), Equation (31). The reliability of the non-isothermal model allows u
+
+=== (29) ===
+C-40oC C-50oC Figure 5. Comparison between experimental continuous dehydration curves X(t)/X0 vs. t at T∞= 40 ◦C, 50 ◦C and U∞= 1.28 m/s (ﬁlled points) and model predictions (continuous and dashed lines) with D(T) given by Equation (24). Continuous red and blue curves represent the non-isothermal model Equations (25)–(29). Black dashed lines represent the non-isothermal simpliﬁed model with T(r, t) = Tb(t), Equation (31). The reliability of the non-isothermal model allows us to
+
+=== (31) ===
+at T∞= 40 ◦C, 50 ◦C and U∞= 1.28 m/s (ﬁlled points) and model predictions (continuous and dashed lines) with D(T) given by Equation (24). Continuous red and blue curves represent the non-isothermal model Equations (25)–(29). Black dashed lines represent the non-isothermal simpliﬁed model with T(r, t) = Tb(t), Equation (31). The reliability of the non-isothermal model allows us to verify some hypotheses made in paragraph Section 4.1 when discussing the intrinsic limitations of the
+
+=== (30) ===
+rst hours of the dehydration process, in which both temperatures T0 and Tb, highlighted in the inset of Figure 6, exhibit a slight decrease below the initial temperature. Correspondingly, also the average effective water diffusivity < Deff >, shown in Figure 6B, < Deff(t) >= 1 (4/3)πR(t)3 Z R(t) 0 Deff(T(r, t)) 4πr2dr (30) attains a very low value, order of 5 × 10−11 m2/s at the beginning of the drying process and requires more than 40 h to get close to the ﬁve times larger asymp
+
+=== (24) ===
+volution of the temperature at the center T0(t) = T(0, t) and at the sample boundary Tb(t) = T(R(t), t). (B) Model predictions for the temporal evolution of the heat and mass transfer coefﬁcients hT and hm, evaluated according to Equations (A10)–(A13), and of the average water effective diffusivity < Deff >, Equations (24) and (30). The rescaled sample volume V(t)/V0 and radius R(t)/R0 are shown in Figure 7B as a function of the rescaled total moisture content X(t)/X0, in agreeme
+
+=== (30) ===
+of the temperature at the center T0(t) = T(0, t) and at the sample boundary Tb(t) = T(R(t), t). (B) Model predictions for the temporal evolution of the heat and mass transfer coefﬁcients hT and hm, evaluated according to Equations (A10)–(A13), and of the average water effective diffusivity < Deff >, Equations (24) and (30). The rescaled sample volume V(t)/V0 and radius R(t)/R0 are shown in Figure 7B as a function of the rescaled total moisture content X(t)/X0, in agreement with e
+
+=== (28) ===
+model by setting α(φ) = α0 = 1. The temporal evolution of the water concentration proﬁle φ(r, t) is represented in Figure 7A, together with the boundary concentration φb(t) that rapidly (12 h) decreases towards the very low asymptotic value. Figure 7A clearly shows that a mixed third kind boundary condition, Equation (28), has to be applied for a correct description of all the different phases of the drying process. 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 0 0.2 0.4
+
+=== (26) ===
+2020, 9, 1577 13 of 22 A last observation regarding the temperature proﬁles. Figure 6A clearly shows that it is reasonable to assume that the temperature is uniform inside the sample and equal to the boundary temperature, i.e., T(r, t) = Tb. This observation allows replacing the partial differential equation Equation (26) for T(r, t) with the ordinary differential equation for the boundary temperature Tb(t) d dt Tb Z R(t) 0 (ρpCp p)4πr2dr = −hT(Tav) Tb −T∞ + λv(Tb)ρwDef
+
+=== (31) ===
+to the boundary temperature, i.e., T(r, t) = Tb. This observation allows replacing the partial differential equation Equation (26) for T(r, t) with the ordinary differential equation for the boundary temperature Tb(t) d dt Tb Z R(t) 0 (ρpCp p)4πr2dr = −hT(Tav) Tb −T∞ + λv(Tb)ρwDeff(Tb)∂φ ∂r R(t) 4πR2(t) (31) while the water transport equations Equations (25) and (27) remain unchanged except for the fact that Deff(T) must be replaced with Deff(Tb). The thermal inert
+
+=== (25) ===
+his observation allows replacing the partial differential equation Equation (26) for T(r, t) with the ordinary differential equation for the boundary temperature Tb(t) d dt Tb Z R(t) 0 (ρpCp p)4πr2dr = −hT(Tav) Tb −T∞ + λv(Tb)ρwDeff(Tb)∂φ ∂r R(t) 4πR2(t) (31) while the water transport equations Equations (25) and (27) remain unchanged except for the fact that Deff(T) must be replaced with Deff(Tb). The thermal inertial term ρpCp p appears in the volume integral, rig
+
+=== (27) ===
+vation allows replacing the partial differential equation Equation (26) for T(r, t) with the ordinary differential equation for the boundary temperature Tb(t) d dt Tb Z R(t) 0 (ρpCp p)4πr2dr = −hT(Tav) Tb −T∞ + λv(Tb)ρwDeff(Tb)∂φ ∂r R(t) 4πR2(t) (31) while the water transport equations Equations (25) and (27) remain unchanged except for the fact that Deff(T) must be replaced with Deff(Tb). The thermal inertial term ρpCp p appears in the volume integral, right hand s
+
+=== (31) ===
+pCp p)4πr2dr = −hT(Tav) Tb −T∞ + λv(Tb)ρwDeff(Tb)∂φ ∂r R(t) 4πR2(t) (31) while the water transport equations Equations (25) and (27) remain unchanged except for the fact that Deff(T) must be replaced with Deff(Tb). The thermal inertial term ρpCp p appears in the volume integral, right hand side of Equation (31), because it depends on φ(r, t) and therefore on r and t (see Appendix A). Numerical results of the integration of this simpliﬁed model are shown in Figure 5 (b
+
+=== (25) ===
+efore on r and t (see Appendix A). Numerical results of the integration of this simpliﬁed model are shown in Figure 5 (black dashed lines) and are almost indistinguishable from numerical results of the more accurate non-isothermal model. 5. Modeling of Intermittent Drying Experiments The non-isothermal model Equations (25)–(29) is applied to describe the intermittent drying experiments. In these experiments the air temperature T∞, Relative Humidity RH∞and velocity U∞ change in ti
+
+=== (29) ===
+on r and t (see Appendix A). Numerical results of the integration of this simpliﬁed model are shown in Figure 5 (black dashed lines) and are almost indistinguishable from numerical results of the more accurate non-isothermal model. 5. Modeling of Intermittent Drying Experiments The non-isothermal model Equations (25)–(29) is applied to describe the intermittent drying experiments. In these experiments the air temperature T∞, Relative Humidity RH∞and velocity U∞ change in time ac
+
+=== (24) ===
+0 140 160 C P1P2 B V(t)/V0 t [h] I-40oC-2 Cycles I-40oC-5 Cycles Figure 8. Intermittent dehydration (2 Cycles and 5 Cycles) for Tmax ∞ = 40 ◦C and Umax ∞ = 1.28 m/s (A) Comparison between experimental dehydration curves X(t)/X0 vs. t (ﬁlled points) and model predictions (continuous lines) with D(T) given by Equation (24). (B) Model prediction of the temporal evolution for the rescaled sample volume V(t)/V0. Foods 2020, 9, 1577 14 of 22 Figure 8A clearly shows that the model is
+
+=== (24) ===
+100 120 C P1P2 B V(t)/V0 t [h] I-50oC-2 Cycles I-50oC-3 Cycles Figure 10. Intermittent dehydration (2 Cycles and 3 Cycles) for Tmax ∞ = 50 ◦C and Umax ∞ = 1.28 m/s (A) Comparison between experimental dehydration curves X(t)/X0 vs. t (ﬁlled points) and model predictions (continuous lines) with D(T) given by Equation (24). (B) Model prediction of the temporal evolution for the rescaled sample volume V(t)/V0. Foods 2020, 9, 1577 15 of 22 The higher temperature implies a signiﬁca
+
+=== (24) ===
+66 hm U∞=1.28 hT U∞=2.66 hT U∞=1.28 Figure 12. Intermittent dehydration (3 Cycles) for Tmax ∞ = 50 ◦C and two different air velocities Umax ∞ = 1.28 m/s and 2.66 m/s. (A) Comparison between experimental dehydration curves X(t)/X0 vs. t (ﬁlled points) and model predictions (continuous lines) with D(T) given by Equation (24). (B) Model predictions for the temporal evolution of the heat and mass transfer coefﬁcients hT and hm. 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 φ(r,
+

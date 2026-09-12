@@ -1,0 +1,55 @@
+===== PAGE 3 =====
+Where ρ௣ is the sample density, ܥ௣
+௣ the specific heat at constant pressure, ݇௣ the thermal conductivity and 
+ܦeffሺܶ) the effective water diffusivity. The velocity ݒ௦ሺݔ, ݐ) is the point-wise shrinkage velocity 
+(3) 
+affecting both the heat and mass transport equations and controlling the temporal evolution of the sample 
+surface ݔ௕ሺݐ). The shrinkage proportionality factor αሺܿ௪), entering the shrinkage velocity and depending on 
+the point-wise water content ܿ௪ሺݔ, ݐ), is the fingerprint of the specific food material under investigation. The 
+simplest case is that of a constant shrinkage factor, αሺܿ௪) = α଴. Specifically, α଴= 0 represents the case of a 
+rigid solid (no shrinkage), while ߙ଴= 1 represents the case of ideal shrinkage, in which volume reduction 
+corresponds exactly to the volume of water flowing outside the sample.  
+The two transport equations (1) and (2) are linked together and must be solved simultaneously by further 
+enforcing the symmetry boundary conditions at 
+ and the mixed boundary conditions at ݔ௕ሺݐ) also referred 
+to as Robin or “evaporative” or third order boundary condition (da Silva et al., 2015) 
+ 
+(4)
+(5)
+where ܯ௪ is the water molecular weight, ݌௩ሺܶ) the saturated vapor pressure at temperature ܶ, ℎ௠ and ℎ் are 
+the mass and heat transport coefficients, ܴܪ௕ and ܶ௕ the relative humidity and the temperature at the sample 
+boundary ݔ௕ሺݐ), ܴܪஶ and ܶஶ the air relative humidity and the temperature in the drying chamber.  
+The boundary condition (5) takes into account both heat transfer resistance and heat subtracted for water 
+evaporation at the air/sample interface (Carslaw and Jaeger, 1959), λ௩ሺܶ௕) being the heat of water 
+evaporation evaluated at ܶ௕.  
+The heat and mass transfer coefficients ℎ௠ and ℎ் can be evaluated from well-known correlation functions for 
+the Sherwood (ܵℎ) and Nusselt (ܰݑ) numbers, specific for the sample geometry (slab) under investigation, 
+(6)
+(7)
+with all the physical parameters of the wet air evaluated at the average film temperature ܶav = ሺܶஶ+ ܶ௕)/2. 
+All the physical parameters of the food sample, namely ߩ௣, ܥ௣
+௣, and ݇௣, are functions of the local water 
+concentration ܿ௪. Specifically, the sample density ߩ௣ is evaluated as the average of the water and solid (pulp) 
+densities, averaged with respect to their volume fractions ρ௣= ρ௪ ϕ௪+ ρ௦ሺ1 −ϕ௪),  with ρௌ≃1.5 g/cmଷ for 
+carbohydrates. The product heat capacity ܥ௣
+௣ is evaluated as the average of the water and solid specific heat 
+capacity ܥ௣
+௣= ܥ௣௪ ݔ௪+ ܥ௣ௌ ሺ1 −ݔ௪), averaged with respect to their weight fractions ݔ௪= ϕ௪ሺρ௪/ρ௣). The 
+sample thermal conductivity ݇௣ is evaluated from a parallel model 1/݇௣= ϕ௪/݇௪+ ሺ1 −ϕ௪)/݇ௌ where ݇௪ 
+and ݇ௌ are the water and solid thermal conductivities, respectively. Since Guava fruits contain mainly water 
+and carbohydrate (Rahman et al., 1997), the thermal conductivity ݇ௌ and the specific heat capacity ܥ௣ௌ of the 
+solid are estimated from that of carbohydrate (Becker and Fricke, 2003)  
+݇௦[W/ሺm K)] = 2.01 × 10ିଵ+ 1.39 × 10ିଷܶ−4.33 × 10ି଺ܶଶ ,  ܶ[௢ܥ]
+ 
+(8)
+ܥ௣௦[J/ሺg K)] = 1.5488 + 1.9625 × 10ିଷܶ−5.9399 × 10ି଺ܶଶ ,   ܶ[௢ܥ]
+ 
+(9)
+The relative humidity at the air/sample interface ܴܪ௕ evolves in time because both ܿ௪ሺݔ௕) and ܶ௕ change 
+during the course of the dehydration process. The relationship ܴܪ௕= ݂ሺܶ௕, ܿ௪) can be estimated from water 
+vapor adsorption isotherms of Guava reported from (Hubinger et al., 1992). Adsorption isotherms in the range 
+[25௢ܥ, 50௢ܥ] are almost independent of temperature and well fitted (ܴଶ= 0.999) with the modified Anderson 
+model (Guinè, 2009) relating the equilibrium relative humidity ܴܪ௘௤ to the equilibrium moisture content ܺ௘௤ 
+  (10) 
+195
+

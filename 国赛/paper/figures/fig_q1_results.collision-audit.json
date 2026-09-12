@@ -1,0 +1,23 @@
+{
+  "pdf": "D:\\github\\myself\\Mathematical_Modeing\\国赛\\paper\\figures\\fig_q1_results.pdf",
+  "auditable": true,
+  "verdict": "PASS",
+  "page_count": 1,
+  "visible_text_box_count": 103,
+  "text_trace_count": 198,
+  "stroke_path_count": 96,
+  "filled_region_count": 75663,
+  "image_region_count": 2,
+  "summary": {
+    "fail": 0,
+    "warn": 0,
+    "contained_fill_overlays": 22,
+    "contained_image_overlays": 0
+  },
+  "thresholds": {
+    "text_inset_pt": 0.6,
+    "min_overlap_ratio": 0.05,
+    "clipping_tolerance_pt": 0.5
+  },
+  "findings": []
+}

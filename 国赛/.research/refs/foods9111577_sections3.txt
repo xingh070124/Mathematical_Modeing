@@ -1,0 +1,105 @@
+
+
+### 3. Isothermal and Non-Isothermal Moving-Boundary Models
+
+This section preliminary reviews the basic idea and the resulting equations of the moving-boundary model for food isothermal dehydration, developed in [1314$T_∞$
+
+### 3.1. Isothermal Moving-Boundary Model
+
+During the dehydration process, the sample volume $V(t)$$S(t)$$T_∞$
+The transport equation describing the space-time evolution of the pointwise water concentration $c_w(\mathbf{x},t)$${}^3$$V(t)$$\mathbf{v}_s(\mathbf{x})$
+    [[(1)]] \frac{∂c_w(\mathbf{x},t)}{∂t}−∇·\left(\mathbf{J}_d+\mathbf{v}_s(\mathbf{x}) c_w\right)==∇·\left(D_{eff} ∇c_w−\mathbf{v}_s(\mathbf{x}) c_w\right), \mathbf{x}∈V(t)
+$\mathbf{J}_d=−D_{eff} ∇c_w$$D_{eff}$$(\mathbf{v}_sc_w)$
+By enforcing the analogy between food dehydration and swelling of rubbery polymers (both processes are characterized by moving boundaries whose movement is controlled by water release or absorption [18192021$\mathbf{v}_s(\mathbf{x})$$\mathbf{J}_d(\mathbf{x})/ρ_w$${}^3$${}^2$
+    [[(2)]] \mathbf{v}_s(\mathbf{x})=−α(c_w) \mathbf{J}_d(\mathbf{x})/ρ_w=α(c_w) D_{eff} ∇c_w/ρ_w,
+$α(c_w)$
+The shrinkage factor $α(c_w)$$α(c_w)=α_0$$α_0=0$$α_0=1$ideal$α_0$1415
+The effective water diffusivity $D_{eff}$$ϕ$1819
+    [[(3)]] D_{eff}(ϕ,T)=D_{ϕ_0}(T)exp\left(−β \frac{ϕ_0−ϕ}{ϕ_0−ϕ_∞}\right), β≥0, ϕ=c_w/ρ_w
+$ϕ_0$$D_{ϕ_0}$$D_∞=D_{ϕ_0}exp(−β)$
+The shrinkage velocity $\mathbf{v}_s(\mathbf{x}_b)$$\mathbf{x}_b$$S(t)$$S(t)$
+    [[(4)]] \frac{d\mathbf{x}_b}{dt}=\mathbf{v}_s|_{\mathbf{x}_b}=\frac{α(c_w)}{ρ_w}D_{eff} ∇c_w|_{\mathbf{x}_b}, \mathbf{x}_b∈S(t) .
+10
+    [[(5)]] −D_{eff} ∇c_w·\mathbf{n}|_{\mathbf{x}_b}=h_m M_w\left(C|_{\mathbf{x}_b}−C_∞\right)==h_m M_w\frac{p_v(T_∞)}{R_gT_∞}\left(RH_b−RH_∞\right)
+$\mathbf{n}$$M_w=18$$h_m$$p_v(T_∞)$$T_∞$C${}^3$$RH$$RH|_{\mathbf{x}_b}$$RH_∞$
+    [[(6)]] C=\frac{p}{R_gT}=\frac{p_v(T)}{R_gT}\frac{p}{p_v(T)}=\frac{p_v(T)}{R_gT} RH
+$RH_b=RH|_{\mathbf{x}_b}$$c_w(\mathbf{x}_b,t)$$T_∞$$T=T_∞$
+    [[(7)]] RH_b=RH|_{\mathbf{x}_b}=DI(c_w(\mathbf{x}_b,t),T_∞)
+$h_m$$Sh$$T_∞$Appendix A
+
+### 3.2. Non-Isothermal Moving-Boundary Model
+
+In the non-isothermal approach a partial differential equation describing the spatio-temporal evolution of the temperature $T(\mathbf{x},t)$$T(\mathbf{x},t)$$T_b=T(\mathbf{x}_b,t)$$T_∞$
+The non-isothermal approach requires the simultaneous solution of the two advection-diffusion partial differential equations for $c_w(\mathbf{x},t)$$T(\mathbf{x},t)$
+    [[(8)]] \begin{array}{l}\frac{∂c_w(\mathbf{x},t)}{∂t} & = & ∇·\left(D_{eff}(T) ∇c_w−\mathbf{v}_s(\mathbf{x}) c_w\right), \end{array}
+
+    [[(9)]] \begin{array}{l}\frac{∂\left(ρ^pC_p^pT(\mathbf{x},t)\right)}{∂t} & = & ∇·\left(k^p ∇T−\mathbf{v}_s(\mathbf{x}) ρ^pC_p^pT\right), \end{array}
+
+    [[(10)]] \begin{array}{l}\mathbf{v}_s(\mathbf{x}) & = & α(c_w)D_{eff}(T)∇c_w/ρ_w\end{array}
+$S(t)$
+    [[(11)]] \frac{d\mathbf{x}_b}{dt}=\mathbf{v}_s|_{\mathbf{x}_b}=\frac{α(c_w)}{ρ_w}D_{eff}(T_b) ∇c_w|_{\mathbf{x}_b}, \mathbf{x}_b∈S(t) .
+
+    [[(12)]] −D_{eff}(T_b) ∇c_w·\mathbf{n}|_{\mathbf{x}_b}=h_m(T_{av}) M_w\left(\frac{p_v(T_b)}{R_gT_b}RH_b−\frac{p_v(T_∞)}{R_gT_∞}RH_∞\right)
+
+    [[(13)]] −k^p ∇T·\mathbf{n}|_{\mathbf{x}_b}=h_T(T_{av})\left(T_b−T_∞\right)−λ_v(T_b)D_{eff}(T_b)∇c_w·\mathbf{n}|_{\mathbf{x}_b}
+2223242526$λ_v$$T_b$
+In this non-isothermal case, the Relative Humidity $RH_b$$c_w(\mathbf{x}_b,t)$$T_b≠T_∞$
+The heat and mass transfer coefficients $h_T$$h_m$$Sh$$Nu$$T_{av}=(T_b+T_∞)/2$Appendix A
+All the physical parameters of the food product, namely the product density $ρ^p$$C_p^p$$k^p$$c_w$Appendix A
+In the present formulation it has been assumed that the effective water diffusivity is solely a function of the temperature and independent of the local water concentration, i.e., $β=0$
+The heat transport equation Equation (9) is coupled to the mass transport equation Equation (8) not only through the boundary condition Equation (13) but also through the shrinkage-convective term $(\mathbf{v}_s(\mathbf{x}) ρ^pC_p^pT)$
+If the thermal diffusivity $D_T^p=k^p/(ρ^pC_p^p)$$D_{eff}$$T(\mathbf{x},t)=T_b(t)$$T(\mathbf{x},t)$$T_b(t)$
+    [[(14)]] \frac{d}{dt}\left(T_b∫_{V(t)}(ρ^pC_p^p) d\mathbf{x}\right)=∫_{S(t)}\left(−h_T(T_{av})\left(T_b−T_∞\right)+λ_v(T_b)D_{eff}(T_b)∇c_w·\mathbf{n}|_{\mathbf{x}_b}\right)dS
+8$D_{eff}(T)$$D_{eff}(T_b)$
+
+### 3.3. Numerical Issues
+
+PDE equations and boundary conditions describing the one-dimensional shrinkage dynamics and sample dehydration have been numerically solved using finite elements method (FEM) in Comsol Multiphysics 3.5. The convection–diffusion package coupled with ALE (Arbitrary Lagrangian Eulerian) moving mesh has been adopted with Free Displacement induced by boundary velocity conditions. Lagrangian quadratic elements have been chosen. The linear solver adopted is UMFPACK, with relative tolerance $10^{−4}$$10^{−7}$$10^4$$r=R(t)$
+
+### 3.1. Isothermal Moving-Boundary Model
+
+During the dehydration process, the sample volume $V(t)$$S(t)$$T_∞$
+The transport equation describing the space-time evolution of the pointwise water concentration $c_w(\mathbf{x},t)$${}^3$$V(t)$$\mathbf{v}_s(\mathbf{x})$
+    [[(1)]] \frac{∂c_w(\mathbf{x},t)}{∂t}−∇·\left(\mathbf{J}_d+\mathbf{v}_s(\mathbf{x}) c_w\right)==∇·\left(D_{eff} ∇c_w−\mathbf{v}_s(\mathbf{x}) c_w\right), \mathbf{x}∈V(t)
+$\mathbf{J}_d=−D_{eff} ∇c_w$$D_{eff}$$(\mathbf{v}_sc_w)$
+By enforcing the analogy between food dehydration and swelling of rubbery polymers (both processes are characterized by moving boundaries whose movement is controlled by water release or absorption [18192021$\mathbf{v}_s(\mathbf{x})$$\mathbf{J}_d(\mathbf{x})/ρ_w$${}^3$${}^2$
+    [[(2)]] \mathbf{v}_s(\mathbf{x})=−α(c_w) \mathbf{J}_d(\mathbf{x})/ρ_w=α(c_w) D_{eff} ∇c_w/ρ_w,
+$α(c_w)$
+The shrinkage factor $α(c_w)$$α(c_w)=α_0$$α_0=0$$α_0=1$ideal$α_0$1415
+The effective water diffusivity $D_{eff}$$ϕ$1819
+    [[(3)]] D_{eff}(ϕ,T)=D_{ϕ_0}(T)exp\left(−β \frac{ϕ_0−ϕ}{ϕ_0−ϕ_∞}\right), β≥0, ϕ=c_w/ρ_w
+$ϕ_0$$D_{ϕ_0}$$D_∞=D_{ϕ_0}exp(−β)$
+The shrinkage velocity $\mathbf{v}_s(\mathbf{x}_b)$$\mathbf{x}_b$$S(t)$$S(t)$
+    [[(4)]] \frac{d\mathbf{x}_b}{dt}=\mathbf{v}_s|_{\mathbf{x}_b}=\frac{α(c_w)}{ρ_w}D_{eff} ∇c_w|_{\mathbf{x}_b}, \mathbf{x}_b∈S(t) .
+10
+    [[(5)]] −D_{eff} ∇c_w·\mathbf{n}|_{\mathbf{x}_b}=h_m M_w\left(C|_{\mathbf{x}_b}−C_∞\right)==h_m M_w\frac{p_v(T_∞)}{R_gT_∞}\left(RH_b−RH_∞\right)
+$\mathbf{n}$$M_w=18$$h_m$$p_v(T_∞)$$T_∞$C${}^3$$RH$$RH|_{\mathbf{x}_b}$$RH_∞$
+    [[(6)]] C=\frac{p}{R_gT}=\frac{p_v(T)}{R_gT}\frac{p}{p_v(T)}=\frac{p_v(T)}{R_gT} RH
+$RH_b=RH|_{\mathbf{x}_b}$$c_w(\mathbf{x}_b,t)$$T_∞$$T=T_∞$
+    [[(7)]] RH_b=RH|_{\mathbf{x}_b}=DI(c_w(\mathbf{x}_b,t),T_∞)
+$h_m$$Sh$$T_∞$Appendix A
+
+### 3.2. Non-Isothermal Moving-Boundary Model
+
+In the non-isothermal approach a partial differential equation describing the spatio-temporal evolution of the temperature $T(\mathbf{x},t)$$T(\mathbf{x},t)$$T_b=T(\mathbf{x}_b,t)$$T_∞$
+The non-isothermal approach requires the simultaneous solution of the two advection-diffusion partial differential equations for $c_w(\mathbf{x},t)$$T(\mathbf{x},t)$
+    [[(8)]] \begin{array}{l}\frac{∂c_w(\mathbf{x},t)}{∂t} & = & ∇·\left(D_{eff}(T) ∇c_w−\mathbf{v}_s(\mathbf{x}) c_w\right), \end{array}
+
+    [[(9)]] \begin{array}{l}\frac{∂\left(ρ^pC_p^pT(\mathbf{x},t)\right)}{∂t} & = & ∇·\left(k^p ∇T−\mathbf{v}_s(\mathbf{x}) ρ^pC_p^pT\right), \end{array}
+
+    [[(10)]] \begin{array}{l}\mathbf{v}_s(\mathbf{x}) & = & α(c_w)D_{eff}(T)∇c_w/ρ_w\end{array}
+$S(t)$
+    [[(11)]] \frac{d\mathbf{x}_b}{dt}=\mathbf{v}_s|_{\mathbf{x}_b}=\frac{α(c_w)}{ρ_w}D_{eff}(T_b) ∇c_w|_{\mathbf{x}_b}, \mathbf{x}_b∈S(t) .
+
+    [[(12)]] −D_{eff}(T_b) ∇c_w·\mathbf{n}|_{\mathbf{x}_b}=h_m(T_{av}) M_w\left(\frac{p_v(T_b)}{R_gT_b}RH_b−\frac{p_v(T_∞)}{R_gT_∞}RH_∞\right)
+
+    [[(13)]] −k^p ∇T·\mathbf{n}|_{\mathbf{x}_b}=h_T(T_{av})\left(T_b−T_∞\right)−λ_v(T_b)D_{eff}(T_b)∇c_w·\mathbf{n}|_{\mathbf{x}_b}
+2223242526$λ_v$$T_b$
+In this non-isothermal case, the Relative Humidity $RH_b$$c_w(\mathbf{x}_b,t)$$T_b≠T_∞$
+The heat and mass transfer coefficients $h_T$$h_m$$Sh$$Nu$$T_{av}=(T_b+T_∞)/2$Appendix A
+All the physical parameters of the food product, namely the product density $ρ^p$$C_p^p$$k^p$$c_w$Appendix A
+In the present formulation it has been assumed that the effective water diffusivity is solely a function of the temperature and independent of the local water concentration, i.e., $β=0$
+The heat transport equation Equation (9) is coupled to the mass transport equation Equation (8) not only through the boundary condition Equation (13) but also through the shrinkage-convective term $(\mathbf{v}_s(\mathbf{x}) ρ^pC_p^pT)$
+If the thermal diffusivity $D_T^p=k^p/(ρ^pC_p^p)$$D_{eff}$$T(\mathbf{x},t)=T_b(t)$$T(\mathbf{x},t)$$T_b(t)$
+    [[(14)]] \frac{d}{dt}\left(T_b∫_{V(t)}(ρ^pC_p^p) d\mathbf{x}\right)=∫_{S(t)}\left(−h_T(T_{av})\left(T_b−T_∞\right)+λ_v(T_b)D_{eff}(T_b)∇c_w·\mathbf{n}|_{\mathbf{x}_b}\right)dS
+8$D_{eff}(T)$$D_{eff}(T_b)$

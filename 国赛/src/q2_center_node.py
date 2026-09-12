@@ -140,6 +140,9 @@ def main():
                 float(e.max()), "K", "Bessel 解析解")
             add(f"CN_{bound}_M{M}_c", f"{bound} 口径 M={M} 的中心温度偏差",
                 float(e[0]), "K", "Bessel 解析解")
+            if prev[bound] is not None:
+                add(f"CN_{bound}_ratio_M{M}", f"{bound} 口径 M={M//2}->{M} 的偏差比值",
+                    float(prev[bound] / e.max()), "-", "收敛比")
             prev[bound] = float(e.max())
 
     say()

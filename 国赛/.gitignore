@@ -5,3 +5,41 @@
 
 # LaTeX 编译中间产物
 *.xdv
+
+# ===== 以下为 2026-09-12 上传前新增：排除派生的重型件与调试过程件 =====
+# 说明：判定标准是"能不能由仓库里已有的东西重跑出来"。
+#   能重跑出来的（编译件、图件导出、审计截图、解释器缓存）不传；
+#   重跑不出来的（源码、模型文档、注册表、结果表、论文源件与图件 PDF/PNG）传。
+
+# 1) 论文编译中间件与私有构建目录（可由 example.tex 重新编译得到）
+paper/build_probe/
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/*.xdv
+
+# 2) 改写过程备份与重排版探测件（一次性中间产物）
+paper/*.bak*
+paper/_abs_probe.tex
+paper/_abs_candidate.tex
+paper/_prose_dump.txt
+
+# 3) 审计 / 调试过程产物：临时截图、备份目录、探测输出
+#    （正式注册表 registry_*.csv 与结果表 result*.xlsx 不在此列，要传）
+outputs/_audit_backup/
+outputs/_scheme_row_exp/
+outputs/_*
+outputs/cet2021_*
+
+# 4) 超大矢量导出与中间数据
+#    paper/figures/*.svg 中单文件可达 83 MB（fig_q2_results.svg），
+#    图件的交付格式是 PDF/PNG，SVG 属冗余导出。
+paper/figures/*.svg
+*.pkl
+*.npz
+
+# 5) 本地 OCR 渲染件与论文转换件的临时目录
+docs/_ocr/

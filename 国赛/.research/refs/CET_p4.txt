@@ -1,0 +1,82 @@
+===== PAGE 4 =====
+A latter observation regarding the shrinkage proportionality factor αሺܿ௪) adopted for Guava fruits: Guavas, as 
+pears and carrots, are characterized by very high-water content ݔ௪∈ሺ80%, 82%) [g water/g product] (USDA, 
+2020). All fruits with high initial moisture content exhibit an almost ideal shrinkage, that implies αሺܿ௪) = α଴= 1 
+ and ܸஶ/ܸ଴≃1 −ϕ௪ሺ0), ܸஶ being the asymptotic sample volume at the end of the dehydration process and
+ the initial water volume fraction, supposed uniform within the sample. For a slice sample with aspect 
+ratio ܣܴ= ܮ଴/ܪ଴= 10, shrinkage affects all the three slice dimensions, even if the most affected is the slice 
+thickness, and the asymptotic rescaled slice thickness ܪஶ/ܪ଴ can be approximately related to the asymptotic 
+volume ratio ܸஶ/ܸ଴ by the relation (Adrover et al., 2019a)  
+ (11) 
+This implies that an asymptotic thickness reduction ܪஶ/ܪ଴≃1/3 corresponds to an asymptotic volume 
+reduction ܸஶ/ܸ଴≃0.2. Therefore, in a one-dimensional model of the drying process in which only thickness 
+reduction is accounted for, it is necessary to introduce a constant shrinkage factor α଴≃0.83 < 1 to guarantee 
+ܪஶ/ܪ଴≃1/3, corresponding to the ideal volume shrinkage, and therefore to have a correct estimate of the 
+diffusional lengths along the principal transport/shrinkage direction. 
+4. Results and discussion
+The only parameter, entering the non-isothermal model, that needs to be estimated is the effective water 
+diffusivity ܦeffሺܶ) and its dependence on temperature ܶ. ܦeffሺܶ) can be estimated from continuous dehydration 
+curves C25, C30 and C40, reported in Figure 1A, showing the temporal decay of the moisture content ܺሺݐ) 
+[kg w/kg dry basis] rescaled onto the initial moisture content ܺ଴, for the three temperatures ܶஶ= 25, 30, 40௢ܥ. 
+Figure 1. A) Rescaled moisture ratio vs time for the three continuous drying experiments at T=25, 30, 40°C. 
+Continuous lines represent model predictions with the effective water diffusion coefficient ܦeffሺܶ) reported in 
+Figure B. 
+Continuous lines in Figure 1A represent best-fit non-isothermal model curves obtained with the best-fitted 
+Arrhenius-type curve for the effective water diffusivity ܦeffሺܶ) 
+ܦeffሺܶ) [mଶ/s] = ܦ଴expሺ−ܧ/ܴܶ)   ܦ଴= expሺ14.63) [mଶ/s]   ܧ/ܴ= 11095[ܭ]    
+ (12) 
+reported in figure 1B. It can be observed that the estimated effective water diffusivity is highly sensitive to 
+temperature as it exhibits a significant increase with temperature (Table 2.). These values of the water 
+diffusivity are in agreement with those of other vegetables and fruits with high initial moisture ratio, although it 
+has to be pointed out that a one-dimensional model, like the one adopted, tends to overestimate the effective 
+diffusivity (Adrover et al., 2019a). 
+Table 2: Estimated effective water diffusivity Deff. 
+T [°C] 
+Deff [m2/s] 
+25 
+1.557x10-10
+30 
+2.877x10-10 
+40 
+9.258x10-10 
+ 0
+ 0.2
+ 0.4
+ 0.6
+ 0.8
+ 1
+ 0
+ 50
+ 100
+ 150
+ 200
+ 250
+ 300
+ 350
+A
+X(t)/X0
+t [min]
+C25
+C30
+C40
+ 0
+ 2
+ 4
+ 6
+ 8
+ 10
+ 12
+ 14
+ 16
+ 18
+ 20
+ 25
+ 30
+ 35
+ 40
+ 45
+B
+Deff x 1010 [m2/s]
+ToC 
+196
+

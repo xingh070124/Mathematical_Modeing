@@ -1,0 +1,87 @@
+﻿key,quantity,value,unit,group,source
+Q4_tdry_s,烘干所需时间 t_dry,183906.71282718718,s,生产解,q4_production.log
+Q4_tdry_h,烘干所需时间 t_dry,51.085198007551995,h,生产解,q4_production.log
+Q4_tdry_d,烘干所需时间 t_dry,2.128549916981333,d,生产解,q4_production.log
+Q4_Rend_cm,t_dry 时药材半径,1.2,cm,生产解,q4_production.log
+Q4_Rend_ratio,t_dry 时半径与初始半径之比,0.6,1,生产解,q4_production.log
+Q4_Csurf,t_dry 时表面含水率,0.05261900444168825,kg/kg,生产解,q4_production.log
+Q4_Ccenter,t_dry 时中心含水率,0.15000344883799982,kg/kg,生产解,q4_production.log
+Q4_Cbar,t_dry 时体积平均含水率,0.11836975563753403,kg/kg,生产解,q4_production.log
+Q4_Tsurf,t_dry 时表面温度,49.99979942858312,degC,生产解,q4_production.log
+Q4_Tmax,t_dry 时全场最高温度,49.99979942858312,degC,生产解,q4_production.log
+Q4_nsteps,BDF 步数,4007.0,1,生产解,q4_production.log
+Q4_wall,求解耗时,2.7225987911224365,s,生产解,q4_production.log
+Q4_n60,result4.xlsx 数据行数,3065.0,1,生产解,q4_production.log
+Q4_M,空间节点数,200.0,1,设置,q4_production.log
+Q4_rtol,相对容限,1e-09,-,设置,q4_production.log
+Q4_max_step,步长上界,3600.0,s,设置,q4_production.log
+Q4_Tbar,恒温平台环境温度,50.0,degC,环境,q3_solve.TBAR_C
+Q4_Cbar,恒温平台环境水分浓度,0.05,kg/kg,环境,q3_solve.CBAR
+Q4_tau,环境过渡段长度,600.0,s,环境,q3_solve.TAU
+Q4_Cstar,烘干达标阈值,0.15,kg/kg,题面,docs/A题.md
+Q4_T6_last_r0,表6 末行(24h前最后一整6h) r=0.0 cm 含水率,2.55,kg/kg,表6,q4_production.log
+Q4_T6_last_r0.5,表6 末行(24h前最后一整6h) r=0.5 cm 含水率,2.55,kg/kg,表6,q4_production.log
+Q4_T6_last_r1,表6 末行(24h前最后一整6h) r=1.0 cm 含水率,2.55,kg/kg,表6,q4_production.log
+Q4_T6_last_r1.5,表6 末行(24h前最后一整6h) r=1.5 cm 含水率,2.549998205169851,kg/kg,表6,q4_production.log
+Q4_T6_Csurf_6h,表6 t=6 h 表面含水率,0.4205655935756012,kg/kg,表6,q4_production.log
+Q4_T6_6h_r0,表6 t=6 h r=0.0 cm 含水率,1.72042520174726,kg/kg,表6,q4_production.log
+Q4_T6_6h_r0.5,表6 t=6 h r=0.5 cm 含水率,1.5383981967547335,kg/kg,表6,q4_production.log
+Q4_T6_6h_r1,表6 t=6 h r=1.0 cm 含水率,1.0228830188068263,kg/kg,表6,q4_production.log
+Q4_T6_6h_r1.5,表6 t=6 h r=1.5 cm 含水率,nan,kg/kg,表6,q4_production.log
+Q4_T6_Csurf_12h,表6 t=12 h 表面含水率,0.16702418927728763,kg/kg,表6,q4_production.log
+Q4_T6_12h_r0,表6 t=12 h r=0.0 cm 含水率,0.7380840473625203,kg/kg,表6,q4_production.log
+Q4_T6_12h_r0.5,表6 t=12 h r=0.5 cm 含水率,0.6549647939472569,kg/kg,表6,q4_production.log
+Q4_T6_12h_r1,表6 t=12 h r=1.0 cm 含水率,0.40849624581582866,kg/kg,表6,q4_production.log
+Q4_T6_12h_r1.5,表6 t=12 h r=1.5 cm 含水率,nan,kg/kg,表6,q4_production.log
+Q4_T6_Csurf_18h,表6 t=18 h 表面含水率,0.08922744239969585,kg/kg,表6,q4_production.log
+Q4_T6_18h_r0,表6 t=18 h r=0.0 cm 含水率,0.4089111288750233,kg/kg,表6,q4_production.log
+Q4_T6_18h_r0.5,表6 t=18 h r=0.5 cm 含水率,0.36878154394347923,kg/kg,表6,q4_production.log
+Q4_T6_18h_r1,表6 t=18 h r=1.0 cm 含水率,0.23980020031059956,kg/kg,表6,q4_production.log
+Q4_T6_18h_r1.5,表6 t=18 h r=1.5 cm 含水率,nan,kg/kg,表6,q4_production.log
+Q4_T6_Csurf_24h,表6 t=24 h 表面含水率,0.06735576832186548,kg/kg,表6,q4_production.log
+Q4_T6_24h_r0,表6 t=24 h r=0.0 cm 含水率,0.2851845300207603,kg/kg,表6,q4_production.log
+Q4_T6_24h_r0.5,表6 t=24 h r=0.5 cm 含水率,0.26111019413720515,kg/kg,表6,q4_production.log
+Q4_T6_24h_r1,表6 t=24 h r=1.0 cm 含水率,0.17898417283339715,kg/kg,表6,q4_production.log
+Q4_T6_24h_r1.5,表6 t=24 h r=1.5 cm 含水率,nan,kg/kg,表6,q4_production.log
+Q4_T6_Csurf_30h,表6 t=30 h 表面含水率,0.059497499975977655,kg/kg,表6,q4_production.log
+Q4_T6_30h_r0,表6 t=30 h r=0.0 cm 含水率,0.22635035545605484,kg/kg,表6,q4_production.log
+Q4_T6_30h_r0.5,表6 t=30 h r=0.5 cm 含水率,0.20939841470972453,kg/kg,表6,q4_production.log
+Q4_T6_30h_r1,表6 t=30 h r=1.0 cm 含水率,0.14922992579049532,kg/kg,表6,q4_production.log
+Q4_T6_30h_r1.5,表6 t=30 h r=1.5 cm 含水率,nan,kg/kg,表6,q4_production.log
+Q4_T6_Csurf_36h,表6 t=36 h 表面含水率,0.05596565694275062,kg/kg,表6,q4_production.log
+Q4_T6_36h_r0,表6 t=36 h r=0.0 cm 含水率,0.19282292085259675,kg/kg,表6,q4_production.log
+Q4_T6_36h_r0.5,表6 t=36 h r=0.5 cm 含水率,0.17965229553120757,kg/kg,表6,q4_production.log
+Q4_T6_36h_r1,表6 t=36 h r=1.0 cm 含水率,0.13161659650787863,kg/kg,表6,q4_production.log
+Q4_T6_36h_r1.5,表6 t=36 h r=1.5 cm 含水率,nan,kg/kg,表6,q4_production.log
+Q4_T6_Csurf_42h,表6 t=42 h 表面含水率,0.05410548374183321,kg/kg,表6,q4_production.log
+Q4_T6_42h_r0,表6 t=42 h r=0.0 cm 含水率,0.17123255115489028,kg/kg,表6,q4_production.log
+Q4_T6_42h_r0.5,表6 t=42 h r=0.5 cm 含水率,0.16036147521552413,kg/kg,表6,q4_production.log
+Q4_T6_42h_r1,表6 t=42 h r=1.0 cm 含水率,0.11993478799013568,kg/kg,表6,q4_production.log
+Q4_T6_42h_r1.5,表6 t=42 h r=1.5 cm 含水率,nan,kg/kg,表6,q4_production.log
+Q4_T6_Csurf_48h,表6 t=48 h 表面含水率,0.05301279262154628,kg/kg,表6,q4_production.log
+Q4_T6_48h_r0,表6 t=48 h r=0.0 cm 含水率,0.15613823510263083,kg/kg,表6,q4_production.log
+Q4_T6_48h_r0.5,表6 t=48 h r=0.5 cm 含水率,0.14679314325404968,kg/kg,表6,q4_production.log
+Q4_T6_48h_r1,表6 t=48 h r=1.0 cm 含水率,0.11152364755997429,kg/kg,表6,q4_production.log
+Q4_T6_48h_r1.5,表6 t=48 h r=1.5 cm 含水率,nan,kg/kg,表6,q4_production.log
+Q4_T6_dry,表6 末行 t_dry 时刻,51.085198007551995,h,表6,q4_production.log
+Q4_T6_dry_r0,表6 末行 r=0.0 cm 含水率,0.15000344883799982,kg/kg,表6,q4_production.log
+Q4_T6_dry_r0.5,表6 末行 r=0.5 cm 含水率,0.14125776042528776,kg/kg,表6,q4_production.log
+Q4_T6_dry_r1,表6 末行 r=1.0 cm 含水率,0.10804184947457444,kg/kg,表6,q4_production.log
+Q4_T6_dry_r1.5,表6 末行 r=1.5 cm 含水率,nan,kg/kg,表6,q4_production.log
+Q4_T6_dry_surf,表6 末行 表面含水率,0.05261900444168825,kg/kg,表6,q4_production.log
+Q4_tcross_r0.5,r=0.5 cm 首次达标时刻,167049.3078734352,s,诊断,q4_production.log
+Q4_tcross_r1,r=1.0 cm 首次达标时刻,107245.25814919897,s,诊断,q4_production.log
+Q4_P4_rho0,附录4 物性系数 rho0,760.0,-,设置,docs/A题.md 附录4
+Q4_P4_krho,附录4 物性系数 krho,90.0,-,设置,docs/A题.md 附录4
+Q4_P4_cp0,附录4 物性系数 cp0,1850.0,-,设置,docs/A题.md 附录4
+Q4_P4_kcp,附录4 物性系数 kcp,2150.0,-,设置,docs/A题.md 附录4
+Q4_P4_k0,附录4 物性系数 k0,0.12,-,设置,docs/A题.md 附录4
+Q4_P4_kk,附录4 物性系数 kk,0.2,-,设置,docs/A题.md 附录4
+Q4_P4_D0,附录4 物性系数 D0,0.00042,-,设置,docs/A题.md 附录4
+Q4_P4_kD,附录4 物性系数 kD,0.3,-,设置,docs/A题.md 附录4
+Q4_P4_EA,附录4 物性系数 EA,3850.0,-,设置,docs/A题.md 附录4
+Q4_grid_0,"物理半径网格点 0.0 cm 是否落在 [0,R(t_dry)] 内",1.0,1,诊断,推导
+Q4_grid_0.5,"物理半径网格点 0.5 cm 是否落在 [0,R(t_dry)] 内",1.0,1,诊断,推导
+Q4_grid_1,"物理半径网格点 1.0 cm 是否落在 [0,R(t_dry)] 内",1.0,1,诊断,推导
+Q4_grid_1.5,"物理半径网格点 1.5 cm 是否落在 [0,R(t_dry)] 内",0.0,1,诊断,推导
+Q4_grid_2,"物理半径网格点 2.0 cm 是否落在 [0,R(t_dry)] 内",0.0,1,诊断,推导

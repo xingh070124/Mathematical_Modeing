@@ -1,0 +1,21 @@
+id,quantity,value,unit,uncertainty,source,command,note
+FG3_tdry,复现: 烘干时间 t_dry,206720.4134563,s,,q3_figures.py,python src/q3_figures.py,与 P01_tdry 交叉核对
+FG3_nsteps,复现: 生产求解步数,3299,-,,q3_figures.py,python src/q3_figures.py,与 P03_nsteps 交叉核对
+FG3_maxC_dry,复现: 终态 max_i C_i 与 C* 之差,0,kg/kg,,q3_figures.py,python src/q3_figures.py,事件一致性
+FG3_maxC60_min,max_i C_i 全程最小值 (60 s 网格),0.15000595911935,kg/kg,,q3_figures.py,python src/q3_figures.py,
+FG3_maxC60_max,max_i C_i 全程最大值 (60 s 网格),2.55,kg/kg,,q3_figures.py,python src/q3_figures.py,
+FG3_gpre_min,"事件前 g 的最小值 (末 2 h, 1 s)",2.9189493058746e-07,kg/kg,,q3_figures.py,python src/q3_figures.py,W10 交叉核对
+FG3_cross_r0,复现: r=0 cm 达标时刻,57.422337071193,h,,q3_figures.py,python src/q3_figures.py,与 P07_* 交叉核对
+FG3_cross_r0.5,复现: r=0.5 cm 达标时刻,55.236688698519,h,,q3_figures.py,python src/q3_figures.py,与 P07_* 交叉核对
+FG3_cross_r1,复现: r=1 cm 达标时刻,48.47352572792,h,,q3_figures.py,python src/q3_figures.py,与 P07_* 交叉核对
+FG3_cross_r1.5,复现: r=1.5 cm 达标时刻,36.144923088153,h,,q3_figures.py,python src/q3_figures.py,与 P07_* 交叉核对
+FG3_cross_r2,复现: r=2 cm 达标时刻,12.559253740022,h,,q3_figures.py,python src/q3_figures.py,与 P07_* 交叉核对
+FG3_dt_min,BDF 最小步长,0.00011843970337265,s,,q3_figures.py,python src/q3_figures.py,
+FG3_dt_max,BDF 最大步长,3419.4349377529,s,,q3_figures.py,python src/q3_figures.py,
+FG3_dt_mean,BDF 平均步长,62.661537877022,s,,q3_figures.py,python src/q3_figures.py,
+FG3_dt_decades,步长跨越的数量级,7.4604570336969,-,,q3_figures.py,python src/q3_figures.py,
+FG3_ct_h_r0,图(c) 达标时刻标注值 r=0 cm,57.422337071193,h,,q3_figures.py,python src/q3_figures.py,
+FG3_ct_h_r0.5,图(c) 达标时刻标注值 r=0.5 cm,55.236688698519,h,,q3_figures.py,python src/q3_figures.py,
+FG3_ct_h_r1,图(c) 达标时刻标注值 r=1 cm,48.47352572792,h,,q3_figures.py,python src/q3_figures.py,
+FG3_ct_h_r1.5,图(c) 达标时刻标注值 r=1.5 cm,36.144923088153,h,,q3_figures.py,python src/q3_figures.py,
+FG3_ct_h_r2,图(c) 达标时刻标注值 r=2 cm,12.559253740022,h,,q3_figures.py,python src/q3_figures.py,

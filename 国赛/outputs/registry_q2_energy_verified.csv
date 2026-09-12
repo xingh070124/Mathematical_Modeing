@@ -1,0 +1,38 @@
+﻿id,quantity,value,unit,uncertainty,source,command,note
+EV_cs,干物质比热 c_s (附录3 混合物关系解出),1450,J/(kg K),sympy 精确,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_cl,液态水比热 c_l (附录3 混合物关系解出),4186,J/(kg K),sympy 精确,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_identity,rho_bulk*cp - rho_s*(c_s+C c_l) 的最大残差,0,-,sympy,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,恒等式精确成立
+EV_rhos_255,rho_s(C=2.55) = rho/(1+C),275.04225352113,kg/m^3,附录3 反推,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_rhos_015,rho_s(C=0.15),581.91304347826,kg/m^3,附录3 反推,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_drhosdC_255,d rho_s/dC @ C=2.55,-41.420353104543,kg/m^3 per (kg/kg),sympy,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,= -522/(1+C)^2
+EV_cancel_gap_255,相消条件 d(rho cp)/dC - c_l rho_s @ C=2.55,-502192.78714541,J/(m^3 K) per (kg/kg),sympy,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,= (c_s+C c_l) d rho_s/dC; 仅当 rho_s 为常数时为 0
+EV_cancel_needed,相消成立的必要条件 d rho_s/dC,0,kg/m^3 per (kg/kg),sympy,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,"附录3 的 rho_s 随 C 变化, 故该条件不满足"
+EV_T_mean,代表性温度 (口径声明),308,K,口径,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_T_datum,显焓基准温度 T_ref (口径声明),301.15,K,口径,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_dT,代表性温差 T-T_ref (口径声明),6.85,K,口径,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_coef_522,d rho_s/dC 的分子系数 (d rho_s/dC = -522/(1+C)^2),522,-,sympy,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,由 rho_s=(650+128C)/(1+C) 求导得到
+EV_dCdt,3 h 内体积平均含水率的平均变化率,-0.00010803,kg/(kg s),注册表 EX_dCdt_volavg,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_main,主项 rho cp dT/dt (取 dT/dt=1e-3 K/s),2603.1272,W/m^3,注册表 EX_main,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_R0,严格方程残差项 R0 = -c_s (T-T_ref)(d rho_s/dC) dC/dt,-44.444369208491,W/m^3,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,T-T_ref 取 6.85 K
+EV_R0_pct,残差项占主项的比例,1.7073452733501,%,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_Sfalse,守恒形式伪源项 S = -(T-T_ref)(d rho cp/dC) dC/dt,480.36279394706,W/m^3,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,与 R0 同一温度基准 T-T_ref = 6.85 K
+EV_Sfalse_pct,伪源项占主项的比例 (绝对值),18.453297017028,%,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_ratio,|S| / |R0| (同一基准下),10.808181159995,-,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,"= |d(rho cp)/dC| / |c_s d rho_s/dC|, 与温度基准无关"
+EV_ratio_datum_free,同上的基准无关表达式,10.808181159995,-,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,与 EV_ratio 应一致
+EV_drho_cp_dC,d(rho cp)/dC @ C=2.55,649134.08609403,J/(m^3 K) per (kg/kg),sympy,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_cs_drhos_dC,c_s d rho_s/dC @ C=2.55,-60059.512001587,J/(m^3 K) per (kg/kg),sympy,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_drhocp_dt,d(rho cp)/dt @ C=2.55,-70.125955320738,J/(m^3 K s),sympy,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_cs_drhos_dt,c_s d rho_s/dt @ C=2.55,6.4882290815314,J/(m^3 K s),sympy,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_Sfalse_absT,同上但用绝对温度 T=308.0 K (仅作口径对照),21598.794238787,W/m^3,口径对照,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,与 EV_R0 不可直接比较
+EV_R0_absT,R0 用绝对温度 T=308.0 K (仅作口径对照),-1998.3745571117,W/m^3,口径对照,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,"两者比值仍等于 EV_ratio, 故比值与基准无关"
+EV_dTdt,主项所用 dT/dt (口径声明),0.001,K/s,口径,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_ratio_Tref0,|S|/|R0| 当 T_ref = 0.0 K,10.808181159995,-,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,比值随基准变化 => R0 是人为量而非物理源项
+EV_R0_Tref0,R0 当 T_ref = 0.0 K,-1998.3745571117,W/m^3,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_ratio_Tref27315,|S|/|R0| 当 T_ref = 273.15 K,95.521371514444,-,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,比值随基准变化 => R0 是人为量而非物理源项
+EV_R0_Tref27315,R0 当 T_ref = 273.15 K,-226.11478349137,W/m^3,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_ratio_Tref30115,|S|/|R0| 当 T_ref = 301.15 K,485.97369303334,-,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,比值随基准变化 => R0 是人为量而非物理源项
+EV_R0_Tref30115,R0 当 T_ref = 301.15 K,-44.444369208491,W/m^3,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,
+EV_Tabs_used,上表所用状态量绝对温度 (口径声明),308,K,口径,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,与 q2_energy_exact.py / problem2_slove.md §2.1 一致
+EV_ratio_invariance,上述比值是否与 T_ref 无关 (0 = 否),0,-,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,0 表示依赖基准; 论文据此不再引用单一比值
+EV_exact_Tabs_used,q2_energy_exact.py 实际使用的 T_abs (含 +273.15 重复换算),581.15,K,读源码 line 148,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,308.0 + 273.15; 308.0 已是热力学温度
+EV_exact_inflation,该口径使 S_false 偏大的倍数,1.8868506493506,-,本脚本复算,q2_energy_verify_sympy.py,python src/q2_energy_verify_sympy.py,与 40754/21599 = 1.89 同源

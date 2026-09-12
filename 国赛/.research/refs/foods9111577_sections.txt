@@ -1,0 +1,201 @@
+
+
+### 3. Isothermal and Non-Isothermal Moving-Boundary Models
+
+This section preliminary reviews the basic idea and the resulting equations of the moving-boundary model for food isothermal dehydration, developed in [13,14]. It subsequently extends the moving-boundary model to the non-isothermal case in which the sample temperature cannot be assumed constant (in time and/or space) and equal to the air temperature $T_∞$ of the climatic chamber.
+
+### 3.1. Isothermal Moving-Boundary Model
+
+During the dehydration process, the sample volume $V(t)$ and surface $S(t)$ evolve in time due to sample shrinkage. The sample temperature is assumed constant in space and time and equal to the air temperature $T_∞$.The transport equation describing the space-time evolution of the pointwise water concentration $c_w(\mathbf{x},t)$ [g water/m${}^3$ product] inside the sample volume $V(t)$ is an advection-diffusion equation accounting for the local shrinkage through the pointwise shrinkage velocity $\mathbf{v}_s(\mathbf{x})$
+
+
+    [(1)]  \frac{∂c_w(\mathbf{x},t)}{∂t}−∇·\left(\mathbf{J}_d+\mathbf{v}_s(\mathbf{x}) c_w\right)==∇·\left(D_{eff} ∇c_w−\mathbf{v}_s(\mathbf{x}) c_w\right), \mathbf{x}∈V(t)
+
+where $\mathbf{J}_d=−D_{eff} ∇c_w$ is the diffusive mass flux, controlled by the effective water diffusivity $D_{eff}$, and $(\mathbf{v}_sc_w)$ is a convective term arising from local shrinkage.By enforcing the analogy between food dehydration and swelling of rubbery polymers (both processes are characterized by moving boundaries whose movement is controlled by water release or absorption [18,19,20,21].), the pointwise shrinkage velocity $\mathbf{v}_s(\mathbf{x})$ is assumed proportional (and opposite in sign) to the diffusive volumetric flux $\mathbf{J}_d(\mathbf{x})/ρ_w$ [m${}^3$ water/(s m${}^2$)]
+
+
+    [(2)]  \mathbf{v}_s(\mathbf{x})=−α(c_w) \mathbf{J}_d(\mathbf{x})/ρ_w=α(c_w) D_{eff} ∇c_w/ρ_w,
+
+where $α(c_w)$ is a shrinkage proportionality factor, depending on the pointwise water concentration.The shrinkage factor $α(c_w)$ is the fingerprint of the specific food material under investigation. The simplest case is that of a constant shrinkage factor, i.e., $α(c_w)=α_0$. $α_0=0$ represents the case of a rigid solid (no shrinkage). $α_0=1$ represents the case of ideal shrinkage, in which volume reduction corresponds exactly to the volume of water flowing outside the sample. Values of $α_0$ less or greater than unity imply volume reduction less or greater than the corresponding water volume flow [14,15].The effective water diffusivity $D_{eff}$ can be assumed constant in space or, in a more refined approach, it can be expressed as an increasing exponential function of the water volume fraction $ϕ$ [18,19]
+
+
+    [(3)]  D_{eff}(ϕ,T)=D_{ϕ_0}(T)exp\left(−β \frac{ϕ_0−ϕ}{ϕ_0−ϕ_∞}\right), β≥0, ϕ=c_w/ρ_w
+
+In Equation (3) $ϕ_0$ is the initial water volume fraction, $D_{ϕ_0}$ and $D_∞=D_{ϕ_0}exp(−β)$ are the effective diffusivities at the beginning and at the end of the drying process, respectively.The shrinkage velocity $\mathbf{v}_s(\mathbf{x}_b)$, at every point $\mathbf{x}_b$ on the sample boundary $S(t)$, controls the temporal evolution of the sample boundary $S(t)$ according to the following equation
+
+
+    [(4)]  \frac{d\mathbf{x}_b}{dt}=\mathbf{v}_s|_{\mathbf{x}_b}=\frac{α(c_w)}{ρ_w}D_{eff} ∇c_w|_{\mathbf{x}_b}, \mathbf{x}_b∈S(t) .
+
+The two transport equations Equations (1) and (4) are linked together and must be solved simultaneously by further enforcing the following mixed boundary condition, also referred to as Robin or “evaporative” or third order boundary condition [10]
+
+
+    [(5)]  −D_{eff} ∇c_w·\mathbf{n}|_{\mathbf{x}_b}=h_m M_w\left(C|_{\mathbf{x}_b}−C_∞\right)==h_m M_w\frac{p_v(T_∞)}{R_gT_∞}\left(RH_b−RH_∞\right)
+
+where $\mathbf{n}$ is the outward-pointing normal unit vector, $M_w=18$ [g/mol] the water molecular weight, $h_m$ [m/s] the mass transfer coefficient, $p_v(T_∞)$ the saturated vapor pressure at the air temperature $T_∞$. C [mol/m${}^3$] is the water (vapor) concentration in air and can be further expressed in terms of the Relative Humidity $RH$, at the air/sample interface $RH|_{\mathbf{x}_b}$ and in the climatic chamber $RH_∞$, by adopting the ideal gas law
+
+
+    [(6)]  C=\frac{p}{R_gT}=\frac{p_v(T)}{R_gT}\frac{p}{p_v(T)}=\frac{p_v(T)}{R_gT} RH
+
+The Relative Humidity $RH_b=RH|_{\mathbf{x}_b}$ at the air/sample interface, depends on the local water concentration $c_w(\mathbf{x}_b,t)$ and on the temperature $T_∞$ and must be evaluated from the Desorption Isotherm (DI) at $T=T_∞$
+
+
+    [(7)]  RH_b=RH|_{\mathbf{x}_b}=DI(c_w(\mathbf{x}_b,t),T_∞)
+
+The mass transfer coefficient $h_m$ can be evaluated from well-known correlation functions for the Sherwood number $Sh$, specific for the sample geometry under investigation (sphere, cylinder, ellipsoid, slab) with all the physical parameters of the humid air evaluated at $T_∞$ (see Appendix A).
+
+### 3.2. Non-Isothermal Moving-Boundary Model
+
+In the non-isothermal approach a partial differential equation describing the spatio-temporal evolution of the temperature $T(\mathbf{x},t)$ in the shrinking sample is coupled to the mass transport equations Equations (1), (4) and (5). Equations (1), (4) and (5) need to be slightly modified to take into account that the internal temperature $T(\mathbf{x},t)$ and the boundary temperature $T_b=T(\mathbf{x}_b,t)$ are different from the air temperature $T_∞$ in the climatic chamber.The non-isothermal approach requires the simultaneous solution of the two advection-diffusion partial differential equations for $c_w(\mathbf{x},t)$ and $T(\mathbf{x},t)$
+
+
+    [(8)]  \begin{array}{l}\frac{∂c_w(\mathbf{x},t)}{∂t} & = & ∇·\left(D_{eff}(T) ∇c_w−\mathbf{v}_s(\mathbf{x}) c_w\right), \end{array}
+
+
+
+    [(9)]  \begin{array}{l}\frac{∂\left(ρ^pC_p^pT(\mathbf{x},t)\right)}{∂t} & = & ∇·\left(k^p ∇T−\mathbf{v}_s(\mathbf{x}) ρ^pC_p^pT\right), \end{array}
+
+
+
+    [(10)]  \begin{array}{l}\mathbf{v}_s(\mathbf{x}) & = & α(c_w)D_{eff}(T)∇c_w/ρ_w\end{array}
+
+coupled with the equation for the temporal evolution of sample boundary $S(t)$
+
+
+    [(11)]  \frac{d\mathbf{x}_b}{dt}=\mathbf{v}_s|_{\mathbf{x}_b}=\frac{α(c_w)}{ρ_w}D_{eff}(T_b) ∇c_w|_{\mathbf{x}_b}, \mathbf{x}_b∈S(t) .
+
+and with the boundary conditions
+
+
+    [(12)]  −D_{eff}(T_b) ∇c_w·\mathbf{n}|_{\mathbf{x}_b}=h_m(T_{av}) M_w\left(\frac{p_v(T_b)}{R_gT_b}RH_b−\frac{p_v(T_∞)}{R_gT_∞}RH_∞\right)
+
+
+
+    [(13)]  −k^p ∇T·\mathbf{n}|_{\mathbf{x}_b}=h_T(T_{av})\left(T_b−T_∞\right)−λ_v(T_b)D_{eff}(T_b)∇c_w·\mathbf{n}|_{\mathbf{x}_b}
+
+The boundary condition Equation (13) takes into account both the heat transfer resistance and the heat subtracted for water evaporation at the air/sample interface [22,23,24,25,26], $λ_v$ being the heat of water evaporation, evaluated at $T_b$.In this non-isothermal case, the Relative Humidity $RH_b$ at the air/sample interface depends on the local water concentration $c_w(\mathbf{x}_b,t)$ and on the boundary temperature $T_b≠T_∞$.The heat and mass transfer coefficients $h_T$ and $h_m$ can be evaluated from well-known correlation functions for the Sherwood $Sh$ and Nusselt $Nu$ numbers, specific for the sample geometry under investigation, with all the physical parameters of the humid air evaluated at the average film temperature $T_{av}=(T_b+T_∞)/2$ (see Appendix A).All the physical parameters of the food product, namely the product density $ρ^p$, the specific heat capacity $C_p^p$ and the thermal conductivity $k^p$, are functions of the local water concentration $c_w$ (see Appendix A).In the present formulation it has been assumed that the effective water diffusivity is solely a function of the temperature and independent of the local water concentration, i.e., $β=0$ in Equation (3).The heat transport equation Equation (9) is coupled to the mass transport equation Equation (8) not only through the boundary condition Equation (13) but also through the shrinkage-convective term $(\mathbf{v}_s(\mathbf{x}) ρ^pC_p^pT)$ that contributes to flatten the temperature profile inside the sample.If the thermal diffusivity $D_T^p=k^p/(ρ^pC_p^p)$ of the food material is significantly larger than water diffusivity $D_{eff}$, we can assume that the temperature is uniform inside the sample and equal to the boundary temperature, i.e., $T(\mathbf{x},t)=T_b(t)$. Consequently, the partial differential equation Equation (9) for $T(\mathbf{x},t)$ can be replaced with the ordinary differential equation describing the temporal evolution of the boundary temperature $T_b(t)$
+
+
+    [(14)]  \frac{d}{dt}\left(T_b∫_{V(t)}(ρ^pC_p^p) d\mathbf{x}\right)=∫_{S(t)}\left(−h_T(T_{av})\left(T_b−T_∞\right)+λ_v(T_b)D_{eff}(T_b)∇c_w·\mathbf{n}|_{\mathbf{x}_b}\right)dS
+
+while the water transport equations Equations (8) and (10) remain unchanged except for the fact that $D_{eff}(T)$ must be replaced with $D_{eff}(T_b)$.
+
+### 3.3. Numerical Issues
+
+PDE equations and boundary conditions describing the one-dimensional shrinkage dynamics and sample dehydration have been numerically solved using finite elements method (FEM) in Comsol Multiphysics 3.5. The convection–diffusion package coupled with ALE (Arbitrary Lagrangian Eulerian) moving mesh has been adopted with Free Displacement induced by boundary velocity conditions. Lagrangian quadratic elements have been chosen. The linear solver adopted is UMFPACK, with relative tolerance $10^{−4}$ and absolute tolerance $10^{−7}$. The Time Stepping Method adopted is BDF with a Strict policy for time steps taken by the solver in order to have a good resolution (in time) of step changes in boundary conditions (air temperature, relative humidity and velocity). The number of finite elements set to $10^4$ with a non-uniform mesh. Smaller elements have been located close to the moving boundary $r=R(t)$ in order to accurately compute concentration and temperature gradients, controlling the velocity of the moving front.
+
+### 3.1. Isothermal Moving-Boundary Model
+
+During the dehydration process, the sample volume $V(t)$ and surface $S(t)$ evolve in time due to sample shrinkage. The sample temperature is assumed constant in space and time and equal to the air temperature $T_∞$.The transport equation describing the space-time evolution of the pointwise water concentration $c_w(\mathbf{x},t)$ [g water/m${}^3$ product] inside the sample volume $V(t)$ is an advection-diffusion equation accounting for the local shrinkage through the pointwise shrinkage velocity $\mathbf{v}_s(\mathbf{x})$
+
+
+    [(1)]  \frac{∂c_w(\mathbf{x},t)}{∂t}−∇·\left(\mathbf{J}_d+\mathbf{v}_s(\mathbf{x}) c_w\right)==∇·\left(D_{eff} ∇c_w−\mathbf{v}_s(\mathbf{x}) c_w\right), \mathbf{x}∈V(t)
+
+where $\mathbf{J}_d=−D_{eff} ∇c_w$ is the diffusive mass flux, controlled by the effective water diffusivity $D_{eff}$, and $(\mathbf{v}_sc_w)$ is a convective term arising from local shrinkage.By enforcing the analogy between food dehydration and swelling of rubbery polymers (both processes are characterized by moving boundaries whose movement is controlled by water release or absorption [18,19,20,21].), the pointwise shrinkage velocity $\mathbf{v}_s(\mathbf{x})$ is assumed proportional (and opposite in sign) to the diffusive volumetric flux $\mathbf{J}_d(\mathbf{x})/ρ_w$ [m${}^3$ water/(s m${}^2$)]
+
+
+    [(2)]  \mathbf{v}_s(\mathbf{x})=−α(c_w) \mathbf{J}_d(\mathbf{x})/ρ_w=α(c_w) D_{eff} ∇c_w/ρ_w,
+
+where $α(c_w)$ is a shrinkage proportionality factor, depending on the pointwise water concentration.The shrinkage factor $α(c_w)$ is the fingerprint of the specific food material under investigation. The simplest case is that of a constant shrinkage factor, i.e., $α(c_w)=α_0$. $α_0=0$ represents the case of a rigid solid (no shrinkage). $α_0=1$ represents the case of ideal shrinkage, in which volume reduction corresponds exactly to the volume of water flowing outside the sample. Values of $α_0$ less or greater than unity imply volume reduction less or greater than the corresponding water volume flow [14,15].The effective water diffusivity $D_{eff}$ can be assumed constant in space or, in a more refined approach, it can be expressed as an increasing exponential function of the water volume fraction $ϕ$ [18,19]
+
+
+    [(3)]  D_{eff}(ϕ,T)=D_{ϕ_0}(T)exp\left(−β \frac{ϕ_0−ϕ}{ϕ_0−ϕ_∞}\right), β≥0, ϕ=c_w/ρ_w
+
+In Equation (3) $ϕ_0$ is the initial water volume fraction, $D_{ϕ_0}$ and $D_∞=D_{ϕ_0}exp(−β)$ are the effective diffusivities at the beginning and at the end of the drying process, respectively.The shrinkage velocity $\mathbf{v}_s(\mathbf{x}_b)$, at every point $\mathbf{x}_b$ on the sample boundary $S(t)$, controls the temporal evolution of the sample boundary $S(t)$ according to the following equation
+
+
+    [(4)]  \frac{d\mathbf{x}_b}{dt}=\mathbf{v}_s|_{\mathbf{x}_b}=\frac{α(c_w)}{ρ_w}D_{eff} ∇c_w|_{\mathbf{x}_b}, \mathbf{x}_b∈S(t) .
+
+The two transport equations Equations (1) and (4) are linked together and must be solved simultaneously by further enforcing the following mixed boundary condition, also referred to as Robin or “evaporative” or third order boundary condition [10]
+
+
+    [(5)]  −D_{eff} ∇c_w·\mathbf{n}|_{\mathbf{x}_b}=h_m M_w\left(C|_{\mathbf{x}_b}−C_∞\right)==h_m M_w\frac{p_v(T_∞)}{R_gT_∞}\left(RH_b−RH_∞\right)
+
+where $\mathbf{n}$ is the outward-pointing normal unit vector, $M_w=18$ [g/mol] the water molecular weight, $h_m$ [m/s] the mass transfer coefficient, $p_v(T_∞)$ the saturated vapor pressure at the air temperature $T_∞$. C [mol/m${}^3$] is the water (vapor) concentration in air and can be further expressed in terms of the Relative Humidity $RH$, at the air/sample interface $RH|_{\mathbf{x}_b}$ and in the climatic chamber $RH_∞$, by adopting the ideal gas law
+
+
+    [(6)]  C=\frac{p}{R_gT}=\frac{p_v(T)}{R_gT}\frac{p}{p_v(T)}=\frac{p_v(T)}{R_gT} RH
+
+The Relative Humidity $RH_b=RH|_{\mathbf{x}_b}$ at the air/sample interface, depends on the local water concentration $c_w(\mathbf{x}_b,t)$ and on the temperature $T_∞$ and must be evaluated from the Desorption Isotherm (DI) at $T=T_∞$
+
+
+    [(7)]  RH_b=RH|_{\mathbf{x}_b}=DI(c_w(\mathbf{x}_b,t),T_∞)
+
+The mass transfer coefficient $h_m$ can be evaluated from well-known correlation functions for the Sherwood number $Sh$, specific for the sample geometry under investigation (sphere, cylinder, ellipsoid, slab) with all the physical parameters of the humid air evaluated at $T_∞$ (see Appendix A).
+
+### 3.2. Non-Isothermal Moving-Boundary Model
+
+In the non-isothermal approach a partial differential equation describing the spatio-temporal evolution of the temperature $T(\mathbf{x},t)$ in the shrinking sample is coupled to the mass transport equations Equations (1), (4) and (5). Equations (1), (4) and (5) need to be slightly modified to take into account that the internal temperature $T(\mathbf{x},t)$ and the boundary temperature $T_b=T(\mathbf{x}_b,t)$ are different from the air temperature $T_∞$ in the climatic chamber.The non-isothermal approach requires the simultaneous solution of the two advection-diffusion partial differential equations for $c_w(\mathbf{x},t)$ and $T(\mathbf{x},t)$
+
+
+    [(8)]  \begin{array}{l}\frac{∂c_w(\mathbf{x},t)}{∂t} & = & ∇·\left(D_{eff}(T) ∇c_w−\mathbf{v}_s(\mathbf{x}) c_w\right), \end{array}
+
+
+
+    [(9)]  \begin{array}{l}\frac{∂\left(ρ^pC_p^pT(\mathbf{x},t)\right)}{∂t} & = & ∇·\left(k^p ∇T−\mathbf{v}_s(\mathbf{x}) ρ^pC_p^pT\right), \end{array}
+
+
+
+    [(10)]  \begin{array}{l}\mathbf{v}_s(\mathbf{x}) & = & α(c_w)D_{eff}(T)∇c_w/ρ_w\end{array}
+
+coupled with the equation for the temporal evolution of sample boundary $S(t)$
+
+
+    [(11)]  \frac{d\mathbf{x}_b}{dt}=\mathbf{v}_s|_{\mathbf{x}_b}=\frac{α(c_w)}{ρ_w}D_{eff}(T_b) ∇c_w|_{\mathbf{x}_b}, \mathbf{x}_b∈S(t) .
+
+and with the boundary conditions
+
+
+    [(12)]  −D_{eff}(T_b) ∇c_w·\mathbf{n}|_{\mathbf{x}_b}=h_m(T_{av}) M_w\left(\frac{p_v(T_b)}{R_gT_b}RH_b−\frac{p_v(T_∞)}{R_gT_∞}RH_∞\right)
+
+
+
+    [(13)]  −k^p ∇T·\mathbf{n}|_{\mathbf{x}_b}=h_T(T_{av})\left(T_b−T_∞\right)−λ_v(T_b)D_{eff}(T_b)∇c_w·\mathbf{n}|_{\mathbf{x}_b}
+
+The boundary condition Equation (13) takes into account both the heat transfer resistance and the heat subtracted for water evaporation at the air/sample interface [22,23,24,25,26], $λ_v$ being the heat of water evaporation, evaluated at $T_b$.In this non-isothermal case, the Relative Humidity $RH_b$ at the air/sample interface depends on the local water concentration $c_w(\mathbf{x}_b,t)$ and on the boundary temperature $T_b≠T_∞$.The heat and mass transfer coefficients $h_T$ and $h_m$ can be evaluated from well-known correlation functions for the Sherwood $Sh$ and Nusselt $Nu$ numbers, specific for the sample geometry under investigation, with all the physical parameters of the humid air evaluated at the average film temperature $T_{av}=(T_b+T_∞)/2$ (see Appendix A).All the physical parameters of the food product, namely the product density $ρ^p$, the specific heat capacity $C_p^p$ and the thermal conductivity $k^p$, are functions of the local water concentration $c_w$ (see Appendix A).In the present formulation it has been assumed that the effective water diffusivity is solely a function of the temperature and independent of the local water concentration, i.e., $β=0$ in Equation (3).The heat transport equation Equation (9) is coupled to the mass transport equation Equation (8) not only through the boundary condition Equation (13) but also through the shrinkage-convective term $(\mathbf{v}_s(\mathbf{x}) ρ^pC_p^pT)$ that contributes to flatten the temperature profile inside the sample.If the thermal diffusivity $D_T^p=k^p/(ρ^pC_p^p)$ of the food material is significantly larger than water diffusivity $D_{eff}$, we can assume that the temperature is uniform inside the sample and equal to the boundary temperature, i.e., $T(\mathbf{x},t)=T_b(t)$. Consequently, the partial differential equation Equation (9) for $T(\mathbf{x},t)$ can be replaced with the ordinary differential equation describing the temporal evolution of the boundary temperature $T_b(t)$
+
+
+    [(14)]  \frac{d}{dt}\left(T_b∫_{V(t)}(ρ^pC_p^p) d\mathbf{x}\right)=∫_{S(t)}\left(−h_T(T_{av})\left(T_b−T_∞\right)+λ_v(T_b)D_{eff}(T_b)∇c_w·\mathbf{n}|_{\mathbf{x}_b}\right)dS
+
+while the water transport equations Equations (8) and (10) remain unchanged except for the fact that $D_{eff}(T)$ must be replaced with $D_{eff}(T_b)$.
+
+### 3.3. Numerical Issues
+
+PDE equations and boundary conditions describing the one-dimensional shrinkage dynamics and sample dehydration have been numerically solved using finite elements method (FEM) in Comsol Multiphysics 3.5. The convection–diffusion package coupled with ALE (Arbitrary Lagrangian Eulerian) moving mesh has been adopted with Free Displacement induced by boundary velocity conditions. Lagrangian quadratic elements have been chosen. The linear solver adopted is UMFPACK, with relative tolerance $10^{−4}$ and absolute tolerance $10^{−7}$. The Time Stepping Method adopted is BDF with a Strict policy for time steps taken by the solver in order to have a good resolution (in time) of step changes in boundary conditions (air temperature, relative humidity and velocity). The number of finite elements set to $10^4$ with a non-uniform mesh. Smaller elements have been located close to the moving boundary $r=R(t)$ in order to accurately compute concentration and temperature gradients, controlling the velocity of the moving front.
+
+### 4.3. The Non-Isothermal Approach
+
+The non-isothermal model, Equations (8)–(13), rewritten for a spherical sample in terms of the water volume fraction $ϕ(r,t)$, reads as
+
+
+    [(25)]  \frac{∂ϕ(r,t)}{∂t}=\frac{1}{r^2}\frac{∂}{∂r}\left(r^2\left(D_{eff}(T) \frac{∂ϕ}{∂r}−v_s(r) ϕ\right)\right), r∈(0,R(t))
+
+
+
+    [(26)]  \frac{∂\left(ρ^pC_p^pT(r,t)\right)}{∂t}=\frac{1}{r^2}\frac{∂}{∂r}\left(r^2\left(k^p \frac{∂ϕ}{∂r}−v_s(r)ρ^pC_p^p T\right)\right), r∈(0,R(t))
+
+
+
+    [(27)]  v_s(r)=D_{eff}(T)\frac{∂ϕ}{∂r}, \frac{dR(t)}{dt}=v_s(R(t))=D_{eff}(T_b)\frac{∂ϕ}{∂r}|_{R(t)}
+
+
+
+    [(28)]  \begin{array}{l} & \frac{∂ϕ}{∂r}|_{r=0}=0, \\ & −D_{eff}(T_b)\frac{∂ϕ}{∂r}|_{R(t)}=h_m(T_{av})\frac{M_w}{ρ_w}\left(\frac{p_v(T_b)}{R_gT_b}RH_b−\frac{p_v(T_∞)}{R_gT_∞}RH_∞\right)\end{array}
+
+
+
+    [(29)]  \begin{array}{l} & \frac{∂T}{∂r}|_{r=0}=0, \\ & −k^p\frac{∂T}{∂r}|_{R(t)}=h_T(T_{av})(T_b−T_∞)−λ_v(T_b)ρ_wD_{eff}(T_b)\frac{∂ϕ}{∂r}|_{R(t)}\end{array}
+
+where the Relative Humidity at the air/sample interface $RH_b=RH|_{R(t)}=RH(ϕ_b,T_b)$ is evaluated from desorption isotherms for Rocha pears reported by [27] and best fitted with the Henderson model, see Appendix A. Equations (25)–(29) must be numerically integrated starting from the uniform initial conditions $ϕ(r,0)=ϕ_0≃0.9$ and $T(r,0)=T_0=15$
+${}^{\circ}$C. The value of $ϕ_0$ can slightly change for different experiments because of changes in the initial total moisture content $X_0$ (see Table 1).Figure 5 shows the excellent agreement between experimental data, at both temperatures $T_∞=40$
+${}^{\circ}$C, 50 ${}^{\circ}$C, and model predictions (continuous red and blue curves, coefficient of determination $R^2$ > 0.99) with no adjustable parameters. Indeed, there is no need to introduce a concentration-dependent diffusion coefficient, Equation (3), that would require the estimate of the $β$ parameter. For this reason, we set $β=0$ also for all the subsequent simulations of intermittent dehydration.The reliability of the non-isothermal model allows us to verify some hypotheses made in paragraph Section 4.1 when discussing the intrinsic limitations of the isothermal approach.Figure 6A shows the temporal evolution of the temperature at the center $T_0(t)=T(0,t)$ and at the sample boundary $T_b(t)=T(R(t),t)$ for the continuous dehydration at $T_∞=50$
+${}^{\circ}$C. Due to the high value of the product thermal diffusivity $D_T^p=k^p/(ρ^pC_p^p)≃9×10^{−8}$ m${}^2$/s $≫D_{eff}$, the two temperatures $T_0$ and $T_b$ almost coincide for $t>3$ h. This is the only numerical result that differs from experimental observations by Silva et al. [11]. These authors observed an appreciable difference between $T_0$ and $T_b$ in the convective stage, and this is quite difficult to explain if one considers the high value of the thermal diffusivity of the pears.As expected, both temperatures $T_0(t)$ and $T_b(t)$ require more than 40 h to get close to the asymptotic value $T_∞$. This is due to the large amount of energy required for water evaporation at the air/sample interface. This effect is particularly evident in the very first hours of the dehydration process, in which both temperatures $T_0$ and $T_b$, highlighted in the inset of Figure 6, exhibit a slight decrease below the initial temperature.Correspondingly, also the average effective water diffusivity $<D_{eff}>$, shown in Figure 6B,
+
+
+    [(30)]  <D_{eff}(t)>=\frac{1}{(4/3)πR(t)^3}∫_0^{R(t)}D_{eff}(T(r,t)) 4πr^2dr
+
+attains a very low value, order of $5×10^{−11}$ m${}^2$/s at the beginning of the drying process and requires more than 40 h to get close to the five times larger asymptotic value $≃2.5×10^{−10}$ m${}^2$/s.Figure 6B also shows the temporal evolution of the heat and mass transfer coefficients $h_T$ and $h_m$, evaluated according to well-known correlations Equations (A10)–(A13) reported in Appendix A. Both $h_T$ and $h_m$ exhibit a $d^{−1/2}$ dependence on the sample diameter $d(t)$ and therefore are increasing functions of time, mainly because of sample shrinkage.The rescaled sample volume $V(t)/V_0$ and radius $R(t)/R_0$ are shown in Figure 7B as a function of the rescaled total moisture content $X(t)/X_0$, in agreement with experimental data (open circles, from Silva et al. [11]). Indeed, starting from these experimental shrinkage data, the hypothesis of ideal shrinkage for Rocha pears has been formulated and implemented in the moving-boundary model by setting $α(ϕ)=α_0=1$.The temporal evolution of the water concentration profile $ϕ(r,t)$ is represented in Figure 7A, together with the boundary concentration $ϕ_b(t)$ that rapidly (12 h) decreases towards the very low asymptotic value. Figure 7A clearly shows that a mixed third kind boundary condition, Equation (28), has to be applied for a correct description of all the different phases of the drying process.A last observation regarding the temperature profiles. Figure 6A clearly shows that it is reasonable to assume that the temperature is uniform inside the sample and equal to the boundary temperature, i.e., $T(r,t)=T_b$. This observation allows replacing the partial differential equation Equation (26) for $T(r,t)$ with the ordinary differential equation for the boundary temperature $T_b(t)$
+
+
+    [(31)]  \begin{array}{l} & \frac{d}{dt}\left(T_b∫_0^{R(t)}(ρ^pC_p^p)4πr^2dr\right)= \\ & \left(−h_T(T_{av})\left(T_b−T_∞\right)+λ_v(T_b)ρ_wD_{eff}(T_b)\frac{∂ϕ}{∂r}|_{R(t)}\right)4πR^2(t)\end{array}
+
+while the water transport equations Equations (25) and (27) remain unchanged except for the fact that $D_{eff}(T)$ must be replaced with $D_{eff}(T_b)$. The thermal inertial term $ρ^pC_p^p$ appears in the volume integral, right hand side of Equation (31), because it depends on $ϕ(r,t)$ and therefore on r and t (see Appendix A).Numerical results of the integration of this simplified model are shown in Figure 5 (black dashed lines) and are almost indistinguishable from numerical results of the more accurate non-isothermal model.

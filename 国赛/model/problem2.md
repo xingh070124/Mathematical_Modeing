@@ -60,7 +60,7 @@ $T_0=28\ ^\circ\mathrm{C}$、初始干基含水率 $C_0=2.55\ \mathrm{kg/kg}$，
 | **B4** | 物性 $\rho,c_p,k$ 随含水率 $C$ 按附录 3 经验式变化，**不显式依赖 $T$** | 题面明确"经验公式统一采用附录 3" |
 | **B5** | 水分迁移由 Fick 扩散描述，$D=D(C,T)$ 由附录 3 给定 | 题面给定；忽略毛细压力驱动、重力与对流传质项 |
 | **B6** | 表面为第三类（Robin）边界，平衡值取环境值 $T_\infty(t)$、$C_\infty(t)$ | 与附录 2 的 $h$、$h_m$ 配套；适用性边界讨论见问题一 §7.2 |
-| **B7** | 前 3 h 内体积不收缩，$R$ 取常数 | 附件 2 显示 3 h 内 $R$ 由 2.000 降至约 1.75 cm（收缩约 12 %），收缩的显式处理属问题 4 |
+| **B7** | 前 3 h 内体积不收缩，$R$ 取常数 | 附件 2 显示 $R$ 由 2.000 cm（$t=0$）降至 1.552 cm（$t=10800\ \mathrm s$），即 3 h 内**收缩 $22.4\%$**（$R(1800\ \mathrm s)=1.873$ cm，收缩 $6.4\%$）；收缩的显式处理属问题 4。该假设是本模型在 3 h 尺度上的主要几何近似，见 `problem2_slove.md` §9.3 |
 | **B8** | 预热平衡与恒温干燥两阶段的差异**由环境激励 $T_\infty(t),C_\infty(t)$ 的时间历程体现**，控制方程形式统一 | 题面"相关经验公式统一采用附录 3"即指方程不变、参数统一 |
 | **B9** | **计入水分蒸发吸热**：表面相变潜热 $q_{\rm evap}=H_{\rm evap}h_m(C_R-C_\infty)$，其中 $H_{\rm evap}(T)$ 由 **Clapeyron 方程 + Kirchhoff 定律推导**并按 IAPWS-95 定标，量级 $\sim2.43\times10^6\ \mathrm{J/kg}$ | 题面**未给出** $H_{\rm evap}$，但它可由 $T,p_{\rm sat},c_{p,l},c_{p,v}$ 等基础热力学量**推导得到**，无需引入经验拟合参数；推导、定标与闭合检验见 §4.4(c)。若需与"无相变"模型对比，令 $H_{\rm evap}=0$ 即可退化 |
 
@@ -126,8 +126,9 @@ $|S_{\rm false}|=6.56\times10^{2}\ \mathrm{W/m^3}$，为主项
 $\rho c_p\partial_tT\sim2.60\times10^{3}\ \mathrm{W/m^3}$ 的 **25.2%**——同量级，不可忽略。
 保留的 $-c_l\mathbf J_w\!\cdot\!\nabla T$ 仅为主项的 $3.3\times10^{-4}$，可略。
 
-数值验证（`q2_verify.py` V11）：$M=200$、$\Delta t=0.25\ \mathrm s$ 下两种形式的中心温度
-在 $t=10800\ \mathrm s$ 相差 **9.87 K**。问题一中 $\rho c_p$ 为常数，两种形式恒等
+数值验证（`q2_verify.py` V11）：$M=200$、$\Delta t=0.25\ \mathrm s$ 下两种形式的**温度场
+最大差别为 17.2745 K**（中心温度在 $t=10800\ \mathrm s$ 相差 14.7961 K：非保守
+49.7685 对 守恒 64.5646 °C）。问题一中 $\rho c_p$ 为常数，两种形式恒等
 （sympy 验证差为 0），故这一分歧**只在问题二出现**。
 
 ### 4.2 水分场
@@ -774,10 +775,19 @@ $$\boxed{\ \left[\frac{\partial\mathbf R_T}{\partial\mathbf C}\right]_{MM}
 
 这是三条耦合通路中**唯一显式出现于 Jacobian 的非物性项**；若取 $H_{\rm evap}=0$
 （无相变），该元消失，块 (1,2) 退化为纯物性耦合。注意其量级（$H_{\rm evap}$ 取
-$40\ ^\circ\mathrm{C}$ 值，见 §4.4(c)）：
-$H_{\rm evap}h_mR=2.4059\times10^6\times8\times10^{-7}\times0.02\approx0.0385\
-\mathrm{J/(kg\cdot K\cdot s)}$，与对角元 $1/\Delta t=4\ \mathrm{s^{-1}}$ 相比仅为其
-$0.96\%$，属**弱耦合**（与 §4.4(c) 的结论一致）。
+$28\ ^\circ\mathrm C$ 值，见 §4.4(c)）：
+$H_{\rm evap}h_mR=2.4346\times10^6\times8\times10^{-7}\times0.02=0.0389536$。
+
+**该元的相对权重应与它所在行（温度方程）的对角元相比**，而不是与 $1/\Delta t$ 相比
+（两者量纲不同）。温度方程在 $r=R$ 的对角元为 $M^L_{MM}\rho c_p/\Delta t+hR$；
+在 $M=1600$、$\Delta t=1/32\ \mathrm s$ 下该对角元为 $13.8360$，故
+
+$$\frac{H_{\rm evap}h_mR}{M^L_{MM}\rho c_p/\Delta t+hR}
+=\frac{0.0389536}{13.8360}=0.28154\%$$
+
+即蒸发耦合仅占表面对角元的 $0.2815\%$，属**弱耦合**（与 §4.4(c) 的结论一致）。
+作为对照，$\Delta t=0.25\ \mathrm s$、$M=400$ 时为 $0.54375\%$——**时间步越小该比例越小**，
+因为 $M^L_{MM}\rho c_p/\Delta t$ 随 $\Delta t$ 减小而增大。
 
 **块 (2,1)**（水分对温度的导数）：仅由 $D(C,T)$ 的 Arrhenius 项产生。界面扩散系数同样取
 算术平均：$D_{i-1/2}=\tfrac12\big[D(C_{i-1},T_{i-1})+D(C_i,T_i)\big]$。完全平行于块 (1,2)：
@@ -827,8 +837,8 @@ $$\left\|\mathbf R(\mathbf U^{(k)})\right\|_\infty\le\varepsilon_R,\qquad
 最大迭代数 $k_{\max}=30$，超限则减小 $\Delta t$ 重试。
 
 **阻尼策略**：由于 $C$ 极小时 $\partial D/\partial C=D\cdot0.45/C^2$ 增长很快
-（$C=0.05$ 时 $\partial D/\partial C\approx1.8\times10^{-11}$，但相对灵敏
-$0.45/C^2=180$），在迭代初期可能出现步长过大。采用**回溯线搜索**：若
+（$C=0.05$、$T=50\ ^\circ\mathrm C$ 时 $\partial D/\partial C=3.5699\times10^{-10}$，
+而相对灵敏系数 $0.45/C^2=180$），在迭代初期可能出现步长过大。采用**回溯线搜索**：若
 $\|\mathbf R(\mathbf U^{(k)}+\theta\delta\mathbf U)\|>\|\mathbf R(\mathbf U^{(k)})\|$，
 则 $\theta\leftarrow\theta/2$，直至残差下降或 $\theta<10^{-4}$。
 

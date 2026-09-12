@@ -1,0 +1,48 @@
+{
+  "pdf": "paper\\figures\\fig_q2_mechanism.pdf",
+  "auditable": true,
+  "verdict": "REVIEW REQUIRED",
+  "page_count": 1,
+  "visible_text_box_count": 68,
+  "text_trace_count": 81,
+  "stroke_path_count": 67,
+  "filled_region_count": 58,
+  "image_region_count": 0,
+  "summary": {
+    "fail": 0,
+    "warn": 1,
+    "contained_fill_overlays": 15,
+    "contained_image_overlays": 0
+  },
+  "thresholds": {
+    "text_inset_pt": 0.6,
+    "min_overlap_ratio": 0.05,
+    "clipping_tolerance_pt": 0.5
+  },
+  "findings": [
+    {
+      "severity": "WARN",
+      "kind": "text-fill-edge",
+      "page": 1,
+      "message": "Text partially overlaps the edge of 1 filled region(s)",
+      "text": "0.0095 K",
+      "text_bbox": [
+        398.7482604980469,
+        181.4065399169922,
+        428.3482666015625,
+        188.80653381347656
+      ],
+      "other_text": null,
+      "other_bbox": [
+        295.46966552734375,
+        186.1627197265625,
+        413.4982604980469,
+        193.94119262695312
+      ],
+      "object_count": 1,
+      "object_indexes": [
+        63000
+      ]
+    }
+  ]
+}

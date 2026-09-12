@@ -1,0 +1,48 @@
+{
+  "pdf": "paper\\figures\\fig_q3_event.pdf",
+  "auditable": true,
+  "verdict": "REVIEW REQUIRED",
+  "page_count": 1,
+  "visible_text_box_count": 51,
+  "text_trace_count": 80,
+  "stroke_path_count": 149,
+  "filled_region_count": 139,
+  "image_region_count": 0,
+  "summary": {
+    "fail": 0,
+    "warn": 1,
+    "contained_fill_overlays": 3,
+    "contained_image_overlays": 0
+  },
+  "thresholds": {
+    "text_inset_pt": 0.6,
+    "min_overlap_ratio": 0.05,
+    "clipping_tolerance_pt": 0.5
+  },
+  "findings": [
+    {
+      "severity": "WARN",
+      "kind": "text-fill-edge",
+      "page": 1,
+      "message": "Text partially overlaps the edge of 1 filled region(s)",
+      "text": "(a) 全场最大含水率 max",
+      "text_bbox": [
+        66.94999694824219,
+        7.319174766540527,
+        162.33700561523438,
+        22.225690841674805
+      ],
+      "other_text": null,
+      "other_bbox": [
+        42.45000076293945,
+        21.199996948242188,
+        204.4499969482422,
+        157.82000732421875
+      ],
+      "object_count": 1,
+      "object_indexes": [
+        1000
+      ]
+    }
+  ]
+}

@@ -107,14 +107,12 @@ $C^\ast=0.15\ \mathrm{kg/kg}$。
 **温度场**（含蒸发吸热源项 $S_h$，以表面热流形式施加）：
 
 $$\rho(C)\,c_p(C)\,\frac{\partial T}{\partial t}
-=\frac{1}{r}\frac{\partial}{\partial r}\left(k(C)\,r\frac{\partial T}{\partial r}\right)+S_h
-\label{eq:T3}\tag{1}$$
+=\frac{1}{r}\frac{\partial}{\partial r}\left(k(C)\,r\frac{\partial T}{\partial r}\right)+S_h$$
 
 **水分场**：
 
 $$\frac{\partial C}{\partial t}
-=\frac{1}{r}\frac{\partial}{\partial r}\left(r\,D(C,T)\frac{\partial C}{\partial r}\right)
-\label{eq:C3}\tag{2}$$
+=\frac{1}{r}\frac{\partial}{\partial r}\left(r\,D(C,T)\frac{\partial C}{\partial r}\right)$$
 
 **附录 3 物性经验式**：
 
@@ -128,11 +126,9 @@ $$D(C,T)=2.4\times10^{-3}\exp\!\left(-\frac{0.45}{C}\right)\exp\!\left(-\frac{38
 **表面第三类边界**（式 (3) 右端第二项即蒸发吸热热流）：
 
 $$-k(C)\left.\frac{\partial T}{\partial r}\right|_{r=R}
-=h\left[T(R,t)-T_\infty(t)\right]+H_{\rm evap}\,h_m\left[C(R,t)-C_\infty(t)\right]
-\label{eq:bcT3}\tag{3}$$
+=h\left[T(R,t)-T_\infty(t)\right]+H_{\rm evap}\,h_m\left[C(R,t)-C_\infty(t)\right]$$
 
-$$-D(C,T)\left.\frac{\partial C}{\partial r}\right|_{r=R}=h_m\left[C(R,t)-C_\infty(t)\right]
-\label{eq:bcC3}\tag{4}$$
+$$-D(C,T)\left.\frac{\partial C}{\partial r}\right|_{r=R}=h_m\left[C(R,t)-C_\infty(t)\right]$$
 
 **中心对称**：$\left.\partial_rT\right|_{r=0}=\left.\partial_rC\right|_{r=0}=0$。
 
@@ -779,7 +775,7 @@ $$\boxed{\ t_{\rm dry}=206726.3\ \mathrm{s}=57.42\ \mathrm{h}\ }
 
 ## 12 数值验证（计划与实测结果）
 
-以下 W1 ~ W10 为验证计划；其中 W1、W2、W3、W5 已在本方案的原型实现上完成，
+以下 W1 ~ W11 为验证计划；其中 W1、W2、W3、W5 已在本方案的原型实现上完成，
 实测结果见 §12.1，精度预算见 §12.2。其余各项（W4、W6 ~ W10）在正式求解阶段执行。
 
 | 编号 | 验证项 | 方法 | 通过标准 |
@@ -794,6 +790,7 @@ $$\boxed{\ t_{\rm dry}=206726.3\ \mathrm{s}=57.42\ \mathrm{h}\ }
 | **W8** | 极值原理与守恒 | 检查 $C\in[C_\infty,C_0]$、$C(r,\cdot)$ 单调不增；总水量收支残差 | 无越界/振荡；相对残差 $<10^{-6}$ |
 | **W9** | 最大值位置诊断 | 输出 $\arg\max_iC_i(t)$ 的全过程 | 恒为 $0$（轴心），验证 §10.2 的断言 |
 | **W10** | 阈值附近的行为 | 检查 $g(t)$ 在 $t_{\rm dry}$ 附近是否单调、单根 | 单调下降，无多个穿越（`direction=-1` 的稳健性前提） |
+| **W11** | **降维合理性（二维 $r$-$z$ 轴对称对照）** | 二维守恒 FV + 同配置 BDF（$N_z=0/25/50$ 与端面第一类最不利算例）；$N_z=0$ 对角化到机器精度；一维解沿 $z$ 延拓为上解的比较原理 | 全部变体 $\lvert t_{\rm dry}^{2D}-t_{\rm dry}^{1D}\rvert\le11.4\ \mathrm s=0.0032\ \mathrm h\ll\pm0.03\ \mathrm h$；中截面 $\max\lvert\Delta C\rvert=2.28\times10^{-5}\ \mathrm{kg/kg}$（低于阈值 $5\times10^{-5}$ 之半）；实测由 `src/q3_2d_verify.py` 执行（`problem3_slove.md` §7.7） |
 
 **W4 的意义（重点）**：问题二与问题三使用**同一套控制方程、物性、空间离散与网格**，
 仅时间积分方案不同（定步长后向 Euler vs 自适应 BDF）。这是极为难得的**独立交叉验证**
@@ -883,6 +880,7 @@ $\pm0.03\ \mathrm{h}$（$M=400$ 与 Richardson 极限之差 0.028 h）。
 | 空间离散（$O(\Delta r^{1.2})$） | $\mathbf{\pm0.03\ h}$（**主导**） | 网格细化 + Richardson 外推（$\Delta r\to0$） |
 | 时间容限 | $\pm1.4\times10^{-6}\ \mathrm{h}$（$0.005\ \mathrm{s}$） | ${\rm rtol}=10^{-9}$（已收敛） |
 | 步长上界 / 事件插值 | $<10^{-6}\ \mathrm{h}$（$<0.001\ \mathrm{s}$） | `max_step` $=3600\ \mathrm{s}$（已收敛） |
+| 降维（二维 $r$-$z$ 对照，W11） | $\le0.0032\ \mathrm{h}$（$11.4\ \mathrm{s}$） | 二维轴对称对照 + 比较原理上界 |
 | **数值合计** | $\mathbf{\pm0.03\ h}$ | — |
 | 环境外推（W7） | 待定量（预计 $\pm$ 数小时） | 敏感性分析（W7） |
 | **合计** | 由 W7 主导 | — |
@@ -965,10 +963,12 @@ t^\ast=\text{终止事件时刻 (s)}$$
 | `model/problem3.md` | 本文（模型建立与求解方案） |
 | `src/q3_solve.py` | MOL + BDF + 终止事件求解器（含解析稀疏 Jacobian） |
 | `src/q3_verify.py` | 收敛性、交叉验证、极值原理与敏感性验证（W1 ~ W10） |
+| `src/q3_2d_verify.py` | 二维 $(r,z)$ 轴对称对照验证（W11 降维合理性） |
 | `src/q3_produce.py` | 生产计算，生成 `outputs/result3.xlsx` 与表 5 |
 | `outputs/result3.xlsx` | 问题三完整结果（水分浓度，$n_{60}\times21$） |
 | `outputs/table5_moisture.csv` / `.md` | 表 5 的水分浓度 |
 | `outputs/registry_q3.csv` | 数字注册表（论文对账用：$t_{\rm dry}$、外推参数、各验证项数值） |
+| `outputs/registry_q3_2d.csv` | W11 二维对照注册表（63 行：解析尺度、$t_{\rm dry}$ 对照、中截面偏差） |
 
 ---
 

@@ -1,0 +1,946 @@
+
+============================================================================
+\(25\)  (5 hits)
+============================================================================
+
+--- ctx ---
+or from independent experimental measurements, like in the case of the desorption
+isotherms(seeAppendixA).
+
+Foods2020,9,1577 10of22
+0.1
+0.08
+0.06
+0.04
+0.02
+A
+0
+0 0.2 0.4 0.6 0.8 1
+1-
+]
+h[
+J
+3
+o
+C-40 C
+o
+C-50 C
+2
+1
+B
+0
+10 20 30 40 50 60
+X=(X-X )/(X -X ) r ∞ 0 ∞
+2
+01
+]s/
+m[
+01
+x
+D
+ffe
+o T [ C]
+Figure4.(A)Dehydration-ratecurvesJvs. XrforcontinuousdehydrationtestsatT∞ =40◦C,50◦C,
+U∞ = 1.28m/s. Continuouslinesrepresentthebest-fitcurvesEquation(23). Blackdashedlines
+highlighttheasymptotic(larget,smallXr)linearbehaviour,Equation(21). (B)Estimatedeffective
+waterdiffusivityD atT = 40◦C,50◦C(filledpoints). ThedashedlinerepresentstheArrhenius
+eff
+behaviour,Equation(24).
+4.3. TheNon-IsothermalApproach
+Thenon-isothermalmodel,Equations(8)–(13),rewrittenforasphericalsampleintermsofthe
+watervolumefractionφ(r,t),readsas
+(cid:32) (cid:33)
+∂φ(r,t) 1 ∂ (cid:16) ∂φ (cid:17)
+= r2 D (T) −v (r)φ , r ∈ (0,R(t)) (25)
+∂t r2 ∂r eff ∂r s
+∂ (cid:0) ρpC p p T(r,t) (cid:1) = 1 ∂ (cid:32) r2 (cid:16) kp ∂φ −v (r)ρpC p T (cid:17) (cid:33)
+
+--- ctx ---
+) 1 ∂ (cid:16) ∂φ (cid:17)
+= r2 D (T) −v (r)φ , r ∈ (0,R(t)) (25)
+∂t r2 ∂r eff ∂r s
+∂ (cid:0) ρpC p p T(r,t) (cid:1) = 1 ∂ (cid:32) r2 (cid:16) kp ∂φ −v (r)ρpC p T (cid:17) (cid:33) , r ∈ (0,R(t)) (26)
+∂t r2 ∂r ∂r s p
+∂φ dR(t) ∂φ(cid:12)
+v (r) = D (T) , = v (R(t)) = D (T ) (cid:12) (27)
+s eff ∂r dt s eff b ∂r(cid:12) R(t)
+∂φ(cid:12)
+(cid:12) =0,
+∂r(cid:12)
+r=0
+−D
+eff
+(T
+b
+) ∂
+∂
+φ
+r
+(cid:12) (cid:12)
+(cid:12) R(t)
+= h
+m
+(T
+av
+) M
+ρ w
+w (cid:18) p
+R
+v (
+g
+T
+T
+b
+b
+) RH
+b
+− p
+R
+v (
+g
+T
+T
+∞
+∞
+) RH∞ (cid:19) (28)
+∂T(cid:12)
+(cid:12) =0,
+∂r(cid:12)
+r=0
+(29)
+∂T(cid:12) ∂φ(cid:12)
+−kp
+∂r
+(cid:12)
+(cid:12) R(t)
+= h
+T
+(T
+av
+)(T
+b
+−T∞)−λ
+v
+(T
+b
+)ρ
+w
+D
+eff
+(T
+b
+)
+∂r
+(cid:12)
+(cid:12) R(t)
+(cid:12)
+wheretheRelativeHumidityattheair/sampleinterfaceRH
+b
+= RH(cid:12)
+R(t)
+= RH(φ
+b
+,T
+b
+)isevaluated
+fromdesorptionisothermsforRochapearsreportedby[27]andbestfittedwiththeHendersonmodel,
+seeAppendixA.Equations(25)–(29)mustbenumericallyintegratedstartingfromtheuniforminitial
+conditions φ(r,0) = φ (cid:39) 0.9 and T(r,0) = T = 15
+
+============================================================================
+\(26\)  (2 hits)
+============================================================================
+
+--- ctx ---
+0.08
+0.06
+0.04
+0.02
+A
+0
+0 0.2 0.4 0.6 0.8 1
+1-
+]
+h[
+J
+3
+o
+C-40 C
+o
+C-50 C
+2
+1
+B
+0
+10 20 30 40 50 60
+X=(X-X )/(X -X ) r ∞ 0 ∞
+2
+01
+]s/
+m[
+01
+x
+D
+ffe
+o T [ C]
+Figure4.(A)Dehydration-ratecurvesJvs. XrforcontinuousdehydrationtestsatT∞ =40◦C,50◦C,
+U∞ = 1.28m/s. Continuouslinesrepresentthebest-fitcurvesEquation(23). Blackdashedlines
+highlighttheasymptotic(larget,smallXr)linearbehaviour,Equation(21). (B)Estimatedeffective
+waterdiffusivityD atT = 40◦C,50◦C(filledpoints). ThedashedlinerepresentstheArrhenius
+eff
+behaviour,Equation(24).
+4.3. TheNon-IsothermalApproach
+Thenon-isothermalmodel,Equations(8)–(13),rewrittenforasphericalsampleintermsofthe
+watervolumefractionφ(r,t),readsas
+(cid:32) (cid:33)
+∂φ(r,t) 1 ∂ (cid:16) ∂φ (cid:17)
+= r2 D (T) −v (r)φ , r ∈ (0,R(t)) (25)
+∂t r2 ∂r eff ∂r s
+∂ (cid:0) ρpC p p T(r,t) (cid:1) = 1 ∂ (cid:32) r2 (cid:16) kp ∂φ −v (r)ρpC p T (cid:17) (cid:33) , r ∈ (0,R(t)) (26)
+∂t r2 ∂r ∂r s p
+∂φ dR(t) ∂φ(cid:12)
+v (r) = D (T) , = v (R(t)) = D (T ) (cid:12) (27)
+s eff ∂r dt s eff b ∂r(cid:12
+
+--- ctx ---
+mporalevolutionofthe
+rescaledsampleradiusR(t)/R andoftherescaledsamplevolumeV(t)/V duringthedehydration
+| | | | 0 | | | | | | 0 | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+process.Filledpointsrepresentthesamespecifictimeinstants{t}reportedinFigure(A).Opencircles
+i
+representexperimentalvaluesfrom[11].
+
+| Foods2020,9,1577 | | | | | | | | 13of22 |
+| ---------------- | --- | --- | --- | --- | --- | --- | --- | ------ |
+Alastobservationregardingthetemperatureprofiles.Figure6Aclearlyshowsthatitisreasonable
+toassumethatthetemperatureisuniforminsidethesampleandequaltotheboundarytemperature,
+| i.e.,T(r,t) | = | | | | | | | |
+| ----------- | --- | --- | --- | --- | --- | --- | --- | --- |
+T b . ThisobservationallowsreplacingthepartialdifferentialequationEquation(26)for
+T(r,t)withtheordinarydifferentialequationfortheboundarytemperatureT (t)
+b
+| | | d (cid:16) | (cid:90) R(
+
+============================================================================
+\(27\)  (2 hits)
+============================================================================
+
+--- ctx ---
+0 30 40 50 60
+X=(X-X )/(X -X ) r ∞ 0 ∞
+2
+01
+]s/
+m[
+01
+x
+D
+ffe
+o T [ C]
+Figure4.(A)Dehydration-ratecurvesJvs. XrforcontinuousdehydrationtestsatT∞ =40◦C,50◦C,
+U∞ = 1.28m/s. Continuouslinesrepresentthebest-fitcurvesEquation(23). Blackdashedlines
+highlighttheasymptotic(larget,smallXr)linearbehaviour,Equation(21). (B)Estimatedeffective
+waterdiffusivityD atT = 40◦C,50◦C(filledpoints). ThedashedlinerepresentstheArrhenius
+eff
+behaviour,Equation(24).
+4.3. TheNon-IsothermalApproach
+Thenon-isothermalmodel,Equations(8)–(13),rewrittenforasphericalsampleintermsofthe
+watervolumefractionφ(r,t),readsas
+(cid:32) (cid:33)
+∂φ(r,t) 1 ∂ (cid:16) ∂φ (cid:17)
+= r2 D (T) −v (r)φ , r ∈ (0,R(t)) (25)
+∂t r2 ∂r eff ∂r s
+∂ (cid:0) ρpC p p T(r,t) (cid:1) = 1 ∂ (cid:32) r2 (cid:16) kp ∂φ −v (r)ρpC p T (cid:17) (cid:33) , r ∈ (0,R(t)) (26)
+∂t r2 ∂r ∂r s p
+∂φ dR(t) ∂φ(cid:12)
+v (r) = D (T) , = v (R(t)) = D (T ) (cid:12) (27)
+s eff ∂r dt s eff b ∂r(cid:12) R(t)
+∂φ(cid:12)
+(cid:12) =0,
+∂r(cid:12)
+r=0
+−D
+eff
+(T
+b
+) ∂
+∂
+φ
+r
+(cid:12) (cid:12)
+
+
+--- ctx ---
+ | (cid:17) | | | |
+| --- | --- | ---------- | ------------- | ------------- | -------- | --- | --- | --- |
+| | | | T | (ρpC p)4πr2dr | = | | | |
+| | | | b | p | | | | |
+dt 0
+(31)
+| | | (cid:16) | | | | ∂ φ (cid:12) (cid:17) | | |
+| --- | --- | -------- | ---- | --------------- | ---------------- | --------------------- | ------- | --- |
+| | | −h | (T | ) (cid:0) T −T∞ | (cid:1) +λ (T )ρ | D (T ) | 4πR2(t) | |
+| | | | T av | b | v b | w eff b (cid:12) | | |
+| | | | | | | ∂ r R(t) | | |
+whilethewatertransportequationsEquations(25)and(27)remainunchangedexceptforthefact
+| | D (T)mustbereplacedwith | | | D | (T ). ThethermalinertialtermρpC
+
+============================================================================
+\(28\)  (2 hits)
+============================================================================
+
+--- ctx ---
+ Blackdashedlines
+highlighttheasymptotic(larget,smallXr)linearbehaviour,Equation(21). (B)Estimatedeffective
+waterdiffusivityD atT = 40◦C,50◦C(filledpoints). ThedashedlinerepresentstheArrhenius
+eff
+behaviour,Equation(24).
+4.3. TheNon-IsothermalApproach
+Thenon-isothermalmodel,Equations(8)–(13),rewrittenforasphericalsampleintermsofthe
+watervolumefractionφ(r,t),readsas
+(cid:32) (cid:33)
+∂φ(r,t) 1 ∂ (cid:16) ∂φ (cid:17)
+= r2 D (T) −v (r)φ , r ∈ (0,R(t)) (25)
+∂t r2 ∂r eff ∂r s
+∂ (cid:0) ρpC p p T(r,t) (cid:1) = 1 ∂ (cid:32) r2 (cid:16) kp ∂φ −v (r)ρpC p T (cid:17) (cid:33) , r ∈ (0,R(t)) (26)
+∂t r2 ∂r ∂r s p
+∂φ dR(t) ∂φ(cid:12)
+v (r) = D (T) , = v (R(t)) = D (T ) (cid:12) (27)
+s eff ∂r dt s eff b ∂r(cid:12) R(t)
+∂φ(cid:12)
+(cid:12) =0,
+∂r(cid:12)
+r=0
+−D
+eff
+(T
+b
+) ∂
+∂
+φ
+r
+(cid:12) (cid:12)
+(cid:12) R(t)
+= h
+m
+(T
+av
+) M
+ρ w
+w (cid:18) p
+R
+v (
+g
+T
+T
+b
+b
+) RH
+b
+− p
+R
+v (
+g
+T
+T
+∞
+∞
+) RH∞ (cid:19) (28)
+∂T(cid:12)
+(cid:12) =0,
+∂r(cid:12)
+r=0
+(29)
+∂T(cid:12) ∂φ(cid:12)
+−kp
+∂r
+(cid:12)
+(cid:12) R(t)
+= h
+T
+(T
+av
+)(T
+b
+−
+
+--- ctx ---
+ 0 | | | 0 | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+X(t)/X
+oftherescaledtotalmoisturecontent 0 ,inagreementwithexperimentaldata(opencircles,
+fromSilvaetal. [11]). Indeed,startingfromtheseexperimentalshrinkagedata,thehypothesisofideal
+shrinkageforRochapearshasbeenformulatedandimplementedinthemoving-boundarymodelby
+| settingα(φ) | = =1. | | | | | | | | | | |
+| ----------- | ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | α 0 | | | | | | | | | | |
+The temporal evolution of the water concentration profile φ(r,t) is represented in Figure 7A,
+togetherwiththeboundaryconcentrationφ (t)thatrapidly(12h)decreasestowardstheverylow
+b
+asymptoticvalue. Figure7Aclearlyshowsthatamixedthirdkindboundarycondition,Equation(28),
+hastobeappliedforacorrectdescriptionofallthedifferentphasesofthedryingprocess.
+| | 1 | | | | 
+
+============================================================================
+\(29\)  (4 hits)
+============================================================================
+
+--- ctx ---
+get,smallXr)linearbehaviour,Equation(21). (B)Estimatedeffective
+waterdiffusivityD atT = 40◦C,50◦C(filledpoints). ThedashedlinerepresentstheArrhenius
+eff
+behaviour,Equation(24).
+4.3. TheNon-IsothermalApproach
+Thenon-isothermalmodel,Equations(8)–(13),rewrittenforasphericalsampleintermsofthe
+watervolumefractionφ(r,t),readsas
+(cid:32) (cid:33)
+∂φ(r,t) 1 ∂ (cid:16) ∂φ (cid:17)
+= r2 D (T) −v (r)φ , r ∈ (0,R(t)) (25)
+∂t r2 ∂r eff ∂r s
+∂ (cid:0) ρpC p p T(r,t) (cid:1) = 1 ∂ (cid:32) r2 (cid:16) kp ∂φ −v (r)ρpC p T (cid:17) (cid:33) , r ∈ (0,R(t)) (26)
+∂t r2 ∂r ∂r s p
+∂φ dR(t) ∂φ(cid:12)
+v (r) = D (T) , = v (R(t)) = D (T ) (cid:12) (27)
+s eff ∂r dt s eff b ∂r(cid:12) R(t)
+∂φ(cid:12)
+(cid:12) =0,
+∂r(cid:12)
+r=0
+−D
+eff
+(T
+b
+) ∂
+∂
+φ
+r
+(cid:12) (cid:12)
+(cid:12) R(t)
+= h
+m
+(T
+av
+) M
+ρ w
+w (cid:18) p
+R
+v (
+g
+T
+T
+b
+b
+) RH
+b
+− p
+R
+v (
+g
+T
+T
+∞
+∞
+) RH∞ (cid:19) (28)
+∂T(cid:12)
+(cid:12) =0,
+∂r(cid:12)
+r=0
+(29)
+∂T(cid:12) ∂φ(cid:12)
+−kp
+∂r
+(cid:12)
+(cid:12) R(t)
+= h
+T
+(T
+av
+)(T
+b
+−T∞)−λ
+v
+(T
+b
+)ρ
+w
+D
+eff
+(T
+b
+)
+∂r
+(cid:12)
+(
+
+--- ctx ---
+ (cid:16) ∂φ (cid:17)
+= r2 D (T) −v (r)φ , r ∈ (0,R(t)) (25)
+∂t r2 ∂r eff ∂r s
+∂ (cid:0) ρpC p p T(r,t) (cid:1) = 1 ∂ (cid:32) r2 (cid:16) kp ∂φ −v (r)ρpC p T (cid:17) (cid:33) , r ∈ (0,R(t)) (26)
+∂t r2 ∂r ∂r s p
+∂φ dR(t) ∂φ(cid:12)
+v (r) = D (T) , = v (R(t)) = D (T ) (cid:12) (27)
+s eff ∂r dt s eff b ∂r(cid:12) R(t)
+∂φ(cid:12)
+(cid:12) =0,
+∂r(cid:12)
+r=0
+−D
+eff
+(T
+b
+) ∂
+∂
+φ
+r
+(cid:12) (cid:12)
+(cid:12) R(t)
+= h
+m
+(T
+av
+) M
+ρ w
+w (cid:18) p
+R
+v (
+g
+T
+T
+b
+b
+) RH
+b
+− p
+R
+v (
+g
+T
+T
+∞
+∞
+) RH∞ (cid:19) (28)
+∂T(cid:12)
+(cid:12) =0,
+∂r(cid:12)
+r=0
+(29)
+∂T(cid:12) ∂φ(cid:12)
+−kp
+∂r
+(cid:12)
+(cid:12) R(t)
+= h
+T
+(T
+av
+)(T
+b
+−T∞)−λ
+v
+(T
+b
+)ρ
+w
+D
+eff
+(T
+b
+)
+∂r
+(cid:12)
+(cid:12) R(t)
+(cid:12)
+wheretheRelativeHumidityattheair/sampleinterfaceRH
+b
+= RH(cid:12)
+R(t)
+= RH(φ
+b
+,T
+b
+)isevaluated
+fromdesorptionisothermsforRochapearsreportedby[27]andbestfittedwiththeHendersonmodel,
+seeAppendixA.Equations(25)–(29)mustbenumericallyintegratedstartingfromtheuniforminitial
+conditions φ(r,0) = φ (cid:39) 0.9 and T(r,0) = T = 15 ◦C. 
+
+============================================================================
+\(1\)  (7 hits)
+============================================================================
+
+--- ctx ---
+andequaltotheairtemperatureT∞ oftheclimaticchamber.
+3.1. IsothermalMoving-BoundaryModel
+Duringthedehydrationprocess,thesamplevolumeV(t)andsurfaceS(t)evolveintimedueto
+sampleshrinkage. Thesampletemperatureisassumedconstantinspaceandtimeandequaltotheair
+temperatureT∞.
+Thetransportequationdescribingthespace-timeevolutionofthepointwisewaterconcentration
+c (x,t) [g water/m3 product] inside the sample volume V(t) is an advection-diffusion equation
+w
+accountingforthelocalshrinkagethroughthepointwiseshrinkagevelocityv s (x)
+| | ∂c (x,t) | | (cid:16) | (cid:17) | (cid:16) | | (cid:17) | | |
+| --- | -------- | --- | -------- | ----------- | -------- | ------- | -------- | ----- | --- |
+| | w | −∇· | +v | (x)c = = ∇· | ∇c | −v (x)c | | ∈V(t) | |
+| | | | J d | s w | D eff w | s | w , | x | (1) |
+∂t
+where J = −D ∇c is the diffusive mass flux, controlled by the effective water diffusivity D ,
+| d | eff | w 
+
+--- ctx ---
+ andD∞ | | D φ0 | |
+diffusivitiesatthebeginningandattheendofthedryingprocess,respectively.
+The shrinkage velocity v (x ), at every point x on the sample boundary S(t), controls the
+| | | | s | b | | b | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+temporalevolutionofthesampleboundaryS(t)accordingtothefollowingequation
+| | | | d x | | α( c ) | | | | | |
+| --- | --- | --- | --- | ------------ | ------ | ----- | ------ | ------- | --- | --- |
+| | | | b | = (cid:12) = | w | ∇c | | | ∈ S(t). | | |
+| | | | | v s (cid:12) | | D eff | w xb , | x b | | (4) |
+| | | | d t | xb | ρ | | | | | |
+w
+The two transport equations Equations (1) and (4) are linked together and must be solved
+simultaneously by further enforcing the following mixed boundary cond
+
+============================================================================
+\(5\)  (3 hits)
+============================================================================
+
+--- ctx ---
+- | --- | --- | ------------ | ------ | ----- | ------ | ------- | --- | --- |
+| | | | b | = (cid:12) = | w | ∇c | | | ∈ S(t). | | |
+| | | | | v s (cid:12) | | D eff | w xb , | x b | | (4) |
+| | | | d t | xb | ρ | | | | | |
+w
+The two transport equations Equations (1) and (4) are linked together and must be solved
+simultaneously by further enforcing the following mixed boundary condition, also referred to as
+Robinor“evaporative”orthirdorderboundarycondition[10]
+| | | | | | | | | p ( T | ) | |
+| --- | --- | --- | -------- | ------- | --- | ------- | --- | ----- | --- | --- |
+| | | | (cid:12) | (cid:0) | | (cid:1) | | v | ∞ | |
+−D ∇c w ·n (cid:12) = h m M w C| xb −C∞ = = h m M w (RH b −RH∞) (5)
+| | eff | | xb | | | | | R T | ∞ | |
+| --- | --- | --- | --- | --- | --- | --- | --- 
+
+--- ctx ---
+ --- | --- | --- | --- | --- | --- | --- | --- |
+| (DI)atT = T∞ | | | | | | | | | | |
+(cid:12)
+| | | | | RH = | RH(cid:12) | = DI(c | (x ,t),T∞) | | | (7) |
+| --- | --- | --- | --- | ---- | ---------- | ------ | ---------- | --- | --- | --- |
+| | | | | b | xb | | w b | | | |
+The mass transfer coefficient h can be evaluated from well-known correlation functions for the
+m
+SherwoodnumberSh,specificforthesamplegeometryunderinvestigation(sphere,cylinder,ellipsoid,
+slab)withallthephysicalparametersofthehumidairevaluatedatT∞ (seeAppendixA).
+3.2. Non-IsothermalMoving-BoundaryModel
+In the non-isothermal approach a partial differential equation describing the spatio-temporal
+evolutionofthetemperatureT(x,t)intheshrinkingsampleiscoupledtothemasstransportequations
+Equations(1),(4)and(5). Equations(1),(4)and(5)needtobeslightlymodifiedtotakeintoaccount
+thattheinternaltemperatureT(x,t)andtheboundarytempe
+
+============================================================================
+\(8\)  (4 hits)
+============================================================================
+
+--- ctx ---
+othermalMoving-BoundaryModel
+In the non-isothermal approach a partial differential equation describing the spatio-temporal
+evolutionofthetemperatureT(x,t)intheshrinkingsampleiscoupledtothemasstransportequations
+Equations(1),(4)and(5). Equations(1),(4)and(5)needtobeslightlymodifiedtotakeintoaccount
+thattheinternaltemperatureT(x,t)andtheboundarytemperatureT = T(x ,t)aredifferentfrom
+| | | | | | | | | | b b | |
+| ------------------- | --- | --------------------- | --- | --- | --- | --- | --- | --- | --- | --- |
+| theairtemperatureT∞ | | intheclimaticchamber. | | | | | | | | |
+
+Foods2020,9,1577 6of22
+Thenon-isothermalapproachrequiresthesimultaneoussolutionofthetwoadvection-diffusion
+partialdifferentialequationsforc (x,t)andT(x,t)
+w
+∂c (x,t) (cid:16) (cid:17)
+w = ∇· D (T)∇c −v (x)c , (8)
+∂t eff w s w
+∂ (cid:0) ρpC p T(x,t) (cid:1) (cid:16) (cid:17)
+p = ∇· kp∇T−v (x)ρpC p T , (9)
+s p
+∂t
+v (x) = α(c )D (
+
+--- ctx ---
+ttheair/sampleinterfacedependson
+b
+thelocalwaterconcentrationc
+w
+(x
+b
+,t)andontheboundarytemperatureT
+b
+(cid:54)= T∞.
+Theheatandmasstransfercoefficientsh andh canbeevaluatedfromwell-knowncorrelation
+T m
+functions for the Sherwood Sh and Nusselt Nu numbers, specific for the sample geometry under
+investigation, with all the physical parameters of the humid air evaluated at the average film
+temperatureT
+av
+= (T
+b
++T∞)/2(seeAppendixA).
+All the physical parameters of the food product, namely the product density ρp, the specific
+heatcapacityC p andthethermalconductivitykp,arefunctionsofthelocalwaterconcentrationc
+p w
+(seeAppendixA).
+In the present formulation it has been assumed that the effective water diffusivity is solely a
+functionofthetemperatureandindependentofthelocalwaterconcentration,i.e.,β =0inEquation(3).
+TheheattransportequationEquation(9)iscoupledtothemasstransportequationEquation(8)
+notonlythroughtheboundaryconditionEquation(13)butalsothroughtheshrinkage-convective
+term(v (x)ρpC p T)thatcontribute
+
+============================================================================
+\(9\)  (3 hits)
+============================================================================
+
+--- ctx ---
+escribing the spatio-temporal
+evolutionofthetemperatureT(x,t)intheshrinkingsampleiscoupledtothemasstransportequations
+Equations(1),(4)and(5). Equations(1),(4)and(5)needtobeslightlymodifiedtotakeintoaccount
+thattheinternaltemperatureT(x,t)andtheboundarytemperatureT = T(x ,t)aredifferentfrom
+| | | | | | | | | | b b | |
+| ------------------- | --- | --------------------- | --- | --- | --- | --- | --- | --- | --- | --- |
+| theairtemperatureT∞ | | intheclimaticchamber. | | | | | | | | |
+
+Foods2020,9,1577 6of22
+Thenon-isothermalapproachrequiresthesimultaneoussolutionofthetwoadvection-diffusion
+partialdifferentialequationsforc (x,t)andT(x,t)
+w
+∂c (x,t) (cid:16) (cid:17)
+w = ∇· D (T)∇c −v (x)c , (8)
+∂t eff w s w
+∂ (cid:0) ρpC p T(x,t) (cid:1) (cid:16) (cid:17)
+p = ∇· kp∇T−v (x)ρpC p T , (9)
+s p
+∂t
+v (x) = α(c )D (T)∇c /ρ (10)
+s w eff w w
+coupledwiththeequationforthetemporalevolutionofsampleboundaryS(t)
+d 
+
+--- ctx ---
+thisnon-isothermalcase,theRelativeHumidityRH attheair/sampleinterfacedependson
+b
+thelocalwaterconcentrationc
+w
+(x
+b
+,t)andontheboundarytemperatureT
+b
+(cid:54)= T∞.
+Theheatandmasstransfercoefficientsh andh canbeevaluatedfromwell-knowncorrelation
+T m
+functions for the Sherwood Sh and Nusselt Nu numbers, specific for the sample geometry under
+investigation, with all the physical parameters of the humid air evaluated at the average film
+temperatureT
+av
+= (T
+b
++T∞)/2(seeAppendixA).
+All the physical parameters of the food product, namely the product density ρp, the specific
+heatcapacityC p andthethermalconductivitykp,arefunctionsofthelocalwaterconcentrationc
+p w
+(seeAppendixA).
+In the present formulation it has been assumed that the effective water diffusivity is solely a
+functionofthetemperatureandindependentofthelocalwaterconcentration,i.e.,β =0inEquation(3).
+TheheattransportequationEquation(9)iscoupledtothemasstransportequationEquation(8)
+notonlythroughtheboundaryconditionEquation(13)butalsothroughtheshrinka
+
+============================================================================
+\(12\)  (1 hits)
+============================================================================
+
+--- ctx ---
+ | | b b | |
+| ------------------- | --- | --------------------- | --- | --- | --- | --- | --- | --- | --- | --- |
+| theairtemperatureT∞ | | intheclimaticchamber. | | | | | | | | |
+
+Foods2020,9,1577 6of22
+Thenon-isothermalapproachrequiresthesimultaneoussolutionofthetwoadvection-diffusion
+partialdifferentialequationsforc (x,t)andT(x,t)
+w
+∂c (x,t) (cid:16) (cid:17)
+w = ∇· D (T)∇c −v (x)c , (8)
+∂t eff w s w
+∂ (cid:0) ρpC p T(x,t) (cid:1) (cid:16) (cid:17)
+p = ∇· kp∇T−v (x)ρpC p T , (9)
+s p
+∂t
+v (x) = α(c )D (T)∇c /ρ (10)
+s w eff w w
+coupledwiththeequationforthetemporalevolutionofsampleboundaryS(t)
+d d x t b = v s (cid:12) (cid:12) xb = α( ρ c
+w
+w ) D eff (T b )∇c w | xb , x b ∈ S(t). (11)
+andwiththeboundaryconditions
+−D eff (T b )∇c w ·n (cid:12) (cid:12) xb = h m (T av )M w (cid:18) p R v ( g T T b b ) RH b − p R v ( g T T ∞ ∞ ) RH∞ (cid:19) (12)
+−kp∇T·n (cid:12) (cid:12) xb = h T (T av ) (cid:0) T b −T∞ (cid:1) −λ v (T b )D eff (T b )∇c w ·n (cid:12) (cid:12)
+
+============================================================================
+\(13\)  (4 hits)
+============================================================================
+
+--- ctx ---
+ |
+| theairtemperatureT∞ | | intheclimaticchamber. | | | | | | | | |
+
+Foods2020,9,1577 6of22
+Thenon-isothermalapproachrequiresthesimultaneoussolutionofthetwoadvection-diffusion
+partialdifferentialequationsforc (x,t)andT(x,t)
+w
+∂c (x,t) (cid:16) (cid:17)
+w = ∇· D (T)∇c −v (x)c , (8)
+∂t eff w s w
+∂ (cid:0) ρpC p T(x,t) (cid:1) (cid:16) (cid:17)
+p = ∇· kp∇T−v (x)ρpC p T , (9)
+s p
+∂t
+v (x) = α(c )D (T)∇c /ρ (10)
+s w eff w w
+coupledwiththeequationforthetemporalevolutionofsampleboundaryS(t)
+d d x t b = v s (cid:12) (cid:12) xb = α( ρ c
+w
+w ) D eff (T b )∇c w | xb , x b ∈ S(t). (11)
+andwiththeboundaryconditions
+−D eff (T b )∇c w ·n (cid:12) (cid:12) xb = h m (T av )M w (cid:18) p R v ( g T T b b ) RH b − p R v ( g T T ∞ ∞ ) RH∞ (cid:19) (12)
+−kp∇T·n (cid:12) (cid:12) xb = h T (T av ) (cid:0) T b −T∞ (cid:1) −λ v (T b )D eff (T b )∇c w ·n (cid:12) (cid:12) xb (13)
+TheboundaryconditionEquation(13)takesintoaccountboththeheattransferresistanceandthe
+heatsubtractedforwaterevaporati
+
+--- ctx ---
+intheclimaticchamber. | | | | | | | | |
+
+Foods2020,9,1577 6of22
+Thenon-isothermalapproachrequiresthesimultaneoussolutionofthetwoadvection-diffusion
+partialdifferentialequationsforc (x,t)andT(x,t)
+w
+∂c (x,t) (cid:16) (cid:17)
+w = ∇· D (T)∇c −v (x)c , (8)
+∂t eff w s w
+∂ (cid:0) ρpC p T(x,t) (cid:1) (cid:16) (cid:17)
+p = ∇· kp∇T−v (x)ρpC p T , (9)
+s p
+∂t
+v (x) = α(c )D (T)∇c /ρ (10)
+s w eff w w
+coupledwiththeequationforthetemporalevolutionofsampleboundaryS(t)
+d d x t b = v s (cid:12) (cid:12) xb = α( ρ c
+w
+w ) D eff (T b )∇c w | xb , x b ∈ S(t). (11)
+andwiththeboundaryconditions
+−D eff (T b )∇c w ·n (cid:12) (cid:12) xb = h m (T av )M w (cid:18) p R v ( g T T b b ) RH b − p R v ( g T T ∞ ∞ ) RH∞ (cid:19) (12)
+−kp∇T·n (cid:12) (cid:12) xb = h T (T av ) (cid:0) T b −T∞ (cid:1) −λ v (T b )D eff (T b )∇c w ·n (cid:12) (cid:12) xb (13)
+TheboundaryconditionEquation(13)takesintoaccountboththeheattransferresistanceandthe
+heatsubtractedforwaterevaporationattheair/sampleinterface[22–26]
+
+============================================================================
+\(14\)  (1 hits)
+============================================================================
+
+--- ctx ---
+emperatureandindependentofthelocalwaterconcentration,i.e.,β =0inEquation(3).
+TheheattransportequationEquation(9)iscoupledtothemasstransportequationEquation(8)
+notonlythroughtheboundaryconditionEquation(13)butalsothroughtheshrinkage-convective
+term(v (x)ρpC p T)thatcontributestoflattenthetemperatureprofileinsidethesample.
+s p
+IfthethermaldiffusivityD p = kp/(ρpC p)ofthefoodmaterialissignificantlylargerthanwater
+T p
+diffusivity D ,wecanassumethatthetemperatureisuniforminsidethesampleandequaltothe
+eff
+boundarytemperature,i.e.,T(x,t) = T (t). Consequently,thepartialdifferentialequationEquation(9)
+b
+forT(x,t)canbereplacedwiththeordinarydifferentialequationdescribingthetemporalevolutionof
+theboundarytemperatureT (t)
+b
+d d t (cid:16) T b (cid:90) V(t) (ρpC p p)dx (cid:17) = (cid:90) S(t) (cid:0) −h T (T av ) (cid:0) T b −T∞ (cid:1) +λ v (T b )D eff (T b )∇c w ·n (cid:12) (cid:12) xb (cid:1) dS (14)
+whilethewatertransportequationsEquations(8)and(10)remainunchangedexceptforthefactthat
+D (T)mustbereplacedwithD (T )
+
+============================================================================
+\(31\)  (3 hits)
+============================================================================
+
+--- ctx ---
+contentX (seeTable1).
+0
+Figure5showstheexcellentagreementbetweenexperimentaldata,atbothtemperaturesT∞ =40◦C,
+50◦C,andmodelpredictions(continuousredandbluecurves,coefficientofdeterminationR2 >0.99)
+withnoadjustableparameters.Indeed,thereisnoneedtointroduceaconcentration-dependentdiffusion
+coefficient,Equation(3),thatwouldrequiretheestimateoftheβparameter.Forthisreason,wesetβ=0
+alsoforallthesubsequentsimulationsofintermittentdehydration.
+
+Foods2020,9,1577 11of22
+1
+0.8
+0.6
+0.4
+0.2
+0
+0 20 40 60 80 100 120
+X/)t(X
+0
+o
+C-40 C
+o
+C-50 C
+t [h]
+Figure5.ComparisonbetweenexperimentalcontinuousdehydrationcurvesX(t)/X
+0
+vs. tatT∞ =
+40◦C,50◦CandU∞ =1.28m/s(filledpoints)andmodelpredictions(continuousanddashedlines)
+with D(T) givenbyEquation(24). Continuousredandbluecurvesrepresentthenon-isothermal
+modelEquations(25)–(29). Blackdashedlinesrepresentthenon-isothermalsimplifiedmodelwith
+T(r,t)=T (t),Equation(31).
+b
+The reliability of the non-isothermal model allows us to verify some hypotheses made in
+paragraphSection4.1whend
+
+--- ctx ---
+ | 13of22 |
+| ---------------- | --- | --- | --- | --- | --- | --- | --- | ------ |
+Alastobservationregardingthetemperatureprofiles.Figure6Aclearlyshowsthatitisreasonable
+toassumethatthetemperatureisuniforminsidethesampleandequaltotheboundarytemperature,
+| i.e.,T(r,t) | = | | | | | | | |
+| ----------- | --- | --- | --- | --- | --- | --- | --- | --- |
+T b . ThisobservationallowsreplacingthepartialdifferentialequationEquation(26)for
+T(r,t)withtheordinarydifferentialequationfortheboundarytemperatureT (t)
+b
+| | | d (cid:16) | (cid:90) R(t) | | (cid:17) | | | |
+| --- | --- | ---------- | ------------- | ------------- | -------- | --- | --- | --- |
+| | | | T | (ρpC p)4πr2dr | = | | | |
+| | | | b | p | | | | |
+dt 0
+(31)
+| | | (cid:16) | | | | ∂ φ (cid:12) (cid:17) | | |
+| --- 
+
+============================================================================
+TERMINOLOGY in PDF text layer
+============================================================================
+thickness          0
+H(t)               0
+slab               1
+= =                3
+sphere             3
+spherical          7
+R(t)               27
+R
+0                1
+dx_b               0
+ideal shrinkage    0
+alpha              0
+
+--- all '= =' occurrences with context ---
+
+>>> id:17) | | | | --- | -------- | --- | -------- | ----------- | -------- | ------- | -------- | ----- | --- | | | w | −∇· | +v | (x)c = = ∇· | ∇c | −v (x)c | | ∈V(t) | | | | | | J d | s w | D eff w | s | w , | x | (1) | ∂t where 
+
+>>>  ------- | --- | ----- | --- | --- | | | | | (cid:12) | (cid:0) | | (cid:1) | | v | ∞ | | −D ∇c w ·n (cid:12) = h m M w C| xb −C∞ = = h m M w (RH b −RH∞) (5) | | eff | | xb | | | | | R T | ∞ | | | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --
+
+>>> tartingfromtheseexperimentalshrinkagedata,thehypothesisofideal shrinkageforRochapearshasbeenformulatedandimplementedinthemoving-boundarymodelby | settingα(φ) | = =1. | | | | | | | | | | | | ----------- | ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | | 

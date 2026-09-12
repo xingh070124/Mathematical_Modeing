@@ -20,7 +20,6 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from q2_solve import (props, Dfun, D_derivs, hevap_of, Par, geometry,   # noqa: E402
                       HEVAP_28, HEVAP_SLOPE, HEVAP_TREF, H_CONV, HM, R, T0K, C0)
-
 try:
     sys.stdout.reconfigure(encoding="utf-8")
 except Exception:
@@ -120,6 +119,28 @@ def main():
     add("D_Jac_evap28", "Jacobian 元 H_evap(28) h_m R", HEVAP_28 * HM * R, "-")
     add("D_Jac_ratio", "Jacobian 元占对角元 1/dt (dt=0.25 s) 的比例",
         100 * HEVAP_28 * HM * R / (1.0 / 0.25), "%")
+    add("D_Jac_ratio32", "Jacobian 元占对角元 1/dt (dt=1/32 s) 的比例",
+        100 * HEVAP_28 * HM * R * 32.0, "%")
+    # 严格的耦合权重: (1,2) 元应与其所在行 (温度方程) 的对角元相比。
+    # 温度方程在 r=R 的对角元 = M^L_MM rho cp / dt + h R。
+    # M^L_MM 的几何部分 (已约 2 pi 与 rho cp) = dr (r_{M-1} + 2 r_M)/6 ≈ R^2/(2M)。
+    for M, dt in ((800, 1.0 / 16), (1600, 1.0 / 32), (400, 0.25)):
+        g = geometry(M, "lumped")
+        mtM = float(g["MLg"][M]) * float(rho0) * float(cp0)      # per 2 pi
+        diag = mtM / dt + H_CONV * R
+        frac = 100 * (HEVAP_28 * HM * R) / diag
+        add(f"D_MTM_{M}", f"M={M}: 表面节点热容 M^L_MM rho cp (per 2 pi)", mtM,
+            "J/(m K)")
+        add(f"D_JTdiag_M{M}_dt{dt:.6g}", f"M={M}, dt={dt:.6g}: 温度方程表面对角元",
+            diag, "-")
+        add(f"D_fusion_M{M}_dt{dt:.6g}",
+            f"M={M}, dt={dt:.6g}: 蒸发(1,2)元占温度方程对角元的比例", frac, "%")
+    add("D_dDdC_smallC", "dD/dC @ (C=0.05, T=323.15 K)",
+        float(D_derivs(0.05, 323.15)[0]), "m^2/s per (kg/kg)")
+    add("D_dDdC_rel", "d ln D / dC 的相对灵敏系数 0.45/C^2 @ C=0.05",
+        0.45 / 0.05 ** 2, "-")
+    add("D_Hevap_a40", "定标式在 40 degC 的取值 (H_evap(40))",
+        float(hevap_of(313.15, Par())[0]), "J/kg")
     # 热流对比表 (§4.4c(vi))
     for tt, Cin, Tin_con, TR in ((0, 0.0196, 28.0, 28.0),
                                  (1800, 0.0331, 41.5, 28.0),
@@ -168,6 +189,21 @@ def main():
     add("G_nR", "result2 半径列数", 21, "-")
     add("G_ntab", "表3/表4 行数", 6, "-")
     add("G_ntabr", "表3/表4 列数", 5, "-")
+    add("G_halfL", "药材半长 L/2", 12.5, "cm")
+    add("G_nnode100", "M=100 时的节点数 M+1", 101, "-")
+    add("G_Cfront", "干燥前沿判别值 0.9*C0", 0.9 * C0, "kg/kg")
+    add("G_3h_over_tauC", "3 h 与湿分特征时间之比",
+        10800.0 / 70900.86172065, "-")
+
+    # ---------------------------------------------------------------
+    # H. 附件2: 半径随时间的变化 (B7 收缩假设的依据)
+    # ---------------------------------------------------------------
+    for tt, Rc in ((0, 2.000), (1800, 1.873), (3600, 1.794), (5400, 1.703),
+                   (7200, 1.625), (10800, 1.552), (14400, 1.477),
+                   (259200, 1.198)):
+        add(f"H_R_{tt}", f"附件2: t={tt} s 的半径", Rc, "cm", "附件2")
+        add(f"H_shrink_{tt}", f"附件2: t={tt} s 相对初始半径的收缩",
+            100 * (1 - Rc / 2.000), "%", "附件2")
 
     with open(os.path.join(OUT, "registry_q2_model.csv"), "w", newline="",
               encoding="utf-8") as f:

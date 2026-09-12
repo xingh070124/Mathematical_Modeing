@@ -1,0 +1,71 @@
+﻿key,quantity,value,unit,value_h,source
+BASE,基准 t_dry,183906.71282718718,s,51.0852,outputs/q4_sensitivity.log
+BASE,生产基准,183906.71282718718,s,51.0852,outputs/q4_sensitivity.log
+G1_hm_x0.5,h_m x 0.5,195823.87954023905,s,54.3955,outputs/q4_sensitivity.log
+G1_hm_x0.8,h_m x 0.8,186384.61613930276,s,51.7735,outputs/q4_sensitivity.log
+G1_hm_x1.2,h_m x 1.2,182485.9117527253,s,50.6905,outputs/q4_sensitivity.log
+G1_hm_x2,h_m x 2,180285.43683109782,s,50.0793,outputs/q4_sensitivity.log
+G1_hm_x1000,h_m x 1000,178845.35355290005,s,49.6793,outputs/q4_sensitivity.log
+G1_h_x0.5,h x 0.5,184207.87309682166,s,51.1689,outputs/q4_sensitivity.log
+G1_h_x0.8,h x 0.8,183980.3769305649,s,51.1057,outputs/q4_sensitivity.log
+G1_h_x1.2,h x 1.2,183858.368192333,s,51.0718,outputs/q4_sensitivity.log
+G1_h_x2,h x 2,183763.94448165904,s,51.0455,outputs/q4_sensitivity.log
+G2_rho0_+10%,附录4 rho0 +10%,183932.34717956895,s,51.0923,outputs/q4_sensitivity.log
+G2_rho0_-10%,附录4 rho0 -10%,183881.4421097707,s,51.0782,outputs/q4_sensitivity.log
+G2_krho_+10%,附录4 krho +10%,183913.45938956164,s,51.0871,outputs/q4_sensitivity.log
+G2_krho_-10%,附录4 krho -10%,183899.96873490725,s,51.0833,outputs/q4_sensitivity.log
+G2_cp0_+10%,附录4 cp0 +10%,183924.73586695257,s,51.0902,outputs/q4_sensitivity.log
+G2_cp0_-10%,附录4 cp0 -10%,183888.8640027204,s,51.0802,outputs/q4_sensitivity.log
+G2_kcp_+10%,附录4 kcp +10%,183921.02159763372,s,51.0892,outputs/q4_sensitivity.log
+G2_kcp_-10%,附录4 kcp -10%,183892.48304950583,s,51.0812,outputs/q4_sensitivity.log
+G2_k0_+10%,附录4 k0 +10%,183903.74724104942,s,51.0844,outputs/q4_sensitivity.log
+G2_k0_-10%,附录4 k0 -10%,183910.00387685344,s,51.0861,outputs/q4_sensitivity.log
+G2_kk_+10%,附录4 kk +10%,183903.7179254019,s,51.0844,outputs/q4_sensitivity.log
+G2_kk_-10%,附录4 kk -10%,183910.0419996489,s,51.0861,outputs/q4_sensitivity.log
+G2_D0_+10%,附录4 D0 +10%,169227.22478807508,s,47.0076,outputs/q4_sensitivity.log
+G2_D0_-10%,附录4 D0 -10%,201895.97416754148,s,56.0822,outputs/q4_sensitivity.log
+G2_kD_+10%,附录4 kD +10%,213706.05455669892,s,59.3628,outputs/q4_sensitivity.log
+G2_kD_-10%,附录4 kD -10%,159204.8228710836,s,44.2236,outputs/q4_sensitivity.log
+G2_EA_+10%,附录4 EA +10% [未达标],nan,s,nan,outputs/q4_sensitivity.log
+G2_EA_-10%,附录4 EA -10%,73348.20888970434,s,20.3745,outputs/q4_sensitivity.log
+G3_Lv_x0.9,L_v x 0.9,183903.44548926275,s,51.0843,outputs/q4_sensitivity.log
+G3_Lv_x1.1,L_v x 1.1,183909.97700464414,s,51.0861,outputs/q4_sensitivity.log
+G3_Lv_off,L_v = 0 (忽略蒸发吸热),183874.0315527613,s,51.0761,outputs/q4_sensitivity.log
+G4_R_x0.9,R(t) x 0.9,152252.98941843447,s,42.2925,outputs/q4_sensitivity.log
+G4_R_x0.95,R(t) x 0.95,167671.0546758068,s,46.5753,outputs/q4_sensitivity.log
+G4_R_x1.05,R(t) x 1.05,200960.33058401322,s,55.8223,outputs/q4_sensitivity.log
+G4_R_x1.1,R(t) x 1.1,218814.0311029779,s,60.7817,outputs/q4_sensitivity.log
+G4_R_const,R = const (冻结收缩) [未达标],nan,s,nan,outputs/q4_sensitivity.log
+G5_eta_0,"eta = 0 (仿射收缩, 本文模型)",183906.71282718718,s,51.0852,outputs/q4_sensitivity.log
+G5_eta_0_h,"eta = 0 (仿射收缩, 本文模型) 的 t_dry",51.085198007551995,h,51.0852,outputs/q4_sensitivity.log
+G5_eta_p1,eta = +1 (边缘收缩),87654.7503940458,s,24.3485,outputs/q4_sensitivity.log
+G5_eta_p1_h,eta = +1 (边缘收缩) 的 t_dry,24.34854177612383,h,24.3485,outputs/q4_sensitivity.log
+G5_eta_m1,eta = -1 (除表面通量外忽略收缩) [未达标],nan,s,nan,outputs/q4_sensitivity.log
+G6_Tbar-1,Tbar -1 degC,189803.46905384833,s,52.7232,outputs/q4_sensitivity.log
+G6_Tbar+1,Tbar +1 degC,178264.40894187658,s,49.5179,outputs/q4_sensitivity.log
+G6_Cbar_x0.8,Cbar x 0.8,183199.43595052848,s,50.8887,outputs/q4_sensitivity.log
+G6_Cbar_x0.9,Cbar x 0.9,183521.26904143667,s,50.9781,outputs/q4_sensitivity.log
+G6_Cbar_x1.1,Cbar x 1.1,184382.64725705583,s,51.2174,outputs/q4_sensitivity.log
+G6_Cbar_x1.2,Cbar x 1.2,184978.5431935174,s,51.3829,outputs/q4_sensitivity.log
+G7_Cstar_0.1,C* = 0.1 kg/kg [未达标],nan,s,nan,outputs/q4_sensitivity.log
+G7_Cstar_0.12,C* = 0.12 kg/kg [未达标],nan,s,nan,outputs/q4_sensitivity.log
+G7_Cstar_0.18,C* = 0.18 kg/kg,141391.7804231211,s,39.2755,outputs/q4_sensitivity.log
+G7_Cstar_0.2,C* = 0.2 kg/kg,124028.99300695675,s,34.4525,outputs/q4_sensitivity.log
+MC5_p97p5_lo,MC ±5% 上分位的自助下界,300328.870427154,s,83.4247,outputs/q4_sensitivity.log
+MC5_p97p5_hi,MC ±5% 上分位的自助上界,326089.9579867643,s,90.5805,outputs/q4_sensitivity.log
+MC5_n,MC ±5% 达标样本数,100.0,1,-,outputs/q4_sensitivity.log
+MC5_over3,MC ±5% 超过 3 天的样本数,23.0,1,-,outputs/q4_sensitivity.log
+MC5_mean,MC ±5% 均值,197946.63013923436,s,54.9852,outputs/q4_sensitivity.log
+MC5_median,MC ±5% 中位数,182265.69834237394,s,50.6294,outputs/q4_sensitivity.log
+MC5_std,MC ±5% 标准差,61340.880973082676,s,17.0391,outputs/q4_sensitivity.log
+MC5_p2p5,MC ±5% 2.5% 分位,116497.22696202932,s,32.3603,outputs/q4_sensitivity.log
+MC5_p97p5,MC ±5% 97.5% 分位,314852.4928034238,s,87.4590,outputs/q4_sensitivity.log
+MC10_p97p5_lo,MC ±10% 上分位的自助下界,502653.22470178566,s,139.6259,outputs/q4_sensitivity.log
+MC10_p97p5_hi,MC ±10% 上分位的自助上界,595137.6182078776,s,165.3160,outputs/q4_sensitivity.log
+MC10_n,MC ±10% 达标样本数,100.0,1,-,outputs/q4_sensitivity.log
+MC10_over3,MC ±10% 超过 3 天的样本数,34.0,1,-,outputs/q4_sensitivity.log
+MC10_mean,MC ±10% 均值,236834.4262581371,s,65.7873,outputs/q4_sensitivity.log
+MC10_median,MC ±10% 中位数,180668.3261171539,s,50.1856,outputs/q4_sensitivity.log
+MC10_std,MC ±10% 标准差,146471.00180647295,s,40.6864,outputs/q4_sensitivity.log
+MC10_p2p5,MC ±10% 2.5% 分位,78466.48152545709,s,21.7962,outputs/q4_sensitivity.log
+MC10_p97p5,MC ±10% 97.5% 分位,553243.5364473565,s,153.6788,outputs/q4_sensitivity.log

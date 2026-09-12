@@ -1,0 +1,21 @@
+﻿key,quantity,value,unit,source
+FIG_R0,附件2 初始半径,2.0,cm,附件2
+FIG_Rend,附件2 末半径,1.198,cm,附件2
+FIG_boost_end,末段几何增强因子 (R0/R)^2,2.7870602367328963,1,推导
+FIG_tR15,R 降到 1.5 cm 的时刻,14400.0,s,附件2
+FIG_prof_6.00h_C0,剖面图 t=6.00h 中心含水率,1.72042520174726,kg/kg,outputs/q4_production.log
+FIG_prof_6.00h_R,剖面图 t=6.00h 半径,1.374,cm,附件2
+FIG_prof_12.00h_C0,剖面图 t=12.00h 中心含水率,0.7380840473625203,kg/kg,outputs/q4_production.log
+FIG_prof_12.00h_R,剖面图 t=12.00h 半径,1.248,cm,附件2
+FIG_prof_24.00h_C0,剖面图 t=24.00h 中心含水率,0.2851845300207603,kg/kg,outputs/q4_production.log
+FIG_prof_24.00h_R,剖面图 t=24.00h 半径,1.204,cm,附件2
+FIG_prof_36.00h_C0,剖面图 t=36.00h 中心含水率,0.19282292085259675,kg/kg,outputs/q4_production.log
+FIG_prof_36.00h_R,剖面图 t=36.00h 半径,1.2,cm,附件2
+FIG_prof_48.00h_C0,剖面图 t=48.00h 中心含水率,0.15613823510263083,kg/kg,outputs/q4_production.log
+FIG_prof_48.00h_R,剖面图 t=48.00h 半径,1.2,cm,附件2
+FIG_prof_51.09h_C0,剖面图 t=51.09h 中心含水率,0.15000344883799982,kg/kg,outputs/q4_production.log
+FIG_prof_51.09h_R,剖面图 t=51.09h 半径,1.2,cm,附件2
+FIG_V1_M100,M=100 t_dry,183827.2099,s,outputs/q4_verify.log
+FIG_V1_M200,M=200 t_dry,183906.7128,s,outputs/q4_verify.log
+FIG_V1_M400,M=400 t_dry,183934.6947,s,outputs/q4_verify.log
+FIG_V2_span,rtol 极差,0.1098000000056345,s,outputs/q4_verify.log

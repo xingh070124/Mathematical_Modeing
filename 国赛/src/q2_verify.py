@@ -153,6 +153,9 @@ def VB_bessel(res):
             "Bessel 级数解析解")
         add(f"VB_M{M}_surf", f"Bessel 校核 M={M} 的表面温度偏差", float(e[-1]), "K",
             "Bessel 级数解析解")
+        if prev is not None:
+            add(f"VB_ratio_M{M}", f"Bessel 校核 M={M//2}->{M} 的偏差比值",
+                float(prev / e.max()), "-", "收敛比")
         prev = float(e.max())
     say("  注: 常数系数的线性 Robin 问题在 M=50→100 上给出比值 4 附近 (空间二阶);")
     say("      更细网格上误差被 dt 的时间误差底掩盖, 与 problem2.md 的 O(dr^2)+O(dt) 一致。")
@@ -170,6 +173,7 @@ def V1_space(res):
             f"步数={o['stats']['nsteps']}")
     say(f"  {'对比':>16} {'max|dT| [K]':>16} {'max|dC| [kg/kg]':>20} {'T 比值':>9}")
     prev = None
+    dCprev = None
     for a, b in zip(Ms[:-1], Ms[1:]):
         A, B = res[f"v1_{a}"], res[f"v1_{b}"]
         dT = float(np.max(np.abs(A["T_snap"] - B["T_snap"])))
@@ -178,6 +182,13 @@ def V1_space(res):
         say(f"  M={a}->{b:<8d} {dT:>16.4e} {dC:>20.4e} {ratio:>9}")
         add(f"V1_T_{a}_{b}", f"空间加密 M={a}->{b} 的温度最大偏差", dT, "K", "网格加密")
         add(f"V1_C_{a}_{b}", f"空间加密 M={a}->{b} 的水分最大偏差", dC, "kg/kg", "网格加密")
+        if prev is not None:
+            add(f"V1_ratio_T_{a}_{b}", f"空间加密温度偏差比值 M={a}->{b}", prev / dT, "-",
+                "网格加密")
+        if dCprev is not None:
+            add(f"V1_ratio_C_{a}_{b}", f"空间加密水分偏差比值 M={a}->{b}", dCprev / dC, "-",
+                "网格加密")
+        dCprev = dC
         prev = dT
 
 
@@ -188,6 +199,7 @@ def V2_time(res):
     say("=" * 96)
     say(f"  {'对比':>20} {'max|dT| [K]':>16} {'max|dC| [kg/kg]':>20} {'T 比值':>9}")
     prev = None
+    dCprev = None
     for a, b in zip(dts[:-1], dts[1:]):
         A, B = res[f"v2_{a}"], res[f"v2_{b}"]
         dT = float(np.max(np.abs(A["T_snap"] - B["T_snap"])))
@@ -196,6 +208,13 @@ def V2_time(res):
         say(f"  dt={a:7.5f}->{b:<7.5f} {dT:>16.4e} {dC:>20.4e} {ratio:>9}")
         add(f"V2_T_{a}_{b}", f"时间加密 dt={a}->{b} 的温度最大偏差", dT, "K", "时间步加密")
         add(f"V2_C_{a}_{b}", f"时间加密 dt={a}->{b} 的水分最大偏差", dC, "kg/kg", "时间步加密")
+        if prev is not None:
+            add(f"V2_ratio_T_{a}_{b}", f"时间加密温度偏差比值 dt={a}->{b}", prev / dT, "-",
+                "时间步加密")
+        if dCprev is not None:
+            add(f"V2_ratio_C_{a}_{b}", f"时间加密水分偏差比值 dt={a}->{b}", dCprev / dC, "-",
+                "时间步加密")
+        dCprev = dC
         prev = dT
 
 
@@ -292,6 +311,16 @@ def V6_q1_link(res):
         "degC", "物性口径对比")
     add("V6_T0_a2", "t=1800 s 中心温度 (附录2)", float(o2["T_snap"][-1, 0] - 273.15),
         "degC", "物性口径对比")
+    add("V6_T0_diff", "t=1800 s 中心温度差 (附录3 - 附录2)",
+        float(o3["T_snap"][-1, 0] - o2["T_snap"][-1, 0]), "K", "物性口径对比")
+    add("V6_T0_diff_abs", "t=1800 s 中心温度差 (取绝对值)",
+        float(abs(o3["T_snap"][-1, 0] - o2["T_snap"][-1, 0])), "K", "物性口径对比")
+    add("V6_TR_diff_abs", "t=1800 s 表面温度差 (取绝对值)",
+        float(abs(o3["T_snap"][-1, -1] - o2["T_snap"][-1, -1])), "K", "物性口径对比")
+    add("V6_TR_diff", "t=1800 s 表面温度差 (附录3 - 附录2)",
+        float(o3["T_snap"][-1, -1] - o2["T_snap"][-1, -1]), "K", "物性口径对比")
+    add("V6_C0_diff", "t=1800 s 中心含水率差 (附录3 - 附录2)",
+        float(o3["C_snap"][-1, 0] - o2["C_snap"][-1, 0]), "kg/kg", "物性口径对比")
     add("V6_CR_a2", "t=1800 s 表面含水率 (附录2)", float(o2["C_snap"][-1, -1]),
         "kg/kg", "物性口径对比")
 
@@ -337,6 +366,21 @@ def V8_evap(res):
         "degC", "模型变体")
     add("V8_TR_off", "t=10800 s 表面温度 (无蒸发)", float(off["T_snap"][-1, -1] - 273.15),
         "degC", "模型变体")
+    add("V8_TR_diff", "t=10800 s 表面温度差 (含-无蒸发)",
+        float(on["T_snap"][-1, -1] - off["T_snap"][-1, -1]), "K", "模型变体")
+    add("V8_dTmax_t", "表面温度差最大的时刻", float(on["t_snap"][isurf]), "s", "模型变体")
+    add("V8_dTmax_val", "表面温度差最大值 (带符号)", float(dT[isurf, -1]), "K", "模型变体")
+    # H_evap 取常数 (40 degC 值) vs 温度依赖式
+    hc = res["hevconst"]
+    dhc = hc["T_snap"] - on["T_snap"]
+    say(f"  对照: H_evap 取常数 2405908 J/kg (40 degC 值) vs 温度依赖式 (7):")
+    say(f"    max|dT| = {np.max(np.abs(dhc)):.6e} K,  "
+        f"t=10800 s 表面温度 {hc['T_snap'][-1,-1]-273.15:.4f} C "
+        f"(差 {hc['T_snap'][-1,-1]-on['T_snap'][-1,-1]:+.6e} K)")
+    add("V8_hevconst_dT", "H_evap 取常数 vs 温度依赖式的温度最大差",
+        float(np.max(np.abs(dhc))), "K", "模型变体")
+    add("V8_hevconst_TR_diff", "t=10800 s 表面温度差 (常数 H_evap - 温度依赖式)",
+        float(hc["T_snap"][-1, -1] - on["T_snap"][-1, -1]), "K", "模型变体")
 
 
 def V9_sens(res):
@@ -361,8 +405,40 @@ def V9_sens(res):
         add(f"V9_{key}", f"{tag} 对表面温度的最大影响", dT, "K", "敏感性")
         add(f"V9_{key}_TR", f"{tag} 时 t=10800 s 表面温度",
             float(o["T_snap"][-1, -1] - 273.15), "degC", "敏感性")
+        add(f"V9_{key}_CR", f"{tag} 时 t=10800 s 表面含水率",
+            float(o["C_snap"][-1, -1]), "kg/kg", "敏感性")
     say("  注: 题面 h_m = 8e-7 m/s 比热质类比估计(~2e-2 m/s)低约 4 个数量级;")
     say("      h_m 放大后蒸发项将主导表面热平衡, 故结论强依赖 h_m 的口径。")
+
+
+def V9b_h_sens(res):
+    say("=" * 96)
+    say("V9b  对流换热系数 h 的敏感性 (M=200, dt=0.25 s, t_end=10800 s)")
+    say("=" * 96)
+    base = res["s_base"]
+    say(f"  {'变体':>22} {'T(R,10800) [C]':>16} {'max|ΔT(R)| [K]':>16} "
+        f"{'C(R,10800)':>12} {'T(0,10800) [C]':>16}")
+    say(f"  {'基准 h=25':>22} {base['T_snap'][-1,-1]-273.15:>16.4f} {'-':>16} "
+        f"{base['C_snap'][-1,-1]:>12.5f} {base['T_snap'][-1,0]-273.15:>16.4f}")
+    for key, lbl, tag in [("s_hc12", "h x 1.2 (30)", "h ×1.2"),
+                          ("s_hc08", "h x 0.8 (20)", "h ×0.8")]:
+        o = res[key]
+        dT = float(np.max(np.abs(o["T_snap"][:, -1] - base["T_snap"][:, -1])))
+        say(f"  {lbl:>22} {o['T_snap'][-1,-1]-273.15:>16.4f} {dT:>16.6f} "
+            f"{o['C_snap'][-1,-1]:>12.5f} {o['T_snap'][-1,0]-273.15:>16.4f}")
+        add(f"V9b_{key}", f"{tag} 对表面温度的最大影响", dT, "K", "敏感性")
+        add(f"V9b_{key}_TR", f"{tag} 时 t=10800 s 表面温度",
+            float(o["T_snap"][-1, -1] - 273.15), "degC", "敏感性")
+        add(f"V9b_{key}_CR", f"{tag} 时 t=10800 s 表面含水率",
+            float(o["C_snap"][-1, -1]), "kg/kg", "敏感性")
+        add(f"V9b_{key}_T0", f"{tag} 时 t=10800 s 中心温度",
+            float(o["T_snap"][-1, 0] - 273.15), "degC", "敏感性")
+    add("V9b_base_TR", "基准 h=25 时 t=10800 s 表面温度",
+        float(base["T_snap"][-1, -1] - 273.15), "degC", "敏感性")
+    add("V9b_base_CR", "基准 h=25 时 t=10800 s 表面含水率",
+        float(base["C_snap"][-1, -1]), "kg/kg", "敏感性")
+    say("  注: 题面未给恒温干燥阶段的 h, 本文假设与附录2 的预热阶段取值一致;")
+    say("      此处给出 +/-20% 的单因素扰动以界定该假设的影响。")
 
 
 def V10_latent():
@@ -416,6 +492,26 @@ def V10_latent():
                        ("V10_resid", float(np.max(np.abs(resid))), "J/kg",
                         "定标式在 28~50 degC 的最大残差")):
         add(k, q, float(v), u, "IAPWS-95")
+    add("V10_clap_rel", "精确 Clapeyron 复现 h_fg 的最大相对偏差",
+        float(worst_clap / L28), "-", "IAPWS-95")
+    add("V10_cc_max", "CC 近似偏差的最大值 (取绝对值的上界)",
+        0.40141, "%", "IAPWS-95 (由 50 degC 行的 (CC-1) 给出)")
+
+
+def V13b_latent_calibration():
+    """处理所采用的 H_evap 定标式与本次独立定标的相对差."""
+    L28 = 2434560.4856
+    slope = -2391.0094
+    say("=" * 96)
+    say("V13b  H_evap 定标式与独立定标的相对差")
+    say("=" * 96)
+    d_int = 100 * (HEVAP_28 - L28) / L28
+    d_sl = 100 * (HEVAP_SLOPE - slope) / abs(slope)
+    say(f"  处理采用 H_evap = {HEVAP_28:.4e} {HEVAP_SLOPE:+.4e}(T-28C)")
+    say(f"  独立定标        = {L28:.4f} {slope:+.4f}(T-28C)")
+    say(f"  截距相对差 = {d_int:+.5f}%, 斜率相对差 = {d_sl:+.5f}%")
+    add("V13b_int_pct", "定标式截距与独立定标的相对差", float(d_int), "%", "IAPWS-95")
+    add("V13b_slope_pct", "定标式斜率与独立定标的相对差", float(d_sl), "%", "IAPWS-95")
 
 
 def V11_energy_form(res):
@@ -439,9 +535,75 @@ def V11_energy_form(res):
     add("V11_dC", "能量方程两种形式的水分最大差", dC, "kg/kg", "模型形式对比")
     add("V11_Edef_nc", "非保守形式的能量收支缺口", float(ea), "J/m (per 2pi)", "收支")
     add("V11_Edef_c", "守恒形式的能量收支缺口", float(eb), "J/m (per 2pi)", "收支")
+    add("V11_Tc_nc", "t=10800 s 中心温度 (非保守形式)",
+        float(a["T_snap"][-1, 0] - 273.15), "degC", "模型形式对比")
+    add("V11_Tc_c", "t=10800 s 中心温度 (守恒形式)",
+        float(b["T_snap"][-1, 0] - 273.15), "degC", "模型形式对比")
+    add("V11_dT_center", "两种形式在 t=10800 s 的中心温度差 (守恒 - 非保守)",
+        float(b["T_snap"][-1, 0] - a["T_snap"][-1, 0]), "K", "模型形式对比")
 
 
 # ---------------------------------------------------------------------------
+def V12_solver_numbers():
+    """把求解器层的核验数字登记 (集中质量恒等式、Jacobian 有限差分)."""
+    from q2_solve import (check_lumped_mass, check_jacobian, Par,
+                          HEVAP_28, HM, R)
+    say("=" * 96)
+    say("V12  求解器层数字: 集中质量恒等式 与 解析 Jacobian vs 有限差分")
+    say("=" * 96)
+    for M in (100, 3200):
+        a, b = check_lumped_mass(M)
+        say(f"  M={M:5d}  行和式相对偏差 = {a:.4e}   dr*r_i 相对偏差 = {b:.4e}")
+        add(f"V12_mass_rowsum_M{M}", f"M={M}: 集中质量与行和式的相对偏差", float(a), "-",
+            "恒等式")
+        add(f"V12_mass_drri_M{M}", f"M={M}: 集中质量与 dr*r_i 的相对偏差", float(b), "-",
+            "恒等式")
+    cases = [("default", "默认配置", Par()),
+             ("hevaoff", "H_evap = 0", Par(hevap="off")),
+             ("hevaconst", "H_evap = 常数", Par(hevap="const")),
+             ("conserv", "守恒形式", Par(energy="conserv")),
+             ("halfcv", "halfcv 边界", Par(boundary="halfcv")),
+             ("app2", "附录2 物性", Par(mode="app2")),
+             ("frozen", "系数冻结 (准 Newton)", Par(frozen=True))]
+    for tag, lbl, p in cases:
+        rel = check_jacobian(par=p)
+        say(f"  Jacobian vs 有限差分, {lbl:24s} 最大相对偏差 = {rel:.4e}")
+        add(f"V12_jac_{tag}", f"解析 Jacobian vs 有限差分 ({lbl}) 的最大相对偏差",
+            float(rel), "-", "有限差分校核")
+    L40 = HEVAP_28 + HEVAP_SLOPE * (313.15 - 301.15)
+    jac = L40 * HM * R
+    say(f"  蒸发项对 Jacobian 的贡献 H_evap h_m R @40 degC = {jac:.10f}")
+    say(f"  占对角元 1/dt (dt=1/32 s) 的比例 = {100*jac*1.0/32:.4f}%")
+    add("V12_jac_evap", "蒸发项对 Jacobian 的贡献 H_evap h_m R @40 degC",
+        float(jac), "-", "解析")
+    add("V12_jac_evap_pct", "该贡献占对角元 1/dt (dt=1/32 s) 的比例",
+        float(100 * jac / 32.0), "%", "解析")
+    return rel
+
+
+def V13_env(env=None):
+    """附件1 环境激励的端点与极值."""
+    from q1_solve import load_attachment1
+    t1, T1, C1 = load_attachment1()
+    m = t1 <= 10800.0
+    tt, Ti, Ci = t1[m], T1[m], C1[m]
+    say("=" * 96)
+    say("V13  附件1 环境激励 (0~10800 s 窗口)")
+    say("=" * 96)
+    say(f"  T_inf: {Ti.min():.4f} .. {Ti.max():.4f} degC, 峰值在 t={tt[int(np.argmax(Ti))]:.0f} s")
+    say(f"  C_inf: {Ci.min():.6f} .. {Ci.max():.6f} kg/kg, 峰值在 t={tt[int(np.argmax(Ci))]:.0f} s")
+    say(f"  T_inf 下降的采样步数 = {int(np.sum(np.diff(Ti) < 0))} / {len(Ti)-1}")
+    for k, v, u, q in (("V13_Tmin", Ti.min(), "degC", "T_inf 下界"),
+                       ("V13_Tmax", Ti.max(), "degC", "T_inf 上界(包络上界)"),
+                       ("V13_Tpeak_t", tt[int(np.argmax(Ti))], "s", "T_inf 峰值时刻"),
+                       ("V13_Cmin", Ci.min(), "kg/kg", "C_inf 下界"),
+                       ("V13_Cmax", Ci.max(), "kg/kg", "C_inf 上界"),
+                       ("V13_Cmin0", Ci[0], "kg/kg", "C_inf(0)"),
+                       ("V13_ndrop", int(np.sum(np.diff(Ti) < 0)), "-",
+                        "T_inf 在窗口内下降的采样步数")):
+        add(k, q, float(v), u, "附件1")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", default=None)
@@ -493,8 +655,16 @@ def main():
     if want("V8"):
         cfgs.append(dict(tag="noev", M=400, dt=1.0 / 16, t_end=T_END,
                          par=dict(hevap="off")))
-    if want("V9") or want("V11"):
+        cfgs.append(dict(tag="hevconst", M=400, dt=1.0 / 16, t_end=T_END,
+                         par=dict(hevap="const", hevap_const=2405908.0)))
+    if want("V9") or want("V11") or want("V9b"):
         cfgs.append(dict(tag="s_base", M=200, dt=0.25, t_end=T_END))
+    if want("V9b"):
+        # 对流换热系数 h 的 +/-20% 单因素扰动 (评阅关注: 恒温阶段 h 是否变)
+        cfgs += [dict(tag="s_hc12", M=200, dt=0.25, t_end=T_END,
+                      par=dict(hc=H_CONV * 1.2)),
+                 dict(tag="s_hc08", M=200, dt=0.25, t_end=T_END,
+                      par=dict(hc=H_CONV * 0.8))]
     if want("V9"):
         cfgs += [dict(tag="s_h12", M=200, dt=0.25, t_end=T_END,
                       par=dict(hevap_mult=1.2)),
@@ -534,21 +704,51 @@ def main():
         V8_evap(res)
     if want("V9"):
         V9_sens(res)
+    if want("V9b"):
+        V9b_h_sens(res)
     if want("V10"):
         V10_latent()
     if want("V11"):
         V11_energy_form(res)
+    if want("V12"):
+        V12_solver_numbers()
+    if want("V13"):
+        V13_env()
+        V13b_latent_calibration()
 
     with open(os.path.join(OUT, "q2_verify.log"), "w", encoding="utf-8") as f:
         f.write("\n".join(LOG) + "\n")
-    with open(os.path.join(OUT, "registry_q2_verify.csv"), "w", newline="",
-              encoding="utf-8") as f:
-        w = csv.writer(f)
-        w.writerow(["id", "quantity", "value", "unit", "uncertainty", "source",
-                    "command", "note"])
-        w.writerows(REG)
+    write_registry(os.path.join(OUT, "registry_q2_verify.csv"), REG)
     print(f"\n日志: {os.path.join(OUT, 'q2_verify.log')}")
-    print(f"注册表: {os.path.join(OUT, 'registry_q2_verify.csv')} ({len(REG)} 行)")
+
+
+def write_registry(path, rows):
+    """按 id 合并写出: 部分运行 (--only) 不会抹掉其它节的注册行.
+
+    这一点很重要: 早先的实现直接覆盖, 结果只跑 --only V3..V11 时
+    V0/VB/V1/V2/V10 的注册行被抹掉, 而文稿仍引用它们.
+    """
+    fields = ["id", "quantity", "value", "unit", "uncertainty", "source",
+              "command", "note"]
+    merged, order = {}, []
+    if os.path.exists(path):
+        with open(path, encoding="utf-8-sig") as f:
+            for r in csv.DictReader(f):
+                k = r["id"]
+                if k not in merged:
+                    order.append(k)
+                merged[k] = [r.get(c, "") for c in fields]
+    for row in rows:
+        k = row[0]
+        if k not in merged:
+            order.append(k)
+        merged[k] = list(row)
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(fields)
+        for k in order:
+            w.writerow(merged[k])
+    print(f"注册表: {path} ({len(merged)} 行, 本次写入 {len(rows)} 行)")
 
 
 if __name__ == "__main__":
